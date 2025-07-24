@@ -1,0 +1,6 @@
+export { ChokaeIcon } from './ChokaeIcon'
+export { TittyClubIcon } from './TittyClubIcon'
+export { FootKornerIcon } from './FootKornerIcon'
+export { LaBoucherieIcon } from './LaBoucherieIcon'
+export { CCIReunionIcon } from './CCIReunionIcon'
+export { HECIcon } from './HECIcon'
