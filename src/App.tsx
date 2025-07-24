@@ -1,6 +1,9 @@
 import { useEffect } from 'react'
+import { Header } from './components/Header'
 import { HeroParallax } from './components/HeroParallax/HeroParallax'
 import { VideoSection } from './components/VideoSection'
+import { TestimonialsSection } from './components/TestimonialsSection'
+import { ServicesSection } from './components/ServicesSection'
 
 function App() {
   useEffect(() => {
@@ -316,10 +319,13 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <HeroParallax products={products} />
       <div className="relative">
         <VideoSection />
       </div>
+      <TestimonialsSection />
+      <ServicesSection />
     </div>
   )
 }
