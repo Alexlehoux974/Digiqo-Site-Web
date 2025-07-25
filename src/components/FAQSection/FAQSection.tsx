@@ -73,7 +73,7 @@ export const FAQSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-8"
+          className="mb-0"
         >
           <FAQTabs 
             sections={faqSections}
@@ -82,13 +82,13 @@ export const FAQSection: React.FC = () => {
           />
         </motion.div>
 
-        {/* FAQ Content */}
+        {/* FAQ Content with negative margin to overlap with spotlight */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="min-h-[400px]"
+          className="min-h-[400px] -mt-20 relative z-10"
         >
           {faqSections.map((section, index) => (
             <FAQContent

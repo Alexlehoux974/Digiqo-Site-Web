@@ -31,171 +31,135 @@ const tabIcons = [
 
 export const FAQTabs: React.FC<FAQTabsProps> = ({ sections, activeIndex, onTabChange }) => {
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const glowRef = useRef<HTMLDivElement | null>(null);
+  const spotlightRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useLayoutEffect(() => {
-    const glow = glowRef.current;
+    const spotlight = spotlightRef.current;
     const activeTab = tabRefs.current[activeIndex];
     const container = containerRef.current;
     
-    if (glow && activeTab && container) {
+    if (spotlight && activeTab && container) {
       const containerRect = container.getBoundingClientRect();
       const tabRect = activeTab.getBoundingClientRect();
       
-      const newLeft = tabRect.left - containerRect.left + (tabRect.width / 2) - (glow.offsetWidth / 2);
+      const newLeft = tabRect.left - containerRect.left + (tabRect.width / 2);
       
-      glow.style.left = `${newLeft}px`;
-      glow.style.setProperty('--glow-color', sections[activeIndex].color);
-      glow.style.setProperty('--glow-shadow', sections[activeIndex].shadowColor);
+      spotlight.style.left = `${newLeft}px`;
+      spotlight.style.setProperty('--glow-color', sections[activeIndex].color);
+      spotlight.style.setProperty('--glow-shadow', sections[activeIndex].shadowColor);
     }
   }, [activeIndex, sections]);
 
   return (
-    <div className="relative w-full overflow-x-auto scrollbar-hide">
-      <div 
-        ref={containerRef}
-        className="relative flex items-center justify-start md:justify-center gap-3 p-6 min-w-max mx-auto"
-      >
-        {sections.map((section, index) => {
-          const Icon = tabIcons[index];
-          const isActive = activeIndex === index;
-          
-          return (
-            <motion.button
-              key={section.id}
-              ref={el => (tabRefs.current[index] = el)}
-              onClick={() => onTabChange(index)}
-              className={`
-                relative z-20 flex flex-col items-center gap-2 px-4 py-3 rounded-xl
-                transition-all duration-300 group min-w-[80px]
-                ${isActive 
-                  ? 'text-white' 
-                  : 'text-gray-400 hover:text-gray-200'
-                }
-              `}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Icon 
-                className={`
-                  w-8 h-8 transition-all duration-300
-                  ${isActive ? 'opacity-100' : 'opacity-60 group-hover:opacity-80'}
-                `}
-                isActive={isActive}
-                color={isActive ? section.color : '#9CA3AF'}
-              />
-              <span className={`
-                font-medium text-xs transition-all duration-300 text-center
-                ${isActive ? 'opacity-100' : 'opacity-70 group-hover:opacity-90'}
-              `}>
-                {section.title}
-              </span>
-            </motion.button>
-          );
-        })}
-
-        {/* Neon Glow Effect - Intense Premium Design */}
+    <div className="relative">
+      {/* Tab Bar Container */}
+      <div className="relative w-full overflow-x-auto scrollbar-hide bg-gray-900/50 backdrop-blur-sm rounded-2xl">
         <div 
-          ref={glowRef}
-          className="absolute top-1/2 -translate-y-1/2 w-32 h-24 pointer-events-none transition-all duration-700 ease-out"
+          ref={containerRef}
+          className="relative flex items-center justify-start md:justify-center gap-6 p-4 min-w-max mx-auto"
+        >
+          {sections.map((section, index) => {
+            const Icon = tabIcons[index];
+            const isActive = activeIndex === index;
+            
+            return (
+              <motion.button
+                key={section.id}
+                ref={el => (tabRefs.current[index] = el)}
+                onClick={() => onTabChange(index)}
+                className={`
+                  relative z-20 flex items-center justify-center p-3 rounded-xl
+                  transition-all duration-300 group
+                  ${isActive 
+                    ? 'text-white bg-white/10' 
+                    : 'text-gray-500 hover:text-gray-300'
+                  }
+                `}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Icon 
+                  className={`
+                    w-8 h-8 transition-all duration-300
+                    ${isActive ? 'opacity-100' : 'opacity-60 group-hover:opacity-80'}
+                  `}
+                  isActive={isActive}
+                  color={isActive ? section.color : '#6B7280'}
+                />
+              </motion.button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Spotlight Effect Below Tab Bar */}
+      <div className="relative h-32 overflow-hidden pointer-events-none">
+        <div 
+          ref={spotlightRef}
+          className="absolute top-0 -translate-x-1/2 w-64 transition-all duration-700 ease-out"
           style={{ 
             left: '-999px',
-            filter: 'blur(0px)'
           }}
         >
-          {/* Ultra intense outer glow */}
+          {/* Main spotlight beam */}
           <div 
-            className="absolute -inset-12 rounded-3xl opacity-60"
+            className="absolute left-1/2 -translate-x-1/2 w-32 h-96"
             style={{
-              background: 'var(--glow-color)',
-              boxShadow: `
-                0 0 60px var(--glow-color),
-                0 0 120px var(--glow-color),
-                0 0 180px var(--glow-color),
-                0 0 240px var(--glow-color)
-              `,
-              filter: 'blur(20px)'
+              background: `linear-gradient(to bottom, var(--glow-color) 0%, transparent 100%)`,
+              opacity: 0.8,
+              filter: 'blur(30px)',
+              transform: 'perspective(800px) rotateX(45deg)',
+              transformOrigin: 'top center'
             }}
           />
           
-          {/* Secondary intense glow */}
+          {/* Wider ambient glow */}
           <div 
-            className="absolute -inset-8 rounded-2xl opacity-70"
+            className="absolute left-1/2 -translate-x-1/2 w-64 h-64"
             style={{
-              background: 'var(--glow-color)',
-              boxShadow: `
-                0 0 40px var(--glow-color),
-                0 0 80px var(--glow-color),
-                0 0 120px var(--glow-color)
-              `,
-              filter: 'blur(10px)'
+              background: `radial-gradient(ellipse at center top, var(--glow-color) 0%, transparent 70%)`,
+              opacity: 0.5,
+              filter: 'blur(40px)',
             }}
           />
           
-          {/* Main tab background glow */}
+          {/* Intense core beam */}
           <div 
-            className="absolute inset-0 rounded-xl opacity-90"
+            className="absolute left-1/2 -translate-x-1/2 w-16 h-64"
             style={{
-              background: 'var(--glow-color)',
-              boxShadow: `
-                0 0 20px var(--glow-color),
-                0 0 40px var(--glow-color),
-                0 0 60px var(--glow-color),
-                inset 0 0 20px rgba(255,255,255,0.5)
-              `,
+              background: `linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, var(--glow-color) 20%, transparent 100%)`,
+              opacity: 0.6,
+              filter: 'blur(10px)',
             }}
           />
           
-          {/* Center bright core */}
+          {/* Ground reflection */}
           <div 
-            className="absolute inset-4 rounded-lg opacity-100"
+            className="absolute left-1/2 -translate-x-1/2 top-20 w-96 h-32"
             style={{
-              background: 'rgba(255, 255, 255, 0.1)',
-              boxShadow: `
-                0 0 15px var(--glow-color),
-                0 0 30px var(--glow-color),
-                inset 0 0 15px rgba(255,255,255,0.3)
-              `,
-              backdropFilter: 'blur(5px)'
+              background: `radial-gradient(ellipse at center, var(--glow-color) 0%, transparent 60%)`,
+              opacity: 0.3,
+              filter: 'blur(50px)',
+              transform: 'scaleY(0.5)',
             }}
           />
           
-          {/* Top edge bright line */}
-          <div 
-            className="absolute top-0 left-4 right-4 h-1 rounded-full"
-            style={{
-              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent)',
-              boxShadow: `
-                0 0 10px rgba(255,255,255,0.8),
-                0 0 20px var(--glow-color)
-              `,
-            }}
-          />
-          
-          {/* Intense pulsing animation */}
+          {/* Pulsing animation */}
           <motion.div 
-            className="absolute -inset-4 rounded-xl opacity-50"
+            className="absolute left-1/2 -translate-x-1/2 w-48 h-48"
             style={{
-              background: 'radial-gradient(ellipse at center, var(--glow-color) 0%, transparent 60%)',
+              background: `radial-gradient(circle at center, var(--glow-color) 0%, transparent 50%)`,
+              filter: 'blur(20px)',
             }}
             animate={{
-              opacity: [0.5, 0.8, 0.5],
-              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.6, 0.3],
+              scale: [0.8, 1.2, 0.8],
             }}
             transition={{
-              duration: 2,
+              duration: 3,
               repeat: Infinity,
               ease: "easeInOut"
-            }}
-          />
-          
-          {/* Bottom edge reflection */}
-          <div 
-            className="absolute bottom-0 left-6 right-6 h-0.5 rounded-full opacity-70"
-            style={{
-              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent)',
-              boxShadow: `0 0 6px var(--glow-color)`,
             }}
           />
         </div>
