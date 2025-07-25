@@ -1,15 +1,15 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  HelpCircle, 
-  Briefcase, 
-  Target, 
-  Cog, 
-  CreditCard, 
-  TrendingUp, 
-  HeadphonesIcon, 
-  MoreHorizontal 
-} from 'lucide-react';
+  GeneralIcon,
+  ServicesIcon,
+  ClosingIcon,
+  ProcessIcon,
+  PaymentIcon,
+  ResultsIcon,
+  SupportIcon,
+  OthersIcon
+} from './FAQIcons';
 import { FAQSection } from './faqData';
 
 interface FAQTabsProps {
@@ -19,14 +19,14 @@ interface FAQTabsProps {
 }
 
 const tabIcons = [
-  HelpCircle,     // Généralités
-  Briefcase,      // Nos Services
-  Target,         // Closing
-  Cog,           // Process
-  CreditCard,     // Paiement
-  TrendingUp,     // Résultats
-  HeadphonesIcon, // Assistance
-  MoreHorizontal  // Autres
+  GeneralIcon,    // Généralités
+  ServicesIcon,   // Nos Services
+  ClosingIcon,    // Closing
+  ProcessIcon,    // Process
+  PaymentIcon,    // Paiement
+  ResultsIcon,    // Résultats
+  SupportIcon,    // Assistance
+  OthersIcon      // Autres
 ];
 
 export const FAQTabs: React.FC<FAQTabsProps> = ({ sections, activeIndex, onTabChange }) => {
@@ -55,7 +55,7 @@ export const FAQTabs: React.FC<FAQTabsProps> = ({ sections, activeIndex, onTabCh
     <div className="relative w-full overflow-x-auto scrollbar-hide">
       <div 
         ref={containerRef}
-        className="relative flex items-center justify-start md:justify-center gap-1 p-4 min-w-max mx-auto"
+        className="relative flex items-center justify-start md:justify-center gap-3 p-6 min-w-max mx-auto"
       >
         {sections.map((section, index) => {
           const Icon = tabIcons[index];
@@ -67,8 +67,8 @@ export const FAQTabs: React.FC<FAQTabsProps> = ({ sections, activeIndex, onTabCh
               ref={el => (tabRefs.current[index] = el)}
               onClick={() => onTabChange(index)}
               className={`
-                relative z-20 flex items-center gap-1 px-3 py-2 rounded-lg
-                transition-all duration-300 group
+                relative z-20 flex flex-col items-center gap-2 px-4 py-3 rounded-xl
+                transition-all duration-300 group min-w-[80px]
                 ${isActive 
                   ? 'text-white' 
                   : 'text-gray-400 hover:text-gray-200'
@@ -77,12 +77,16 @@ export const FAQTabs: React.FC<FAQTabsProps> = ({ sections, activeIndex, onTabCh
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Icon className={`
-                w-4 h-4 transition-all duration-300
-                ${isActive ? 'opacity-100' : 'opacity-60 group-hover:opacity-80'}
-              `} />
+              <Icon 
+                className={`
+                  w-8 h-8 transition-all duration-300
+                  ${isActive ? 'opacity-100' : 'opacity-60 group-hover:opacity-80'}
+                `}
+                isActive={isActive}
+                color={isActive ? section.color : '#9CA3AF'}
+              />
               <span className={`
-                font-medium text-xs lg:text-sm transition-all duration-300
+                font-medium text-xs transition-all duration-300 text-center
                 ${isActive ? 'opacity-100' : 'opacity-70 group-hover:opacity-90'}
               `}>
                 {section.title}
@@ -91,18 +95,32 @@ export const FAQTabs: React.FC<FAQTabsProps> = ({ sections, activeIndex, onTabCh
           );
         })}
 
-        {/* Neon Glow Effect */}
+        {/* Neon Glow Effect - Ultrathink Design */}
         <div 
           ref={glowRef}
-          className="absolute top-1/2 -translate-y-1/2 w-24 h-10 pointer-events-none transition-all duration-500 ease-out"
+          className="absolute top-1/2 -translate-y-1/2 w-32 h-20 pointer-events-none transition-all duration-700 ease-out"
           style={{ 
             left: '-999px',
             filter: 'blur(0px)'
           }}
         >
+          {/* Outer soft glow */}
+          <div 
+            className="absolute -inset-4 rounded-2xl opacity-20"
+            style={{
+              background: 'var(--glow-color)',
+              boxShadow: `
+                0 0 40px var(--glow-color),
+                0 0 80px var(--glow-color),
+                0 0 120px var(--glow-color)
+              `,
+              filter: 'blur(8px)'
+            }}
+          />
+          
           {/* Main glow */}
           <div 
-            className="absolute inset-0 rounded-lg opacity-30"
+            className="absolute inset-0 rounded-xl opacity-40"
             style={{
               background: 'var(--glow-color)',
               boxShadow: 'var(--glow-shadow)',
@@ -111,40 +129,49 @@ export const FAQTabs: React.FC<FAQTabsProps> = ({ sections, activeIndex, onTabCh
           
           {/* Intense center glow */}
           <div 
-            className="absolute inset-2 rounded-lg opacity-20"
+            className="absolute inset-2 rounded-xl opacity-30"
             style={{
               background: 'var(--glow-color)',
               boxShadow: `
-                0 0 20px var(--glow-color),
-                0 0 40px var(--glow-color),
-                0 0 60px var(--glow-color)
+                0 0 30px var(--glow-color),
+                0 0 50px var(--glow-color),
+                0 0 70px var(--glow-color)
               `,
             }}
           />
           
-          {/* Top highlight */}
+          {/* Top highlight - Premium effect */}
           <div 
-            className="absolute top-0 left-4 right-4 h-1 rounded-full opacity-60"
+            className="absolute top-0 left-6 right-6 h-1 rounded-full opacity-80"
             style={{
               background: `linear-gradient(90deg, transparent, var(--glow-color), transparent)`,
-              boxShadow: `0 0 10px var(--glow-color)`,
+              boxShadow: `0 0 15px var(--glow-color)`,
             }}
           />
           
-          {/* Pulsing animation */}
+          {/* Pulsing animation - More sophisticated */}
           <motion.div 
-            className="absolute inset-0 rounded-lg opacity-20"
+            className="absolute inset-0 rounded-xl opacity-25"
             style={{
-              background: 'var(--glow-color)',
+              background: 'radial-gradient(ellipse at center, var(--glow-color) 0%, transparent 70%)',
             }}
             animate={{
-              opacity: [0.2, 0.4, 0.2],
-              scale: [1, 1.1, 1],
+              opacity: [0.25, 0.45, 0.25],
+              scale: [1, 1.15, 1],
             }}
             transition={{
-              duration: 2,
+              duration: 3,
               repeat: Infinity,
               ease: "easeInOut"
+            }}
+          />
+          
+          {/* Bottom reflection - Ultrathink touch */}
+          <div 
+            className="absolute bottom-0 left-8 right-8 h-0.5 rounded-full opacity-50"
+            style={{
+              background: `linear-gradient(90deg, transparent, var(--glow-color), transparent)`,
+              boxShadow: `0 0 8px var(--glow-color)`,
             }}
           />
         </div>

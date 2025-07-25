@@ -26,7 +26,7 @@ const timelineData = [
           <div className="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-digiqo-primary/10 to-transparent p-1">
             <div className="relative overflow-hidden rounded-xl bg-white">
               <img 
-                src="/dist/partenaires/Rodolphe.webp" 
+                src="/partenaires/Rodolphe.webp" 
                 alt="Rodolphe - Co-fondateur"
                 className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
               />
@@ -45,7 +45,7 @@ const timelineData = [
             <div className="absolute inset-0 bg-gradient-to-br from-digiqo-secondary/20 to-digiqo-accent/10 rounded-2xl blur-2xl group-hover:blur-3xl transition-all duration-700"></div>
             <div className="relative overflow-hidden rounded-2xl backdrop-blur-sm">
               <img 
-                src="/dist/partenaires/Alexandre.webp" 
+                src="/partenaires/Alexandre.webp" 
                 alt="Alexandre - Co-fondateur"
                 className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
               />
@@ -62,7 +62,7 @@ const timelineData = [
             <div className="absolute -inset-1 bg-gradient-to-r from-digiqo-accent to-digiqo-secondary rounded-2xl blur opacity-40 group-hover:opacity-70 transition duration-700"></div>
             <div className="relative overflow-hidden rounded-2xl bg-white">
               <img 
-                src="/dist/partenaires/Angelo.webp" 
+                src="/partenaires/Angelo.webp" 
                 alt="Angelo - Co-fondateur"
                 className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
               />
@@ -139,7 +139,7 @@ const timelineData = [
           {/* Team Celebration - Bottom Left */}
           <div className="relative group overflow-hidden rounded-2xl">
             <img 
-              src="/dist/partenaires/428642719_10225815770485084_3749116991826890590_n-970x1024.webp" 
+              src="/partenaires/428642719_10225815770485084_3749116991826890590_n-970x1024.webp" 
               alt="Équipe Digiqo"
               className="w-full h-64 object-cover grayscale-50 group-hover:grayscale-0 transition-all duration-700"
             />
@@ -207,7 +207,7 @@ const timelineData = [
             <div className="absolute -inset-1 bg-gradient-to-r from-digiqo-primary to-digiqo-accent rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-700"></div>
             <div className="relative">
               <img 
-                src="/dist/partenaires/Adrien.webp" 
+                src="/partenaires/Adrien.webp" 
                 alt="Adrien"
                 className="w-full h-64 object-cover rounded-2xl"
               />
@@ -229,7 +229,7 @@ const timelineData = [
             <div className="absolute -inset-1 bg-gradient-to-r from-digiqo-secondary to-digiqo-accent rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-700"></div>
             <div className="relative">
               <img 
-                src="/dist/partenaires/Thomas.webp" 
+                src="/partenaires/Thomas.webp" 
                 alt="Thomas"
                 className="w-full h-64 object-cover rounded-2xl"
               />

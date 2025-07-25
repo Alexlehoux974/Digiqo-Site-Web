@@ -33,7 +33,9 @@
       "mcp__playwright__browser_resize",
       "mcp__playwright__browser_snapshot",
       "mcp__fetch-mcp__fetch_markdown",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(find:*)"
     ],
     "deny": []
   }
