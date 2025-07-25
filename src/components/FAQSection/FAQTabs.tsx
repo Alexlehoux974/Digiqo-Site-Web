@@ -95,18 +95,33 @@ export const FAQTabs: React.FC<FAQTabsProps> = ({ sections, activeIndex, onTabCh
           );
         })}
 
-        {/* Neon Glow Effect - Ultrathink Design */}
+        {/* Neon Glow Effect - Intense Premium Design */}
         <div 
           ref={glowRef}
-          className="absolute top-1/2 -translate-y-1/2 w-32 h-20 pointer-events-none transition-all duration-700 ease-out"
+          className="absolute top-1/2 -translate-y-1/2 w-32 h-24 pointer-events-none transition-all duration-700 ease-out"
           style={{ 
             left: '-999px',
             filter: 'blur(0px)'
           }}
         >
-          {/* Outer soft glow */}
+          {/* Ultra intense outer glow */}
           <div 
-            className="absolute -inset-4 rounded-2xl opacity-20"
+            className="absolute -inset-12 rounded-3xl opacity-60"
+            style={{
+              background: 'var(--glow-color)',
+              boxShadow: `
+                0 0 60px var(--glow-color),
+                0 0 120px var(--glow-color),
+                0 0 180px var(--glow-color),
+                0 0 240px var(--glow-color)
+              `,
+              filter: 'blur(20px)'
+            }}
+          />
+          
+          {/* Secondary intense glow */}
+          <div 
+            className="absolute -inset-8 rounded-2xl opacity-70"
             style={{
               background: 'var(--glow-color)',
               boxShadow: `
@@ -114,64 +129,73 @@ export const FAQTabs: React.FC<FAQTabsProps> = ({ sections, activeIndex, onTabCh
                 0 0 80px var(--glow-color),
                 0 0 120px var(--glow-color)
               `,
-              filter: 'blur(8px)'
+              filter: 'blur(10px)'
             }}
           />
           
-          {/* Main glow */}
+          {/* Main tab background glow */}
           <div 
-            className="absolute inset-0 rounded-xl opacity-40"
-            style={{
-              background: 'var(--glow-color)',
-              boxShadow: 'var(--glow-shadow)',
-            }}
-          />
-          
-          {/* Intense center glow */}
-          <div 
-            className="absolute inset-2 rounded-xl opacity-30"
+            className="absolute inset-0 rounded-xl opacity-90"
             style={{
               background: 'var(--glow-color)',
               boxShadow: `
-                0 0 30px var(--glow-color),
-                0 0 50px var(--glow-color),
-                0 0 70px var(--glow-color)
+                0 0 20px var(--glow-color),
+                0 0 40px var(--glow-color),
+                0 0 60px var(--glow-color),
+                inset 0 0 20px rgba(255,255,255,0.5)
               `,
             }}
           />
           
-          {/* Top highlight - Premium effect */}
+          {/* Center bright core */}
           <div 
-            className="absolute top-0 left-6 right-6 h-1 rounded-full opacity-80"
+            className="absolute inset-4 rounded-lg opacity-100"
             style={{
-              background: `linear-gradient(90deg, transparent, var(--glow-color), transparent)`,
-              boxShadow: `0 0 15px var(--glow-color)`,
+              background: 'rgba(255, 255, 255, 0.1)',
+              boxShadow: `
+                0 0 15px var(--glow-color),
+                0 0 30px var(--glow-color),
+                inset 0 0 15px rgba(255,255,255,0.3)
+              `,
+              backdropFilter: 'blur(5px)'
             }}
           />
           
-          {/* Pulsing animation - More sophisticated */}
-          <motion.div 
-            className="absolute inset-0 rounded-xl opacity-25"
+          {/* Top edge bright line */}
+          <div 
+            className="absolute top-0 left-4 right-4 h-1 rounded-full"
             style={{
-              background: 'radial-gradient(ellipse at center, var(--glow-color) 0%, transparent 70%)',
+              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent)',
+              boxShadow: `
+                0 0 10px rgba(255,255,255,0.8),
+                0 0 20px var(--glow-color)
+              `,
+            }}
+          />
+          
+          {/* Intense pulsing animation */}
+          <motion.div 
+            className="absolute -inset-4 rounded-xl opacity-50"
+            style={{
+              background: 'radial-gradient(ellipse at center, var(--glow-color) 0%, transparent 60%)',
             }}
             animate={{
-              opacity: [0.25, 0.45, 0.25],
-              scale: [1, 1.15, 1],
+              opacity: [0.5, 0.8, 0.5],
+              scale: [1, 1.2, 1],
             }}
             transition={{
-              duration: 3,
+              duration: 2,
               repeat: Infinity,
               ease: "easeInOut"
             }}
           />
           
-          {/* Bottom reflection - Ultrathink touch */}
+          {/* Bottom edge reflection */}
           <div 
-            className="absolute bottom-0 left-8 right-8 h-0.5 rounded-full opacity-50"
+            className="absolute bottom-0 left-6 right-6 h-0.5 rounded-full opacity-70"
             style={{
-              background: `linear-gradient(90deg, transparent, var(--glow-color), transparent)`,
-              boxShadow: `0 0 8px var(--glow-color)`,
+              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent)',
+              boxShadow: `0 0 6px var(--glow-color)`,
             }}
           />
         </div>

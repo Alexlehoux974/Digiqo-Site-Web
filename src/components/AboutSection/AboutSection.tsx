@@ -1,6 +1,7 @@
 import React from 'react';
 import { Timeline } from '../ui/timeline';
 
+
 const timelineData = [
   {
     title: "2020 - La Genèse",
@@ -29,6 +30,7 @@ const timelineData = [
                 src="/partenaires/Rodolphe.webp" 
                 alt="Rodolphe - Co-fondateur"
                 className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
                 <div className="absolute bottom-6 left-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
@@ -48,6 +50,7 @@ const timelineData = [
                 src="/partenaires/Alexandre.webp" 
                 alt="Alexandre - Co-fondateur"
                 className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-br from-digiqo-secondary/20 to-transparent mix-blend-overlay"></div>
               <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent">
@@ -65,6 +68,7 @@ const timelineData = [
                 src="/partenaires/Angelo.webp" 
                 alt="Angelo - Co-fondateur"
                 className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-tl from-digiqo-accent/80 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500">
                 <div className="absolute bottom-6 left-6 text-white">
@@ -210,6 +214,7 @@ const timelineData = [
                 src="/partenaires/Adrien.webp" 
                 alt="Adrien"
                 className="w-full h-64 object-cover rounded-2xl"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-2xl">
                 <div className="absolute bottom-6 left-6 text-white">
@@ -232,6 +237,7 @@ const timelineData = [
                 src="/partenaires/Thomas.webp" 
                 alt="Thomas"
                 className="w-full h-64 object-cover rounded-2xl"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-2xl">
                 <div className="absolute bottom-6 left-6 text-white">
