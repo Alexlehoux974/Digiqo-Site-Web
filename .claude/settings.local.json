@@ -35,7 +35,11 @@
       "mcp__fetch-mcp__fetch_markdown",
       "Bash(npm run build:*)",
       "Bash(git ls-tree:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(killall:*)",
+      "Bash(kill:*)",
+      "Bash(npx vite:*)",
+      "mcp__playwright__browser_click"
     ],
     "deny": []
   }

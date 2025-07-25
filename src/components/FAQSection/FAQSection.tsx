@@ -10,7 +10,7 @@ export const FAQSection: React.FC = () => {
   const activeSection = faqSections[activeIndex];
 
   return (
-    <section className="relative bg-gradient-to-b from-gray-950 via-black to-gray-950 py-20 overflow-hidden">
+    <section className="relative bg-gradient-to-b from-digiqo-primary via-red-950 to-black py-20 overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Animated gradient orbs */}
@@ -58,13 +58,39 @@ export const FAQSection: React.FC = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-digiqo-primary to-digiqo-accent">
+            <span className="text-white">
               Questions Fréquentes
             </span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <div className="w-24 h-1 bg-digiqo-secondary mx-auto mb-4 rounded-full" />
+          <p className="text-white/80 text-lg max-w-2xl mx-auto">
             Trouvez rapidement les réponses à vos questions sur nos services et notre fonctionnement
           </p>
+        </motion.div>
+
+        {/* Active Section Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-center mb-8"
+        >
+          <h3 
+            className="text-3xl font-bold relative inline-block"
+            style={{ 
+              color: '#FFFFFF',
+              filter: 'brightness(1.2)',
+              textShadow: `
+                0 0 20px ${activeSection.color},
+                0 0 40px ${activeSection.color},
+                0 0 60px ${activeSection.glowColor},
+                0 2px 4px rgba(0,0,0,0.5)
+              `,
+            }}
+          >
+            {activeSection.title}
+          </h3>
         </motion.div>
 
         {/* FAQ Navigation */}
@@ -88,7 +114,7 @@ export const FAQSection: React.FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="min-h-[400px] -mt-20 relative z-10"
+          className="min-h-[400px] -mt-32 relative z-10"
         >
           {faqSections.map((section, index) => (
             <FAQContent

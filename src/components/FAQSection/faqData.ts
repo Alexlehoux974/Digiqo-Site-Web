@@ -16,8 +16,8 @@ export const faqSections: FAQSection[] = [
   {
     id: 'generalites',
     title: 'Généralités',
-    color: '#8B1431', // Bordeaux
-    glowColor: 'rgba(139, 20, 49, 0.5)',
+    color: '#FF6B6B', // Rouge corail
+    glowColor: 'rgba(255, 107, 107, 0.5)',
     shadowColor: '0 0 30px rgba(139, 20, 49, 0.8)',
     items: [
       {
@@ -41,8 +41,8 @@ export const faqSections: FAQSection[] = [
   {
     id: 'services',
     title: 'Nos Services',
-    color: '#DA6530', // Orange
-    glowColor: 'rgba(218, 101, 48, 0.5)',
+    color: '#FF4500', // Orange néon
+    glowColor: 'rgba(255, 69, 0, 0.5)',
     shadowColor: '0 0 30px rgba(218, 101, 48, 0.8)',
     items: [
       {
@@ -78,8 +78,8 @@ export const faqSections: FAQSection[] = [
   {
     id: 'closing',
     title: 'Tout savoir sur le Closing',
-    color: '#199CB7', // Blue
-    glowColor: 'rgba(25, 156, 183, 0.5)',
+    color: '#FF1493', // Magenta
+    glowColor: 'rgba(255, 20, 147, 0.5)',
     shadowColor: '0 0 30px rgba(25, 156, 183, 0.8)',
     items: [
       {
@@ -107,8 +107,8 @@ export const faqSections: FAQSection[] = [
   {
     id: 'process',
     title: 'Process et Gestion de Projets',
-    color: '#10B981', // Green
-    glowColor: 'rgba(16, 185, 129, 0.5)',
+    color: '#FF8C42', // Orange doré
+    glowColor: 'rgba(255, 140, 66, 0.5)',
     shadowColor: '0 0 30px rgba(16, 185, 129, 0.8)',
     items: [
       {
@@ -132,8 +132,8 @@ export const faqSections: FAQSection[] = [
   {
     id: 'paiement',
     title: 'Paiement et Contrat',
-    color: '#8B5CF6', // Purple
-    glowColor: 'rgba(139, 92, 246, 0.5)',
+    color: '#FFD700', // Or
+    glowColor: 'rgba(255, 215, 0, 0.5)',
     shadowColor: '0 0 30px rgba(139, 92, 246, 0.8)',
     items: [
       {
@@ -157,8 +157,8 @@ export const faqSections: FAQSection[] = [
   {
     id: 'resultats',
     title: 'Résultats et Optimisation',
-    color: '#F59E0B', // Gold
-    glowColor: 'rgba(245, 158, 11, 0.5)',
+    color: '#FFB700', // Jaune doré
+    glowColor: 'rgba(255, 183, 0, 0.5)',
     shadowColor: '0 0 30px rgba(245, 158, 11, 0.8)',
     items: [
       {
@@ -178,8 +178,8 @@ export const faqSections: FAQSection[] = [
   {
     id: 'assistance',
     title: 'Assistance et Suivi',
-    color: '#EC4899', // Pink
-    glowColor: 'rgba(236, 72, 153, 0.5)',
+    color: '#FF69B4', // Rose chaud
+    glowColor: 'rgba(255, 105, 180, 0.5)',
     shadowColor: '0 0 30px rgba(236, 72, 153, 0.8)',
     items: [
       {
@@ -199,8 +199,8 @@ export const faqSections: FAQSection[] = [
   {
     id: 'autres',
     title: 'Autres',
-    color: '#06B6D4', // Cyan
-    glowColor: 'rgba(6, 182, 212, 0.5)',
+    color: '#FFFAF0', // Blanc chaud
+    glowColor: 'rgba(255, 250, 240, 0.5)',
     shadowColor: '0 0 30px rgba(6, 182, 212, 0.8)',
     items: [
       {

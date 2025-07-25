@@ -39,7 +39,7 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="relative bg-digiqo-primary text-white">
+    <footer className="relative bg-gradient-to-b from-cyan-600 via-cyan-500 to-cyan-400 text-white">
       {/* Background pattern */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl" />

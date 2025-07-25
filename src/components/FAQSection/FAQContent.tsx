@@ -55,39 +55,8 @@ export const FAQContent: React.FC<FAQContentProps> = ({ section, isActive }) => 
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="w-full max-w-4xl mx-auto px-4 py-8"
+          className="w-full max-w-4xl mx-auto px-4 py-4"
         >
-          {/* Section Title with Neon Effect */}
-          <motion.div 
-            className="text-center mb-8"
-            variants={itemVariants}
-          >
-            <h3 
-              className="text-3xl font-bold mb-2 relative inline-block"
-              style={{ 
-                color: section.color,
-                textShadow: `
-                  0 0 10px ${section.glowColor},
-                  0 0 20px ${section.glowColor},
-                  0 0 30px ${section.glowColor}
-                `,
-              }}
-            >
-              {section.title}
-            </h3>
-            <div 
-              className="h-1 w-24 mx-auto rounded-full"
-              style={{
-                background: section.color,
-                boxShadow: `
-                  0 0 10px ${section.color},
-                  0 0 20px ${section.color},
-                  0 0 30px ${section.color}
-                `,
-              }}
-            />
-          </motion.div>
-
           {/* FAQ Items */}
           <div className="space-y-4">
             {section.items.map((item, index) => (

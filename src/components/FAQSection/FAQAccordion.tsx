@@ -48,9 +48,9 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
       className={`
-        border border-gray-800 rounded-lg overflow-hidden
+        border border-white/10 rounded-lg overflow-hidden
         transition-all duration-300
-        ${isOpen ? 'bg-gray-900/50' : 'bg-gray-900/20'}
+        ${isOpen ? 'bg-black/40 backdrop-blur-sm' : 'bg-black/20'}
       `}
       style={{
         borderColor: isOpen ? color : 'transparent',
@@ -63,7 +63,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
         aria-expanded={isOpen}
         aria-controls={`faq-answer-${index}`}
       >
-        <h4 className="text-lg font-semibold text-gray-100 pr-4">
+        <h4 className="text-lg font-semibold text-white pr-4">
           {question}
         </h4>
         <motion.div
@@ -109,7 +109,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
                   boxShadow: `0 0 10px ${glowColor}`,
                 }}
               />
-              <div className="text-gray-300 leading-relaxed">
+              <div className="text-white/90 leading-relaxed">
                 {formatAnswer(answer)}
               </div>
             </div>

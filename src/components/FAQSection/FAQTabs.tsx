@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   GeneralIcon,
@@ -30,35 +30,13 @@ const tabIcons = [
 ];
 
 export const FAQTabs: React.FC<FAQTabsProps> = ({ sections, activeIndex, onTabChange }) => {
-  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const spotlightRef = useRef<HTMLDivElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
-  useLayoutEffect(() => {
-    const spotlight = spotlightRef.current;
-    const activeTab = tabRefs.current[activeIndex];
-    const container = containerRef.current;
-    
-    if (spotlight && activeTab && container) {
-      const containerRect = container.getBoundingClientRect();
-      const tabRect = activeTab.getBoundingClientRect();
-      
-      const newLeft = tabRect.left - containerRect.left + (tabRect.width / 2);
-      
-      spotlight.style.left = `${newLeft}px`;
-      spotlight.style.setProperty('--glow-color', sections[activeIndex].color);
-      spotlight.style.setProperty('--glow-shadow', sections[activeIndex].shadowColor);
-    }
-  }, [activeIndex, sections]);
+  const activeColor = sections[activeIndex].color;
 
   return (
     <div className="relative">
       {/* Tab Bar Container */}
-      <div className="relative w-full overflow-x-auto scrollbar-hide bg-gray-900/50 backdrop-blur-sm rounded-2xl">
-        <div 
-          ref={containerRef}
-          className="relative flex items-center justify-start md:justify-center gap-6 p-4 min-w-max mx-auto"
-        >
+      <div className="relative w-full overflow-x-auto scrollbar-hide">
+        <div className="relative flex items-center justify-start md:justify-center gap-6 p-4 min-w-max mx-auto">
           {sections.map((section, index) => {
             const Icon = tabIcons[index];
             const isActive = activeIndex === index;
@@ -66,15 +44,11 @@ export const FAQTabs: React.FC<FAQTabsProps> = ({ sections, activeIndex, onTabCh
             return (
               <motion.button
                 key={section.id}
-                ref={el => (tabRefs.current[index] = el)}
                 onClick={() => onTabChange(index)}
                 className={`
                   relative z-20 flex items-center justify-center p-3 rounded-xl
                   transition-all duration-300 group
-                  ${isActive 
-                    ? 'text-white bg-white/10' 
-                    : 'text-gray-500 hover:text-gray-300'
-                  }
+                  text-white
                 `}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
@@ -85,7 +59,7 @@ export const FAQTabs: React.FC<FAQTabsProps> = ({ sections, activeIndex, onTabCh
                     ${isActive ? 'opacity-100' : 'opacity-60 group-hover:opacity-80'}
                   `}
                   isActive={isActive}
-                  color={isActive ? section.color : '#6B7280'}
+                  color="#FFFFFF"
                 />
               </motion.button>
             );
@@ -93,76 +67,120 @@ export const FAQTabs: React.FC<FAQTabsProps> = ({ sections, activeIndex, onTabCh
         </div>
       </div>
 
-      {/* Spotlight Effect Below Tab Bar */}
-      <div className="relative h-32 overflow-hidden pointer-events-none">
+      {/* Fixed Central Lamp Effect */}
+      <div className="relative h-80 -mt-12">
+        {/* Light source - horizontal bar */}
         <div 
-          ref={spotlightRef}
-          className="absolute top-0 -translate-x-1/2 w-64 transition-all duration-700 ease-out"
-          style={{ 
-            left: '-999px',
+          className="absolute left-1/2 -translate-x-1/2 top-20 w-64 h-3 rounded-full z-30"
+          style={{
+            background: activeColor,
+            boxShadow: `
+              0 0 40px ${activeColor},
+              0 0 80px ${activeColor},
+              0 0 120px ${activeColor}
+            `,
+            filter: 'brightness(2)',
+          }}
+        />
+        
+        {/* Light container with trapezoid mask for beam effect */}
+        <div 
+          className="absolute left-1/2 -translate-x-1/2 top-20 overflow-hidden"
+          style={{
+            width: '1200px',
+            height: '300px',
+            clipPath: 'polygon(calc(50% - 128px) 0%, calc(50% + 128px) 0%, 100% 100%, 0% 100%)',
+            WebkitClipPath: 'polygon(calc(50% - 128px) 0%, calc(50% + 128px) 0%, 100% 100%, 0% 100%)',
           }}
         >
-          {/* Main spotlight beam */}
-          <div 
-            className="absolute left-1/2 -translate-x-1/2 w-32 h-96"
-            style={{
-              background: `linear-gradient(to bottom, var(--glow-color) 0%, transparent 100%)`,
-              opacity: 0.8,
-              filter: 'blur(30px)',
-              transform: 'perspective(800px) rotateX(45deg)',
-              transformOrigin: 'top center'
-            }}
-          />
-          
-          {/* Wider ambient glow */}
-          <div 
-            className="absolute left-1/2 -translate-x-1/2 w-64 h-64"
-            style={{
-              background: `radial-gradient(ellipse at center top, var(--glow-color) 0%, transparent 70%)`,
-              opacity: 0.5,
-              filter: 'blur(40px)',
-            }}
-          />
-          
-          {/* Intense core beam */}
-          <div 
-            className="absolute left-1/2 -translate-x-1/2 w-16 h-64"
-            style={{
-              background: `linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, var(--glow-color) 20%, transparent 100%)`,
-              opacity: 0.6,
-              filter: 'blur(10px)',
-            }}
-          />
-          
-          {/* Ground reflection */}
-          <div 
-            className="absolute left-1/2 -translate-x-1/2 top-20 w-96 h-32"
-            style={{
-              background: `radial-gradient(ellipse at center, var(--glow-color) 0%, transparent 60%)`,
-              opacity: 0.3,
-              filter: 'blur(50px)',
-              transform: 'scaleY(0.5)',
-            }}
-          />
-          
-          {/* Pulsing animation */}
+          {/* Primary light emission */}
           <motion.div 
-            className="absolute left-1/2 -translate-x-1/2 w-48 h-48"
+            className="absolute left-1/2 -translate-x-1/2 -top-40 w-[600px] h-[600px]"
             style={{
-              background: `radial-gradient(circle at center, var(--glow-color) 0%, transparent 50%)`,
-              filter: 'blur(20px)',
+              background: `radial-gradient(circle at center top, 
+                ${activeColor}FF 0%, 
+                ${activeColor}BB 10%, 
+                ${activeColor}88 20%, 
+                ${activeColor}44 35%, 
+                ${activeColor}22 50%, 
+                transparent 70%)`,
+              filter: 'blur(80px)',
             }}
             animate={{
-              opacity: [0.3, 0.6, 0.3],
-              scale: [0.8, 1.2, 0.8],
+              opacity: [0.7, 0.9, 0.7],
             }}
             transition={{
-              duration: 3,
+              duration: 4,
               repeat: Infinity,
               ease: "easeInOut"
             }}
           />
+          
+          {/* Secondary diffusion layer */}
+          <div 
+            className="absolute left-1/2 -translate-x-1/2 -top-30 w-[500px] h-[500px]"
+            style={{
+              background: `radial-gradient(circle at center top, 
+                ${activeColor}CC 0%, 
+                ${activeColor}88 20%, 
+                ${activeColor}44 40%, 
+                transparent 65%)`,
+              filter: 'blur(60px)',
+              opacity: 0.8,
+            }}
+          />
+          
+          {/* Core bright spot */}
+          <div 
+            className="absolute left-1/2 -translate-x-1/2 -top-20 w-[300px] h-[300px]"
+            style={{
+              background: `radial-gradient(circle at center, 
+                rgba(255,255,255,0.9) 0%, 
+                ${activeColor} 10%, 
+                ${activeColor}BB 30%, 
+                ${activeColor}66 50%, 
+                transparent 70%)`,
+              filter: 'blur(40px)',
+              opacity: 0.9,
+            }}
+          />
+          
+          {/* Ambient scatter */}
+          <div 
+            className="absolute left-1/2 -translate-x-1/2 -top-10 w-[700px] h-[600px]"
+            style={{
+              background: `radial-gradient(circle at center, 
+                ${activeColor}33 0%, 
+                ${activeColor}11 30%, 
+                transparent 60%)`,
+              filter: 'blur(100px)',
+              opacity: 0.6,
+            }}
+          />
         </div>
+        
+        {/* Light reflection on surface */}
+        <motion.div 
+          className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[400px] h-[150px]"
+          style={{
+            background: `radial-gradient(ellipse at center, 
+              ${activeColor}66 0%, 
+              ${activeColor}44 25%, 
+              ${activeColor}22 50%, 
+              transparent 75%)`,
+            filter: 'blur(30px)',
+            transform: 'translateY(50%) scaleY(0.5)',
+          }}
+          animate={{
+            opacity: [0.5, 0.7, 0.5],
+            scaleX: [0.9, 1.1, 0.9],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
       </div>
     </div>
   );
