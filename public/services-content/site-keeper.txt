@@ -1,0 +1,77 @@
+FORFAITS SITEKEEPER & SHOPKEEPER
+=================================
+
+Votre Site sous Haute Protection
+Mises à jour, sauvegardes, sécurité… On s'occupe de tout !
+
+SITEKEEPER ESSENTIAL
+--------------------
+€490 HT /an
+
+Idéal pour les petits sites vitrines avec peu de mises à jour et une gestion technique basique.
+
+- Mises à jour mensuelles du CMS (WordPress) et des plugins.
+- Sauvegardes hebdomadaires automatisées avec restauration rapide en cas de problème.
+- Monitoring de la disponibilité : Vérification en temps réel que le site est en ligne et fonctionnel.
+- 2 révisions/retouches par an pour des ajustements mineurs (changement de texte, mise à jour graphique légère).
+- Mises à jour PHP sur demande (facturées séparément si des ajustements de compatibilité sont nécessaires).
+- Support technique basique : Réponse sous 72 heures pour des bugs mineurs.
+- Règlement du domaine, de l'hébergement, et des abonnements aux plugins/extensions à la charge du client.
+
+SITEKEEPER PRO
+--------------
+€990 HT /an
+
+Parfait pour les sites de taille moyenne nécessitant un suivi régulier, des performances optimisées et des mises à jour fréquentes.
+
+- Mises à jour hebdomadaires du CMS (WordPress), des plugins et des thèmes.
+- Sauvegardes hebdomadaires avec vérification manuelle pour s'assurer de la bonne exécution.
+- Monitoring de la performance et de la disponibilité du site, pour détecter et corriger les lenteurs ou les problèmes techniques.
+- 4 révisions/retouches par an pour des ajustements mineurs (changement de texte, mise à jour graphique légère).
+- Mises à jour PHP incluses, avec tests de compatibilité pour garantir que le site fonctionne correctement avec les nouvelles versions.
+- Support prioritaire : Réponse sous 48 heures.
+- Règlement du domaine, de l'hébergement, et des abonnements aux plugins/extensions à la charge du client.
+
+SITEKEEPER ULTIMATE
+-------------------
+€1990 HT /an
+
+Solution complète pour les sites complexes avec un fort trafic, offrant sécurité renforcée, révisions illimitées et support premium.
+
+- Mises à jour hebdomadaires du CMS (WordPress), des plugins, des thèmes, et du PHP, avec gestion complète des tests de compatibilité et possibilité de revenir à une version antérieure si nécessaire.
+- Sauvegardes quotidiennes, avec restauration prioritaire en cas de besoin.
+- Monitoring complet : Surveillance en temps réel de la disponibilité, des performances, et de la sécurité du site.
+- 6 révisions/retouches par an pour des ajustements mineurs (changement de texte, mise à jour graphique légère).
+- Sécurité renforcée : Inclut un pare-feu, une protection contre les attaques DDoS, et des audits de sécurité semestriels pour garantir la sécurité des données et du site.
+- Support technique premium, avec réponse sous 24 heures.
+- Règlement du domaine, de l'hébergement, et des abonnements aux plugins/extensions à la charge du client.
+
+[être rappelé(e)]
+
+Votre eCommerce, notre Priorité !
+Mises à jour, sécurité, et gestion du catalogue : on veille sur votre boutique en ligne pour maximiser vos ventes.
+
+SHOPKEEPER ESSENTIAL
+--------------------
+€690 HT /an
+
+Ce forfait est parfait pour les petites boutiques en ligne avec un catalogue limité et des besoins techniques simples.
+
+- Mises à jour mensuelles du CMS (Shopify ou WooCommerce) et de la passerelle de paiement.
+- Sauvegardes hebdomadaires automatisées, avec restauration rapide en cas de problème.
+- Monitoring de la disponibilité pour s'assurer que la boutique reste en ligne et accessible.
+- 2 révisions/retouches par an pour des ajustements mineurs (changement de produits, modification de texte).
+- Support technique basique, avec réponse sous 72 heures.
+- Règlement du domaine, de l'hébergement, et des abonnements aux plugins/extensions à la charge du client.
+
+SHOPKEEPER PRO
+--------------
+€1990 HT /an
+
+Destiné aux boutiques en ligne de taille moyenne, ce forfait propose un suivi technique plus régulier avec des améliorations de performance et de sécurité.
+
+- Mises à jour hebdomadaires du CMS (Shopify ou WooCommerce), des plugins, et de la passerelle de paiement.
+- Sauvegardes hebdomadaires avec vérification manuelle.
+- Monitoring des performances et des transactions pour détecter tout problème technique ou de lenteur.
+- 4 révisions/retouches par an pour des ajustements mineurs (changement de produits, modification de texte).
+- Optimisation des performances pour garantir

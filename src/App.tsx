@@ -12,6 +12,7 @@ import { FAQSection } from './components/FAQSection'
 import { ContactSection } from './components/ContactSection'
 import { Footer } from './components/Footer'
 import { NotFound } from './pages'
+import { ServicePage } from './pages/services'
 
 function App() {
   useEffect(() => {
@@ -356,6 +357,7 @@ function App() {
     <div className="App relative">
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/services/:serviceId" element={<ServicePage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
