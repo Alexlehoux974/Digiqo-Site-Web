@@ -7,6 +7,7 @@ import { VideoSection } from './components/VideoSection'
 import { TestimonialsSection } from './components/TestimonialsSection'
 import { ServicesSection } from './components/ServicesSection'
 import { CaseStudiesSection } from './components/CaseStudiesSection'
+import { AboutSection } from './components/AboutSection'
 import { Footer } from './components/Footer'
 import { NotFound } from './pages'
 
@@ -338,6 +339,8 @@ function App() {
         <TestimonialsSection />
         <div className="py-8" />
         <ServicesSection />
+        <div className="py-8" />
+        <AboutSection />
       </div>
       <Footer />
     </>
