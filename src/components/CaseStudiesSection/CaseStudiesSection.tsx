@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { AnimatedBeam } from '@/components/magicui/animated-beam'
 import { Modal } from '@/components/ui/Modal'
-import { Play, TrendingUp, Users, Target } from 'lucide-react'
+import { TrendingUp, Users, Target } from 'lucide-react'
 
 const clientLogos = [
   { name: 'CCI Réunion', logo: '/partenaires/CCI-REUNION-1024x1024.webp' },

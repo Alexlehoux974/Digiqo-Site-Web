@@ -30,7 +30,7 @@ const ScrollExpandMedia = ({
   const [touchStartY, setTouchStartY] = useState<number>(0)
   const [isMobileState, setIsMobileState] = useState<boolean>(false)
   const [isInitialized, setIsInitialized] = useState<boolean>(false)
-  const [expansionCompleteTime, setExpansionCompleteTime] = useState<number>(0)
+  const [_expansionCompleteTime, setExpansionCompleteTime] = useState<number>(0)
   const [contentReadyDelay, setContentReadyDelay] = useState<boolean>(false)
 
   const sectionRef = useRef<HTMLDivElement | null>(null)
