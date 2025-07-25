@@ -199,7 +199,9 @@ export function CaseStudiesSection() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              ref={el => clientRefs.current[index] = el}
+              ref={el => {
+                if (el) clientRefs.current[index] = el;
+              }}
               className="relative z-30 bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-digiqo-secondary/20 transition-all duration-300 p-2 md:p-3 flex items-center justify-center border border-digiqo-secondary/20 hover:border-digiqo-secondary/40 hover:scale-105"
             >
               <img 
@@ -243,7 +245,9 @@ export function CaseStudiesSection() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
               viewport={{ once: true }}
-              ref={el => resultRefs.current[index] = el}
+              ref={el => {
+                if (el) resultRefs.current[index] = el;
+              }}
               className="relative z-30 bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-digiqo-accent/20 transition-all duration-300 p-4 md:p-6 border border-digiqo-accent/20 hover:border-digiqo-accent/40 hover:scale-105 group cursor-pointer"
               onClick={() => setSelectedCase(study)}
             >
