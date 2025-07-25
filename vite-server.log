@@ -186,3 +186,16 @@
 7:39:12 AM [vite] hmr update /src/components/TestimonialsSection/TestimonialsSection.tsx, /src/index.css
 7:42:50 AM [vite] hmr update /src/App.tsx, /src/index.css
 7:42:59 AM [vite] hmr update /src/App.tsx, /src/index.css
+7:47:09 AM [vite] page reload src/main.tsx
+7:47:12 AM [vite] ✨ new dependencies optimized: react-router-dom
+7:47:12 AM [vite] ✨ optimized dependencies changed. reloading
+7:47:20 AM [vite] hmr update /src/App.tsx, /src/index.css
+7:47:33 AM [vite] hmr update /src/App.tsx, /src/index.css
+7:47:39 AM [vite] ✨ new dependencies optimized: class-variance-authority
+7:47:39 AM [vite] ✨ optimized dependencies changed. reloading
+7:51:32 AM [vite] hmr update /src/pages/NotFound.tsx, /src/index.css
+7:55:10 AM [vite] hmr update /src/pages/NotFound.tsx, /src/index.css
+7:59:37 AM [vite] page reload index.html
+7:59:49 AM [vite] hmr update /src/index.css
+8:00:28 AM [vite] page reload tailwind.config.js
+8:00:41 AM [vite] hmr update /src/index.css

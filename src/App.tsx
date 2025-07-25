@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import { Header } from './components/Header'
 import { HeroParallax } from './components/HeroParallax/HeroParallax'
 import { ResultsSection } from './components/ResultsSection'
@@ -7,6 +8,7 @@ import { TestimonialsSection } from './components/TestimonialsSection'
 import { ServicesSection } from './components/ServicesSection'
 import { CaseStudiesSection } from './components/CaseStudiesSection'
 import { Footer } from './components/Footer'
+import { NotFound } from './pages'
 
 function App() {
   useEffect(() => {
@@ -320,8 +322,8 @@ function App() {
     }
   ]
 
-  return (
-    <div className="App relative">
+  const HomePage = () => (
+    <>
       <Header />
       <div className="pt-20">
         <HeroParallax products={products} />
@@ -338,6 +340,15 @@ function App() {
         <ServicesSection />
       </div>
       <Footer />
+    </>
+  )
+
+  return (
+    <div className="App relative">
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   )
 }
