@@ -199,3 +199,6 @@
 7:59:49 AM [vite] hmr update /src/index.css
 8:00:28 AM [vite] page reload tailwind.config.js
 8:00:41 AM [vite] hmr update /src/index.css
+8:06:02 AM [vite] hmr update /src/components/CaseStudiesSection/CaseStudiesSection.tsx, /src/index.css
+8:06:19 AM [vite] hmr update /src/components/magicui/animated-beam.tsx, /src/index.css
+8:06:28 AM [vite] hmr update /src/pages/NotFound.tsx, /src/index.css

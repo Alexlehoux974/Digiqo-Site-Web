@@ -1,7 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { AnimatedBeam } from '@/components/magicui/animated-beam'
-import { cn } from '@/lib/utils'
 
 const clientLogos = [
   { name: 'CCI Réunion', logo: '/partenaires/CCI-REUNION-1024x1024.webp' },
