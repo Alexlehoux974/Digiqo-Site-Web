@@ -39,7 +39,8 @@
       "Bash(killall:*)",
       "Bash(kill:*)",
       "Bash(npx vite:*)",
-      "mcp__playwright__browser_click"
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_type"
     ],
     "deny": []
   }

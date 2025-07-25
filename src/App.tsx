@@ -9,6 +9,7 @@ import { ServicesSection } from './components/ServicesSection'
 import { CaseStudiesSection } from './components/CaseStudiesSection'
 import { AboutSection } from './components/AboutSection'
 import { FAQSection } from './components/FAQSection'
+import { ContactSection } from './components/ContactSection'
 import { Footer } from './components/Footer'
 import { NotFound } from './pages'
 
@@ -344,6 +345,8 @@ function App() {
         <AboutSection />
         <div className="py-8" />
         <FAQSection />
+        <div className="py-8" />
+        <ContactSection />
       </div>
       <Footer />
     </>
