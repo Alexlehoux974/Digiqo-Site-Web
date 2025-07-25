@@ -25,6 +25,11 @@ npm run preview  # Preview production build locally
 - **Framer Motion** for animations
 - **Three.js** (@react-three/fiber) for 3D effects
 
+### Key Dependencies
+- **UI Utilities**: `clsx`, `tailwind-merge`, `class-variance-authority` (cva)
+- **Icons**: `lucide-react`, `react-icons`, custom SVG components
+- **Type Definitions**: @types/react, @types/react-dom, @types/three
+
 ### Project Structure
 ```
 src/
@@ -44,6 +49,8 @@ src/
 2. **Icon System**: All icons are React components, strictly SVG-based (no emojis in design)
 3. **Type Safety**: Strict TypeScript configuration with path alias `@/*` → `src/*`
 4. **Partner Images**: 70+ WebP optimized logos stored in `/partenaires/` (duplicated in public for direct access)
+5. **Routing**: React Router v7 with Routes in App.tsx, current pages stored in `pages/` directory
+6. **State Management**: React hooks for local state, no global state management library currently
 
 ## Design System
 
@@ -53,6 +60,11 @@ Primary (Bordeaux): #8B1431    /* Main brand color for sophistication */
 Accent (Orange): #DA6530       /* CTAs and highlights */
 Secondary (Blue): #199CB7      /* Supporting elements */
 ```
+
+Additional colors available:
+- Gradients: `gradient-digiqo`, `gradient-accent`, `gradient-secondary`
+- Shadows: `shadow-digiqo`, `shadow-accent` (custom box shadows)
+- Neutral grays for backgrounds and text
 
 ### Typography
 - **Primary Font**: Montserrat (display & sans)
@@ -98,7 +110,7 @@ Structure:
 - Follow existing component patterns
 
 ### Current Development State
-- **Completed**: Hero section with parallax, partner logos integration
+- **Completed**: Hero section with parallax, partner logos integration, About section with timeline
 - **Active Focus**: Homepage sections (Results, Case Studies, Video, Testimonials, Services)
 - **Routing**: Currently homepage (`/`) and 404 page implemented
 
@@ -109,3 +121,5 @@ Structure:
 3. **No README.md**: Project documentation is in this CLAUDE.md
 4. **Glass Effects**: Use Tailwind's backdrop-blur for modern glassmorphism
 5. **3D When Relevant**: Three.js is available for depth and modern effects
+6. **Component Exports**: Always include `index.ts` files in component folders for clean imports
+7. **Utility Functions**: Use `lib/utils.ts` for class name merging (cn function)
