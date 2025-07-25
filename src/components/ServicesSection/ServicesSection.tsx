@@ -10,6 +10,7 @@ import {
   Shield, 
   FileSearch 
 } from 'lucide-react'
+import { IconCloud } from '../IconCloud'
 
 interface Service {
   id: string
@@ -160,8 +161,8 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
       <motion.div
         className="w-full h-full"
         style={{ 
-          rotateX: service.size === 'large' ? rotateX : 0, 
-          rotateY: service.size === 'large' ? rotateY : 0,
+          rotateX: service.id === 'publicite' ? 0 : (service.size === 'large' ? rotateX : 0), 
+          rotateY: service.id === 'publicite' ? 0 : (service.size === 'large' ? rotateY : 0),
           transformStyle: "preserve-3d"
         }}
       >
@@ -176,56 +177,92 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           
           
           {/* Contenu */}
-          <div className={`relative z-10 p-6 h-full flex flex-col justify-between ${service.id === 'publicite' ? 'items-center text-center' : ''}`}>
-            {/* Icône */}
-            <motion.div 
-              className={`mb-4 ${service.size === 'large' ? 'mx-auto' : ''}`}
-              animate={isHovered ? { rotate: 360, scale: 1.2 } : { rotate: 0, scale: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className={`
-                inline-flex items-center justify-center rounded-xl
-                bg-gradient-to-br ${service.gradient} text-white
-                ${service.size === 'large' ? 'w-20 h-20 p-6' : service.size === 'medium' ? 'w-14 h-14 p-3' : 'w-12 h-12 p-2.5'}
-              `}>
-                {service.icon}
+          {service.id === 'publicite' ? (
+            <div className="relative z-10 p-6 h-full flex flex-col items-center justify-between">
+              {/* Titre */}
+              <div className="text-center">
+                <h3 className="text-3xl font-bold text-gray-800 mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-base text-gray-600 leading-relaxed max-w-md">
+                  {service.description}
+                </p>
               </div>
-            </motion.div>
-            
-            {/* Titre et description */}
-            <div className="flex-1">
-              <h3 className={`
-                font-bold text-gray-800 mb-2
-                ${service.size === 'large' ? 'text-3xl' : service.size === 'medium' ? 'text-xl' : 'text-lg'}
-              `}>
-                {service.title}
-              </h3>
-              <p className={`
-                text-gray-600 leading-relaxed
-                ${service.size === 'large' ? 'text-base' : 'text-sm'}
-              `}>
-                {service.description}
-              </p>
+              
+              {/* Icon Cloud */}
+              <div className="flex-1 w-full max-w-sm mx-auto">
+                <IconCloud className="w-full h-full min-h-[250px]" />
+              </div>
+              
+              {/* CTA */}
+              <motion.div 
+                className="mt-4"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className={`
+                  inline-flex items-center gap-2 font-semibold
+                  bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent text-lg
+                `}>
+                  En savoir plus
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </motion.div>
             </div>
-            
-            {/* CTA */}
-            <motion.div 
-              className={`mt-4 ${service.size === 'large' ? 'mx-auto' : ''}`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className={`
-                inline-flex items-center gap-2 font-semibold
-                bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent
-                ${service.size === 'large' ? 'text-lg' : 'text-sm'}
-              `}>
-                En savoir plus
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </span>
-            </motion.div>
-          </div>
+          ) : (
+            <div className={`relative z-10 p-6 h-full flex flex-col justify-between`}>
+              {/* Icône */}
+              <motion.div 
+                className={`mb-4 ${service.size === 'large' ? 'mx-auto' : ''}`}
+                animate={isHovered ? { rotate: 360, scale: 1.2 } : { rotate: 0, scale: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className={`
+                  inline-flex items-center justify-center rounded-xl
+                  bg-gradient-to-br ${service.gradient} text-white
+                  ${service.size === 'large' ? 'w-20 h-20 p-6' : service.size === 'medium' ? 'w-14 h-14 p-3' : 'w-12 h-12 p-2.5'}
+                `}>
+                  {service.icon}
+                </div>
+              </motion.div>
+              
+              {/* Titre et description */}
+              <div className="flex-1">
+                <h3 className={`
+                  font-bold text-gray-800 mb-2
+                  ${service.size === 'large' ? 'text-3xl' : service.size === 'medium' ? 'text-xl' : 'text-lg'}
+                `}>
+                  {service.title}
+                </h3>
+                <p className={`
+                  text-gray-600 leading-relaxed
+                  ${service.size === 'large' ? 'text-base' : 'text-sm'}
+                `}>
+                  {service.description}
+                </p>
+              </div>
+              
+              {/* CTA */}
+              <motion.div 
+                className={`mt-4 ${service.size === 'large' ? 'mx-auto' : ''}`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className={`
+                  inline-flex items-center gap-2 font-semibold
+                  bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent
+                  ${service.size === 'large' ? 'text-lg' : 'text-sm'}
+                `}>
+                  En savoir plus
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </motion.div>
+            </div>
+          )}
           
           {/* Effet de brillance au hover */}
           <motion.div
