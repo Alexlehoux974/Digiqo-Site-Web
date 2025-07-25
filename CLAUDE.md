@@ -131,7 +131,7 @@ Structure:
 
 ## CRITICAL DEVELOPMENT WORKFLOW
 
-### MANDATORY: After ANY code modification
+### MANDATORY: After functionality code modification
 1. **Build Check**: Run `npm run build` to ensure TypeScript compilation
 2. **Launch Dev Server**: Run `npm run dev` to start local server on http://localhost:5173
 3. **Visual Verification**: Use MCP Playwright to:

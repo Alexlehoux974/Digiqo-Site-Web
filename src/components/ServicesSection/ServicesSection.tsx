@@ -213,10 +213,10 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
               </motion.div>
             </div>
           ) : (
-            <div className={`relative z-10 p-6 h-full flex flex-col justify-between`}>
+            <div className={`relative z-10 p-6 h-full flex flex-col`}>
               {/* Icône */}
               <motion.div 
-                className={`mb-4 ${service.size === 'large' ? 'mx-auto' : ''}`}
+                className={`${service.size === 'large' ? 'mx-auto' : ''}`}
                 animate={isHovered ? { rotate: 360, scale: 1.2 } : { rotate: 0, scale: 1 }}
                 transition={{ duration: 0.5 }}
               >
@@ -229,25 +229,27 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
                 </div>
               </motion.div>
               
-              {/* Titre et description */}
-              <div className="flex-1">
+              {/* Titre et description - flex-1 pour prendre tout l'espace disponible */}
+              <div className="flex-1 flex flex-col justify-center py-4">
                 <h3 className={`
-                  font-bold text-digiqo-primary mb-2
+                  font-bold text-digiqo-primary
                   ${service.size === 'large' ? 'text-3xl' : service.size === 'medium' ? 'text-xl' : 'text-lg'}
+                  mb-3
                 `}>
                   {service.title}
                 </h3>
                 <p className={`
                   text-gray-700 leading-relaxed
                   ${service.size === 'large' ? 'text-base' : 'text-sm'}
+                  ${['community', 'publicite', 'dev-web', 'video'].includes(service.id) ? 'line-clamp-4' : 'line-clamp-3'}
                 `}>
                   {service.description}
                 </p>
               </div>
               
-              {/* CTA */}
+              {/* CTA - toujours en bas */}
               <motion.div 
-                className={`mt-4 ${service.size === 'large' ? 'mx-auto' : ''}`}
+                className={`${service.size === 'large' ? 'mx-auto' : ''}`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
