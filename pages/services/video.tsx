@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Check, Video, Palette, Camera, Edit3, Music, Smartphone, RefreshCw, Phone } from 'lucide-react'
+import { ArrowLeft, Check, Palette, Camera, Edit3, Music, Smartphone, RefreshCw, Phone } from 'lucide-react'
 import { Button } from '../../components/ui/button'
 import ServiceLayout from '../../components/ServiceLayout/ServiceLayout'
 import { servicesSEO } from '../../lib/seo-data'
@@ -83,7 +83,7 @@ export default function VideoPage() {
           "price": "549.50",
           "priceCurrency": "EUR"
         },
-        ...Object.entries(visualPackages).map(([key, pkg]) => ({
+        ...Object.entries(visualPackages).map(([, pkg]) => ({
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",

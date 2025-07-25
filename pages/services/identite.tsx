@@ -1,8 +1,7 @@
-import { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Check, Palette, PenTool, FileText, Package, Briefcase, Phone, Star, Zap } from 'lucide-react'
+import { ArrowLeft, Check, Palette, Briefcase, Phone, Star, Zap } from 'lucide-react'
 import { Button } from '../../components/ui/button'
 import ServiceLayout from '../../components/ServiceLayout/ServiceLayout'
 import { servicesSEO } from '../../lib/seo-data'
@@ -17,7 +16,6 @@ interface IdentityPackage {
 }
 
 export default function IdentitePage() {
-  const [activePackage, setActivePackage] = useState(0)
   const seoData = servicesSEO['identite-marque-reunion']
 
   const packages: IdentityPackage[] = [
@@ -221,7 +219,6 @@ export default function IdentitePage() {
                             ? 'bg-gradient-to-r from-[#8B1431] to-[#A91845] hover:from-[#7A0F28] hover:to-[#981636]' 
                             : 'bg-gray-700 hover:bg-gray-600'
                         } text-white font-semibold py-3`}
-                        onClick={() => setActivePackage(index)}
                       >
                         Choisir ce pack
                       </Button>
