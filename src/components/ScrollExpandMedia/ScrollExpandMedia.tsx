@@ -30,6 +30,8 @@ const ScrollExpandMedia = ({
   const [touchStartY, setTouchStartY] = useState<number>(0)
   const [isMobileState, setIsMobileState] = useState<boolean>(false)
   const [isInitialized, setIsInitialized] = useState<boolean>(false)
+  const [expansionCompleteTime, setExpansionCompleteTime] = useState<number>(0)
+  const [contentReadyDelay, setContentReadyDelay] = useState<boolean>(false)
 
   const sectionRef = useRef<HTMLDivElement | null>(null)
 
@@ -37,6 +39,8 @@ const ScrollExpandMedia = ({
     setScrollProgress(0)
     setShowContent(false)
     setMediaFullyExpanded(false)
+    setContentReadyDelay(false)
+    setExpansionCompleteTime(0)
   }, [mediaType])
 
   // Delay initialization to prevent scroll blocking on page load
@@ -68,21 +72,40 @@ const ScrollExpandMedia = ({
       
       // État 2: Déclencher l'expansion une fois la section entièrement visible
       if (sectionFullyVisible && !mediaFullyExpanded && scrollProgress < 1) {
+        e.preventDefault() // TOUJOURS bloquer le scroll pendant l'expansion
+        
         if (e.deltaY > 0) { // Scroll vers le bas
-          e.preventDefault() // Bloquer le scroll
           const scrollDelta = e.deltaY * 0.0015
           const newProgress = Math.min(scrollProgress + scrollDelta, 1)
           setScrollProgress(newProgress)
           
           if (newProgress >= 1) {
             setMediaFullyExpanded(true)
-            setShowContent(true)
+            setExpansionCompleteTime(Date.now())
+            // Délai avant d'afficher le contenu pour s'assurer que l'animation est terminée
+            setTimeout(() => {
+              setContentReadyDelay(true)
+              setShowContent(true)
+            }, 500)
           }
+        } else if (e.deltaY < 0 && scrollProgress > 0) { // Scroll vers le haut pendant l'expansion
+          const scrollDelta = Math.abs(e.deltaY) * 0.0015
+          const newProgress = Math.max(scrollProgress - scrollDelta, 0)
+          setScrollProgress(newProgress)
         }
       }
       
-      // État 3: Vidéo plein écran, rester en plein écran
-      // Supprimer la logique de rétrécissement - la vidéo reste étendue
+      // État 3: Vidéo plein écran - bloquer le scroll vers le bas tant que le délai n'est pas écoulé
+      if (mediaFullyExpanded && scrollProgress >= 1 && !contentReadyDelay) {
+        if (e.deltaY > 0) {
+          e.preventDefault() // Bloquer tout scroll vers le bas jusqu'à ce que le délai soit écoulé
+        }
+      }
+      
+      // État 4: Après le délai, permettre le scroll naturel
+      if (mediaFullyExpanded && contentReadyDelay) {
+        // Laisser le scroll naturel se faire
+      }
     }
 
     const handleTouchStart = (e: TouchEvent) => {
@@ -111,21 +134,40 @@ const ScrollExpandMedia = ({
       
       // État 2: Déclencher l'expansion une fois la section entièrement visible
       if (sectionFullyVisible && !mediaFullyExpanded && scrollProgress < 1) {
+        e.preventDefault() // TOUJOURS bloquer le scroll pendant l'expansion
+        
         if (deltaY > 0) { // Scroll vers le bas
-          e.preventDefault() // Bloquer le scroll
           const scrollDelta = deltaY * 0.004
           const newProgress = Math.min(scrollProgress + scrollDelta, 1)
           setScrollProgress(newProgress)
           
           if (newProgress >= 1) {
             setMediaFullyExpanded(true)
-            setShowContent(true)
+            setExpansionCompleteTime(Date.now())
+            // Délai avant d'afficher le contenu pour s'assurer que l'animation est terminée
+            setTimeout(() => {
+              setContentReadyDelay(true)
+              setShowContent(true)
+            }, 500)
           }
+        } else if (deltaY < 0 && scrollProgress > 0) { // Scroll vers le haut pendant l'expansion
+          const scrollDelta = Math.abs(deltaY) * 0.004
+          const newProgress = Math.max(scrollProgress - scrollDelta, 0)
+          setScrollProgress(newProgress)
         }
       }
       
-      // État 3: Vidéo plein écran, rester en plein écran
-      // Supprimer la logique de rétrécissement - la vidéo reste étendue
+      // État 3: Vidéo plein écran - bloquer le scroll vers le bas tant que le délai n'est pas écoulé
+      if (mediaFullyExpanded && scrollProgress >= 1 && !contentReadyDelay) {
+        if (deltaY > 0) {
+          e.preventDefault() // Bloquer tout scroll vers le bas jusqu'à ce que le délai soit écoulé
+        }
+      }
+      
+      // État 4: Après le délai, permettre le scroll naturel
+      if (mediaFullyExpanded && contentReadyDelay) {
+        // Laisser le scroll naturel se faire
+      }
       
       setTouchStartY(touchY)
     }
@@ -170,7 +212,7 @@ const ScrollExpandMedia = ({
       )
       window.removeEventListener('touchend', handleTouchEnd as EventListener)
     }
-  }, [scrollProgress, mediaFullyExpanded, touchStartY, isInitialized])
+  }, [scrollProgress, mediaFullyExpanded, touchStartY, isInitialized, contentReadyDelay])
 
   useEffect(() => {
     const checkIfMobile = (): void => {
