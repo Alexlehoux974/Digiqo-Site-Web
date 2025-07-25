@@ -226,8 +226,8 @@ const ScrollExpandMedia = ({
   }, [])
 
   // Start small and expand to full width
-  const mediaWidth = 280 + scrollProgress * (window.innerWidth - 280)
-  const mediaHeight = 160 + scrollProgress * (window.innerHeight - 160)
+  const mediaWidth = 280 + scrollProgress * ((typeof window !== 'undefined' ? window.innerWidth : 1920) - 280)
+  const mediaHeight = 160 + scrollProgress * ((typeof window !== 'undefined' ? window.innerHeight : 1080) - 160)
   const textTranslateX = scrollProgress * (isMobileState ? 300 : 600)
   const textTranslateY = scrollProgress * (isMobileState ? 100 : 200)
 

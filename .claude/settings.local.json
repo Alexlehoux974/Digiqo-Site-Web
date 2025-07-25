@@ -40,7 +40,14 @@
       "Bash(kill:*)",
       "Bash(npx vite:*)",
       "mcp__playwright__browser_click",
-      "mcp__playwright__browser_type"
+      "mcp__playwright__browser_type",
+      "WebFetch(domain:localhost)",
+      "Bash(npx playwright screenshot:*)",
+      "Bash(npx playwright test:*)",
+      "Bash(python3:*)",
+      "Bash(pip install:*)",
+      "Bash(playwright install:*)",
+      "WebFetch(domain:69.62.110.246)"
     ],
     "deny": []
   }

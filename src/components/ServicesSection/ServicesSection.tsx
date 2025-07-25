@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import { motion, useMotionValue, useTransform } from 'framer-motion'
+import Link from 'next/link'
 import { 
   Megaphone, 
   Code, 
@@ -33,7 +34,7 @@ const services: Service[] = [
     gradient: 'from-digiqo-orange via-amber-400 to-yellow-300',
     gridClass: 'col-span-2 md:col-span-4 row-span-3 md:col-start-3 md:row-start-1',
     size: 'large',
-    link: '#',
+    link: '/services/publicite',
     keywords: ['Google Ads Réunion', 'Facebook Ads 974', 'publicité digitale']
   },
   {
@@ -44,7 +45,7 @@ const services: Service[] = [
     gradient: 'from-digiqo-blue-light to-digiqo-blue-dark',
     gridClass: 'col-span-2 md:col-span-3 row-span-2 md:col-start-7 md:row-start-1',
     size: 'medium',
-    link: '#',
+    link: '/services/dev-web',
     keywords: ['création site web Réunion', 'développeur web 974']
   },
   {
@@ -55,7 +56,7 @@ const services: Service[] = [
     gradient: 'from-pink-500 to-purple-600',
     gridClass: 'col-span-2 row-span-2 md:col-start-1 md:row-start-1',
     size: 'medium',
-    link: '#',
+    link: '/services/community',
     keywords: ['community manager Réunion', 'gestion réseaux sociaux']
   },
   {
@@ -66,7 +67,7 @@ const services: Service[] = [
     gradient: 'from-green-500 to-teal-500',
     gridClass: 'col-span-1 md:col-span-3 row-span-1 md:col-start-7 md:row-start-3',
     size: 'small',
-    link: '#',
+    link: '/services/seo',
     keywords: ['référencement naturel Réunion', 'SEO local 974']
   },
   {
@@ -77,7 +78,7 @@ const services: Service[] = [
     gradient: 'from-red-500 to-orange-500',
     gridClass: 'col-span-2 row-span-2 md:col-start-1 md:row-start-3',
     size: 'medium',
-    link: '#',
+    link: '/services/video',
     keywords: ['production vidéo Réunion', 'création visuelle 974']
   },
   {
@@ -88,7 +89,7 @@ const services: Service[] = [
     gradient: 'from-purple-600 to-digiqo-bordeaux',
     gridClass: 'col-span-1 md:col-span-2 row-span-1 md:col-start-3 md:row-start-4',
     size: 'small',
-    link: '#',
+    link: '/services/identite',
     keywords: ['branding Réunion', 'création logo 974']
   },
   {
@@ -99,7 +100,7 @@ const services: Service[] = [
     gradient: 'from-white to-digiqo-orange',
     gridClass: 'col-span-1 md:col-span-2 row-span-1 md:col-start-5 md:row-start-4',
     size: 'small',
-    link: '#',
+    link: '/services/audit',
     keywords: ['audit digital gratuit', 'analyse marketing Réunion']
   },
   {
@@ -110,7 +111,7 @@ const services: Service[] = [
     gradient: 'from-gray-600 to-blue-600',
     gridClass: 'col-span-2 md:col-span-3 row-span-1 md:col-start-7 md:row-start-4',
     size: 'small',
-    link: '#',
+    link: '/services/sitekeeper',
     keywords: ['maintenance site web', 'sécurité web Réunion']
   }
 ]
@@ -167,12 +168,13 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           transformStyle: "preserve-3d"
         }}
       >
-        <div className={`
-          relative w-full h-full rounded-2xl overflow-hidden cursor-pointer
-          bg-white/95 backdrop-blur-sm border border-white/30
-          hover:shadow-2xl transition-all duration-500
-          ${service.size === 'large' ? 'min-h-[400px]' : service.size === 'medium' ? 'min-h-[200px]' : 'min-h-[150px]'}
-        `}>
+        <Link href={service.link || '#'} className="block w-full h-full">
+          <div className={`
+            relative w-full h-full rounded-2xl overflow-hidden cursor-pointer
+            bg-white/95 backdrop-blur-sm border border-white/30
+            hover:shadow-2xl transition-all duration-500
+            ${service.size === 'large' ? 'min-h-[400px]' : service.size === 'medium' ? 'min-h-[200px]' : 'min-h-[150px]'}
+          `}>
           {/* Gradient Background */}
           <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-5 hover:opacity-15 transition-opacity duration-500`} />
           
@@ -274,7 +276,8 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
             animate={isHovered ? { x: '100%', y: '100%' } : { x: '-100%', y: '-100%' }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           />
-        </div>
+          </div>
+        </Link>
       </motion.div>
     </motion.div>
   )
