@@ -148,7 +148,7 @@ export const TestimonialsSection = () => {
       {/* Effet de fond animé */}
       <div className="absolute inset-0">
         <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-digiqo-orange/10 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-digiqo-primary/5 rounded-full blur-3xl"
           animate={{
             x: [0, 100, 0],
             y: [0, -50, 0],
@@ -160,13 +160,25 @@ export const TestimonialsSection = () => {
           }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-digiqo-blue-light/10 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-digiqo-accent/5 rounded-full blur-3xl"
           animate={{
             x: [0, -100, 0],
             y: [0, 50, 0],
           }}
           transition={{
             duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-digiqo-secondary/3 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 30,
             repeat: Infinity,
             ease: "easeInOut"
           }}
@@ -183,8 +195,8 @@ export const TestimonialsSection = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-4">
-            <span className="text-digiqo-blue-dark">Rejoignez des dizaines d'entrepreneurs </span>
-            <span className="bg-gradient-to-r from-digiqo-orange to-digiqo-blue-light bg-clip-text text-transparent">Réunionnais</span>
+            <span className="text-digiqo-primary">Rejoignez des dizaines d'entrepreneurs </span>
+            <span className="bg-gradient-to-r from-digiqo-accent to-digiqo-secondary bg-clip-text text-transparent">Réunionnais</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Découvrez leurs témoignages sur 
@@ -200,7 +212,7 @@ export const TestimonialsSection = () => {
             {/* Bouton précédent */}
             <motion.button
               onClick={handlePrev}
-              className="hidden md:flex w-12 h-12 rounded-full bg-white shadow-lg items-center justify-center hover:shadow-xl transition-shadow"
+              className="hidden md:flex w-12 h-12 rounded-full bg-white shadow-lg items-center justify-center hover:shadow-xl hover:shadow-digiqo-primary/20 border border-digiqo-primary/10 hover:border-digiqo-primary/20 transition-all duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -211,7 +223,7 @@ export const TestimonialsSection = () => {
 
             {/* Cartes de témoignages */}
             <div className="flex gap-6 overflow-hidden">
-              <AnimatePresence mode="wait">
+              <AnimatePresence>
                 {testimonialData.slice(activeIndex, activeIndex + 3).concat(testimonialData.slice(0, Math.max(0, (activeIndex + 3) - testimonialData.length))).map((testimonial, index) => (
                   <motion.div
                     key={`${testimonial.id}-${activeIndex}-${index}`}
@@ -226,11 +238,11 @@ export const TestimonialsSection = () => {
                     className={`relative ${index === 1 ? 'z-20' : 'z-10'} ${index !== 1 ? 'hidden lg:block' : ''}`}
                   >
                     {/* Carte Instagram */}
-                    <div className="w-80 bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div className="w-80 bg-white rounded-2xl shadow-xl overflow-hidden border border-digiqo-primary/10 hover:border-digiqo-primary/20 transition-all duration-300">
                       {/* Header Instagram */}
                       <div className="flex items-center justify-between p-4 border-b">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-gradient-to-br from-digiqo-orange to-digiqo-blue-light rounded-full flex items-center justify-center text-white font-bold">
+                          <div className="w-10 h-10 bg-gradient-to-br from-digiqo-primary to-digiqo-accent rounded-full flex items-center justify-center text-white font-bold">
                             {testimonial.username[1].toUpperCase()}
                           </div>
                           <div>
@@ -255,7 +267,7 @@ export const TestimonialsSection = () => {
                             className="absolute inset-0 w-full h-full object-cover opacity-30"
                           />
                         )}
-                        <div className="absolute inset-0 bg-gradient-to-br from-digiqo-orange/20 to-digiqo-blue-light/20" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-digiqo-primary/20 to-digiqo-accent/20" />
                         
                         {testimonial.isVideo && (
                           <div className="absolute inset-0 flex items-center justify-center bg-black/20">
@@ -266,7 +278,7 @@ export const TestimonialsSection = () => {
                                 animate={{ scale: [1, 1.1, 1] }}
                                 transition={{ duration: 2, repeat: Infinity }}
                               >
-                                <svg className="w-10 h-10 text-digiqo-orange ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-10 h-10 text-digiqo-accent ml-1" fill="currentColor" viewBox="0 0 24 24">
                                   <path d="M8 5v14l11-7z" />
                                 </svg>
                               </motion.div>
@@ -328,7 +340,7 @@ export const TestimonialsSection = () => {
             {/* Bouton suivant */}
             <motion.button
               onClick={handleNext}
-              className="hidden md:flex w-12 h-12 rounded-full bg-white shadow-lg items-center justify-center hover:shadow-xl transition-shadow"
+              className="hidden md:flex w-12 h-12 rounded-full bg-white shadow-lg items-center justify-center hover:shadow-xl hover:shadow-digiqo-primary/20 border border-digiqo-primary/10 hover:border-digiqo-primary/20 transition-all duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -346,7 +358,7 @@ export const TestimonialsSection = () => {
                 onClick={() => setActiveIndex(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   index === activeIndex 
-                    ? 'w-8 bg-gradient-to-r from-digiqo-orange to-digiqo-blue-light' 
+                    ? 'w-8 bg-gradient-to-r from-digiqo-primary to-digiqo-accent' 
                     : 'bg-gray-300'
                 }`}
               />
@@ -366,7 +378,7 @@ export const TestimonialsSection = () => {
             href="https://www.instagram.com/digiqo"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#E1306C] via-[#C13584] to-[#F77737] text-white font-semibold rounded-full hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-digiqo-primary via-[#C13584] to-digiqo-accent text-white font-semibold rounded-full hover:shadow-xl hover:shadow-digiqo-primary/20 transition-all duration-300 transform hover:scale-105"
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"/>

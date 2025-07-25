@@ -47,7 +47,14 @@ export function CaseStudiesSection() {
   }, [])
 
   return (
-    <div className="relative">
+    <section className="relative py-20 bg-gradient-to-b from-digiqo-secondary/5 to-white overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-10 left-10 w-64 h-64 bg-digiqo-secondary/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-digiqo-accent/5 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -56,12 +63,12 @@ export function CaseStudiesSection() {
         className="text-center mb-16"
       >
         <h3 className="text-3xl md:text-5xl font-bold mb-4">
-          <span className="text-digiqo-blue-dark">Études de Cas</span>{' '}
-          <span className="bg-gradient-to-r from-digiqo-orange to-digiqo-blue-light bg-clip-text text-transparent">
+          <span className="text-digiqo-primary">Études de Cas</span>{' '}
+          <span className="bg-gradient-to-r from-digiqo-secondary to-digiqo-accent bg-clip-text text-transparent">
             Récentes
           </span>
         </h3>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-700 max-w-2xl mx-auto">
           De l'idée à la réussite, Digiqo est le pont entre vos ambitions et vos résultats.
         </p>
       </motion.div>
@@ -80,15 +87,15 @@ export function CaseStudiesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg p-6 border border-gray-100"
+                className="bg-white rounded-xl shadow-lg p-6 border border-digiqo-secondary/20 hover:border-digiqo-secondary/40 hover:shadow-digiqo-secondary/20 transition-all duration-300"
               >
-                <h4 className="text-lg font-bold text-digiqo-blue-dark mb-2">
+                <h4 className="text-lg font-bold text-digiqo-primary mb-2">
                   {study.title}
                 </h4>
-                <p className="text-2xl font-bold bg-gradient-to-r from-digiqo-orange to-digiqo-blue-light bg-clip-text text-transparent mb-2">
+                <p className="text-2xl font-bold bg-gradient-to-r from-digiqo-secondary to-digiqo-accent bg-clip-text text-transparent mb-2">
                   {study.result}
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-700">
                   {study.description}
                 </p>
               </motion.div>
@@ -106,7 +113,7 @@ export function CaseStudiesSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
               ref={el => clientRefs.current[index] = el}
-              className="relative bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-2 md:p-3 flex items-center justify-center border border-gray-100 hover:border-digiqo-orange/20 hover:scale-105"
+              className="relative bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-digiqo-secondary/20 transition-all duration-300 p-2 md:p-3 flex items-center justify-center border border-digiqo-secondary/20 hover:border-digiqo-secondary/40 hover:scale-105"
             >
               <img 
                 src={client.logo} 
@@ -127,7 +134,7 @@ export function CaseStudiesSection() {
             ref={digiqoRef}
             className="relative z-20"
           >
-          <div className="bg-gradient-to-br from-digiqo-orange to-digiqo-blue-light p-[2px] rounded-2xl md:rounded-3xl shadow-2xl">
+          <div className="bg-gradient-to-br from-digiqo-secondary to-digiqo-accent p-[2px] rounded-2xl md:rounded-3xl shadow-2xl">
             <div className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 backdrop-blur-xl">
               <img 
                 src="/assets/logo2-digiqo.png" 
@@ -136,7 +143,7 @@ export function CaseStudiesSection() {
               />
             </div>
           </div>
-          <div className="absolute inset-0 bg-gradient-to-br from-digiqo-orange to-digiqo-blue-light rounded-3xl blur-2xl opacity-40 -z-10 animate-pulse"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-digiqo-secondary to-digiqo-accent rounded-3xl blur-2xl opacity-40 -z-10 animate-pulse"></div>
           </motion.div>
         </div>
 
@@ -150,15 +157,15 @@ export function CaseStudiesSection() {
               transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
               viewport={{ once: true }}
               ref={el => resultRefs.current[index] = el}
-              className="relative bg-gradient-to-br from-white to-gray-50 rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-4 md:p-6 border border-gray-100 hover:border-digiqo-blue-light/20 hover:scale-105 group"
+              className="relative bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-digiqo-accent/20 transition-all duration-300 p-4 md:p-6 border border-digiqo-accent/20 hover:border-digiqo-accent/40 hover:scale-105 group"
             >
-              <h4 className="text-lg font-bold text-digiqo-blue-dark mb-2">
+              <h4 className="text-lg font-bold text-digiqo-primary mb-2">
                 {study.title}
               </h4>
-              <p className="text-2xl font-bold bg-gradient-to-r from-digiqo-orange to-digiqo-blue-light bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
+              <p className="text-2xl font-bold bg-gradient-to-r from-digiqo-secondary to-digiqo-accent bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
                 {study.result}
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-700">
                 {study.description}
               </p>
             </motion.div>
@@ -178,9 +185,9 @@ export function CaseStudiesSection() {
               curvature={-20}
               duration={4}
               delay={index * 0.3}
-              pathColor="#DA6530"
-              pathOpacity={0.3}
-              gradientStartColor="#DA6530"
+              pathColor="#8B1431"
+              pathOpacity={0.4}
+              gradientStartColor="#8B1431"
               gradientStopColor="#DA6530"
               startXOffset={80}
               startYOffset={0}
@@ -216,6 +223,7 @@ export function CaseStudiesSection() {
           </div>
         )}
       </div>
-    </div>
+      </div>
+    </section>
   )
 }

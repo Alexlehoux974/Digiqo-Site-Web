@@ -42,7 +42,7 @@ function Counter({ value, suffix, prefix, duration }: { value: number; suffix: s
   }, [isInView, value, duration])
 
   return (
-    <span ref={ref} className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-digiqo-orange to-digiqo-blue-light bg-clip-text text-transparent">
+    <span ref={ref} className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">
       {prefix}{count}{suffix}
     </span>
   )
@@ -51,7 +51,7 @@ function Counter({ value, suffix, prefix, duration }: { value: number; suffix: s
 interface GlowCardProps {
   children?: React.ReactNode;
   className?: string;
-  glowColor?: 'blue' | 'purple' | 'green' | 'red' | 'orange';
+  glowColor?: 'blue' | 'purple' | 'green' | 'red' | 'orange' | 'bordeaux';
 }
 
 const GlowCard: React.FC<GlowCardProps> = ({ 
@@ -82,7 +82,8 @@ const GlowCard: React.FC<GlowCardProps> = ({
     purple: { base: 280, spread: 300 },
     green: { base: 120, spread: 200 },
     red: { base: 0, spread: 200 },
-    orange: { base: 30, spread: 200 }
+    orange: { base: 30, spread: 200 },
+    bordeaux: { base: 340, spread: 200 }
   };
 
   const { base, spread } = glowColorMap[glowColor];
@@ -149,7 +150,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
     '--radius': '16',
     '--border': '2',
     '--backdrop': 'hsl(0 0% 100% / 1)',
-    '--backup-border': 'hsl(0 0% 90% / 0.2)',
+    '--backup-border': 'hsl(0 0% 90% / 0.3)',
     '--saturation': '100',
     '--lightness': '60',
     '--bg-spot-opacity': '0.15',
@@ -193,11 +194,12 @@ const GlowCard: React.FC<GlowCardProps> = ({
 
 export function ResultsSection() {
   return (
-    <section className="py-20 md:py-32 bg-white relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <div className="absolute top-20 right-0 w-96 h-96 bg-digiqo-orange rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-digiqo-blue-light rounded-full blur-3xl"></div>
+    <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      {/* Background decoration avec mesh gradient */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 right-0 w-96 h-96 bg-digiqo-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-digiqo-accent/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-digiqo-secondary/3 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
@@ -209,8 +211,8 @@ export function ResultsSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="text-digiqo-blue-dark">Des Résultats</span>{' '}
-            <span className="bg-gradient-to-r from-digiqo-orange to-digiqo-blue-light bg-clip-text text-transparent">
+            <span className="text-digiqo-primary">Des Résultats</span>{' '}
+            <span className="bg-gradient-to-r from-digiqo-accent to-digiqo-secondary bg-clip-text text-transparent">
               Qui Parlent
             </span>
           </h2>
@@ -232,8 +234,8 @@ export function ResultsSection() {
               className="text-center"
             >
               <GlowCard 
-                className="p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300"
-                glowColor={index === 0 || index === 2 ? 'orange' : 'blue'}
+                className="p-8 bg-white shadow-lg hover:shadow-2xl hover:shadow-digiqo-primary/20 transition-all duration-300 border border-gray-100"
+                glowColor={index === 0 || index === 2 ? 'bordeaux' : index === 1 ? 'orange' : 'blue'}
               >
                 <Counter 
                   value={stat.value} 
@@ -241,7 +243,7 @@ export function ResultsSection() {
                   prefix={stat.prefix}
                   duration={stat.duration} 
                 />
-                <p className="text-gray-600 mt-4 font-medium">{stat.label}</p>
+                <p className="text-gray-700 mt-4 font-semibold">{stat.label}</p>
               </GlowCard>
             </motion.div>
           ))}

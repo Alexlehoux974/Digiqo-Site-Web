@@ -1,9 +1,12 @@
 import { useEffect } from 'react'
 import { Header } from './components/Header'
 import { HeroParallax } from './components/HeroParallax/HeroParallax'
+import { ResultsSection } from './components/ResultsSection'
 import { VideoSection } from './components/VideoSection'
 import { TestimonialsSection } from './components/TestimonialsSection'
 import { ServicesSection } from './components/ServicesSection'
+import { CaseStudiesSection } from './components/CaseStudiesSection'
+import { Footer } from './components/Footer'
 
 function App() {
   useEffect(() => {
@@ -318,14 +321,23 @@ function App() {
   ]
 
   return (
-    <div className="App">
+    <div className="App relative">
       <Header />
-      <HeroParallax products={products} />
-      <div className="relative">
-        <VideoSection />
+      <div className="pt-20">
+        <HeroParallax products={products} />
+        <ResultsSection />
+        <div className="py-8" />
+        <CaseStudiesSection />
+        <div className="py-8" />
+        <div className="relative py-20">
+          <VideoSection />
+        </div>
+        <div className="py-8" />
+        <TestimonialsSection />
+        <div className="py-8" />
+        <ServicesSection />
       </div>
-      <TestimonialsSection />
-      <ServicesSection />
+      <Footer />
     </div>
   )
 }

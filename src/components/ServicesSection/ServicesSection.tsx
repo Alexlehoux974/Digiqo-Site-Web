@@ -144,6 +144,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
     <motion.div
       ref={cardRef}
       className={`${service.gridClass} relative`}
+      data-service-id={service.id}
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
@@ -168,12 +169,12 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
       >
         <div className={`
           relative w-full h-full rounded-2xl overflow-hidden cursor-pointer
-          bg-white/90 backdrop-blur-sm border border-white/20
+          bg-white/95 backdrop-blur-sm border border-white/30
           hover:shadow-2xl transition-all duration-500
           ${service.size === 'large' ? 'min-h-[400px]' : service.size === 'medium' ? 'min-h-[200px]' : 'min-h-[150px]'}
         `}>
           {/* Gradient Background */}
-          <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-500`} />
+          <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-5 hover:opacity-15 transition-opacity duration-500`} />
           
           
           {/* Contenu */}
@@ -181,10 +182,10 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
             <div className="relative z-10 p-6 h-full flex flex-col items-center justify-between">
               {/* Titre */}
               <div className="text-center">
-                <h3 className="text-3xl font-bold text-gray-800 mb-2">
+                <h3 className="text-3xl font-bold bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent mb-2">
                   {service.title}
                 </h3>
-                <p className="text-base text-gray-600 leading-relaxed max-w-md">
+                <p className="text-base text-gray-700 leading-relaxed max-w-md">
                   {service.description}
                 </p>
               </div>
@@ -231,13 +232,13 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
               {/* Titre et description */}
               <div className="flex-1">
                 <h3 className={`
-                  font-bold text-gray-800 mb-2
+                  font-bold text-digiqo-primary mb-2
                   ${service.size === 'large' ? 'text-3xl' : service.size === 'medium' ? 'text-xl' : 'text-lg'}
                 `}>
                   {service.title}
                 </h3>
                 <p className={`
-                  text-gray-600 leading-relaxed
+                  text-gray-700 leading-relaxed
                   ${service.size === 'large' ? 'text-base' : 'text-sm'}
                 `}>
                   {service.description}
@@ -266,10 +267,10 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           
           {/* Effet de brillance au hover */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent"
+            className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100"
             initial={{ x: '-100%', y: '-100%' }}
             animate={isHovered ? { x: '100%', y: '100%' } : { x: '-100%', y: '-100%' }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           />
         </div>
       </motion.div>
@@ -279,11 +280,16 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 
 export const ServicesSection = () => {
   return (
-    <section className="relative py-20 bg-gradient-to-b from-digiqo-gray/30 to-white overflow-hidden">
+    <section className="relative py-20 overflow-hidden">
+      {/* Background gradient avec les vraies couleurs Digiqo */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-digiqo-primary" />
+      </div>
+      
       {/* Effets de fond animés */}
       <div className="absolute inset-0">
         <motion.div
-          className="absolute top-1/3 left-1/4 w-96 h-96 bg-digiqo-orange/5 rounded-full blur-3xl"
+          className="absolute top-1/3 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -295,7 +301,7 @@ export const ServicesSection = () => {
           }}
         />
         <motion.div
-          className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-digiqo-blue-light/5 rounded-full blur-3xl"
+          className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.3, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -318,21 +324,23 @@ export const ServicesSection = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-4">
-            <span className="text-digiqo-blue-dark">Nos </span>
-            <span className="bg-gradient-to-r from-digiqo-orange to-digiqo-blue-light bg-clip-text text-transparent">
+            <span className="text-white">Nos </span>
+            <span className="bg-gradient-to-r from-digiqo-accent to-digiqo-accent-light bg-clip-text text-transparent">
               Services Premium
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-white/80 max-w-3xl mx-auto">
             Une gamme complète de services digitaux pour propulser votre entreprise à La Réunion
           </p>
         </motion.div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-8 gap-4 md:gap-6 auto-rows-[minmax(100px,_1fr)]">
-          {services.map((service, index) => (
-            <ServiceCard key={service.id} service={service} index={index} />
-          ))}
+        <div className="relative">
+          <div className="grid grid-cols-2 md:grid-cols-8 gap-4 md:gap-6 auto-rows-[minmax(100px,_1fr)]">
+            {services.map((service, index) => (
+              <ServiceCard key={service.id} service={service} index={index} />
+            ))}
+          </div>
         </div>
 
         {/* CTA Section */}
@@ -343,7 +351,7 @@ export const ServicesSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">
+          <h3 className="text-2xl font-bold text-white mb-4">
             Prêt à digitaliser votre entreprise ?
           </h3>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -351,7 +359,7 @@ export const ServicesSection = () => {
               href="#"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-digiqo-orange to-amber-400 text-white font-semibold rounded-full hover:shadow-xl transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-accent text-white font-bold rounded-full hover:shadow-accent-lg hover:scale-105 transition-all duration-300"
             >
               Demander un devis gratuit
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -362,7 +370,7 @@ export const ServicesSection = () => {
               href="#"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-8 py-4 border-2 border-digiqo-orange text-digiqo-orange font-semibold rounded-full hover:bg-digiqo-orange hover:text-white transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-digiqo-primary hover:shadow-lg transition-all duration-300"
             >
               Audit gratuit
             </motion.a>

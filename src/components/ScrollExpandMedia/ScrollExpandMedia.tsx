@@ -209,7 +209,7 @@ const ScrollExpandMedia = ({
               clipPath: 'inset(0 0 0 0)'
             }}
           >
-            <div className='absolute inset-0 bg-gradient-to-br from-digiqo-orange via-digiqo-bordeaux to-digiqo-blue-dark' />
+            <div className='absolute inset-0 bg-[#8B1431]' />
           </motion.div>
 
           <div className='container mx-auto flex flex-col items-center justify-start relative z-10'>

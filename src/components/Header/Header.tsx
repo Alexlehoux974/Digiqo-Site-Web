@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const navigation = {
@@ -43,21 +43,28 @@ const navigation = {
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
+  
+  useEffect(() => {
+    console.log('Header mounted')
+  }, [])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
+    <header className="fixed top-0 left-0 right-0 z-[100] shadow-lg">
       {/* Glassmorphism background */}
-      <div className="absolute inset-0 bg-white/80 backdrop-blur-lg border-b border-digiqo-gray/20" />
+      <div className="absolute inset-0 bg-white/90 backdrop-blur-lg border-b border-digiqo-primary/10" />
       
       <nav className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="/" className="flex items-center space-x-2">
-              <div className="w-12 h-12 bg-gradient-to-br from-digiqo-orange to-digiqo-blue-light rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">D</span>
-              </div>
-              <span className="text-2xl font-bold text-digiqo-blue-dark">Digiqo</span>
+            <a href="/" className="flex items-center">
+              <img 
+                src="/assets/logo1.png" 
+                alt="Digiqo - Ladi Lafé Zot Pub!" 
+                className="h-12 w-auto"
+                onError={(e) => console.error('Logo failed to load:', e)}
+                onLoad={() => console.log('Logo loaded successfully')}
+              />
             </a>
           </div>
 
@@ -70,8 +77,8 @@ export const Header = () => {
                   onMouseLeave={() => setActiveSubmenu(null)}
                   className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-lg
                     ${item.highlight 
-                      ? 'text-digiqo-orange hover:bg-digiqo-orange/10' 
-                      : 'text-gray-700 hover:text-digiqo-blue-dark hover:bg-gray-100/50'
+                      ? 'text-digiqo-accent hover:bg-digiqo-accent/10 hover:text-digiqo-primary' 
+                      : 'text-gray-700 hover:text-digiqo-primary hover:bg-digiqo-primary/5'
                     }`}
                 >
                   {item.name}
@@ -92,13 +99,13 @@ export const Header = () => {
                       transition={{ duration: 0.2 }}
                       onMouseEnter={() => setActiveSubmenu(item.name)}
                       onMouseLeave={() => setActiveSubmenu(null)}
-                      className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-gray-100/50 overflow-hidden"
+                      className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-digiqo-primary/10 overflow-hidden"
                     >
                       {item.submenu.map((subitem) => (
                         <a
                           key={subitem.name}
                           href={subitem.href}
-                          className="block px-4 py-3 text-sm text-gray-700 hover:text-digiqo-orange hover:bg-digiqo-orange/5 transition-colors"
+                          className="block px-4 py-3 text-sm text-gray-700 hover:text-digiqo-primary hover:bg-digiqo-primary/5 transition-colors"
                         >
                           {subitem.name}
                         </a>
@@ -120,8 +127,8 @@ export const Header = () => {
                 whileTap={{ scale: 0.95 }}
                 className={`px-5 py-2 text-sm font-medium rounded-full transition-all duration-200
                   ${action.variant === 'primary'
-                    ? 'bg-gradient-to-r from-digiqo-orange to-digiqo-blue-light text-white shadow-lg hover:shadow-xl'
-                    : 'text-digiqo-blue-dark border border-digiqo-blue-dark/20 hover:bg-digiqo-blue-dark/5'
+                    ? 'bg-gradient-to-r from-digiqo-primary to-digiqo-accent text-white shadow-lg hover:shadow-xl hover:shadow-digiqo-primary/20'
+                    : 'text-digiqo-primary border border-digiqo-primary/20 hover:bg-digiqo-primary/5 hover:border-digiqo-primary/40'
                   }`}
               >
                 {action.name}
@@ -132,7 +139,7 @@ export const Header = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100/50"
+            className="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-digiqo-primary/5 hover:text-digiqo-primary"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMenuOpen ? (
@@ -160,7 +167,7 @@ export const Header = () => {
                       href={item.href}
                       className={`block px-4 py-2 text-base font-medium rounded-lg
                         ${item.highlight 
-                          ? 'text-digiqo-orange' 
+                          ? 'text-digiqo-accent' 
                           : 'text-gray-700'
                         }`}
                     >
@@ -188,8 +195,8 @@ export const Header = () => {
                       href={action.href}
                       className={`block px-4 py-2 text-center text-base font-medium rounded-lg
                         ${action.variant === 'primary'
-                          ? 'bg-gradient-to-r from-digiqo-orange to-digiqo-blue-light text-white'
-                          : 'text-digiqo-blue-dark border border-digiqo-blue-dark/20'
+                          ? 'bg-gradient-to-r from-digiqo-primary to-digiqo-accent text-white'
+                          : 'text-digiqo-primary border border-digiqo-primary/20'
                         }`}
                     >
                       {action.name}

@@ -63,14 +63,16 @@ digiqo-site/
 - Zone de protection : hauteur du Q
 - Taille minimale : 20mm (print) / 60px (web)
 
-### Couleurs Officielles
+### Couleurs Officielles (Site Web Réel)
 ```css
---digiqo-orange: #DA6530    /* Orange vif - Couleur principale */
---digiqo-blue-light: #199CB7 /* Bleu clair */
---digiqo-blue-dark: #127387  /* Bleu foncé */
---digiqo-bordeaux: #8B1431   /* Bordeaux foncé */
---digiqo-gray: #E9E9E9       /* Gris clair */
+--digiqo-primary: #8B1431     /* Bordeaux - Couleur principale du site */
+--digiqo-secondary: #199CB7   /* Bleu clair - Couleur secondaire */
+--digiqo-accent: #DA6530      /* Orange vif - Couleur d'accent */
+--digiqo-blue-dark: #127387   /* Bleu foncé - Variante */
+--digiqo-gray: #E9E9E9        /* Gris clair - Neutre */
 ```
+
+**Note importante**: Le site web actuel de Digiqo utilise principalement le bordeaux (#8B1431) comme couleur de fond principale, contrairement au PDF qui met l'accent sur l'orange. Cette approche crée une identité visuelle plus sophistiquée et premium.
 
 ### Typographie
 - **Principale**: Nunito Bold (titres)

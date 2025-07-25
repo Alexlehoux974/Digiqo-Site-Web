@@ -73,14 +73,20 @@ export const HeroParallax = ({
     springConfig
   )
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-700, -100]),
+    useTransform(scrollYProgress, [0, 0.2], [-700, 50]),
     springConfig
   )
   return (
     <div
       ref={ref}
-      className="h-[100vh] py-20 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] z-50 bg-white"
+      className="h-auto py-20 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] z-10"
+      style={{ position: 'relative' }}
     >
+      {/* Background gradient avec les vraies couleurs Digiqo */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[#8B1431]" />
+      </div>
+      
       <Header />
       <motion.div
         style={{
@@ -89,7 +95,7 @@ export const HeroParallax = ({
           translateY,
           opacity,
         }}
-        className="relative"
+        className="relative pb-16 mt-16"
       >
         <motion.div 
           className="flex flex-row-reverse space-x-reverse space-x-8 mb-8"
@@ -128,8 +134,6 @@ export const HeroParallax = ({
           ))}
         </motion.div>
       </motion.div>
-      {/* Espace blanc sous les partenaires qui sera recouvert par le gradient rouge */}
-      <div className="h-64 bg-white" />
     </div>
   )
 }
@@ -137,17 +141,45 @@ export const HeroParallax = ({
 export const Header = () => {
   return (
     <div className="max-w-7xl relative mx-auto py-12 md:py-24 px-4 w-full  left-0 top-0">
-      <h1 className="text-4xl md:text-7xl font-bold text-gray-900">
-        <span className="bg-gradient-to-r from-digiqo-orange to-digiqo-blue-light bg-clip-text text-transparent">
-          Votre Publicité en Ligne
+      <div className="mb-4 inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full">
+        <span className="text-white font-semibold">🏝️ N°1 à La Réunion</span>
+        <span className="text-white/60">•</span>
+        <span className="text-white/90">+127 entreprises accompagnées</span>
+      </div>
+      <h1 className="text-4xl md:text-7xl font-bold">
+        <span className="text-white drop-shadow-lg">
+          L'Agence Marketing Digital
         </span>
         <br />
-        <span className="text-digiqo-blue-dark">AGENCE MARKETING</span>
+        <span className="text-white/95 drop-shadow-lg">Qui Booste Vos Ventes</span>
       </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 text-gray-700">
-        Vos Campagnes de Publicité en Ligne Créées, Gérées & Optimisées. 
-        Fondée en 2020, Digiqo est une agence dynamique spécialisée dans les stratégies digitales innovantes.
+      <p className="max-w-2xl text-lg md:text-2xl mt-6 text-white/90 font-medium drop-shadow">
+        Transformez vos visiteurs en clients avec des campagnes publicitaires 
+        <span className="text-white font-bold"> Facebook, Instagram et Google Ads</span> qui cartonnent.
       </p>
+      <div className="flex flex-wrap gap-4 mt-8 items-center">
+        <a href="/devis-gratuit" className="px-8 py-4 bg-white text-digiqo-orange font-bold rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 text-lg shadow-lg">
+          Je veux booster mes ventes →
+        </a>
+        <a href="#resultats" className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-digiqo-orange transition-all duration-300">
+          Voir nos réussites clients
+        </a>
+      </div>
+      <div className="flex flex-wrap gap-6 mt-12 text-sm">
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+          <span className="text-white/80">ROI moyen <span className="font-bold text-white">+300%</span></span>
+        </div>
+        <div className="flex items-center gap-2">
+          <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+          <span className="text-white/80">4.8/5 sur Google</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-white/80">🎁 <span className="font-bold text-white">Audit gratuit</span> (valeur 500€)</span>
+        </div>
+      </div>
     </div>
   )
 }
@@ -176,7 +208,7 @@ export const ProductCard = ({
       <div
         className="block group-hover/product:shadow-2xl h-full"
       >
-        <div className="h-full w-full bg-gradient-to-br from-digiqo-blue-light/20 to-digiqo-orange/20 rounded-xl flex items-center justify-center p-6">
+        <div className="h-full w-full bg-white/95 backdrop-blur-sm rounded-xl flex items-center justify-center p-6 shadow-lg">
           <div className="w-full h-full max-w-[100px] max-h-[100px] flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:object-contain">
             {product.thumbnail}
           </div>

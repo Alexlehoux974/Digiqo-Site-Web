@@ -1,0 +1,188 @@
+
+> digiqo-site@0.0.0 dev
+> vite
+
+
+  VITE v5.4.19  ready in 315 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+6:39:12 AM [vite] page reload src/main.tsx
+6:39:54 AM [vite] page reload src/main.tsx
+6:41:26 AM [vite] hmr update /src/AppTest.tsx, /src/index.css
+6:44:59 AM [vite] hmr update /src/components/TestimonialsSection/TestimonialsSection.tsx, /src/index.css
+6:45:06 AM [vite] hmr update /src/components/Header/Header.tsx, /src/index.css
+6:45:12 AM [vite] hmr update /src/components/Header/Header.tsx, /src/index.css
+6:49:25 AM [vite] hmr update /src/App.tsx, /src/index.css
+6:49:42 AM [vite] hmr update /src/App.tsx, /src/index.css
+6:51:55 AM [vite] hmr update /src/components/CaseStudiesSection/CaseStudiesSection.tsx, /src/index.css
+6:51:55 AM [vite] Internal server error: /var/www/Digiqo/digiqo-site/src/components/CaseStudiesSection/CaseStudiesSection.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (178:6)
+
+  176 |         ))}
+  177 |         </div>
+> 178 |       </div>
+      |       ^
+  179 |     </div>
+  180 |   )
+  181 | }
+  Plugin: vite:react-babel
+  File: /var/www/Digiqo/digiqo-site/src/components/CaseStudiesSection/CaseStudiesSection.tsx:178:6
+  176|          ))}
+  177|          </div>
+  178|        </div>
+     |        ^
+  179|      </div>
+  180|    )
+      at constructor (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:6627:19)
+      at TypeScriptParserMixin.jsxParseElementAt (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:4772:18)
+      at TypeScriptParserMixin.jsxParseElement (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:4779:17)
+      at TypeScriptParserMixin.parseExprAtom (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:4789:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11076:23)
+      at TypeScriptParserMixin.parseUpdate (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11061:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11041:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:9852:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10894:61)
+      at TypeScriptParserMixin.parseExprOps (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10899:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10876:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10826:21)
+      at /var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:9790:39
+      at TypeScriptParserMixin.tryParse (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:6935:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:9790:18)
+      at /var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10795:39
+      at TypeScriptParserMixin.allowInAnd (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:12427:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10795:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:12494:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11674:28)
+      at TypeScriptParserMixin.parseExprAtom (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11326:23)
+      at TypeScriptParserMixin.parseExprAtom (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:4794:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11076:23)
+      at TypeScriptParserMixin.parseUpdate (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11061:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11041:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:9852:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10894:61)
+      at TypeScriptParserMixin.parseExprOpBaseRightExpr (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10981:34)
+      at TypeScriptParserMixin.parseExprOpRightExpr (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10976:21)
+      at TypeScriptParserMixin.parseExprOp (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10942:27)
+      at TypeScriptParserMixin.parseExprOp (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:9389:18)
+      at TypeScriptParserMixin.parseExprOps (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10903:17)
+      at TypeScriptParserMixin.parseMaybeConditional (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10876:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10826:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:9801:20)
+      at TypeScriptParserMixin.parseExpressionBase (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10779:23)
+      at /var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10775:39
+      at TypeScriptParserMixin.allowInAnd (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:12427:12)
+      at TypeScriptParserMixin.parseExpression (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10775:17)
+      at TypeScriptParserMixin.jsxParseExpressionContainer (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:4662:31)
+      at TypeScriptParserMixin.jsxParseElementAt (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:4741:36)
+      at TypeScriptParserMixin.jsxParseElementAt (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:4728:32)
+      at TypeScriptParserMixin.jsxParseElement (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:4779:17)
+      at TypeScriptParserMixin.parseExprAtom (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:4789:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11076:23)
+      at TypeScriptParserMixin.parseUpdate (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11061:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11041:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:9852:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10894:61)
+6:51:56 AM [vite] Internal server error: /var/www/Digiqo/digiqo-site/src/components/CaseStudiesSection/CaseStudiesSection.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (178:6)
+
+  176 |         ))}
+  177 |         </div>
+> 178 |       </div>
+      |       ^
+  179 |     </div>
+  180 |   )
+  181 | }
+  Plugin: vite:react-babel
+  File: /var/www/Digiqo/digiqo-site/src/components/CaseStudiesSection/CaseStudiesSection.tsx:178:6
+  176|          ))}
+  177|          </div>
+  178|        </div>
+     |        ^
+  179|      </div>
+  180|    )
+      at constructor (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:6627:19)
+      at TypeScriptParserMixin.jsxParseElementAt (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:4772:18)
+      at TypeScriptParserMixin.jsxParseElement (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:4779:17)
+      at TypeScriptParserMixin.parseExprAtom (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:4789:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11076:23)
+      at TypeScriptParserMixin.parseUpdate (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11061:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11041:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:9852:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10894:61)
+      at TypeScriptParserMixin.parseExprOps (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10899:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10876:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10826:21)
+      at /var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:9790:39
+      at TypeScriptParserMixin.tryParse (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:6935:20)
+      at TypeScriptParserMixin.parseMaybeAssign (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:9790:18)
+      at /var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10795:39
+      at TypeScriptParserMixin.allowInAnd (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:12427:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10795:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:12494:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11674:28)
+      at TypeScriptParserMixin.parseExprAtom (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11326:23)
+      at TypeScriptParserMixin.parseExprAtom (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:4794:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11076:23)
+      at TypeScriptParserMixin.parseUpdate (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11061:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11041:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:9852:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10894:61)
+      at TypeScriptParserMixin.parseExprOpBaseRightExpr (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10981:34)
+      at TypeScriptParserMixin.parseExprOpRightExpr (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10976:21)
+      at TypeScriptParserMixin.parseExprOp (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10942:27)
+      at TypeScriptParserMixin.parseExprOp (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:9389:18)
+      at TypeScriptParserMixin.parseExprOps (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10903:17)
+      at TypeScriptParserMixin.parseMaybeConditional (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10876:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10826:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:9801:20)
+      at TypeScriptParserMixin.parseExpressionBase (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10779:23)
+      at /var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10775:39
+      at TypeScriptParserMixin.allowInAnd (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:12427:12)
+      at TypeScriptParserMixin.parseExpression (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10775:17)
+      at TypeScriptParserMixin.jsxParseExpressionContainer (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:4662:31)
+      at TypeScriptParserMixin.jsxParseElementAt (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:4741:36)
+      at TypeScriptParserMixin.jsxParseElementAt (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:4728:32)
+      at TypeScriptParserMixin.jsxParseElement (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:4779:17)
+      at TypeScriptParserMixin.parseExprAtom (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:4789:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11076:23)
+      at TypeScriptParserMixin.parseUpdate (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11061:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:11041:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:9852:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/var/www/Digiqo/digiqo-site/node_modules/@babel/parser/lib/index.js:10894:61)
+6:52:12 AM [vite] hmr update /src/components/CaseStudiesSection/CaseStudiesSection.tsx, /src/index.css
+6:52:22 AM [vite] hmr update /src/components/CaseStudiesSection/CaseStudiesSection.tsx, /src/index.css
+6:52:36 AM [vite] hmr update /src/components/CaseStudiesSection/CaseStudiesSection.tsx, /src/index.css
+6:52:45 AM [vite] hmr update /src/components/CaseStudiesSection/CaseStudiesSection.tsx, /src/index.css
+6:56:52 AM [vite] hmr update /src/components/CaseStudiesSection/CaseStudiesSection.tsx, /src/index.css
+7:00:50 AM [vite] hmr update /src/components/CaseStudiesSection/CaseStudiesSection.tsx, /src/index.css
+7:00:57 AM [vite] hmr update /src/components/CaseStudiesSection/CaseStudiesSection.tsx, /src/index.css
+7:04:49 AM [vite] hmr update /src/components/CaseStudiesSection/CaseStudiesSection.tsx, /src/index.css
+7:05:04 AM [vite] hmr update /src/components/CaseStudiesSection/CaseStudiesSection.tsx, /src/index.css
+7:05:14 AM [vite] hmr update /src/components/CaseStudiesSection/CaseStudiesSection.tsx, /src/index.css
+7:05:23 AM [vite] hmr update /src/components/CaseStudiesSection/CaseStudiesSection.tsx, /src/index.css
+7:07:56 AM [vite] hmr update /src/components/ResultsSection/ResultsSection.tsx, /src/index.css
+7:08:03 AM [vite] hmr update /src/components/ResultsSection/ResultsSection.tsx, /src/index.css
+7:11:30 AM [vite] hmr update /src/components/HeroParallax/HeroParallax.tsx, /src/index.css
+7:11:52 AM [vite] hmr update /src/components/HeroParallax/HeroParallax.tsx, /src/index.css
+7:12:16 AM [vite] hmr update /src/components/HeroParallax/HeroParallax.tsx, /src/index.css
+7:12:29 AM [vite] hmr update /src/components/HeroParallax/HeroParallax.tsx, /src/index.css
+7:13:16 AM [vite] hmr update /src/components/ServicesSection/ServicesSection.tsx, /src/index.css
+7:16:54 AM [vite] hmr update /src/components/HeroParallax/HeroParallax.tsx, /src/index.css
+7:17:03 AM [vite] hmr update /src/components/ServicesSection/ServicesSection.tsx, /src/index.css
+7:17:12 AM [vite] hmr update /src/components/ScrollExpandMedia/ScrollExpandMedia.tsx, /src/index.css
+7:21:54 AM [vite] page reload tailwind.config.js
+7:22:07 AM [vite] page reload tailwind.config.js
+7:22:21 AM [vite] page reload tailwind.config.js
+7:22:35 AM [vite] page reload tailwind.config.js
+7:25:43 AM [vite] hmr update /src/components/ServicesSection/ServicesSection.tsx, /src/index.css
+7:25:55 AM [vite] hmr update /src/components/ServicesSection/ServicesSection.tsx, /src/index.css
+7:26:04 AM [vite] hmr update /src/components/ServicesSection/ServicesSection.tsx, /src/index.css
+7:26:16 AM [vite] hmr update /src/components/ServicesSection/ServicesSection.tsx, /src/index.css
+7:28:07 AM [vite] hmr update /src/components/ServicesSection/ServicesSection.tsx, /src/index.css
+7:34:15 AM [vite] hmr update /src/components/ResultsSection/ResultsSection.tsx, /src/index.css
+7:37:02 AM [vite] hmr update /src/components/CaseStudiesSection/CaseStudiesSection.tsx, /src/index.css
+7:38:16 AM [vite] hmr update /src/components/Header/Header.tsx, /src/index.css
+7:39:12 AM [vite] hmr update /src/components/TestimonialsSection/TestimonialsSection.tsx, /src/index.css
+7:42:50 AM [vite] hmr update /src/App.tsx, /src/index.css
+7:42:59 AM [vite] hmr update /src/App.tsx, /src/index.css
