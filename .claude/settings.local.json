@@ -47,7 +47,16 @@
       "Bash(python3:*)",
       "Bash(pip install:*)",
       "Bash(playwright install:*)",
-      "WebFetch(domain:69.62.110.246)"
+      "WebFetch(domain:69.62.110.246)",
+      "Bash(cp:*)",
+      "mcp__playwright__browser_console_messages",
+      "mcp__playwright__browser_hover",
+      "Bash(# Create components for each service page\nservices=(\"\"publicite\"\" \"\"dev-web\"\" \"\"community\"\" \"\"seo\"\" \"\"video\"\" \"\"identite\"\" \"\"audit\"\" \"\"sitekeeper\"\")\n\nfor service in \"\"${services[@]}\"\"; do\n  # Copy the file\n  cp \"\"pages/services/${service}.tsx\"\" \"\"components/ServicePages/${service}.tsx\"\"\n  \n  # Remove GetStaticProps import and export\n  sed -i ''/import { GetStaticProps } from/d'' \"\"components/ServicePages/${service}.tsx\"\"\n  sed -i ''/export const getStaticProps/,/^};$/d'' \"\"components/ServicePages/${service}.tsx\"\"\n  \n  echo \"\"Converted ${service}.tsx\"\"\ndone)",
+      "Bash(grep:*)",
+      "Bash(node:*)",
+      "Bash(sed:*)",
+      "mcp__playwright__browser_close",
+      "Bash(cat:*)"
     ],
     "deny": []
   }

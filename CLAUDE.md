@@ -124,37 +124,5 @@ Structure:
 6. **Component Exports**: Always include `index.ts` files in component folders for clean imports
 7. **Utility Functions**: Use `lib/utils.ts` for class name merging (cn function)
 
-## Deployment Verification
 
-- Before declaring the site is live, always:
-  * Verify page accessibility using an MCP (Managed Cloud Platform) check
 
-## CRITICAL DEVELOPMENT WORKFLOW
-
-### MANDATORY: After functionality code modification
-1. **Build Check**: Run `npm run build` to ensure TypeScript compilation
-2. **Launch Dev Server**: Run `npm run dev` to start local server on http://localhost:5173
-3. **Visual Verification**: Use MCP Playwright to:
-   - Navigate to http://localhost:5173
-   - Take screenshots of modified sections
-   - Verify functionality works as expected
-   - Check responsive behavior on different viewports
-
-### Verification Checklist
-- [ ] Code compiles without errors
-- [ ] Dev server launches successfully
-- [ ] Page loads without console errors
-- [ ] New features are visible and functional
-- [ ] Responsive design works (mobile/tablet/desktop)
-- [ ] No regression in existing features
-
-### Example Verification Flow
-```bash
-# After modifications:
-npm run build          # Check TypeScript
-npm run dev &          # Start dev server
-# Use Playwright to visit http://localhost:5173
-# Take screenshot and verify changes
-```
-
-**IMPORTANT**: Never assume changes work - ALWAYS verify visually!
