@@ -130,7 +130,7 @@ export default function AuditPage() {
       <ServiceLayout>
         <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
           <div className="container mx-auto px-4 py-20">
-            <Link href="/#services">
+            <Link href="/#contact">
               <Button
                 variant="ghost"
                 className="mb-8 text-gray-400 hover:text-white"

@@ -35,7 +35,7 @@ export function ContactSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-24 overflow-hidden">
+    <section id="contact" ref={sectionRef} className="relative py-24 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-digiqo-gray-light via-white to-digiqo-gray-light" />
       

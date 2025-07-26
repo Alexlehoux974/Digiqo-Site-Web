@@ -56,7 +56,9 @@
       "Bash(node:*)",
       "Bash(sed:*)",
       "mcp__playwright__browser_close",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "mcp__airtable-mcp__list_tables",
+      "mcp__airtable-mcp__list_records"
     ],
     "deny": []
   }

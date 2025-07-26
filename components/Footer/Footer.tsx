@@ -7,10 +7,10 @@ import { OptimizedImage } from '../ui/OptimizedImage'
 const navigation = {
   services: [
     { name: 'Publicité en Ligne', href: '/services/publicite' },
-    { name: 'Développement Web', href: '/services/developpement' },
+    { name: 'Développement Web', href: '/services/dev-web' },
     { name: 'Community Management', href: '/services/community' },
     { name: 'Référencement SEO', href: '/services/seo' },
-    { name: 'Visuels & Vidéos', href: '/services/visuels' },
+    { name: 'Visuels & Vidéos', href: '/services/video' },
     { name: 'Identité de Marque', href: '/services/identite' },
   ],
   company: [
@@ -22,10 +22,10 @@ const navigation = {
   ],
   legal: [
     { name: 'Mentions Légales', href: '/mentions-legales' },
-    { name: 'CGV', href: '/cgv' },
-    { name: 'CGU', href: '/cgu' },
-    { name: 'Politique de Confidentialité', href: '/politique-de-confidentialite' },
-    { name: 'Politique de Cookies', href: '/politique-de-cookies' },
+    { name: 'CGV', href: '/conditions-generales-vente' },
+    { name: 'CGU', href: '/conditions-generales-utilisation' },
+    { name: 'Politique de Confidentialité', href: '/politique-confidentialite' },
+    { name: 'Politique de Cookies', href: '/politique-cookies' },
   ],
   social: [
     { name: 'TikTok', href: 'https://www.tiktok.com/@digiqo', icon: SiTiktok },

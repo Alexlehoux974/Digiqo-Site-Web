@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { ScrollExpandMedia } from '../ScrollExpandMedia'
 
 const VideoSection = () => {
@@ -25,12 +26,12 @@ const VideoSection = () => {
             comment nous pouvons transformer votre vision en réalité digitale.
           </p>
           <div className='flex flex-wrap gap-4 justify-center mt-12'>
-            <button className='px-8 py-3 bg-digiqo-orange text-white font-bold rounded-lg hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105'>
+            <Link href='/#contact' className='px-8 py-3 bg-digiqo-orange text-white font-bold rounded-lg hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 inline-block'>
               Découvrir nos services
-            </button>
-            <button className='px-8 py-3 bg-digiqo-blue-light text-white font-bold rounded-lg hover:bg-digiqo-blue-dark transition-all duration-300 transform hover:scale-105'>
+            </Link>
+            <Link href='/#contact' className='px-8 py-3 bg-digiqo-blue-light text-white font-bold rounded-lg hover:bg-digiqo-blue-dark transition-all duration-300 transform hover:scale-105 inline-block'>
               Nous contacter
-            </button>
+            </Link>
           </div>
         </div>
     </ScrollExpandMedia>

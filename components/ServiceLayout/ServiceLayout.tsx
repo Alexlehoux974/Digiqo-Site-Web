@@ -33,7 +33,7 @@ export default function ServiceLayout({ children }: ServiceLayoutProps) {
       </nav>
 
       {/* Main Content */}
-      <main className="pt-16">
+      <main className="pt-32">
         {children}
       </main>
 
