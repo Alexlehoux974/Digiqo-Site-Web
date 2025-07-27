@@ -97,10 +97,10 @@ export const Header = () => {
                 <AnimatePresence>
                   {item.submenu && activeSubmenu === item.name && (
                     <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.2 }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.15 }}
                       onMouseEnter={() => setActiveSubmenu(item.name)}
                       onMouseLeave={() => setActiveSubmenu(null)}
                       className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-digiqo-primary/10 overflow-hidden"

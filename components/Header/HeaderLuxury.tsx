@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion'
 import Link from 'next/link'
 import { OptimizedImage } from '../ui/OptimizedImage'
 import { generateContactUrl } from '../../lib/contact-utils'
@@ -23,31 +23,6 @@ import {
   MessageCircle
 } from 'lucide-react'
 
-// 3D Card effect hook
-const use3DCard = () => {
-  const ref = useRef<HTMLDivElement>(null)
-  const rotateX = useMotionValue(0)
-  const rotateY = useMotionValue(0)
-  
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!ref.current) return
-    const rect = ref.current.getBoundingClientRect()
-    const centerX = rect.left + rect.width / 2
-    const centerY = rect.top + rect.height / 2
-    const x = (e.clientX - centerX) / rect.width
-    const y = (e.clientY - centerY) / rect.height
-    
-    rotateY.set(x * 15)
-    rotateX.set(-y * 15)
-  }
-  
-  const handleMouseLeave = () => {
-    rotateX.set(0)
-    rotateY.set(0)
-  }
-  
-  return { ref, rotateX, rotateY, handleMouseMove, handleMouseLeave }
-}
 
 // Luxury navigation data
 const navigation = {
@@ -210,7 +185,6 @@ export const HeaderLuxury = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const card3D = use3DCard()
 
   // Smooth scroll to section
   const handleHashLink = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -415,29 +389,15 @@ export const HeaderLuxury = () => {
                   <AnimatePresence>
                     {item.megaMenu && activeSubmenu === item.name && (
                       <motion.div
-                        initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 20, scale: 0.9 }}
-                        transition={{ duration: 0.3, type: "spring" }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
                         onMouseEnter={() => setActiveSubmenu(item.name)}
                         onMouseLeave={() => !isNavigating && setActiveSubmenu(null)}
                         className="absolute top-full left-1/2 -translate-x-1/2 mt-6 w-[900px]"
                       >
-                        <div 
-                          ref={card3D.ref}
-                          onMouseMove={card3D.handleMouseMove}
-                          onMouseLeave={card3D.handleMouseLeave}
-                          className="relative"
-                          style={{ perspective: 1000 }}
-                        >
-                          <motion.div
-                            style={{
-                              rotateX: card3D.rotateX,
-                              rotateY: card3D.rotateY,
-                              transformStyle: "preserve-3d"
-                            }}
-                            className="bg-white/95 backdrop-blur-2xl rounded-2xl shadow-2xl border border-gray-100 overflow-hidden"
-                          >
+                        <div className="bg-white/95 backdrop-blur-2xl rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
                             {/* Premium gradient border */}
                             <div className="absolute inset-0 p-[1px] bg-gradient-to-br from-digiqo-primary/20 via-transparent to-digiqo-accent/20 rounded-2xl" />
                             
@@ -560,8 +520,7 @@ export const HeaderLuxury = () => {
                                 </div>
                               )}
                             </div>
-                          </motion.div>
-                        </div>
+                            </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -570,10 +529,10 @@ export const HeaderLuxury = () => {
                   <AnimatePresence>
                     {item.submenu && activeSubmenu === item.name && (
                       <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.2 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.15 }}
                         onMouseEnter={() => setActiveSubmenu(item.name)}
                         onMouseLeave={() => !isNavigating && setActiveSubmenu(null)}
                         className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-xl rounded-xl shadow-xl border border-gray-100 overflow-hidden"
