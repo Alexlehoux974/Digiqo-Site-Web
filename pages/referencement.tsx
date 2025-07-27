@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
 import { SEO } from '@/components/SEO'
-import { Header } from '@/components/Header'
+import { HeaderLuxury } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { Search, TrendingUp, Globe, CheckCircle, BarChart3, Target, ArrowRight, Star } from 'lucide-react'
 import Link from 'next/link'
+import { generateContactUrl } from '@/lib/contact-utils'
 
 const seoPackages = [
   {
@@ -96,7 +97,7 @@ export default function Referencement() {
         url="https://digiqo.com/referencement"
       />
 
-      <Header />
+      <HeaderLuxury />
 
       <main>
         {/* Hero Section */}
@@ -136,7 +137,10 @@ export default function Referencement() {
                   <ArrowRight className="w-5 h-5" />
                 </Link>
                 <Link
-                  href="/#contact"
+                  href={generateContactUrl({
+                    service: 'audit',
+                    description: 'Je souhaite réaliser un audit SEO gratuit de mon site web'
+                  })}
                   className="inline-flex items-center gap-2 px-8 py-4 bg-white text-digiqo-secondary font-semibold rounded-lg border-2 border-digiqo-secondary hover:bg-digiqo-secondary hover:text-white transition-all duration-300"
                 >
                   Audit SEO gratuit
@@ -290,7 +294,10 @@ export default function Referencement() {
                     </ul>
                     
                     <Link
-                      href="/#contact"
+                      href={generateContactUrl({
+                        service: 'seo',
+                        description: `Je suis intéressé par la formule ${pack.name} - ${pack.price}/mois`
+                      })}
                       className={`block w-full text-center px-6 py-3 font-semibold rounded-lg transition-all duration-300 ${
                         pack.highlighted
                           ? 'bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary-dark text-white hover:shadow-lg'
@@ -400,7 +407,10 @@ export default function Referencement() {
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Link
-                  href="/#contact"
+                  href={generateContactUrl({
+                    service: 'audit',
+                    description: 'Je souhaite bénéficier d\'un audit SEO gratuit pour améliorer ma visibilité sur Google'
+                  })}
                   className="inline-flex items-center gap-2 px-8 py-4 bg-white text-digiqo-secondary font-semibold rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105"
                 >
                   Demander mon audit gratuit

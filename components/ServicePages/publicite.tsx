@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Megaphone, Check, ArrowRight, Calendar, DollarSign } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
+import { generateContactUrl } from '../../lib/contact-utils'
 
 interface Formula {
   name: string
@@ -11,6 +12,9 @@ interface Formula {
     yearly: string
   }
   features: string[]
+  tracking?: string[]
+  visuals?: string[]
+  option?: string
   bonus?: string[]
   gradient: string
 }
@@ -23,15 +27,25 @@ const formulas: Formula[] = [
       yearly: '5 270,40€'
     },
     features: [
-      'Gestion & diffusion sur les plateformes META',
+      'Gestion & diffusion de vos publicités sur les plateformes du groupe META',
       'Jusqu\'à 1 000 € de budget publicitaire géré / mois',
       'Jusqu\'à 3 campagnes publicitaires simultanées',
-      'Création, ciblage & testing stratégique',
+      'Création, ciblage & testing stratégique des publicités',
       'Optimisation hebdomadaire des performances',
-      'Retargeting : reciblage des audiences',
-      'Exploitation des Pixels/API existants',
-      '3 créatifs publicitaires offerts / mois'
+      'Retargeting : reciblage des audiences déjà touchées',
+      'Exploitation des Pixels/API existants'
     ],
+    tracking: [
+      'Canal Google Chat dédié pour vos questions et validations',
+      'Espace Drive dédié pour centraliser tous vos contenus et rapports',
+      'Rapports d\'activité réguliers transmis via votre espace collaboratif'
+    ],
+    visuals: [
+      '3 créatifs publicitaires inclus chaque mois (valeur 45 € / unité, soit 135 € offerts)',
+      'Déclinés dans tous les formats requis (1:1, 9:16, 4:5)',
+      'Visuels non obligatoires et non cumulables si non utilisés le mois en cours'
+    ],
+    option: 'Mise en place & programmation du Pixel (Meta, Google…)',
     bonus: [
       'Captation vidéo 1h avec prise de son (SONY A7IV)',
       'Montage dynamique (20-60 sec)',
@@ -50,16 +64,26 @@ const formulas: Formula[] = [
       yearly: '9 110,40€'
     },
     features: [
-      'Gestion & diffusion sur les plateformes META',
+      'Gestion & diffusion de vos publicités sur les plateformes du groupe META',
       'Jusqu\'à 2 500 € de budget publicitaire géré / mois',
       'Jusqu\'à 4 campagnes publicitaires simultanées',
-      'Création, ciblage & testing stratégique',
+      'Création, ciblage & testing stratégique des publicités',
       'Optimisation hebdomadaire des performances',
-      'Retargeting : reciblage des audiences',
+      'Retargeting : reciblage des audiences déjà touchées',
       'Création & exploitation d\'audiences similaires',
-      'Exploitation des Pixels/API existants',
-      '3 créatifs publicitaires offerts / mois'
+      'Exploitation des Pixels/API existants'
     ],
+    tracking: [
+      'Canal Google Chat dédié pour vos questions et validations',
+      'Espace Drive dédié pour centraliser tous vos contenus et rapports',
+      'Rapports d\'activité réguliers transmis via votre espace collaboratif'
+    ],
+    visuals: [
+      '3 créatifs publicitaires inclus chaque mois (valeur 45 € / unité, soit 135 € offerts)',
+      'Déclinés dans tous les formats requis (1:1, 9:16, 4:5)',
+      'Visuels non obligatoires et non cumulables si non utilisés le mois en cours'
+    ],
+    option: 'Mise en place & programmation du Pixel (Meta, Google…)',
     bonus: [
       'Captation vidéo 1h avec prise de son (SONY A7IV)',
       'Montage dynamique (20-60 sec)',
@@ -205,7 +229,7 @@ export default function PublicitePage() {
               <ArrowRight className="w-5 h-5" />
             </a>
             <a
-              href="/contact"
+              href={generateContactUrl({ service: 'publicite' })}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-digiqo-primary font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Demander un devis
@@ -329,6 +353,35 @@ export default function PublicitePage() {
                   ))}
                 </div>
 
+                {formula.tracking && (
+                  <div className="space-y-4 mb-8">
+                    <h4 className="font-bold text-lg mb-4">📂 Suivi & échanges simplifiés :</h4>
+                    {formula.tracking.map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        <span className="text-gray-700">💬 {item}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {formula.visuals && (
+                  <div className="space-y-4 mb-8">
+                    <h4 className="font-bold text-lg mb-4">🎨 NOUVEAUTÉ – Création de visuels offerte :</h4>
+                    {formula.visuals.map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        <span className="text-gray-700">✨ {item}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {formula.option && (
+                  <div className="mb-8 p-4 bg-blue-50 rounded-lg">
+                    <h4 className="font-bold text-lg mb-2">🛠️ Option sur devis :</h4>
+                    <p className="text-gray-700">🔧 {formula.option}</p>
+                  </div>
+                )}
+
                 {formula.bonus && (
                   <div className="border-t pt-6">
                     <h4 className="font-bold text-lg mb-4 text-digiqo-accent">
@@ -346,7 +399,7 @@ export default function PublicitePage() {
                 )}
 
                 <motion.a
-                  href="/contact"
+                  href={generateContactUrl({ formula: formula.name.toLowerCase() })}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className={`mt-8 w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-full hover:shadow-lg transition-all duration-300`}
@@ -369,7 +422,10 @@ export default function PublicitePage() {
               Des formules <span className="font-bold">Expansion</span> et <span className="font-bold">Domination</span> sont également disponibles pour les besoins plus importants.
             </p>
             <a
-              href="/contact"
+              href={generateContactUrl({ 
+                service: 'publicite', 
+                description: 'Je souhaite des informations sur les formules Expansion et Domination' 
+              })}
               className="inline-flex items-center gap-2 text-digiqo-accent font-bold hover:underline"
             >
               Contactez-nous pour plus d'informations
@@ -395,7 +451,10 @@ export default function PublicitePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
-                href="/contact"
+                href={generateContactUrl({ 
+                  service: 'publicite', 
+                  description: 'Je souhaite planifier un rendez-vous pour discuter de mes besoins en publicité' 
+                })}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 px-8 py-4 bg-digiqo-accent text-white font-bold rounded-full hover:bg-digiqo-accent-dark transition-all duration-300 shadow-lg hover:shadow-xl"
@@ -404,7 +463,10 @@ export default function PublicitePage() {
                 Planifier un rendez-vous
               </motion.a>
               <motion.a
-                href="/services/audit"
+                href={generateContactUrl({ 
+                  service: 'audit', 
+                  description: "Je souhaite bénéficier d'un audit gratuit avant de lancer mes campagnes publicitaires" 
+                })}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white text-digiqo-primary font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl"

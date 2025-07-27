@@ -11,7 +11,7 @@ export const FAQSection: React.FC = () => {
   const activeSection = faqSections[activeIndex];
 
   return (
-    <section className="relative bg-gradient-to-b from-digiqo-primary via-red-950 to-black py-20 overflow-hidden">
+    <section id="faq" className="relative bg-gradient-to-b from-digiqo-primary via-red-950 to-black py-20 overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Animated gradient orbs */}

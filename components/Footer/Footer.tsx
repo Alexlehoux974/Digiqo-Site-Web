@@ -16,9 +16,7 @@ const navigation = {
   company: [
     { name: "L'Agence", href: '/agence' },
     { name: 'Le Blog', href: '/blog' },
-    { name: 'F.A.Q', href: '/faq' },
     { name: 'Digiqo Recrute !', href: '/recrutement' },
-    { name: 'Contact', href: '/contact' },
   ],
   legal: [
     { name: 'Mentions Légales', href: '/mentions-legales' },
@@ -60,14 +58,17 @@ export const Footer = () => {
               transition={{ duration: 0.5 }}
               className="lg:col-span-1"
             >
-              <OptimizedImage 
-                src="/assets/logo1.png" 
-                alt="Digiqo" 
-                width={160}
-                height={48}
-                className="h-12 w-auto mb-6 brightness-0 invert"
-                objectFit="contain"
-              />
+              <div className="mb-6">
+                <Link href="/">
+                  <OptimizedImage
+                    src="/assets/logo1.png"
+                    alt="Digiqo Logo"
+                    width={150}
+                    height={60}
+                    className="h-12 w-auto"
+                  />
+                </Link>
+              </div>
               <p className="text-white/80 mb-6">
                 Ladi Lafé Zot Pub! 🇷🇪<br />
                 Votre partenaire digital à La Réunion depuis 2020.

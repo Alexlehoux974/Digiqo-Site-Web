@@ -8,6 +8,7 @@ import {
   useAnimationFrame,
 } from "framer-motion"
 import Link from 'next/link'
+import { generateContactUrl } from '@/lib/contact-utils'
 
 export const HeroParallax = ({
   products,
@@ -96,7 +97,7 @@ export const HeroParallax = ({
           translateY,
           opacity,
         }}
-        className="relative pb-16 mt-16"
+        className="relative pb-16 mt-16 z-0"
       >
         <motion.div 
           className="flex flex-row-reverse space-x-reverse space-x-8 mb-8"
@@ -141,7 +142,7 @@ export const HeroParallax = ({
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl relative mx-auto py-12 md:py-24 px-4 w-full  left-0 top-0">
+    <div className="max-w-7xl relative mx-auto py-12 md:py-24 px-4 w-full left-0 top-0 z-20">
       <div className="mb-4 inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full">
         <span className="text-white font-semibold">🏝️ N°1 à La Réunion</span>
         <span className="text-white/60">•</span>
@@ -158,13 +159,15 @@ export const Header = () => {
         Transformez vos visiteurs en clients avec des campagnes publicitaires 
         <span className="text-white font-bold"> Facebook, Instagram et Google Ads</span> qui cartonnent.
       </p>
-      <div className="flex flex-wrap gap-4 mt-8 items-center">
-        <Link href="/devis-gratuit">
+      <div className="flex flex-wrap gap-4 mt-8 items-center relative z-30">
+        <Link href={generateContactUrl({
+          description: 'Je veux booster mes ventes avec des campagnes publicitaires'
+        })}>
           <span className="px-8 py-4 bg-white text-digiqo-orange font-bold rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 text-lg shadow-lg inline-block cursor-pointer">
             Je veux booster mes ventes →
           </span>
         </Link>
-        <a href="#resultats" className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-digiqo-orange transition-all duration-300">
+        <a href="#case-studies" className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-digiqo-orange transition-all duration-300 inline-block">
           Voir nos réussites clients
         </a>
       </div>

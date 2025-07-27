@@ -6,6 +6,7 @@ import { ArrowLeft, Check, Palette, Camera, Edit3, Music, Smartphone, RefreshCw,
 import { Button } from '../../components/ui/button'
 import ServiceLayout from '../../components/ServiceLayout/ServiceLayout'
 import { servicesSEO } from '../../lib/seo-data'
+import { generateContactUrl } from '../../lib/contact-utils'
 
 interface VideoPackage {
   name: string
@@ -48,11 +49,9 @@ export default function VideoPage() {
   }
 
   const visualFeatures = [
-    '3 formats livrés : 1:1 (1080×1080 px), 9:16 (1080×1920 px), 4:5 (1080×1350 px)',
+    '3 formats livrés : 1:1 (1080×1080 px), 9:16 (1080×1920 px - story/reel), 4:5 (1080×1350 px - fil d\'actualité)',
     'Personnalisation avec logo et message',
-    'Optimisé pour l\'engagement et la conversion',
-    'Design soigné et messages percutants',
-    'Adapté à tous les formats Meta (fil, story, reel)'
+    'Optimisé pour l\'engagement et la conversion'
   ]
 
   const structuredData = {
@@ -184,9 +183,14 @@ export default function VideoPage() {
                     })}
                   </div>
 
-                  <Button className="w-full bg-gradient-to-r from-[#DA6530] to-[#E6834F] hover:from-[#C5541F] hover:to-[#D6723F] text-white font-semibold py-6 text-lg">
-                    Commander une Production Vidéo
-                  </Button>
+                  <Link href={generateContactUrl({
+                    service: 'video',
+                    description: 'Je souhaite commander une production vidéo professionnelle'
+                  })}>
+                    <Button className="w-full bg-gradient-to-r from-[#DA6530] to-[#E6834F] hover:from-[#C5541F] hover:to-[#D6723F] text-white font-semibold py-6 text-lg">
+                      Acheter
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </motion.section>
@@ -201,9 +205,12 @@ export default function VideoPage() {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 text-center">
                 Création de Visuels Publicitaires
               </h2>
-              <p className="text-gray-300 text-center mb-12 max-w-3xl mx-auto">
+              <p className="text-gray-300 text-center mb-8 max-w-3xl mx-auto">
                 Nous concevons des visuels impactants, adaptés à tous les formats Meta (fil, story, reel). 
                 Design soigné, messages percutants et optimisation pour l'engagement et la conversion.
+              </p>
+              <p className="text-gray-400 text-center mb-12">
+                Options disponibles :
               </p>
 
               {/* Package Selector */}
@@ -228,29 +235,53 @@ export default function VideoPage() {
               <div className="max-w-4xl mx-auto">
                 <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700">
                   <div className="text-center mb-8">
-                    <p className="text-5xl font-bold text-[#DA6530] mb-2">
+                    <h3 className="text-2xl font-bold text-white mb-4">
+                      Créatif publicitaire ({visualPackages[selectedPeriod].quantity} visuel{visualPackages[selectedPeriod].quantity > 1 ? 's' : ''})
+                    </h3>
+                    <p className="text-5xl font-bold text-[#DA6530]">
                       {visualPackages[selectedPeriod].price}
                     </p>
-                    <p className="text-gray-400">
-                      soit {visualPackages[selectedPeriod].pricePerVisual} par visuel
+                  </div>
+
+                  <div className="mb-8">
+                    <p className="text-gray-300 mb-6">
+                      Visuel publicitaire fixe, spécialement conçu pour la diffusion sur Meta (Facebook & Instagram).
                     </p>
+                    <div className="space-y-4">
+                      {visualFeatures.map((feature, index) => (
+                        <div key={index} className="flex items-start space-x-3">
+                          <Check className="h-5 w-5 text-[#DA6530] mt-0.5 flex-shrink-0" />
+                          <span className="text-gray-300">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
-                  <div className="space-y-4 mb-8">
-                    {visualFeatures.map((feature, index) => (
-                      <div key={index} className="flex items-start space-x-3">
-                        <Check className="h-5 w-5 text-[#DA6530] mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-300">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <Button className="w-full bg-gradient-to-r from-[#DA6530] to-[#E6834F] hover:from-[#C5541F] hover:to-[#D6723F] text-white font-semibold py-6 text-lg">
-                    Commander {visualPackages[selectedPeriod].quantity} Visuel{visualPackages[selectedPeriod].quantity > 1 ? 's' : ''}
-                  </Button>
+                  <Link href={generateContactUrl({
+                    service: 'video',
+                    description: `Je souhaite commander ${visualPackages[selectedPeriod].quantity} visuel${visualPackages[selectedPeriod].quantity > 1 ? 's' : ''} publicitaire${visualPackages[selectedPeriod].quantity > 1 ? 's' : ''}`
+                  })}>
+                    <Button className="w-full bg-gradient-to-r from-[#DA6530] to-[#E6834F] hover:from-[#C5541F] hover:to-[#D6723F] text-white font-semibold py-6 text-lg">
+                      Acheter
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </motion.section>
+
+            {/* Contact Link */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="text-center mb-20"
+            >
+              <Link href="/#contact">
+                <Button className="bg-gradient-to-r from-[#199CB7] to-[#2ABED9] hover:from-[#1890AA] hover:to-[#25ACC7] text-white font-semibold py-6 px-8 text-lg">
+                  Nous contacter
+                </Button>
+              </Link>
+            </motion.div>
 
             {/* SEA Section */}
             <motion.section
@@ -267,12 +298,17 @@ export default function VideoPage() {
                   Nous créons, pilotons et optimisons vos campagnes publicitaires sur les moteurs de recherche.
                 </p>
                 <p className="text-lg text-gray-400 mb-8">Uniquement sur devis</p>
-                <Button 
-                  className="bg-white text-gray-900 hover:bg-gray-100 font-semibold py-6 px-8 text-lg"
-                >
-                  <Phone className="mr-2 h-5 w-5" />
-                  Être rappelé(e)
-                </Button>
+                <Link href={generateContactUrl({
+                  service: 'video',
+                  description: 'Je souhaite être rappelé pour discuter de mes besoins en publicité sur les moteurs de recherche (SEA)'
+                })}>
+                  <Button 
+                    className="bg-white text-gray-900 hover:bg-gray-100 font-semibold py-6 px-8 text-lg"
+                  >
+                    <Phone className="mr-2 h-5 w-5" />
+                    Être rappelé(e)
+                  </Button>
+                </Link>
               </div>
             </motion.section>
 

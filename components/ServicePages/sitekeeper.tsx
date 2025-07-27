@@ -6,6 +6,7 @@ import { ArrowLeft, Check, Shield, Server, RefreshCw, Headphones, Phone, Shoppin
 import { Button } from '../../components/ui/button'
 import ServiceLayout from '../../components/ServiceLayout/ServiceLayout'
 import { servicesSEO } from '../../lib/seo-data'
+import { generateContactUrl } from '../../lib/contact-utils'
 
 interface MaintenancePackage {
   name: string
@@ -103,23 +104,6 @@ export default function SiteKeeperPage() {
         '4 révisions/retouches par an (produits, textes)',
         'Optimisation des performances pour garantir la fluidité',
         'Support prioritaire (réponse sous 48h)',
-        'Domaine, hébergement et abonnements à la charge du client'
-      ]
-    },
-    {
-      name: 'ShopKeeper Ultimate',
-      price: '3 490€',
-      duration: 'HT /an',
-      description: 'Solution complète pour les boutiques e-commerce à fort trafic avec gestion avancée du catalogue, sécurité maximale et support dédié.',
-      type: 'shop',
-      features: [
-        'Mises à jour hebdomadaires complètes avec tests automatisés',
-        'Sauvegardes quotidiennes avec système de rollback',
-        'Monitoring 24/7 des transactions et performances',
-        'Révisions illimitées pour le catalogue produits',
-        'Sécurité e-commerce avancée (PCI DSS, SSL, audits)',
-        'Support dédié avec hotline prioritaire',
-        'Optimisation continue des conversions',
         'Domaine, hébergement et abonnements à la charge du client'
       ]
     }
@@ -284,15 +268,20 @@ export default function SiteKeeperPage() {
                         ))}
                       </ul>
 
-                      <Button 
-                        className={`w-full ${
-                          pkg.highlighted 
-                            ? 'bg-gradient-to-r from-[#199CB7] to-[#2ABED9] hover:from-[#1890AA] hover:to-[#25ACC7]' 
-                            : 'bg-gray-700 hover:bg-gray-600'
-                        } text-white font-semibold py-3`}
-                      >
-                        Choisir ce forfait
-                      </Button>
+                      <Link href={generateContactUrl({
+                        service: 'sitekeeper',
+                        description: `Je suis intéressé par le forfait ${pkg.name} - ${pkg.description}`
+                      })}>
+                        <Button 
+                          className={`w-full ${
+                            pkg.highlighted 
+                              ? 'bg-gradient-to-r from-[#199CB7] to-[#2ABED9] hover:from-[#1890AA] hover:to-[#25ACC7]' 
+                              : 'bg-gray-700 hover:bg-gray-600'
+                          } text-white font-semibold py-3`}
+                        >
+                          Choisir ce forfait
+                        </Button>
+                      </Link>
                     </div>
                   </motion.div>
                 ))}
@@ -351,12 +340,17 @@ export default function SiteKeeperPage() {
                 <p className="text-xl text-gray-300 mb-8">
                   Contactez-nous pour discuter de vos besoins et choisir le forfait adapté
                 </p>
-                <Button 
-                  className="bg-gradient-to-r from-[#199CB7] to-[#2ABED9] hover:from-[#1890AA] hover:to-[#25ACC7] text-white font-semibold py-6 px-8 text-lg"
-                >
-                  <Phone className="mr-2 h-5 w-5" />
-                  Être rappelé(e)
-                </Button>
+                <Link href={generateContactUrl({
+                  service: 'sitekeeper',
+                  description: `Je souhaite être rappelé pour discuter de la maintenance de mon ${activeType === 'site' ? 'site web' : 'boutique en ligne'}`
+                })}>
+                  <Button 
+                    className="bg-gradient-to-r from-[#199CB7] to-[#2ABED9] hover:from-[#1890AA] hover:to-[#25ACC7] text-white font-semibold py-6 px-8 text-lg"
+                  >
+                    <Phone className="mr-2 h-5 w-5" />
+                    Être rappelé(e)
+                  </Button>
+                </Link>
               </div>
             </motion.section>
           </div>

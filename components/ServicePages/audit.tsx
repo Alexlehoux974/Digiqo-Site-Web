@@ -6,6 +6,7 @@ import { ArrowLeft, Check, Globe, Share2, Megaphone, ChevronRight, Sparkles } fr
 import { Button } from '../../components/ui/button'
 import ServiceLayout from '../../components/ServiceLayout/ServiceLayout'
 import { servicesSEO } from '../../lib/seo-data'
+import { generateContactUrl } from '../../lib/contact-utils'
 
 interface AuditCategory {
   title: string
@@ -294,11 +295,16 @@ export default function AuditPage() {
                 <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
                   Découvrez gratuitement les opportunités d'amélioration de votre stratégie digitale
                 </p>
-                <Button 
-                  className="bg-gradient-to-r from-[#199CB7] to-[#2ABED9] hover:from-[#1890AA] hover:to-[#25ACC7] text-white font-semibold py-6 px-8 text-lg shadow-lg shadow-[#199CB7]/25"
-                >
-                  J'en profite - C'est gratuit !
-                </Button>
+                <Link href={generateContactUrl({
+                  service: 'audit',
+                  description: 'Je souhaite recevoir mon audit digital gratuit'
+                })}>
+                  <Button 
+                    className="bg-gradient-to-r from-[#199CB7] to-[#2ABED9] hover:from-[#1890AA] hover:to-[#25ACC7] text-white font-semibold py-6 px-8 text-lg shadow-lg shadow-[#199CB7]/25"
+                  >
+                    J'en profite - C'est gratuit !
+                  </Button>
+                </Link>
                 <p className="text-gray-500 text-sm mt-4">
                   Aucune carte bancaire requise • Résultats sous 48h
                 </p>

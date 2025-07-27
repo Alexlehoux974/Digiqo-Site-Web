@@ -12,6 +12,7 @@ import {
   FileSearch 
 } from 'lucide-react'
 import { IconCloud } from '../IconCloud'
+import { generateContactUrl } from '@/lib/contact-utils'
 
 interface Service {
   id: string
@@ -285,7 +286,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 
 export const ServicesSection = () => {
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section id="services" className="relative py-20 overflow-hidden">
       {/* Background gradient avec les vraies couleurs Digiqo */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-digiqo-primary" />
@@ -360,7 +361,9 @@ export const ServicesSection = () => {
             Prêt à digitaliser votre entreprise ?
           </h3>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/devis">
+            <Link href={generateContactUrl({
+              description: 'Je souhaite obtenir un devis gratuit pour digitaliser mon entreprise'
+            })}>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

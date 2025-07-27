@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { ScrollExpandMedia } from '../ScrollExpandMedia'
+import { generateContactUrl } from '@/lib/contact-utils'
 
 const VideoSection = () => {
   return (
@@ -26,10 +27,12 @@ const VideoSection = () => {
             comment nous pouvons transformer votre vision en réalité digitale.
           </p>
           <div className='flex flex-wrap gap-4 justify-center mt-12'>
-            <Link href='/#contact' className='px-8 py-3 bg-digiqo-orange text-white font-bold rounded-lg hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 inline-block'>
+            <Link href="#services" className='px-8 py-3 bg-digiqo-orange text-white font-bold rounded-lg hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 inline-block'>
               Découvrir nos services
             </Link>
-            <Link href='/#contact' className='px-8 py-3 bg-digiqo-blue-light text-white font-bold rounded-lg hover:bg-digiqo-blue-dark transition-all duration-300 transform hover:scale-105 inline-block'>
+            <Link href={generateContactUrl({
+              description: 'Je souhaite vous contacter pour discuter de mon projet'
+            })} className='px-8 py-3 bg-digiqo-blue-light text-white font-bold rounded-lg hover:bg-digiqo-blue-dark transition-all duration-300 transform hover:scale-105 inline-block'>
               Nous contacter
             </Link>
           </div>

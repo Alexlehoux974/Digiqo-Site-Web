@@ -119,7 +119,7 @@ export function CaseStudiesSection() {
   }, [])
 
   return (
-    <section className="relative py-20 bg-gradient-to-b from-digiqo-secondary/5 to-white overflow-hidden">
+    <section id="case-studies" className="relative py-20 bg-gradient-to-b from-digiqo-secondary/5 to-white overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 left-10 w-64 h-64 bg-digiqo-secondary/10 rounded-full blur-3xl"></div>

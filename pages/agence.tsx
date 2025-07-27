@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion'
 import { SEO } from '@/components/SEO'
-import { Header } from '@/components/Header'
+import { HeaderLuxury } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { Linkedin, Mail, Users, Rocket, Heart, Target } from 'lucide-react'
 import { OptimizedImage } from '@/components/ui/OptimizedImage'
 import Link from 'next/link'
+import { generateContactUrl } from '@/lib/contact-utils'
 
 const team = [
   {
@@ -82,11 +83,11 @@ export default function Agence() {
         url="https://digiqo.com/agence"
       />
 
-      <Header />
+      <HeaderLuxury />
 
       <main>
         {/* Hero Section */}
-        <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-digiqo-primary/5 via-white to-digiqo-accent/5">
+        <section id="histoire" className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-digiqo-primary/5 via-white to-digiqo-accent/5">
           <div className="absolute inset-0">
             <div className="absolute top-20 right-0 w-96 h-96 bg-digiqo-accent/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-digiqo-primary/10 rounded-full blur-3xl" />
@@ -134,7 +135,7 @@ export default function Agence() {
         </section>
 
         {/* Values Section */}
-        <section className="py-20 bg-gray-50">
+        <section id="valeurs" className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -171,7 +172,7 @@ export default function Agence() {
         </section>
 
         {/* Team Section */}
-        <section className="py-20">
+        <section id="equipe" className="py-20">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -250,7 +251,7 @@ export default function Agence() {
                 Rejoignez les 127+ entreprises qui nous font confiance pour leur croissance digitale
               </p>
               <Link
-                href="/#contact"
+                href={generateContactUrl({ description: 'Je souhaite en savoir plus sur vos services et votre agence' })}
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white text-digiqo-primary font-semibold rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105"
               >
                 Découvrir nos services

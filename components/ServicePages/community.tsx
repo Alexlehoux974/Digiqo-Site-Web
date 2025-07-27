@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { MessageCircle, Check, ArrowRight, Calendar, Users, Zap, TrendingUp } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
+import { generateContactUrl } from '../../lib/contact-utils'
 
 interface Formula {
   name: string
@@ -284,7 +285,10 @@ export default function CommunityPage() {
               <ArrowRight className="w-5 h-5" />
             </a>
             <a
-              href="/contact"
+              href={generateContactUrl({
+                service: 'community',
+                description: 'Je souhaite en savoir plus sur vos services de community management'
+              })}
               className="inline-flex items-center gap-2 px-8 py-4 bg-digiqo-accent text-white font-bold rounded-full hover:bg-digiqo-accent-dark transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Demander un devis
@@ -454,7 +458,10 @@ export default function CommunityPage() {
                 </div>
 
                 <motion.a
-                  href="/contact"
+                  href={generateContactUrl({
+                    service: 'community',
+                    description: `Je suis intéressé par la formule ${formula.name} - ${formula.content.posts} posts, ${formula.content.stories} stories${formula.content.reels ? `, ${formula.content.reels} reels` : ''} par mois`
+                  })}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className={`w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-full hover:shadow-lg transition-all duration-300`}
@@ -483,7 +490,10 @@ export default function CommunityPage() {
               Confiez-nous la gestion de vos réseaux sociaux et concentrez-vous sur votre cœur de métier.
             </p>
             <motion.a
-              href="/contact"
+              href={generateContactUrl({
+                service: 'community',
+                description: 'Je souhaite booster ma présence sur les réseaux sociaux avec un community manager professionnel'
+              })}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-digiqo-secondary font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl"

@@ -277,13 +277,13 @@ const ScrollExpandMedia = ({
                           mediaSrc.includes('embed')
                             ? mediaSrc +
                               (mediaSrc.includes('?') ? '&' : '?') +
-                              'autoplay=1&mute=0&loop=1&controls=1&showinfo=0&rel=0&modestbranding=1'
+                              'autoplay=0&mute=0&loop=0&controls=1&showinfo=0&rel=0&modestbranding=1'
                             : mediaSrc.includes('youtu.be')
                             ? mediaSrc.replace('youtu.be/', 'youtube.com/embed/') +
-                              '?autoplay=1&mute=0&loop=1&controls=1&showinfo=0&rel=0&modestbranding=1&playlist=' +
+                              '?autoplay=0&mute=0&loop=0&controls=1&showinfo=0&rel=0&modestbranding=1&playlist=' +
                               mediaSrc.split('/').pop()
                             : mediaSrc.replace('watch?v=', 'embed/') +
-                              '?autoplay=1&mute=0&loop=1&controls=1&showinfo=0&rel=0&modestbranding=1&playlist=' +
+                              '?autoplay=0&mute=0&loop=0&controls=1&showinfo=0&rel=0&modestbranding=1&playlist=' +
                               mediaSrc.split('v=')[1]
                         }
                         className='w-full h-full rounded-xl'
@@ -304,13 +304,13 @@ const ScrollExpandMedia = ({
                       <video
                         src={mediaSrc}
                         poster={posterSrc}
-                        autoPlay
+                        autoPlay={false}
                         muted
-                        loop
+                        loop={false}
                         playsInline
-                        preload='auto'
+                        preload='metadata'
                         className='w-full h-full object-cover rounded-xl'
-                        controls={false}
+                        controls={true}
                         disablePictureInPicture
                         disableRemotePlayback
                       />

@@ -3,9 +3,12 @@ import { motion } from 'framer-motion'
 import { Sparkles } from 'lucide-react'
 import { ContactForm, type FormData } from './ContactForm'
 import { ContactTerminal } from './ContactTerminal'
+import { useRouter } from 'next/router'
+import { servicePageToFormMapping, advertFormulasMapping } from '@/lib/service-mappings'
 
 export function ContactSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
+  const router = useRouter()
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
@@ -16,6 +19,38 @@ export function ContactSection() {
     consent: false
   })
   const [isFormSubmitted, setIsFormSubmitted] = useState(false)
+
+  // Effect to handle URL parameters and auto-scroll
+  useEffect(() => {
+    const { service, formula, description } = router.query
+    
+    if (service || formula) {
+      // Auto-scroll to contact section using hash navigation
+      // This bypasses scroll blocking from other components
+      setTimeout(() => {
+        window.location.hash = 'contact'
+      }, 100)
+      
+      // Get the mapping based on service or formula
+      let mapping = null
+      if (service && typeof service === 'string') {
+        mapping = servicePageToFormMapping[service]
+      } else if (formula && typeof formula === 'string') {
+        mapping = advertFormulasMapping[formula]
+      }
+      
+      if (mapping) {
+        // Pre-fill the form with service and description
+        setFormData(prev => ({
+          ...prev,
+          services: [mapping.formServiceId],
+          description: description && typeof description === 'string' 
+            ? description 
+            : mapping.defaultDescription
+        }))
+      }
+    }
+  }, [router.query])
 
   useEffect(() => {
     const section = sectionRef.current

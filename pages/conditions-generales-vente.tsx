@@ -5,13 +5,13 @@ export default function ConditionsGeneralesVente() {
   return (
     <>
       <SEO
-        title="Conditions générales de vente"
-        description="Conditions générales de vente de Digiqo - Règles contractuelles régissant l'achat de nos services de marketing digital."
-        keywords="cgv, conditions vente, digiqo, services marketing, contrat"
+        title="Conditions Générales de Vente"
+        description="Conditions Générales de Vente (CGV) de Digiqo - Agence de marketing digital à La Réunion. Découvrez nos modalités de vente et de prestation de services."
+        keywords="cgv, conditions générales vente, digiqo, contrat, services"
         url="https://digiqo.com/conditions-generales-vente"
       />
 
-      <LegalLayout title="Conditions générales de vente (CGV)" lastUpdated="1er janvier 2025">
+      <LegalLayout title="Conditions Générales de Vente (CGV)" lastUpdated="1er janvier 2025">
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">1. Préambule</h2>
           <p className="mb-4">Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre :</p>
@@ -24,8 +24,8 @@ export default function ConditionsGeneralesVente() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">2. Champ d'application</h2>
           <p>
-            Les CGV s'appliquent à toute commande passée sur le site <strong>https://digiqo.fr/</strong> ou directement 
-            auprès de Digiqo. Toute commande implique l'adhésion pleine et entière du Client aux présentes CGV.
+            Les CGV s'appliquent à toute commande passée sur le site https://digiqo.fr/ ou directement auprès de Digiqo. 
+            Toute commande implique l'adhésion pleine et entière du Client aux présentes CGV.
           </p>
         </section>
 
@@ -74,8 +74,8 @@ export default function ConditionsGeneralesVente() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">7. Rétractation et remboursement</h2>
           <p className="mb-4">
-            Conformément à la législation en vigueur, le Client dispose d'un délai de rétractation de 14 jours pour 
-            les services non commencés. Cependant, certaines prestations ne sont pas remboursables :
+            Conformément à la législation en vigueur, le Client dispose d'un délai de rétractation de 14 jours pour les services non commencés. 
+            Cependant, certaines prestations ne sont pas remboursables :
           </p>
           <ul className="space-y-2 text-gray-700">
             <li>✔ <strong>Prestation entamée :</strong> Aucun remboursement.</li>
@@ -97,7 +97,10 @@ export default function ConditionsGeneralesVente() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">9. Données personnelles</h2>
           <p>
-            📌 Pour plus de détails, consultez notre <a href="/politique-confidentialite" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">politique de confidentialité</a>.
+            📌 Pour plus de détails, consultez notre{' '}
+            <a href="/politique-confidentialite" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">
+              politique de confidentialité
+            </a>.
           </p>
         </section>
 

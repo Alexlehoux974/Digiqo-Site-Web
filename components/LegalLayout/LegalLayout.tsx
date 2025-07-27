@@ -1,4 +1,4 @@
-import { Header } from '../Header'
+import { HeaderLuxury } from '../Header'
 import { Footer } from '../Footer'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
@@ -13,7 +13,7 @@ interface LegalLayoutProps {
 export const LegalLayout = ({ children, title, lastUpdated }: LegalLayoutProps) => {
   return (
     <>
-      <Header />
+      <HeaderLuxury />
       <main className="min-h-screen bg-gray-50 pt-20">
         <div className="container mx-auto px-4 py-12 max-w-4xl">
           <motion.div

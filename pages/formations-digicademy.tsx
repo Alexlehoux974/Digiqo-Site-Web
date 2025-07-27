@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
 import { SEO } from '@/components/SEO'
-import { Header } from '@/components/Header'
+import { HeaderLuxury } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { GraduationCap, Users, Clock, CheckCircle, Award, ArrowRight, BookOpen } from 'lucide-react'
 import Link from 'next/link'
+import { generateContactUrl } from '@/lib/contact-utils'
 
 const formations = [
   {
@@ -98,7 +99,7 @@ export default function FormationsDigiCademy() {
         url="https://digiqo.com/formations-digicademy"
       />
 
-      <Header />
+      <HeaderLuxury />
 
       <main>
         {/* Hero Section */}
@@ -138,7 +139,10 @@ export default function FormationsDigiCademy() {
                   <ArrowRight className="w-5 h-5" />
                 </Link>
                 <Link
-                  href="/#contact"
+                  href={generateContactUrl({
+                    service: 'formations',
+                    description: 'Je souhaite me former avec DigiCademy'
+                  })}
                   className="inline-flex items-center gap-2 px-8 py-4 bg-white text-digiqo-primary font-semibold rounded-lg border-2 border-digiqo-primary hover:bg-digiqo-primary hover:text-white transition-all duration-300"
                 >
                   Demander un devis
@@ -260,7 +264,10 @@ export default function FormationsDigiCademy() {
                       </div>
                       
                       <Link
-                        href="/#contact"
+                        href={generateContactUrl({
+                          service: 'formations',
+                          description: `Je souhaite m'inscrire à la formation ${formation.title}`
+                        })}
                         className="block w-full text-center px-6 py-3 bg-gradient-to-r from-digiqo-primary to-digiqo-accent text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300"
                       >
                         S'inscrire
@@ -291,7 +298,10 @@ export default function FormationsDigiCademy() {
                 accompagnement de vos équipes.
               </p>
               <Link
-                href="/#contact"
+                href={generateContactUrl({
+                  service: 'formations',
+                  description: 'Je souhaite un programme de formation personnalisé pour mon entreprise'
+                })}
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white text-digiqo-secondary font-semibold rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105"
               >
                 Demander un programme personnalisé

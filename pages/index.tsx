@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { SEO } from '@/components/SEO'
 import { seoConfig, businessStructuredData } from '@/lib/seo-config'
 import { OptimizedImage } from '@/components/ui/OptimizedImage'
-import { Header } from '../components/Header'
+import { HeaderLuxury } from '../components/Header'
 import { HeroParallax } from '../components/HeroParallax/HeroParallax'
 import { ResultsSection } from '../components/ResultsSection'
 import { VideoSection } from '../components/VideoSection'
@@ -337,8 +337,8 @@ export default function Home() {
         structuredData={businessStructuredData}
       />
 
-      <Header />
-      <main className="pt-20">
+      <HeaderLuxury />
+      <main className="pt-32">
         <HeroParallax products={products} />
         <ResultsSection />
         <div className="py-8" />

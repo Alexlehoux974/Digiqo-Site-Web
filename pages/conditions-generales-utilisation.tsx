@@ -5,25 +5,25 @@ export default function ConditionsGeneralesUtilisation() {
   return (
     <>
       <SEO
-        title="Conditions générales d'utilisation"
-        description="Conditions générales d'utilisation du site Digiqo - Règles d'accès et d'utilisation de notre site web."
-        keywords="cgu, conditions utilisation, digiqo, règles utilisation"
+        title="Conditions Générales d'Utilisation"
+        description="Conditions Générales d'Utilisation (CGU) du site Digiqo.fr - Règles d'accès et d'utilisation de notre plateforme de marketing digital."
+        keywords="cgu, conditions générales utilisation, digiqo, règles, utilisation"
         url="https://digiqo.com/conditions-generales-utilisation"
       />
 
-      <LegalLayout title="Conditions générales d'utilisation (CGU)" lastUpdated="1er janvier 2025">
+      <LegalLayout title="Conditions Générales d'Utilisation (CGU)" lastUpdated="1er janvier 2025">
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">1. Préambule</h2>
           <p>
-            Les présentes Conditions Générales d'Utilisation (CGU) définissent les règles d'accès et d'utilisation 
-            du site <strong>https://digiqo.fr/</strong>, édité par ARA CORP.
+            Les présentes Conditions Générales d'Utilisation (CGU) définissent les règles d'accès 
+            et d'utilisation du site https://digiqo.fr/, édité par ARA CORP.
           </p>
         </section>
 
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">2. Acceptation des CGU</h2>
           <p>
-            Tout utilisateur accédant au site <strong>https://digiqo.fr/</strong> accepte pleinement et sans réserve 
+            Tout utilisateur accédant au site https://digiqo.fr/ accepte pleinement et sans réserve 
             les présentes CGU.
           </p>
         </section>
@@ -73,7 +73,11 @@ export default function ConditionsGeneralesUtilisation() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">8. Données personnelles</h2>
           <p>
-            📌 Consultez notre <a href="/politique-confidentialite" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">politique de confidentialité</a> pour plus de détails.
+            📌 Consultez notre{' '}
+            <a href="/politique-confidentialite" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">
+              politique de confidentialité
+            </a>{' '}
+            pour plus de détails.
           </p>
         </section>
 

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { Home, ArrowLeft } from 'lucide-react'
 import { Button } from '../components/Button'
+import { HeaderLuxury } from '../components/Header'
 import Head from 'next/head'
 
 export default function Custom404() {
@@ -56,7 +57,9 @@ export default function Custom404() {
         <meta name="robots" content="noindex, nofollow" />
       </Head>
 
-      <div className="min-h-screen bg-gradient-to-b from-digiqo-primary via-digiqo-primary/90 to-digiqo-primary/80 relative overflow-hidden">
+      <HeaderLuxury />
+
+      <div className="min-h-screen bg-gradient-to-b from-digiqo-primary via-digiqo-primary/90 to-digiqo-primary/80 relative overflow-hidden pt-24">
         {/* Fond étoilé animé */}
         <div className="absolute inset-0">
           {/* Étoiles */}
@@ -259,8 +262,8 @@ export default function Custom404() {
               className="mt-12 text-white/60 text-sm"
             >
               PS : Si vous êtes vraiment perdu, appelez-nous au{' '}
-              <a href="tel:+262692123456" className="text-digiqo-accent hover:text-digiqo-secondary transition-colors">
-                +262 692 12 34 56
+              <a href="tel:+262692731111" className="text-digiqo-accent hover:text-digiqo-secondary transition-colors">
+                0692 73 11 11
               </a>
               {' '}— on a le GPS marketing ! 📍
             </motion.p>

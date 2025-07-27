@@ -58,7 +58,13 @@
       "mcp__playwright__browser_close",
       "Bash(cat:*)",
       "mcp__airtable-mcp__list_tables",
-      "mcp__airtable-mcp__list_records"
+      "mcp__airtable-mcp__list_records",
+      "Bash(npm run lint)",
+      "mcp__airtable-mcp__delete_records",
+      "mcp__airtable-mcp__update_records",
+      "mcp__airtable-mcp__create_record",
+      "mcp__airtable-mcp__describe_table",
+      "Bash(touch:*)"
     ],
     "deny": []
   }

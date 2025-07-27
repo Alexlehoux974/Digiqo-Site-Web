@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Code, Check, ArrowRight, Clock, Shield, Zap } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
+import { generateContactUrl } from '../../lib/contact-utils'
 
 interface WebPackage {
   name: string
@@ -11,6 +12,7 @@ interface WebPackage {
   bonus: string[]
   features: string[]
   deliveryTime: string
+  note?: string
   gradient: string
   popular?: boolean
 }
@@ -26,16 +28,19 @@ const packages: WebPackage[] = [
       'Retouches : 1 retouche comprise'
     ],
     features: [
-      'Titre percutant, visuel fort, bouton d\'action visible',
-      'Témoignages clients, logos partenaires',
+      'Titre percutant, visuel fort, bouton d\'action bien visible',
+      'Témoignages clients, logos de partenaires, données chiffrées',
+      'Bullet points clairs, visuel illustratif',
       'Formulaire de contact / Conversion',
-      'Intégration charte graphique',
-      'Liens réseaux sociaux',
-      'Google Analytics intégré',
+      'Intégration des éléments de la charte graphique du client (logos, couleurs, typographies)',
+      'Liens directs vers les réseaux sociaux',
+      'Intégration Google Analytics pour suivi des conversions',
       'Certificat SSL (HTTPS)',
-      'Optimisation campagnes publicitaires'
+      'Implémentation et programmation pixel (sur devis)',
+      'Optimisation pour les campagnes publicitaires (Google Ads, Meta…)'
     ],
     deliveryTime: '7 jours ouvrés',
+    note: 'Les délais de livraison indiqués démarrent à compter de la réception complète de tous les éléments nécessaires fournis par le client : contenus textuels, visuels, accès techniques, etc.',
     gradient: 'from-digiqo-secondary to-teal-400'
   },
   {
@@ -59,6 +64,7 @@ const packages: WebPackage[] = [
       'Conformité RGPD incluse'
     ],
     deliveryTime: '10 jours ouvrés',
+    note: 'démarrage après réception des éléments nécessaires du client',
     gradient: 'from-digiqo-primary to-pink-600'
   },
   {
@@ -79,9 +85,11 @@ const packages: WebPackage[] = [
       'Tunnel de conversion optimisé',
       'Pixel Meta et Google Analytics',
       'Certificat SSL, protection anti-spam',
-      'Score PageSpeed &gt; 85/100'
+      'Référencement : Optimisation avancée (balises meta, meta title, indexation Google, optimisation d\'image, cache)',
+      'Score Google PageSpeed garanti > 85/100 (version mobile > 75)'
     ],
     deliveryTime: '20 jours ouvrés',
+    note: 'démarrage après réception des éléments nécessaires du client',
     gradient: 'from-digiqo-accent to-orange-500',
     popular: true
   },
@@ -104,9 +112,11 @@ const packages: WebPackage[] = [
       'Chatbot FAQ automatisée',
       'Certificat SSL avancé, pare-feu',
       'Sauvegardes automatiques',
-      'Score PageSpeed &gt; 85/100'
+      'Référencement : Optimisation complète (balises meta, meta title, indexation Google, optimisation d\'image, cache)',
+      'Score Google PageSpeed garanti > 85/100 (version mobile > 75)'
     ],
     deliveryTime: '30 jours ouvrés',
+    note: 'démarrage après réception des éléments nécessaires du client',
     gradient: 'from-purple-600 to-digiqo-primary'
   }
 ]
@@ -115,7 +125,8 @@ const portfolio = [
   { name: 'CMX FACTORY', description: 'Vos pièces Cross & Supermot.', image: '/portfolio/cmx-factory.jpg' },
   { name: 'CBD RUN', description: 'CBD Bio à la Réunion !', image: '/portfolio/cbd-run.jpg' },
   { name: 'SNOWKITE SENTATION', description: 'Passez du Kitesurf au Snowkite', image: '/portfolio/snowkite.jpg' },
-  { name: 'CLICKNVAN', description: 'L\'aventure commence !', image: '/portfolio/clicknvan.jpg' }
+  { name: 'CLICKNVAN', description: 'L\'aventure commence !', image: '/portfolio/clicknvan.jpg' },
+  { name: 'SOGITE', description: 'Solutions informatiques professionnelles', image: '/portfolio/sogite.jpg' }
 ]
 
 export default function DevWebPage() {
@@ -364,10 +375,16 @@ export default function DevWebPage() {
                     <Clock className="w-4 h-4" />
                     <span>Livraison : {pkg.deliveryTime}</span>
                   </div>
+                  {pkg.note && (
+                    <p className="text-xs text-gray-500 mt-2 italic">{pkg.note}</p>
+                  )}
                 </div>
 
                 <motion.a
-                  href="/contact"
+                  href={generateContactUrl({
+                    service: 'dev-web',
+                    description: `Je suis intéressé par la formule ${pkg.name} - ${pkg.description}`
+                  })}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className={`w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r ${pkg.gradient} text-white font-bold rounded-full hover:shadow-lg transition-all duration-300`}
@@ -443,7 +460,10 @@ export default function DevWebPage() {
               Discutons de votre projet et trouvons ensemble la solution parfaite pour votre entreprise.
             </p>
             <motion.a
-              href="/contact"
+              href={generateContactUrl({
+                service: 'dev-web',
+                description: 'Je souhaite discuter de mon projet de développement web'
+              })}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-digiqo-secondary font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl"
