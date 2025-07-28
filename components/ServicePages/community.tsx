@@ -23,7 +23,6 @@ import {
   MessageSquare,
   Hash,
   AtSign,
-  Camera,
   Sparkles,
   Eye,
   ThumbsUp,
