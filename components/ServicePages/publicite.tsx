@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Head from 'next/head'
 import { motion, AnimatePresence } from 'framer-motion'
+import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
+import { HeroGradientOrbs } from '@/components/ui/animated-gradient-orb'
 import { 
   TrendingUp, 
   Target, 
@@ -15,7 +17,8 @@ import {
   Sparkles,
   ChevronRight,
   CheckCircle2,
-  ArrowUpRight
+  ArrowUpRight,
+  X
 } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
@@ -178,34 +181,32 @@ const processSteps = [
     title: 'Analyse',
     description: 'Étude approfondie de votre marché et de vos objectifs commerciaux',
     icon: Target,
-    color: 'from-purple-500 to-indigo-600'
+    color: 'from-digiqo-primary to-digiqo-primary/80'
   },
   {
     number: '02',
     title: 'Stratégie',
     description: 'Définition précise des audiences et des messages publicitaires',
     icon: Users,
-    color: 'from-blue-500 to-cyan-600'
+    color: 'from-digiqo-secondary to-digiqo-secondary/80'
   },
   {
     number: '03',
     title: 'Création',
     description: 'Conception de visuels et contenus publicitaires haute performance',
     icon: Palette,
-    color: 'from-pink-500 to-rose-600'
+    color: 'from-digiqo-accent to-digiqo-accent/80'
   },
   {
     number: '04',
     title: 'Optimisation',
     description: 'Ajustements data-driven pour maximiser votre retour sur investissement',
     icon: LineChart,
-    color: 'from-amber-500 to-orange-600'
+    color: 'from-digiqo-accent to-amber-600'
   }
 ]
 
 export default function PublicitePage() {
-  const [selectedFormula, setSelectedFormula] = useState<string | null>(null)
-  const [activeTab, setActiveTab] = useState<{ [key: string]: string }>({})
   const [compareMode, setCompareMode] = useState(false)
   const seoData = servicesSEO['publicite-en-ligne-reunion']
 
@@ -258,23 +259,11 @@ export default function PublicitePage() {
       </Head>
 
       {/* Hero Section avec animation sophistiquée */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      <section className="relative min-h-[80vh] pt-32 flex items-center justify-center overflow-hidden bg-gradient-to-br from-digiqo-primary via-digiqo-primary/80 to-digiqo-primary">
         {/* Animated gradient orbs */}
+        <HeroGradientOrbs />
         <div className="absolute inset-0">
           <div className="absolute inset-0 opacity-30">
-            <div className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-digiqo-accent/30 to-transparent rounded-full blur-3xl animate-pulse" />
-            <motion.div 
-              className="absolute bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-digiqo-secondary/30 to-transparent rounded-full blur-3xl"
-              animate={{
-                opacity: [0.3, 0.5, 0.3],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 2
-              }}
-            />
           </div>
         </div>
 
@@ -283,17 +272,15 @@ export default function PublicitePage() {
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            {...ANIMATION.entry.fadeInUpLarge}
+            transition={{ duration: ANIMATION.duration.slow }}
             className="space-y-8"
           >
             {/* Animated icon */}
             <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
+              {...ANIMATION.entry.springIn}
               transition={{ 
-                type: "spring",
+                ...ANIMATION.ease.spring,
                 stiffness: 260,
                 damping: 20,
                 delay: 0.2 
@@ -302,7 +289,7 @@ export default function PublicitePage() {
             >
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-digiqo-accent to-amber-400 rounded-3xl blur-2xl opacity-50 animate-pulse" />
-                <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-3xl border border-gray-700">
+                <div className="relative bg-gradient-to-br from-digiqo-primary to-digiqo-primary/80 p-8 rounded-3xl border border-digiqo-primary/30">
                   <TrendingUp className="w-16 h-16 text-digiqo-accent" />
                 </div>
               </div>
@@ -318,7 +305,7 @@ export default function PublicitePage() {
                 </span>
               </h1>
               
-              <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto">
                 Campagnes publicitaires haute performance sur les réseaux sociaux.
                 ROI optimisé, résultats mesurables.
               </p>
@@ -326,15 +313,14 @@ export default function PublicitePage() {
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
+              {...ANIMATION.entry.fadeInUp}
+              transition={{ delay: ANIMATION.delay.section * 2 }}
               className="flex flex-wrap gap-6 justify-center"
             >
               <motion.a
                 href="#formules"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={ANIMATION.hover.scale}
+                whileTap={ANIMATION.tap.scale}
                 className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-digiqo-accent to-amber-500 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Découvrir nos formules
@@ -343,9 +329,9 @@ export default function PublicitePage() {
               
               <motion.a
                 href={generateContactUrl({ service: 'publicite' })}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-gray-800 text-white font-bold rounded-2xl border border-gray-700 hover:border-gray-600 shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={ANIMATION.hover.scale}
+                whileTap={ANIMATION.tap.scale}
+                className="group inline-flex items-center gap-3 px-8 py-4 bg-digiqo-secondary/90 text-white font-bold rounded-2xl border border-digiqo-secondary/50 hover:border-digiqo-secondary shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Audit gratuit
                 <Sparkles className="w-5 h-5" />
@@ -361,16 +347,16 @@ export default function PublicitePage() {
               key={i}
               className="absolute w-1 h-1 bg-digiqo-accent/30 rounded-full"
               initial={{
-                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1920),
-                y: typeof window !== 'undefined' ? window.innerHeight + 100 : 1080,
+                x: (i * 97) % 1920,
+                y: 1080,
               }}
               animate={{
                 y: -100,
               }}
               transition={{
-                duration: Math.random() * 10 + 10,
+                duration: ANIMATION.duration.verySlow * (7 + (i % 7)),
                 repeat: Infinity,
-                delay: Math.random() * 5,
+                delay: (i % 5),
                 ease: "linear",
               }}
             />
@@ -379,18 +365,18 @@ export default function PublicitePage() {
       </section>
 
       {/* Process Section avec Timeline Horizontale */}
-      <section className="py-24 bg-gray-50 overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-white to-digiqo-accent/5 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            {...ANIMATION.entry.fadeInUp}
+            whileInView={ANIMATION.entry.fadeInUp.animate}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
               Notre <span className="bg-gradient-to-r from-digiqo-accent to-amber-400 bg-clip-text text-transparent">Processus</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
               Une méthodologie éprouvée en 4 étapes pour maximiser votre retour sur investissement
             </p>
           </motion.div>
@@ -398,38 +384,38 @@ export default function PublicitePage() {
           {/* Timeline horizontale */}
           <div className="relative">
             {/* Ligne de connexion */}
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-300 to-transparent -translate-y-1/2 hidden lg:block" />
+            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-digiqo-accent/30 to-transparent -translate-y-1/2 hidden lg:block" />
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
               {processSteps.map((step, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  {...ANIMATION.entry.fadeInUpLarge}
+                  whileInView={ANIMATION.entry.fadeInUpLarge.animate}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: getStaggerDelay(index) }}
                   className="relative"
                 >
                   <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
                     {/* Step number */}
-                    <div className="absolute -top-4 left-8 bg-gradient-to-r from-gray-800 to-gray-900 text-white text-sm font-bold px-4 py-2 rounded-full">
+                    <div className="absolute -top-4 left-8 bg-gradient-to-r from-digiqo-primary to-digiqo-primary/80 text-white text-sm font-bold px-4 py-2 rounded-full">
                       ÉTAPE {step.number}
                     </div>
                     
                     {/* Icon */}
                     <motion.div
                       whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.5 }}
+                      transition={{ duration: ANIMATION.duration.normal }}
                       className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${step.color} text-white mb-6 mt-4`}
                     >
                       <step.icon className="w-8 h-8" />
                     </motion.div>
                     
                     <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
-                    <p className="text-gray-600">{step.description}</p>
+                    <p className="text-digiqo-primary/70">{step.description}</p>
                     
                     {/* Connection dot for timeline */}
-                    <div className="absolute -bottom-10 left-1/2 w-4 h-4 bg-gradient-to-br from-gray-400 to-gray-600 rounded-full -translate-x-1/2 hidden lg:block" />
+                    <div className="absolute -bottom-10 left-1/2 w-4 h-4 bg-gradient-to-br from-digiqo-accent to-digiqo-accent/70 rounded-full -translate-x-1/2 hidden lg:block" />
                   </div>
                 </motion.div>
               ))}
@@ -442,22 +428,22 @@ export default function PublicitePage() {
       <section id="formules" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            {...ANIMATION.entry.fadeInUp}
+            whileInView={ANIMATION.entry.fadeInUp.animate}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
               Nos <span className="bg-gradient-to-r from-digiqo-accent to-amber-400 bg-clip-text text-transparent">Formules</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto mb-8">
               Des solutions adaptées à chaque étape de votre croissance
             </p>
             
             {/* Compare toggle */}
             <button
               onClick={() => setCompareMode(!compareMode)}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 hover:bg-gray-200 rounded-full font-medium transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-digiqo-secondary/10 hover:bg-digiqo-secondary/20 rounded-full font-medium transition-colors"
             >
               <Layers className="w-5 h-5" />
               {compareMode ? 'Vue normale' : 'Comparer les formules'}
@@ -465,162 +451,288 @@ export default function PublicitePage() {
           </motion.div>
 
           {/* Formula Cards */}
-          <div className={`grid ${compareMode ? 'lg:grid-cols-2' : 'lg:grid-cols-2'} gap-8 max-w-6xl mx-auto`}>
-            {formulas.map((formula, index) => (
-              <motion.div
-                key={formula.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                layout
-                className="relative"
-              >
+          <div className="space-y-8 max-w-5xl mx-auto">
+            {formulas.map((formula, index) => {
+              const [isFlipped, setIsFlipped] = useState(false)
+              const [activeSection, setActiveSection] = useState<string | null>(null)
+              const [mobileActiveSection, setMobileActiveSection] = useState<string | null>(null)
+              
+              return (
                 <motion.div
-                  whileHover={{ y: -5 }}
-                  onClick={() => setSelectedFormula(selectedFormula === formula.id ? null : formula.id)}
-                  className={`relative bg-gray-50 rounded-3xl p-8 cursor-pointer transition-all duration-500 ${
-                    selectedFormula === formula.id ? 'shadow-2xl' : 'shadow-lg hover:shadow-xl'
-                  }`}
-                  style={{
-                    transformStyle: 'preserve-3d',
-                    transform: selectedFormula === formula.id ? 'perspective(1000px) rotateX(2deg)' : 'none'
-                  }}
+                  key={formula.id}
+                  {...ANIMATION.entry.scaleIn}
+                  whileInView={ANIMATION.entry.scaleIn.animate}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.2 }}
+                  className="relative"
                 >
-                  {/* Gradient border effect */}
-                  <div className={`absolute inset-0 bg-gradient-to-r ${formula.gradient} rounded-3xl opacity-10`} />
-                  
-                  {/* Header */}
-                  <div className="relative z-10">
-                    <div className="flex items-start justify-between mb-6">
-                      <div>
-                        <h3 className={`text-3xl font-bold bg-gradient-to-r ${formula.gradient} bg-clip-text text-transparent`}>
-                          {formula.name}
-                        </h3>
-                        <p className="text-gray-600 mt-2">{formula.summary}</p>
-                      </div>
-                      <ChevronRight 
-                        className={`w-6 h-6 text-gray-400 transition-transform ${
-                          selectedFormula === formula.id ? 'rotate-90' : ''
-                        }`}
-                      />
-                    </div>
-
-                    {/* Price */}
-                    <div className="flex items-baseline gap-4 mb-8">
-                      <span className="text-5xl font-bold">{formula.price.monthly}</span>
-                      <span className="text-gray-600">/mois</span>
-                      <span className="text-sm text-gray-500">
-                        ou {formula.price.yearly}/an
-                      </span>
-                    </div>
-
-                    {/* Highlights */}
-                    <div className="grid grid-cols-1 gap-3 mb-6">
-                      {formula.highlights.map((highlight, idx) => (
-                        <motion.div
-                          key={idx}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: idx * 0.1 }}
-                          className="flex items-center gap-3"
-                        >
-                          <CheckCircle2 className={`w-5 h-5 text-${formula.accentColor}-500`} />
-                          <span className="font-medium">{highlight}</span>
-                        </motion.div>
-                      ))}
-                    </div>
-
-                    {/* Expanded content */}
-                    <AnimatePresence>
-                      {selectedFormula === formula.id && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="border-t pt-6"
-                        >
-                          {/* Tabs */}
-                          <div className="flex gap-2 mb-6 overflow-x-auto">
-                            {Object.keys(formula.sections).map((section) => (
-                              <button
-                                key={section}
-                                onClick={(e) => {
-                                  e.stopPropagation()
-                                  setActiveTab({ ...activeTab, [formula.id]: section })
-                                }}
-                                className={`px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-all ${
-                                  (activeTab[formula.id] || 'services') === section
-                                    ? `bg-gradient-to-r ${formula.gradient} text-white`
-                                    : 'bg-gray-100 hover:bg-gray-200'
-                                }`}
-                              >
-                                {formula.sections[section as keyof typeof formula.sections]?.title}
-                              </button>
-                            ))}
-                          </div>
-
-                          {/* Tab content */}
-                          <AnimatePresence mode="wait">
-                            {Object.entries(formula.sections).map(([key, section]) => {
-                              if ((activeTab[formula.id] || 'services') === key && section) {
-                                return (
-                                  <motion.div
-                                    key={key}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -10 }}
-                                    transition={{ duration: 0.2 }}
-                                    className="space-y-3"
-                                  >
-                                    {section.items.map((item, idx) => (
-                                      <motion.div
-                                        key={idx}
-                                        initial={{ opacity: 0, x: -20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: idx * 0.05 }}
-                                        className="flex items-start gap-3"
-                                      >
-                                        <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${formula.gradient} mt-2 flex-shrink-0`} />
-                                        <span className="text-gray-700">{item}</span>
-                                      </motion.div>
-                                    ))}
-                                  </motion.div>
-                                )
-                              }
-                              return null
-                            })}
-                          </AnimatePresence>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-
-                    {/* CTA Button */}
-                    <motion.a
-                      href={generateContactUrl({ formula: formula.name.toLowerCase() })}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={(e) => e.stopPropagation()}
-                      className={`mt-8 w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300`}
+                  {/* Desktop: Dynamic Flip Card */}
+                  <div className="hidden md:block relative h-[450px]" style={{ perspective: '1000px' }}>
+                    <motion.div
+                      className="absolute inset-0 w-full h-full"
+                      animate={{ rotateY: isFlipped ? 180 : 0 }}
+                      transition={{ duration: ANIMATION.duration.normal }}
+                      style={{ transformStyle: 'preserve-3d' }}
                     >
-                      Choisir cette formule
-                      <ArrowUpRight className="w-5 h-5" />
-                    </motion.a>
+                      {/* Front of card */}
+                      <div 
+                        className="absolute inset-0 w-full h-full"
+                        style={{ backfaceVisibility: 'hidden' }}
+                      >
+                        <div className="h-full bg-white rounded-3xl shadow-xl border border-digiqo-accent/10 overflow-hidden">
+                          {/* Gradient accent */}
+                          <div className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${formula.gradient}`} />
+                          
+                          <div className="p-8">
+                            {/* Header */}
+                            <div className="mb-8">
+                              <h3 className={`text-4xl font-bold bg-gradient-to-r ${formula.gradient} bg-clip-text text-transparent mb-4`}>
+                                {formula.name}
+                              </h3>
+                              <p className="text-digiqo-primary/60 text-lg mb-6">{formula.summary}</p>
+                              
+                              {/* Price */}
+                              <div className="flex items-baseline gap-4">
+                                <span className="text-5xl font-bold">{formula.price.monthly}</span>
+                                <span className="text-digiqo-primary/60">/mois</span>
+                                <span className="text-sm text-digiqo-primary/50">
+                                  ou {formula.price.yearly}/an
+                                </span>
+                              </div>
+                            </div>
+
+                            {/* Interactive sections grid - Show all 4 */}
+                            <div className="grid grid-cols-4 gap-3">
+                              {Object.entries(formula.sections).map(([key, section]) => {
+                                if (!section) return null
+                                const Icon = key === 'services' ? TrendingUp : 
+                                           key === 'tracking' ? BarChart3 : 
+                                           key === 'creation' ? Palette : 
+                                           Sparkles
+                                
+                                return (
+                                  <motion.button
+                                    key={key}
+                                    onClick={() => {
+                                      setActiveSection(key)
+                                      setIsFlipped(true)
+                                    }}
+                                    whileHover={{ scale: 1.03 }}
+                                    whileTap={ANIMATION.tap.scaleSmall}
+                                    className="relative bg-digiqo-secondary/5 hover:bg-digiqo-secondary/10 rounded-xl p-4 text-left transition-all group"
+                                  >
+                                    {/* Hover glow effect */}
+                                    <div className={`absolute inset-0 bg-gradient-to-r ${formula.gradient} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity`} />
+                                    
+                                    <div className="relative">
+                                      <div className="flex flex-col items-center text-center">
+                                        <div className={`p-3 rounded-lg bg-gradient-to-br ${formula.gradient} text-white mb-2`}>
+                                          <Icon className="w-6 h-6" />
+                                        </div>
+                                        <h4 className="font-bold text-digiqo-primary text-sm mb-1">{section.title}</h4>
+                                        <p className="text-xs text-digiqo-primary/70 mb-2">
+                                          {section.items.length} inclus
+                                        </p>
+                                        <div className="flex items-center gap-1 text-xs text-digiqo-accent">
+                                          <span>Voir</span>
+                                          <ArrowRight className="w-3 h-3" />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </motion.button>
+                                )
+                              })}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Back of card - Dynamic content */}
+                      <div 
+                        className="absolute inset-0 w-full h-full"
+                        style={{ 
+                          backfaceVisibility: 'hidden',
+                          transform: 'rotateY(180deg)'
+                        }}
+                      >
+                        <div className="h-full bg-white rounded-3xl shadow-xl border border-digiqo-accent/10 overflow-hidden">
+                          {/* Gradient accent */}
+                          <div className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${formula.gradient}`} />
+                          
+                          {activeSection && formula.sections[activeSection as keyof typeof formula.sections] && (
+                            <div className="p-8 h-full flex flex-col">
+                              {/* Header with back button */}
+                              <div className="flex items-center justify-between mb-8">
+                                <div className="flex items-center gap-3">
+                                  <div className={`p-3 rounded-xl bg-gradient-to-br ${formula.gradient} text-white`}>
+                                    {activeSection === 'services' ? <TrendingUp className="w-6 h-6" /> : 
+                                     activeSection === 'tracking' ? <BarChart3 className="w-6 h-6" /> : 
+                                     activeSection === 'creation' ? <Palette className="w-6 h-6" /> : 
+                                     <Sparkles className="w-6 h-6" />}
+                                  </div>
+                                  <div>
+                                    <h3 className="text-2xl font-bold text-digiqo-primary">
+                                      {formula.sections[activeSection as keyof typeof formula.sections]?.title}
+                                    </h3>
+                                    <p className="text-sm text-digiqo-primary/70">{formula.name}</p>
+                                  </div>
+                                </div>
+                                <button
+                                  onClick={() => {
+                                    setIsFlipped(false)
+                                    setTimeout(() => setActiveSection(null), 600)
+                                  }}
+                                  className="p-2 hover:bg-digiqo-secondary/10 rounded-lg transition-colors"
+                                >
+                                  <X className="w-5 h-5 text-digiqo-primary/50" />
+                                </button>
+                              </div>
+
+                              {/* Content */}
+                              <div className="flex-1 overflow-y-auto">
+                                <ul className="space-y-2">
+                                  {formula.sections[activeSection as keyof typeof formula.sections]?.items.map((item, idx) => (
+                                    <motion.li 
+                                      key={idx} 
+                                      initial={{ opacity: 0, x: -20 }}
+                                      animate={{ opacity: 1, x: 0 }}
+                                      transition={{ delay: idx * 0.05 }}
+                                      className="flex items-start gap-2"
+                                    >
+                                      <div className={`p-0.5 rounded-full bg-gradient-to-r ${formula.gradient} flex-shrink-0 mt-1`}>
+                                        <CheckCircle2 className="w-3 h-3 text-white" />
+                                      </div>
+                                      <span className="text-sm text-digiqo-primary/80">{item}</span>
+                                    </motion.li>
+                                  ))}
+                                </ul>
+                              </div>
+
+                              {/* CTA */}
+                              <motion.a
+                                href={generateContactUrl({ formula: formula.name.toLowerCase(), service: activeSection })}
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={ANIMATION.tap.scaleSmall}
+                                className={`mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}
+                              >
+                                Choisir cette formule
+                                <ArrowUpRight className="w-5 h-5" />
+                              </motion.a>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Mobile: Accordion */}
+                  <div className="md:hidden bg-white rounded-3xl shadow-lg overflow-hidden">
+                    {/* Header always visible */}
+                    <div className="p-6 border-b border-digiqo-accent/10">
+                      <h3 className={`text-3xl font-bold bg-gradient-to-r ${formula.gradient} bg-clip-text text-transparent mb-2`}>
+                        {formula.name}
+                      </h3>
+                      <p className="text-digiqo-primary/70 mb-6">{formula.summary}</p>
+                      
+                      {/* Price */}
+                      <div className="flex items-baseline gap-3 mb-6">
+                        <span className="text-4xl font-bold">{formula.price.monthly}</span>
+                        <span className="text-digiqo-primary/60">/mois</span>
+                      </div>
+
+                      {/* Highlights */}
+                      <div className="space-y-3">
+                        {formula.highlights.map((highlight, idx) => (
+                          <div key={idx} className="flex items-center gap-3">
+                            <CheckCircle2 className="w-5 h-5 text-digiqo-accent flex-shrink-0" />
+                            <span className="text-sm font-medium">{highlight}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Expandable sections */}
+                    <div className="border-t border-digiqo-accent/10">
+                      {Object.entries(formula.sections).map(([key, section]) => {
+                        if (!section) return null
+                        const Icon = key === 'services' ? TrendingUp : 
+                                   key === 'tracking' ? BarChart3 : 
+                                   key === 'creation' ? Palette : 
+                                   Sparkles
+                        const isOpen = mobileActiveSection === `${formula.id}-${key}`
+                        
+                        return (
+                          <div key={key} className="border-b border-digiqo-accent/10 last:border-0">
+                            <button
+                              onClick={() => setMobileActiveSection(
+                                isOpen ? null : `${formula.id}-${key}`
+                              )}
+                              className="w-full p-4 flex items-center justify-between hover:bg-digiqo-secondary/5 transition-colors"
+                            >
+                              <div className="flex items-center gap-3">
+                                <div className={`p-2 rounded-lg bg-gradient-to-br ${formula.gradient} text-white`}>
+                                  <Icon className="w-4 h-4" />
+                                </div>
+                                <span className="font-medium text-digiqo-primary">{section.title}</span>
+                              </div>
+                              <ChevronRight className={`w-5 h-5 text-digiqo-primary/40 transition-transform ${
+                                isOpen ? 'rotate-90' : ''
+                              }`} />
+                            </button>
+                            
+                            <AnimatePresence>
+                              {isOpen && (
+                                <motion.div
+                                  initial={{ height: 0 }}
+                                  animate={{ height: 'auto' }}
+                                  exit={{ height: 0 }}
+                                  transition={{ duration: ANIMATION.duration.fast }}
+                                  className="overflow-hidden"
+                                >
+                                  <div className="px-4 pb-4">
+                                    <ul className="space-y-2">
+                                      {section.items.map((item, idx) => (
+                                        <li key={idx} className="flex items-start gap-2 text-sm">
+                                          <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${formula.gradient} mt-1.5 flex-shrink-0`} />
+                                          <span className="text-digiqo-primary/70">{item}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </div>
+                        )
+                      })}
+                    </div>
+
+                    {/* CTA */}
+                    <div className="p-6 bg-gradient-to-br from-digiqo-accent/5 to-digiqo-secondary/5">
+                      <motion.a
+                        href={generateContactUrl({ formula: formula.name.toLowerCase() })}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-2xl shadow-lg`}
+                      >
+                        Choisir cette formule
+                        <ArrowUpRight className="w-5 h-5" />
+                      </motion.a>
+                    </div>
                   </div>
                 </motion.div>
-              </motion.div>
-            ))}
+              )
+            })}
           </div>
 
           {/* Additional formulas mention */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            {...ANIMATION.entry.fadeInUp}
+            whileInView={ANIMATION.entry.fadeInUp.animate}
             viewport={{ once: true }}
             className="mt-16 text-center"
           >
-            <p className="text-gray-600 mb-4">
+            <p className="text-digiqo-primary/70 mb-4">
               Des formules <span className="font-bold">Expansion</span> et <span className="font-bold">Domination</span> sont disponibles pour des besoins plus importants.
             </p>
             <a
@@ -638,7 +750,7 @@ export default function PublicitePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-digiqo-primary via-digiqo-primary/80 to-digiqo-primary relative overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('/assets/grid.svg')] bg-center opacity-5" />
@@ -647,8 +759,8 @@ export default function PublicitePage() {
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            {...ANIMATION.entry.fadeInUp}
+            whileInView={ANIMATION.entry.fadeInUp.animate}
             viewport={{ once: true }}
             className="space-y-8"
           >
@@ -656,7 +768,7 @@ export default function PublicitePage() {
               Prêt à <span className="bg-gradient-to-r from-digiqo-accent to-amber-400 bg-clip-text text-transparent">propulser</span> votre entreprise ?
             </h2>
             
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
               Bénéficiez d'un audit gratuit et découvrez comment nos campagnes peuvent transformer votre présence digitale
             </p>
             
@@ -666,8 +778,8 @@ export default function PublicitePage() {
                   service: 'publicite', 
                   description: 'Je souhaite planifier un rendez-vous pour discuter de mes besoins en publicité' 
                 })}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={ANIMATION.hover.scale}
+                whileTap={ANIMATION.tap.scale}
                 className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-digiqo-accent to-amber-500 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <Calendar className="w-5 h-5" />
@@ -680,9 +792,9 @@ export default function PublicitePage() {
                   service: 'audit', 
                   description: "Je souhaite bénéficier d'un audit gratuit avant de lancer mes campagnes publicitaires" 
                 })}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-gray-800 text-white font-bold rounded-2xl border border-gray-700 hover:border-gray-600 shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={ANIMATION.hover.scale}
+                whileTap={ANIMATION.tap.scale}
+                className="group inline-flex items-center gap-3 px-8 py-4 bg-digiqo-secondary/90 text-white font-bold rounded-2xl border border-digiqo-secondary/50 hover:border-digiqo-secondary shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <BarChart3 className="w-5 h-5" />
                 Audit gratuit

@@ -8,3 +8,6 @@ export { default as MicrosoftIcon } from './MicrosoftIcon'
 export { default as AmazonIcon } from './AmazonIcon'
 export { default as LinkedInIcon } from './LinkedInIcon'
 export { default as TeslaIcon } from './TeslaIcon'
+
+// Export tech icons
+export * from './TechIcons'

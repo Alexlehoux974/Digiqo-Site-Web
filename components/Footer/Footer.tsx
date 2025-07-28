@@ -36,7 +36,7 @@ const navigation = {
 }
 
 export const Footer = () => {
-  const currentYear = new Date().getFullYear()
+  const currentYear = 2024
 
   return (
     <footer className="relative bg-gradient-to-b from-cyan-600 via-cyan-500 to-cyan-400 text-white">

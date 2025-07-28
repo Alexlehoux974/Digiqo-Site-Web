@@ -129,12 +129,12 @@ export default function AuditPage() {
       </Head>
 
       <ServiceLayout>
-        <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+        <div className="min-h-screen bg-gradient-to-b from-digiqo-primary via-digiqo-primary/90 to-digiqo-primary">
           <div className="container mx-auto px-4 py-20">
             <Link href="/#contact">
               <Button
                 variant="ghost"
-                className="mb-8 text-gray-400 hover:text-white"
+                className="mb-8 text-digiqo-primary/50 hover:text-white"
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Retour aux services
@@ -147,14 +147,14 @@ export default function AuditPage() {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 text-green-400 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-digiqo-secondary/20 to-digiqo-secondary/30 text-digiqo-secondary px-4 py-2 rounded-full text-sm font-semibold mb-6">
                 <Sparkles className="w-4 h-4" />
                 100% GRATUIT
               </div>
               <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#199CB7] to-[#2ABED9] bg-clip-text text-transparent">
                 Audit Digital Gratuit
               </h1>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-white/70 max-w-3xl mx-auto">
                 Audit de votre Environnement Digital - Découvrez le potentiel inexploité de votre présence en ligne
               </p>
             </motion.div>
@@ -173,10 +173,10 @@ export default function AuditPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.1 * index }}
-                    className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 text-center border border-gray-700"
+                    className="bg-digiqo-primary/50 backdrop-blur-sm rounded-xl p-6 text-center border border-digiqo-primary/30"
                   >
                     <h3 className="text-lg font-semibold text-white mb-2">{benefit.title}</h3>
-                    <p className="text-gray-400 text-sm">{benefit.description}</p>
+                    <p className="text-digiqo-primary/50 text-sm">{benefit.description}</p>
                   </motion.div>
                 ))}
               </div>
@@ -205,7 +205,7 @@ export default function AuditPage() {
                         className={`flex items-center gap-3 px-6 py-4 rounded-xl font-semibold transition-all ${
                           selectedCategory === index
                             ? 'bg-gradient-to-r from-[#199CB7] to-[#2ABED9] text-white shadow-lg shadow-[#199CB7]/25'
-                            : 'bg-gray-800/50 text-gray-400 hover:text-white border border-gray-700'
+                            : 'bg-digiqo-primary/50 text-digiqo-primary/50 hover:text-white border border-digiqo-primary/30'
                         }`}
                       >
                         <Icon className="w-5 h-5" />
@@ -221,9 +221,9 @@ export default function AuditPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4 }}
-                  className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700"
+                  className="bg-digiqo-primary/50 backdrop-blur-sm rounded-2xl p-8 border border-digiqo-primary/30"
                 >
-                  <p className="text-gray-300 mb-8 text-lg">
+                  <p className="text-white/70 mb-8 text-lg">
                     {auditCategories[selectedCategory].description}
                   </p>
                   
@@ -231,7 +231,7 @@ export default function AuditPage() {
                     {auditCategories[selectedCategory].points.map((point, index) => (
                       <div key={index} className="flex items-center space-x-3">
                         <Check className="h-5 w-5 text-[#199CB7] flex-shrink-0" />
-                        <span className="text-gray-300">{point}</span>
+                        <span className="text-white/70">{point}</span>
                       </div>
                     ))}
                   </div>
@@ -270,10 +270,10 @@ export default function AuditPage() {
                       </div>
                       <div className="flex-1">
                         <h3 className="text-xl font-semibold text-white mb-1">{item.title}</h3>
-                        <p className="text-gray-400">{item.desc}</p>
+                        <p className="text-digiqo-primary/50">{item.desc}</p>
                       </div>
                       {index < 3 && (
-                        <ChevronRight className="w-6 h-6 text-gray-600" />
+                        <ChevronRight className="w-6 h-6 text-digiqo-primary/60" />
                       )}
                     </motion.div>
                   ))}
@@ -292,7 +292,7 @@ export default function AuditPage() {
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                   Prêt à booster votre présence digitale ?
                 </h2>
-                <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                <p className="text-xl text-white/70 mb-8 max-w-2xl mx-auto">
                   Découvrez gratuitement les opportunités d'amélioration de votre stratégie digitale
                 </p>
                 <Link href={generateContactUrl({
@@ -305,7 +305,7 @@ export default function AuditPage() {
                     J'en profite - C'est gratuit !
                   </Button>
                 </Link>
-                <p className="text-gray-500 text-sm mt-4">
+                <p className="text-digiqo-primary/50 text-sm mt-4">
                   Aucune carte bancaire requise • Résultats sous 48h
                 </p>
               </div>

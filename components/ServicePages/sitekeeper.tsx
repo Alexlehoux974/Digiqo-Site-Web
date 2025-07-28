@@ -162,12 +162,12 @@ export default function SiteKeeperPage() {
       </Head>
 
       <ServiceLayout>
-        <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+        <div className="min-h-screen bg-gradient-to-b from-digiqo-primary via-digiqo-primary/90 to-digiqo-primary">
           <div className="container mx-auto px-4 py-20">
             <Link href="/#contact">
               <Button
                 variant="ghost"
-                className="mb-8 text-gray-400 hover:text-white"
+                className="mb-8 text-digiqo-primary/50 hover:text-white"
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Retour aux services
@@ -183,7 +183,7 @@ export default function SiteKeeperPage() {
               <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#199CB7] to-[#2ABED9] bg-clip-text text-transparent">
                 {activeType === 'site' ? 'SiteKeeper' : 'ShopKeeper'}
               </h1>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-white/70 max-w-3xl mx-auto">
                 {activeType === 'site' 
                   ? 'Votre Site sous Haute Protection - Mises à jour, sauvegardes, sécurité… On s\'occupe de tout !'
                   : 'Votre eCommerce, notre Priorité ! - Mises à jour, sécurité, et gestion du catalogue : on veille sur votre boutique en ligne pour maximiser vos ventes.'
@@ -198,13 +198,13 @@ export default function SiteKeeperPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="flex justify-center mb-12"
             >
-              <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-1 inline-flex">
+              <div className="bg-digiqo-primary/50 backdrop-blur-sm rounded-lg p-1 inline-flex">
                 <button
                   onClick={() => setActiveType('site')}
                   className={`px-8 py-4 rounded-md font-semibold transition-all flex items-center gap-2 ${
                     activeType === 'site'
                       ? 'bg-gradient-to-r from-[#199CB7] to-[#2ABED9] text-white'
-                      : 'text-gray-400 hover:text-white'
+                      : 'text-digiqo-primary/50 hover:text-white'
                   }`}
                 >
                   <Globe className="w-5 h-5" />
@@ -215,7 +215,7 @@ export default function SiteKeeperPage() {
                   className={`px-8 py-4 rounded-md font-semibold transition-all flex items-center gap-2 ${
                     activeType === 'shop'
                       ? 'bg-gradient-to-r from-[#199CB7] to-[#2ABED9] text-white'
-                      : 'text-gray-400 hover:text-white'
+                      : 'text-digiqo-primary/50 hover:text-white'
                   }`}
                 >
                   <ShoppingCart className="w-5 h-5" />
@@ -247,15 +247,15 @@ export default function SiteKeeperPage() {
                         Plus populaire
                       </div>
                     )}
-                    <div className={`h-full bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border ${
-                      pkg.highlighted ? 'border-[#199CB7]' : 'border-gray-700'
+                    <div className={`h-full bg-digiqo-primary/50 backdrop-blur-sm rounded-2xl p-8 border ${
+                      pkg.highlighted ? 'border-[#199CB7]' : 'border-digiqo-primary/30'
                     } hover:border-[#199CB7]/50 transition-colors`}>
                       <div className="text-center mb-6">
                         <h3 className="text-2xl font-bold text-white mb-2">{pkg.name}</h3>
-                        <p className="text-gray-400 mb-4 text-sm">{pkg.description}</p>
+                        <p className="text-digiqo-primary/50 mb-4 text-sm">{pkg.description}</p>
                         <div className="flex items-baseline justify-center gap-2">
                           <span className="text-4xl font-bold text-[#199CB7]">{pkg.price}</span>
-                          <span className="text-gray-400">{pkg.duration}</span>
+                          <span className="text-digiqo-primary/50">{pkg.duration}</span>
                         </div>
                       </div>
 
@@ -263,7 +263,7 @@ export default function SiteKeeperPage() {
                         {pkg.features.map((feature, idx) => (
                           <li key={idx} className="flex items-start">
                             <Check className="h-5 w-5 text-[#199CB7] mt-0.5 mr-3 flex-shrink-0" />
-                            <span className="text-gray-300 text-sm">{feature}</span>
+                            <span className="text-white/70 text-sm">{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -276,7 +276,7 @@ export default function SiteKeeperPage() {
                           className={`w-full ${
                             pkg.highlighted 
                               ? 'bg-gradient-to-r from-[#199CB7] to-[#2ABED9] hover:from-[#1890AA] hover:to-[#25ACC7]' 
-                              : 'bg-gray-700 hover:bg-gray-600'
+                              : 'bg-digiqo-primary/70 hover:bg-digiqo-primary/60'
                           } text-white font-semibold py-3`}
                         >
                           Choisir ce forfait
@@ -319,7 +319,7 @@ export default function SiteKeeperPage() {
                         <Icon className="w-8 h-8 text-[#199CB7]" />
                       </div>
                       <h3 className="text-lg font-semibold text-white mb-2">{benefit.title}</h3>
-                      <p className="text-gray-400 text-sm">{benefit.desc}</p>
+                      <p className="text-digiqo-primary/50 text-sm">{benefit.desc}</p>
                     </motion.div>
                   )
                 })}
@@ -333,11 +333,11 @@ export default function SiteKeeperPage() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-center"
             >
-              <div className="bg-gradient-to-r from-gray-800 to-gray-700 rounded-2xl p-12">
+              <div className="bg-gradient-to-r from-digiqo-primary/80 to-digiqo-primary/70 rounded-2xl p-12">
                 <h2 className="text-3xl font-bold text-white mb-4">
                   Prêt à sécuriser votre {activeType === 'site' ? 'site web' : 'boutique en ligne'} ?
                 </h2>
-                <p className="text-xl text-gray-300 mb-8">
+                <p className="text-xl text-white/70 mb-8">
                   Contactez-nous pour discuter de vos besoins et choisir le forfait adapté
                 </p>
                 <Link href={generateContactUrl({

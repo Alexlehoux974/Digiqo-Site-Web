@@ -258,13 +258,17 @@ export function CaseStudiesSection() {
               className="relative z-30 bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-digiqo-accent/20 transition-all duration-300 p-4 md:p-6 border border-digiqo-accent/20 hover:border-digiqo-accent/40 hover:scale-105 group cursor-pointer"
               onClick={() => setSelectedCase(study)}
             >
-              {/* Indicateur de clic */}
-              <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="bg-digiqo-accent/10 rounded-full p-1.5">
-                  <svg className="w-4 h-4 text-digiqo-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              {/* Indicateur de clic - Toujours visible */}
+              <div className="absolute top-3 right-3">
+                <motion.div 
+                  className="bg-digiqo-accent/10 group-hover:bg-digiqo-accent/20 rounded-full p-2 transition-colors"
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <svg className="w-5 h-5 text-digiqo-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                </div>
+                </motion.div>
               </div>
               
               <h4 className="text-lg font-bold text-digiqo-primary mb-2">
@@ -277,12 +281,22 @@ export function CaseStudiesSection() {
                 {study.description}
               </p>
               
-              {/* Call to action subtil */}
-              <div className="flex items-center gap-1 text-xs text-digiqo-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span>Voir le témoignage</span>
-                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+              {/* Call to action - Toujours visible */}
+              <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
+                <span className="text-xs font-medium text-gray-500">Cliquez pour le témoignage</span>
+                <div className="flex items-center gap-1 text-xs text-digiqo-accent font-medium">
+                  <span className="group-hover:underline">Voir détails</span>
+                  <motion.svg 
+                    className="w-3 h-3" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                    animate={{ x: [0, 3, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </motion.svg>
+                </div>
               </div>
             </motion.div>
           ))}
