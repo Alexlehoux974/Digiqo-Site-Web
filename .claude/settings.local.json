@@ -64,7 +64,10 @@
       "mcp__airtable-mcp__update_records",
       "mcp__airtable-mcp__create_record",
       "mcp__airtable-mcp__describe_table",
-      "Bash(touch:*)"
+      "Bash(touch:*)",
+      "Bash(npx tsc:*)",
+      "Bash(PORT=3000 npm run dev)",
+      "mcp___21st-dev_magic__logo_search"
     ],
     "deny": []
   }

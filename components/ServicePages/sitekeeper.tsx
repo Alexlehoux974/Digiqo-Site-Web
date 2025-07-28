@@ -239,11 +239,11 @@ export default function SiteKeeperPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.1 * index }}
-                    className={`relative ${pkg.highlighted ? 'scale-105' : ''}`}
+                    className={`relative ${pkg.highlighted ? 'scale-105 mt-2' : ''}`}
                   >
                     {pkg.highlighted && (
-                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#199CB7] to-[#2ABED9] text-white px-4 py-1 rounded-full text-sm font-semibold flex items-center">
-                        <Star className="w-4 h-4 mr-1" />
+                      <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#199CB7] to-[#2ABED9] text-white px-6 py-2 rounded-full text-sm font-semibold flex items-center z-20 shadow-xl whitespace-nowrap">
+                        <Star className="w-4 h-4 mr-1 fill-current" />
                         Plus populaire
                       </div>
                     )}

@@ -28,13 +28,16 @@ import {
   Eye,
   ThumbsUp,
   Send,
-  Instagram,
-  Facebook,
-  Twitter,
-  Linkedin,
   Activity,
   Target
 } from 'lucide-react'
+import { 
+  InstagramIcon,
+  FacebookIcon as FacebookSocialIcon,
+  TwitterIcon,
+  LinkedInIcon as LinkedInSocialIcon,
+  TikTokIcon
+} from '@/components/icons'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
 import { generateContactUrl } from '../../lib/contact-utils'
@@ -675,11 +678,11 @@ export default function CommunityPage() {
           
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
             {[
-              { name: 'Instagram', icon: Instagram, color: 'from-digiqo-secondary to-digiqo-accent', stats: '1.5B users' },
-              { name: 'Facebook', icon: Facebook, color: 'from-blue-600 to-blue-500', stats: '2.9B users' },
-              { name: 'Twitter', icon: Twitter, color: 'from-sky-400 to-blue-500', stats: '450M users' },
-              { name: 'LinkedIn', icon: Linkedin, color: 'from-blue-700 to-blue-600', stats: '900M users' },
-              { name: 'TikTok', icon: Camera, color: 'from-digiqo-primary to-digiqo-primary/70', stats: '1B users' }
+              { name: 'Instagram', icon: InstagramIcon, color: 'from-digiqo-secondary to-digiqo-accent', stats: '1.5B users' },
+              { name: 'Facebook', icon: FacebookSocialIcon, color: 'from-blue-600 to-blue-500', stats: '2.9B users' },
+              { name: 'Twitter', icon: TwitterIcon, color: 'from-sky-400 to-blue-500', stats: '450M users' },
+              { name: 'LinkedIn', icon: LinkedInSocialIcon, color: 'from-blue-700 to-blue-600', stats: '900M users' },
+              { name: 'TikTok', icon: TikTokIcon, color: 'from-digiqo-primary to-digiqo-primary/70', stats: '1B users' }
             ].map((platform, index) => (
               <motion.div
                 key={index}

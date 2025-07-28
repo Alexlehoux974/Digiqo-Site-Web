@@ -134,7 +134,7 @@ export default function AuditPage() {
             <Link href="/#contact">
               <Button
                 variant="ghost"
-                className="mb-8 text-digiqo-primary/50 hover:text-white"
+                className="mb-8 text-white/60 hover:text-white"
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Retour aux services
@@ -147,24 +147,24 @@ export default function AuditPage() {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-digiqo-secondary/20 to-digiqo-secondary/30 text-digiqo-secondary px-4 py-2 rounded-full text-sm font-semibold mb-6">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-digiqo-secondary/20 to-digiqo-secondary/30 backdrop-blur-sm text-digiqo-secondary px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-lg">
                 <Sparkles className="w-4 h-4" />
                 100% GRATUIT
               </div>
               <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#199CB7] to-[#2ABED9] bg-clip-text text-transparent">
                 Audit Digital Gratuit
               </h1>
-              <p className="text-xl text-white/70 max-w-3xl mx-auto">
+              <p className="text-xl text-white/80 max-w-3xl mx-auto">
                 Audit de votre Environnement Digital - Découvrez le potentiel inexploité de votre présence en ligne
               </p>
             </motion.div>
 
-            {/* Benefits Grid */}
+            {/* Benefits Grid - Fond blanc */}
             <motion.section
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mb-20"
+              className="-mx-4 px-4 py-20 bg-white rounded-3xl shadow-xl mb-20"
             >
               <div className="grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
                 {auditBenefits.map((benefit, index) => (
@@ -173,10 +173,10 @@ export default function AuditPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.1 * index }}
-                    className="bg-digiqo-primary/50 backdrop-blur-sm rounded-xl p-6 text-center border border-digiqo-primary/30"
+                    className="bg-gray-50 rounded-xl p-6 text-center border border-gray-200 hover:shadow-lg transition-all duration-300"
                   >
-                    <h3 className="text-lg font-semibold text-white mb-2">{benefit.title}</h3>
-                    <p className="text-digiqo-primary/50 text-sm">{benefit.description}</p>
+                    <h3 className="text-lg font-semibold text-digiqo-primary mb-2">{benefit.title}</h3>
+                    <p className="text-gray-600 text-sm">{benefit.description}</p>
                   </motion.div>
                 ))}
               </div>
@@ -205,7 +205,7 @@ export default function AuditPage() {
                         className={`flex items-center gap-3 px-6 py-4 rounded-xl font-semibold transition-all ${
                           selectedCategory === index
                             ? 'bg-gradient-to-r from-[#199CB7] to-[#2ABED9] text-white shadow-lg shadow-[#199CB7]/25'
-                            : 'bg-digiqo-primary/50 text-digiqo-primary/50 hover:text-white border border-digiqo-primary/30'
+                            : 'bg-white/10 text-white/60 hover:text-white border border-white/20'
                         }`}
                       >
                         <Icon className="w-5 h-5" />
@@ -221,9 +221,9 @@ export default function AuditPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4 }}
-                  className="bg-digiqo-primary/50 backdrop-blur-sm rounded-2xl p-8 border border-digiqo-primary/30"
+                  className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20"
                 >
-                  <p className="text-white/70 mb-8 text-lg">
+                  <p className="text-white/80 mb-8 text-lg">
                     {auditCategories[selectedCategory].description}
                   </p>
                   
@@ -231,7 +231,7 @@ export default function AuditPage() {
                     {auditCategories[selectedCategory].points.map((point, index) => (
                       <div key={index} className="flex items-center space-x-3">
                         <Check className="h-5 w-5 text-[#199CB7] flex-shrink-0" />
-                        <span className="text-white/70">{point}</span>
+                        <span className="text-white/80">{point}</span>
                       </div>
                     ))}
                   </div>
@@ -239,14 +239,14 @@ export default function AuditPage() {
               </div>
             </motion.section>
 
-            {/* Process Section */}
+            {/* Process Section - Fond blanc */}
             <motion.section
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="mb-20"
+              className="-mx-4 px-4 py-20 bg-white rounded-3xl shadow-xl mb-20"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-digiqo-primary mb-12 text-center">
                 Comment ça marche ?
               </h2>
 
@@ -263,17 +263,17 @@ export default function AuditPage() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.4, delay: 0.1 * index }}
-                      className="flex items-center space-x-6"
+                      className="flex items-center space-x-6 bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300"
                     >
-                      <div className="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-r from-[#199CB7] to-[#2ABED9] flex items-center justify-center text-white text-2xl font-bold">
+                      <div className="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-r from-[#199CB7] to-[#2ABED9] flex items-center justify-center text-white text-2xl font-bold shadow-lg">
                         {item.step}
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-semibold text-white mb-1">{item.title}</h3>
-                        <p className="text-digiqo-primary/50">{item.desc}</p>
+                        <h3 className="text-xl font-semibold text-digiqo-primary mb-1">{item.title}</h3>
+                        <p className="text-gray-600">{item.desc}</p>
                       </div>
                       {index < 3 && (
-                        <ChevronRight className="w-6 h-6 text-digiqo-primary/60" />
+                        <ChevronRight className="w-6 h-6 text-gray-400" />
                       )}
                     </motion.div>
                   ))}
@@ -288,11 +288,11 @@ export default function AuditPage() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="text-center"
             >
-              <div className="bg-gradient-to-r from-[#199CB7]/20 to-[#2ABED9]/20 rounded-2xl p-12 border border-[#199CB7]/30">
+              <div className="bg-gradient-to-r from-[#199CB7]/20 to-[#2ABED9]/20 backdrop-blur-md rounded-2xl p-12 border border-[#199CB7]/30">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                   Prêt à booster votre présence digitale ?
                 </h2>
-                <p className="text-xl text-white/70 mb-8 max-w-2xl mx-auto">
+                <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
                   Découvrez gratuitement les opportunités d'amélioration de votre stratégie digitale
                 </p>
                 <Link href={generateContactUrl({
@@ -305,7 +305,7 @@ export default function AuditPage() {
                     J'en profite - C'est gratuit !
                   </Button>
                 </Link>
-                <p className="text-digiqo-primary/50 text-sm mt-4">
+                <p className="text-white/60 text-sm mt-4">
                   Aucune carte bancaire requise • Résultats sous 48h
                 </p>
               </div>

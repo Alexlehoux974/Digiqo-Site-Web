@@ -11,3 +11,6 @@ export { default as TeslaIcon } from './TeslaIcon'
 
 // Export tech icons
 export * from './TechIcons'
+
+// Export social icons
+export * from './SocialIcons'

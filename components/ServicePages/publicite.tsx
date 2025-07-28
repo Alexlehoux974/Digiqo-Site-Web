@@ -450,9 +450,10 @@ export default function PublicitePage() {
             </button>
           </motion.div>
 
-          {/* Formula Cards */}
-          <div className="space-y-8 max-w-5xl mx-auto">
-            {formulas.map((formula, index) => {
+          {/* Formula Cards - Mode normal ou comparatif */}
+          {!compareMode ? (
+            <div className="space-y-8 max-w-5xl mx-auto">
+              {formulas.map((formula, index) => {
               const [isFlipped, setIsFlipped] = useState(false)
               const [activeSection, setActiveSection] = useState<string | null>(null)
               const [mobileActiveSection, setMobileActiveSection] = useState<string | null>(null)
@@ -723,7 +724,118 @@ export default function PublicitePage() {
                 </motion.div>
               )
             })}
-          </div>
+            </div>
+          ) : (
+            /* Vue comparative */
+            <motion.div
+              {...ANIMATION.entry.fadeInUp}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="max-w-7xl mx-auto"
+            >
+              <div className="overflow-x-auto">
+                <table className="w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+                  <thead>
+                    <tr className="bg-gradient-to-r from-digiqo-primary to-digiqo-primary/80 text-white">
+                      <th className="p-6 text-left">Caractéristiques</th>
+                      {formulas.map((formula) => (
+                        <th key={formula.id} className="p-6 text-center">
+                          <div className="space-y-2">
+                            <h3 className="text-2xl font-bold">{formula.name}</h3>
+                            <p className="text-3xl font-bold">{formula.price.monthly}</p>
+                            <p className="text-sm opacity-80">/mois</p>
+                          </div>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {/* Budget géré */}
+                    <tr className="border-t border-digiqo-primary/10">
+                      <td className="p-4 font-medium text-digiqo-primary">Budget publicitaire géré</td>
+                      <td className="p-4 text-center">Jusqu'à 1 000€</td>
+                      <td className="p-4 text-center">Jusqu'à 2 500€</td>
+                    </tr>
+                    {/* Campagnes simultanées */}
+                    <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
+                      <td className="p-4 font-medium text-digiqo-primary">Campagnes simultanées</td>
+                      <td className="p-4 text-center">3 max</td>
+                      <td className="p-4 text-center">4 max</td>
+                    </tr>
+                    {/* Créatifs offerts */}
+                    <tr className="border-t border-digiqo-primary/10">
+                      <td className="p-4 font-medium text-digiqo-primary">Créatifs publicitaires/mois</td>
+                      <td className="p-4 text-center">3 offerts</td>
+                      <td className="p-4 text-center">3 offerts</td>
+                    </tr>
+                    {/* Audiences similaires */}
+                    <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
+                      <td className="p-4 font-medium text-digiqo-primary">Audiences similaires</td>
+                      <td className="p-4 text-center">
+                        <X className="w-5 h-5 text-red-500 mx-auto" />
+                      </td>
+                      <td className="p-4 text-center">
+                        <CheckCircle2 className="w-5 h-5 text-green-500 mx-auto" />
+                      </td>
+                    </tr>
+                    {/* Optimisation */}
+                    <tr className="border-t border-digiqo-primary/10">
+                      <td className="p-4 font-medium text-digiqo-primary">Optimisation</td>
+                      <td className="p-4 text-center">Hebdomadaire</td>
+                      <td className="p-4 text-center">Hebdomadaire avancée</td>
+                    </tr>
+                    {/* Support */}
+                    <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
+                      <td className="p-4 font-medium text-digiqo-primary">Support</td>
+                      <td className="p-4 text-center">Canal dédié</td>
+                      <td className="p-4 text-center">Canal prioritaire</td>
+                    </tr>
+                    {/* Rapports */}
+                    <tr className="border-t border-digiqo-primary/10">
+                      <td className="p-4 font-medium text-digiqo-primary">Rapports</td>
+                      <td className="p-4 text-center">Réguliers</td>
+                      <td className="p-4 text-center">Détaillés bi-mensuels</td>
+                    </tr>
+                    {/* Bonus annuel */}
+                    <tr className="border-t border-digiqo-primary/10 bg-gradient-to-r from-digiqo-accent/10 to-amber-500/10">
+                      <td className="p-4 font-medium text-digiqo-primary">Bonus forfait annuel</td>
+                      <td className="p-4 text-center">
+                        <div className="space-y-1">
+                          <p className="text-sm">Vidéo 1h + montage</p>
+                          <p className="text-xs text-digiqo-primary/60">2 retouches incluses</p>
+                        </div>
+                      </td>
+                      <td className="p-4 text-center">
+                        <div className="space-y-1">
+                          <p className="text-sm font-medium">Vidéo premium 1h</p>
+                          <p className="text-xs text-digiqo-primary/60">Révisions illimitées</p>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* CTA */}
+                    <tr className="bg-gradient-to-r from-digiqo-primary/5 to-digiqo-accent/5">
+                      <td className="p-6" colSpan={3}>
+                        <div className="flex flex-col md:flex-row gap-4 justify-center">
+                          {formulas.map((formula) => (
+                            <motion.a
+                              key={formula.id}
+                              href={generateContactUrl({ formula: formula.name.toLowerCase() })}
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              className={`inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-xl shadow-lg`}
+                            >
+                              Choisir {formula.name}
+                              <ArrowUpRight className="w-5 h-5" />
+                            </motion.a>
+                          ))}
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </motion.div>
+          )}
 
           {/* Additional formulas mention */}
           <motion.div

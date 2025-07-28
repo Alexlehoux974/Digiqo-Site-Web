@@ -122,7 +122,7 @@ export default function VideoPage() {
             <Link href="/#contact">
               <Button
                 variant="ghost"
-                className="mb-8 text-digiqo-primary/50 hover:text-white"
+                className="mb-8 text-white/60 hover:text-white"
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Retour aux services
@@ -138,35 +138,35 @@ export default function VideoPage() {
               <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#DA6530] to-[#E6834F] bg-clip-text text-transparent">
                 Visuels et Vidéos Publicitaires
               </h1>
-              <p className="text-xl text-white/70 max-w-3xl mx-auto">
+              <p className="text-xl text-white/80 max-w-3xl mx-auto">
                 Nous créons votre contenu, pour vous et à votre image.
               </p>
             </motion.div>
 
-            {/* Production Vidéo Section */}
+            {/* Production Vidéo Section - Fond blanc */}
             <motion.section
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mb-20"
+              className="-mx-4 px-4 py-20 bg-white rounded-3xl shadow-xl mb-20"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-digiqo-primary mb-4 text-center">
                 Production Vidéo pour les Réseaux Sociaux
               </h2>
-              <p className="text-white/70 text-center mb-12 max-w-3xl mx-auto">
+              <p className="text-gray-700 text-center mb-12 max-w-3xl mx-auto">
                 {videoPackage.description}
               </p>
 
               <div className="max-w-4xl mx-auto">
-                <div className="bg-digiqo-primary/50 backdrop-blur-sm rounded-2xl p-8 border border-digiqo-primary/30">
+                <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
                   <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
                     <div>
-                      <h3 className="text-2xl font-bold text-white mb-2">{videoPackage.name}</h3>
-                      <p className="text-digiqo-primary/50">Votre message, au bon format, prêt à performer.</p>
+                      <h3 className="text-2xl font-bold text-digiqo-primary mb-2">{videoPackage.name}</h3>
+                      <p className="text-gray-600">Votre message, au bon format, prêt à performer.</p>
                     </div>
                     <div className="mt-4 md:mt-0 text-right">
                       <p className="text-4xl font-bold text-[#DA6530]">{videoPackage.price}</p>
-                      <p className="text-digiqo-primary/50">par vidéo</p>
+                      <p className="text-gray-600">par vidéo</p>
                     </div>
                   </div>
 
@@ -177,7 +177,7 @@ export default function VideoPage() {
                       return (
                         <div key={index} className="flex items-start space-x-3">
                           <Icon className="h-5 w-5 text-[#DA6530] mt-0.5 flex-shrink-0" />
-                          <span className="text-white/70">{feature}</span>
+                          <span className="text-gray-700">{feature}</span>
                         </div>
                       )
                     })}
@@ -205,25 +205,25 @@ export default function VideoPage() {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 text-center">
                 Création de Visuels Publicitaires
               </h2>
-              <p className="text-white/70 text-center mb-8 max-w-3xl mx-auto">
+              <p className="text-white/80 text-center mb-8 max-w-3xl mx-auto">
                 Nous concevons des visuels impactants, adaptés à tous les formats Meta (fil, story, reel). 
                 Design soigné, messages percutants et optimisation pour l'engagement et la conversion.
               </p>
-              <p className="text-digiqo-primary/50 text-center mb-12">
+              <p className="text-white text-center mb-12 font-semibold">
                 Options disponibles :
               </p>
 
               {/* Package Selector */}
               <div className="flex justify-center mb-12">
-                <div className="bg-digiqo-primary/50 backdrop-blur-sm rounded-lg p-1 inline-flex">
+                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-1 inline-flex">
                   {Object.keys(visualPackages).map((period) => (
                     <button
                       key={period}
                       onClick={() => setSelectedPeriod(period as '1' | '3' | '5' | '10')}
                       className={`px-6 py-3 rounded-md font-semibold transition-all ${
                         selectedPeriod === period
-                          ? 'bg-gradient-to-r from-[#DA6530] to-[#E6834F] text-white'
-                          : 'text-digiqo-primary/50 hover:text-white'
+                          ? 'bg-gradient-to-r from-[#DA6530] to-[#E6834F] text-white shadow-lg'
+                          : 'bg-white/10 text-white hover:bg-white/20'
                       }`}
                     >
                       {visualPackages[period].quantity} visuel{visualPackages[period].quantity > 1 ? 's' : ''}
@@ -233,7 +233,7 @@ export default function VideoPage() {
               </div>
 
               <div className="max-w-4xl mx-auto">
-                <div className="bg-digiqo-primary/50 backdrop-blur-sm rounded-2xl p-8 border border-digiqo-primary/30">
+                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
                   <div className="text-center mb-8">
                     <h3 className="text-2xl font-bold text-white mb-4">
                       Créatif publicitaire ({visualPackages[selectedPeriod].quantity} visuel{visualPackages[selectedPeriod].quantity > 1 ? 's' : ''})
@@ -244,14 +244,14 @@ export default function VideoPage() {
                   </div>
 
                   <div className="mb-8">
-                    <p className="text-white/70 mb-6">
+                    <p className="text-white/80 mb-6">
                       Visuel publicitaire fixe, spécialement conçu pour la diffusion sur Meta (Facebook & Instagram).
                     </p>
                     <div className="space-y-4">
                       {visualFeatures.map((feature, index) => (
                         <div key={index} className="flex items-start space-x-3">
                           <Check className="h-5 w-5 text-[#DA6530] mt-0.5 flex-shrink-0" />
-                          <span className="text-white/70">{feature}</span>
+                          <span className="text-gray-700">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -283,27 +283,27 @@ export default function VideoPage() {
               </Link>
             </motion.div>
 
-            {/* SEA Section */}
+            {/* SEA Section - Fond blanc */}
             <motion.section
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="mb-20"
+              className="-mx-4 px-4 py-20 bg-white rounded-3xl shadow-xl mb-20"
             >
-              <div className="bg-gradient-to-r from-digiqo-primary/80 to-digiqo-primary/70 rounded-2xl p-12 text-center">
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <div className="text-center">
+                <h2 className="text-3xl md:text-4xl font-bold text-digiqo-primary mb-4">
                   Publicité sur les Moteurs de Recherche (SEA)
                 </h2>
-                <p className="text-xl text-white/70 mb-8 max-w-2xl mx-auto">
+                <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
                   Nous créons, pilotons et optimisons vos campagnes publicitaires sur les moteurs de recherche.
                 </p>
-                <p className="text-lg text-digiqo-primary/50 mb-8">Uniquement sur devis</p>
+                <p className="text-lg text-gray-600 mb-8 font-semibold">Uniquement sur devis</p>
                 <Link href={generateContactUrl({
                   service: 'video',
                   description: 'Je souhaite être rappelé pour discuter de mes besoins en publicité sur les moteurs de recherche (SEA)'
                 })}>
                   <Button 
-                    className="bg-white text-digiqo-primary hover:bg-digiqo-primary/10 font-semibold py-6 px-8 text-lg"
+                    className="bg-gradient-to-r from-[#DA6530] to-[#E6834F] hover:from-[#C5541F] hover:to-[#D6723F] text-white font-semibold py-6 px-8 text-lg"
                   >
                     <Phone className="mr-2 h-5 w-5" />
                     Être rappelé(e)
@@ -319,7 +319,7 @@ export default function VideoPage() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="text-center"
             >
-              <p className="text-2xl text-white/70 mb-8">Besoin d'un site web ?</p>
+              <p className="text-2xl text-white/80 mb-8">Besoin d'un site web ?</p>
               <Link href="/services/dev-web">
                 <Button className="bg-gradient-to-r from-[#199CB7] to-[#2ABED9] hover:from-[#1890AA] hover:to-[#25ACC7] text-white font-semibold py-6 px-8 text-lg">
                   Découvrir nos Services Web
