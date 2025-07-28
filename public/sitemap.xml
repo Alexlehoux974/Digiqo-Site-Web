@@ -1,73 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://digiqo.com</loc>
+    <loc>https://digiqo.fr</loc>
     <lastmod>2025-07-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://digiqo.com/contact</loc>
+    <loc>https://digiqo.fr/contact</loc>
     <lastmod>2025-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://digiqo.com/mentions-legales</loc>
+    <loc>https://digiqo.fr/mentions-legales</loc>
     <lastmod>2025-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://digiqo.com/politique-confidentialite</loc>
+    <loc>https://digiqo.fr/politique-confidentialite</loc>
     <lastmod>2025-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://digiqo.com/services/publicite</loc>
+    <loc>https://digiqo.fr/services/publicite</loc>
     <lastmod>2025-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://digiqo.com/services/dev-web</loc>
+    <loc>https://digiqo.fr/services/dev-web</loc>
     <lastmod>2025-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://digiqo.com/services/community</loc>
+    <loc>https://digiqo.fr/services/community</loc>
     <lastmod>2025-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://digiqo.com/services/seo</loc>
+    <loc>https://digiqo.fr/services/seo</loc>
     <lastmod>2025-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://digiqo.com/services/video</loc>
+    <loc>https://digiqo.fr/services/video</loc>
     <lastmod>2025-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://digiqo.com/services/identite</loc>
+    <loc>https://digiqo.fr/services/identite</loc>
     <lastmod>2025-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://digiqo.com/services/audit</loc>
+    <loc>https://digiqo.fr/services/audit</loc>
     <lastmod>2025-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://digiqo.com/services/sitekeeper</loc>
+    <loc>https://digiqo.fr/services/sitekeeper</loc>
     <lastmod>2025-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
