@@ -74,7 +74,7 @@ const benefits = [
     highlight: false
   },
   {
-    title: '+100 clients',
+    title: '167+ clients',
     description: 'TPE, PME, commerçants ou indépendants : on a boosté la visibilité de nombreuses marques locales grâce au digital.',
     icon: Users,
     highlight: false
@@ -321,25 +321,6 @@ export default function KapNumerik() {
               </motion.div>
             </motion.div>
             
-            {/* Scroll indicator */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.5, duration: 1 }}
-              className="absolute bottom-10 left-1/2 -translate-x-1/2"
-            >
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center"
-              >
-                <motion.div
-                  animate={{ y: [0, 20, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                  className="w-1 h-3 bg-gray-400 rounded-full mt-2"
-                />
-              </motion.div>
-            </motion.div>
           </div>
         </section>
 
@@ -653,7 +634,7 @@ export default function KapNumerik() {
                   <p className="text-sm font-medium text-gray-700">Information certifiée et vérifiée</p>
                 </div>
                 <a 
-                  href="https://regionreunion.com/aides-services/article/kap-numerik" 
+                  href="https://demarches.cr-reunion.fr/economie/kap-numerik-2023/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-3 text-transparent bg-clip-text bg-gradient-to-r from-digiqo-secondary to-digiqo-primary font-bold text-lg hover:from-digiqo-primary hover:to-digiqo-accent transition-all duration-300"
@@ -820,7 +801,7 @@ export default function KapNumerik() {
         </motion.section>
 
         {/* Why Choose Digiqo - Modern Grid */}
-        <section className="py-32 relative overflow-hidden bg-gradient-to-b from-white to-gray-50">
+        <section className="py-24 relative overflow-hidden bg-gradient-to-b from-white to-gray-50">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -928,9 +909,9 @@ export default function KapNumerik() {
               className="text-center mt-12 p-8 bg-digiqo-secondary/5 rounded-lg"
             >
               <p className="text-lg text-gray-700">
-                De l'audit à la réalisation, Digiqo vous guide à chaque étape.<br/>
-                Nos experts vous conseillent, structurent votre projet et assurent la mise en œuvre 
-                de votre stratégie digitale avec méthode et efficacité.
+                De l'audit à la réalisation, Digiqo vous accompagne dans votre projet digital.<br/>
+                <span className="text-base">Nous vous fournissons tous les éléments nécessaires (devis, documents techniques, etc.) 
+                pour votre dossier Kap Numérik. La démarche administrative reste à votre charge.</span>
               </p>
             </motion.div>
           </div>
@@ -1197,7 +1178,7 @@ export default function KapNumerik() {
                   >
                     📞
                   </motion.span>
-                  <span>0693 73 72 97</span>
+                  <span>0262 02 51 02</span>
                 </motion.a>
               </motion.div>
               

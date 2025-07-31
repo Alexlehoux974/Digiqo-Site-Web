@@ -16,7 +16,7 @@ export default function ConditionsGeneralesVente() {
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">1. Préambule</h2>
           <p className="mb-4">Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre :</p>
           <ul className="space-y-2 text-gray-700">
-            <li>✔ <strong>Le Prestataire :</strong> Digiqo, marque exploitée par ARA CORP. (SAS au capital de 1 000 €), immatriculée sous le numéro 941 181 232, dont le siège social est situé au 8 rue Boulot 97400 Saint Denis</li>
+            <li>✔ <strong>Le Prestataire :</strong> Digiqo, marque exploitée par ARA CORP. (SAS au capital de 1 000 €), immatriculée sous le numéro 941 181 232, dont le siège social est situé au 8 ruelle Boulot 97400 Saint-Denis</li>
             <li>✔ <strong>Le Client :</strong> Toute personne physique ou morale achetant une prestation ou un service via le site https://digiqo.fr/.</li>
           </ul>
         </section>
@@ -123,7 +123,7 @@ export default function ConditionsGeneralesVente() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">12. Contact</h2>
           <ul className="space-y-2 text-gray-700">
-            <li>📍 <strong>Adresse :</strong> ARA CORP. – 8 rue Boulot 97400 Saint Denis</li>
+            <li>📍 <strong>Adresse :</strong> ARA CORP. – 8 ruelle Boulot 97400 Saint-Denis</li>
             <li>📧 <strong>E-mail :</strong> <a href="mailto:contact@digiqo.fr" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">contact@digiqo.fr</a></li>
             <li>📞 <strong>Téléphone :</strong> <a href="tel:+262262025102" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">02 62 02 51 02</a></li>
           </ul>

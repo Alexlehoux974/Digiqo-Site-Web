@@ -36,7 +36,7 @@ export const servicePageToFormMapping: Record<string, {
     defaultDescription: 'J\'ai besoin d\'un service de maintenance et sécurité pour mon site web.'
   },
   'kap-numerik': {
-    formServiceId: 'other',
+    formServiceId: 'website', // Using website service since it's about digital presence
     defaultDescription: 'Je souhaite bénéficier du Kap Numérik pour développer ma présence digitale.'
   },
   'formations': {

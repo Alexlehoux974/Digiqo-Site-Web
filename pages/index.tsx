@@ -323,12 +323,14 @@ export default function Home() {
   useInstantScroll()
   
   useEffect(() => {
-    // Forcer le scroll au top après le montage complet du DOM
-    const timer = setTimeout(() => {
-      window.scrollTo(0, 0)
-    }, 100)
-    
-    return () => clearTimeout(timer)
+    // Forcer le scroll au top après le montage complet du DOM, sauf s'il y a un hash
+    if (!window.location.hash) {
+      const timer = setTimeout(() => {
+        window.scrollTo(0, 0)
+      }, 100)
+      
+      return () => clearTimeout(timer)
+    }
   }, [])
 
   return (

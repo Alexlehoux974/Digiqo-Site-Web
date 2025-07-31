@@ -69,21 +69,21 @@ export const Footer = () => {
                   />
                 </Link>
               </div>
-              <p className="text-white/80 mb-6 text-lg">
+              <p className="text-white font-semibold mb-6 text-lg">
                 Votre partenaire digital depuis 2020
               </p>
               <div className="space-y-3">
-                <a href="tel:+262262025102" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
+                <a href="tel:+262262025102" className="flex items-center gap-3 text-white font-medium hover:text-white transition-colors">
                   <Phone className="w-5 h-5" />
-                  <span>+262 262 02 51 02</span>
+                  <span className="font-semibold">+262 262 02 51 02</span>
                 </a>
-                <a href="mailto:contact@digiqo.fr" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
+                <a href="mailto:contact@digiqo.fr" className="flex items-center gap-3 text-white font-medium hover:text-white transition-colors">
                   <Mail className="w-5 h-5" />
-                  <span>contact@digiqo.fr</span>
+                  <span className="font-semibold">contact@digiqo.fr</span>
                 </a>
-                <div className="flex items-start gap-3 text-white/80">
+                <div className="flex items-start gap-3 text-white font-medium">
                   <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
-                  <span>Saint-Denis, La Réunion</span>
+                  <span className="font-semibold">Saint-Denis, La Réunion</span>
                 </div>
               </div>
             </motion.div>
@@ -101,7 +101,7 @@ export const Footer = () => {
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-white/80 hover:text-white transition-colors duration-200 flex items-center gap-2 group"
+                      className="text-white font-medium hover:text-white transition-colors duration-200 flex items-center gap-2 group"
                     >
                       <span className="w-1 h-1 bg-digiqo-accent rounded-full group-hover:w-2 transition-all duration-200" />
                       {item.name}
@@ -124,7 +124,7 @@ export const Footer = () => {
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-white/80 hover:text-white transition-colors duration-200 flex items-center gap-2 group"
+                      className="text-white font-medium hover:text-white transition-colors duration-200 flex items-center gap-2 group"
                     >
                       <span className="w-1 h-1 bg-digiqo-accent rounded-full group-hover:w-2 transition-all duration-200" />
                       {item.name}
@@ -145,7 +145,7 @@ export const Footer = () => {
               
               {/* Newsletter */}
               <div className="mb-8">
-                <p className="text-white/80 mb-4">Recevez nos dernières actualités</p>
+                <p className="text-white font-medium mb-4">Recevez nos dernières actualités</p>
                 <form className="flex flex-col gap-3">
                   <input
                     type="email"
@@ -163,7 +163,7 @@ export const Footer = () => {
 
               {/* Social links */}
               <div>
-                <p className="text-white/80 mb-4">Suivez-nous</p>
+                <p className="text-white font-medium mb-4">Suivez-nous</p>
                 <div className="flex flex-wrap gap-3">
                   {navigation.social.map((item) => {
                     const Icon = item.icon
@@ -192,7 +192,7 @@ export const Footer = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               {/* Copyright */}
-              <div className="text-white/60 text-sm text-center md:text-left">
+              <div className="text-white font-medium text-sm text-center md:text-left">
                 © {currentYear} Digiqo. Tous droits réservés. Made with 
                 <span className="text-digiqo-accent mx-1">♥</span> 
                 in La Réunion 🇷🇪
@@ -204,7 +204,7 @@ export const Footer = () => {
                   <div key={item.name} className="flex items-center">
                     <Link
                       href={item.href}
-                      className="text-white/60 hover:text-white transition-colors duration-200"
+                      className="text-white font-medium hover:text-white transition-colors duration-200"
                     >
                       {item.name}
                     </Link>

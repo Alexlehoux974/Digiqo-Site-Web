@@ -25,11 +25,13 @@ export function ContactSection() {
     const { service, formula, description } = router.query
     
     if (service || formula) {
-      // Auto-scroll to contact section using hash navigation
-      // This bypasses scroll blocking from other components
+      // Auto-scroll to contact section with a more direct approach
       setTimeout(() => {
-        window.location.hash = 'contact'
-      }, 100)
+        const contactSection = document.getElementById('contact')
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 300) // Increased delay to ensure page is fully loaded
       
       // Get the mapping based on service or formula
       let mapping = null

@@ -19,9 +19,6 @@ export function generateContactUrl(params: {
     queryParams.append('description', params.description)
   }
   
-  // Add a flag to indicate instant scroll
-  queryParams.append('instant', 'true')
-  
   const queryString = queryParams.toString()
   return `${baseUrl}${queryString ? '?' + queryString : ''}#contact`
 }

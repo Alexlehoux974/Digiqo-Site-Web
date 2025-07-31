@@ -20,7 +20,7 @@ export default function MentionsLegales() {
             et des Sociétés de Saint-Denis sous le numéro 941 181 232.
           </p>
           <ul className="space-y-2 text-gray-700">
-            <li>📍 <strong>Siège social :</strong> 8 rue Boulot 97400 Saint Denis</li>
+            <li>📍 <strong>Siège social :</strong> 8 ruelle Boulot 97400 Saint-Denis</li>
             <li>📧 <strong>E-mail :</strong> <a href="mailto:contact@digiqo.fr" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">contact@digiqo.fr</a></li>
             <li>📞 <strong>Téléphone :</strong> <a href="tel:+262262025102" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">02 62 02 51 02</a></li>
             <li>📜 <strong>Numéro SIREN :</strong> 941 181 232</li>
@@ -116,7 +116,7 @@ export default function MentionsLegales() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">10. Contact</h2>
           <ul className="space-y-2 text-gray-700">
-            <li>📍 <strong>Adresse postale :</strong> ARA CORP. – 8 rue Boulot 97400 Saint Denis</li>
+            <li>📍 <strong>Adresse postale :</strong> ARA CORP. – 8 ruelle Boulot 97400 Saint-Denis</li>
             <li>📧 <strong>E-mail :</strong> <a href="mailto:contact@digiqo.fr" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">contact@digiqo.fr</a></li>
             <li>📞 <strong>Téléphone :</strong> <a href="tel:+262262025102" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">02 62 02 51 02</a></li>
           </ul>

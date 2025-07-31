@@ -1034,16 +1034,6 @@ export default function Agence() {
                     </motion.div>
                   </Link>
                 </motion.div>
-                
-                <motion.a
-                  href="/?instant=true#contact"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 px-10 py-5 bg-transparent border-2 border-white text-white font-bold rounded-2xl hover:bg-white/10 transition-all duration-300"
-                >
-                  <span className="text-lg">Contactez-nous</span>
-                  <ArrowRight className="w-6 h-6" />
-                </motion.a>
               </motion.div>
               
               {/* Animated trust indicators */}
