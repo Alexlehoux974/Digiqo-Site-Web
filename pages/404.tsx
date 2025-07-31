@@ -262,8 +262,8 @@ export default function Custom404() {
               className="mt-12 text-white/60 text-sm"
             >
               PS : Si vous êtes vraiment perdu, appelez-nous au{' '}
-              <a href="tel:+262692731111" className="text-digiqo-accent hover:text-digiqo-secondary transition-colors">
-                0692 73 11 11
+              <a href="tel:+262262025102" className="text-digiqo-accent hover:text-digiqo-secondary transition-colors">
+                +262 262 02 51 02
               </a>
               {' '}— on a le GPS marketing ! 📍
             </motion.p>

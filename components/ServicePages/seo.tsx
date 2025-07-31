@@ -25,6 +25,7 @@ import { generateContactUrl } from '../../lib/contact-utils'
 import { ParticleSystem, SEOParticleSystem } from '@/components/ui/floating-particles'
 import { HeroGradientOrbs } from '@/components/ui/animated-gradient-orb'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
+import { ServiceHero } from './ServiceHero'
 
 
 // Composant de métrique animée
@@ -145,269 +146,31 @@ export default function SEOPage() {
         />
       </Head>
 
-      {/* Hero Section Premium */}
-      <section className="relative min-h-[80vh] pt-32 flex items-center justify-center overflow-hidden">
-        {/* Gradient animé sophistiqué */}
-        <div className="absolute inset-0 bg-gradient-to-br from-digiqo-primary via-digiqo-secondary to-digiqo-secondary">
-          <motion.div
-            className="absolute inset-0"
-            style={{
-              background: 'radial-gradient(circle at 20% 50%, rgba(218, 101, 48, 0.3) 0%, transparent 50%)',
-            }}
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.5, 0.3],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-        </div>
-        
-        {/* Particules flottantes */}
-        <ParticleSystem count={30} />
-        
-        {/* Grille 3D en arrière-plan */}
-        <div className="absolute inset-0">
-          <motion.div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-                               linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)`,
-              backgroundSize: '50px 50px',
-              transform: 'perspective(1000px) rotateX(60deg)',
-              transformOrigin: 'center center',
-            }}
-            animate={{
-              backgroundPosition: ['0px 0px', '50px 50px'],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
-        </div>
-        
-        {/* Orbes lumineuses animées */}
-        <HeroGradientOrbs />
-
-        <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
-          {/* Badge premium animé */}
-          <motion.div
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: ANIMATION.duration.slow, type: "spring" }}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white/20 backdrop-blur-xl rounded-full mb-8 border border-white/30"
-          >
-            <Rocket className="w-5 h-5 text-white" />
-            <span className="text-white font-semibold">Leader SEO à La Réunion depuis 2019</span>
-            <div className="flex items-center gap-1">
-              {[...Array(5)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: getStaggerDelay(i, ANIMATION.delay.stagger) + 0.5 }}
-                >
-                  <Award className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-          
-          {/* Icône 3D avec effets */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5, rotateY: -180 }}
-            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-            transition={{ ...ANIMATION.ease.springBounce, duration: ANIMATION.duration.verySlow }}
-            className="relative inline-block mb-8"
-          >
-            <div className="relative w-32 h-32">
-              {/* Cercles concentriques animés */}
-              <motion.div
-                className="absolute inset-0 rounded-full border-2 border-white/20"
-                animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0, 0.5] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              />
-              <motion.div
-                className="absolute inset-0 rounded-full border-2 border-white/20"
-                animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0, 0.3] }}
-                transition={{ duration: 3, delay: 0.5, repeat: Infinity }}
-              />
-              <motion.div
-                className="absolute inset-0 rounded-full border-2 border-white/20"
-                animate={{ scale: [1, 1.7, 1], opacity: [0.2, 0, 0.2] }}
-                transition={{ duration: 3, delay: 1, repeat: Infinity }}
-              />
-              
-              {/* Icône centrale */}
-              <motion.div
-                className="relative w-full h-full bg-white/20 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/30 flex items-center justify-center"
-                whileHover={{ ...ANIMATION.hover.scaleLarge, rotate: 5 }}
-                animate={{ 
-                  boxShadow: [
-                    '0 25px 50px -12px rgba(139, 20, 49, 0.25)',
-                    '0 25px 50px -12px rgba(25, 156, 183, 0.25)',
-                    '0 25px 50px -12px rgba(218, 101, 48, 0.25)',
-                    '0 25px 50px -12px rgba(139, 20, 49, 0.25)'
-                  ]
-                }}
-                transition={{ 
-                  boxShadow: { duration: 4, repeat: Infinity },
-                  scale: { type: "spring" }
-                }}
-              >
-                <Search className="w-16 h-16 text-white" />
-              </motion.div>
-            </div>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ delay: ANIMATION.delay.section, duration: ANIMATION.duration.slow, type: "spring" }}
-            className="text-5xl md:text-7xl font-bold text-white mb-8"
-          >
-            <motion.span
-              className="inline-block"
-              animate={{ 
-                backgroundImage: [
-                  'linear-gradient(to right, #FFFFFF, #FFFFFF)',
-                  'linear-gradient(to right, #FFFFFF, #DA6530)',
-                  'linear-gradient(to right, #DA6530, #199CB7)',
-                  'linear-gradient(to right, #199CB7, #FFFFFF)',
-                  'linear-gradient(to right, #FFFFFF, #FFFFFF)'
-                ]
-              }}
-              transition={{ duration: 6, repeat: Infinity }}
-              style={{
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                color: 'transparent',
-                backgroundSize: '200% 100%'
-              }}
-            >
-              Dominez Google
-            </motion.span>
-            <br />
-            <span className="text-4xl md:text-6xl">avec le SEO Premium</span>
-          </motion.h1>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: ANIMATION.duration.normal }}
-            className="max-w-4xl mx-auto mb-8"
-          >
-            <p className="text-xl md:text-2xl text-white/90 font-light mb-4">
-              Propulsez votre entreprise en <span className="font-bold text-digiqo-accent">première page</span> avec notre expertise SEO locale
-            </p>
-            <p className="text-lg text-white/80">
-              <span className="font-semibold">+312%</span> de trafic organique moyen • 
-              <span className="font-semibold">Top 3 Google</span> en 6 mois • 
-              <span className="font-semibold">ROI garanti</span>
-            </p>
-          </motion.div>
-
-          {/* CTAs avec animation sophistiquée */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: ANIMATION.duration.normal }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
-            <motion.a
-              href={generateContactUrl({ 
-                service: 'seo',
-                description: 'Je veux dominer Google avec le SEO premium' 
-              })}
-              className="group relative inline-flex items-center gap-3 px-10 py-5 bg-white text-digiqo-primary font-bold rounded-full overflow-hidden shadow-2xl"
-              whileHover={ANIMATION.hover.scale}
-              whileTap={ANIMATION.tap.scale}
-            >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-digiqo-accent to-digiqo-primary"
-                initial={{ x: '100%' }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: ANIMATION.duration.fast }}
-              />
-              <span className="relative z-10 group-hover:text-white transition-colors">Audit SEO Gratuit</span>
-              <motion.div
-                className="relative z-10"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                <ArrowRight className="w-6 h-6 group-hover:text-white transition-colors" />
-              </motion.div>
-            </motion.a>
-            
-            <motion.a
-              href="#resultats"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-md text-white font-bold rounded-full border-2 border-white/30 hover:bg-white/20 transition-all duration-300"
-              whileHover={ANIMATION.hover.scale}
-              whileTap={ANIMATION.tap.scale}
-            >
-              <Eye className="w-5 h-5" />
-              <span>Voir nos résultats</span>
-            </motion.a>
-          </motion.div>
-          
-          {/* Métriques en temps réel */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: ANIMATION.duration.normal }}
-            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
-          >
-            <motion.div
-              className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20"
-              whileHover={{ ...ANIMATION.hover.scale, backgroundColor: 'rgba(255,255,255,0.15)' }}
-            >
-              <TrendingUp className="w-8 h-8 text-white mb-2" />
-              <div className="text-3xl font-bold text-white">
-                <AnimatedMetric value={127} suffix="+" delay={1000} />
-              </div>
-              <div className="text-sm text-white/70">Clients en 1ère page</div>
-            </motion.div>
-            
-            <motion.div
-              className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20"
-              whileHover={{ ...ANIMATION.hover.scale, backgroundColor: 'rgba(255,255,255,0.15)' }}
-            >
-              <Activity className="w-8 h-8 text-white mb-2" />
-              <div className="text-3xl font-bold text-white">
-                <AnimatedMetric value={892} suffix="K" delay={1200} />
-              </div>
-              <div className="text-sm text-white/70">Visiteurs générés</div>
-            </motion.div>
-            
-            <motion.div
-              className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20"
-              whileHover={{ ...ANIMATION.hover.scale, backgroundColor: 'rgba(255,255,255,0.15)' }}
-            >
-              <MousePointer className="w-8 h-8 text-white mb-2" />
-              <div className="text-3xl font-bold text-white">
-                <AnimatedMetric value={46} suffix="%" delay={1400} />
-              </div>
-              <div className="text-sm text-white/70">Taux de clic moyen</div>
-            </motion.div>
-            
-            <motion.div
-              className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20"
-              whileHover={{ ...ANIMATION.hover.scale, backgroundColor: 'rgba(255,255,255,0.15)' }}
-            >
-              <Clock className="w-8 h-8 text-white mb-2" />
-              <div className="text-3xl font-bold text-white">
-                <AnimatedMetric value={24} suffix="/7" delay={1600} />
-              </div>
-              <div className="text-sm text-white/70">Monitoring actif</div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Hero Section */}
+      <ServiceHero
+        icon={Search}
+        title={{
+          line1: "Dominez Google",
+          line2: "avec le SEO Premium"
+        }}
+        subtitle="Propulsez votre entreprise en première page avec notre expertise SEO locale. +312% de trafic organique moyen • Top 3 Google en 6 mois • ROI garanti"
+        ctaButtons={{
+          primary: {
+            text: "Audit SEO Gratuit",
+            href: generateContactUrl({ 
+              service: 'seo',
+              description: 'Je veux dominer Google avec le SEO premium' 
+            })
+          },
+          secondary: {
+            text: "Voir nos résultats",
+            href: "#resultats"
+          }
+        }}
+        gradientFrom="from-digiqo-secondary"
+        gradientTo="to-blue-400"
+        iconColor="text-digiqo-secondary"
+      />
 
       {/* Section Résultats Premium avec animations 3D */}
       <section id="resultats" className="py-24 bg-gradient-to-b from-digiqo-secondary/5 to-white relative overflow-hidden">
@@ -1048,7 +811,7 @@ export default function SEOPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1103,7 +866,7 @@ export default function SEOPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-digiqo-secondary to-digiqo-secondary/80">
+      <section className="py-24 bg-gradient-to-br from-digiqo-secondary to-digiqo-secondary/80">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

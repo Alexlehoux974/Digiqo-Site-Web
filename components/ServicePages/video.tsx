@@ -2,11 +2,13 @@ import { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Check, Palette, Camera, Edit3, Music, Smartphone, RefreshCw, Phone } from 'lucide-react'
+import { Check, Palette, Camera, Edit3, Music, Smartphone, RefreshCw, Video, ArrowRight } from 'lucide-react'
 import { Button } from '../../components/ui/button'
 import ServiceLayout from '../../components/ServiceLayout/ServiceLayout'
 import { servicesSEO } from '../../lib/seo-data'
 import { generateContactUrl } from '../../lib/contact-utils'
+import { ServiceHero } from './ServiceHero'
+import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 
 interface VideoPackage {
   name: string
@@ -97,7 +99,7 @@ export default function VideoPage() {
   }
 
   return (
-    <>
+    <ServiceLayout>
       <Head>
         <title>{seoData.title}</title>
         <meta name="description" content={seoData.description} />
@@ -116,219 +118,226 @@ export default function VideoPage() {
         />
       </Head>
 
-      <ServiceLayout>
-        <div className="min-h-screen bg-gradient-to-b from-digiqo-primary via-digiqo-primary/90 to-digiqo-primary">
-          <div className="container mx-auto px-4 py-20">
-            <Link href="/#contact">
-              <Button
-                variant="ghost"
-                className="mb-8 text-white/60 hover:text-white"
-              >
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Retour aux services
-              </Button>
-            </Link>
+      {/* Hero Section */}
+      <ServiceHero
+        icon={Video}
+        title={{
+          line1: "Visuels et Vidéos",
+          line2: "Publicitaires"
+        }}
+        subtitle="Nous créons votre contenu, pour vous et à votre image."
+        ctaButtons={{
+          primary: {
+            text: "Découvrir nos offres",
+            href: "#offres"
+          },
+          secondary: {
+            text: "Commander maintenant",
+            href: generateContactUrl({ service: 'video' })
+          }
+        }}
+        gradientFrom="from-digiqo-accent"
+        gradientTo="to-orange-500"
+        iconColor="text-digiqo-accent"
+      />
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-16"
-            >
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#DA6530] to-[#E6834F] bg-clip-text text-transparent">
-                Visuels et Vidéos Publicitaires
-              </h1>
-              <p className="text-xl text-white/80 max-w-3xl mx-auto">
-                Nous créons votre contenu, pour vous et à votre image.
-              </p>
-            </motion.div>
+      {/* Production Vidéo Section */}
+      <section id="offres" className="py-24 bg-gradient-to-br from-white to-digiqo-accent/5">
+        <div className="max-w-7xl mx-auto px-4">
+          <motion.div
+            {...ANIMATION.entry.fadeInUp}
+            whileInView={ANIMATION.entry.fadeInUp.animate}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              Production <span className="bg-gradient-to-r from-digiqo-accent to-orange-500 bg-clip-text text-transparent">Vidéo</span>
+            </h2>
+            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
+              {videoPackage.description}
+            </p>
+          </motion.div>
 
-            {/* Production Vidéo Section - Fond blanc */}
-            <motion.section
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="-mx-4 px-4 py-20 bg-white rounded-3xl shadow-xl mb-20"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-digiqo-primary mb-4 text-center">
-                Production Vidéo pour les Réseaux Sociaux
-              </h2>
-              <p className="text-gray-700 text-center mb-12 max-w-3xl mx-auto">
-                {videoPackage.description}
-              </p>
-
-              <div className="max-w-4xl mx-auto">
-                <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
-                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
-                    <div>
-                      <h3 className="text-2xl font-bold text-digiqo-primary mb-2">{videoPackage.name}</h3>
-                      <p className="text-gray-600">Votre message, au bon format, prêt à performer.</p>
-                    </div>
-                    <div className="mt-4 md:mt-0 text-right">
-                      <p className="text-4xl font-bold text-[#DA6530]">{videoPackage.price}</p>
-                      <p className="text-gray-600">par vidéo</p>
-                    </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-4 mb-8">
-                    {videoPackage.features.map((feature, index) => {
-                      const icons = [Camera, Edit3, Edit3, Edit3, Music, Smartphone, Palette, RefreshCw]
-                      const Icon = icons[index] || Check
-                      return (
-                        <div key={index} className="flex items-start space-x-3">
-                          <Icon className="h-5 w-5 text-[#DA6530] mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700">{feature}</span>
-                        </div>
-                      )
-                    })}
-                  </div>
-
-                  <Link href={generateContactUrl({
-                    service: 'video',
-                    description: 'Je souhaite commander une production vidéo professionnelle'
-                  })}>
-                    <Button className="w-full bg-gradient-to-r from-[#DA6530] to-[#E6834F] hover:from-[#C5541F] hover:to-[#D6723F] text-white font-semibold py-6 text-lg">
-                      Acheter
-                    </Button>
-                  </Link>
+          <motion.div
+            {...ANIMATION.entry.fadeInUpLarge}
+            whileInView={ANIMATION.entry.fadeInUpLarge.animate}
+            viewport={{ once: true }}
+            transition={{ delay: getStaggerDelay(0) }}
+            className="max-w-4xl mx-auto"
+          >
+            <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                <div>
+                  <h3 className="text-2xl font-bold text-digiqo-primary mb-2">{videoPackage.name}</h3>
+                  <p className="text-gray-600">Votre message, au bon format, prêt à performer.</p>
+                </div>
+                <div className="mt-4 md:mt-0 text-right">
+                  <p className="text-4xl font-bold text-digiqo-accent">{videoPackage.price}</p>
+                  <p className="text-gray-600">par vidéo</p>
                 </div>
               </div>
-            </motion.section>
 
-            {/* Création de Visuels Section */}
-            <motion.section
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="mb-20"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 text-center">
-                Création de Visuels Publicitaires
-              </h2>
-              <p className="text-white/80 text-center mb-8 max-w-3xl mx-auto">
-                Nous concevons des visuels impactants, adaptés à tous les formats Meta (fil, story, reel). 
-                Design soigné, messages percutants et optimisation pour l'engagement et la conversion.
-              </p>
-              <p className="text-white text-center mb-12 font-semibold">
-                Options disponibles :
-              </p>
-
-              {/* Package Selector */}
-              <div className="flex justify-center mb-12">
-                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-1 inline-flex">
-                  {Object.keys(visualPackages).map((period) => (
-                    <button
-                      key={period}
-                      onClick={() => setSelectedPeriod(period as '1' | '3' | '5' | '10')}
-                      className={`px-6 py-3 rounded-md font-semibold transition-all ${
-                        selectedPeriod === period
-                          ? 'bg-gradient-to-r from-[#DA6530] to-[#E6834F] text-white shadow-lg'
-                          : 'bg-white/10 text-white hover:bg-white/20'
-                      }`}
+              <div className="grid md:grid-cols-2 gap-4 mb-8">
+                {videoPackage.features.map((feature, index) => {
+                  const icons = [Camera, Edit3, Edit3, Edit3, Music, Smartphone, Palette, RefreshCw]
+                  const Icon = icons[index] || Check
+                  return (
+                    <motion.div 
+                      key={index} 
+                      {...ANIMATION.entry.fadeInUp}
+                      whileInView={ANIMATION.entry.fadeInUp.animate}
+                      viewport={{ once: true }}
+                      transition={{ delay: getStaggerDelay(index) }}
+                      className="flex items-start space-x-3"
                     >
-                      {visualPackages[period].quantity} visuel{visualPackages[period].quantity > 1 ? 's' : ''}
-                    </button>
+                      <Icon className="h-5 w-5 text-digiqo-accent mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700">{feature}</span>
+                    </motion.div>
+                  )
+                })}
+              </div>
+
+              <motion.a
+                href={generateContactUrl({
+                  service: 'video',
+                  description: 'Je souhaite commander une production vidéo professionnelle'
+                })}
+                whileHover={ANIMATION.hover.scale}
+                whileTap={ANIMATION.tap.scale}
+                className="block"
+              >
+                <Button className="w-full bg-gradient-to-r from-digiqo-accent to-orange-500 hover:from-digiqo-accent/90 hover:to-orange-500/90 text-white font-semibold py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                  Commander une vidéo
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </motion.a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Création de Visuels Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <motion.div
+            {...ANIMATION.entry.fadeInUp}
+            whileInView={ANIMATION.entry.fadeInUp.animate}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              Création de <span className="bg-gradient-to-r from-digiqo-accent to-orange-500 bg-clip-text text-transparent">Visuels</span>
+            </h2>
+            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto mb-8">
+              Nous concevons des visuels impactants, adaptés à tous les formats Meta (fil, story, reel). 
+              Design soigné, messages percutants et optimisation pour l'engagement et la conversion.
+            </p>
+          </motion.div>
+
+          {/* Package Selector */}
+          <div className="flex justify-center mb-12">
+            <div className="bg-gray-100 rounded-full p-1 inline-flex">
+              {Object.keys(visualPackages).map((period) => (
+                <button
+                  key={period}
+                  onClick={() => setSelectedPeriod(period as '1' | '3' | '5' | '10')}
+                  className={`px-6 py-3 rounded-full font-semibold transition-all ${
+                    selectedPeriod === period
+                      ? 'bg-gradient-to-r from-digiqo-accent to-orange-500 text-white shadow-lg'
+                      : 'text-gray-600 hover:text-gray-800'
+                  }`}
+                >
+                  {visualPackages[period].quantity} visuel{visualPackages[period].quantity > 1 ? 's' : ''}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <motion.div
+            {...ANIMATION.entry.fadeInUpLarge}
+            whileInView={ANIMATION.entry.fadeInUpLarge.animate}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-digiqo-primary mb-4">
+                  Créatif publicitaire ({visualPackages[selectedPeriod].quantity} visuel{visualPackages[selectedPeriod].quantity > 1 ? 's' : ''})
+                </h3>
+                <div className="flex items-baseline justify-center gap-2">
+                  <p className="text-5xl font-bold text-digiqo-accent">
+                    {visualPackages[selectedPeriod].price}
+                  </p>
+                  <span className="text-gray-600">soit {visualPackages[selectedPeriod].pricePerVisual}/visuel</span>
+                </div>
+              </div>
+
+              <div className="mb-8">
+                <p className="text-gray-700 mb-6 text-center">
+                  Visuel publicitaire fixe, spécialement conçu pour la diffusion sur Meta (Facebook & Instagram).
+                </p>
+                <div className="space-y-4">
+                  {visualFeatures.map((feature, index) => (
+                    <motion.div 
+                      key={index}
+                      {...ANIMATION.entry.fadeInUp}
+                      whileInView={ANIMATION.entry.fadeInUp.animate}
+                      viewport={{ once: true }}
+                      transition={{ delay: getStaggerDelay(index) }}
+                      className="flex items-start space-x-3"
+                    >
+                      <Check className="h-5 w-5 text-digiqo-accent mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700">{feature}</span>
+                    </motion.div>
                   ))}
                 </div>
               </div>
 
-              <div className="max-w-4xl mx-auto">
-                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
-                  <div className="text-center mb-8">
-                    <h3 className="text-2xl font-bold text-white mb-4">
-                      Créatif publicitaire ({visualPackages[selectedPeriod].quantity} visuel{visualPackages[selectedPeriod].quantity > 1 ? 's' : ''})
-                    </h3>
-                    <p className="text-5xl font-bold text-[#DA6530]">
-                      {visualPackages[selectedPeriod].price}
-                    </p>
-                  </div>
-
-                  <div className="mb-8">
-                    <p className="text-white/80 mb-6">
-                      Visuel publicitaire fixe, spécialement conçu pour la diffusion sur Meta (Facebook & Instagram).
-                    </p>
-                    <div className="space-y-4">
-                      {visualFeatures.map((feature, index) => (
-                        <div key={index} className="flex items-start space-x-3">
-                          <Check className="h-5 w-5 text-[#DA6530] mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <Link href={generateContactUrl({
-                    service: 'video',
-                    description: `Je souhaite commander ${visualPackages[selectedPeriod].quantity} visuel${visualPackages[selectedPeriod].quantity > 1 ? 's' : ''} publicitaire${visualPackages[selectedPeriod].quantity > 1 ? 's' : ''}`
-                  })}>
-                    <Button className="w-full bg-gradient-to-r from-[#DA6530] to-[#E6834F] hover:from-[#C5541F] hover:to-[#D6723F] text-white font-semibold py-6 text-lg">
-                      Acheter
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </motion.section>
-
-            {/* Contact Link */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-center mb-20"
-            >
-              <Link href="/#contact">
-                <Button className="bg-gradient-to-r from-[#199CB7] to-[#2ABED9] hover:from-[#1890AA] hover:to-[#25ACC7] text-white font-semibold py-6 px-8 text-lg">
-                  Nous contacter
-                </Button>
-              </Link>
-            </motion.div>
-
-            {/* SEA Section - Fond blanc */}
-            <motion.section
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="-mx-4 px-4 py-20 bg-white rounded-3xl shadow-xl mb-20"
-            >
-              <div className="text-center">
-                <h2 className="text-3xl md:text-4xl font-bold text-digiqo-primary mb-4">
-                  Publicité sur les Moteurs de Recherche (SEA)
-                </h2>
-                <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-                  Nous créons, pilotons et optimisons vos campagnes publicitaires sur les moteurs de recherche.
-                </p>
-                <p className="text-lg text-gray-600 mb-8 font-semibold">Uniquement sur devis</p>
-                <Link href={generateContactUrl({
+              <motion.a
+                href={generateContactUrl({
                   service: 'video',
-                  description: 'Je souhaite être rappelé pour discuter de mes besoins en publicité sur les moteurs de recherche (SEA)'
-                })}>
-                  <Button 
-                    className="bg-gradient-to-r from-[#DA6530] to-[#E6834F] hover:from-[#C5541F] hover:to-[#D6723F] text-white font-semibold py-6 px-8 text-lg"
-                  >
-                    <Phone className="mr-2 h-5 w-5" />
-                    Être rappelé(e)
-                  </Button>
-                </Link>
-              </div>
-            </motion.section>
-
-            {/* CTA Final */}
-            <motion.section
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="text-center"
-            >
-              <p className="text-2xl text-white/80 mb-8">Besoin d'un site web ?</p>
-              <Link href="/services/dev-web">
-                <Button className="bg-gradient-to-r from-[#199CB7] to-[#2ABED9] hover:from-[#1890AA] hover:to-[#25ACC7] text-white font-semibold py-6 px-8 text-lg">
-                  Découvrir nos Services Web
+                  description: `Je souhaite commander ${visualPackages[selectedPeriod].quantity} visuel${visualPackages[selectedPeriod].quantity > 1 ? 's' : ''} publicitaire${visualPackages[selectedPeriod].quantity > 1 ? 's' : ''}`
+                })}
+                whileHover={ANIMATION.hover.scale}
+                whileTap={ANIMATION.tap.scale}
+                className="block"
+              >
+                <Button className="w-full bg-gradient-to-r from-digiqo-accent to-orange-500 hover:from-digiqo-accent/90 hover:to-orange-500/90 text-white font-semibold py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                  Commander {visualPackages[selectedPeriod].quantity} visuel{visualPackages[selectedPeriod].quantity > 1 ? 's' : ''}
+                  <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-              </Link>
-            </motion.section>
-          </div>
+              </motion.a>
+            </div>
+          </motion.div>
         </div>
-      </ServiceLayout>
-    </>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 bg-gradient-to-br from-digiqo-primary via-digiqo-primary/90 to-digiqo-primary">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <motion.div
+            {...ANIMATION.entry.fadeInUp}
+            whileInView={ANIMATION.entry.fadeInUp.animate}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Prêt à créer du contenu qui performe ?
+            </h2>
+            <p className="text-xl text-white/80 mb-10">
+              Contactez-nous pour discuter de votre projet vidéo ou visuel
+            </p>
+            <motion.a
+              href={generateContactUrl({ service: 'video' })}
+              whileHover={ANIMATION.hover.scale}
+              whileTap={ANIMATION.tap.scale}
+              className="inline-flex items-center gap-3 px-8 py-4 bg-white text-digiqo-primary font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              Contactez-nous
+              <ArrowRight className="w-5 h-5" />
+            </motion.a>
+          </motion.div>
+        </div>
+      </section>
+    </ServiceLayout>
   )
 }

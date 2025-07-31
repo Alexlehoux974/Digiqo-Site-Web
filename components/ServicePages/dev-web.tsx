@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 import { CodeParticleSystem } from '@/components/ui/floating-particles'
 import { HeroGradientOrbs, SectionGradientOrbs } from '@/components/ui/animated-gradient-orb'
+import { ServiceHero } from './ServiceHero'
 import { 
   Code, 
   ArrowRight, 
@@ -354,164 +355,28 @@ export default function DevWebPage() {
         />
       </Head>
 
-      {/* Hero Section Premium */}
-      <section className="relative min-h-screen pt-32 flex items-center justify-center overflow-hidden bg-gradient-to-br from-digiqo-primary via-digiqo-secondary/20 to-digiqo-primary">
-        {/* Grid 3D Background */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('/assets/grid.svg')] bg-center opacity-10" />
-          
-          {/* Animated gradient orbs */}
-          <HeroGradientOrbs />
-        </div>
-
-        {/* Floating code particles */}
-        <CodeParticleSystem count={30} />
-
-        <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
-          {/* Premium badge */}
-          <motion.div
-            {...ANIMATION.entry.fadeInUp}
-            initial={{ ...ANIMATION.entry.fadeInUp.initial, y: -20 }}
-            transition={{ duration: ANIMATION.duration.normal }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-digiqo-accent to-orange-500 text-white text-sm font-bold rounded-full mb-8"
-          >
-            <Sparkles className="w-4 h-4" />
-            DÉVELOPPEMENT WEB PREMIUM
-            <Sparkles className="w-4 h-4" />
-          </motion.div>
-
-          {/* 3D animated icon */}
-          <motion.div
-            {...ANIMATION.entry.springIn}
-            transition={{ 
-              ...ANIMATION.ease.spring,
-              stiffness: 260,
-              damping: 20,
-              delay: 0.2 
-            }}
-            className="relative inline-flex mb-8"
-          >
-            {/* Concentric circles animation */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              {[...Array(3)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute w-32 h-32 border border-digiqo-secondary/20 rounded-full"
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{
-                    scale: [0.8, 1.5 + i * 0.5, 0.8],
-                    opacity: [0, 0.3, 0],
-                  }}
-                  transition={{
-                    duration: ANIMATION.duration.verySlow * 2,
-                    repeat: Infinity,
-                    delay: i * 0.8,
-                    ease: "easeOut"
-                  }}
-                />
-              ))}
-            </div>
-            
-            {/* Glass morphism card */}
-            <motion.div
-              animate={{ 
-                rotateY: [0, 360],
-              }}
-              transition={{ 
-                duration: ANIMATION.duration.verySlow * 13, 
-                repeat: Infinity,
-                ease: "linear"
-              }}
-              className="relative backdrop-blur-xl bg-white/10 p-8 rounded-3xl border border-white/20 shadow-2xl"
-            >
-              <Code className="w-16 h-16 text-digiqo-secondary" />
-            </motion.div>
-          </motion.div>
-
-          {/* Animated title */}
-          <motion.h1
-            {...ANIMATION.entry.fadeInUp}
-            transition={{ delay: ANIMATION.delay.section + 0.1, duration: ANIMATION.duration.normal }}
-            className="text-5xl md:text-7xl font-bold text-white mb-6"
-          >
-            <span className="block mb-2">Code qui</span>
-            <span className="relative">
-              <span className="absolute inset-0 bg-gradient-to-r from-digiqo-secondary via-digiqo-secondary/80 to-digiqo-accent bg-clip-text text-transparent blur-sm">
-                Performe
-              </span>
-              <span className="relative bg-gradient-to-r from-digiqo-secondary via-digiqo-secondary/80 to-digiqo-accent bg-clip-text text-transparent">
-                Performe
-              </span>
-            </span>
-          </motion.h1>
-
-          <motion.p
-            {...ANIMATION.entry.fadeInUp}
-            transition={{ delay: ANIMATION.delay.section * 2, duration: ANIMATION.duration.normal }}
-            className="text-xl md:text-2xl text-digiqo-primary/30 max-w-4xl mx-auto mb-12"
-          >
-            Sites web haute performance, sur-mesure et optimisés SEO. 
-            <span className="text-digiqo-secondary font-semibold"> Technologie de pointe</span>, 
-            <span className="text-digiqo-accent font-semibold"> design premium</span>, 
-            <span className="text-white font-semibold"> résultats garantis</span>.
-          </motion.p>
-
-          {/* Animated metrics */}
-          <motion.div
-            {...ANIMATION.entry.fadeInUpLarge}
-            transition={{ delay: ANIMATION.delay.section * 2.5, duration: ANIMATION.duration.normal }}
-            className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-12"
-          >
-            <AnimatedMetric value="95" suffix="%" label="Performance" delay={100} />
-            <AnimatedMetric value="100" suffix="%" label="Responsive" delay={300} />
-            <AnimatedMetric value="24" suffix="h" label="Support" delay={500} />
-          </motion.div>
-
-          {/* CTA Buttons */}
-          <motion.div
-            {...ANIMATION.entry.fadeInUp}
-            transition={{ delay: ANIMATION.delay.section * 3, duration: ANIMATION.duration.normal }}
-            className="flex flex-wrap gap-6 justify-center"
-          >
-            <motion.a
-              href="#formules"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group relative inline-flex items-center gap-3 px-8 py-4 overflow-hidden rounded-2xl font-bold"
-            >
-              {/* Gradient background with animation */}
-              <div className="absolute inset-0 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 transition-transform group-hover:scale-110" />
-              
-              {/* Glass overlay */}
-              <div className="absolute inset-0 backdrop-blur-sm bg-white/10" />
-              
-              {/* Content */}
-              <span className="relative text-white">Découvrir nos formules</span>
-              <ArrowRight className="relative w-5 h-5 text-white group-hover:translate-x-1 transition-transform" />
-            </motion.a>
-            
-            <motion.a
-              href="#portfolio"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group inline-flex items-center gap-3 px-8 py-4 bg-digiqo-primary/50 backdrop-blur-md text-white font-bold rounded-2xl border border-digiqo-primary/30 hover:border-digiqo-secondary transition-all duration-300"
-            >
-              <Globe className="w-5 h-5" />
-              Voir nos réalisations
-              <span className="inline-flex items-center justify-center w-6 h-6 bg-digiqo-accent text-white text-xs rounded-full">
-                5+
-              </span>
-            </motion.a>
-          </motion.div>
-        </div>
-
-        {/* Bottom wave decoration */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg className="w-full h-24 fill-white" viewBox="0 0 1440 48">
-            <path d="M0,48L60,42.7C120,37,240,27,360,26.7C480,27,600,37,720,40C840,43,960,37,1080,32C1200,27,1320,21,1380,18.7L1440,16L1440,48L1380,48C1320,48,1200,48,1080,48C960,48,840,48,720,48C600,48,480,48,360,48C240,48,120,48,60,48L0,48Z" />
-          </svg>
-        </div>
-      </section>
+      {/* Hero Section */}
+      <ServiceHero
+        icon={Code}
+        title={{
+          line1: "Code qui",
+          line2: "Performe"
+        }}
+        subtitle="Sites web haute performance, sur-mesure et optimisés SEO. Technologie de pointe, design premium, résultats garantis."
+        ctaButtons={{
+          primary: {
+            text: "Découvrir nos formules",
+            href: "#formules"
+          },
+          secondary: {
+            text: "Voir nos réalisations",
+            href: "#portfolio"
+          }
+        }}
+        gradientFrom="from-digiqo-secondary"
+        gradientTo="to-digiqo-secondary/80"
+        iconColor="text-digiqo-secondary"
+      />
 
       {/* Features Section Premium */}
       <section className="py-24 bg-gradient-to-br from-white to-digiqo-accent/5 relative overflow-hidden">
@@ -964,7 +829,7 @@ export default function DevWebPage() {
       </section>
 
       {/* Packages Section */}
-      <section id="formules" className="py-20 bg-white">
+      <section id="formules" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1507,7 +1372,7 @@ export default function DevWebPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-digiqo-secondary to-digiqo-secondary/80">
+      <section className="py-24 bg-gradient-to-br from-digiqo-secondary to-digiqo-secondary/80">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

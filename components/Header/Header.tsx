@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { OptimizedImage } from '../ui/OptimizedImage'
+import { Instagram, Facebook, Linkedin, Youtube, Phone } from 'lucide-react'
+import { SiTiktok, SiX } from 'react-icons/si'
 
 const navigation = {
   main: [
@@ -12,12 +14,12 @@ const navigation = {
       href: '#',
       submenu: [
         { name: 'Publicité en Ligne (SMA/SEA)', href: '/services/publicite' },
-        { name: 'Visuels et vidéos publicitaires', href: '/services/visuels' },
-        { name: 'Développement Web', href: '/services/developpement' },
+        { name: 'Production Vidéo', href: '/services/video' },
+        { name: 'Développement Web', href: '/services/dev-web' },
         { name: 'Référencement (SEO)', href: '/services/seo' },
         { name: 'Community Management', href: '/services/community' },
         { name: 'Identité de Marque', href: '/services/identite' },
-        { name: 'Forfaits SiteKeeper & ShopKeeper', href: '/services/forfaits' },
+        { name: 'Forfaits SiteKeeper', href: '/services/sitekeeper' },
         { name: 'Audit Gratuit', href: '/services/audit' },
       ]
     },
@@ -63,10 +65,10 @@ export const Header = () => {
               <OptimizedImage 
                 src="/assets/logo1.png" 
                 alt="Digiqo - Ladi Lafé Zot Pub!" 
-                width={160}
-                height={48}
+                width={200}
+                height={60}
                 priority
-                className="h-12 w-auto"
+                className="h-16 w-auto"
                 objectFit="contain"
               />
             </Link>
@@ -121,8 +123,71 @@ export const Header = () => {
             ))}
           </div>
 
-          {/* Action Buttons */}
-          <div className="hidden lg:flex items-center space-x-3">
+          {/* Phone, Social Links and Action Buttons */}
+          <div className="hidden lg:flex items-center space-x-4">
+            {/* Phone */}
+            <a href="tel:+262262025102" className="flex items-center gap-2 text-gray-700 hover:text-digiqo-primary transition-colors">
+              <Phone className="w-4 h-4" />
+              <span className="text-sm font-medium">+262 262 02 51 02</span>
+            </a>
+            
+            {/* Social Links */}
+            <div className="flex items-center gap-2 border-l border-gray-300 pl-4">
+              <a
+                href="https://www.instagram.com/digiqo_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-digiqo-primary transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.facebook.com/digiqo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-digiqo-primary transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.youtube.com/@digiqo_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-digiqo-primary transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-5 h-5" />
+              </a>
+              <a
+                href="https://twitter.com/digiqo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-digiqo-primary transition-colors"
+                aria-label="X (Twitter)"
+              >
+                <SiX className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.tiktok.com/@digiqo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-digiqo-primary transition-colors"
+                aria-label="TikTok"
+              >
+                <SiTiktok className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/digiqo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-digiqo-primary transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+            </div>
             {navigation.actions.map((action) => (
               <Link
                 key={action.name}

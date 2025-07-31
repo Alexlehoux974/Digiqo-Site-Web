@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 import { HeroGradientOrbs } from '@/components/ui/animated-gradient-orb'
+import { ServiceHero } from './ServiceHero'
 import { 
   TrendingUp, 
   Target, 

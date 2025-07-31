@@ -1,6 +1,8 @@
 import React from 'react';
+import Link from 'next/link';
 import { Timeline } from '../ui/timeline';
 import { OptimizedImage } from '../ui/OptimizedImage';
+import { generateContactUrl } from '@/lib/contact-utils';
 
 
 const timelineData = [
@@ -54,7 +56,7 @@ const timelineData = [
                 alt="Alexandre - Co-fondateur"
                 width={1024}
                 height={1024}
-                className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
                 objectFit="cover"
               />
               <div className="absolute inset-0 bg-gradient-to-br from-digiqo-secondary/20 to-transparent mix-blend-overlay"></div>
@@ -74,7 +76,7 @@ const timelineData = [
                 alt="Angelo - Co-fondateur"
                 width={1024}
                 height={1024}
-                className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
                 objectFit="cover"
               />
               <div className="absolute inset-0 bg-gradient-to-tl from-digiqo-accent/80 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500">
@@ -127,7 +129,7 @@ const timelineData = [
             <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center">
               <OptimizedImage src="/partenaires/META-1024x1024.webp" alt="Meta" width={1024} height={1024} className="w-24 h-24 mb-4 bg-white rounded-2xl p-3" objectFit="contain" />
               <h4 className="text-xl font-bold mb-2">Meta Certified</h4>
-              <p className="text-sm opacity-90">Business Partner 2022</p>
+              <p className="text-sm opacity-90">2022</p>
             </div>
             <div className="absolute inset-0 bg-white/10 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="absolute -top-12 -right-12 w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
@@ -225,16 +227,16 @@ const timelineData = [
                 alt="Adrien"
                 width={1024}
                 height={1024}
-                className="w-full h-64 object-cover rounded-2xl"
+                className="w-full h-64 object-cover rounded-2xl transition-all duration-700 group-hover:scale-110 object-top"
                 objectFit="cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-2xl">
                 <div className="absolute bottom-6 left-6 text-white">
                   <h4 className="text-2xl font-bold mb-1">Adrien</h4>
-                  <p className="text-sm opacity-90 mb-2">Lead Developer</p>
+                  <p className="text-sm opacity-90 mb-2">Expert Certifié META - Responsable SMA</p>
                   <div className="flex gap-2">
-                    <span className="px-2 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs">React Expert</span>
-                    <span className="px-2 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs">Full Stack</span>
+                    <span className="px-2 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs">META Expert</span>
+                    <span className="px-2 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs">SMA</span>
                   </div>
                 </div>
               </div>
@@ -250,16 +252,16 @@ const timelineData = [
                 alt="Thomas"
                 width={1024}
                 height={1024}
-                className="w-full h-64 object-cover rounded-2xl"
+                className="w-full h-64 object-cover rounded-2xl transition-all duration-700 group-hover:scale-110 object-top"
                 objectFit="cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-2xl">
                 <div className="absolute bottom-6 left-6 text-white">
                   <h4 className="text-2xl font-bold mb-1">Thomas</h4>
-                  <p className="text-sm opacity-90 mb-2">Creative Director</p>
+                  <p className="text-sm opacity-90 mb-2">Directeur Commercial</p>
                   <div className="flex gap-2">
-                    <span className="px-2 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs">UI/UX</span>
-                    <span className="px-2 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs">Design System</span>
+                    <span className="px-2 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs">Commercial</span>
+                    <span className="px-2 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs">Stratégie</span>
                   </div>
                 </div>
               </div>
@@ -274,7 +276,7 @@ const timelineData = [
               </div>
               <h4 className="text-xl font-bold text-gray-800 mb-2">Clients actifs</h4>
               <p className="text-sm text-gray-600">
-                De La Réunion et d'ailleurs
+                Qui nous font confiance
               </p>
             </div>
             <div className="absolute -bottom-12 -right-12 w-32 h-32 bg-digiqo-primary/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
@@ -358,10 +360,10 @@ const timelineData = [
                 </svg>
               </div>
               <h4 className="text-xl font-bold text-gray-900 mb-2">
-                Vidéo Pro Offerte
+                Vidéo offerte
               </h4>
               <p className="text-sm text-gray-600 mb-4">
-                Production professionnelle incluse dans chaque partenariat.
+                Vidéo offerte dans chaque nouveau partenariat
               </p>
               <div className="flex gap-2">
                 <span className="px-3 py-1 bg-digiqo-secondary/10 rounded-full text-xs font-semibold text-digiqo-secondary">4K</span>
@@ -401,9 +403,9 @@ const timelineData = [
               <p className="text-sm text-gray-300 mb-4">
                 Rejoignez les leaders qui nous font confiance.
               </p>
-              <button className="bg-white text-gray-900 font-bold px-6 py-2 rounded-full hover:scale-105 transition-transform">
+              <Link href="/#contact" className="inline-block bg-white text-gray-900 font-bold px-6 py-2 rounded-full hover:scale-105 transition-transform">
                 Découvrir
-              </button>
+              </Link>
             </div>
             <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
           </div>

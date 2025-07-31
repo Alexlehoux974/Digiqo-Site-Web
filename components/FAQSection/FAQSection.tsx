@@ -11,7 +11,7 @@ export const FAQSection: React.FC = () => {
   const activeSection = faqSections[activeIndex];
 
   return (
-    <section id="faq" className="relative bg-gradient-to-b from-digiqo-primary via-red-950 to-black py-20 overflow-hidden">
+    <section id="faq" className="relative bg-gradient-to-b from-digiqo-primary via-red-950 to-black py-12 overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Animated gradient orbs */}
@@ -56,14 +56,14 @@ export const FAQSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-6"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-3">
             <span className="text-white">
               Questions Fréquentes
             </span>
           </h2>
-          <div className="w-24 h-1 bg-digiqo-secondary mx-auto mb-4 rounded-full" />
+          <div className="w-24 h-1 bg-digiqo-secondary mx-auto mb-3 rounded-full" />
           <p className="text-white/80 text-lg max-w-2xl mx-auto">
             Trouvez rapidement les réponses à vos questions sur nos services et notre fonctionnement
           </p>
@@ -75,7 +75,7 @@ export const FAQSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-center mb-8"
+          className="text-center mb-4"
         >
           <h3 
             className="text-3xl font-bold relative inline-block"
@@ -93,29 +93,31 @@ export const FAQSection: React.FC = () => {
             {activeSection.title}
           </h3>
         </motion.div>
+      </div>
 
-        {/* FAQ Navigation */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-0"
-        >
-          <FAQTabs 
-            sections={faqSections}
-            activeIndex={activeIndex}
-            onTabChange={setActiveIndex}
-          />
-        </motion.div>
+      {/* FAQ Navigation - Outside container for full width */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="mb-0 relative z-10"
+      >
+        <FAQTabs 
+          sections={faqSections}
+          activeIndex={activeIndex}
+          onTabChange={setActiveIndex}
+        />
+      </motion.div>
 
+      <div className="container mx-auto px-4 relative z-10">
         {/* FAQ Content with negative margin to overlap with spotlight */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="min-h-[400px] -mt-32 relative z-10"
+          className="min-h-[300px] -mt-24 relative z-10"
         >
           {faqSections.map((section, index) => (
             <FAQContent
@@ -132,7 +134,7 @@ export const FAQSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center mt-16"
+          className="text-center mt-8"
         >
           <p className="text-gray-400 mb-6">
             Vous ne trouvez pas la réponse à votre question ?

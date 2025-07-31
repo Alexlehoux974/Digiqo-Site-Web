@@ -67,7 +67,15 @@
       "Bash(touch:*)",
       "Bash(npx tsc:*)",
       "Bash(PORT=3000 npm run dev)",
-      "mcp___21st-dev_magic__logo_search"
+      "mcp___21st-dev_magic__logo_search",
+      "Bash(chmod:*)",
+      "Bash(python:*)",
+      "Bash(command -v:*)",
+      "Bash(sudo apt-get:*)",
+      "Bash(./scripts/convert-threads-logo-potrace.sh:*)",
+      "Bash(bash:*)",
+      "Bash(convert:*)",
+      "Bash(potrace:*)"
     ],
     "deny": []
   }

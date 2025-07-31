@@ -35,11 +35,13 @@ import {
   FacebookIcon as FacebookSocialIcon,
   TwitterIcon,
   LinkedInIcon as LinkedInSocialIcon,
-  TikTokIcon
+  TikTokIcon,
+  ThreadsIcon
 } from '@/components/icons'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
 import { generateContactUrl } from '../../lib/contact-utils'
+import { ServiceHero } from './ServiceHero'
 
 interface Formula {
   id: string
@@ -357,15 +359,15 @@ const AnimatedEngagement = ({ value, label, suffix = '', icon: Icon, delay = 0 }
       transition={{ duration: ANIMATION.duration.normal, delay: delay / 1000 }}
       className="relative"
     >
-      <div className="bg-digiqo-primary/50 backdrop-blur-xl rounded-2xl p-6 border border-white/10">
+      <div className="bg-white rounded-2xl p-6 border border-digiqo-accent/20 shadow-lg hover:shadow-xl transition-shadow">
         <div className="flex items-center justify-between mb-2">
           <Icon className="w-6 h-6 text-digiqo-accent" />
-          <span className="text-xs text-digiqo-primary/40 uppercase tracking-wider">{label}</span>
+          <span className="text-xs text-digiqo-primary/60 uppercase tracking-wider font-semibold">{label}</span>
         </div>
-        <div className="text-3xl font-bold text-white">
+        <div className="text-3xl font-bold text-digiqo-primary">
           {count.toLocaleString()}{suffix}
         </div>
-        <div className="mt-2 h-1 bg-digiqo-primary/30 rounded-full overflow-hidden">
+        <div className="mt-2 h-1 bg-digiqo-accent/10 rounded-full overflow-hidden">
           <motion.div
             initial={{ width: 0 }}
             animate={isInView ? { width: '100%' } : {}}
@@ -447,125 +449,81 @@ export default function CommunityPage() {
         />
       </Head>
 
-      {/* Hero Section avec design premium */}
-      <section className="relative min-h-[90vh] pt-32 flex items-center justify-center overflow-hidden bg-gradient-to-br from-digiqo-primary via-digiqo-secondary/20 to-digiqo-primary">
-        {/* 3D Grid Background */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-digiqo-primary/50 to-digiqo-primary" />
-        </div>
-        
-        {/* Animated gradient orbs */}
-        <HeroGradientOrbs />
-        
-        {/* Floating social media particles */}
-        <IconParticleSystem 
-          count={20}
-          icons={socialIcons}
-          particleClassName="absolute text-digiqo-accent/20 text-digiqo-secondary/20 text-digiqo-primary/20 pointer-events-none w-8 h-8"
-        />
+      {/* Hero Section */}
+      <ServiceHero
+        icon={MessageCircle}
+        title={{
+          line1: "Animez votre",
+          line2: "Communauté Digitale"
+        }}
+        subtitle="Community Management haute performance. Engagement authentique, croissance organique, résultats mesurables."
+        ctaButtons={{
+          primary: {
+            text: "Découvrir nos formules",
+            href: "#formules"
+          },
+          secondary: {
+            text: "Demander un devis",
+            href: generateContactUrl({ service: 'community' })
+          }
+        }}
+        gradientFrom="from-digiqo-accent"
+        gradientTo="to-purple-500"
+        iconColor="text-digiqo-accent"
+      />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ 
-              type: "spring",
-              stiffness: 260,
-              damping: 20
-            }}
-            className="inline-flex mb-8"
-          >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-digiqo-accent to-digiqo-primary rounded-3xl blur-2xl opacity-50 animate-pulse" />
-              <motion.div
-                animate={{ rotateY: 360 }}
-                transition={{ ...ANIMATION.loop.rotate.transition }}
-                className="relative bg-digiqo-primary/80 backdrop-blur-xl p-8 rounded-3xl border border-white/10"
-              >
-                <MessageCircle className="w-16 h-16 text-transparent bg-gradient-to-br from-digiqo-accent to-digiqo-primary bg-clip-text" 
-                  style={{ 
-                    fill: 'url(#community-gradient)',
-                    stroke: 'url(#community-gradient)' 
-                  }} 
-                />
-                <svg width="0" height="0">
-                  <defs>
-                    <linearGradient id="community-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#f472b6" />
-                      <stop offset="100%" stopColor="#9333ea" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </motion.div>
-            </div>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: ANIMATION.delay.section * 0.67, duration: ANIMATION.duration.slow }}
-            className="text-5xl md:text-7xl font-bold mb-6"
-          >
-            <span className="text-white">Animez votre</span>
-            <br />
-            <span className="bg-gradient-to-r from-digiqo-accent via-digiqo-primary to-digiqo-secondary bg-clip-text text-transparent animate-gradient">
-              Communauté Digitale
-            </span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: ANIMATION.delay.section * 1.33, duration: ANIMATION.duration.normal }}
-            className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-12"
-          >
-            Community Management haute performance.
-            <br />
-            Engagement authentique, croissance organique, résultats mesurables.
-          </motion.p>
-          
-          {/* Animated engagement metrics */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-12"
-          >
-            <AnimatedEngagement value={250} label="Engagement" suffix="%" icon={Activity} delay={100} />
-            <AnimatedEngagement value={15000} label="Followers" suffix="+" icon={Users} delay={200} />
-            <AnimatedEngagement value={98} label="Satisfaction" suffix="%" icon={Heart} delay={300} />
-            <AnimatedEngagement value={500} label="Publications" suffix="+" icon={MessageSquare} delay={400} />
-          </motion.div>
-
+      {/* Metrics Section - Résultats chiffrés */}
+      <section className="py-24 bg-gradient-to-br from-white to-digiqo-accent/5 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: ANIMATION.delay.section * 2, duration: ANIMATION.duration.normal }}
-            className="flex flex-wrap gap-4 justify-center"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
           >
-            <a
-              href="#formules"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-digiqo-secondary font-bold rounded-full hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl"
-            >
-              Voir nos formules
-              <ArrowRight className="w-5 h-5" />
-            </a>
-            <a
-              href={generateContactUrl({
-                service: 'community',
-                description: 'Je souhaite en savoir plus sur vos services de community management'
-              })}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-digiqo-accent text-white font-bold rounded-full hover:bg-digiqo-accent-dark transition-all duration-300 shadow-lg hover:shadow-xl"
-            >
-              Demander un devis
-            </a>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              Des Résultats <span className="bg-gradient-to-r from-digiqo-accent to-digiqo-secondary bg-clip-text text-transparent">Mesurables</span>
+            </h2>
+            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
+              Nos clients constatent des améliorations significatives dès les premiers mois
+            </p>
           </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <AnimatedEngagement
+              value={1200}
+              label="Publications/An"
+              suffix="+"
+              icon={TrendingUp}
+              delay={100}
+            />
+            <AnimatedEngagement
+              value={98}
+              label="Satisfaction Client"
+              suffix="%"
+              icon={Heart}
+              delay={200}
+            />
+            <AnimatedEngagement
+              value={6000}
+              label="Followers Gagnés"
+              suffix="+"
+              icon={Users}
+              delay={300}
+            />
+            <AnimatedEngagement
+              value={67}
+              label="Taux d'Engagement"
+              suffix="%"
+              icon={Activity}
+              delay={400}
+            />
+          </div>
         </div>
       </section>
 
       {/* Process Section avec timeline interactive */}
-      <section className="py-24 bg-gradient-to-br from-white to-digiqo-accent/5 overflow-hidden">
+      <section className="py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -659,7 +617,7 @@ export default function CommunityPage() {
       </section>
       
       {/* Platforms Section avec animations */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -677,11 +635,51 @@ export default function CommunityPage() {
           
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
             {[
-              { name: 'Instagram', icon: InstagramIcon, color: 'from-digiqo-secondary to-digiqo-accent', stats: '1.5B users' },
-              { name: 'Facebook', icon: FacebookSocialIcon, color: 'from-blue-600 to-blue-500', stats: '2.9B users' },
-              { name: 'Twitter', icon: TwitterIcon, color: 'from-sky-400 to-blue-500', stats: '450M users' },
-              { name: 'LinkedIn', icon: LinkedInSocialIcon, color: 'from-blue-700 to-blue-600', stats: '900M users' },
-              { name: 'TikTok', icon: TikTokIcon, color: 'from-digiqo-primary to-digiqo-primary/70', stats: '1B users' }
+              { 
+                name: 'Instagram', 
+                icon: InstagramIcon, 
+                gradient: true,
+                gradientColors: 'from-purple-600 via-pink-600 to-orange-500',
+                iconColor: 'text-white',
+                showLogo: false,
+                stats: '2B+ utilisateurs' 
+              },
+              { 
+                name: 'Facebook', 
+                icon: FacebookSocialIcon, 
+                gradient: false,
+                bgColor: 'bg-gray-100',
+                iconColor: '',
+                showLogo: true,
+                stats: '3B+ utilisateurs' 
+              },
+              { 
+                name: 'Threads', 
+                icon: ThreadsIcon, 
+                gradient: false,
+                bgColor: 'bg-white',
+                iconColor: 'text-black',
+                showLogo: true,
+                stats: '200M+ utilisateurs' 
+              },
+              { 
+                name: 'LinkedIn', 
+                icon: LinkedInSocialIcon, 
+                gradient: false,
+                bgColor: 'bg-gray-100',
+                iconColor: '',
+                showLogo: true,
+                stats: '1B+ utilisateurs' 
+              },
+              { 
+                name: 'TikTok', 
+                icon: TikTokIcon, 
+                gradient: false,
+                bgColor: 'bg-black',
+                iconColor: '',
+                showLogo: true,
+                stats: '1.5B+ utilisateurs' 
+              }
             ].map((platform, index) => (
               <motion.div
                 key={index}
@@ -689,18 +687,36 @@ export default function CommunityPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: getStaggerDelay(index) }}
-                whileHover={{ y: -10 }}
+                whileHover={{ y: -10, scale: 1.05 }}
                 className="relative group"
               >
-                <div className="bg-digiqo-accent/5 rounded-2xl p-8 text-center hover:bg-white hover:shadow-lg transition-all duration-300">
-                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${platform.color} text-white mb-4`}>
-                    <platform.icon className="w-8 h-8" />
+                <div className="bg-white rounded-2xl p-8 text-center shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100">
+                  <div className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-4 ${
+                    platform.gradient 
+                      ? `bg-gradient-to-br ${platform.gradientColors}` 
+                      : platform.bgColor
+                  } ${platform.name === 'Threads' ? 'border-2 border-black' : ''}`}>
+                    <platform.icon className={`${platform.showLogo ? 'w-12 h-12' : 'w-10 h-10'} ${platform.iconColor}`} />
                   </div>
-                  <h3 className="text-lg font-bold mb-2">{platform.name}</h3>
-                  <p className="text-sm text-digiqo-primary/50">{platform.stats}</p>
+                  <h3 className="text-lg font-bold mb-2 text-digiqo-primary">{platform.name}</h3>
+                  <p className="text-sm text-digiqo-primary/60 font-medium">{platform.stats}</p>
                   
-                  {/* Hover effect */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-transparent to-transparent group-hover:from-digiqo-accent/10 group-hover:to-digiqo-secondary/10 transition-all duration-300 pointer-events-none" />
+                  {/* Hover effect adapté selon la plateforme */}
+                  {platform.name === 'Instagram' && (
+                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 blur-xl" />
+                  )}
+                  {platform.name === 'Facebook' && (
+                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 bg-[#1877F2] blur-xl" />
+                  )}
+                  {platform.name === 'Threads' && (
+                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 bg-black blur-xl" />
+                  )}
+                  {platform.name === 'LinkedIn' && (
+                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 bg-[#0A66C2] blur-xl" />
+                  )}
+                  {platform.name === 'TikTok' && (
+                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 bg-gradient-to-br from-[#FF004F] to-[#00F2EA] blur-xl" />
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -709,7 +725,7 @@ export default function CommunityPage() {
       </section>
       
       {/* Benefits Section avec glassmorphism */}
-      <section className="py-20 bg-gradient-to-br from-digiqo-primary via-digiqo-secondary/20 to-digiqo-primary relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-digiqo-primary via-digiqo-secondary/20 to-digiqo-primary relative overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('/assets/grid.svg')] bg-center opacity-5" />
@@ -738,10 +754,10 @@ export default function CommunityPage() {
               className="relative group"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-digiqo-accent to-digiqo-secondary rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity" />
-              <div className="relative bg-digiqo-primary/50 backdrop-blur-xl rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300">
+              <div className="relative bg-digiqo-primary/50 backdrop-blur-xl rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300 h-full flex flex-col">
                 <Users className="w-12 h-12 text-digiqo-accent mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-3 text-white">Expertise Locale</h3>
-                <p className="text-white/70">Connaissance approfondie du marché réunionnais et de ses spécificités culturelles</p>
+                <h3 className="text-xl font-bold mb-3 text-white">Analyse Stratégique</h3>
+                <p className="text-white/70 flex-grow">Analyse approfondie de votre marché et secteur avant établissement d'une stratégie sur-mesure</p>
               </div>
             </motion.div>
 
@@ -754,10 +770,10 @@ export default function CommunityPage() {
               className="relative group"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-digiqo-accent to-orange-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity" />
-              <div className="relative bg-digiqo-primary/50 backdrop-blur-xl rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300">
+              <div className="relative bg-digiqo-primary/50 backdrop-blur-xl rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300 h-full flex flex-col">
                 <Zap className="w-12 h-12 text-digiqo-accent mx-auto mb-4" />
                 <h3 className="text-xl font-bold mb-3 text-white">Contenu Viral</h3>
-                <p className="text-white/70">Création de contenus qui captivent et génèrent un engagement organique</p>
+                <p className="text-white/70 flex-grow">Création de contenus qui captivent et génèrent un engagement organique</p>
               </div>
             </motion.div>
 
@@ -770,10 +786,10 @@ export default function CommunityPage() {
               className="relative group"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-digiqo-secondary to-digiqo-secondary/80 rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity" />
-              <div className="relative bg-digiqo-primary/50 backdrop-blur-xl rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300">
+              <div className="relative bg-digiqo-primary/50 backdrop-blur-xl rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300 h-full flex flex-col">
                 <TrendingUp className="w-12 h-12 text-digiqo-secondary mx-auto mb-4" />
                 <h3 className="text-xl font-bold mb-3 text-white">ROI Optimisé</h3>
-                <p className="text-white/70">Croissance mesurable avec des KPIs précis et un reporting transparent</p>
+                <p className="text-white/70 flex-grow">Croissance mesurable avec des KPIs précis et un reporting transparent</p>
               </div>
             </motion.div>
 
@@ -786,10 +802,10 @@ export default function CommunityPage() {
               className="relative group"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity" />
-              <div className="relative bg-digiqo-primary/50 backdrop-blur-xl rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300">
+              <div className="relative bg-digiqo-primary/50 backdrop-blur-xl rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300 h-full flex flex-col">
                 <Calendar className="w-12 h-12 text-blue-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold mb-3 text-white">Agilité</h3>
-                <p className="text-white/70">Adaptation rapide aux tendances et opportunités du marché digital</p>
+                <p className="text-white/70 flex-grow">Adaptation rapide aux tendances et opportunités du marché digital</p>
               </div>
             </motion.div>
           </div>
@@ -797,7 +813,7 @@ export default function CommunityPage() {
       </section>
 
       {/* Formulas Section */}
-      <section id="formules" className="py-20 bg-white">
+      <section id="formules" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

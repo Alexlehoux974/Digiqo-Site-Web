@@ -2,11 +2,13 @@ import { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Check, Shield, Server, RefreshCw, Headphones, Phone, ShoppingCart, Globe, Star } from 'lucide-react'
+import { ArrowLeft, Check, Shield, Server, RefreshCw, Headphones, Phone, ShoppingCart, Globe, Star, ArrowRight } from 'lucide-react'
 import { Button } from '../../components/ui/button'
 import ServiceLayout from '../../components/ServiceLayout/ServiceLayout'
 import { servicesSEO } from '../../lib/seo-data'
 import { generateContactUrl } from '../../lib/contact-utils'
+import { ServiceHero } from './ServiceHero'
+import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 
 interface MaintenancePackage {
   name: string
@@ -268,20 +270,26 @@ export default function SiteKeeperPage() {
                         ))}
                       </ul>
 
-                      <Link href={generateContactUrl({
-                        service: 'sitekeeper',
-                        description: `Je suis intéressé par le forfait ${pkg.name} - ${pkg.description}`
-                      })}>
+                      <motion.a
+                        href={generateContactUrl({
+                          service: 'sitekeeper',
+                          description: `Je suis intéressé par le forfait ${pkg.name} - ${pkg.description}`
+                        })}
+                        whileHover={ANIMATION.hover.scale}
+                        whileTap={ANIMATION.tap.scale}
+                        className="block"
+                      >
                         <Button 
                           className={`w-full ${
                             pkg.highlighted 
-                              ? 'bg-gradient-to-r from-[#199CB7] to-[#2ABED9] hover:from-[#1890AA] hover:to-[#25ACC7]' 
-                              : 'bg-digiqo-primary/70 hover:bg-digiqo-primary/60'
-                          } text-white font-semibold py-3`}
+                              ? 'bg-gradient-to-r from-digiqo-secondary to-blue-500 hover:from-digiqo-secondary/90 hover:to-blue-500/90' 
+                              : 'bg-gray-200 hover:bg-gray-300 text-digiqo-primary'
+                          } text-white font-semibold py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300`}
                         >
                           Choisir ce forfait
+                          <ArrowRight className="ml-2 w-5 h-5" />
                         </Button>
-                      </Link>
+                      </motion.a>
                     </div>
                   </motion.div>
                 ))}

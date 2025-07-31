@@ -20,25 +20,39 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
   const [isOpen, setIsOpen] = useState(false);
 
   const formatAnswer = (text: string) => {
+    // Function to parse markdown bold syntax
+    const parseBold = (str: string) => {
+      const parts = str.split(/\*\*(.+?)\*\*/g);
+      return parts.map((part, i) => {
+        // Odd indices are the bold parts
+        if (i % 2 === 1) {
+          return <strong key={i} className="font-bold text-white">{part}</strong>;
+        }
+        return part;
+      });
+    };
+
     return text.split('\n').map((line, idx) => {
       if (line.trim() === '') return <br key={idx} />;
       if (line.startsWith('•')) {
         return (
           <li key={idx} className="ml-4 mb-2 list-none">
             <span style={{ color }} className="mr-2">▸</span>
-            {line.substring(1).trim()}
+            {parseBold(line.substring(1).trim())}
           </li>
         );
       }
       if (line.match(/^\d+\./)) {
+        const [number, ...rest] = line.split('.');
+        const content = rest.join('.');
         return (
           <li key={idx} className="ml-4 mb-2 list-none">
-            <span style={{ color }} className="font-semibold">{line.split('.')[0]}.</span>
-            {line.substring(line.indexOf('.') + 1)}
+            <span style={{ color }} className="font-semibold">{number}.</span>
+            {parseBold(content)}
           </li>
         );
       }
-      return <p key={idx} className="mb-2">{line}</p>;
+      return <p key={idx} className="mb-2">{parseBold(line)}</p>;
     });
   };
 

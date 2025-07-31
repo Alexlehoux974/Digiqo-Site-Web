@@ -6,6 +6,7 @@ import { ServiceLayout } from '../../components/ServiceLayout'
 import { generateContactUrl } from '../../lib/contact-utils'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 import { HeroGradientOrbs } from '@/components/ui/animated-gradient-orb'
+import { ServiceHero } from './ServiceHero'
 
 // Floating design elements component
 const FloatingDesignElement = ({ delay = 0, index = 0 }) => {
@@ -138,151 +139,34 @@ export default function IdentitePage() {
         />
       </Head>
 
-      {/* Hero Section avec glassmorphism et animations sophistiquées */}
-      <section className="relative min-h-[90vh] pt-32 flex items-center justify-center overflow-hidden bg-gradient-to-br from-digiqo-primary via-digiqo-primary/80 to-digiqo-primary">
-        {/* 3D Grid Background */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('/assets/grid.svg')] bg-center opacity-5" 
-            style={{ perspective: '1000px' }} 
-          />
-        </div>
-
-        {/* Animated gradient orbs avec effet glassmorphism */}
-        <HeroGradientOrbs />
-
-        {/* Floating design elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          {[...Array(15)].map((_, i) => (
-            <FloatingDesignElement key={i} delay={i * 0.5} index={i} />
-          ))}
-        </div>
-
-        <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
-          {/* 3D Rotating Icon with glassmorphism */}
-          <motion.div
-            {...ANIMATION.entry.springIn}
-            transition={{ 
-              ...ANIMATION.ease.spring,
-              stiffness: 260,
-              damping: 20,
-              delay: 0.2 
-            }}
-            className="inline-flex mb-8"
-          >
-            <motion.div
-              animate={{ 
-                rotateY: [0, 360],
-                rotateZ: [0, 10, 0, -10, 0],
-              }}
-              transition={{
-                rotateY: { duration: ANIMATION.duration.verySlow * 13, repeat: Infinity, ease: ANIMATION.ease.linear },
-                rotateZ: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-              }}
-              style={{ transformStyle: 'preserve-3d' }}
-              className="relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-digiqo-primary to-digiqo-accent rounded-3xl blur-2xl opacity-50 animate-pulse" />
-              <div className="relative bg-white/10 backdrop-blur-xl p-8 rounded-3xl border border-white/20 shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-3xl" />
-                <Palette className="w-16 h-16 text-white relative z-10" />
-              </div>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            {...ANIMATION.entry.fadeInUpLarge}
-            transition={{ delay: ANIMATION.delay.section + 0.1, duration: ANIMATION.duration.slow }}
-            className="space-y-8"
-          >
-            {/* Title with gradient animation */}
-            <h1 className="text-5xl md:text-7xl font-bold">
-              <span className="text-white">Identité de</span>
-              <br />
-              <motion.span 
-                className="bg-gradient-to-r from-digiqo-primary via-digiqo-accent to-digiqo-accent bg-clip-text text-transparent animate-gradient bg-300"
-                animate={{
-                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                }}
-                transition={{
-                  duration: ANIMATION.duration.verySlow * 3,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              >
-                Marque Premium
-              </motion.span>
-            </h1>
-
-            {/* Descriptions with glassmorphism cards */}
-            <div className="max-w-4xl mx-auto space-y-6">
-              <motion.div
-                {...ANIMATION.entry.fadeInUp}
-                transition={{ delay: ANIMATION.delay.section * 2 }}
-                className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10"
-              >
-                <p className="text-xl md:text-2xl text-white/80">
-                  Créez une <span className="text-digiqo-accent font-bold">identité visuelle unique</span> et mémorable 
-                  avec nos services de conception de logos et de chartes graphiques haute performance.
-                </p>
-              </motion.div>
-
-              <motion.div
-                {...ANIMATION.entry.fadeInUp}
-                transition={{ delay: ANIMATION.delay.section * 2.3 }}
-                className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10"
-              >
-                <p className="text-lg text-white/70">
-                  Votre image de marque est votre <span className="text-digiqo-accent">première impression</span>. 
-                  Nous la rendons inoubliable avec une identité visuelle qui raconte votre histoire 
-                  et connecte avec votre audience à La Réunion.
-                </p>
-              </motion.div>
-            </div>
-
-            {/* CTA Buttons avec glassmorphism */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: ANIMATION.delay.section * 2.7 }}
-              className="flex flex-wrap gap-6 justify-center"
-            >
-              <motion.a
-                href={generateContactUrl({ 
-                  service: 'identite',
-                  description: 'Je souhaite créer mon identité de marque' 
-                })}
-                whileHover={ANIMATION.hover.scale}
-                whileTap={ANIMATION.tap.scale}
-                className="group relative inline-flex items-center gap-3 px-8 py-4 overflow-hidden rounded-2xl font-bold transition-all duration-300"
-              >
-                {/* Gradient background with animation */}
-                <div className="absolute inset-0 bg-gradient-to-r from-digiqo-primary to-digiqo-accent opacity-90" />
-                <div className="absolute inset-0 bg-gradient-to-r from-digiqo-accent to-digiqo-accent opacity-0 group-hover:opacity-90 transition-opacity duration-300" />
-                
-                {/* Glassmorphism overlay */}
-                <div className="absolute inset-0 bg-white/10 backdrop-blur-sm" />
-                
-                {/* Content */}
-                <span className="relative z-10 text-white">Démarrer mon projet</span>
-                <ArrowRight className="relative z-10 w-5 h-5 text-white group-hover:translate-x-1 transition-transform" />
-              </motion.a>
-              
-              <motion.a
-                href="#processus"
-                whileHover={ANIMATION.hover.scale}
-                whileTap={ANIMATION.tap.scale}
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-md text-white font-bold rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
-                Découvrir le processus
-                <Sparkles className="w-5 h-5" />
-              </motion.a>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Hero Section */}
+      <ServiceHero
+        icon={Palette}
+        title={{
+          line1: "Identité de",
+          line2: "Marque Premium"
+        }}
+        subtitle="Créez une identité visuelle unique et mémorable avec nos services de conception de logos et de chartes graphiques haute performance. Votre image de marque est votre première impression - nous la rendons inoubliable."
+        ctaButtons={{
+          primary: {
+            text: "Démarrer mon projet",
+            href: generateContactUrl({ 
+              service: 'identite',
+              description: 'Je souhaite créer mon identité de marque' 
+            })
+          },
+          secondary: {
+            text: "Découvrir le processus",
+            href: "#processus"
+          }
+        }}
+        gradientFrom="from-digiqo-primary"
+        gradientTo="to-digiqo-accent"
+        iconColor="text-digiqo-accent"
+      />
 
       {/* Pourquoi l'identité de marque Section */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-4">
           <motion.div
             {...ANIMATION.entry.fadeInUp}
@@ -595,7 +479,7 @@ export default function IdentitePage() {
       </section>
 
       {/* Ce qui est inclus Section */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-4">
           <motion.div
             {...ANIMATION.entry.fadeInUp}

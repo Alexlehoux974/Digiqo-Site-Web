@@ -28,17 +28,16 @@ import {
 const navigation = {
   topBar: {
     left: [
-      { icon: Phone, text: '0692 73 11 11', href: 'tel:0692731111' },
+      { icon: Phone, text: '+262 262 02 51 02', href: 'tel:+262262025102' },
       { icon: Mail, text: 'contact@digiqo.fr', href: 'mailto:contact@digiqo.fr' }
     ],
     right: [
-      { icon: Clock, text: 'Lun-Ven 9h-18h' },
       { icon: MapPin, text: 'Saint-Denis, La Réunion', href: '/#contact' }
     ],
     social: [
       { name: 'LinkedIn', href: 'https://www.linkedin.com/company/digiqo' },
-      { name: 'Instagram', href: 'https://www.instagram.com/digiqo.re' },
-      { name: 'Facebook', href: 'https://www.facebook.com/digiqo.re' }
+      { name: 'Instagram', href: 'https://www.instagram.com/digiqo_' },
+      { name: 'Facebook', href: 'https://www.facebook.com/digiqo' }
     ]
   },
   main: [
@@ -66,8 +65,7 @@ const navigation = {
                 name: 'Publicité en Ligne', 
                 href: '/services/publicite',
                 description: 'Campagnes SMA/SEA haute performance',
-                icon: TrendingUp,
-                badge: 'ROI Garanti'
+                icon: TrendingUp
               },
               { 
                 name: 'Community Management', 
@@ -166,6 +164,7 @@ export const HeaderLuxury = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [hoveredService, setHoveredService] = useState<string | null>(null)
   const [isNavigating, setIsNavigating] = useState(false)
+  const [menuPosition, setMenuPosition] = useState<'left' | 'center' | 'right'>('center')
   
   const { scrollY } = useScroll()
   const headerY = useTransform(scrollY, [0, 100], [0, -40])
@@ -332,7 +331,23 @@ export const HeaderLuxury = () => {
               {navigation.main.map((item) => (
                 <div key={item.name} className="relative">
                   <motion.button
-                    onMouseEnter={() => (item.megaMenu || item.submenu) && setActiveSubmenu(item.name)}
+                    onMouseEnter={(e) => {
+                      if (item.megaMenu || item.submenu) {
+                        setActiveSubmenu(item.name)
+                        // Calculate menu position based on button position
+                        const rect = e.currentTarget.getBoundingClientRect()
+                        const windowWidth = window.innerWidth
+                        const menuWidth = 900 // max menu width
+                        
+                        if (rect.left < menuWidth / 2) {
+                          setMenuPosition('left')
+                        } else if (windowWidth - rect.right < menuWidth / 2) {
+                          setMenuPosition('right')
+                        } else {
+                          setMenuPosition('center')
+                        }
+                      }
+                    }}
                     onMouseLeave={() => !isNavigating && setActiveSubmenu(null)}
                     onClick={(e) => {
                       if (item.href.startsWith('/#')) {
@@ -395,16 +410,20 @@ export const HeaderLuxury = () => {
                         transition={{ duration: 0.2 }}
                         onMouseEnter={() => setActiveSubmenu(item.name)}
                         onMouseLeave={() => !isNavigating && setActiveSubmenu(null)}
-                        className="absolute top-full left-1/2 -translate-x-1/2 mt-6 w-[900px]"
+                        className={`absolute mt-6 w-[90vw] max-w-[900px] xl:w-[900px] ${
+                          menuPosition === 'left' ? 'left-[5vw]' : 
+                          menuPosition === 'right' ? 'right-[5vw]' : 
+                          'left-1/2 -translate-x-1/2'
+                        }`}
                       >
-                        <div className="bg-white/95 backdrop-blur-2xl rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
+                        <div className="bg-white/95 backdrop-blur-2xl rounded-2xl shadow-2xl border border-gray-100 overflow-hidden max-h-[calc(100vh-120px)] overflow-y-auto">
                             {/* Premium gradient border */}
                             <div className="absolute inset-0 p-[1px] bg-gradient-to-br from-digiqo-primary/20 via-transparent to-digiqo-accent/20 rounded-2xl" />
                             
                             <div className="relative bg-white rounded-2xl">
                               {/* Featured section */}
                               {item.megaMenu.featured && (
-                                <div className="p-8 bg-gradient-to-br from-digiqo-primary/5 to-digiqo-accent/5 border-b border-gray-100">
+                                <div className="p-4 lg:p-8 bg-gradient-to-br from-digiqo-primary/5 to-digiqo-accent/5 border-b border-gray-100">
                                   <div>
                                     <h3 className="text-2xl font-bold text-gray-900 mb-2">
                                       {item.megaMenu.featured.title}
@@ -417,7 +436,7 @@ export const HeaderLuxury = () => {
                               )}
                               
                               {/* Services grid */}
-                              <div className="grid grid-cols-3 gap-8 p-8">
+                              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8 p-4 lg:p-8">
                                 {item.megaMenu.categories.map((category) => (
                                   <div key={category.title}>
                                     <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">
@@ -437,7 +456,7 @@ export const HeaderLuxury = () => {
                                             }}
                                             onMouseEnter={() => setHoveredService(service.name)}
                                             onMouseLeave={() => setHoveredService(null)}
-                                            className={`group block p-3 rounded-xl transition-all ${
+                                            className={`group block p-2 lg:p-3 rounded-xl transition-all ${
                                               ('premium' in service && service.premium) 
                                                 ? 'bg-gradient-to-r from-digiqo-primary/5 to-digiqo-accent/5 border border-digiqo-primary/10' 
                                                 : hoveredService === service.name

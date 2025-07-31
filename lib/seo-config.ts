@@ -64,7 +64,7 @@ export const businessStructuredData = {
   "name": "Digiqo",
   "description": "Agence de marketing digital à La Réunion",
   "url": "https://digiqo.com",
-  "telephone": "+262 262 92 00 00",
+  "telephone": "+262 262 02 51 02",
   "email": "contact@digiqo.com",
   "address": {
     "@type": "PostalAddress",
@@ -83,7 +83,10 @@ export const businessStructuredData = {
   "image": "https://digiqo.com/assets/logo2-digiqo.png",
   "sameAs": [
     "https://www.facebook.com/digiqo",
-    "https://www.instagram.com/digiqo",
-    "https://www.linkedin.com/company/digiqo"
+    "https://www.instagram.com/digiqo_",
+    "https://www.linkedin.com/company/digiqo",
+    "https://www.youtube.com/@digiqo_",
+    "https://twitter.com/digiqo",
+    "https://www.tiktok.com/@digiqo"
   ]
 };

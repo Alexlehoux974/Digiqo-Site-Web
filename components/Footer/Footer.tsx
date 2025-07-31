@@ -28,9 +28,9 @@ const navigation = {
   social: [
     { name: 'TikTok', href: 'https://www.tiktok.com/@digiqo', icon: SiTiktok },
     { name: 'LinkedIn', href: 'https://www.linkedin.com/company/digiqo', icon: Linkedin },
-    { name: 'YouTube', href: 'https://www.youtube.com/digiqo', icon: Youtube },
-    { name: 'Instagram', href: 'https://www.instagram.com/digiqo', icon: Instagram },
-    { name: 'X', href: 'https://x.com/digiqo', icon: SiX },
+    { name: 'YouTube', href: 'https://www.youtube.com/@digiqo_', icon: Youtube },
+    { name: 'Instagram', href: 'https://www.instagram.com/digiqo_', icon: Instagram },
+    { name: 'X', href: 'https://twitter.com/digiqo', icon: SiX },
     { name: 'Facebook', href: 'https://www.facebook.com/digiqo', icon: Facebook },
   ],
 }
@@ -63,20 +63,19 @@ export const Footer = () => {
                   <OptimizedImage
                     src="/assets/logo1.png"
                     alt="Digiqo Logo"
-                    width={150}
-                    height={60}
-                    className="h-12 w-auto"
+                    width={200}
+                    height={80}
+                    className="h-20 w-auto"
                   />
                 </Link>
               </div>
-              <p className="text-white/80 mb-6">
-                Ladi Lafé Zot Pub! 🇷🇪<br />
-                Votre partenaire digital à La Réunion depuis 2020.
+              <p className="text-white/80 mb-6 text-lg">
+                Votre partenaire digital depuis 2020
               </p>
               <div className="space-y-3">
-                <a href="tel:+262692123456" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
+                <a href="tel:+262262025102" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
                   <Phone className="w-5 h-5" />
-                  <span>+262 692 12 34 56</span>
+                  <span>+262 262 02 51 02</span>
                 </a>
                 <a href="mailto:contact@digiqo.fr" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
                   <Mail className="w-5 h-5" />

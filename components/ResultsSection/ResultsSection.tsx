@@ -10,10 +10,10 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { value: 127, suffix: '+', label: 'Clients Satisfaits', duration: 2 },
+  { value: 167, suffix: '+', label: 'Clients Satisfaits', duration: 2 },
   { value: 6.5, suffix: 'M€', prefix: '+', label: 'Budget Géré', duration: 2.5 },
-  { value: 300, suffix: '%', prefix: '+', label: 'ROI Moyen', duration: 3 },
-  { value: 4.8, suffix: '/5', label: 'Note Google', duration: 2 }
+  { value: 97, suffix: '%', label: 'Campagnes Rentables', duration: 3 },
+  { value: 4.8, suffix: '/5', label: 'Note Globale', duration: 2 }
 ]
 
 function Counter({ value, suffix, prefix, duration }: { value: number; suffix: string; prefix?: string; duration: number }) {
@@ -217,8 +217,8 @@ export function ResultsSection() {
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Nous ne promettons pas la lune, nous la décrochons pour nos clients. 
-            Voici les chiffres qui font notre fierté depuis 2020.
+            Nous ne promettons pas la lune, nous la décrochons pour nos clients.<br />
+            <span className="text-digiqo-accent font-semibold">Voici les chiffres</span> qui font notre fierté depuis 2020.
           </p>
         </motion.div>
 
