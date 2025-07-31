@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Check, Shield, Server, RefreshCw, Headphones, Phone, ShoppingCart, Globe, Star, ArrowRight } from 'lucide-react'
+import { Check, Shield, Server, RefreshCw, Headphones, Phone, ShoppingCart, Globe, Star, ArrowRight } from 'lucide-react'
 import { Button } from '../../components/ui/button'
 import ServiceLayout from '../../components/ServiceLayout/ServiceLayout'
 import { servicesSEO } from '../../lib/seo-data'
@@ -326,7 +326,7 @@ export default function SiteKeeperPage() {
                       viewport={{ once: true }}
                       transition={{ 
                         duration: 0.6, 
-                        delay: getStaggerDelay(index, 0.15),
+                        delay: getStaggerDelay(index, 0.1),
                         ease: "easeOut"
                       }}
                       className="text-center group relative"

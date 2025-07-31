@@ -1,57 +1,12 @@
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import { Palette, ArrowRight, Sparkles, CheckCircle2, Layers, Brush, Gem, Package, HeartHandshake, Shield, Clock, PaintBucket, CheckSquare, Handshake, Printer } from 'lucide-react'
+import { Palette, ArrowRight, Sparkles, CheckCircle2, Layers, Brush, Gem, Package, HeartHandshake, Shield, Clock, PaintBucket, CheckSquare, Handshake } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
 import { generateContactUrl } from '../../lib/contact-utils'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
-import { HeroGradientOrbs } from '@/components/ui/animated-gradient-orb'
 import { ServiceHero } from './ServiceHero'
 
-// Floating design elements component
-const FloatingDesignElement = ({ delay = 0, index = 0 }) => {
-  const shapes = ['circle', 'square', 'triangle', 'hexagon']
-  const shape = shapes[index % shapes.length]
-  
-  const renderShape = () => {
-    switch(shape) {
-      case 'circle':
-        return <div className="w-full h-full rounded-full bg-gradient-to-br from-digiqo-primary/20 to-digiqo-accent/20" />
-      case 'square':
-        return <div className="w-full h-full bg-gradient-to-br from-digiqo-accent/20 to-amber-500/20" />
-      case 'triangle':
-        return <div className="w-full h-full bg-gradient-to-br from-digiqo-secondary/20 to-cyan-500/20" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }} />
-      case 'hexagon':
-        return <div className="w-full h-full bg-gradient-to-br from-digiqo-primary/20 to-digiqo-accent/20" style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }} />
-    }
-  }
-
-  return (
-    <motion.div
-      className="absolute w-8 h-8"
-      initial={{
-        x: (index * 237) % 1920,
-        y: (index * 341) % 1080,
-        rotate: 0,
-        scale: 0,
-      }}
-      animate={{
-        y: [null, -((index * 97) % 200) - 100],
-        x: [null, ((index * 73) % 200) - 100],
-        rotate: [0, 360],
-        scale: [0, 1, 0],
-      }}
-      transition={{
-        duration: ANIMATION.particles.duration.min + (index % (ANIMATION.particles.duration.max - ANIMATION.particles.duration.min)),
-        repeat: Infinity,
-        delay: delay,
-        ease: ANIMATION.ease.default,
-      }}
-    >
-      {renderShape()}
-    </motion.div>
-  )
-}
 
 export default function IdentitePage() {
   const seoData = servicesSEO['identite-marque-reunion']

@@ -1,65 +1,24 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Head from 'next/head'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { 
   Search, 
   ArrowRight, 
   TrendingUp, 
   Target, 
   BarChart3, 
-  Activity,
-  CheckCircle2,
-  Brain,
   Sparkles,
   Award,
-  Rocket,
-  Eye,
-  MousePointer,
-  Clock,
-  Zap,
-  LineChart
 } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
 import { generateContactUrl } from '../../lib/contact-utils'
-import { ParticleSystem, SEOParticleSystem } from '@/components/ui/floating-particles'
-import { HeroGradientOrbs } from '@/components/ui/animated-gradient-orb'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 import { ServiceHero } from './ServiceHero'
 
 
-// Composant de métrique animée
-interface AnimatedMetricProps {
-  value: number
-  suffix?: string
-  delay?: number
-}
-
-const AnimatedMetric = ({ value, suffix = '', delay = 0 }: AnimatedMetricProps) => {
-  const [count, setCount] = useState(0)
-  
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const interval = setInterval(() => {
-        setCount(prev => {
-          const next = prev + Math.ceil(value / 50)
-          if (next >= value) {
-            clearInterval(interval)
-            return value
-          }
-          return next
-        })
-      }, 30)
-    }, delay)
-    
-    return () => clearTimeout(timer)
-  }, [value, delay])
-  
-  return <span>{count}{suffix}</span>
-}
 
 export default function SEOPage() {
-  const [activeTab, setActiveTab] = useState('technique')
   const [hoveredCard, setHoveredCard] = useState<string | null>(null)
   const seoData = servicesSEO['referencement-seo-reunion']
 

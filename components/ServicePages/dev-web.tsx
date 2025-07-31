@@ -1,9 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import Head from 'next/head'
-import { motion, AnimatePresence, useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
-import { CodeParticleSystem } from '@/components/ui/floating-particles'
-import { HeroGradientOrbs, SectionGradientOrbs } from '@/components/ui/animated-gradient-orb'
+import { SectionGradientOrbs } from '@/components/ui/animated-gradient-orb'
 import { ServiceHero } from './ServiceHero'
 import { 
   Code, 
@@ -11,13 +10,8 @@ import {
   Clock, 
   Shield, 
   Zap, 
-  Gift,
-  Settings,
   Rocket,
-  ChevronRight,
-  X,
   CheckCircle2,
-  ArrowUpRight,
   Globe,
   Lock,
   Sparkles,

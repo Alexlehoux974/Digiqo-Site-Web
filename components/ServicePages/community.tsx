@@ -2,8 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import Head from 'next/head'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
-import { HeroGradientOrbs } from '@/components/ui/animated-gradient-orb'
-import { IconParticleSystem } from '@/components/ui/floating-particles'
 import { 
   MessageCircle, 
   ArrowRight, 
@@ -19,14 +17,7 @@ import {
   X,
   ChevronRight,
   Heart,
-  Share2,
-  MessageSquare,
-  Hash,
-  AtSign,
   Sparkles,
-  Eye,
-  ThumbsUp,
-  Send,
   Activity,
   Target,
   Layers,
@@ -35,7 +26,6 @@ import {
 import { 
   InstagramIcon,
   FacebookIcon as FacebookSocialIcon,
-  TwitterIcon,
   LinkedInIcon as LinkedInSocialIcon,
   TikTokIcon,
   ThreadsIcon
@@ -214,8 +204,6 @@ const formulas: Formula[] = [
   }
 ]
 
-// Social media icons for particle system
-const socialIcons = [Heart, MessageSquare, Share2, Hash, AtSign, ThumbsUp, Eye, Send]
 
 // Animated engagement metric component
 interface AnimatedEngagementProps {

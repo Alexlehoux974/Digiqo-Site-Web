@@ -83,7 +83,8 @@
       "Bash(echo)",
       "Bash(done)",
       "Bash(wget:*)",
-      "Bash(do echo \"=== $file ===\")"
+      "Bash(do echo \"=== $file ===\")",
+      "Bash(git pull:*)"
     ],
     "deny": []
   }
