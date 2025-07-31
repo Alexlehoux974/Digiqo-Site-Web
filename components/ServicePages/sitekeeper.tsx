@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowLeft, Check, Shield, Server, RefreshCw, Headphones, Phone, ShoppingCart, Globe, Star, ArrowRight } from 'lucide-react'
 import { Button } from '../../components/ui/button'
@@ -116,7 +115,7 @@ export default function SiteKeeperPage() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "SiteKeeper - Maintenance Site Web - Digiqo",
+    "name": "Sitekeeper/Shopkeeper - Maintenance Site Web - Digiqo",
     "provider": {
       "@type": "Organization",
       "name": "Digiqo",
@@ -164,34 +163,37 @@ export default function SiteKeeperPage() {
       </Head>
 
       <ServiceLayout>
-        <div className="min-h-screen bg-gradient-to-b from-digiqo-primary via-digiqo-primary/90 to-digiqo-primary">
-          <div className="container mx-auto px-4 py-20">
-            <Link href="/#contact">
-              <Button
-                variant="ghost"
-                className="mb-8 text-digiqo-primary/50 hover:text-white"
-              >
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Retour aux services
-              </Button>
-            </Link>
+        {/* Hero Section */}
+        <ServiceHero
+          icon={activeType === 'site' ? Globe : ShoppingCart}
+          title={{
+            line1: "Sitekeeper/Shopkeeper",
+            line2: "Maintenance Premium"
+          }}
+          subtitle={activeType === 'site' 
+            ? "Votre Site sous Haute Protection - Mises à jour, sauvegardes, sécurité… On s'occupe de tout !"
+            : "Votre eCommerce, notre Priorité ! - Mises à jour, sécurité, et gestion du catalogue : on veille sur votre boutique en ligne pour maximiser vos ventes."
+          }
+          ctaButtons={{
+            primary: {
+              text: "Voir nos forfaits",
+              href: "#forfaits"
+            },
+            secondary: {
+              text: "Audit gratuit",
+              href: generateContactUrl({ 
+                service: 'sitekeeper',
+                description: 'Je souhaite un audit gratuit de mon site' 
+              })
+            }
+          }}
+          gradientFrom="from-digiqo-secondary"
+          gradientTo="to-blue-500"
+          iconColor="text-digiqo-secondary"
+        />
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-16"
-            >
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#199CB7] to-[#2ABED9] bg-clip-text text-transparent">
-                {activeType === 'site' ? 'SiteKeeper' : 'ShopKeeper'}
-              </h1>
-              <p className="text-xl text-white/70 max-w-3xl mx-auto">
-                {activeType === 'site' 
-                  ? 'Votre Site sous Haute Protection - Mises à jour, sauvegardes, sécurité… On s\'occupe de tout !'
-                  : 'Votre eCommerce, notre Priorité ! - Mises à jour, sécurité, et gestion du catalogue : on veille sur votre boutique en ligne pour maximiser vos ventes.'
-                }
-              </p>
-            </motion.div>
+        <div className="min-h-screen bg-white">
+          <div className="container mx-auto px-4 py-16">
 
             {/* Type Selector */}
             <motion.div
@@ -200,13 +202,13 @@ export default function SiteKeeperPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="flex justify-center mb-12"
             >
-              <div className="bg-digiqo-primary/50 backdrop-blur-sm rounded-lg p-1 inline-flex">
+              <div className="bg-gray-100 rounded-full p-1 inline-flex">
                 <button
                   onClick={() => setActiveType('site')}
-                  className={`px-8 py-4 rounded-md font-semibold transition-all flex items-center gap-2 ${
+                  className={`px-8 py-4 rounded-full font-semibold transition-all flex items-center gap-2 ${
                     activeType === 'site'
-                      ? 'bg-gradient-to-r from-[#199CB7] to-[#2ABED9] text-white'
-                      : 'text-digiqo-primary/50 hover:text-white'
+                      ? 'bg-gradient-to-r from-digiqo-secondary to-blue-500 text-white shadow-lg'
+                      : 'text-gray-600 hover:text-gray-800'
                   }`}
                 >
                   <Globe className="w-5 h-5" />
@@ -214,10 +216,10 @@ export default function SiteKeeperPage() {
                 </button>
                 <button
                   onClick={() => setActiveType('shop')}
-                  className={`px-8 py-4 rounded-md font-semibold transition-all flex items-center gap-2 ${
+                  className={`px-8 py-4 rounded-full font-semibold transition-all flex items-center gap-2 ${
                     activeType === 'shop'
-                      ? 'bg-gradient-to-r from-[#199CB7] to-[#2ABED9] text-white'
-                      : 'text-digiqo-primary/50 hover:text-white'
+                      ? 'bg-gradient-to-r from-digiqo-secondary to-blue-500 text-white shadow-lg'
+                      : 'text-gray-600 hover:text-gray-800'
                   }`}
                 >
                   <ShoppingCart className="w-5 h-5" />
@@ -228,6 +230,7 @@ export default function SiteKeeperPage() {
 
             {/* Packages Grid */}
             <motion.section
+              id="forfaits"
               key={activeType}
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -241,31 +244,31 @@ export default function SiteKeeperPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.1 * index }}
-                    className={`relative ${pkg.highlighted ? 'scale-105 mt-2' : ''}`}
+                    className={`relative ${pkg.highlighted ? 'scale-105' : ''}`}
                   >
                     {pkg.highlighted && (
-                      <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#199CB7] to-[#2ABED9] text-white px-6 py-2 rounded-full text-sm font-semibold flex items-center z-20 shadow-xl whitespace-nowrap">
+                      <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-digiqo-secondary to-blue-500 text-white px-6 py-2 rounded-full text-sm font-semibold flex items-center z-20 shadow-xl whitespace-nowrap">
                         <Star className="w-4 h-4 mr-1 fill-current" />
                         Plus populaire
                       </div>
                     )}
-                    <div className={`h-full bg-digiqo-primary/50 backdrop-blur-sm rounded-2xl p-8 border ${
-                      pkg.highlighted ? 'border-[#199CB7]' : 'border-digiqo-primary/30'
-                    } hover:border-[#199CB7]/50 transition-colors`}>
+                    <div className={`h-full bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-2 ${
+                      pkg.highlighted ? 'border-digiqo-secondary' : 'border-gray-100'
+                    }`}>
                       <div className="text-center mb-6">
-                        <h3 className="text-2xl font-bold text-white mb-2">{pkg.name}</h3>
-                        <p className="text-digiqo-primary/50 mb-4 text-sm">{pkg.description}</p>
+                        <h3 className="text-2xl font-bold text-digiqo-primary mb-2">{pkg.name}</h3>
+                        <p className="text-gray-600 mb-4 text-sm">{pkg.description}</p>
                         <div className="flex items-baseline justify-center gap-2">
-                          <span className="text-4xl font-bold text-[#199CB7]">{pkg.price}</span>
-                          <span className="text-digiqo-primary/50">{pkg.duration}</span>
+                          <span className="text-4xl font-bold text-digiqo-secondary">{pkg.price}</span>
+                          <span className="text-gray-600">{pkg.duration}</span>
                         </div>
                       </div>
 
                       <ul className="space-y-3 mb-8">
                         {pkg.features.map((feature, idx) => (
                           <li key={idx} className="flex items-start">
-                            <Check className="h-5 w-5 text-[#199CB7] mt-0.5 mr-3 flex-shrink-0" />
-                            <span className="text-white/70 text-sm">{feature}</span>
+                            <Check className="h-5 w-5 text-digiqo-secondary mt-0.5 mr-3 flex-shrink-0" />
+                            <span className="text-gray-700 text-sm">{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -282,9 +285,9 @@ export default function SiteKeeperPage() {
                         <Button 
                           className={`w-full ${
                             pkg.highlighted 
-                              ? 'bg-gradient-to-r from-digiqo-secondary to-blue-500 hover:from-digiqo-secondary/90 hover:to-blue-500/90' 
-                              : 'bg-gray-200 hover:bg-gray-300 text-digiqo-primary'
-                          } text-white font-semibold py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300`}
+                              ? 'bg-gradient-to-r from-digiqo-secondary to-blue-500 hover:from-digiqo-secondary/90 hover:to-blue-500/90 text-white' 
+                              : 'bg-gray-100 hover:bg-gray-200 text-digiqo-primary'
+                          } font-semibold py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300`}
                         >
                           Choisir ce forfait
                           <ArrowRight className="ml-2 w-5 h-5" />
@@ -301,33 +304,114 @@ export default function SiteKeeperPage() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mb-20"
+              className="mb-20 py-16 bg-gradient-to-br from-gray-50 to-white rounded-3xl"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
-                Pourquoi choisir {activeType === 'site' ? 'SiteKeeper' : 'ShopKeeper'} ?
+              <h2 className="text-3xl md:text-4xl font-bold text-digiqo-primary mb-12 text-center">
+                Pourquoi choisir <span className="text-digiqo-secondary">Sitekeeper/Shopkeeper</span> ?
               </h2>
 
-              <div className="grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+              <div className="grid md:grid-cols-4 gap-6 max-w-5xl mx-auto px-8">
                 {[
-                  { icon: Shield, title: 'Sécurité Maximale', desc: 'Protection contre les menaces et mises à jour de sécurité' },
-                  { icon: Server, title: 'Haute Disponibilité', desc: 'Monitoring 24/7 et interventions rapides' },
-                  { icon: RefreshCw, title: 'Toujours à Jour', desc: 'Mises à jour régulières et compatibilité garantie' },
-                  { icon: Headphones, title: 'Support Dédié', desc: 'Une équipe d\'experts à votre service' }
+                  { icon: Shield, title: 'Sécurité Maximale', desc: 'Protection contre les menaces et mises à jour de sécurité', color: 'from-red-500 to-pink-500' },
+                  { icon: Server, title: 'Haute Disponibilité', desc: 'Monitoring 24/7 et interventions rapides', color: 'from-blue-500 to-cyan-500' },
+                  { icon: RefreshCw, title: 'Toujours à Jour', desc: 'Mises à jour régulières et compatibilité garantie', color: 'from-green-500 to-emerald-500' },
+                  { icon: Headphones, title: 'Support Dédié', desc: 'Une équipe d\'experts à votre service', color: 'from-purple-500 to-indigo-500' }
                 ].map((benefit, index) => {
                   const Icon = benefit.icon
                   return (
                     <motion.div
                       key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.1 * index }}
-                      className="text-center"
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ 
+                        duration: 0.6, 
+                        delay: getStaggerDelay(index, 0.15),
+                        ease: "easeOut"
+                      }}
+                      className="text-center group relative"
                     >
-                      <div className="w-16 h-16 bg-[#199CB7]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Icon className="w-8 h-8 text-[#199CB7]" />
-                      </div>
-                      <h3 className="text-lg font-semibold text-white mb-2">{benefit.title}</h3>
-                      <p className="text-digiqo-primary/50 text-sm">{benefit.desc}</p>
+                      <motion.div
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                        className="relative"
+                      >
+                        <motion.div
+                          className={`absolute inset-0 bg-gradient-to-br ${benefit.color} rounded-2xl blur-xl opacity-20 group-hover:opacity-40`}
+                          animate={{
+                            scale: [1, 1.2, 1],
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            repeatType: "reverse"
+                          }}
+                        />
+                        <motion.div 
+                          className={`relative w-16 h-16 bg-gradient-to-br ${benefit.color} rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:shadow-2xl transition-shadow`}
+                          whileHover={{ y: -5 }}
+                          transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                        >
+                          <motion.div
+                            animate={{ 
+                              rotate: index % 2 === 0 ? [0, 360] : [360, 0]
+                            }}
+                            transition={{ 
+                              duration: 20, 
+                              repeat: Infinity, 
+                              ease: "linear" 
+                            }}
+                          >
+                            <Icon className="w-8 h-8 text-white" />
+                          </motion.div>
+                        </motion.div>
+                      </motion.div>
+                      
+                      <motion.h3 
+                        className="text-lg font-semibold text-digiqo-primary mb-2"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                      >
+                        {benefit.title}
+                      </motion.h3>
+                      
+                      <motion.p 
+                        className="text-gray-600 text-sm"
+                        initial={{ opacity: 0.8 }}
+                        whileHover={{ opacity: 1 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {benefit.desc}
+                      </motion.p>
+                      
+                      {/* Particules flottantes */}
+                      <motion.div
+                        className="absolute inset-0 pointer-events-none"
+                        initial={{ opacity: 0 }}
+                        whileHover={{ opacity: 1 }}
+                      >
+                        {[...Array(3)].map((_, i) => (
+                          <motion.div
+                            key={i}
+                            className={`absolute w-2 h-2 bg-gradient-to-br ${benefit.color} rounded-full`}
+                            style={{
+                              left: `${20 + i * 30}%`,
+                              top: `${20 + i * 25}%`
+                            }}
+                            animate={{
+                              y: [-20, 20],
+                              x: [-10, 10],
+                              opacity: [0, 1, 0]
+                            }}
+                            transition={{
+                              duration: 3,
+                              delay: i * 0.5,
+                              repeat: Infinity,
+                              repeatType: "reverse"
+                            }}
+                          />
+                        ))}
+                      </motion.div>
                     </motion.div>
                   )
                 })}
@@ -339,26 +423,44 @@ export default function SiteKeeperPage() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-center"
+              className="text-center py-16"
             >
-              <div className="bg-gradient-to-r from-digiqo-primary/80 to-digiqo-primary/70 rounded-2xl p-12">
+              <div className="bg-gradient-to-r from-digiqo-secondary to-blue-500 rounded-3xl p-12 shadow-xl">
                 <h2 className="text-3xl font-bold text-white mb-4">
                   Prêt à sécuriser votre {activeType === 'site' ? 'site web' : 'boutique en ligne'} ?
                 </h2>
-                <p className="text-xl text-white/70 mb-8">
+                <p className="text-xl text-white/90 mb-8">
                   Contactez-nous pour discuter de vos besoins et choisir le forfait adapté
                 </p>
-                <Link href={generateContactUrl({
-                  service: 'sitekeeper',
-                  description: `Je souhaite être rappelé pour discuter de la maintenance de mon ${activeType === 'site' ? 'site web' : 'boutique en ligne'}`
-                })}>
-                  <Button 
-                    className="bg-gradient-to-r from-[#199CB7] to-[#2ABED9] hover:from-[#1890AA] hover:to-[#25ACC7] text-white font-semibold py-6 px-8 text-lg"
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <motion.a
+                    href={generateContactUrl({
+                      service: 'sitekeeper',
+                      description: `Je souhaite être rappelé pour discuter de la maintenance de mon ${activeType === 'site' ? 'site web' : 'boutique en ligne'}`
+                    })}
+                    whileHover={ANIMATION.hover.scale}
+                    whileTap={ANIMATION.tap.scale}
                   >
-                    <Phone className="mr-2 h-5 w-5" />
-                    Être rappelé(e)
-                  </Button>
-                </Link>
+                    <Button 
+                      className="bg-white text-digiqo-secondary hover:bg-gray-100 font-semibold py-6 px-8 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                    >
+                      <Phone className="mr-2 h-5 w-5" />
+                      Être rappelé(e)
+                    </Button>
+                  </motion.a>
+                  <motion.a
+                    href="#forfaits"
+                    whileHover={ANIMATION.hover.scale}
+                    whileTap={ANIMATION.tap.scale}
+                  >
+                    <Button 
+                      className="bg-digiqo-primary text-white hover:bg-digiqo-primary-dark font-semibold py-6 px-8 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                    >
+                      Voir les forfaits
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </Button>
+                  </motion.a>
+                </div>
               </div>
             </motion.section>
           </div>

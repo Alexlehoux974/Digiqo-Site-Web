@@ -28,7 +28,9 @@ import {
   ThumbsUp,
   Send,
   Activity,
-  Target
+  Target,
+  Layers,
+  ArrowUpRight
 } from 'lucide-react'
 import { 
   InstagramIcon,
@@ -96,133 +98,91 @@ const formulas: Formula[] = [
       twelveMonths: '20%'
     },
     highlights: [
-      '5 posts + 5 stories/mois',
-      'Modération 48h',
-      '1 déplacement bimensuel'
+      'Jusqu\'à 10 posts + 10 stories/mois',
+      'Modération 48h ouvrées',
+      '1 déplacement mensuel'
     ],
-    gradient: 'from-digiqo-secondary to-digiqo-secondary/80',
-    accentColor: 'secondary',
+    gradient: 'from-amber-500 to-orange-600',
+    accentColor: 'amber',
     sections: {
       content: {
         title: 'Contenu mensuel',
-        posts: 5,
-        stories: 5,
-        reels: 0,
-        visits: '1 déplacement bimensuel (1h)'
+        posts: 10,
+        stories: 10,
+        reels: 1,
+        visits: '1 déplacement mensuel (2h)'
       },
       moderation: {
-        title: 'Modération Basique',
+        title: 'Modération & Engagement',
         features: [
           'Réponses aux commentaires et messages en 48h ouvrées',
           'Gestion des interactions pendant les heures de bureau (lundi-vendredi, 9h-18h)',
-          'Suppression des commentaires inappropriés si nécessaire'
+          'Suppression des commentaires inappropriés',
+          'Animation basique de la communauté',
+          'Veille sur la e-réputation'
         ]
       },
       included: {
         title: 'Services inclus',
         items: [
           'Stratégie de contenu mensuelle',
-          'Calendrier éditorial',
-          'Création de visuels standards',
-          'Hashtags optimisés',
-          'Rapport mensuel basique'
-        ]
-      }
-    }
-  },
-  {
-    id: 'dynamique',
-    name: 'Dynamique',
-    price: {
-      threeMonths: '1 190€',
-      sixMonths: '1 071€',
-      twelveMonths: '952€'
-    },
-    savings: {
-      sixMonths: '10%',
-      twelveMonths: '20%'
-    },
-    highlights: [
-      '10 posts + 10 stories + 2 reels',
-      'Modération 24h',
-      '1 déplacement mensuel'
-    ],
-    gradient: 'from-digiqo-primary to-digiqo-accent',
-    accentColor: 'digiqo-accent',
-    popular: true,
-    sections: {
-      content: {
-        title: 'Contenu mensuel',
-        posts: 10,
-        stories: 10,
-        reels: 2,
-        visits: '1 déplacement mensuel (2h)'
-      },
-      moderation: {
-        title: 'Modération Active (Hors Week-end)',
-        features: [
-          'Réponses aux commentaires et messages en 24h ouvrées',
-          'Surveillance des interactions du lundi au vendredi, 9h-18h',
-          'Gestion des avis clients avec des réponses personnalisées',
-          'Suppression immédiate des commentaires négatifs ou inappropriés'
-        ]
-      },
-      included: {
-        title: 'Services inclus',
-        items: [
-          'Stratégie de contenu avancée',
           'Calendrier éditorial détaillé',
-          'Création de visuels premium',
+          'Création de visuels professionnels',
           'Hashtags et SEO optimisés',
-          'Rapport bi-mensuel détaillé',
+          'Rapport mensuel avec KPIs',
           'Analyse de la concurrence',
-          'Suggestions d\'amélioration'
+          'Recommandations d\'amélioration'
         ]
       },
       bonus: {
-        title: 'Bonus annuel',
+        title: 'Bonus forfait annuel',
         items: [
           'Shooting photo professionnel (2h)',
           'Création de 20 visuels premium',
-          'Audit complet de présence digitale'
+          'Audit complet de présence digitale',
+          'Formation de base réseaux sociaux',
+          '2 retouches vidéo incluses'
         ]
       }
     }
   },
   {
-    id: 'strategique',
-    name: 'Stratégique',
+    id: 'performance',
+    name: 'Performance',
     price: {
-      threeMonths: '1 790€',
-      sixMonths: '1 611€',
-      twelveMonths: '1 432€'
+      threeMonths: '1 390€',
+      sixMonths: '1 251€',
+      twelveMonths: '1 112€'
     },
     savings: {
       sixMonths: '10%',
       twelveMonths: '20%'
     },
     highlights: [
-      '20 posts + 20 stories + 4 reels',
-      'Modération 7j/7',
+      'Jusqu\'à 20 posts + 20 stories + 4 reels',
+      'Modération 24h (7j/7)',
       '2 déplacements mensuels'
     ],
-    gradient: 'from-digiqo-accent to-orange-500',
-    accentColor: 'orange',
+    gradient: 'from-blue-500 to-indigo-600',
+    accentColor: 'blue',
     sections: {
       content: {
         title: 'Contenu mensuel',
         posts: 20,
         stories: 20,
         reels: 4,
-        visits: '2 déplacements mensuels (3h)'
+        visits: '2 déplacements mensuels (4h)'
       },
       moderation: {
-        title: 'Modération Active (Week-end Inclus)',
+        title: 'Modération & Engagement Premium',
         features: [
-          'Réponses aux commentaires et messages en 12h maximum',
-          'Surveillance des interactions 7j/7 de 9h à 20h',
-          'Modération proactive pour stimuler l\'engagement (likes, réponses, conversations)',
-          'Signalement des avis et commentaires critiques pour gestion rapide'
+          'Réponses aux commentaires et messages en 24h maximum, 7j/7',
+          'Surveillance active des interactions de 9h à 20h',
+          'Modération proactive pour stimuler l\'engagement',
+          'Gestion avancée des avis clients',
+          'Community management actif avec animation de discussions',
+          'Gestion de crise et intervention rapide',
+          'Création d\'événements et jeux concours'
         ]
       },
       included: {
@@ -232,82 +192,22 @@ const formulas: Formula[] = [
           'Calendrier éditorial multi-plateformes',
           'Création de visuels et vidéos premium',
           'Campagnes de croissance organique',
-          'Rapport hebdomadaire détaillé',
-          'Analyse approfondie des performances',
+          'Rapport bi-mensuel détaillé avec analyses',
+          'Veille concurrentielle active',
           'Réunion stratégique mensuelle',
-          'Veille concurrentielle active'
+          'A/B testing des contenus'
         ]
       },
       bonus: {
-        title: 'Bonus annuel',
+        title: 'Bonus forfait annuel',
         items: [
           'Shooting photo/vidéo professionnel (4h)',
           'Création de 40 visuels premium',
-          'Formation équipe sur les réseaux sociaux',
-          'Campagne publicitaire offerte (500€)'
-        ]
-      }
-    }
-  },
-  {
-    id: 'elite',
-    name: 'Élite',
-    price: {
-      threeMonths: '2 790€',
-      sixMonths: '2 511€',
-      twelveMonths: '2 232€'
-    },
-    savings: {
-      sixMonths: '10%',
-      twelveMonths: '20%'
-    },
-    highlights: [
-      '30 posts + 30 stories + 6 reels',
-      'Modération Premium <6h',
-      '3 déplacements mensuels'
-    ],
-    gradient: 'from-digiqo-primary to-digiqo-accent',
-    accentColor: 'digiqo-accent',
-    sections: {
-      content: {
-        title: 'Contenu mensuel',
-        posts: 30,
-        stories: 30,
-        reels: 6,
-        visits: '3 déplacements mensuels (6h)'
-      },
-      moderation: {
-        title: 'Modération Premium (7J/7)',
-        features: [
-          'Réponses aux commentaires et messages en moins de 6h, 7j/7',
-          'Gestion et animation en continu de 8h à 22h',
-          'Analyse des tendances et recommandations stratégiques pour l\'engagement',
-          'Gestion avancée des avis et crises : signalement, modération et intervention rapide',
-          'Community management actif : relance des discussions, interactions stratégiques avec les abonnés'
-        ]
-      },
-      included: {
-        title: 'Services inclus',
-        items: [
-          'Stratégie de contenu sur-mesure',
-          'Gestion multi-plateformes complète',
-          'Production de contenu haut de gamme',
-          'Campagnes de croissance avancées',
-          'Reporting temps réel personnalisé',
-          'Analyse prédictive des tendances',
-          'Réunions stratégiques bi-mensuelles',
-          'Veille et benchmark constant',
-          'Gestion d\'influenceurs locaux'
-        ]
-      },
-      bonus: {
-        title: 'Bonus annuel',
-        items: [
-          'Production vidéo mensuelle professionnelle',
-          'Shooting photo/vidéo illimité',
-          'Formation équipe complète (2 jours)',
-          'Campagnes publicitaires offertes (1000€)',
-          'Accès prioritaire aux nouveautés'
+          'Formation équipe complète (1 jour)',
+          'Campagne publicitaire offerte (500€)',
+          'Montage vidéo professionnel',
+          'Accès prioritaire aux nouveautés',
+          'Révisions illimitées'
         ]
       }
     }
@@ -382,6 +282,7 @@ const AnimatedEngagement = ({ value, label, suffix = '', icon: Icon, delay = 0 }
 
 export default function CommunityPage() {
   const [selectedPeriod, setSelectedPeriod] = useState<'threeMonths' | 'sixMonths' | 'twelveMonths'>('twelveMonths')
+  const [compareMode, setCompareMode] = useState(false)
   const seoData = servicesSEO['community-management-974']
 
   const structuredData = {
@@ -827,6 +728,15 @@ export default function CommunityPage() {
             <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto mb-8">
               Choisissez la formule adaptée à vos besoins et votre budget
             </p>
+            
+            {/* Compare toggle */}
+            <button
+              onClick={() => setCompareMode(!compareMode)}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-digiqo-secondary/10 hover:bg-digiqo-secondary/20 rounded-full font-medium transition-colors mb-6"
+            >
+              <Layers className="w-5 h-5" />
+              {compareMode ? 'Vue normale' : 'Comparer les formules'}
+            </button>
 
             {/* Duration selector */}
             <div className="inline-flex items-center gap-2 p-2 bg-digiqo-accent/10 rounded-full">
@@ -863,7 +773,9 @@ export default function CommunityPage() {
             </div>
           </motion.div>
 
-          <div className="space-y-8 max-w-5xl mx-auto">
+          {/* Formula Cards - Mode normal ou comparatif */}
+          {!compareMode ? (
+            <div className="space-y-8 max-w-5xl mx-auto">
             {formulas.map((formula, index) => {
               const [isFlipped, setIsFlipped] = useState(false)
               const [activeSection, setActiveSection] = useState<string | null>(null)
@@ -1271,7 +1183,162 @@ export default function CommunityPage() {
                 </motion.div>
               )
             })}
-          </div>
+            </div>
+          ) : (
+            /* Vue comparative */
+            <motion.div
+              {...ANIMATION.entry.fadeInUp}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="max-w-7xl mx-auto"
+            >
+              <div className="overflow-x-auto">
+                <table className="w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+                  <thead>
+                    <tr className="bg-gradient-to-r from-digiqo-primary to-digiqo-primary/80 text-white">
+                      <th className="p-6 text-left">Caractéristiques</th>
+                      {formulas.map((formula) => (
+                        <th key={formula.id} className="p-6 text-center">
+                          <div className="space-y-2">
+                            <h3 className="text-2xl font-bold">{formula.name}</h3>
+                            <p className="text-3xl font-bold">
+                              {selectedPeriod === 'twelveMonths' ? formula.price.twelveMonths :
+                               selectedPeriod === 'sixMonths' ? formula.price.sixMonths :
+                               formula.price.threeMonths}
+                            </p>
+                            <p className="text-sm opacity-80">HT/mois</p>
+                          </div>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {/* Contenu mensuel */}
+                    <tr className="border-t border-digiqo-primary/10">
+                      <td className="p-4 font-medium text-digiqo-primary">Publications par mois</td>
+                      <td className="p-4 text-center">{formulas[0].sections.content.posts} posts + {formulas[0].sections.content.stories} stories</td>
+                      <td className="p-4 text-center">{formulas[1].sections.content.posts} posts + {formulas[1].sections.content.stories} stories</td>
+                    </tr>
+                    {/* Reels */}
+                    <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
+                      <td className="p-4 font-medium text-digiqo-primary">Reels/mois</td>
+                      <td className="p-4 text-center">{formulas[0].sections.content.reels}</td>
+                      <td className="p-4 text-center">{formulas[1].sections.content.reels}</td>
+                    </tr>
+                    {/* Déplacements */}
+                    <tr className="border-t border-digiqo-primary/10">
+                      <td className="p-4 font-medium text-digiqo-primary">Déplacements</td>
+                      <td className="p-4 text-center">{formulas[0].sections.content.visits}</td>
+                      <td className="p-4 text-center">{formulas[1].sections.content.visits}</td>
+                    </tr>
+                    {/* Modération */}
+                    <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
+                      <td className="p-4 font-medium text-digiqo-primary">Temps de réponse</td>
+                      <td className="p-4 text-center">48h ouvrées</td>
+                      <td className="p-4 text-center">24h (7j/7)</td>
+                    </tr>
+                    {/* Gestion de crise */}
+                    <tr className="border-t border-digiqo-primary/10">
+                      <td className="p-4 font-medium text-digiqo-primary">Gestion de crise</td>
+                      <td className="p-4 text-center">
+                        <X className="w-5 h-5 text-red-500 mx-auto" />
+                      </td>
+                      <td className="p-4 text-center">
+                        <CheckCircle2 className="w-5 h-5 text-green-500 mx-auto" />
+                      </td>
+                    </tr>
+                    {/* Events et jeux concours */}
+                    <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
+                      <td className="p-4 font-medium text-digiqo-primary">Événements et jeux concours</td>
+                      <td className="p-4 text-center">
+                        <X className="w-5 h-5 text-red-500 mx-auto" />
+                      </td>
+                      <td className="p-4 text-center">
+                        <CheckCircle2 className="w-5 h-5 text-green-500 mx-auto" />
+                      </td>
+                    </tr>
+                    {/* Rapports */}
+                    <tr className="border-t border-digiqo-primary/10">
+                      <td className="p-4 font-medium text-digiqo-primary">Rapports</td>
+                      <td className="p-4 text-center">Mensuel</td>
+                      <td className="p-4 text-center">Bi-mensuel détaillé</td>
+                    </tr>
+                    {/* A/B Testing */}
+                    <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
+                      <td className="p-4 font-medium text-digiqo-primary">A/B Testing</td>
+                      <td className="p-4 text-center">
+                        <X className="w-5 h-5 text-red-500 mx-auto" />
+                      </td>
+                      <td className="p-4 text-center">
+                        <CheckCircle2 className="w-5 h-5 text-green-500 mx-auto" />
+                      </td>
+                    </tr>
+                    {/* Bonus annuel */}
+                    <tr className="border-t border-digiqo-primary/10 bg-gradient-to-r from-digiqo-accent/10 to-amber-500/10">
+                      <td className="p-4 font-medium text-digiqo-primary">Bonus forfait annuel</td>
+                      <td className="p-4 text-center">
+                        <div className="space-y-1">
+                          <p className="text-sm">Shooting photo 2h</p>
+                          <p className="text-xs text-digiqo-primary/60">20 visuels + formation</p>
+                        </div>
+                      </td>
+                      <td className="p-4 text-center">
+                        <div className="space-y-1">
+                          <p className="text-sm font-medium">Shooting pro 4h</p>
+                          <p className="text-xs text-digiqo-primary/60">40 visuels + pub 500€</p>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* CTA */}
+                    <tr className="bg-gradient-to-r from-digiqo-primary/5 to-digiqo-accent/5">
+                      <td className="p-6" colSpan={3}>
+                        <div className="flex flex-col md:flex-row gap-4 justify-center">
+                          {formulas.map((formula) => (
+                            <motion.a
+                              key={formula.id}
+                              href={generateContactUrl({ 
+                                service: 'community',
+                                formula: formula.name.toLowerCase(),
+                                description: `Je suis intéressé par la formule ${formula.name} (${selectedPeriod === 'twelveMonths' ? '12 mois' : selectedPeriod === 'sixMonths' ? '6 mois' : '3 mois'})`
+                              })}
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              className={`inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-xl shadow-lg`}
+                            >
+                              Choisir {formula.name}
+                              <ArrowUpRight className="w-5 h-5" />
+                            </motion.a>
+                          ))}
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Additional formulas mention */}
+          <motion.div
+            {...ANIMATION.entry.fadeInUp}
+            whileInView={ANIMATION.entry.fadeInUp.animate}
+            viewport={{ once: true }}
+            className="mt-16 text-center"
+          >
+            <p className="text-digiqo-primary/70 mb-4">
+              Des formules <span className="font-bold">Stratégique</span> et <span className="font-bold">Élite</span> sont disponibles pour des besoins plus importants.
+            </p>
+            <a
+              href={generateContactUrl({ 
+                service: 'community', 
+                description: 'Je souhaite des informations sur les formules Stratégique et Élite' 
+              })}
+              className="inline-flex items-center gap-2 text-digiqo-accent font-bold hover:underline"
+            >
+              En savoir plus
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </motion.div>
         </div>
       </section>
 

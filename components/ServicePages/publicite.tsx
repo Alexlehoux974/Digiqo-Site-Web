@@ -62,8 +62,8 @@ const formulas: Formula[] = [
     name: 'Initiation',
     summary: 'Idéal pour démarrer votre présence publicitaire en ligne avec un budget maîtrisé',
     price: {
-      monthly: '549€',
-      yearly: '5 270€'
+      monthly: '439,20€',
+      yearly: '4 216€'
     },
     highlights: [
       'Jusqu\'à 1 000€ de budget géré',
@@ -102,7 +102,7 @@ const formulas: Formula[] = [
         ]
       },
       bonus: {
-        title: 'Bonus forfait annuel',
+        title: 'Bonus première collaboration',
         items: [
           'Captation vidéo 1h (SONY A7IV)',
           'Montage dynamique 20-60 sec',
@@ -120,8 +120,8 @@ const formulas: Formula[] = [
     name: 'Propulsion',
     summary: 'Pour accélérer votre croissance avec des campagnes plus ambitieuses et un suivi renforcé',
     price: {
-      monthly: '949€',
-      yearly: '9 110€'
+      monthly: '759,20€',
+      yearly: '7 289€'
     },
     highlights: [
       'Jusqu\'à 2 500€ de budget géré',
@@ -161,7 +161,7 @@ const formulas: Formula[] = [
         ]
       },
       bonus: {
-        title: 'Bonus forfait annuel',
+        title: 'Bonus première collaboration',
         items: [
           'Captation vidéo premium 1h',
           'Montage cinématique avancé',
@@ -495,6 +495,7 @@ export default function PublicitePage() {
                               
                               {/* Price */}
                               <div className="flex items-baseline gap-4">
+                                <span className="text-digiqo-primary/60 text-lg">À partir de</span>
                                 <span className="text-5xl font-bold">{formula.price.monthly}</span>
                                 <span className="text-digiqo-primary/60">/mois</span>
                                 <span className="text-sm text-digiqo-primary/50">
@@ -797,9 +798,9 @@ export default function PublicitePage() {
                       <td className="p-4 text-center">Réguliers</td>
                       <td className="p-4 text-center">Détaillés bi-mensuels</td>
                     </tr>
-                    {/* Bonus annuel */}
+                    {/* Bonus première collaboration */}
                     <tr className="border-t border-digiqo-primary/10 bg-gradient-to-r from-digiqo-accent/10 to-amber-500/10">
-                      <td className="p-4 font-medium text-digiqo-primary">Bonus forfait annuel</td>
+                      <td className="p-4 font-medium text-digiqo-primary">Bonus première collaboration</td>
                       <td className="p-4 text-center">
                         <div className="space-y-1">
                           <p className="text-sm">Vidéo 1h + montage</p>

@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import { LucideIcon } from 'lucide-react'
 import { HeroGradientOrbs } from '@/components/ui/animated-gradient-orb'
 import { ANIMATION } from '@/lib/animation-constants'
-import { generateContactUrl } from '@/lib/contact-utils'
 import { ArrowRight, Sparkles } from 'lucide-react'
 
 interface ServiceHeroProps {

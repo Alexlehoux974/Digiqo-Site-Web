@@ -13,6 +13,7 @@ import { AboutSection } from '../components/AboutSection'
 import { FAQSection } from '../components/FAQSection'
 import { ContactSection } from '../components/ContactSection'
 import { Footer } from '../components/Footer'
+import { useInstantScroll } from '@/hooks/useInstantScroll'
 
 const products = [
   {
@@ -318,6 +319,9 @@ const products = [
 ]
 
 export default function Home() {
+  // Handle instant scroll to sections
+  useInstantScroll()
+  
   useEffect(() => {
     // Forcer le scroll au top après le montage complet du DOM
     const timer = setTimeout(() => {

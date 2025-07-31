@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import { Timeline } from '../ui/timeline';
 import { OptimizedImage } from '../ui/OptimizedImage';
-import { generateContactUrl } from '@/lib/contact-utils';
 
 
 const timelineData = [

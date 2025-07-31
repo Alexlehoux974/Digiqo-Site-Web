@@ -75,7 +75,15 @@
       "Bash(./scripts/convert-threads-logo-potrace.sh:*)",
       "Bash(bash:*)",
       "Bash(convert:*)",
-      "Bash(potrace:*)"
+      "Bash(potrace:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(identify:*)",
+      "Bash(for:*)",
+      "Bash(do echo -n \"$img: \")",
+      "Bash(echo)",
+      "Bash(done)",
+      "Bash(wget:*)",
+      "Bash(do echo \"=== $file ===\")"
     ],
     "deny": []
   }

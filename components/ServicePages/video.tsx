@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Check, Palette, Camera, Edit3, Music, Smartphone, RefreshCw, Video, ArrowRight } from 'lucide-react'
 import { Button } from '../../components/ui/button'
@@ -262,7 +261,7 @@ export default function VideoPage() {
             <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold text-digiqo-primary mb-4">
-                  Créatif publicitaire ({visualPackages[selectedPeriod].quantity} visuel{visualPackages[selectedPeriod].quantity > 1 ? 's' : ''})
+                  Créatif{visualPackages[selectedPeriod].quantity > 1 ? 's' : ''} publicitaire{visualPackages[selectedPeriod].quantity > 1 ? 's' : ''} ({visualPackages[selectedPeriod].quantity} visuel{visualPackages[selectedPeriod].quantity > 1 ? 's' : ''})
                 </h3>
                 <div className="flex items-baseline justify-center gap-2">
                   <p className="text-5xl font-bold text-digiqo-accent">

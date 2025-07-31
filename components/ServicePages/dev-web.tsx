@@ -365,8 +365,8 @@ export default function DevWebPage() {
         subtitle="Sites web haute performance, sur-mesure et optimisés SEO. Technologie de pointe, design premium, résultats garantis."
         ctaButtons={{
           primary: {
-            text: "Découvrir nos formules",
-            href: "#formules"
+            text: "Demander un devis",
+            href: "/#contact"
           },
           secondary: {
             text: "Voir nos réalisations",
@@ -400,14 +400,14 @@ export default function DevWebPage() {
             </motion.span>
             
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              La <span className="bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 bg-clip-text text-transparent">Différence</span> Digiqo
+              Votre site web <span className="bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 bg-clip-text text-transparent">clé en main</span>
             </h2>
             <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
               Des standards de qualité exceptionnels pour des résultats qui dépassent vos attentes
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 items-stretch">
             {/* Performance Card */}
             <motion.div
               {...ANIMATION.entry.fadeInUpLarge}
@@ -420,7 +420,7 @@ export default function DevWebPage() {
               {/* Gradient border effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-digiqo-accent to-orange-400 rounded-3xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
               
-              <div className="relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300">
+              <div className="relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
                 {/* Animated icon background */}
                 <div className="relative mb-6">
                   <motion.div
@@ -439,7 +439,7 @@ export default function DevWebPage() {
                   </div>
                 </div>
                 
-                <h3 className="text-2xl font-bold mb-4 text-center">Performance Elite</h3>
+                <h3 className="text-2xl font-bold mb-4 text-center">100% Responsive</h3>
                 
                 {/* Animated metrics */}
                 <div className="space-y-3 mb-6">
@@ -497,7 +497,7 @@ export default function DevWebPage() {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 rounded-3xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
               
-              <div className="relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300">
+              <div className="relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
                 <div className="relative mb-6">
                   <motion.div
                     animate={{ 
@@ -568,7 +568,7 @@ export default function DevWebPage() {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-digiqo-primary to-digiqo-accent rounded-3xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
               
-              <div className="relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300">
+              <div className="relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
                 <div className="relative mb-6">
                   <motion.div
                     animate={{ 
@@ -588,7 +588,7 @@ export default function DevWebPage() {
                   </div>
                 </div>
                 
-                <h3 className="text-2xl font-bold mb-4 text-center">Livraison Express</h3>
+                <h3 className="text-2xl font-bold mb-4 text-center">Clé en main</h3>
                 
                 {/* Timeline */}
                 <div className="space-y-3 mb-6">
@@ -749,7 +749,7 @@ export default function DevWebPage() {
                       </motion.div>
                       
                       <h4 className="text-xl font-bold text-white mb-2">{step.phase}</h4>
-                      <p className="text-digiqo-primary/40 text-sm">{step.description}</p>
+                      <p className="text-white/70 text-sm">{step.description}</p>
                       
                       {/* Connection dot */}
                       <div className="absolute -bottom-6 left-1/2 w-3 h-3 bg-digiqo-secondary rounded-full -translate-x-1/2 hidden lg:block" />
@@ -813,7 +813,7 @@ export default function DevWebPage() {
             className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8"
           >
             <div className="text-center">
-              <AnimatedMetric value="150" suffix="+" label="Sites livrés" delay={0} />
+              <AnimatedMetric value="50" suffix="+" label="Sites livrés" delay={0} />
             </div>
             <div className="text-center">
               <AnimatedMetric value="98" suffix="%" label="Clients satisfaits" delay={200} />
@@ -822,342 +822,82 @@ export default function DevWebPage() {
               <AnimatedMetric value="5" suffix=" ans" label="D'expérience" delay={400} />
             </div>
             <div className="text-center">
-              <AnimatedMetric value="24" suffix="/7" label="Support client" delay={600} />
+              <AnimatedMetric value="5" suffix="/7" label="Support rapide" delay={600} />
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Packages Section */}
-      <section id="formules" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
+      {/* CTA Section - Remplace les formules */}
+      <section id="formules" className="py-24 bg-gradient-to-br from-white to-digiqo-secondary/5">
+        <div className="max-w-4xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              Nos <span className="text-digiqo-secondary">Formules</span>
+            <motion.span
+              {...ANIMATION.entry.scaleIn}
+              whileInView={ANIMATION.entry.scaleIn.animate}
+              viewport={{ once: true }}
+              className="inline-block px-4 py-2 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 text-white text-sm font-bold rounded-full mb-6"
+            >
+              SITE WEB SUR MESURE
+            </motion.span>
+            
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              Chaque projet est <span className="bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 bg-clip-text text-transparent">unique</span>
             </h2>
-            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
-              Du site vitrine à la plateforme e-commerce, trouvez la solution adaptée à vos besoins
+            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto mb-10">
+              Nous créons des sites web entièrement personnalisés selon vos besoins spécifiques. 
+              Du design à la fonctionnalité, chaque détail est pensé pour votre succès.
             </p>
-          </motion.div>
-
-          <div className="space-y-8 max-w-5xl mx-auto">
-            {packages.map((pkg, index) => {
-              const [isFlipped, setIsFlipped] = useState(false)
-              const [activeSection, setActiveSection] = useState<string | null>(null)
-              const [mobileActiveSection, setMobileActiveSection] = useState<string | null>(null)
+            
+            <div className="bg-white rounded-3xl p-8 shadow-xl max-w-2xl mx-auto">
+              <h3 className="text-2xl font-bold mb-6">Pourquoi du sur-mesure ?</h3>
+              <div className="space-y-4 text-left mb-8">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-6 h-6 text-digiqo-secondary flex-shrink-0 mt-0.5" />
+                  <p className="text-digiqo-primary/80">
+                    <span className="font-semibold">Solution adaptée</span> : Votre site web répond exactement à vos objectifs business
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-6 h-6 text-digiqo-secondary flex-shrink-0 mt-0.5" />
+                  <p className="text-digiqo-primary/80">
+                    <span className="font-semibold">Évolutivité garantie</span> : Votre site grandit avec votre entreprise
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-6 h-6 text-digiqo-secondary flex-shrink-0 mt-0.5" />
+                  <p className="text-digiqo-primary/80">
+                    <span className="font-semibold">Performance optimale</span> : Code optimisé sans compromis
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-6 h-6 text-digiqo-secondary flex-shrink-0 mt-0.5" />
+                  <p className="text-digiqo-primary/80">
+                    <span className="font-semibold">Design unique</span> : Votre identité visuelle respectée à 100%
+                  </p>
+                </div>
+              </div>
               
-              return (
-                <motion.div
-                  key={index}
-                  {...ANIMATION.entry.scaleIn}
-                  whileInView={ANIMATION.entry.scaleIn.animate}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.2 }}
-                  className="relative"
-                >
-                  {/* Desktop: Dynamic Flip Card */}
-                  <div className="hidden md:block relative h-[450px]" style={{ perspective: '1000px' }}>
-                    <motion.div
-                      className="absolute inset-0 w-full h-full"
-                      animate={{ rotateY: isFlipped ? 180 : 0 }}
-                      transition={{ duration: ANIMATION.duration.normal }}
-                      style={{ transformStyle: 'preserve-3d' }}
-                    >
-                      {/* Front of card */}
-                      <div 
-                        className="absolute inset-0 w-full h-full"
-                        style={{ backfaceVisibility: 'hidden' }}
-                      >
-                        <div className={`h-full bg-white rounded-3xl shadow-xl border ${pkg.popular ? 'border-digiqo-accent' : 'border-digiqo-accent/10'} overflow-hidden`}>
-                          {/* Popular badge */}
-                          {pkg.popular && (
-                            <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-                              <span className="bg-digiqo-accent text-white px-4 py-1 rounded-full text-sm font-bold">
-                                POPULAIRE
-                              </span>
-                            </div>
-                          )}
-                          
-                          {/* Gradient accent */}
-                          <div className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${pkg.gradient}`} />
-                          
-                          <div className="p-8">
-                            {/* Header */}
-                            <div className="mb-8">
-                              <h3 className={`text-4xl font-bold bg-gradient-to-r ${pkg.gradient} bg-clip-text text-transparent mb-4`}>
-                                {pkg.name}
-                              </h3>
-                              <p className="text-digiqo-primary/60 text-lg mb-6">{pkg.description}</p>
-                              
-                              {/* Price */}
-                              <div className="flex items-baseline gap-4">
-                                <span className="text-5xl font-bold">{pkg.price}</span>
-                              </div>
-                              
-                              {/* Highlights */}
-                              <div className="mt-6 space-y-2">
-                                {pkg.highlights.map((highlight, idx) => (
-                                  <div key={idx} className="flex items-center gap-2">
-                                    <CheckCircle2 className="w-5 h-5 text-digiqo-secondary flex-shrink-0" />
-                                    <span className="text-sm font-medium text-digiqo-primary/80">{highlight}</span>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-
-                            {/* Interactive sections grid - Show all 4 or 3 */}
-                            <div className={`grid ${pkg.sections.included ? 'grid-cols-4' : 'grid-cols-3'} gap-3`}>
-                              {Object.entries(pkg.sections).map(([key, section]) => {
-                                const Icon = key === 'bonus' ? Gift : 
-                                           key === 'features' ? Settings : 
-                                           key === 'technical' ? Shield : 
-                                           Rocket
-                                
-                                return (
-                                  <motion.button
-                                    key={key}
-                                    onClick={() => {
-                                      setActiveSection(key)
-                                      setIsFlipped(true)
-                                    }}
-                                    whileHover={{ scale: 1.03 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    className="relative bg-digiqo-secondary/5 hover:bg-digiqo-secondary/10 rounded-xl p-4 text-left transition-all group"
-                                  >
-                                    {/* Hover glow effect */}
-                                    <div className={`absolute inset-0 bg-gradient-to-r ${pkg.gradient} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity`} />
-                                    
-                                    <div className="relative">
-                                      <div className="flex flex-col items-center text-center">
-                                        <div className={`p-3 rounded-lg bg-gradient-to-br ${pkg.gradient} text-white mb-2`}>
-                                          <Icon className="w-6 h-6" />
-                                        </div>
-                                        <h4 className="font-bold text-digiqo-primary text-sm mb-1">{section.title}</h4>
-                                        <p className="text-xs text-digiqo-primary/70 mb-2">
-                                          {section.items.length} inclus
-                                        </p>
-                                        <div className="flex items-center gap-1 text-xs text-digiqo-accent">
-                                          <span>Voir</span>
-                                          <ArrowRight className="w-3 h-3" />
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </motion.button>
-                                )
-                              })}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Back of card - Dynamic content */}
-                      <div 
-                        className="absolute inset-0 w-full h-full"
-                        style={{ 
-                          backfaceVisibility: 'hidden',
-                          transform: 'rotateY(180deg)'
-                        }}
-                      >
-                        <div className={`h-full bg-white rounded-3xl shadow-xl border ${pkg.popular ? 'border-digiqo-accent' : 'border-digiqo-accent/10'} overflow-hidden`}>
-                          {/* Gradient accent */}
-                          <div className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${pkg.gradient}`} />
-                          
-                          {activeSection && pkg.sections[activeSection as keyof typeof pkg.sections] && (
-                            <div className="p-8 h-full flex flex-col">
-                              {/* Header with back button */}
-                              <div className="flex items-center justify-between mb-8">
-                                <div className="flex items-center gap-3">
-                                  <div className={`p-3 rounded-xl bg-gradient-to-br ${pkg.gradient} text-white`}>
-                                    {activeSection === 'bonus' ? <Gift className="w-6 h-6" /> : 
-                                     activeSection === 'features' ? <Settings className="w-6 h-6" /> : 
-                                     activeSection === 'technical' ? <Shield className="w-6 h-6" /> : 
-                                     <Rocket className="w-6 h-6" />}
-                                  </div>
-                                  <div>
-                                    <h3 className="text-2xl font-bold text-digiqo-primary">
-                                      {activeSection && pkg.sections[activeSection as keyof typeof pkg.sections]?.title || ''}
-                                    </h3>
-                                    <p className="text-sm text-digiqo-primary/70">{pkg.name}</p>
-                                  </div>
-                                </div>
-                                <button
-                                  onClick={() => {
-                                    setIsFlipped(false)
-                                    setTimeout(() => setActiveSection(null), 600)
-                                  }}
-                                  className="p-2 hover:bg-digiqo-secondary/10 rounded-lg transition-colors"
-                                >
-                                  <X className="w-5 h-5 text-digiqo-primary/50" />
-                                </button>
-                              </div>
-
-                              {/* Content */}
-                              <div className="flex-1 overflow-y-auto">
-                                <ul className="space-y-2">
-                                  {activeSection && pkg.sections[activeSection as keyof typeof pkg.sections]?.items.map((item, idx) => (
-                                    <motion.li 
-                                      key={idx} 
-                                      initial={{ opacity: 0, x: -20 }}
-                                      animate={{ opacity: 1, x: 0 }}
-                                      transition={{ delay: idx * 0.05 }}
-                                      className="flex items-start gap-2"
-                                    >
-                                      <div className={`p-0.5 rounded-full bg-gradient-to-r ${pkg.gradient} flex-shrink-0 mt-1`}>
-                                        <CheckCircle2 className="w-3 h-3 text-white" />
-                                      </div>
-                                      <span className="text-sm text-digiqo-primary/80">{item}</span>
-                                    </motion.li>
-                                  ))}
-                                </ul>
-                              </div>
-
-                              {/* Footer info */}
-                              <div className="mt-6 pt-4 border-t border-digiqo-accent/10">
-                                <div className="flex items-center gap-2 text-sm text-digiqo-primary/70">
-                                  <Clock className="w-4 h-4" />
-                                  <span>Livraison : {pkg.deliveryTime}</span>
-                                </div>
-                                {pkg.note && (
-                                  <p className="text-xs text-digiqo-primary/50 mt-2 italic">{pkg.note}</p>
-                                )}
-                              </div>
-
-                              {/* CTA */}
-                              <motion.a
-                                href={generateContactUrl({ formula: pkg.name.toLowerCase().replace(' ', '-'), service: activeSection })}
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                className={`mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r ${pkg.gradient} text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}
-                              >
-                                Choisir cette formule
-                                <ArrowUpRight className="w-5 h-5" />
-                              </motion.a>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </motion.div>
-                  </div>
-
-                  {/* Mobile: Accordion */}
-                  <div className="md:hidden bg-white rounded-3xl shadow-lg overflow-hidden">
-                    {/* Header always visible */}
-                    <div className="p-6 border-b border-digiqo-accent/10">
-                      {pkg.popular && (
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-digiqo-accent text-white rounded-full text-xs font-bold mb-4">
-                          POPULAIRE
-                        </div>
-                      )}
-                      
-                      <h3 className={`text-3xl font-bold bg-gradient-to-r ${pkg.gradient} bg-clip-text text-transparent mb-2`}>
-                        {pkg.name}
-                      </h3>
-                      <p className="text-digiqo-primary/70 mb-4">{pkg.description}</p>
-                      
-                      {/* Price */}
-                      <div className="flex items-baseline gap-3 mb-6">
-                        <span className="text-4xl font-bold">{pkg.price}</span>
-                      </div>
-
-                      {/* Highlights */}
-                      <div className="space-y-3">
-                        {pkg.highlights.map((highlight, idx) => (
-                          <div key={idx} className="flex items-center gap-3">
-                            <CheckCircle2 className="w-5 h-5 text-digiqo-secondary flex-shrink-0" />
-                            <span className="text-sm font-medium">{highlight}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Expandable sections */}
-                    <div className="border-t border-digiqo-accent/10">
-                      {Object.entries(pkg.sections).map(([key, section]) => {
-                        const Icon = key === 'bonus' ? Gift : 
-                                   key === 'features' ? Settings : 
-                                   key === 'technical' ? Shield : 
-                                   Rocket
-                        const isOpen = mobileActiveSection === `${pkg.name}-${key}`
-                        
-                        return (
-                          <div key={key} className="border-b border-digiqo-accent/10 last:border-0">
-                            <button
-                              onClick={() => setMobileActiveSection(
-                                isOpen ? null : `${pkg.name}-${key}`
-                              )}
-                              className="w-full p-4 flex items-center justify-between hover:bg-digiqo-secondary/5 transition-colors"
-                            >
-                              <div className="flex items-center gap-3">
-                                <div className={`p-2 rounded-lg bg-gradient-to-br ${pkg.gradient} text-white`}>
-                                  <Icon className="w-4 h-4" />
-                                </div>
-                                <span className="font-medium text-digiqo-primary">{section.title}</span>
-                              </div>
-                              <ChevronRight className={`w-5 h-5 text-digiqo-primary/40 transition-transform ${
-                                isOpen ? 'rotate-90' : ''
-                              }`} />
-                            </button>
-                            
-                            <AnimatePresence>
-                              {isOpen && (
-                                <motion.div
-                                  initial={{ height: 0 }}
-                                  animate={{ height: 'auto' }}
-                                  exit={{ height: 0 }}
-                                  transition={{ duration: ANIMATION.duration.fast }}
-                                  className="overflow-hidden"
-                                >
-                                  <div className="px-4 pb-4">
-                                    <ul className="space-y-2">
-                                      {section.items.map((item, idx) => (
-                                        <li key={idx} className="flex items-start gap-2 text-sm">
-                                          <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${pkg.gradient} mt-1.5 flex-shrink-0`} />
-                                          <span className="text-digiqo-primary/70">{item}</span>
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-                          </div>
-                        )
-                      })}
-                    </div>
-
-                    {/* Footer info */}
-                    <div className="p-4 bg-digiqo-accent/5 border-t border-digiqo-accent/10">
-                      <div className="flex items-center gap-2 text-sm text-digiqo-primary/70 mb-2">
-                        <Clock className="w-4 h-4" />
-                        <span>Livraison : {pkg.deliveryTime}</span>
-                      </div>
-                      {pkg.note && (
-                        <p className="text-xs text-digiqo-primary/50 italic">{pkg.note}</p>
-                      )}
-                    </div>
-
-                    {/* CTA */}
-                    <div className="p-6 bg-digiqo-accent/5">
-                      <motion.a
-                        href={generateContactUrl({ formula: pkg.name.toLowerCase().replace(' ', '-') })}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r ${pkg.gradient} text-white font-bold rounded-2xl shadow-lg`}
-                      >
-                        Choisir cette formule
-                        <ArrowUpRight className="w-5 h-5" />
-                      </motion.a>
-                    </div>
-                  </div>
-                </motion.div>
-              )
-            })}
-          </div>
+              <motion.a
+                href="/#contact"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                Parlons de votre projet
+                <ArrowRight className="w-5 h-5" />
+              </motion.a>
+              
+              <p className="text-sm text-digiqo-primary/60 mt-4">
+                Consultation gratuite • Devis personnalisé • Sans engagement
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
 

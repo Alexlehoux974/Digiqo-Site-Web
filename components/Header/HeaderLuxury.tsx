@@ -19,7 +19,6 @@ import {
   Zap,
   Star,
   Award,
-  Clock,
   MessageCircle
 } from 'lucide-react'
 
@@ -111,9 +110,9 @@ const navigation = {
             title: 'Support & Conseil',
             items: [
               { 
-                name: 'Forfaits SiteKeeper', 
+                name: 'Maintenance Web', 
                 href: '/services/sitekeeper',
-                description: 'Maintenance premium garantie',
+                description: 'Sitekeeper/Shopkeeper - Maintenance premium',
                 icon: Shield
               },
               { 
@@ -151,10 +150,10 @@ const navigation = {
         { name: 'Rejoignez-nous', href: '/recrutement', highlight: true }
       ]
     },
-    { name: 'FAQ', href: '/#faq' }
+    { name: 'FAQ', href: '/?instant=true#faq' }
   ],
   cta: {
-    contact: { text: 'Contact', href: '/#contact' }
+    contact: { text: 'Contact', href: '/?instant=true#contact' }
   }
 }
 
@@ -187,8 +186,13 @@ export const HeaderLuxury = () => {
 
   // Smooth scroll to section
   const handleHashLink = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Handle links with query params and hash (instant scroll)
+    if (href.includes('?instant=true#')) {
+      // Let the default behavior handle it - the useInstantScroll hook will take care of it
+      return
+    }
     // Handle links that start with /#
-    if (href.startsWith('/#')) {
+    else if (href.startsWith('/#')) {
       e.preventDefault()
       const target = document.querySelector(href.substring(1))
       if (target) {

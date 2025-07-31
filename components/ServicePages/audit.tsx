@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowLeft, Check, Globe, Share2, Megaphone, ChevronRight, Sparkles, Search, ArrowRight } from 'lucide-react'
 import { Button } from '../../components/ui/button'
@@ -84,7 +83,7 @@ export default function AuditPage() {
     },
     {
       title: 'Expertise Locale',
-      description: 'Spécialistes du marché réunionnais'
+      description: 'Analyse de votre marché local'
     }
   ]
 
@@ -303,9 +302,6 @@ export default function AuditPage() {
                       <h3 className="text-xl font-semibold text-digiqo-primary mb-1">{item.title}</h3>
                       <p className="text-gray-600">{item.desc}</p>
                     </div>
-                    {index < 3 && (
-                      <ChevronRight className="w-6 h-6 text-gray-400" />
-                    )}
                   </motion.div>
                 ))}
               </div>

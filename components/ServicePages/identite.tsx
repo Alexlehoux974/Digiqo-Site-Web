@@ -178,8 +178,8 @@ export default function IdentitePage() {
               Pourquoi une <span className="text-digiqo-primary">identité forte</span> est cruciale ?
             </h2>
             <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
-              À La Réunion, où le bouche-à-oreille est roi, votre image de marque est votre meilleur ambassadeur. 
-              Une identité visuelle professionnelle augmente votre crédibilité de 75%.
+              Créez une <span className="text-digiqo-accent">identité unique</span> qui marque les esprits.
+              Démarquez-vous avec une image de marque mémorable.
             </p>
           </motion.div>
 
@@ -310,7 +310,7 @@ export default function IdentitePage() {
                     </h3>
                     <p className="text-digiqo-primary/70 mb-4">
                       Nous plongeons dans l'univers de votre entreprise pour comprendre vos valeurs, 
-                      votre vision et votre positionnement unique sur le marché réunionnais.
+                      votre vision et votre positionnement unique sur le marché.
                     </p>
                     <ul className="space-y-2 text-digiqo-primary/70">
                       <li className="flex items-center gap-2">
@@ -363,7 +363,7 @@ export default function IdentitePage() {
                     <ul className="space-y-2 text-digiqo-primary/70">
                       <li className="flex items-center gap-2">
                         <CheckCircle2 className="w-4 h-4 text-digiqo-accent" />
-                        3 à 5 concepts créatifs originaux
+                        2 à 3 concepts créatifs originaux
                       </li>
                       <li className="flex items-center gap-2">
                         <CheckCircle2 className="w-4 h-4 text-digiqo-accent" />
@@ -675,7 +675,7 @@ export default function IdentitePage() {
               },
               {
                 question: "Combien de propositions de logo vais-je recevoir ?",
-                answer: "Nous présentons généralement 3 à 5 concepts créatifs différents. Vous pourrez ensuite affiner votre préféré avec 2 tours de modifications inclus.",
+                answer: "Nous présentons généralement 2 à 3 concepts créatifs différents. Vous pourrez ensuite affiner votre préféré avec 2 tours de modifications inclus.",
                 Icon: PaintBucket
               },
               {
@@ -687,11 +687,6 @@ export default function IdentitePage() {
                 question: "Que se passe-t-il si je ne suis pas satisfait ?",
                 answer: "Nous travaillons en étroite collaboration jusqu'à votre satisfaction complète. Avec notre processus itératif, nous affinons les créations selon vos retours.",
                 Icon: Handshake
-              },
-              {
-                question: "Proposez-vous des services d'impression ?",
-                answer: "Oui ! Nous pouvons gérer l'impression de vos cartes de visite, flyers et autres supports. Nous travaillons avec les meilleurs imprimeurs de La Réunion.",
-                Icon: Printer
               }
             ].map((faq, index) => (
               <motion.div

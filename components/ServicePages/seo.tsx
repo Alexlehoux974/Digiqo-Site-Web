@@ -153,7 +153,7 @@ export default function SEOPage() {
           line1: "Dominez Google",
           line2: "avec le SEO Premium"
         }}
-        subtitle="Propulsez votre entreprise en première page avec notre expertise SEO locale. +312% de trafic organique moyen • Top 3 Google en 6 mois • ROI garanti"
+        subtitle="Propulsez votre entreprise en première page avec notre expertise SEO. Score SEO 85+ garanti"
         ctaButtons={{
           primary: {
             text: "Audit SEO Gratuit",
@@ -242,25 +242,48 @@ export default function SEOPage() {
                     <TrendingUp className="w-8 h-8 text-white" />
                   </div>
                   
-                  <h3 className="text-2xl font-bold mb-4">Evolution Trafic</h3>
+                  <h3 className="text-2xl font-bold mb-4">Score SEO Garanti</h3>
                   
-                  {/* Graphique animé */}
-                  <div className="h-32 flex items-end justify-between gap-2 mb-6">
-                    {[20, 35, 45, 60, 75, 85, 95].map((height, i) => (
-                      <motion.div
-                        key={i}
-                        className="flex-1 bg-gradient-to-t from-digiqo-secondary to-digiqo-secondary/80 rounded-t-lg"
-                        initial={{ height: 0 }}
-                        whileInView={{ height: `${height}%` }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.5 + i * 0.1, duration: 0.5 }}
+                  {/* Score SEO animé */}
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <svg className="w-full h-full transform -rotate-90">
+                      <circle
+                        cx="64"
+                        cy="64"
+                        r="56"
+                        stroke="#f3f4f6"
+                        strokeWidth="12"
+                        fill="none"
                       />
-                    ))}
+                      <motion.circle
+                        cx="64"
+                        cy="64"
+                        r="56"
+                        stroke="url(#gradient-score)"
+                        strokeWidth="12"
+                        fill="none"
+                        strokeLinecap="round"
+                        initial={{ strokeDasharray: '0 352' }}
+                        whileInView={{ strokeDasharray: '300 352' }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.5, duration: 1.5, ease: "easeOut" }}
+                      />
+                      <defs>
+                        <linearGradient id="gradient-score" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#199CB7" />
+                          <stop offset="100%" stopColor="#00b4d8" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                      <span className="text-4xl font-bold text-digiqo-secondary">85+</span>
+                      <span className="text-sm text-digiqo-primary/70">Score SEO</span>
+                    </div>
                   </div>
                   
                   <div className="flex items-center justify-between">
-                    <span className="text-digiqo-primary/70">Croissance moyenne</span>
-                    <span className="text-3xl font-bold text-digiqo-secondary">+312%</span>
+                    <span className="text-digiqo-primary/70">Résultat garanti</span>
+                    <span className="text-lg font-bold text-digiqo-secondary">100%</span>
                   </div>
                 </div>
               </div>
@@ -380,7 +403,7 @@ export default function SEOPage() {
                         fill="none"
                         strokeLinecap="round"
                         initial={{ strokeDasharray: '0 352' }}
-                        whileInView={{ strokeDasharray: '281 352' }}
+                        whileInView={{ strokeDasharray: '229 352' }}
                         viewport={{ once: true }}
                         transition={{ delay: 1, duration: 1.5, ease: "easeOut" }}
                       />
@@ -392,7 +415,7 @@ export default function SEOPage() {
                       </defs>
                     </svg>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-3xl font-bold text-digiqo-accent">+420%</span>
+                      <span className="text-3xl font-bold text-digiqo-accent">+275%</span>
                     </div>
                   </div>
                   
@@ -433,13 +456,13 @@ export default function SEOPage() {
               </p>
               <div className="flex items-center justify-center gap-4">
                 <img 
-                  src="/partenaires/LA-BOUCHERIE-1024x1024.webp" 
-                  alt="La Boucherie"
+                  src="/partenaires/SVAREA-1024x1024.webp" 
+                  alt="Svarea"
                   className="w-16 h-16 rounded-full bg-white p-2"
                 />
                 <div className="text-left">
-                  <p className="font-bold">Jean-Marc Payet</p>
-                  <p className="text-white/80">Directeur Marketing - La Boucherie</p>
+                  <p className="font-bold">Directeur Commercial</p>
+                  <p className="text-white/80">Svarea</p>
                 </div>
               </div>
             </div>
@@ -447,368 +470,6 @@ export default function SEOPage() {
         </div>
       </section>
 
-      {/* Notre Méthode Premium avec Timeline Interactive */}
-      <section className="py-24 bg-black relative overflow-hidden">
-        {/* Effet Matrix en arrière-plan */}
-        <div className="absolute inset-0">
-          <motion.div
-            className="absolute inset-0 opacity-20"
-            style={{
-              backgroundImage: `repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 2px,
-                rgba(25, 156, 183, 0.1) 2px,
-                rgba(25, 156, 183, 0.1) 4px
-              ),
-              repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 2px,
-                rgba(25, 156, 183, 0.1) 2px,
-                rgba(25, 156, 183, 0.1) 4px
-              )`
-            }}
-            animate={{
-              backgroundPosition: ['0px 0px', '4px 4px']
-            }}
-            transition={{
-              duration: 0.5,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
-        </div>
-        
-        {/* Particules de code flottantes */}
-        <SEOParticleSystem count={20} />
-        
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-digiqo-secondary/20 backdrop-blur-sm rounded-full mb-6 border border-digiqo-secondary/30"
-            >
-              <Brain className="w-5 h-5 text-digiqo-secondary" />
-              <span className="text-digiqo-secondary font-semibold">Méthode Exclusive</span>
-            </motion.div>
-            
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              La <span className="bg-gradient-to-r from-digiqo-secondary via-digiqo-secondary/80 to-digiqo-accent bg-clip-text text-transparent">Formule DIGIQO</span>
-            </h2>
-            <p className="text-xl text-digiqo-primary/50 max-w-3xl mx-auto">
-              4 phases stratégiques pour dominer Google en 6 mois
-            </p>
-          </motion.div>
-
-          {/* Timeline interactive avec onglets */}
-          <div className="relative">
-            {/* Ligne centrale animée */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-digiqo-secondary to-transparent">
-              <motion.div
-                className="absolute inset-x-0 h-full bg-gradient-to-b from-digiqo-secondary via-digiqo-secondary/80 to-digiqo-accent"
-                initial={{ scaleY: 0 }}
-                whileInView={{ scaleY: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                style={{ transformOrigin: 'top' }}
-              />
-            </div>
-            
-            {/* Phases */}
-            {[
-              {
-                id: 'audit',
-                phase: 1,
-                title: 'Audit & Analyse',
-                duration: 'Semaine 1-2',
-                gradient: 'from-digiqo-secondary to-digiqo-secondary/80',
-                icon: Search,
-                details: [
-                  {
-                    title: 'Analyse Technique Complète',
-                    items: [
-                      'Core Web Vitals & Performance',
-                      'Indexation & Crawlabilité',
-                      'Architecture & Structure',
-                      'Sécurité & HTTPS'
-                    ]
-                  },
-                  {
-                    title: 'Audit Sémantique',
-                    items: [
-                      'Analyse des contenus existants',
-                      'Pertinence des mots-clés',
-                      'Cannibalisation SEO',
-                      'Opportunités de contenu'
-                    ]
-                  },
-                  {
-                    title: 'Analyse Concurrentielle',
-                    items: [
-                      'Top 10 concurrents locaux',
-                      'Gaps de mots-clés',
-                      'Profil de backlinks',
-                      'Stratégies gagnantes'
-                    ]
-                  }
-                ]
-              },
-              {
-                id: 'strategy',
-                phase: 2,
-                title: 'Stratégie & Planning',
-                duration: 'Semaine 3-4',
-                gradient: 'from-digiqo-primary to-digiqo-accent',
-                icon: Target,
-                details: [
-                  {
-                    title: 'Recherche de Mots-Clés',
-                    items: [
-                      'Mots-clés à fort potentiel',
-                      'Longue traîne locale',
-                      'Intentions de recherche',
-                      'Saisonnalité à La Réunion'
-                    ]
-                  },
-                  {
-                    title: 'Architecture SEO',
-                    items: [
-                      'Silos thématiques',
-                      'Cocons sémantiques',
-                      'Maillage interne optimal',
-                      'Plan de redirection'
-                    ]
-                  },
-                  {
-                    title: 'Roadmap Personnalisée',
-                    items: [
-                      'Quick wins prioritaires',
-                      'Planning sur 6 mois',
-                      'KPIs et objectifs',
-                      'Budget prévisionnel'
-                    ]
-                  }
-                ]
-              },
-              {
-                id: 'optimization',
-                phase: 3,
-                title: 'Optimisation & Exécution',
-                duration: 'Mois 2-5',
-                gradient: 'from-digiqo-accent to-amber-500',
-                icon: Zap,
-                details: [
-                  {
-                    title: 'Optimisations Techniques',
-                    items: [
-                      'Amélioration des Core Web Vitals',
-                      'Schema markup avancé',
-                      'Optimisation mobile-first',
-                      'JavaScript SEO'
-                    ]
-                  },
-                  {
-                    title: 'Content Marketing',
-                    items: [
-                      'Création de contenus piliers',
-                      'Articles optimisés SEO',
-                      'Landing pages ciblées',
-                      'FAQ et guides locaux'
-                    ]
-                  },
-                  {
-                    title: 'Link Building Local',
-                    items: [
-                      'Partenariats locaux',
-                      'Citations locales',
-                      'PR digitale réunionnaise',
-                      'Guest posting ciblé'
-                    ]
-                  }
-                ]
-              },
-              {
-                id: 'monitoring',
-                phase: 4,
-                title: 'Monitoring & Growth',
-                duration: 'Mois 6+',
-                gradient: 'from-digiqo-secondary to-digiqo-secondary/80',
-                icon: LineChart,
-                details: [
-                  {
-                    title: 'Suivi en Temps Réel',
-                    items: [
-                      'Dashboard personnalisé',
-                      'Alertes de positions',
-                      'Monitoring 24/7',
-                      'Analyse des SERPs'
-                    ]
-                  },
-                  {
-                    title: 'Optimisation Continue',
-                    items: [
-                      'Tests A/B SEO',
-                      'Ajustements stratégiques',
-                      'Nouvelles opportunités',
-                      'Veille algorithmique'
-                    ]
-                  },
-                  {
-                    title: 'Reporting & ROI',
-                    items: [
-                      'Rapports mensuels détaillés',
-                      'Analyse des conversions',
-                      'ROI et performances',
-                      'Recommandations'
-                    ]
-                  }
-                ]
-              }
-            ].map((phase, index) => {
-              const isLeft = index % 2 === 0
-              const Icon = phase.icon
-              const isActive = activeTab === phase.id
-              
-              return (
-                <motion.div
-                  key={phase.id}
-                  initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * ANIMATION.delay.staggerSlow }}
-                  className={`relative flex items-center mb-24 ${isLeft ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
-                >
-                  {/* Contenu principal */}
-                  <div className={`w-full lg:w-1/2 ${isLeft ? 'lg:pr-16 lg:text-right' : 'lg:pl-16'}`}>
-                    <motion.div
-                      className={`bg-digiqo-primary/90 rounded-3xl p-8 cursor-pointer transition-all duration-300 border-2 ${
-                        isActive ? 'border-digiqo-secondary shadow-2xl shadow-digiqo-secondary/20' : 'border-digiqo-primary/30 hover:border-digiqo-primary/40'
-                      }`}
-                      onClick={() => setActiveTab(phase.id)}
-                      whileHover={{ scale: 1.02 }}
-                    >
-                      <div className={`flex items-center gap-4 mb-4 ${isLeft ? 'lg:flex-row-reverse' : ''}`}>
-                        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${phase.gradient} flex items-center justify-center`}>
-                          <Icon className="w-8 h-8 text-white" />
-                        </div>
-                        <div className={isLeft ? 'lg:text-right' : ''}>
-                          <h3 className="text-2xl font-bold text-white mb-1">Phase {phase.phase}: {phase.title}</h3>
-                          <p className="text-digiqo-secondary font-semibold">{phase.duration}</p>
-                        </div>
-                      </div>
-                      
-                      <p className="text-digiqo-primary/50 mb-4">
-                        {isActive ? 'Cliquez pour réduire' : 'Cliquez pour découvrir les détails'}
-                      </p>
-                      
-                      {/* Détails expandables */}
-                      <AnimatePresence>
-                        {isActive && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: ANIMATION.duration.fast }}
-                            className="overflow-hidden"
-                          >
-                            <div className="pt-6 space-y-6">
-                              {phase.details.map((section, i) => (
-                                <div key={i} className={isLeft ? 'lg:text-right' : ''}>
-                                  <h4 className="text-lg font-bold text-white mb-3">{section.title}</h4>
-                                  <ul className="space-y-2">
-                                    {section.items.map((item, j) => (
-                                      <motion.li
-                                        key={j}
-                                        initial={{ opacity: 0, x: isLeft ? 20 : -20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: i * 0.1 + j * 0.05 }}
-                                        className={`flex items-center gap-2 text-white/70 ${isLeft ? 'lg:flex-row-reverse' : ''}`}
-                                      >
-                                        <CheckCircle2 className="w-4 h-4 text-digiqo-secondary flex-shrink-0" />
-                                        <span>{item}</span>
-                                      </motion.li>
-                                    ))}
-                                  </ul>
-                                </div>
-                              ))}
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </motion.div>
-                  </div>
-                  
-                  {/* Point central animé */}
-                  <div className="absolute left-1/2 -translate-x-1/2 z-10">
-                    <motion.div
-                      className="relative"
-                      whileHover={{ scale: 1.2 }}
-                    >
-                      <motion.div
-                        className={`w-6 h-6 rounded-full bg-gradient-to-br ${phase.gradient} shadow-lg`}
-                        animate={{
-                          boxShadow: isActive ? [
-                            '0 0 20px rgba(25, 156, 183, 0.5)',
-                            '0 0 40px rgba(25, 156, 183, 0.5)',
-                            '0 0 20px rgba(25, 156, 183, 0.5)'
-                          ] : '0 0 20px rgba(0, 0, 0, 0.5)'
-                        }}
-                        transition={{ duration: 2, repeat: isActive ? Infinity : 0 }}
-                      />
-                      <motion.div
-                        className="absolute inset-0 rounded-full bg-white/50"
-                        animate={{ scale: [1, 2, 1], opacity: [0.5, 0, 0.5] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      />
-                    </motion.div>
-                  </div>
-                  
-                  {/* Espace vide pour l'autre côté */}
-                  <div className="hidden lg:block lg:w-1/2" />
-                </motion.div>
-              )
-            })}
-          </div>
-          
-          {/* CTA Premium */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mt-20"
-          >
-            <p className="text-xl text-digiqo-primary/50 mb-8">
-              Prêt à transformer votre visibilité en ligne ?
-            </p>
-            <motion.a
-              href={generateContactUrl({ 
-                service: 'seo',
-                description: 'Je veux découvrir la méthode DIGIQO SEO' 
-              })}
-              className="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 text-white font-bold rounded-full shadow-2xl relative overflow-hidden"
-              whileHover={ANIMATION.hover.scale}
-              whileTap={ANIMATION.tap.scale}
-            >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-digiqo-accent to-digiqo-primary"
-                initial={{ x: '100%' }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: ANIMATION.duration.fast }}
-              />
-              <span className="relative z-10">Découvrir la Méthode</span>
-              <Rocket className="relative z-10 w-6 h-6" />
-            </motion.a>
-          </motion.div>
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section className="py-24 bg-white">
@@ -839,9 +500,9 @@ export default function SEOPage() {
             </div>
 
             <div className="bg-digiqo-secondary/5 rounded-2xl p-6">
-              <h3 className="text-xl font-bold mb-3">Le SEO est-il vraiment nécessaire à La Réunion ?</h3>
+              <h3 className="text-xl font-bold mb-3">Le SEO est-il vraiment nécessaire ?</h3>
               <p className="text-digiqo-primary/70">
-                Absolument ! La concurrence digitale est forte sur l'île. Sans SEO, 
+                Absolument ! La concurrence digitale est forte. Sans SEO, 
                 vous passez à côté de 70% des opportunités de business en ligne.
               </p>
             </div>
