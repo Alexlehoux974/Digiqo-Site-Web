@@ -69,29 +69,68 @@ export const FAQSection: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Active Section Title */}
+        {/* Active Section Title with Arrows */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-center mb-4"
+          className="text-center mb-4 relative"
         >
-          <h3 
-            className="text-3xl font-bold relative inline-block"
-            style={{ 
-              color: '#FFFFFF',
-              filter: 'brightness(1.2)',
-              textShadow: `
-                0 0 20px ${activeSection.color},
-                0 0 40px ${activeSection.color},
-                0 0 60px ${activeSection.glowColor},
-                0 2px 4px rgba(0,0,0,0.5)
-              `,
-            }}
-          >
-            {activeSection.title}
-          </h3>
+          <div className="flex items-center justify-center gap-6">
+            {/* Left Arrow */}
+            <motion.button
+              onClick={() => {
+                const newIndex = activeIndex > 0 ? activeIndex - 1 : faqSections.length - 1;
+                setActiveIndex(newIndex);
+              }}
+              className="p-3 rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 transition-all duration-300"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              style={{
+                boxShadow: `0 0 20px ${activeSection.color}40, 0 0 40px ${activeSection.color}20`,
+              }}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
+              </svg>
+            </motion.button>
+
+            {/* Section Title */}
+            <h3 
+              className="text-3xl font-bold relative inline-block px-8"
+              style={{ 
+                color: '#FFFFFF',
+                filter: 'brightness(1.2)',
+                textShadow: `
+                  0 0 20px ${activeSection.color},
+                  0 0 40px ${activeSection.color},
+                  0 0 60px ${activeSection.glowColor},
+                  0 2px 4px rgba(0,0,0,0.5)
+                `,
+              }}
+            >
+              {activeSection.title}
+            </h3>
+
+            {/* Right Arrow */}
+            <motion.button
+              onClick={() => {
+                const newIndex = activeIndex < faqSections.length - 1 ? activeIndex + 1 : 0;
+                setActiveIndex(newIndex);
+              }}
+              className="p-3 rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 transition-all duration-300"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              style={{
+                boxShadow: `0 0 20px ${activeSection.color}40, 0 0 40px ${activeSection.color}20`,
+              }}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+              </svg>
+            </motion.button>
+          </div>
         </motion.div>
       </div>
 

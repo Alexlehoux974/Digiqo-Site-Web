@@ -42,7 +42,7 @@ function Counter({ value, suffix, prefix, duration }: { value: number; suffix: s
   }, [isInView, value, duration])
 
   return (
-    <span ref={ref} className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">
+    <span ref={ref} className="text-3xl sm:text-4xl md:text-6xl font-bold bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">
       {prefix}{count}{suffix}
     </span>
   )
@@ -223,7 +223,7 @@ export function ResultsSection() {
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mb-20">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -234,16 +234,18 @@ export function ResultsSection() {
               className="text-center"
             >
               <GlowCard 
-                className="p-8 bg-white shadow-lg hover:shadow-2xl hover:shadow-digiqo-primary/20 transition-all duration-300 border border-gray-100"
+                className="p-4 sm:p-6 md:p-8 bg-white shadow-lg hover:shadow-2xl hover:shadow-digiqo-primary/20 transition-all duration-300 border border-gray-100 flex flex-col items-center justify-center h-full"
                 glowColor={index === 0 || index === 2 ? 'bordeaux' : index === 1 ? 'orange' : 'blue'}
               >
-                <Counter 
-                  value={stat.value} 
-                  suffix={stat.suffix} 
-                  prefix={stat.prefix}
-                  duration={stat.duration} 
-                />
-                <p className="text-gray-700 mt-4 font-semibold">{stat.label}</p>
+                <div className="text-center">
+                  <Counter 
+                    value={stat.value} 
+                    suffix={stat.suffix} 
+                    prefix={stat.prefix}
+                    duration={stat.duration} 
+                  />
+                  <p className="text-gray-700 mt-2 sm:mt-3 md:mt-4 font-semibold text-sm sm:text-base">{stat.label}</p>
+                </div>
               </GlowCard>
             </motion.div>
           ))}

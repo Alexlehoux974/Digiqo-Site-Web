@@ -37,7 +37,7 @@ export const ServiceHero: React.FC<ServiceHeroProps> = ({
   iconColor = 'text-digiqo-accent'
 }) => {
   return (
-    <section className="relative min-h-[80vh] pt-40 pb-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-digiqo-primary via-digiqo-primary/80 to-digiqo-primary">
+    <section className="relative min-h-[80vh] pt-48 sm:pt-32 pb-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-digiqo-primary via-digiqo-primary/80 to-digiqo-primary">
       {/* Animated gradient orbs */}
       <HeroGradientOrbs />
       <div className="absolute inset-0">
@@ -48,7 +48,7 @@ export const ServiceHero: React.FC<ServiceHeroProps> = ({
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 bg-[url('/assets/grid.svg')] bg-center opacity-5" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-4 text-center">
         <motion.div
           {...ANIMATION.entry.fadeInUpLarge}
           transition={{ duration: ANIMATION.duration.slow }}
@@ -75,15 +75,15 @@ export const ServiceHero: React.FC<ServiceHeroProps> = ({
 
           {/* Title with letter animation */}
           <div className="space-y-6">
-            <h1 className="text-5xl md:text-7xl font-bold">
-              <span className="text-white">{title.line1}</span>
+            <h1 className="text-2xl xs:text-3xl sm:text-5xl md:text-7xl font-bold">
+              <span className="text-white break-all xs:break-words">{title.line1}</span>
               <br />
-              <span className={`bg-gradient-to-r ${gradientFrom} ${gradientTo} bg-clip-text text-transparent`}>
+              <span className={`bg-gradient-to-r ${gradientFrom} ${gradientTo} bg-clip-text text-transparent break-all xs:break-words`}>
                 {title.line2}
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto">
+            <p className="text-base sm:text-xl md:text-2xl text-white/80 max-w-3xl mx-auto px-2 sm:px-0">
               {subtitle}
             </p>
           </div>
@@ -93,14 +93,14 @@ export const ServiceHero: React.FC<ServiceHeroProps> = ({
             <motion.div
               {...ANIMATION.entry.fadeInUp}
               transition={{ delay: ANIMATION.delay.section * 2 }}
-              className="flex flex-wrap gap-6 justify-center"
+              className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-4 sm:px-0"
             >
               {ctaButtons.primary && (
                 <motion.a
                   href={ctaButtons.primary.href}
                   whileHover={ANIMATION.hover.scale}
                   whileTap={ANIMATION.tap.scale}
-                  className={`group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r ${gradientFrom} ${gradientTo.replace('to-', 'to-')} text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300`}
+                  className={`group inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r ${gradientFrom} ${gradientTo.replace('to-', 'to-')} text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto`}
                 >
                   {ctaButtons.primary.text}
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -112,7 +112,7 @@ export const ServiceHero: React.FC<ServiceHeroProps> = ({
                   href={ctaButtons.secondary.href}
                   whileHover={ANIMATION.hover.scale}
                   whileTap={ANIMATION.tap.scale}
-                  className="group inline-flex items-center gap-3 px-8 py-4 bg-digiqo-secondary/90 text-white font-bold rounded-2xl border border-digiqo-secondary/50 hover:border-digiqo-secondary shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="group inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-digiqo-secondary/90 text-white font-bold rounded-2xl border border-digiqo-secondary/50 hover:border-digiqo-secondary shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                 >
                   {ctaButtons.secondary.text}
                   <Sparkles className="w-5 h-5" />

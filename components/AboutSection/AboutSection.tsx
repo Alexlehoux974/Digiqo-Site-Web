@@ -23,8 +23,8 @@ const timelineData = [
           </p>
         </div>
         
-        {/* Grille 2x2 */}
-        <div className="grid grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {/* Grille responsive : 1 colonne mobile, 2 colonnes desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
           {/* Rodolphe - Top Left avec accent */}
           <div className="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-digiqo-primary/10 to-transparent p-1">
             <div className="relative overflow-hidden rounded-xl bg-white">
@@ -121,8 +121,8 @@ const timelineData = [
           </p>
         </div>
         
-        {/* Grille 2x2 */}
-        <div className="grid grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {/* Grille responsive : 1 colonne mobile, 2 colonnes desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
           {/* Meta Badge - Top Left */}
           <div className="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 p-8">
             <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center">
@@ -215,8 +215,8 @@ const timelineData = [
           </p>
         </div>
         
-        {/* Grille 2x2 */}
-        <div className="grid grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {/* Grille responsive : 1 colonne mobile, 2 colonnes desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
           {/* Adrien - Top Left */}
           <div className="relative group overflow-hidden rounded-2xl">
             <div className="absolute -inset-1 bg-gradient-to-r from-digiqo-primary to-digiqo-accent rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-700"></div>
@@ -326,8 +326,8 @@ const timelineData = [
           </p>
         </div>
         
-        {/* Grille 2x2 */}
-        <div className="grid grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {/* Grille responsive : 1 colonne mobile, 2 colonnes desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
           {/* Mensualisation - Top Left */}
           <div className="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-digiqo-accent/10 to-transparent p-8">
             <div className="relative z-10">

@@ -19,7 +19,9 @@ import {
   Zap,
   Star,
   Award,
-  MessageCircle
+  MessageCircle,
+  X,
+  ChevronRight
 } from 'lucide-react'
 
 
@@ -208,13 +210,14 @@ export const HeaderLuxury = () => {
   }
 
   return (
-    <motion.header 
-      className="fixed top-0 left-0 right-0 z-[100]"
-      style={{ 
-        y: headerYSpring,
-        scale: headerScaleSpring
-      }}
-    >
+    <>
+      <motion.header 
+        className="fixed top-0 left-0 right-0 z-[100]"
+        style={{ 
+          y: headerYSpring,
+          scale: headerScaleSpring
+        }}
+      >
       {/* Ultra-luxury glass effect */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-white/80 backdrop-blur-2xl" />
@@ -678,5 +681,136 @@ export const HeaderLuxury = () => {
         </div>
       </nav>
     </motion.header>
+
+    {/* Mobile Menu Outside of Header to Fix Positioning */}
+    <AnimatePresence>
+      {isMenuOpen && (
+        <>
+          {/* Overlay */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-[90]"
+            onClick={() => setIsMenuOpen(false)}
+          />
+          
+          {/* Menu Panel */}
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+            className="lg:hidden fixed top-0 right-0 h-full w-[90%] max-w-md bg-white/95 backdrop-blur-2xl shadow-2xl z-[95] overflow-y-auto"
+          >
+            {/* Close Button */}
+            <div className="flex justify-between items-center p-6 border-b border-gray-100">
+              <OptimizedImage 
+                src="/assets/logo1.png" 
+                alt="Digiqo"
+                width={150}
+                height={50}
+                className="h-12 w-auto"
+                objectFit="contain"
+              />
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+              >
+                <X className="w-6 h-6 text-gray-600" />
+              </button>
+            </div>
+
+            {/* Mobile Navigation */}
+            <nav className="p-6">
+              <div className="space-y-6">
+                {navigation.main.map((item) => (
+                  <div key={item.name}>
+                    {item.megaMenu ? (
+                      // Services with submenu
+                      <>
+                        <button
+                          onClick={() => setActiveSubmenu(activeSubmenu === item.name ? null : item.name)}
+                          className="flex items-center justify-between w-full text-left"
+                        >
+                          <span className="text-lg font-semibold text-gray-900">{item.name}</span>
+                          <ChevronRight 
+                            className={`w-5 h-5 text-gray-400 transition-transform ${
+                              activeSubmenu === item.name ? 'rotate-90' : ''
+                            }`}
+                          />
+                        </button>
+                        
+                        <AnimatePresence>
+                          {activeSubmenu === item.name && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="overflow-hidden mt-4 ml-4 space-y-3"
+                            >
+                              {item.megaMenu.categories.flatMap(category => 
+                                category.items.map(service => (
+                                  <Link
+                                    key={service.href}
+                                    href={service.href}
+                                    onClick={() => {
+                                      setIsMenuOpen(false)
+                                      setActiveSubmenu(null)
+                                    }}
+                                    className="block py-2 text-gray-600 hover:text-digiqo-primary transition-colors"
+                                  >
+                                    {service.name}
+                                  </Link>
+                                ))
+                              )}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </>
+                    ) : (
+                      // Regular links
+                      <Link
+                        href={item.href || '#'}
+                        onClick={(e) => {
+                          if (item.href) {
+                            handleHashLink(e, item.href)
+                          }
+                          setIsMenuOpen(false)
+                        }}
+                        className={`block text-lg font-semibold ${
+                          item.highlight 
+                            ? 'text-digiqo-accent hover:text-digiqo-accent/80' 
+                            : 'text-gray-900 hover:text-digiqo-primary'
+                        } transition-colors`}
+                      >
+                        {item.name}
+                      </Link>
+                    )}
+                  </div>
+                ))}
+                
+                {/* Contact CTA */}
+                <div className="pt-6 border-t border-gray-100">
+                  <Link
+                    href={navigation.cta.contact.href}
+                    onClick={(e) => {
+                      handleHashLink(e, navigation.cta.contact.href)
+                      setIsMenuOpen(false)
+                    }}
+                    className="block w-full px-6 py-3 bg-gradient-to-r from-digiqo-primary to-digiqo-accent text-white font-bold rounded-2xl text-center"
+                  >
+                    {navigation.cta.contact.text}
+                  </Link>
+                </div>
+              </div>
+            </nav>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+    </>
   )
 }

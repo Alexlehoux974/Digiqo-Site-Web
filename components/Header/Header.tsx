@@ -49,15 +49,19 @@ export const Header = () => {
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
   
   useEffect(() => {
-    console.log('Header mounted')
-  }, [])
+    console.log('Header mounted, isMenuOpen:', isMenuOpen)
+    // Ajouter un log pour déboguer le menu mobile
+    if (isMenuOpen) {
+      console.log('Menu mobile ouvert')
+    }
+  }, [isMenuOpen])
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[100] shadow-lg">
       {/* Glassmorphism background */}
       <div className="absolute inset-0 bg-white/90 backdrop-blur-lg border-b border-digiqo-primary/10" />
       
-      <nav className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center">
@@ -210,8 +214,12 @@ export const Header = () => {
 
           {/* Mobile menu button */}
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-digiqo-primary/5 hover:text-digiqo-primary"
+            onClick={() => {
+              console.log('Menu button clicked, current state:', isMenuOpen);
+              setIsMenuOpen(!isMenuOpen);
+            }}
+            className="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-digiqo-primary/5 hover:text-digiqo-primary relative z-[150]"
+            aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMenuOpen ? (
@@ -223,20 +231,60 @@ export const Header = () => {
           </button>
         </div>
 
-        {/* Mobile menu */}
-        <AnimatePresence>
-          {isMenuOpen && (
+      </nav>
+      
+      {/* Mobile menu - Moved inside header for proper z-index context */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <>
+            {/* Overlay */}
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="lg:hidden fixed inset-0 bg-black/20 z-[110]"
+              onClick={() => {
+                console.log('Overlay clicked, closing menu');
+                setIsMenuOpen(false);
+              }}
+            />
+            
+            {/* Menu */}
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="lg:hidden fixed top-[80px] left-0 right-0 bg-white backdrop-blur-lg border-b border-digiqo-primary/10 shadow-xl z-[120] overflow-visible"
+              style={{ maxHeight: 'calc(100vh - 80px)' }}
             >
-              <div className="py-4 space-y-2">
-                {navigation.main.map((item) => (
-                  <div key={item.name}>
+              <div className="px-4 py-6 space-y-2 overflow-y-auto">
+              {navigation.main.map((item) => (
+                <div key={item.name}>
+                  {item.submenu ? (
+                    <button
+                      onClick={() => setActiveSubmenu(activeSubmenu === item.name ? null : item.name)}
+                      className={`w-full flex items-center justify-between px-4 py-2 text-base font-medium rounded-lg
+                        ${item.highlight 
+                          ? 'text-digiqo-accent' 
+                          : 'text-gray-700'
+                        }`}
+                    >
+                      {item.name}
+                      <svg 
+                        className={`w-4 h-4 transition-transform ${activeSubmenu === item.name ? 'rotate-180' : ''}`}
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                  ) : (
                     <Link
                       href={item.href}
+                      onClick={() => setIsMenuOpen(false)}
                       className={`block px-4 py-2 text-base font-medium rounded-lg
                         ${item.highlight 
                           ? 'text-digiqo-accent' 
@@ -245,41 +293,44 @@ export const Header = () => {
                     >
                       {item.name}
                     </Link>
-                    {item.submenu && (
-                      <div className="ml-4 mt-2 space-y-1">
-                        {item.submenu.map((subitem) => (
-                          <Link
-                            key={subitem.name}
-                            href={subitem.href}
-                            className="block px-4 py-2 text-sm text-gray-600"
-                          >
-                            {subitem.name}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-                <div className="pt-4 space-y-2 border-t border-gray-200">
-                  {navigation.actions.map((action) => (
-                    <Link
-                      key={action.name}
-                      href={action.href}
-                      className={`block px-4 py-2 text-center text-base font-medium rounded-lg
-                        ${action.variant === 'primary'
-                          ? 'bg-gradient-to-r from-digiqo-primary to-digiqo-accent text-white'
-                          : 'text-digiqo-primary border border-digiqo-primary/20'
-                        }`}
-                    >
-                      {action.name}
-                    </Link>
-                  ))}
+                  )}
+                  {item.submenu && activeSubmenu === item.name && (
+                    <div className="ml-4 mt-2 space-y-1">
+                      {item.submenu.map((subitem) => (
+                        <Link
+                          key={subitem.name}
+                          href={subitem.href}
+                          onClick={() => setIsMenuOpen(false)}
+                          className="block px-4 py-2 text-sm text-gray-600 hover:text-digiqo-primary"
+                        >
+                          {subitem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </div>
+              ))}
+              <div className="pt-4 space-y-2 border-t border-gray-200">
+                {navigation.actions.map((action) => (
+                  <Link
+                    key={action.name}
+                    href={action.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`block px-4 py-2 text-center text-base font-medium rounded-lg
+                      ${action.variant === 'primary'
+                        ? 'bg-gradient-to-r from-digiqo-primary to-digiqo-accent text-white'
+                        : 'text-digiqo-primary border border-digiqo-primary/20'
+                      }`}
+                  >
+                    {action.name}
+                  </Link>
+                ))}
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
+            </div>
+          </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   )
 }

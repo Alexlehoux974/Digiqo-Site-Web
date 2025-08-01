@@ -36,42 +36,6 @@ export const FAQTabs: React.FC<FAQTabsProps> = ({ sections, activeIndex, onTabCh
     <div className="relative">
       {/* Tab Bar Container */}
       <div className="relative w-full">
-        {/* Left Arrow */}
-        <motion.button
-          onClick={() => {
-            const newIndex = activeIndex > 0 ? activeIndex - 1 : sections.length - 1;
-            onTabChange(newIndex);
-          }}
-          className="absolute left-[5%] md:left-[15%] lg:left-[25%] xl:left-[30%] top-1/2 -translate-y-1/2 z-30 bg-white/20 backdrop-blur-sm p-2 rounded-full text-white hover:bg-white/30 transition-all duration-300 flex"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          style={{
-            boxShadow: `0 0 20px ${activeColor}40, 0 0 40px ${activeColor}20`,
-          }}
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
-          </svg>
-        </motion.button>
-
-        {/* Right Arrow */}
-        <motion.button
-          onClick={() => {
-            const newIndex = activeIndex < sections.length - 1 ? activeIndex + 1 : 0;
-            onTabChange(newIndex);
-          }}
-          className="absolute right-[5%] md:right-[15%] lg:right-[25%] xl:right-[30%] top-1/2 -translate-y-1/2 z-30 bg-white/20 backdrop-blur-sm p-2 rounded-full text-white hover:bg-white/30 transition-all duration-300 flex"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          style={{
-            boxShadow: `0 0 20px ${activeColor}40, 0 0 40px ${activeColor}20`,
-          }}
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
-          </svg>
-        </motion.button>
-
         <div className="relative w-full overflow-x-auto scrollbar-hide">
           <div className="relative flex items-center justify-start md:justify-center gap-4 p-4 min-w-max mx-auto">
           {sections.map((section, index) => {

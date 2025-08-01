@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { CookieConsent } from '@/components/CookieConsent'
+import { ScrollToTop } from '@/components/ScrollToTop'
 import '../styles/globals.css'
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -22,6 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Component {...pageProps} />
       <CookieConsent />
+      <ScrollToTop />
     </>
   )
 }

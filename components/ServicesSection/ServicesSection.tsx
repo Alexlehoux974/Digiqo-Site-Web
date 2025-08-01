@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, useMotionValue, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import { 
@@ -119,6 +119,7 @@ const services: Service[] = [
 
 
 function ServiceCard({ service, index }: { service: Service; index: number }) {
+  const [isMobile, setIsMobile] = useState(false);
   const [isHovered, setIsHovered] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
   const x = useMotionValue(0)
@@ -126,6 +127,15 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
   
   const rotateX = useTransform(y, [-100, 100], [10, -10])
   const rotateY = useTransform(x, [-100, 100], [-10, 10])
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleMouseMove = (event: React.MouseEvent) => {
     if (!cardRef.current) return
@@ -145,7 +155,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
   return (
     <motion.div
       ref={cardRef}
-      className={`${service.gridClass} relative`}
+      className={`${isMobile ? 'h-full' : service.gridClass} relative`}
       data-service-id={service.id}
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
@@ -174,98 +184,98 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
             relative w-full h-full rounded-2xl overflow-hidden cursor-pointer
             bg-white/95 backdrop-blur-sm border border-white/30
             hover:shadow-2xl transition-all duration-500
-            ${service.size === 'large' ? 'min-h-[300px]' : service.size === 'medium' ? 'min-h-[160px]' : 'min-h-[120px]'}
+            ${isMobile ? 'h-full' : service.size === 'large' ? 'h-[400px]' : service.size === 'medium' ? 'h-[250px]' : 'h-[180px]'}
           `}>
           {/* Gradient Background */}
           <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-5 hover:opacity-15 transition-opacity duration-500`} />
           
-          {/* Contenu */}
+          {/* Structure différente pour la carte publicité */}
           {service.id === 'publicite' ? (
-            <div className="relative z-10 p-4 h-full flex flex-col items-center justify-between">
-              {/* Titre */}
-              <div className="text-center">
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent mb-1">
+            <div className="relative z-10 p-4 h-full flex flex-col">
+              {/* Zone Contenu en premier - titre et description */}
+              <div className="mb-4 text-center">
+                <h3 className="text-xl font-bold mb-2 bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">
                   {service.title}
                 </h3>
-                <p className="text-sm text-gray-700 leading-relaxed max-w-md">
+                <p className="text-sm text-gray-700 leading-relaxed px-2">
                   {service.description}
                 </p>
               </div>
               
-              {/* Icon Cloud */}
-              <div className="flex-1 w-full max-w-sm mx-auto">
-                <IconCloud className="w-full h-full min-h-[200px]" />
+              {/* Animation grande en dessous du texte */}
+              <div className="flex-1 flex items-center justify-center overflow-hidden py-4">
+                <div className="w-full h-full max-w-[280px] max-h-[220px] mx-auto">
+                  <IconCloud className="w-full h-full" />
+                </div>
               </div>
               
-              {/* CTA */}
-              <motion.div 
-                className="mt-2"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span className={`
-                  inline-flex items-center gap-2 font-semibold
-                  bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent text-base
-                `}>
-                  En savoir plus
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
-              </motion.div>
+              {/* Zone CTA */}
+              <div className="flex items-center justify-center h-14 mt-4">
+                <motion.div 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="inline-flex items-center gap-2 font-semibold bg-gradient-to-r from-digiqo-orange via-amber-400 to-yellow-300 bg-clip-text text-transparent text-base">
+                    En savoir plus
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </motion.div>
+              </div>
             </div>
           ) : (
-            <div className={`relative z-10 ${service.size === 'small' ? 'p-4' : 'p-5'} h-full flex flex-col`}>
-              {/* Icône */}
-              <motion.div 
-                className={`${service.size === 'large' ? 'mx-auto' : ''} mb-2`}
-                animate={isHovered ? { rotate: 360, scale: 1.2 } : { rotate: 0, scale: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className={`
-                  inline-flex items-center justify-center rounded-xl
-                  bg-gradient-to-br ${service.gradient} text-white
-                  ${service.size === 'large' ? 'w-16 h-16 p-4' : service.size === 'medium' ? 'w-12 h-12 p-3' : 'w-10 h-10 p-2'}
-                `}>
-                  {service.icon}
-                </div>
-              </motion.div>
+            <div className="relative z-10 p-4 h-full flex flex-col">
+              {/* Zone Header avec icône */}
+              <div className="h-24 flex items-center justify-center mb-4 relative overflow-hidden">
+                <motion.div 
+                  animate={isHovered ? { rotate: 360, scale: 1.2 } : { rotate: 0, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className={`
+                    inline-flex items-center justify-center rounded-xl
+                    bg-gradient-to-br ${service.gradient} text-white
+                    ${isMobile ? 'w-16 h-16 p-4' : service.size === 'large' ? 'w-16 h-16 p-4' : service.size === 'medium' ? 'w-12 h-12 p-3' : 'w-10 h-10 p-2'}
+                  `}>
+                    {service.icon}
+                  </div>
+                </motion.div>
+              </div>
               
-              {/* Titre et description - flex-1 pour prendre tout l'espace disponible */}
-              <div className="flex-1 flex flex-col justify-center">
+              {/* Zone Contenu - titre et description */}
+              <div className="flex-1 flex flex-col justify-start text-center min-h-0">
                 <h3 className={`
-                  font-bold text-digiqo-primary
-                  ${service.size === 'large' ? 'text-2xl' : service.size === 'medium' ? 'text-lg' : 'text-base'}
-                  ${service.size === 'medium' ? 'mb-3' : 'mb-2'}
+                  font-bold mb-2 text-lg text-digiqo-primary
+                  ${service.size === 'small' ? 'text-base' : ''}
                 `}>
                   {service.title}
                 </h3>
                 <p className={`
-                  text-gray-700 leading-relaxed
-                  ${service.size === 'large' ? 'text-sm' : service.size === 'medium' ? 'text-sm' : 'text-xs'}
-                  ${['community', 'publicite', 'dev-web', 'video'].includes(service.id) ? 'line-clamp-4' : 'line-clamp-3'}
+                  text-gray-700 leading-relaxed px-2 overflow-hidden
+                  ${service.size === 'large' ? 'text-sm' : service.size === 'medium' ? 'text-xs' : 'text-xs'}
                 `}>
                   {service.description}
                 </p>
               </div>
               
-              {/* CTA - toujours en bas */}
-              <motion.div 
-                className={`${service.size === 'large' ? 'mx-auto' : ''}`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span className={`
-                  inline-flex items-center gap-2 font-semibold
-                  bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent
-                  ${service.size === 'large' ? 'text-base' : 'text-xs'}
-                `}>
-                  En savoir plus
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
-              </motion.div>
+              {/* Zone CTA */}
+              <div className={`flex items-center justify-center ${service.size === 'small' ? 'h-12' : 'h-14'}`}>
+                <motion.div 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className={`
+                    inline-flex items-center gap-2 font-semibold
+                    bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent
+                    ${service.size === 'small' ? 'text-sm' : 'text-base'}
+                  `}>
+                    En savoir plus
+                    <svg className={`${service.size === 'small' ? 'w-3 h-3' : 'w-4 h-4'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </motion.div>
+              </div>
             </div>
           )}
           
@@ -339,9 +349,56 @@ export const ServicesSection = () => {
           </p>
         </motion.div>
 
-        {/* Bento Grid */}
-        <div className="relative">
-          <div className="grid grid-cols-2 md:grid-cols-8 gap-3 md:gap-4 auto-rows-[minmax(100px,_1fr)]">
+        {/* Mobile: Défilement horizontal */}
+        <div className="md:hidden">
+          {/* Flèches de navigation positionnées au-dessus */}
+          <div className="flex justify-between items-center mb-4 px-4">
+            <button
+              onClick={() => {
+                const container = document.getElementById('services-mobile-scroll');
+                if (container) container.scrollBy({ left: -320, behavior: 'smooth' });
+              }}
+              className="p-3 rounded-full bg-white/90 backdrop-blur-sm text-digiqo-primary shadow-lg hover:bg-white hover:scale-110 transition-all duration-300"
+              aria-label="Précédent"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            
+            <span className="text-white/80 text-sm font-medium">Glissez pour découvrir</span>
+            
+            <button
+              onClick={() => {
+                const container = document.getElementById('services-mobile-scroll');
+                if (container) container.scrollBy({ left: 320, behavior: 'smooth' });
+              }}
+              className="p-3 rounded-full bg-white/90 backdrop-blur-sm text-digiqo-primary shadow-lg hover:bg-white hover:scale-110 transition-all duration-300"
+              aria-label="Suivant"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+          
+          {/* Conteneur scrollable */}
+          <div
+            id="services-mobile-scroll"
+            className="flex overflow-x-auto scrollbar-hide gap-4 pb-4 -mx-4 px-4 snap-x snap-mandatory"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' } as React.CSSProperties}
+          >
+            {services.map((service, index) => (
+              <div key={service.id} className="flex-shrink-0 w-80 h-96 snap-center">
+                <ServiceCard service={service} index={index} />
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        {/* Desktop: Bento Grid */}
+        <div className="hidden md:block relative">
+          <div className="grid grid-cols-8 gap-4 auto-rows-[100px]">
             {services.map((service, index) => (
               <ServiceCard key={service.id} service={service} index={index} />
             ))}
