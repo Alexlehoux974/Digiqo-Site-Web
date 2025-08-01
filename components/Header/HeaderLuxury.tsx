@@ -781,7 +781,7 @@ export const HeaderLuxury = () => {
                           setIsMenuOpen(false)
                         }}
                         className={`block text-lg font-semibold ${
-                          item.highlight 
+                          'highlight' in item && item.highlight 
                             ? 'text-digiqo-accent hover:text-digiqo-accent/80' 
                             : 'text-gray-900 hover:text-digiqo-primary'
                         } transition-colors`}
