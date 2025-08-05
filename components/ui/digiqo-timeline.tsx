@@ -50,9 +50,9 @@ export const DigiqoTimeline = ({ data }: { data: TimelineEntry[] }) => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-digiqo-primary via-digiqo-accent to-digiqo-primary bg-clip-text text-transparent">
+          <h3 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-digiqo-primary via-digiqo-accent to-digiqo-primary bg-clip-text text-transparent">
             Notre Histoire
-          </h2>
+          </h3>
           <p className="text-digiqo-gray-dark text-lg md:text-xl max-w-3xl mx-auto">
             De la vision à la révolution digitale, découvrez comment Digiqo est devenue 
             la référence du marketing digital dans l'océan Indien.
@@ -102,13 +102,10 @@ export const DigiqoTimeline = ({ data }: { data: TimelineEntry[] }) => {
                 </motion.div>
               </div>
               
-              <h3 className="hidden md:block text-2xl md:pl-28 md:text-4xl font-bold text-digiqo-primary">
-                {item.title}
-              </h3>
             </div>
 
             <div className="relative pl-24 pr-4 md:pl-4 w-full">
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-digiqo-primary">
+              <h3 className="text-2xl mb-4 text-left md:text-4xl md:mb-0 md:absolute md:-left-72 md:top-0 md:w-64 md:text-right font-bold text-digiqo-primary">
                 {item.title}
               </h3>
               <motion.div
