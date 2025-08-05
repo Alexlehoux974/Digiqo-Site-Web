@@ -1,20 +1,41 @@
 import { useEffect } from 'react'
+import dynamic from 'next/dynamic'
 import { SEO } from '@/components/SEO'
 import { seoConfig, businessStructuredData } from '@/lib/seo-config'
 import { PartnerImage } from '@/components/ui/PartnerImage'
 import { partnersData } from '@/lib/partners-data'
 import { HeaderLuxury } from '../components/Header'
-import { HeroParallax } from '../components/HeroParallax/HeroParallax'
 import { ResultsSection } from '../components/ResultsSection'
 import { VideoSection } from '../components/VideoSection'
 import { TestimonialsSection } from '../components/TestimonialsSection'
-import { ServicesSection } from '../components/ServicesSection'
 import { CaseStudiesSection } from '../components/CaseStudiesSection'
-import { AboutSection } from '../components/AboutSection'
 import { FAQSection } from '../components/FAQSection'
 import { ContactSection } from '../components/ContactSection'
 import { Footer } from '../components/Footer'
 import { useInstantScroll } from '@/hooks/useInstantScroll'
+
+// Code splitting pour les composants lourds
+const HeroParallax = dynamic(
+  () => import('../components/HeroParallax/HeroParallax').then((mod) => mod.HeroParallax),
+  { 
+    ssr: false,
+    loading: () => <div className="min-h-[600px] bg-gradient-to-b from-white to-gray-50" />
+  }
+)
+
+const ServicesSection = dynamic(
+  () => import('../components/ServicesSection').then((mod) => mod.ServicesSection),
+  { 
+    loading: () => <div className="min-h-[400px]" />
+  }
+)
+
+const AboutSection = dynamic(
+  () => import('../components/AboutSection').then((mod) => mod.AboutSection),
+  { 
+    loading: () => <div className="min-h-[400px]" />
+  }
+)
 
 // Générer les products à partir des données centralisées
 const products = partnersData.map((partner, index) => ({
