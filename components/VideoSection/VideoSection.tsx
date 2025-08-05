@@ -14,9 +14,9 @@ const VideoSection = () => {
                 </svg>
                 <span className="text-sm font-semibold text-white/70 uppercase tracking-wide">YouTube</span>
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              <h4 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 Digiqo est aussi sur YouTube
-              </h3>
+              </h4>
               <p className="text-white/80 mb-6">
                 Apprenez-en plus sur notre expertise à travers nos vidéos. 
                 Découvrez nos conseils, nos études de cas et les coulisses 
@@ -62,9 +62,9 @@ const VideoSection = () => {
 
         {/* Texte sous la vidéo */}
         <div className="mt-12 text-center max-w-4xl mx-auto">
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+          <h4 className="text-2xl md:text-3xl font-bold text-white mb-6">
             Votre Partenaire Digital à La Réunion
-          </h3>
+          </h4>
           <p className="text-white/90 text-lg leading-relaxed mb-6">
             Digiqo est une agence de marketing digital qui vous accompagne dans votre transformation digitale. 
             Nous proposons des solutions innovantes et sur-mesure pour booster votre présence en ligne et 

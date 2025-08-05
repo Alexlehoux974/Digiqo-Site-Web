@@ -2,9 +2,9 @@ export const TestimonialsSection = () => {
   return (
     <section className="py-20 bg-gray-100">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-8">
+        <h3 className="text-4xl font-bold text-center mb-8">
           Ils parlent de nous sur Instagram
-        </h2>
+        </h3>
         <p className="text-xl text-gray-600 text-center mb-12">
           Rejoignez des dizaines d'entrepreneurs Réunionnais
         </p>

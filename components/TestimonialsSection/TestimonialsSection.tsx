@@ -195,10 +195,10 @@ export const TestimonialsSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-4">
+          <h3 className="text-4xl md:text-6xl font-bold mb-4">
             <span className="text-digiqo-primary">Rejoignez des dizaines d'entrepreneurs </span>
             <span className="bg-gradient-to-r from-digiqo-accent to-digiqo-secondary bg-clip-text text-transparent">Réunionnais</span>
-          </h2>
+          </h3>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Découvrez leurs témoignages sur 
             <span className="bg-gradient-to-r from-[#E1306C] via-[#C13584] to-[#F77737] bg-clip-text text-transparent font-semibold ml-1">

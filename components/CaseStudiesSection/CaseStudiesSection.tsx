@@ -143,12 +143,12 @@ export function CaseStudiesSection() {
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <h3 className="text-3xl md:text-5xl font-bold mb-4">
+        <h2 className="text-3xl md:text-5xl font-bold mb-4">
           <span className="text-digiqo-primary">Études de Cas</span>{' '}
           <span className="bg-gradient-to-r from-digiqo-secondary to-digiqo-accent bg-clip-text text-transparent">
             Récentes
           </span>
-        </h3>
+        </h2>
         <p className="text-lg text-gray-700 max-w-2xl mx-auto">
           De l'idée à la réussite, Digiqo est le pont entre vos ambitions et vos résultats.
         </p>
@@ -172,9 +172,9 @@ export function CaseStudiesSection() {
                 onClick={() => setSelectedCase(study)}
               >
                 <div className="flex justify-between items-start mb-2">
-                  <h4 className="text-lg font-bold text-digiqo-primary">
+                  <h3 className="text-lg font-bold text-digiqo-primary">
                     {study.title}
-                  </h4>
+                  </h3>
                   {/* Indicateur de clic mobile */}
                   <div className="bg-digiqo-accent/10 rounded-full p-1.5 group-hover:bg-digiqo-accent/20 transition-colors">
                     <svg className="w-4 h-4 text-digiqo-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -280,9 +280,9 @@ export function CaseStudiesSection() {
                 </motion.div>
               </div>
               
-              <h4 className="text-lg font-bold text-digiqo-primary mb-2">
+              <h3 className="text-lg font-bold text-digiqo-primary mb-2">
                 {study.title}
-              </h4>
+              </h3>
               <p className="text-2xl font-bold bg-gradient-to-r from-digiqo-secondary to-digiqo-accent bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
                 {study.result}
               </p>
@@ -401,9 +401,9 @@ export function CaseStudiesSection() {
               {/* Colonne droite - Contenu de la mission */}
               <div className="overflow-y-auto max-h-[600px] pr-2">
                 <div className="mb-6">
-                  <h3 className="text-2xl md:text-3xl font-bold text-digiqo-primary mb-2">
+                  <h2 className="text-2xl md:text-3xl font-bold text-digiqo-primary mb-2">
                     {selectedCase.title}
-                  </h3>
+                  </h2>
                   <span className="inline-block text-xl font-bold bg-gradient-to-r from-digiqo-secondary to-digiqo-accent bg-clip-text text-transparent mb-3">
                     {selectedCase.result}
                   </span>
@@ -412,13 +412,13 @@ export function CaseStudiesSection() {
 
                 {/* Contexte */}
                 <div className="mb-6">
-                  <h4 className="text-lg font-bold text-digiqo-primary mb-3 flex items-center gap-2">
+                  <h3 className="text-lg font-bold text-digiqo-primary mb-3 flex items-center gap-2">
                     <Target className="w-4 h-4" />
                     Contexte & Défis
-                  </h4>
+                  </h3>
                   <p className="text-sm text-gray-700 mb-4">{selectedCase.mission.contexte}</p>
                   
-                  <h5 className="font-semibold text-digiqo-primary mb-2 text-sm">Objectifs :</h5>
+                  <h4 className="font-semibold text-digiqo-primary mb-2 text-sm">Objectifs :</h4>
                   <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                     {selectedCase.mission.objectifs.map((objectif, idx) => (
                       <li key={idx}>{objectif}</li>
@@ -428,10 +428,10 @@ export function CaseStudiesSection() {
 
                 {/* Solutions */}
                 <div className="mb-6">
-                  <h4 className="text-lg font-bold text-digiqo-primary mb-3 flex items-center gap-2">
+                  <h3 className="text-lg font-bold text-digiqo-primary mb-3 flex items-center gap-2">
                     <Users className="w-4 h-4" />
                     Solutions Déployées
-                  </h4>
+                  </h3>
                   <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                     {selectedCase.mission.solutions.map((solution, idx) => (
                       <li key={idx}>{solution}</li>
@@ -441,10 +441,10 @@ export function CaseStudiesSection() {
 
                 {/* Résultats */}
                 <div className="mb-6">
-                  <h4 className="text-lg font-bold text-digiqo-primary mb-3 flex items-center gap-2">
+                  <h3 className="text-lg font-bold text-digiqo-primary mb-3 flex items-center gap-2">
                     <TrendingUp className="w-4 h-4" />
                     Résultats Obtenus
-                  </h4>
+                  </h3>
                   <ul className="space-y-1">
                     {selectedCase.mission.resultats.map((resultat, idx) => (
                       <li key={idx} className="flex items-start gap-2 text-sm">

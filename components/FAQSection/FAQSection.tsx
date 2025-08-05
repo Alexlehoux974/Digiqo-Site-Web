@@ -58,11 +58,11 @@ export const FAQSection: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-6"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-3">
+          <h3 className="text-4xl md:text-5xl font-bold mb-3">
             <span className="text-white">
               Questions Fréquentes
             </span>
-          </h2>
+          </h3>
           <div className="w-24 h-1 bg-digiqo-secondary mx-auto mb-3 rounded-full" />
           <p className="text-white/80 text-lg max-w-2xl mx-auto">
             Trouvez rapidement les réponses à vos questions sur nos services et notre fonctionnement
@@ -97,7 +97,7 @@ export const FAQSection: React.FC = () => {
             </motion.button>
 
             {/* Section Title */}
-            <h3 
+            <h4 
               className="text-3xl font-bold relative inline-block px-8"
               style={{ 
                 color: '#FFFFFF',
@@ -111,7 +111,7 @@ export const FAQSection: React.FC = () => {
               }}
             >
               {activeSection.title}
-            </h3>
+            </h4>
 
             {/* Right Arrow */}
             <motion.button

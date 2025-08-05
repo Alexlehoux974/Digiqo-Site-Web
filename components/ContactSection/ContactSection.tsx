@@ -125,10 +125,10 @@ export function ContactSection() {
               Demande de devis
             </div>
             
-            <h2 className="text-4xl md:text-5xl font-bold text-digiqo-black mb-4">
+            <h3 className="text-4xl md:text-5xl font-bold text-digiqo-black mb-4">
               Obtenez une offre sur mesure
               <span className="block text-digiqo-accent mt-2">pour votre projet digital 💡</span>
-            </h2>
+            </h3>
             
             <p className="text-lg text-digiqo-gray-dark max-w-2xl mx-auto">
               Vous avez un projet en tête ? Décrivez-nous vos besoins et nous vous contacterons rapidement avec une proposition adaptée.

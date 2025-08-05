@@ -194,9 +194,9 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
             <div className={`relative z-10 h-full flex flex-col ${isMobile ? 'p-6' : 'p-4'}`}>
               {/* Zone Contenu en premier - titre et description */}
               <div className={`${isMobile ? 'mb-6' : 'mb-4'} text-center`}>
-                <h3 className={`font-bold mb-2 bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent ${isMobile ? 'text-2xl' : 'text-xl'}`}>
+                <h2 className={`font-bold mb-2 bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent ${isMobile ? 'text-2xl' : 'text-xl'}`}>
                   {service.title}
-                </h3>
+                </h2>
                 <p className={`text-gray-700 leading-relaxed px-2 ${isMobile ? 'text-base' : 'text-sm'}`}>
                   {service.description}
                 </p>
@@ -246,12 +246,12 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
               
               {/* Zone titre - hauteur fixe pour alignement */}
               <div className={`text-center ${isMobile ? 'h-12 mb-4' : ''}`}>
-                <h3 className={`
+                <h2 className={`
                   font-bold text-digiqo-primary
                   ${isMobile ? 'text-xl' : service.size === 'small' ? 'text-sm' : 'text-lg'}
                 `}>
                   {service.title}
-                </h3>
+                </h2>
               </div>
               
               {/* Zone description - flex-1 pour prendre l'espace restant */}
@@ -344,12 +344,12 @@ export const ServicesSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-2">
+          <h3 className="text-4xl md:text-5xl font-bold mb-2">
             <span className="text-white">Nos </span>
             <span className="bg-gradient-to-r from-digiqo-accent to-digiqo-accent-light bg-clip-text text-transparent">
               Services Premium
             </span>
-          </h2>
+          </h3>
           <p className="text-lg text-white/80 max-w-3xl mx-auto">
             Une gamme complète de services digitaux pour propulser votre entreprise
           </p>
@@ -419,9 +419,9 @@ export const ServicesSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <h3 className="text-2xl font-bold text-white mb-3">
+          <p className="text-2xl font-bold text-white mb-3">
             Prêt à digitaliser votre entreprise ?
-          </h3>
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href={generateContactUrl({
               description: 'Je souhaite obtenir un devis gratuit pour digitaliser mon entreprise'

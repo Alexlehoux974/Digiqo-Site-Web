@@ -300,9 +300,9 @@ export const ProductCard = ({
         </div>
       </div>
       <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none rounded-xl"></div>
-      <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white font-semibold text-lg">
+      <div className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white font-semibold text-lg">
         {product.title}
-      </h2>
+      </div>
     </motion.div>
   )
 }

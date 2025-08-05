@@ -11,11 +11,11 @@ const timelineData = [
       <div className="bg-white rounded-3xl p-10 shadow-xl border border-gray-100">
         {/* Header */}
         <div className="text-center mb-10">
-          <h3 className="text-4xl font-bold mb-4">
+          <h4 className="text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-digiqo-primary to-digiqo-secondary bg-clip-text text-transparent">
               L'idée qui a tout changé
             </span>
-          </h3>
+          </h4>
           <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
             Trois passionnés du digital se rencontrent et partagent une vision commune :
             révolutionner le marketing digital à La Réunion. De cette synergie naît Digiqo,
@@ -92,7 +92,7 @@ const timelineData = [
             <div className="absolute inset-0 bg-gradient-to-br from-digiqo-primary/20 to-digiqo-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
             <div className="relative z-10">
               <div className="text-6xl font-bold mb-4 text-digiqo-accent">3</div>
-              <h4 className="text-xl font-bold mb-2">Fondateurs</h4>
+              <p className="text-xl font-bold mb-2">Fondateurs</p>
               <p className="text-sm text-gray-300 leading-relaxed">
                 Une vision commune pour transformer le paysage digital de l'océan Indien
               </p>
@@ -109,11 +109,11 @@ const timelineData = [
       <div className="bg-white rounded-3xl p-10 shadow-xl border border-gray-100">
         {/* Header */}
         <div className="text-center mb-10">
-          <h3 className="text-4xl font-bold mb-4">
+          <h4 className="text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-digiqo-secondary to-digiqo-accent bg-clip-text text-transparent">
               Certification Meta Business Partner
             </span>
-          </h3>
+          </h4>
           <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
             Digiqo devient la première agence de l'océan Indien certifiée Meta Business Partner.
             Une reconnaissance qui valide notre expertise et ouvre de nouvelles perspectives
@@ -127,7 +127,7 @@ const timelineData = [
           <div className="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 p-8">
             <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center">
               <OptimizedImage src="/partenaires/META-1024x1024.webp" alt="Meta" width={1024} height={1024} className="w-24 h-24 mb-4 bg-white rounded-2xl p-3" objectFit="contain" />
-              <h4 className="text-xl font-bold mb-2">Meta Certified</h4>
+              <p className="text-xl font-bold mb-2">Meta Certified</p>
               <p className="text-sm opacity-90">2022</p>
             </div>
             <div className="absolute inset-0 bg-white/10 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -140,7 +140,7 @@ const timelineData = [
               <div className="text-5xl font-bold bg-gradient-to-r from-digiqo-secondary to-digiqo-accent bg-clip-text text-transparent mb-2">
                 +150%
               </div>
-              <h4 className="text-xl font-bold text-gray-800 mb-2">Croissance</h4>
+              <p className="text-xl font-bold text-gray-800 mb-2">Croissance</p>
               <p className="text-sm text-gray-600">
                 Performance exceptionnelle sur l'année 2022
               </p>
@@ -160,7 +160,7 @@ const timelineData = [
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
               <div className="absolute bottom-6 left-6 text-white">
-                <h4 className="font-bold text-xl mb-1">50+ Clients</h4>
+                <p className="font-bold text-xl mb-1">50+ Clients</p>
                 <p className="text-sm opacity-90">Trust & Excellence</p>
               </div>
             </div>
@@ -170,7 +170,7 @@ const timelineData = [
           {/* Services Grid - Bottom Right */}
           <div className="relative bg-gradient-to-br from-digiqo-primary/5 to-digiqo-secondary/5 rounded-2xl p-8 overflow-hidden group">
             <div className="relative z-10">
-              <h4 className="text-xl font-bold text-digiqo-primary mb-4">Services Meta</h4>
+              <p className="text-xl font-bold text-digiqo-primary mb-4">Services Meta</p>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center shadow-sm">
@@ -204,11 +204,11 @@ const timelineData = [
       <div className="bg-white rounded-3xl p-10 shadow-xl border border-gray-100">
         {/* Header */}
         <div className="text-center mb-10">
-          <h3 className="text-4xl font-bold mb-4">
+          <h4 className="text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">
               Une équipe qui grandit
             </span>
-          </h3>
+          </h4>
           <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
             Avec l'arrivée d'Adrien et Thomas, nous renforçons notre expertise technique et créative.
             Plus de 100 clients nous font confiance pour propulser leur croissance digitale.
@@ -231,7 +231,7 @@ const timelineData = [
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-2xl">
                 <div className="absolute bottom-6 left-6 text-white">
-                  <h4 className="text-2xl font-bold mb-1">Adrien</h4>
+                  <p className="text-2xl font-bold mb-1">Adrien</p>
                   <p className="text-sm opacity-90 mb-2">Expert Certifié META - Responsable SMA</p>
                   <div className="flex gap-2">
                     <span className="px-2 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs">META Expert</span>
@@ -256,7 +256,7 @@ const timelineData = [
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-2xl">
                 <div className="absolute bottom-6 left-6 text-white">
-                  <h4 className="text-2xl font-bold mb-1">Thomas</h4>
+                  <p className="text-2xl font-bold mb-1">Thomas</p>
                   <p className="text-sm opacity-90 mb-2">Directeur Commercial</p>
                   <div className="flex gap-2">
                     <span className="px-2 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs">Commercial</span>
@@ -273,7 +273,7 @@ const timelineData = [
               <div className="text-6xl font-bold bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent mb-2">
                 100+
               </div>
-              <h4 className="text-xl font-bold text-gray-800 mb-2">Clients actifs</h4>
+              <p className="text-xl font-bold text-gray-800 mb-2">Clients actifs</p>
               <p className="text-sm text-gray-600">
                 Qui nous font confiance
               </p>
@@ -283,7 +283,7 @@ const timelineData = [
           
           {/* Partner Logos Grid - Bottom Right */}
           <div className="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 overflow-hidden">
-            <h4 className="text-sm font-bold text-gray-700 mb-4">Nos partenaires</h4>
+            <p className="text-sm font-bold text-gray-700 mb-4">Nos partenaires</p>
             <div className="grid grid-cols-3 gap-3">
               <div className="bg-white rounded-lg p-2 shadow-sm hover:shadow-md transition-shadow">
                 <OptimizedImage src="/partenaires/CCI-REUNION-1024x1024.webp" alt="CCI" width={1024} height={1024} className="w-full h-8 object-contain" objectFit="contain" />
@@ -315,11 +315,11 @@ const timelineData = [
       <div className="bg-white rounded-3xl p-10 shadow-xl border border-gray-100">
         {/* Header */}
         <div className="text-center mb-10">
-          <h3 className="text-4xl font-bold mb-4">
+          <h4 className="text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-digiqo-primary via-digiqo-accent to-digiqo-secondary bg-clip-text text-transparent">
               Le futur du Marketing Digital
             </span>
-          </h3>
+          </h4>
           <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
             Des innovations qui transforment radicalement la manière dont les entreprises 
             investissent dans leur croissance digitale.
@@ -336,9 +336,9 @@ const timelineData = [
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                 </svg>
               </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-2">
+              <p className="text-xl font-bold text-gray-900 mb-2">
                 Mensualisation
-              </h4>
+              </p>
               <p className="text-sm text-gray-600 mb-4">
                 Payez vos campagnes publicitaires mensuellement, sans intérêts.
               </p>
@@ -358,9 +358,9 @@ const timelineData = [
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-2">
+              <p className="text-xl font-bold text-gray-900 mb-2">
                 Vidéo offerte
-              </h4>
+              </p>
               <p className="text-sm text-gray-600 mb-4">
                 Vidéo offerte dans chaque nouveau partenariat
               </p>
@@ -380,9 +380,9 @@ const timelineData = [
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-2">
+              <p className="text-xl font-bold text-gray-900 mb-2">
                 Visuels Renouvelés
-              </h4>
+              </p>
               <p className="text-sm text-gray-600 mb-4">
                 Créations fraîches chaque mois pour maintenir l'engagement.
               </p>
@@ -398,7 +398,7 @@ const timelineData = [
           <div className="relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 flex flex-col justify-center text-white overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-digiqo-primary/20 to-digiqo-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
             <div className="relative z-10 text-center">
-              <h4 className="text-2xl font-bold mb-3">Prêt pour 2025 ?</h4>
+              <p className="text-2xl font-bold mb-3">Prêt pour 2025 ?</p>
               <p className="text-sm text-gray-300 mb-4">
                 Rejoignez les leaders qui nous font confiance.
               </p>
