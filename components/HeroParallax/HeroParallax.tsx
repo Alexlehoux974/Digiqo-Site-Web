@@ -188,7 +188,7 @@ export const Header = () => {
       </div>
       {/* Logo Meta */}
       <div className="mt-8 flex items-center gap-4 group">
-        <span className="text-white/80 text-sm font-medium">Partenaire officiel</span>
+        <span className="text-white/80 text-sm font-medium">Experts certifiés</span>
         <div className="bg-white rounded-xl px-5 py-3 shadow-xl hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
           <svg className="h-10 w-10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <title>Meta</title>

@@ -357,7 +357,17 @@ export const HeaderLuxury = () => {
                     }}
                     onMouseLeave={() => !isNavigating && setActiveSubmenu(null)}
                     onClick={(e) => {
-                      if (item.href.startsWith('/#')) {
+                      // Pour RÉALISATIONS spécifiquement
+                      if (item.name === 'RÉALISATIONS') {
+                        e.preventDefault()
+                        const target = document.querySelector('#case-studies')
+                        if (target) {
+                          target.scrollIntoView({ behavior: 'smooth' })
+                        } else {
+                          // Si on n'est pas sur la page d'accueil, naviguer puis scroller
+                          window.location.href = '/#case-studies'
+                        }
+                      } else if (item.href.startsWith('/#')) {
                         e.preventDefault()
                         const target = document.querySelector(item.href.substring(1))
                         if (target) {

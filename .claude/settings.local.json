@@ -84,7 +84,9 @@
       "Bash(done)",
       "Bash(wget:*)",
       "Bash(do echo \"=== $file ===\")",
-      "Bash(git pull:*)"
+      "Bash(git pull:*)",
+      "Bash(npm run generate-sitemap:*)",
+      "Bash(git checkout:*)"
     ],
     "deny": []
   }

@@ -11,6 +11,11 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&family=Lora:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        {/* Métadonnées géographiques pour le SEO local */}
+        <meta name="geo.region" content="RE" />
+        <meta name="geo.placename" content="Saint-Denis, La Réunion" />
+        <meta name="geo.position" content="-20.8823;55.4504" />
+        <meta name="ICBM" content="-20.8823, 55.4504" />
       </Head>
       <body>
         <Main />

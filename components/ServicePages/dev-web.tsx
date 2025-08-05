@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import Head from 'next/head'
+import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 import { SectionGradientOrbs } from '@/components/ui/animated-gradient-orb'
@@ -931,34 +932,42 @@ export default function DevWebPage() {
               {
                 name: 'CMX FACTORY',
                 description: 'E-commerce haute performance pour pièces Cross & Supermot',
-                url: 'cmx-factory.com',
+                url: 'cmxfactory.com',
+                link: 'https://cmxfactory.com/',
                 tags: ['E-commerce', 'React', 'Node.js', 'Stripe'],
                 stats: { performance: 98, conversions: '+45%', loading: '1.2s' },
-                gradient: 'from-orange-500 to-red-600'
+                gradient: 'from-orange-500 to-red-600',
+                image: '/portfolio/cmx-factory.png'
               },
               {
                 name: 'CBD RUN',
                 description: 'Plateforme de vente en ligne de CBD bio à La Réunion',
-                url: 'cbd-run.re',
+                url: 'cbd-run.com',
+                link: 'https://cbd-run.com/',
                 tags: ['E-commerce', 'Next.js', 'Shopify', 'SEO'],
                 stats: { performance: 96, conversions: '+62%', loading: '0.9s' },
-                gradient: 'from-digiqo-secondary to-digiqo-secondary/80'
+                gradient: 'from-digiqo-secondary to-digiqo-secondary/80',
+                image: '/portfolio/cbd-run.png'
               },
               {
-                name: 'SNOWKITE SENTATION',
+                name: 'SNOWKITE SENSATION',
                 description: 'Site vitrine immersif pour école de snowkite',
-                url: 'snowkite-sensation.com',
+                url: 'snowkitesensation.com',
+                link: 'https://www.snowkitesensation.com/fr/',
                 tags: ['Vitrine', 'Animation 3D', 'Booking', 'PWA'],
                 stats: { performance: 97, conversions: '+38%', loading: '1.1s' },
-                gradient: 'from-blue-500 to-cyan-600'
+                gradient: 'from-blue-500 to-cyan-600',
+                image: '/portfolio/snowkite.png'
               },
               {
                 name: 'CLICKNVAN',
                 description: 'Application de location de vans entre particuliers',
-                url: 'clicknvan.com',
+                url: 'clicknvan.re',
+                link: 'https://clicknvan.re/presentation-du-projet/',
                 tags: ['Web App', 'React Native', 'Firebase', 'Maps API'],
                 stats: { performance: 95, conversions: '+52%', loading: '1.3s' },
-                gradient: 'from-digiqo-primary to-digiqo-accent'
+                gradient: 'from-digiqo-primary to-digiqo-accent',
+                image: '/portfolio/clicknvan.png'
               }
             ].map((project, index) => (
               <motion.div
@@ -973,13 +982,22 @@ export default function DevWebPage() {
                   whileHover={ANIMATION.hover.liftLarge}
                   className="relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500"
                 >
-                  {/* Project preview with gradient overlay */}
+                  {/* Project preview with actual image */}
                   <div className="relative aspect-video overflow-hidden">
-                    {/* Gradient background */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`} />
+                    {/* Project image */}
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    
+                    {/* Gradient overlay for better text readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-digiqo-primary/50 to-transparent" />
                     
                     {/* Mock browser window */}
-                    <div className="absolute inset-4 bg-digiqo-primary/10 backdrop-blur-md rounded-lg overflow-hidden">
+                    <div className="absolute inset-4 bg-digiqo-primary/10 backdrop-blur-sm rounded-lg overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       {/* Browser bar */}
                       <div className="bg-digiqo-primary/50 backdrop-blur-sm px-4 py-2 flex items-center gap-2">
                         <div className="flex gap-1.5">
@@ -994,37 +1012,16 @@ export default function DevWebPage() {
                         </div>
                       </div>
                       
-                      {/* Website preview */}
-                      <div className="relative h-full bg-digiqo-primary/30 backdrop-blur-sm flex items-center justify-center">
+                      {/* Hover overlay */}
+                      <div className="relative h-full flex items-center justify-center">
                         <motion.div
-                          animate={{ 
-                            scale: [1, 1.05, 1],
-                          }}
-                          transition={{ 
-                            duration: 3,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                          }}
-                          className="text-white text-3xl font-bold opacity-50"
+                          initial={{ scale: 0 }}
+                          whileHover={{ scale: 1 }}
+                          transition={ANIMATION.ease.spring}
+                          className="text-center"
                         >
-                          {project.name}
-                        </motion.div>
-                        
-                        {/* Hover overlay */}
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          whileHover={{ opacity: 1 }}
-                          className="absolute inset-0 bg-digiqo-primary/50 backdrop-blur-sm flex items-center justify-center"
-                        >
-                          <motion.div
-                            initial={{ scale: 0 }}
-                            whileHover={{ scale: 1 }}
-                            transition={ANIMATION.ease.spring}
-                            className="text-center"
-                          >
-                            <Globe className="w-12 h-12 text-white mb-2 mx-auto" />
-                            <span className="text-white font-bold">Voir le projet</span>
-                          </motion.div>
+                          <Globe className="w-12 h-12 text-white mb-2 mx-auto" />
+                          <span className="text-white font-bold">Voir le projet</span>
                         </motion.div>
                       </div>
                     </div>
@@ -1071,7 +1068,9 @@ export default function DevWebPage() {
                     
                     {/* CTA */}
                     <motion.a
-                      href="#"
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       whileHover={{ x: 5 }}
                       className="inline-flex items-center gap-2 text-digiqo-secondary font-bold hover:underline"
                     >

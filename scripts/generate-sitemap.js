@@ -5,14 +5,22 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const siteUrl = 'https://digiqo.com';
+const siteUrl = 'https://www.digiqo.fr';
 
 // Define all routes
 const staticPages = [
   '',  // home page
   '/contact',
   '/mentions-legales',
-  '/politique-confidentialite'
+  '/politique-confidentialite',
+  '/conditions-generales-vente',
+  '/conditions-generales-utilisation',
+  '/politique-cookies',
+  '/agence',
+  '/recrutement',
+  '/formations-digicademy',
+  '/kap-numerik-la-reunion',
+  '/referencement'
 ];
 
 const servicePages = [

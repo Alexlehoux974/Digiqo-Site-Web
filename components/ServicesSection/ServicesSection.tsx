@@ -184,7 +184,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
             relative w-full h-full rounded-2xl overflow-hidden cursor-pointer
             bg-white/95 backdrop-blur-sm border border-white/30
             hover:shadow-2xl transition-all duration-500
-            ${isMobile ? 'h-full' : service.size === 'large' ? 'h-[400px]' : service.size === 'medium' ? 'h-[250px]' : 'h-[180px]'}
+            h-full
           `}>
           {/* Gradient Background */}
           <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-5 hover:opacity-15 transition-opacity duration-500`} />
@@ -225,9 +225,9 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
               </div>
             </div>
           ) : (
-            <div className="relative z-10 p-4 h-full flex flex-col">
+            <div className={`relative z-10 h-full flex flex-col ${service.size === 'small' ? 'p-2' : 'p-4'}`}>
               {/* Zone Header avec icône */}
-              <div className="h-24 flex items-center justify-center mb-4 relative overflow-hidden">
+              <div className={`flex items-center justify-center relative overflow-hidden ${service.size === 'small' ? 'h-10 mb-1' : 'h-24 mb-2'}`}>
                 <motion.div 
                   animate={isHovered ? { rotate: 360, scale: 1.2 } : { rotate: 0, scale: 1 }}
                   transition={{ duration: 0.5 }}
@@ -243,23 +243,23 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
               </div>
               
               {/* Zone Contenu - titre et description */}
-              <div className="flex-1 flex flex-col justify-start text-center min-h-0">
+              <div className="flex-1 flex flex-col justify-start text-center min-h-0 overflow-hidden">
                 <h3 className={`
-                  font-bold mb-2 text-lg text-digiqo-primary
-                  ${service.size === 'small' ? 'text-base' : ''}
+                  font-bold text-digiqo-primary
+                  ${service.size === 'small' ? 'text-sm mb-1' : 'text-lg mb-2'}
                 `}>
                   {service.title}
                 </h3>
                 <p className={`
-                  text-gray-700 leading-relaxed px-2 overflow-hidden
-                  ${service.size === 'large' ? 'text-sm' : service.size === 'medium' ? 'text-xs' : 'text-xs'}
+                  text-gray-700 leading-tight overflow-hidden
+                  ${service.size === 'large' ? 'text-sm px-2' : service.size === 'medium' ? 'text-xs px-2' : 'text-xs px-1 line-clamp-2'}
                 `}>
                   {service.description}
                 </p>
               </div>
               
               {/* Zone CTA */}
-              <div className={`flex items-center justify-center ${service.size === 'small' ? 'h-12' : 'h-14'}`}>
+              <div className={`flex items-center justify-center ${service.size === 'small' ? 'h-10 mt-1' : 'h-14'}`}>
                 <motion.div 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -398,7 +398,7 @@ export const ServicesSection = () => {
         
         {/* Desktop: Bento Grid */}
         <div className="hidden md:block relative">
-          <div className="grid grid-cols-8 gap-4 auto-rows-[100px]">
+          <div className="grid grid-cols-8 gap-4 auto-rows-[160px]">
             {services.map((service, index) => (
               <ServiceCard key={service.id} service={service} index={index} />
             ))}

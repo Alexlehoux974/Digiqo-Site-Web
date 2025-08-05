@@ -6,93 +6,102 @@ import { TrendingUp, Users, Target } from 'lucide-react'
 import { OptimizedImage } from '../ui/OptimizedImage'
 
 const clientLogos = [
-  { name: 'CCI Réunion', logo: '/partenaires/CCI-REUNION-1024x1024.webp' },
-  { name: '3M', logo: '/partenaires/3M-1024x1024.webp' },
-  { name: 'Beauvallon', logo: '/partenaires/BEAUVALLON-1024x1024.webp' }
+  { name: 'Veille A Nou', logo: '/partenaires/veille-a-nou.webp' },
+  { name: 'CbienGlacé', logo: '/partenaires/cbienglace.webp' },
+  { name: 'Culinanion', logo: '/partenaires/culinanion.webp' }
 ]
 
 const caseStudies = [
   {
-    id: 'campagne-digitale',
-    title: 'Campagne Digitale',
-    result: '+250% de leads',
-    description: 'Stratégie multi-canal optimisée',
-    client: 'CCI Réunion',
+    id: 'lead-generation-veille',
+    title: 'Lead Generation Expert',
+    result: '854 leads générés',
+    description: 'Campagne multi-phase haute performance',
+    client: 'Veille A Nou',
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // À remplacer par la vraie vidéo
     mission: {
-      contexte: 'La CCI Réunion souhaitait augmenter sa visibilité digitale et générer plus de leads qualifiés pour ses formations professionnelles.',
+      contexte: 'Veille A Nou, service de maintien à domicile pour personnes âgées à La Réunion, avait besoin de générer des leads qualifiés pour développer son activité et toucher les familles concernées.',
       objectifs: [
-        'Augmenter le trafic qualifié sur le site web',
-        'Générer des leads pour les formations',
-        'Améliorer la notoriété digitale de l\'institution'
+        'Générer des leads qualifiés pour le service de maintien à domicile',
+        'Sensibiliser les familles réunionnaises aux solutions disponibles',
+        'Optimiser le coût par lead tout en maintenant la qualité',
+        'Établir une présence digitale forte sur le marché local'
       ],
       solutions: [
-        'Campagnes Google Ads ciblées par secteur d\'activité',
-        'Stratégie Facebook/Instagram avec audiences personnalisées',
-        'Landing pages optimisées pour la conversion',
-        'Remarketing dynamique sur l\'ensemble du parcours'
+        'Stratégie multi-phase : éducation, engagement et conversion',
+        'Ciblage précis des aidants familiaux et seniors autonomes',
+        'Contenus éducatifs sur le maintien à domicile et les aides disponibles',
+        'Campagnes Facebook/Instagram optimisées avec A/B testing continu',
+        'Landing pages spécifiques avec formulaires adaptés aux seniors'
       ],
       resultats: [
-        '+250% de leads générés en 3 mois',
-        'Coût par acquisition divisé par 3',
-        'Taux de conversion des landing pages : 18%',
-        'ROI de la campagne : 420%'
+        '854 leads générés en 6 mois',
+        'Coût par lead optimisé à 3,51€',
+        '195 000 personnes touchées avec un CTR de 2,27%',
+        '1,6 million d\'impressions générées',
+        'ROI exceptionnel avec un budget maîtrisé de 3 000€'
       ]
     }
   },
   {
-    id: 'refonte-ecommerce',
-    title: 'Refonte E-commerce',
-    result: '+180% de conversion',
-    description: 'UX/UI repensée pour la performance',
-    client: '3M Réunion',
+    id: 'performance-cbienglade',
+    title: 'Performance Publicitaire',
+    result: 'CPC -82%',
+    description: 'Optimisation exceptionnelle des campagnes',
+    client: 'CbienGlacé',
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // À remplacer par la vraie vidéo
     mission: {
-      contexte: '3M Réunion avait besoin de moderniser sa plateforme e-commerce pour mieux servir ses clients professionnels.',
+      contexte: 'CbienGlacé, entreprise de glaces artisanales à La Réunion, cherchait à optimiser ses campagnes publicitaires pour augmenter ses ventes tout en réduisant ses coûts d\'acquisition.',
       objectifs: [
-        'Refondre l\'expérience utilisateur du site e-commerce',
-        'Optimiser le tunnel de conversion',
-        'Intégrer un système de gestion des devis'
+        'Réduire les coûts publicitaires tout en augmentant la performance',
+        'Augmenter la visibilité de la marque sur le marché local',
+        'Générer plus de trafic qualifié vers les points de vente',
+        'Optimiser le retour sur investissement publicitaire'
       ],
       solutions: [
-        'Nouveau design responsive et moderne',
-        'Optimisation du temps de chargement (Core Web Vitals)',
-        'Simplification du processus de commande',
-        'Intégration d\'un chat en ligne pour l\'assistance'
+        'Audit complet et refonte de la stratégie publicitaire',
+        'Optimisation avancée des audiences et du ciblage géographique',
+        'Création de visuels percutants mettant en valeur les produits',
+        'A/B testing continu sur les créatives et les messages',
+        'Stratégie de remarketing pour maximiser les conversions'
       ],
       resultats: [
-        '+180% de taux de conversion',
-        'Temps moyen de session augmenté de 65%',
-        'Taux d\'abandon de panier réduit de 40%',
-        'Note de satisfaction client : 4.8/5'
+        'CPM réduit de 43% pour plus d\'efficacité',
+        'CPC diminué de 82% grâce à l\'optimisation',
+        'Couverture en hausse de 908% sur le marché cible',
+        'Clics multipliés par 81 (+8 014%)',
+        'Augmentation significative des ventes confirmée par le client'
       ]
     }
   },
   {
-    id: 'social-media-360',
-    title: 'Social Media 360°',
-    result: '+500% d\'engagement',
-    description: 'Community management expert',
-    client: 'Le Beauvallon',
+    id: 'lancement-culinanion',
+    title: 'Lancement Grand Public',
+    result: '325K personnes',
+    description: 'Campagne de lancement à succès',
+    client: 'Culinanion',
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // À remplacer par la vraie vidéo
     mission: {
-      contexte: 'L\'hôtel Le Beauvallon souhaitait développer sa présence sur les réseaux sociaux pour attirer une clientèle internationale.',
+      contexte: 'Culinanion ouvrait son nouveau magasin à La Réunion et avait besoin d\'une campagne de lancement percutante pour attirer les clients dès l\'ouverture et établir sa notoriété sur le marché local.',
       objectifs: [
-        'Créer une communauté engagée sur les réseaux sociaux',
-        'Augmenter les réservations directes',
-        'Développer la notoriété internationale'
+        'Maximiser la visibilité pour l\'ouverture du magasin',
+        'Créer un buzz autour de la nouvelle enseigne',
+        'Générer du trafic en magasin dès les premiers jours',
+        'Établir une présence digitale forte sur le marché réunionnais'
       ],
       solutions: [
-        'Stratégie de contenu premium (photos/vidéos professionnelles)',
-        'Campagnes d\'influence avec des travel bloggers',
-        'Gestion active de la communauté en 4 langues',
-        'Stories et Reels quotidiens showcasing l\'expérience'
+        'Campagne de teasing pré-ouverture pour créer l\'attente',
+        'Stratégie multi-canal Facebook/Instagram avec ciblage géolocalisé',
+        'Contenus visuels premium showcasing les produits phares',
+        'Promotion d\'ouverture exclusive pour les premiers clients',
+        'Community management actif pour créer l\'engagement'
       ],
       resultats: [
-        '+500% d\'engagement sur Instagram',
-        '+15K followers en 6 mois',
-        '35% de réservations directes via les réseaux',
-        'Reach international multiplié par 8'
+        '325 752 personnes touchées dans la zone de chalandise',
+        '2,2 millions d\'impressions générées',
+        'CPM ultra-optimisé à 0,24€ seulement',
+        '74 213 interactions avec la page',
+        'Succès commercial confirmé dès l\'ouverture'
       ]
     }
   }
@@ -450,8 +459,8 @@ export function CaseStudiesSection() {
                   <p className="text-xs text-gray-500">
                     Client : <span className="font-semibold text-gray-700">{selectedCase.client}</span> • 
                     Secteur : <span className="font-semibold text-gray-700">
-                      {selectedCase.id === 'campagne-digitale' ? 'Formation Professionnelle' : 
-                       selectedCase.id === 'refonte-ecommerce' ? 'Industrie' : 'Hôtellerie'}
+                      {selectedCase.id === 'lead-generation-veille' ? 'Services à la personne' : 
+                       selectedCase.id === 'performance-cbienglade' ? 'Alimentaire' : 'Commerce de détail'}
                     </span>
                   </p>
                 </div>

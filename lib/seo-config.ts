@@ -1,7 +1,7 @@
 export const seoConfig = {
   default: {
     siteName: 'Digiqo',
-    siteUrl: 'https://digiqo.com',
+    siteUrl: 'https://www.digiqo.fr',
     defaultImage: '/assets/digiqo-og-image.jpg',
     locale: 'fr_FR',
     twitterHandle: '@digiqo',
@@ -63,9 +63,9 @@ export const businessStructuredData = {
   "@type": "LocalBusiness",
   "name": "Digiqo",
   "description": "Agence de marketing digital à La Réunion",
-  "url": "https://digiqo.com",
+  "url": "https://www.digiqo.fr",
   "telephone": "+262 262 02 51 02",
-  "email": "contact@digiqo.com",
+  "email": "contact@digiqo.fr",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "123 Rue de l'Innovation",
@@ -80,7 +80,49 @@ export const businessStructuredData = {
   },
   "openingHours": "Mo-Fr 08:00-17:00",
   "priceRange": "€€",
-  "image": "https://digiqo.com/assets/logo2-digiqo.png",
+  "image": "https://www.digiqo.fr/assets/logo2-digiqo.png",
+  "areaServed": {
+    "@type": "Place",
+    "name": "La Réunion",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -21.115141,
+      "longitude": 55.536384
+    }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "124",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Services de Marketing Digital",
+    "itemListElement": [
+      {
+        "@type": "Service",
+        "name": "Publicité en ligne",
+        "description": "Campagnes Google Ads et Meta optimisées pour La Réunion"
+      },
+      {
+        "@type": "Service",
+        "name": "Développement Web",
+        "description": "Sites web sur-mesure et applications mobiles"
+      },
+      {
+        "@type": "Service",
+        "name": "SEO",
+        "description": "Référencement naturel local et national"
+      },
+      {
+        "@type": "Service",
+        "name": "Community Management",
+        "description": "Gestion professionnelle de vos réseaux sociaux"
+      }
+    ]
+  },
   "sameAs": [
     "https://www.facebook.com/digiqo",
     "https://www.instagram.com/digiqo_",
