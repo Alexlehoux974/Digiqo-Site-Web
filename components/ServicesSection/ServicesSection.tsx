@@ -191,26 +191,28 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           
           {/* Structure différente pour la carte publicité */}
           {service.id === 'publicite' ? (
-            <div className="relative z-10 p-4 h-full flex flex-col">
+            <div className={`relative z-10 h-full flex flex-col ${isMobile ? 'p-6' : 'p-4'}`}>
               {/* Zone Contenu en premier - titre et description */}
-              <div className="mb-4 text-center">
-                <h3 className="text-xl font-bold mb-2 bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">
+              <div className={`${isMobile ? 'mb-6' : 'mb-4'} text-center`}>
+                <h3 className={`font-bold mb-2 bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent ${isMobile ? 'text-2xl' : 'text-xl'}`}>
                   {service.title}
                 </h3>
-                <p className="text-sm text-gray-700 leading-relaxed px-2">
+                <p className={`text-gray-700 leading-relaxed px-2 ${isMobile ? 'text-base' : 'text-sm'}`}>
                   {service.description}
                 </p>
               </div>
               
-              {/* Animation grande en dessous du texte */}
-              <div className="flex-1 flex items-center justify-center overflow-hidden py-4">
-                <div className="w-full h-full max-w-[280px] max-h-[220px] mx-auto">
-                  <IconCloud className="w-full h-full" />
+              {/* Animation grande en dessous du texte - masquée sur mobile */}
+              {!isMobile && (
+                <div className="flex-1 flex items-center justify-center overflow-hidden py-4">
+                  <div className="w-full h-full mx-auto max-w-[280px] max-h-[220px]">
+                    <IconCloud className="w-full h-full" />
+                  </div>
                 </div>
-              </div>
+              )}
               
               {/* Zone CTA */}
-              <div className="flex items-center justify-center h-14 mt-4">
+              <div className={`flex items-center justify-center mt-4 ${isMobile ? 'h-12' : 'h-14'}`}>
                 <motion.div 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -225,9 +227,9 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
               </div>
             </div>
           ) : (
-            <div className={`relative z-10 h-full flex flex-col ${service.size === 'small' ? 'p-2' : 'p-4'}`}>
-              {/* Zone Header avec icône */}
-              <div className={`flex items-center justify-center relative overflow-hidden ${service.size === 'small' ? 'h-10 mb-1' : 'h-24 mb-2'}`}>
+            <div className={`relative z-10 h-full flex flex-col ${isMobile ? 'p-6' : service.size === 'small' ? 'p-2' : 'p-4'}`}>
+              {/* Zone Header avec icône - hauteur fixe pour alignement */}
+              <div className={`flex items-center justify-center relative overflow-hidden ${isMobile ? 'h-20 mb-3' : service.size === 'small' ? 'h-10 mb-1' : 'h-24 mb-2'}`}>
                 <motion.div 
                   animate={isHovered ? { rotate: 360, scale: 1.2 } : { rotate: 0, scale: 1 }}
                   transition={{ duration: 0.5 }}
@@ -242,24 +244,28 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
                 </motion.div>
               </div>
               
-              {/* Zone Contenu - titre et description */}
-              <div className="flex-1 flex flex-col justify-start text-center min-h-0 overflow-hidden">
+              {/* Zone titre - hauteur fixe pour alignement */}
+              <div className={`text-center ${isMobile ? 'h-12 mb-4' : ''}`}>
                 <h3 className={`
                   font-bold text-digiqo-primary
-                  ${service.size === 'small' ? 'text-sm mb-1' : 'text-lg mb-2'}
+                  ${isMobile ? 'text-xl' : service.size === 'small' ? 'text-sm' : 'text-lg'}
                 `}>
                   {service.title}
                 </h3>
+              </div>
+              
+              {/* Zone description - flex-1 pour prendre l'espace restant */}
+              <div className="flex-1 flex items-center justify-center text-center px-2">
                 <p className={`
-                  text-gray-700 leading-tight overflow-hidden
-                  ${service.size === 'large' ? 'text-sm px-2' : service.size === 'medium' ? 'text-xs px-2' : 'text-xs px-1 line-clamp-2'}
+                  text-gray-700 leading-relaxed
+                  ${isMobile ? 'text-base' : service.size === 'large' ? 'text-sm' : service.size === 'medium' ? 'text-xs' : 'text-xs line-clamp-2'}
                 `}>
                   {service.description}
                 </p>
               </div>
               
-              {/* Zone CTA */}
-              <div className={`flex items-center justify-center ${service.size === 'small' ? 'h-10 mt-1' : 'h-14'}`}>
+              {/* Zone CTA - hauteur fixe */}
+              <div className={`flex items-center justify-center ${isMobile ? 'h-12 mt-4' : service.size === 'small' ? 'h-10 mt-1' : 'h-14'}`}>
                 <motion.div 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
