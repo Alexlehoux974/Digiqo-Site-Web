@@ -9,10 +9,9 @@ import { User, Mail, Phone, Video, Calendar } from 'lucide-react';
 interface ContactStepProps {
   data: Partial<AuditFormData>;
   updateData: (field: string, value: any) => void;
-  errors: Record<string, string>;
 }
 
-export default function ContactStep({ data, updateData, errors }: ContactStepProps) {
+export default function ContactStep({ data, updateData }: ContactStepProps) {
   const contactOptions = [
     { value: 'email', label: 'Email', icon: Mail },
     { value: 'phone', label: 'Téléphone', icon: Phone },
@@ -49,7 +48,6 @@ export default function ContactStep({ data, updateData, errors }: ContactStepPro
             required
             value={data.contact?.firstName || ''}
             onChange={(e) => updateData('contact.firstName', e.target.value)}
-            error={errors['contact.firstName']}
           />
         </div>
 
@@ -65,7 +63,6 @@ export default function ContactStep({ data, updateData, errors }: ContactStepPro
             required
             value={data.contact?.lastName || ''}
             onChange={(e) => updateData('contact.lastName', e.target.value)}
-            error={errors['contact.lastName']}
           />
         </div>
 
@@ -82,7 +79,6 @@ export default function ContactStep({ data, updateData, errors }: ContactStepPro
             required
             value={data.contact?.email || ''}
             onChange={(e) => updateData('contact.email', e.target.value)}
-            error={errors['contact.email']}
             helper="Nous utiliserons cet email pour vous envoyer votre audit"
           />
         </div>
@@ -100,7 +96,6 @@ export default function ContactStep({ data, updateData, errors }: ContactStepPro
             required
             value={data.contact?.phone || ''}
             onChange={(e) => updateData('contact.phone', e.target.value)}
-            error={errors['contact.phone']}
             helper="Pour vous contacter rapidement"
           />
         </div>

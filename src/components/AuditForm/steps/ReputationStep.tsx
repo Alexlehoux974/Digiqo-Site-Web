@@ -6,7 +6,6 @@ import { AuditFormData } from '@/src/lib/audit-types';
 interface ReputationStepProps {
   data: Partial<AuditFormData>;
   updateData: (field: string, value: any) => void;
-  errors: Record<string, string>;
 }
 
 export default function ReputationStep({ }: ReputationStepProps) {

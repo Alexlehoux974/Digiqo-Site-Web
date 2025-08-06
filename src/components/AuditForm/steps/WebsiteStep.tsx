@@ -9,7 +9,6 @@ import { Monitor, Search, Zap, Palette, Smartphone, BarChart } from 'lucide-reac
 interface WebsiteStepProps {
   data: Partial<AuditFormData>;
   updateData: (field: string, value: any) => void;
-  errors: Record<string, string>;
 }
 
 export default function WebsiteStep({ data, updateData }: WebsiteStepProps) {

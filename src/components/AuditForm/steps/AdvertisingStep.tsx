@@ -9,7 +9,6 @@ import { TrendingUp, Target, DollarSign, BarChart3 } from 'lucide-react';
 interface AdvertisingStepProps {
   data: Partial<AuditFormData>;
   updateData: (field: string, value: any) => void;
-  errors: Record<string, string>;
 }
 
 export default function AdvertisingStep({ data, updateData }: AdvertisingStepProps) {

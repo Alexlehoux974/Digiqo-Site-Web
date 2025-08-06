@@ -6,7 +6,6 @@ import { AuditFormData } from '@/src/lib/audit-types';
 interface ObjectivesStepProps {
   data: Partial<AuditFormData>;
   updateData: (field: string, value: any) => void;
-  errors: Record<string, string>;
 }
 
 export default function ObjectivesStep({ }: ObjectivesStepProps) {

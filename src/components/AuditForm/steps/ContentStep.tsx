@@ -4,15 +4,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import FormField from '../FormField';
 import { AuditFormData } from '@/src/lib/audit-types';
-import { Camera, Video, FileText, Palette, Image, Users } from 'lucide-react';
+import { Camera, Palette, Image, Users } from 'lucide-react';
 
 interface ContentStepProps {
   data: Partial<AuditFormData>;
   updateData: (field: string, value: any) => void;
-  errors: Record<string, string>;
 }
 
-export default function ContentStep({ data, updateData, errors }: ContentStepProps) {
+export default function ContentStep({ data, updateData }: ContentStepProps) {
   const contentTypes = [
     { value: 'photos', label: 'Photos professionnelles' },
     { value: 'videos', label: 'Vidéos' },
@@ -24,16 +23,8 @@ export default function ContentStep({ data, updateData, errors }: ContentStepPro
     { value: 'reels', label: 'Reels/Shorts' },
   ];
 
-  const needs = [
-    { value: 'product-photos', label: 'Photos produits' },
-    { value: 'corporate-videos', label: 'Vidéos institutionnelles' },
-    { value: 'testimonials', label: 'Témoignages clients' },
-    { value: 'tutorials', label: 'Tutoriels/Démos' },
-    { value: 'social-content', label: 'Contenu réseaux sociaux' },
-    { value: 'event-coverage', label: 'Couverture événements' },
-    { value: 'branding', label: 'Identité visuelle' },
-    { value: 'advertising', label: 'Créations publicitaires' },
-  ];
+  // Liste des besoins commentée car le champ n'existe pas dans le type
+  // const needs = [...];
 
   return (
     <motion.div
@@ -66,13 +57,13 @@ export default function ContentStep({ data, updateData, errors }: ContentStepPro
               <input
                 type="checkbox"
                 value={type.value}
-                checked={data.content?.producedTypes?.includes(type.value) || false}
+                checked={data.content?.contentTypes?.includes(type.value) || false}
                 onChange={(e) => {
-                  const current = data.content?.producedTypes || [];
+                  const current = data.content?.contentTypes || [];
                   if (e.target.checked) {
-                    updateData('content.producedTypes', [...current, type.value]);
+                    updateData('content.contentTypes', [...current, type.value]);
                   } else {
-                    updateData('content.producedTypes', current.filter(v => v !== type.value));
+                    updateData('content.contentTypes', current.filter((v: string) => v !== type.value));
                   }
                 }}
                 className="w-4 h-4 text-accent"
@@ -83,101 +74,33 @@ export default function ContentStep({ data, updateData, errors }: ContentStepPro
         </div>
       </div>
 
-      {/* Fréquence de production */}
-      <div className="space-y-4">
-        <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
-          <FileText className="w-5 h-5 text-accent" />
-          <h3 className="text-lg font-semibold">Fréquence de production</h3>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <FormField
-            label="Contenu visuel (photos/vidéos)"
-            name="visualFrequency"
-            type="select"
-            options={[
-              { value: 'daily', label: 'Quotidien' },
-              { value: 'weekly', label: 'Hebdomadaire' },
-              { value: 'biweekly', label: 'Bi-mensuel' },
-              { value: 'monthly', label: 'Mensuel' },
-              { value: 'quarterly', label: 'Trimestriel' },
-              { value: 'occasional', label: 'Occasionnel' },
-              { value: 'none', label: 'Aucune production' },
-            ]}
-            value={data.content?.visualFrequency || ''}
-            onChange={(e) => updateData('content.visualFrequency', e.target.value)}
-          />
-          <FormField
-            label="Contenu éditorial (articles/posts)"
-            name="editorialFrequency"
-            type="select"
-            options={[
-              { value: 'daily', label: 'Quotidien' },
-              { value: 'weekly', label: 'Hebdomadaire' },
-              { value: 'biweekly', label: 'Bi-mensuel' },
-              { value: 'monthly', label: 'Mensuel' },
-              { value: 'quarterly', label: 'Trimestriel' },
-              { value: 'occasional', label: 'Occasionnel' },
-              { value: 'none', label: 'Aucune production' },
-            ]}
-            value={data.content?.editorialFrequency || ''}
-            onChange={(e) => updateData('content.editorialFrequency', e.target.value)}
-          />
-        </div>
-      </div>
-
-      {/* Qualité du contenu */}
+      {/* Cohérence de marque */}
       <div className="space-y-4">
         <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
           <Palette className="w-5 h-5 text-accent" />
-          <h3 className="text-lg font-semibold">Qualité et cohérence</h3>
-        </div>
-        <div className="space-y-3">
-          <FormField
-            label=""
-            name="hasStyleGuide"
-            type="checkbox"
-            placeholder="Nous avons une charte graphique/guide de style"
-            value={data.content?.hasStyleGuide || false}
-            onChange={(e) => updateData('content.hasStyleGuide', (e.target as HTMLInputElement).checked)}
-          />
-          <FormField
-            label=""
-            name="consistentBranding"
-            type="checkbox"
-            placeholder="Notre contenu est cohérent visuellement"
-            value={data.content?.consistentBranding || false}
-            onChange={(e) => updateData('content.consistentBranding', (e.target as HTMLInputElement).checked)}
-          />
-          <FormField
-            label=""
-            name="professionalQuality"
-            type="checkbox"
-            placeholder="Notre contenu est de qualité professionnelle"
-            value={data.content?.professionalQuality || false}
-            onChange={(e) => updateData('content.professionalQuality', (e.target as HTMLInputElement).checked)}
-          />
+          <h3 className="text-lg font-semibold">Cohérence de marque</h3>
         </div>
         <div>
-          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Satisfaction qualité actuelle (0-10)</span>
+          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Niveau de cohérence visuelle (0-10)</span>
           <FormField
             label=""
-            name="qualitySatisfaction"
+            name="brandConsistency"
             type="range"
-            value={data.content?.qualitySatisfaction || 5}
-            onChange={(e) => updateData('content.qualitySatisfaction', parseInt(e.target.value))}
+            value={data.content?.brandConsistency || 5}
+            onChange={(e) => updateData('content.brandConsistency', parseInt(e.target.value))}
           />
         </div>
       </div>
 
-      {/* Production de contenu */}
+      {/* Moyens de production */}
       <div className="space-y-4">
         <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
           <Users className="w-5 h-5 text-accent" />
-          <h3 className="text-lg font-semibold">Production du contenu</h3>
+          <h3 className="text-lg font-semibold">Moyens de production</h3>
         </div>
         <FormField
           label="Qui produit votre contenu ?"
-          name="production"
+          name="productionMeans"
           type="select"
           options={[
             { value: 'internal', label: 'Équipe interne' },
@@ -186,98 +109,63 @@ export default function ContentStep({ data, updateData, errors }: ContentStepPro
             { value: 'mixed', label: 'Mixte' },
             { value: 'none', label: 'Personne (pas de production)' },
           ]}
-          value={data.content?.production || ''}
-          onChange={(e) => updateData('content.production', e.target.value)}
-        />
-        <FormField
-          label="Budget mensuel contenu"
-          name="monthlyBudget"
-          type="select"
-          options={[
-            { value: '<500', label: 'Moins de 500€' },
-            { value: '500-1000', label: '500€ à 1 000€' },
-            { value: '1000-2500', label: '1 000€ à 2 500€' },
-            { value: '2500-5000', label: '2 500€ à 5 000€' },
-            { value: '5000+', label: 'Plus de 5 000€' },
-          ]}
-          value={data.content?.monthlyBudget || ''}
-          onChange={(e) => updateData('content.monthlyBudget', e.target.value)}
+          value={data.content?.productionMeans || ''}
+          onChange={(e) => updateData('content.productionMeans', e.target.value)}
         />
       </div>
 
-      {/* Besoins en contenu */}
+      {/* Formats d'acquisition */}
       <div className="space-y-4">
         <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
           <Image className="w-5 h-5 text-accent" />
-          <h3 className="text-lg font-semibold">Vos besoins en contenu</h3>
+          <h3 className="text-lg font-semibold">Formats d'acquisition de contenu</h3>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {needs.map(need => (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {[
+            { value: 'ugc', label: 'Contenu utilisateur (UGC)' },
+            { value: 'stock', label: 'Banques d\'images' },
+            { value: 'photoshoot', label: 'Séances photo' },
+            { value: 'freelance', label: 'Freelances créatifs' },
+            { value: 'agency', label: 'Agence créative' },
+            { value: 'internal', label: 'Production interne' },
+            { value: 'influencers', label: 'Partenariats influenceurs' },
+            { value: 'events', label: 'Couverture d\'événements' },
+          ].map(format => (
             <label
-              key={need.value}
+              key={format.value}
               className="flex items-center space-x-2 p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 cursor-pointer transition-colors"
             >
               <input
                 type="checkbox"
-                value={need.value}
-                checked={data.content?.needs?.includes(need.value) || false}
+                value={format.value}
+                checked={data.content?.acquisitionFormats?.includes(format.value) || false}
                 onChange={(e) => {
-                  const current = data.content?.needs || [];
+                  const current = data.content?.acquisitionFormats || [];
                   if (e.target.checked) {
-                    updateData('content.needs', [...current, need.value]);
+                    updateData('content.acquisitionFormats', [...current, format.value]);
                   } else {
-                    updateData('content.needs', current.filter(v => v !== need.value));
+                    updateData('content.acquisitionFormats', current.filter((v: string) => v !== format.value));
                   }
                 }}
                 className="w-4 h-4 text-accent"
               />
-              <span className="text-sm">{need.label}</span>
+              <span className="text-sm">{format.label}</span>
             </label>
           ))}
         </div>
       </div>
 
-      {/* Plateformes de stockage */}
-      <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">
-          Gestion et stockage
-        </h3>
-        <FormField
-          label="Où stockez-vous vos contenus ?"
-          name="storage"
-          placeholder="Ex: Google Drive, Dropbox, serveur interne, DAM (Digital Asset Management)..."
-          value={data.content?.storage || ''}
-          onChange={(e) => updateData('content.storage', e.target.value)}
-          helper="Indiquez vos solutions de stockage et organisation"
-        />
-      </div>
-
-      {/* Vidéo spécifique */}
-      <div className="space-y-4">
-        <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
-          <Video className="w-5 h-5 text-accent" />
-          <h3 className="text-lg font-semibold">Focus vidéo</h3>
-        </div>
-        <div className="space-y-3">
-          <FormField
-            label=""
-            name="hasVideo"
-            type="checkbox"
-            placeholder="Nous produisons de la vidéo"
-            value={data.content?.hasVideo || false}
-            onChange={(e) => updateData('content.hasVideo', (e.target as HTMLInputElement).checked)}
-          />
-          {data.content?.hasVideo && (
-            <FormField
-              label="Types de vidéos produites"
-              name="videoTypes"
-              placeholder="Ex: Spots publicitaires, interviews, formations, livestreams, motion design..."
-              value={data.content?.videoTypes || ''}
-              onChange={(e) => updateData('content.videoTypes', e.target.value)}
-            />
-          )}
-        </div>
-      </div>
+      {/* Section commentée - Ces champs ne sont pas dans le type content */}
+      {/*
+      Les champs suivants ont été commentés car ils ne correspondent pas 
+      au type 'content' défini dans audit-types.ts :
+      - needs (besoins en contenu)
+      - storage (stockage)
+      - hasVideo et videoTypes (focus vidéo)
+      - visualFrequency et editorialFrequency (fréquences)
+      - hasStyleGuide, consistentBranding, professionalQuality, qualitySatisfaction (qualité)
+      - production, monthlyBudget (production)
+      */}
 
       <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg p-4 border border-accent/20">
         <p className="text-sm text-gray-700 dark:text-gray-300">

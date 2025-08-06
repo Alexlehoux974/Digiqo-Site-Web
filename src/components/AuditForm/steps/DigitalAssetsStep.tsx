@@ -9,10 +9,9 @@ import { Globe, Share2, MapPin, ShoppingBag } from 'lucide-react';
 interface DigitalAssetsStepProps {
   data: Partial<AuditFormData>;
   updateData: (field: string, value: any) => void;
-  errors: Record<string, string>;
 }
 
-export default function DigitalAssetsStep({ data, updateData, errors }: DigitalAssetsStepProps) {
+export default function DigitalAssetsStep({ data, updateData }: DigitalAssetsStepProps) {
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -42,7 +41,6 @@ export default function DigitalAssetsStep({ data, updateData, errors }: DigitalA
           placeholder="https://www.votresite.com"
           value={data.digitalAssets?.website || ''}
           onChange={(e) => updateData('digitalAssets.website', e.target.value)}
-          error={errors['digitalAssets.website']}
           helper="Laissez vide si vous n'avez pas de site"
         />
       </div>

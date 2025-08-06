@@ -242,27 +242,27 @@ export default function AuditForm() {
   const renderStep = () => {
     switch (currentStep) {
       case 0:
-        return <GeneralInfoStep data={formData} updateData={updateData} errors={errors} />;
+        return <GeneralInfoStep data={formData} updateData={updateData} />;
       case 1:
-        return <DigitalAssetsStep data={formData} updateData={updateData} errors={errors} />;
+        return <DigitalAssetsStep data={formData} updateData={updateData} />;
       case 2:
-        return <WebsiteStep data={formData} updateData={updateData} errors={errors} />;
+        return <WebsiteStep data={formData} updateData={updateData} />;
       case 3:
-        return <SocialMediaStep data={formData} updateData={updateData} errors={errors} />;
+        return <SocialMediaStep data={formData} updateData={updateData} />;
       case 4:
-        return <AdvertisingStep data={formData} updateData={updateData} errors={errors} />;
+        return <AdvertisingStep data={formData} updateData={updateData} />;
       case 5:
-        return <ContentStep data={formData} updateData={updateData} errors={errors} />;
+        return <ContentStep data={formData} updateData={updateData} />;
       case 6:
-        return <ConversionStep data={formData} updateData={updateData} errors={errors} />;
+        return <ConversionStep data={formData} updateData={updateData} />;
       case 7:
-        return <CrmStep data={formData} updateData={updateData} errors={errors} />;
+        return <CrmStep data={formData} updateData={updateData} />;
       case 8:
-        return <ReputationStep data={formData} updateData={updateData} errors={errors} />;
+        return <ReputationStep data={formData} updateData={updateData} />;
       case 9:
-        return <ObjectivesStep data={formData} updateData={updateData} errors={errors} />;
+        return <ObjectivesStep data={formData} updateData={updateData} />;
       case 10:
-        return <ContactStep data={formData} updateData={updateData} errors={errors} />;
+        return <ContactStep data={formData} updateData={updateData} />;
       default:
         return null;
     }

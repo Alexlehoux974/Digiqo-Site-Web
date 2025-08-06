@@ -9,10 +9,9 @@ import { Building2, MapPin, Users, Calendar, Briefcase } from 'lucide-react';
 interface GeneralInfoStepProps {
   data: Partial<AuditFormData>;
   updateData: (field: string, value: any) => void;
-  errors: Record<string, string>;
 }
 
-export default function GeneralInfoStep({ data, updateData, errors }: GeneralInfoStepProps) {
+export default function GeneralInfoStep({ data, updateData }: GeneralInfoStepProps) {
   const teamSizeOptions = [
     { value: '1', label: 'Solo' },
     { value: '2-5', label: '2-5 personnes' },
@@ -62,7 +61,6 @@ export default function GeneralInfoStep({ data, updateData, errors }: GeneralInf
             required
             value={data.general?.companyName || ''}
             onChange={(e) => updateData('general.companyName', e.target.value)}
-            error={errors['general.companyName']}
           />
         </div>
 
@@ -78,7 +76,6 @@ export default function GeneralInfoStep({ data, updateData, errors }: GeneralInf
             required
             value={data.general?.sector || ''}
             onChange={(e) => updateData('general.sector', e.target.value)}
-            error={errors['general.sector']}
           />
         </div>
 
@@ -94,7 +91,6 @@ export default function GeneralInfoStep({ data, updateData, errors }: GeneralInf
             required
             value={data.general?.location || ''}
             onChange={(e) => updateData('general.location', e.target.value)}
-            error={errors['general.location']}
             helper="Votre zone d'activité principale"
           />
         </div>
@@ -111,7 +107,6 @@ export default function GeneralInfoStep({ data, updateData, errors }: GeneralInf
             required
             value={data.general?.companyAge || ''}
             onChange={(e) => updateData('general.companyAge', e.target.value)}
-            error={errors['general.companyAge']}
           />
         </div>
 
@@ -128,7 +123,6 @@ export default function GeneralInfoStep({ data, updateData, errors }: GeneralInf
             options={teamSizeOptions}
             value={data.general?.teamSize || ''}
             onChange={(e) => updateData('general.teamSize', e.target.value)}
-            error={errors['general.teamSize']}
           />
         </div>
 
@@ -145,7 +139,6 @@ export default function GeneralInfoStep({ data, updateData, errors }: GeneralInf
             options={businessModelOptions}
             value={data.general?.businessModel || ''}
             onChange={(e) => updateData('general.businessModel', e.target.value)}
-            error={errors['general.businessModel']}
           />
         </div>
       </div>

@@ -97,7 +97,8 @@
       "mcp__playwright__playwright_navigate",
       "Bash(export DISPLAY=:99)",
       "Bash(echo $DISPLAY)",
-      "mcp__playwright__playwright_screenshot"
+      "mcp__playwright__playwright_screenshot",
+      "Bash(npm run lint:*)"
     ],
     "deny": []
   }

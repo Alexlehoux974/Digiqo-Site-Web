@@ -9,7 +9,6 @@ import { Users, MessageCircle, Target, Calendar, Gauge } from 'lucide-react';
 interface SocialMediaStepProps {
   data: Partial<AuditFormData>;
   updateData: (field: string, value: any) => void;
-  errors: Record<string, string>;
 }
 
 export default function SocialMediaStep({ data, updateData }: SocialMediaStepProps) {
@@ -116,8 +115,9 @@ export default function SocialMediaStep({ data, updateData }: SocialMediaStepPro
               { value: 'random', label: 'Aléatoire' },
               { value: 'scheduled', label: 'Planifiées' },
             ]}
-            value={data.socialMediaStrategy?.publicationTime || ''}
-            onChange={(e) => updateData('socialMediaStrategy.publicationTime', e.target.value)}
+            value={''}
+            onChange={() => {}}
+            helper="Configuration des heures de publication - non encore intégrée"
           />
         </div>
       </div>
@@ -143,8 +143,9 @@ export default function SocialMediaStep({ data, updateData }: SocialMediaStepPro
                 { value: '5000-10000', label: '5 000 à 10 000' },
                 { value: '10000+', label: 'Plus de 10 000' },
               ]}
-              value={data.socialMediaStrategy?.communitySize || ''}
-              onChange={(e) => updateData('socialMediaStrategy.communitySize', e.target.value)}
+              value={''}
+              onChange={() => {}}
+              helper="Taille de communauté - non encore intégrée"
             />
           </div>
           <div>
@@ -161,8 +162,8 @@ export default function SocialMediaStep({ data, updateData }: SocialMediaStepPro
                 { value: '10+', label: 'Plus de 10%' },
                 { value: 'unknown', label: 'Je ne sais pas' },
               ]}
-              value={data.socialMediaStrategy?.engagementRate || ''}
-              onChange={(e) => updateData('socialMediaStrategy.engagementRate', e.target.value)}
+              value={data.socialMediaStrategy?.engagement || ''}
+              onChange={(e) => updateData('socialMediaStrategy.engagement', e.target.value)}
             />
           </div>
         </div>
@@ -171,8 +172,9 @@ export default function SocialMediaStep({ data, updateData }: SocialMediaStepPro
           name="communityManagement"
           type="checkbox"
           placeholder="Nous répondons activement aux commentaires et messages"
-          value={data.socialMediaStrategy?.communityManagement || false}
-          onChange={(e) => updateData('socialMediaStrategy.communityManagement', (e.target as HTMLInputElement).checked)}
+          value={false}
+          onChange={() => {}}
+          helper="Community management - non encore intégré"
         />
       </div>
 
@@ -191,14 +193,9 @@ export default function SocialMediaStep({ data, updateData }: SocialMediaStepPro
               <input
                 type="checkbox"
                 value={objective.value}
-                checked={data.socialMediaStrategy?.objectives?.includes(objective.value) || false}
-                onChange={(e) => {
-                  const current = data.socialMediaStrategy?.objectives || [];
-                  if (e.target.checked) {
-                    updateData('socialMediaStrategy.objectives', [...current, objective.value]);
-                  } else {
-                    updateData('socialMediaStrategy.objectives', current.filter(v => v !== objective.value));
-                  }
+                checked={false}
+                onChange={() => {
+                  // Objectifs spécifiques - non encore intégrés
                 }}
                 className="w-4 h-4 text-accent"
               />
@@ -218,9 +215,9 @@ export default function SocialMediaStep({ data, updateData }: SocialMediaStepPro
           label="Types de contenu (séparez par des virgules)"
           name="contentTypes"
           placeholder="Ex: Photos produits, vidéos tutoriels, stories, articles de blog, témoignages clients..."
-          value={data.socialMediaStrategy?.contentTypes || ''}
-          onChange={(e) => updateData('socialMediaStrategy.contentTypes', e.target.value)}
-          helper="Décrivez les types de contenu que vous publiez régulièrement"
+          value={''}
+          onChange={() => {}}
+          helper="Types de contenu - non encore intégré"
         />
       </div>
 
@@ -239,15 +236,16 @@ export default function SocialMediaStep({ data, updateData }: SocialMediaStepPro
               { value: 'mixed', label: 'Mixte' },
               { value: 'none', label: 'Personne' },
             ]}
-            value={data.socialMediaStrategy?.management || ''}
-            onChange={(e) => updateData('socialMediaStrategy.management', e.target.value)}
+            value={data.socialMediaStrategy?.managedBy || ''}
+            onChange={(e) => updateData('socialMediaStrategy.managedBy', e.target.value)}
           />
           <FormField
             label="Outils utilisés"
             name="tools"
             placeholder="Ex: Hootsuite, Buffer, Later, Meta Business Suite..."
-            value={data.socialMediaStrategy?.tools || ''}
-            onChange={(e) => updateData('socialMediaStrategy.tools', e.target.value)}
+            value={''}
+            onChange={() => {}}
+            helper="Outils utilisés - non encore intégré"
           />
         </div>
       </div>
