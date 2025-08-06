@@ -86,7 +86,18 @@
       "Bash(do echo \"=== $file ===\")",
       "Bash(git pull:*)",
       "Bash(npm run generate-sitemap:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(git clean:*)",
+      "Bash(npm cache clean:*)",
+      "Bash(npx:*)",
+      "Bash(apt-get:*)",
+      "Bash(apt-get install:*)",
+      "Bash(npm uninstall:*)",
+      "WebFetch(domain:github.com)",
+      "mcp__playwright__playwright_navigate",
+      "Bash(export DISPLAY=:99)",
+      "Bash(echo $DISPLAY)",
+      "mcp__playwright__playwright_screenshot"
     ],
     "deny": []
   }
