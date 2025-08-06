@@ -35,8 +35,6 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    # Compression
-    Content-Encoding = "gzip"
     # HSTS
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
 
@@ -45,13 +43,11 @@
   for = "/*.js"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-    Content-Encoding = "gzip"
 
 [[headers]]
   for = "/*.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-    Content-Encoding = "gzip"
 
 [[headers]]
   for = "/*.webp"
@@ -73,23 +69,20 @@
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
-    Content-Encoding = "gzip"
 
 # Next.js specific paths
 [[headers]]
   for = "/_next/static/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-    Content-Encoding = "gzip"
 
 [[headers]]
   for = "/_next/image/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Enable compression for API routes
+# API routes caching
 [[headers]]
   for = "/api/*"
   [headers.values]
-    Content-Encoding = "gzip"
     Cache-Control = "no-cache, no-store, must-revalidate"
