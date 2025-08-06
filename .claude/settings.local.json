@@ -98,7 +98,9 @@
       "Bash(export DISPLAY=:99)",
       "Bash(echo $DISPLAY)",
       "mcp__playwright__playwright_screenshot",
-      "Bash(npm run lint:*)"
+      "Bash(npm run lint:*)",
+      "Bash(do sed -i \"1s/^''use client'';//\" \"$file\")",
+      "Bash(do sed -i '/^$/N;/^\\n$/d' \"$file\")"
     ],
     "deny": []
   }
