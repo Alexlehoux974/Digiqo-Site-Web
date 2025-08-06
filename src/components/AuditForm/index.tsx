@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Send, Save, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Send, CheckCircle, Loader2 } from 'lucide-react';
 import StepIndicator from './StepIndicator';
 import GeneralInfoStep from './steps/GeneralInfoStep';
 import DigitalAssetsStep from './steps/DigitalAssetsStep';

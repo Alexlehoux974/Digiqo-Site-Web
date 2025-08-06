@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import FormField from '../FormField';
 import { AuditFormData } from '@/src/lib/audit-types';
 
 interface ReputationStepProps {
@@ -10,7 +9,7 @@ interface ReputationStepProps {
   errors: Record<string, string>;
 }
 
-export default function ReputationStep({ data, updateData, errors }: ReputationStepProps) {
+export default function ReputationStep({ }: ReputationStepProps) {
   return (
     <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
       <h2 className="text-2xl font-bold">Reputation</h2>

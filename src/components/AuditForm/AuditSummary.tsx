@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { AuditFormData, AuditScore } from '@/src/lib/audit-types';
 import { 
-  CheckCircle, AlertTriangle, TrendingUp, Mail, Phone, 
+  CheckCircle, TrendingUp, Mail, Phone, 
   Calendar, Download, ArrowRight, Star, Target
 } from 'lucide-react';
 
