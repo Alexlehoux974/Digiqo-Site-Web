@@ -1,21 +1,11 @@
 [build]
   command = "npm run build"
-  publish = ".next"
+  # Let the Next.js plugin handle the publish directory
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Redirects for Next.js pages
-[[redirects]]
-  from = "/audit"
-  to = "/.netlify/functions/___netlify-handler"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/___netlify-handler"
-  status = 200
+# The Next.js plugin handles all routing automatically
 
 [build.processing]
   skip_processing = false
