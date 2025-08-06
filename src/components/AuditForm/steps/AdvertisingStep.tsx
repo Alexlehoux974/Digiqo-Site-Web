@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import FormField from '../FormField';
 import { AuditFormData } from '@/src/lib/audit-types';
-import { TrendingUp, Target, DollarSign, BarChart3, PieChart, Settings } from 'lucide-react';
+import { TrendingUp, Target, DollarSign, BarChart3 } from 'lucide-react';
 
 interface AdvertisingStepProps {
   data: Partial<AuditFormData>;
@@ -57,12 +57,16 @@ export default function AdvertisingStep({ data, updateData }: AdvertisingStepPro
           name="useAdvertising"
           type="checkbox"
           placeholder="Nous utilisons de la publicité payante"
-          value={data.advertising?.useAdvertising || false}
-          onChange={(e) => updateData('advertising.useAdvertising', (e.target as HTMLInputElement).checked)}
+          value={(data.advertising?.testedPlatforms?.length || 0) > 0}
+          onChange={(e) => {
+            if (!(e.target as HTMLInputElement).checked) {
+              updateData('advertising.testedPlatforms', []);
+            }
+          }}
         />
       </div>
 
-      {data.advertising?.useAdvertising && (
+      {(data.advertising?.testedPlatforms?.length || 0) > 0 && (
         <>
           {/* Plateformes publicitaires */}
           <div className="space-y-4">
@@ -79,13 +83,13 @@ export default function AdvertisingStep({ data, updateData }: AdvertisingStepPro
                   <input
                     type="checkbox"
                     value={platform.value}
-                    checked={data.advertising?.platforms?.includes(platform.value) || false}
+                    checked={data.advertising?.testedPlatforms?.includes(platform.value) || false}
                     onChange={(e) => {
-                      const current = data.advertising?.platforms || [];
+                      const current = data.advertising?.testedPlatforms || [];
                       if (e.target.checked) {
-                        updateData('advertising.platforms', [...current, platform.value]);
+                        updateData('advertising.testedPlatforms', [...current, platform.value]);
                       } else {
-                        updateData('advertising.platforms', current.filter(v => v !== platform.value));
+                        updateData('advertising.testedPlatforms', current.filter(v => v !== platform.value));
                       }
                     }}
                     className="w-4 h-4 text-accent"
@@ -104,8 +108,8 @@ export default function AdvertisingStep({ data, updateData }: AdvertisingStepPro
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FormField
-                label="Budget mensuel total"
-                name="monthlyBudget"
+                label="Budget mensuel moyen"
+                name="averageBudget"
                 type="select"
                 options={[
                   { value: '<500', label: 'Moins de 500€' },
@@ -116,21 +120,23 @@ export default function AdvertisingStep({ data, updateData }: AdvertisingStepPro
                   { value: '10000-25000', label: '10 000€ à 25 000€' },
                   { value: '25000+', label: 'Plus de 25 000€' },
                 ]}
-                value={data.advertising?.monthlyBudget || ''}
-                onChange={(e) => updateData('advertising.monthlyBudget', e.target.value)}
+                value={data.advertising?.averageBudget || ''}
+                onChange={(e) => updateData('advertising.averageBudget', e.target.value)}
               />
               <FormField
-                label="Évolution du budget"
-                name="budgetTrend"
+                label="Résultats perçus"
+                name="perceivedResults"
                 type="select"
                 options={[
-                  { value: 'increasing', label: 'En augmentation' },
-                  { value: 'stable', label: 'Stable' },
-                  { value: 'decreasing', label: 'En diminution' },
-                  { value: 'variable', label: 'Variable selon saisons' },
+                  { value: 'excellent', label: 'Excellents' },
+                  { value: 'good', label: 'Bons' },
+                  { value: 'average', label: 'Moyens' },
+                  { value: 'poor', label: 'Faibles' },
+                  { value: 'none', label: 'Aucun résultat' },
+                  { value: 'unknown', label: 'Non mesurés' },
                 ]}
-                value={data.advertising?.budgetTrend || ''}
-                onChange={(e) => updateData('advertising.budgetTrend', e.target.value)}
+                value={data.advertising?.perceivedResults || ''}
+                onChange={(e) => updateData('advertising.perceivedResults', e.target.value)}
               />
             </div>
           </div>
@@ -150,13 +156,13 @@ export default function AdvertisingStep({ data, updateData }: AdvertisingStepPro
                   <input
                     type="checkbox"
                     value={objective.value}
-                    checked={data.advertising?.objectives?.includes(objective.value) || false}
+                    checked={data.advertising?.campaignObjectives?.includes(objective.value) || false}
                     onChange={(e) => {
-                      const current = data.advertising?.objectives || [];
+                      const current = data.advertising?.campaignObjectives || [];
                       if (e.target.checked) {
-                        updateData('advertising.objectives', [...current, objective.value]);
+                        updateData('advertising.campaignObjectives', [...current, objective.value]);
                       } else {
-                        updateData('advertising.objectives', current.filter(v => v !== objective.value));
+                        updateData('advertising.campaignObjectives', current.filter(v => v !== objective.value));
                       }
                     }}
                     className="w-4 h-4 text-accent"
@@ -167,116 +173,47 @@ export default function AdvertisingStep({ data, updateData }: AdvertisingStepPro
             </div>
           </div>
 
-          {/* Performances */}
+          {/* Suivi et tracking */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
               <BarChart3 className="w-5 h-5 text-accent" />
-              <h3 className="text-lg font-semibold">Performances actuelles</h3>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <FormField
-                label="Retour sur investissement (ROI)"
-                name="roi"
-                type="select"
-                options={[
-                  { value: 'excellent', label: 'Excellent (>300%)' },
-                  { value: 'good', label: 'Bon (150-300%)' },
-                  { value: 'average', label: 'Moyen (50-150%)' },
-                  { value: 'poor', label: 'Faible (<50%)' },
-                  { value: 'negative', label: 'Négatif' },
-                  { value: 'unknown', label: 'Non mesuré' },
-                ]}
-                value={data.advertising?.roi || ''}
-                onChange={(e) => updateData('advertising.roi', e.target.value)}
-              />
-              <FormField
-                label="Coût par acquisition (CPA)"
-                name="cpa"
-                placeholder="Ex: 25€ par lead, 150€ par vente..."
-                value={data.advertising?.cpa || ''}
-                onChange={(e) => updateData('advertising.cpa', e.target.value)}
-              />
-            </div>
-          </div>
-
-          {/* Ciblage et optimisation */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
-              <PieChart className="w-5 h-5 text-accent" />
-              <h3 className="text-lg font-semibold">Ciblage et optimisation</h3>
+              <h3 className="text-lg font-semibold">Suivi et optimisation</h3>
             </div>
             <div className="space-y-3">
               <FormField
                 label=""
-                name="remarketing"
+                name="tracking"
                 type="checkbox"
-                placeholder="Nous utilisons le remarketing/retargeting"
-                value={data.advertising?.remarketing || false}
-                onChange={(e) => updateData('advertising.remarketing', (e.target as HTMLInputElement).checked)}
+                placeholder="Nous avons un système de tracking configuré"
+                value={data.advertising?.tracking || false}
+                onChange={(e) => updateData('advertising.tracking', (e.target as HTMLInputElement).checked)}
               />
               <FormField
                 label=""
-                name="audienceSegmentation"
+                name="conversionTunnel"
                 type="checkbox"
-                placeholder="Nous avons des audiences segmentées"
-                value={data.advertising?.audienceSegmentation || false}
-                onChange={(e) => updateData('advertising.audienceSegmentation', (e.target as HTMLInputElement).checked)}
-              />
-              <FormField
-                label=""
-                name="abTesting"
-                type="checkbox"
-                placeholder="Nous faisons des tests A/B réguliers"
-                value={data.advertising?.abTesting || false}
-                onChange={(e) => updateData('advertising.abTesting', (e.target as HTMLInputElement).checked)}
-              />
-              <FormField
-                label=""
-                name="conversionTracking"
-                type="checkbox"
-                placeholder="Nous trackons les conversions"
-                value={data.advertising?.conversionTracking || false}
-                onChange={(e) => updateData('advertising.conversionTracking', (e.target as HTMLInputElement).checked)}
+                placeholder="Nous avons un tunnel de conversion défini"
+                value={data.advertising?.conversionTunnel || false}
+                onChange={(e) => updateData('advertising.conversionTunnel', (e.target as HTMLInputElement).checked)}
               />
             </div>
           </div>
 
-          {/* Gestion des campagnes */}
+          {/* Attentes et objectifs */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
-              <Settings className="w-5 h-5 text-accent" />
-              <h3 className="text-lg font-semibold">Gestion des campagnes</h3>
+              <Target className="w-5 h-5 text-accent" />
+              <h3 className="text-lg font-semibold">Vos attentes</h3>
             </div>
             <FormField
-              label="Qui gère vos campagnes publicitaires ?"
-              name="management"
-              type="select"
-              options={[
-                { value: 'internal', label: 'Équipe interne' },
-                { value: 'agency', label: 'Agence spécialisée' },
-                { value: 'freelance', label: 'Freelance' },
-                { value: 'self', label: 'Moi-même' },
-                { value: 'mixed', label: 'Mixte' },
-              ]}
-              value={data.advertising?.management || ''}
-              onChange={(e) => updateData('advertising.management', e.target.value)}
-            />
-          </div>
-
-          {/* Principaux défis */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Principaux défis rencontrés
-            </h3>
-            <FormField
               label=""
-              name="challenges"
+              name="expectations"
               multiline
               rows={3}
-              placeholder="Ex: Coûts d'acquisition élevés, concurrence forte, difficulté à mesurer le ROI, budget limité..."
-              value={data.advertising?.challenges || ''}
-              onChange={(e) => updateData('advertising.challenges', e.target.value)}
-              helper="Décrivez vos principaux défis en publicité digitale"
+              placeholder="Ex: Améliorer le ROI, réduire les coûts d'acquisition, augmenter les conversions, cibler plus précisément..."
+              value={data.advertising?.expectations || ''}
+              onChange={(e) => updateData('advertising.expectations', e.target.value)}
+              helper="Décrivez vos attentes concernant la publicité digitale"
             />
           </div>
         </>
