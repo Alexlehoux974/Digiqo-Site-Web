@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  trailingSlash: false,
   images: {
     domains: [],
     unoptimized: process.env.NODE_ENV === 'development',
