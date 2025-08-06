@@ -12,7 +12,7 @@ interface SocialMediaStepProps {
   errors: Record<string, string>;
 }
 
-export default function SocialMediaStep({ data, updateData, errors }: SocialMediaStepProps) {
+export default function SocialMediaStep({ data, updateData }: SocialMediaStepProps) {
   const platforms = [
     { value: 'facebook', label: 'Facebook' },
     { value: 'instagram', label: 'Instagram' },

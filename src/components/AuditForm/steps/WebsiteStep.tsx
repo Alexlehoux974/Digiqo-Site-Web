@@ -12,7 +12,7 @@ interface WebsiteStepProps {
   errors: Record<string, string>;
 }
 
-export default function WebsiteStep({ data, updateData, errors }: WebsiteStepProps) {
+export default function WebsiteStep({ data, updateData }: WebsiteStepProps) {
   const objectiveOptions = [
     { value: 'vitrine', label: 'Site vitrine' },
     { value: 'ecommerce', label: 'E-commerce' },

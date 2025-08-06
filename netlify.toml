@@ -5,6 +5,18 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+# Redirects for Next.js pages
+[[redirects]]
+  from = "/audit"
+  to = "/.netlify/functions/___netlify-handler"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/___netlify-handler"
+  status = 200
+
 [build.processing]
   skip_processing = false
 

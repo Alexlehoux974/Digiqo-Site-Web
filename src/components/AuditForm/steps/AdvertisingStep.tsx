@@ -12,7 +12,7 @@ interface AdvertisingStepProps {
   errors: Record<string, string>;
 }
 
-export default function AdvertisingStep({ data, updateData, errors }: AdvertisingStepProps) {
+export default function AdvertisingStep({ data, updateData }: AdvertisingStepProps) {
   const platforms = [
     { value: 'google-ads', label: 'Google Ads' },
     { value: 'facebook-ads', label: 'Facebook Ads' },

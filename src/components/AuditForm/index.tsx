@@ -172,7 +172,6 @@ export default function AuditForm() {
   };
 
   const validateStep = (stepIndex: number): boolean => {
-    const step = steps[stepIndex];
     const newErrors: Record<string, string> = {};
     
     // Validation logic based on step
@@ -211,12 +210,6 @@ export default function AuditForm() {
   const handlePrevious = () => {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
-    }
-  };
-
-  const handleStepClick = (stepIndex: number) => {
-    if (stepIndex <= Math.max(...completedSteps, currentStep)) {
-      setCurrentStep(stepIndex);
     }
   };
 

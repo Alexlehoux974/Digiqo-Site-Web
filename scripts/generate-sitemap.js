@@ -20,7 +20,8 @@ const staticPages = [
   '/recrutement',
   '/formations-digicademy',
   '/kap-numerik-la-reunion',
-  '/referencement'
+  '/referencement',
+  '/audit'
 ];
 
 const servicePages = [
