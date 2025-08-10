@@ -2,21 +2,10 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Heart, MessageCircle, Bookmark, Send } from 'lucide-react'
 import { OptimizedImage } from '../ui/OptimizedImage'
+import type { FormattedTestimonial } from '../../pages/api/testimonials'
 
-interface Testimonial {
-  id: string
-  username: string
-  content: string
-  videoUrl?: string
-  thumbnail?: string
-  likes: number
-  comments: number
-  isVideo: boolean
-  publishedAt: string
-}
-
-// Les témoignages basés sur le contenu du fichier
-const testimonialData: Testimonial[] = [
+// Les témoignages de fallback (utilisés pendant le chargement ou en cas d'erreur)
+const fallbackTestimonialData: FormattedTestimonial[] = [
   {
     id: '1',
     username: '@romy.malbroukou',
@@ -100,6 +89,31 @@ export const TestimonialsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0)
   const [likedPosts, setLikedPosts] = useState<Set<string>>(new Set())
   const [animatedLikes, setAnimatedLikes] = useState<{ [key: string]: number }>({})
+  const [testimonialData, setTestimonialData] = useState<FormattedTestimonial[]>(fallbackTestimonialData)
+  const [isLoading, setIsLoading] = useState(true)
+
+  // Récupérer les témoignages depuis l'API
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        setIsLoading(true)
+        const response = await fetch('/api/testimonials')
+        if (response.ok) {
+          const data = await response.json()
+          if (data && data.length > 0) {
+            setTestimonialData(data)
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching testimonials:', error)
+        // Les données de fallback sont déjà définies par défaut
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchTestimonials()
+  }, [])
 
   useEffect(() => {
     // Initialiser les likes animés
@@ -108,7 +122,7 @@ export const TestimonialsSection = () => {
       initialLikes[testimonial.id] = testimonial.likes
     })
     setAnimatedLikes(initialLikes)
-  }, [])
+  }, [testimonialData])
 
   const handleLike = (id: string) => {
     const newLikedPosts = new Set(likedPosts)
@@ -138,11 +152,13 @@ export const TestimonialsSection = () => {
 
   // Auto-play
   useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % testimonialData.length)
-    }, 6000)
-    return () => clearInterval(timer)
-  }, [])
+    if (testimonialData.length > 0) {
+      const timer = setInterval(() => {
+        setActiveIndex((prev) => (prev + 1) % testimonialData.length)
+      }, 6000)
+      return () => clearInterval(timer)
+    }
+  }, [testimonialData.length])
 
   return (
     <section className="relative py-20 bg-gradient-to-b from-white to-digiqo-gray/30 overflow-hidden">
@@ -205,6 +221,9 @@ export const TestimonialsSection = () => {
               Instagram
             </span>
           </p>
+          {isLoading && (
+            <p className="text-sm text-gray-500 mt-2 animate-pulse">Chargement des témoignages...</p>
+          )}
         </motion.div>
 
         {/* Carousel de témoignages */}
