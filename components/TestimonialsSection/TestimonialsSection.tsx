@@ -252,8 +252,13 @@ export const TestimonialsSection = () => {
                         )}
                         <div className="absolute inset-0 bg-gradient-to-br from-digiqo-primary/20 to-digiqo-accent/20" />
                         
-                        {testimonial.isVideo && (
-                          <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                        {testimonial.isVideo && testimonial.videoUrl && (
+                          <a 
+                            href={testimonial.videoUrl} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="absolute inset-0 flex items-center justify-center bg-black/20 cursor-pointer hover:bg-black/30 transition-colors"
+                          >
                             <div className="text-center">
                               <motion.div
                                 className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center mb-4 mx-auto shadow-lg"
@@ -267,7 +272,7 @@ export const TestimonialsSection = () => {
                               </motion.div>
                               <p className="text-sm text-white font-medium drop-shadow-lg">Voir le témoignage vidéo</p>
                             </div>
-                          </div>
+                          </a>
                         )}
                       </div>
 
@@ -362,7 +367,7 @@ export const TestimonialsSection = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <a
-            href="https://www.instagram.com/digiqo"
+            href="https://www.instagram.com/digiqo_/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-digiqo-primary via-[#C13584] to-digiqo-accent text-white font-semibold rounded-full hover:shadow-xl hover:shadow-digiqo-primary/20 transition-all duration-300 transform hover:scale-105"
