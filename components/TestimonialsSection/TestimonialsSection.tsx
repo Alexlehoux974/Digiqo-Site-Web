@@ -94,10 +94,26 @@ export const TestimonialsSection = () => {
     } else if (totalTestimonials === 2) {
       // Pour 2 témoignages, on alterne entre les deux
       return [testimonialData[activeIndex % 2]]
-    } else {
-      // Pour 3+ témoignages, on affiche jusqu'à 3 cartes
+    } else if (totalTestimonials === 3) {
+      // Pour exactement 3 témoignages, on affiche les 3
       const cards = []
-      const maxCards = Math.min(3, totalTestimonials)
+      for (let i = 0; i < 3; i++) {
+        const index = (activeIndex + i) % 3
+        cards.push(testimonialData[index])
+      }
+      return cards
+    } else if (totalTestimonials === 4) {
+      // Pour 4 témoignages, on affiche 2 cartes à la fois pour que tous soient visibles dans le cycle
+      const cards = []
+      for (let i = 0; i < 2; i++) {
+        const index = (activeIndex + i) % 4
+        cards.push(testimonialData[index])
+      }
+      return cards
+    } else {
+      // Pour 5+ témoignages, on affiche 3 cartes
+      const cards = []
+      const maxCards = 3
       for (let i = 0; i < maxCards; i++) {
         const index = (activeIndex + i) % totalTestimonials
         cards.push(testimonialData[index])
