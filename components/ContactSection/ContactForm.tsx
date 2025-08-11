@@ -93,8 +93,25 @@ export function ContactForm({ formData, setFormData, onSubmit }: ContactFormProp
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
+    try {
+      // Envoyer les données à notre API qui transmettra au webhook n8n
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      })
+
+      const result = await response.json()
+      
+      // Attendre un peu pour l'animation
+      await new Promise(resolve => setTimeout(resolve, 500))
+
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      // On continue même en cas d'erreur
+    }
 
     setIsSubmitting(false)
     setIsSubmitted(true)
