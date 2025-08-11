@@ -152,7 +152,8 @@ export const ChatWidget = () => {
           getStarted: 'Commencer',
           inputPlaceholder: 'Tapez votre message...',
           sendButtonText: 'Envoyer',
-          closeButtonText: 'Fermer'
+          closeButtonText: 'Fermer',
+          closeButtonTooltip: 'Fermer le chat'
         }
       },
       theme: {
