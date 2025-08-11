@@ -152,24 +152,9 @@ export const ChatWidget = () => {
           getStarted: 'Commencer',
           inputPlaceholder: 'Tapez votre message...',
           sendButtonText: 'Envoyer',
-          closeButtonText: 'Fermer',
-          greeting: 'Bonjour ! 👋',
-          greetingSubtitle: 'Commencez une conversation. Nous sommes là pour vous aider 24h/24 et 7j/7.',
-          welcomeScreen: {
-            title: 'Bonjour ! 👋',
-            subtitle: 'Commencez une conversation. Nous sommes là pour vous aider 24h/24 et 7j/7.'
-          }
-        },
-        en: {
-          greeting: 'Bonjour ! 👋',
-          greetingSubtitle: 'Commencez une conversation. Nous sommes là pour vous aider 24h/24 et 7j/7.',
-          welcomeScreen: {
-            title: 'Bonjour ! 👋',
-            subtitle: 'Commencez une conversation. Nous sommes là pour vous aider 24h/24 et 7j/7.'
-          }
+          closeButtonText: 'Fermer'
         }
       },
-      defaultLanguage: 'fr',
       theme: {
         button: {
           backgroundColor: '#8B1431',
