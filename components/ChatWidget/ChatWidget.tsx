@@ -130,7 +130,7 @@ export const ChatWidget = () => {
     document.head.appendChild(style)
 
     // Initialiser le chat avec la configuration
-    const chatInstance = createChat({
+    createChat({
       webhookUrl: 'https://n8n.srv763918.hstgr.cloud/webhook/9cc113e7-d987-45a2-8e91-a4a664624d05/chat',
       mode: 'window',
       chatInputKey: 'chatInput',
