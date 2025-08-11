@@ -103,7 +103,7 @@ export function ContactForm({ formData, setFormData, onSubmit }: ContactFormProp
         body: JSON.stringify(formData)
       })
 
-      const result = await response.json()
+      await response.json()
       
       // Attendre un peu pour l'animation
       await new Promise(resolve => setTimeout(resolve, 500))
