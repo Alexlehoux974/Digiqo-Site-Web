@@ -24,86 +24,8 @@ export interface FormattedTestimonial {
   publishedAt: string
 }
 
-// Données de fallback (les témoignages actuels)
-const fallbackTestimonials: FormattedTestimonial[] = [
-  {
-    id: '1',
-    username: '@romy.malbroukou',
-    content: 'Un grand merci à @romy.malbroukou pour son incroyable retour sur notre collaboration! 🚀',
-    videoUrl: 'https://www.instagram.com/reel/DFeyxS4NYLH/',
-    thumbnail: '/partenaires/TITTY-CLUB-1024x1024.webp',
-    likes: 234,
-    comments: 18,
-    isVideo: true,
-    publishedAt: 'Il y a 3 jours'
-  },
-  {
-    id: '2',
-    username: '@lcda_reunion',
-    content: 'Un grand merci à @lcda_reunion pour leur incroyable témoignage! Votre succès est notre réussite! 💪',
-    videoUrl: 'https://www.instagram.com/reel/DFxEB8Mt6fi/',
-    thumbnail: '/partenaires/LCDA_LOGO_FD-BLANC_14CM-1024x877.webp',
-    likes: 156,
-    comments: 12,
-    isVideo: true,
-    publishedAt: 'Il y a 5 jours'
-  },
-  {
-    id: '3',
-    username: '@restaurantcoteseine974',
-    content: 'Un grand merci à Pascal du @restaurantcoteseine974 pour ce magnifique retour d\'expérience! 🌟',
-    videoUrl: 'https://www.instagram.com/reel/DG7de1nAOdS/',
-    thumbnail: '/partenaires/COTE-SEINE-1024x1024.webp',
-    likes: 198,
-    comments: 23,
-    isVideo: true,
-    publishedAt: 'Il y a 1 semaine'
-  },
-  {
-    id: '4',
-    username: '@bastien_levy',
-    content: 'Un grand merci à @bastien_levy pour son incroyable témoignage sur notre collaboration! 🎯',
-    videoUrl: 'https://www.instagram.com/reel/DGU2cC0NZQQ/',
-    thumbnail: '/partenaires/PIZZA-STELLA-1024x1024.webp',
-    likes: 245,
-    comments: 31,
-    isVideo: true,
-    publishedAt: 'Il y a 1 semaine'
-  },
-  {
-    id: '5',
-    username: '@velocit.ai',
-    content: 'Un grand merci à @velocit.ai pour son super témoignage! L\'innovation au service de votre croissance! 🚀',
-    videoUrl: 'https://www.instagram.com/reel/DHdC0b-NVVB/',
-    thumbnail: '/partenaires/BEAUVALLON-1024x1024.webp',
-    likes: 167,
-    comments: 14,
-    isVideo: true,
-    publishedAt: 'Il y a 2 semaines'
-  },
-  {
-    id: '6',
-    username: '@twinsdesign.974',
-    content: 'Un grand merci à @twinsdesign.974 pour leur incroyable retour! La créativité au rendez-vous! 🎨',
-    videoUrl: 'https://www.instagram.com/reel/DHvBvqttjXu/',
-    thumbnail: '/partenaires/TWINS-DESIGN2-1024x1024.webp',
-    likes: 189,
-    comments: 19,
-    isVideo: true,
-    publishedAt: 'Il y a 2 semaines'
-  },
-  {
-    id: '7',
-    username: '@pizzeriafano',
-    content: 'Un grand merci à @pizzeriafano pour leur incroyable témoignage! Votre succès nous inspire! 🍕',
-    videoUrl: 'https://www.instagram.com/reel/DIlNm8wNiqn/',
-    thumbnail: '/partenaires/NENETTES-1024x1024.webp',
-    likes: 212,
-    comments: 28,
-    isVideo: true,
-    publishedAt: 'Il y a 3 semaines'
-  }
-]
+// Cette API renvoie uniquement les témoignages présents dans Airtable
+// Pas de fallback - si Airtable n'a pas de données, on renvoie un tableau vide
 
 // Fonction pour formater le nom d'entreprise en username Instagram
 function formatUsername(companyName: string): string {
@@ -146,7 +68,7 @@ function formatTestimonial(record: AirtableTestimonial, index: number): Formatte
     username: fields["Nom d'entreprise"] ? formatUsername(fields["Nom d'entreprise"]) : `@client_${index + 1}`,
     content: fields["Témoignage écrit"] || "Merci pour cette excellente collaboration avec Digiqo!",
     videoUrl: fields["Vidéos"] || undefined,
-    thumbnail: fields["Url Image"] || `/partenaires/default-${(index % 7) + 1}.webp`,
+    thumbnail: fields["Url Image"] || undefined, // Utilise uniquement l'URL d'Airtable
     likes: baseLikes,
     comments: baseComments,
     isVideo: !!fields["Vidéos"],
@@ -168,10 +90,10 @@ export default async function handler(
   const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID || 'appH46IBnNdYNrwZ9'
   const AIRTABLE_TABLE_ID = process.env.AIRTABLE_TABLE_ID || 'tbloGgkShulfnYDCw'
 
-  // Si pas de token, renvoyer les données de fallback
+  // Si pas de token, renvoyer un tableau vide
   if (!AIRTABLE_PAT) {
-    console.warn('AIRTABLE_PAT not configured, using fallback testimonials')
-    return res.status(200).json(fallbackTestimonials)
+    console.warn('AIRTABLE_PAT not configured, returning empty array')
+    return res.status(200).json([])
   }
 
   try {
@@ -201,12 +123,12 @@ export default async function handler(
         return record.fields["Nom d'entreprise"]
       })
       .map((record: AirtableTestimonial, index: number) => formatTestimonial(record, index))
-      .slice(0, 10) // Limiter à 10 témoignages maximum
+      // Pas de limite - on renvoie tous les témoignages d'Airtable
 
-    // Si aucun témoignage valide, renvoyer le fallback
+    // Si aucun témoignage, renvoyer un tableau vide
     if (testimonials.length === 0) {
-      console.warn('No valid testimonials found in Airtable, using fallback')
-      return res.status(200).json(fallbackTestimonials)
+      console.warn('No testimonials found in Airtable')
+      return res.status(200).json([])
     }
 
     // Configurer les headers de cache
@@ -217,7 +139,7 @@ export default async function handler(
   } catch (error) {
     console.error('Error fetching testimonials from Airtable:', error)
     
-    // En cas d'erreur, renvoyer les données de fallback
-    return res.status(200).json(fallbackTestimonials)
+    // En cas d'erreur, renvoyer un tableau vide
+    return res.status(200).json([])
   }
 }

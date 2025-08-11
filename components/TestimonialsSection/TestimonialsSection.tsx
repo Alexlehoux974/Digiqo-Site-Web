@@ -4,92 +4,13 @@ import { Heart, MessageCircle, Bookmark, Send } from 'lucide-react'
 import { OptimizedImage } from '../ui/OptimizedImage'
 import type { FormattedTestimonial } from '../../pages/api/testimonials'
 
-// Les témoignages de fallback (utilisés pendant le chargement ou en cas d'erreur)
-const fallbackTestimonialData: FormattedTestimonial[] = [
-  {
-    id: '1',
-    username: '@romy.malbroukou',
-    content: 'Un grand merci à @romy.malbroukou pour son incroyable retour sur notre collaboration! 🚀',
-    videoUrl: 'https://www.instagram.com/reel/DFeyxS4NYLH/',
-    thumbnail: '/partenaires/TITTY-CLUB-1024x1024.webp',
-    likes: 234,
-    comments: 18,
-    isVideo: true,
-    publishedAt: 'Il y a 3 jours'
-  },
-  {
-    id: '2',
-    username: '@lcda_reunion',
-    content: 'Un grand merci à @lcda_reunion pour leur incroyable témoignage! Votre succès est notre réussite! 💪',
-    videoUrl: 'https://www.instagram.com/reel/DFxEB8Mt6fi/',
-    thumbnail: '/partenaires/LCDA_LOGO_FD-BLANC_14CM-1024x877.webp',
-    likes: 156,
-    comments: 12,
-    isVideo: true,
-    publishedAt: 'Il y a 5 jours'
-  },
-  {
-    id: '3',
-    username: '@restaurantcoteseine974',
-    content: 'Un grand merci à Pascal du @restaurantcoteseine974 pour ce magnifique retour d\'expérience! 🌟',
-    videoUrl: 'https://www.instagram.com/reel/DG7de1nAOdS/',
-    thumbnail: '/partenaires/COTE-SEINE-1024x1024.webp',
-    likes: 198,
-    comments: 23,
-    isVideo: true,
-    publishedAt: 'Il y a 1 semaine'
-  },
-  {
-    id: '4',
-    username: '@bastien_levy',
-    content: 'Un grand merci à @bastien_levy pour son incroyable témoignage sur notre collaboration! 🎯',
-    videoUrl: 'https://www.instagram.com/reel/DGU2cC0NZQQ/',
-    thumbnail: '/partenaires/PIZZA-STELLA-1024x1024.webp',
-    likes: 245,
-    comments: 31,
-    isVideo: true,
-    publishedAt: 'Il y a 1 semaine'
-  },
-  {
-    id: '5',
-    username: '@velocit.ai',
-    content: 'Un grand merci à @velocit.ai pour son super témoignage! L\'innovation au service de votre croissance! 🚀',
-    videoUrl: 'https://www.instagram.com/reel/DHdC0b-NVVB/',
-    thumbnail: '/partenaires/BEAUVALLON-1024x1024.webp',
-    likes: 167,
-    comments: 14,
-    isVideo: true,
-    publishedAt: 'Il y a 2 semaines'
-  },
-  {
-    id: '6',
-    username: '@twinsdesign.974',
-    content: 'Un grand merci à @twinsdesign.974 pour leur incroyable retour! La créativité au rendez-vous! 🎨',
-    videoUrl: 'https://www.instagram.com/reel/DHvBvqttjXu/',
-    thumbnail: '/partenaires/TWINS-DESIGN2-1024x1024.webp',
-    likes: 189,
-    comments: 19,
-    isVideo: true,
-    publishedAt: 'Il y a 2 semaines'
-  },
-  {
-    id: '7',
-    username: '@pizzeriafano',
-    content: 'Un grand merci à @pizzeriafano pour leur incroyable témoignage! Votre succès nous inspire! 🍕',
-    videoUrl: 'https://www.instagram.com/reel/DIlNm8wNiqn/',
-    thumbnail: '/partenaires/NENETTES-1024x1024.webp',
-    likes: 212,
-    comments: 28,
-    isVideo: true,
-    publishedAt: 'Il y a 3 semaines'
-  }
-]
+// Pas de fallback - on affiche uniquement les témoignages d'Airtable
 
 export const TestimonialsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0)
   const [likedPosts, setLikedPosts] = useState<Set<string>>(new Set())
   const [animatedLikes, setAnimatedLikes] = useState<{ [key: string]: number }>({})
-  const [testimonialData, setTestimonialData] = useState<FormattedTestimonial[]>(fallbackTestimonialData)
+  const [testimonialData, setTestimonialData] = useState<FormattedTestimonial[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
   // Récupérer les témoignages depuis l'API
@@ -100,9 +21,8 @@ export const TestimonialsSection = () => {
         const response = await fetch('/api/testimonials')
         if (response.ok) {
           const data = await response.json()
-          if (data && data.length > 0) {
-            setTestimonialData(data)
-          }
+          // On utilise les données même si le tableau est vide
+          setTestimonialData(data || [])
         }
       } catch (error) {
         console.error('Error fetching testimonials:', error)
@@ -159,6 +79,34 @@ export const TestimonialsSection = () => {
       return () => clearInterval(timer)
     }
   }, [testimonialData.length])
+
+  // Ne pas afficher la section s'il n'y a pas de témoignages
+  if (!isLoading && testimonialData.length === 0) {
+    return null
+  }
+
+  // Calculer le nombre de cartes à afficher selon le nombre de témoignages
+  const getVisibleCards = () => {
+    const totalTestimonials = testimonialData.length
+    if (totalTestimonials === 0) return []
+    if (totalTestimonials === 1) {
+      return [testimonialData[0]]
+    } else if (totalTestimonials === 2) {
+      // Pour 2 témoignages, on alterne entre les deux
+      return [testimonialData[activeIndex % 2]]
+    } else {
+      // Pour 3+ témoignages, on affiche jusqu'à 3 cartes
+      const cards = []
+      const maxCards = Math.min(3, totalTestimonials)
+      for (let i = 0; i < maxCards; i++) {
+        const index = (activeIndex + i) % totalTestimonials
+        cards.push(testimonialData[index])
+      }
+      return cards
+    }
+  }
+
+  const visibleCards = getVisibleCards()
 
   return (
     <section className="relative py-20 bg-gradient-to-b from-white to-digiqo-gray/30 overflow-hidden">
@@ -229,33 +177,35 @@ export const TestimonialsSection = () => {
         {/* Carousel de témoignages */}
         <div className="relative">
           <div className="flex justify-center items-center gap-8">
-            {/* Bouton précédent */}
-            <motion.button
-              onClick={handlePrev}
-              className="hidden md:flex w-12 h-12 rounded-full bg-white shadow-lg items-center justify-center hover:shadow-xl hover:shadow-digiqo-primary/20 border border-digiqo-primary/10 hover:border-digiqo-primary/20 transition-all duration-300"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </motion.button>
+            {/* Bouton précédent - affiché seulement s'il y a plus d'un témoignage */}
+            {testimonialData.length > 1 && (
+              <motion.button
+                onClick={handlePrev}
+                className="hidden md:flex w-12 h-12 rounded-full bg-white shadow-lg items-center justify-center hover:shadow-xl hover:shadow-digiqo-primary/20 border border-digiqo-primary/10 hover:border-digiqo-primary/20 transition-all duration-300"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </motion.button>
+            )}
 
             {/* Cartes de témoignages */}
-            <div className="flex gap-6 overflow-hidden">
-              <AnimatePresence>
-                {testimonialData.slice(activeIndex, activeIndex + 3).concat(testimonialData.slice(0, Math.max(0, (activeIndex + 3) - testimonialData.length))).map((testimonial, index) => (
+            <div className="flex gap-6 overflow-hidden justify-center">
+              <AnimatePresence mode="wait">
+                {visibleCards.map((testimonial, index) => (
                   <motion.div
                     key={`${testimonial.id}-${activeIndex}-${index}`}
                     initial={{ opacity: 0, x: 100 }}
                     animate={{ 
-                      opacity: index === 1 ? 1 : 0.7,
-                      scale: index === 1 ? 1 : 0.9,
+                      opacity: visibleCards.length === 1 || (visibleCards.length > 1 && index === Math.floor(visibleCards.length / 2)) ? 1 : 0.7,
+                      scale: visibleCards.length === 1 || (visibleCards.length > 1 && index === Math.floor(visibleCards.length / 2)) ? 1 : 0.9,
                       x: 0
                     }}
                     exit={{ opacity: 0, x: -100 }}
                     transition={{ duration: 0.5 }}
-                    className={`relative ${index === 1 ? 'z-20' : 'z-10'} ${index !== 1 ? 'hidden lg:block' : ''}`}
+                    className={`relative ${visibleCards.length === 1 || (visibleCards.length > 1 && index === Math.floor(visibleCards.length / 2)) ? 'z-20' : 'z-10'} ${visibleCards.length > 1 && index !== Math.floor(visibleCards.length / 2) ? 'hidden lg:block' : ''}`}
                   >
                     {/* Carte Instagram */}
                     <div className="w-80 bg-white rounded-2xl shadow-xl overflow-hidden border border-digiqo-primary/10 hover:border-digiqo-primary/20 transition-all duration-300">
@@ -282,13 +232,22 @@ export const TestimonialsSection = () => {
                         {/* Image de fond avec thumbnail */}
                         {testimonial.thumbnail && (
                           <div className="absolute inset-0">
-                            <OptimizedImage 
-                              src={testimonial.thumbnail} 
-                              alt={testimonial.username}
-                              fill
-                              className="object-cover opacity-30"
-                              objectFit="cover"
-                            />
+                            {/* Utilise img pour les URLs externes (Airtable) */}
+                            {testimonial.thumbnail.startsWith('http') ? (
+                              <img 
+                                src={testimonial.thumbnail} 
+                                alt={testimonial.username}
+                                className="w-full h-full object-cover opacity-30"
+                              />
+                            ) : (
+                              <OptimizedImage 
+                                src={testimonial.thumbnail} 
+                                alt={testimonial.username}
+                                fill
+                                className="object-cover opacity-30"
+                                objectFit="cover"
+                              />
+                            )}
                           </div>
                         )}
                         <div className="absolute inset-0 bg-gradient-to-br from-digiqo-primary/20 to-digiqo-accent/20" />
@@ -361,33 +320,37 @@ export const TestimonialsSection = () => {
               </AnimatePresence>
             </div>
 
-            {/* Bouton suivant */}
-            <motion.button
-              onClick={handleNext}
-              className="hidden md:flex w-12 h-12 rounded-full bg-white shadow-lg items-center justify-center hover:shadow-xl hover:shadow-digiqo-primary/20 border border-digiqo-primary/10 hover:border-digiqo-primary/20 transition-all duration-300"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </motion.button>
+            {/* Bouton suivant - affiché seulement s'il y a plus d'un témoignage */}
+            {testimonialData.length > 1 && (
+              <motion.button
+                onClick={handleNext}
+                className="hidden md:flex w-12 h-12 rounded-full bg-white shadow-lg items-center justify-center hover:shadow-xl hover:shadow-digiqo-primary/20 border border-digiqo-primary/10 hover:border-digiqo-primary/20 transition-all duration-300"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </motion.button>
+            )}
           </div>
 
-          {/* Indicateurs */}
-          <div className="flex justify-center gap-2 mt-8">
-            {testimonialData.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === activeIndex 
-                    ? 'w-8 bg-gradient-to-r from-digiqo-primary to-digiqo-accent' 
-                    : 'bg-gray-300'
-                }`}
-              />
-            ))}
-          </div>
+          {/* Indicateurs - affichés seulement s'il y a plus d'un témoignage */}
+          {testimonialData.length > 1 && (
+            <div className="flex justify-center gap-2 mt-8">
+              {testimonialData.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === activeIndex 
+                      ? 'w-8 bg-gradient-to-r from-digiqo-primary to-digiqo-accent' 
+                      : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
         {/* CTA */}
