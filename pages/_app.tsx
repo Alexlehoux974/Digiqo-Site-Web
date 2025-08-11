@@ -3,7 +3,9 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { CookieConsent } from '@/components/CookieConsent'
 import { ScrollToTop } from '@/components/ScrollToTop'
+import { ChatWidget } from '@/components/ChatWidget'
 import '../styles/globals.css'
+import '@n8n/chat/style.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -24,6 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
       <CookieConsent />
       <ScrollToTop />
+      <ChatWidget />
     </>
   )
 }
