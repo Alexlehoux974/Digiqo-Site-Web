@@ -6,9 +6,9 @@ import { TrendingUp, Users, Target } from 'lucide-react'
 import { OptimizedImage } from '../ui/OptimizedImage'
 
 const clientLogos = [
-  { name: 'Veille A Nou', logo: '/partenaires/veille-a-nou.webp' },
+  { name: 'Veille A Nou', logo: '/partenaires/VEILLEANOU-1024x1024.webp' },
   { name: 'CbienGlacé', logo: '/partenaires/cbienglace.webp' },
-  { name: 'Culinanion', logo: '/partenaires/culinanion.webp' }
+  { name: 'Culinarion', logo: '/partenaires/culinarion.webp' }
 ]
 
 const caseStudies = [
@@ -79,10 +79,10 @@ const caseStudies = [
     title: 'Lancement Grand Public',
     result: '325K personnes',
     description: 'Campagne de lancement à succès',
-    client: 'Culinanion',
+    client: 'Culinarion',
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // À remplacer par la vraie vidéo
     mission: {
-      contexte: 'Culinanion ouvrait son nouveau magasin à La Réunion et avait besoin d\'une campagne de lancement percutante pour attirer les clients dès l\'ouverture et établir sa notoriété sur le marché local.',
+      contexte: 'Culinarion ouvrait son nouveau magasin à La Réunion et avait besoin d\'une campagne de lancement percutante pour attirer les clients dès l\'ouverture et établir sa notoriété sur le marché local.',
       objectifs: [
         'Maximiser la visibilité pour l\'ouverture du magasin',
         'Créer un buzz autour de la nouvelle enseigne',
