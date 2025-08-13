@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { OptimizedImage } from '../ui/OptimizedImage'
 import { generateContactUrl } from '../../lib/contact-utils'
@@ -162,27 +162,31 @@ const navigation = {
 export const HeaderLuxury = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false) // Désactivé pour garder le header fixe
   const [hoveredService, setHoveredService] = useState<string | null>(null)
   const [isNavigating, setIsNavigating] = useState(false)
   const [menuPosition, setMenuPosition] = useState<'left' | 'center' | 'right'>('center')
   
-  const { scrollY } = useScroll()
-  const headerY = useTransform(scrollY, [0, 100], [0, -40])
-  const headerScale = useTransform(scrollY, [0, 100], [1, 0.98])
-  const logoScale = useTransform(scrollY, [0, 100], [1, 0.85])
+  // Désactivation des transformations de scroll pour garder le header fixe
+  // const { scrollY } = useScroll()
+  // const headerY = useTransform(scrollY, [0, 100], [0, -40])
+  // const headerScale = useTransform(scrollY, [0, 100], [1, 0.98])
+  // const logoScale = useTransform(scrollY, [0, 100], [1, 0.85])
   
-  const springConfig = { stiffness: 400, damping: 30 }
-  const headerYSpring = useSpring(headerY, springConfig)
-  const headerScaleSpring = useSpring(headerScale, springConfig)
-  const logoScaleSpring = useSpring(logoScale, springConfig)
+  // Valeurs fixes au lieu d'animations - non utilisées maintenant
+  // const headerYSpring = 0
+  // const headerScaleSpring = 1
+  // const logoScaleSpring = 1
   
+  // Désactivation du comportement de scroll
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    // const handleScroll = () => {
+    //   setIsScrolled(window.scrollY > 50)
+    // }
+    // window.addEventListener('scroll', handleScroll)
+    // return () => window.removeEventListener('scroll', handleScroll)
+    // Toujours garder isScrolled à false pour conserver le header complet
+    setIsScrolled(false)
   }, [])
 
 
@@ -213,10 +217,11 @@ export const HeaderLuxury = () => {
     <>
       <motion.header 
         className="fixed top-0 left-0 right-0 z-[100]"
-        style={{ 
-          y: headerYSpring,
-          scale: headerScaleSpring
-        }}
+        // Pas de transformation sur le header
+        // style={{ 
+        //   y: headerYSpring,
+        //   scale: headerScaleSpring
+        // }}
       >
       {/* Ultra-luxury glass effect */}
       <div className="absolute inset-0">
@@ -304,7 +309,8 @@ export const HeaderLuxury = () => {
             {/* Animated Logo */}
             <Link href="/" className="relative">
               <motion.div
-                style={{ scale: logoScaleSpring }}
+                // Pas de transformation sur le logo
+                // style={{ scale: logoScaleSpring }}
                 whileHover={{ scale: 1.05 }}
                 className="relative"
               >
