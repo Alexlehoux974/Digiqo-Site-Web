@@ -18,7 +18,7 @@ const caseStudies = [
     result: '854 leads générés',
     description: 'Campagne multi-phase haute performance',
     client: 'Veille A Nou',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // À remplacer par la vraie vidéo
+    videoUrl: 'https://raw.githubusercontent.com/Alexlehoux974/Vid-os-Site-web-Digiqo/main/VEILLE-ANOU.mp4',
     mission: {
       contexte: 'Veille A Nou, service de maintien à domicile pour personnes âgées à La Réunion, avait besoin de générer des leads qualifiés pour développer son activité et toucher les familles concernées.',
       objectifs: [
@@ -49,7 +49,7 @@ const caseStudies = [
     result: 'CPC -82%',
     description: 'Optimisation exceptionnelle des campagnes',
     client: 'CbienGlacé',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // À remplacer par la vraie vidéo
+    videoUrl: 'https://raw.githubusercontent.com/Alexlehoux974/Vid-os-Site-web-Digiqo/main/C_BIEN_GLACE%CC%81_.mp4',
     mission: {
       contexte: 'CbienGlacé, entreprise de glaces artisanales à La Réunion, cherchait à optimiser ses campagnes publicitaires pour augmenter ses ventes tout en réduisant ses coûts d\'acquisition.',
       objectifs: [
@@ -80,7 +80,7 @@ const caseStudies = [
     result: '325K personnes',
     description: 'Campagne de lancement à succès',
     client: 'Culinarion',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // À remplacer par la vraie vidéo
+    videoUrl: 'https://raw.githubusercontent.com/Alexlehoux974/Vid-os-Site-web-Digiqo/main/CULINARION.mp4',
     mission: {
       contexte: 'Culinarion ouvrait son nouveau magasin à La Réunion et avait besoin d\'une campagne de lancement percutante pour attirer les clients dès l\'ouverture et établir sa notoriété sur le marché local.',
       objectifs: [
@@ -381,15 +381,17 @@ export function CaseStudiesSection() {
                     <div className="h-[64px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
                     <div className="rounded-[2rem] overflow-hidden w-[172px] md:w-[272px] h-[372px] md:h-[572px] bg-white dark:bg-gray-800">
                       {/* Vidéo */}
-                      <iframe
+                      <video
                         title={`Témoignage ${selectedCase.client}`}
                         width="100%"
                         height="100%"
                         src={selectedCase.videoUrl}
-                        className="w-full h-full"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
+                        className="w-full h-full object-cover"
+                        controls
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
                       />
                     </div>
                   </div>

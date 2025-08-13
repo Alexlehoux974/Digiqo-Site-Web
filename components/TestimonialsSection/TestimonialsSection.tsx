@@ -249,7 +249,7 @@ export const TestimonialsSection = () => {
                         {testimonial.thumbnail && (
                           <div className="absolute inset-0">
                             {/* Utilise img pour les URLs externes (Airtable) */}
-                            {testimonial.thumbnail.startsWith('http') ? (
+                            {(typeof testimonial.thumbnail === 'string' && testimonial.thumbnail.startsWith('http')) ? (
                               <img 
                                 src={testimonial.thumbnail} 
                                 alt={testimonial.username}

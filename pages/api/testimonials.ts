@@ -1,13 +1,28 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 // Types pour les données Airtable
+export interface AirtableAttachment {
+  id: string
+  url: string
+  filename: string
+  size: number
+  type: string
+  width?: number
+  height?: number
+  thumbnails?: {
+    small?: { url: string; width: number; height: number }
+    large?: { url: string; width: number; height: number }
+    full?: { url: string; width: number; height: number }
+  }
+}
+
 export interface AirtableTestimonial {
   id: string
   fields: {
     "Nom d'entreprise"?: string
     "Vidéos"?: string
     "Témoignage écrit"?: string
-    "Url Image"?: string
+    "Url Image"?: AirtableAttachment[]
     "Date de création"?: string
   }
 }
@@ -63,12 +78,19 @@ function formatTestimonial(record: AirtableTestimonial, index: number): Formatte
   const baseLikes = 150 + (index * 23) % 100
   const baseComments = 10 + (index * 7) % 30
   
+  // Extraire l'URL de l'image depuis le tableau d'attachments
+  let thumbnailUrl: string | undefined = undefined
+  if (fields["Url Image"] && Array.isArray(fields["Url Image"]) && fields["Url Image"].length > 0) {
+    // Utiliser l'URL de la première pièce jointe
+    thumbnailUrl = fields["Url Image"][0].url
+  }
+  
   return {
     id: record.id,
     username: fields["Nom d'entreprise"] ? formatUsername(fields["Nom d'entreprise"]) : `@client_${index + 1}`,
     content: fields["Témoignage écrit"] || "Merci pour cette excellente collaboration avec Digiqo!",
     videoUrl: fields["Vidéos"] || undefined,
-    thumbnail: fields["Url Image"] || undefined, // Utilise uniquement l'URL d'Airtable
+    thumbnail: thumbnailUrl,
     likes: baseLikes,
     comments: baseComments,
     isVideo: !!fields["Vidéos"],
