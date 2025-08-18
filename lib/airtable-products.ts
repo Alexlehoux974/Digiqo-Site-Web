@@ -176,54 +176,133 @@ export const airtableProducts: AirtableProduct[] = [
   // COMMUNITY MANAGEMENT - MMR Products
   {
     id: 'recCM001',
-    name: 'Community Management Essentiel',
-    description: 'Animation basique des réseaux sociaux',
-    price: 250,
-    priceFormatted: '250€',
+    name: 'Formule Essentielle Mensuelle',
+    description: 'Idéal pour maintenir une présence active sur les réseaux sociaux',
+    price: 349,
+    priceFormatted: '349,00 €',
     paymentType: 'MMR',
     duration: 'Mensuel',
     category: 'COMMUNITY MANAGEMENT',
     features: [
-      '2 réseaux sociaux',
-      '3 posts/semaine',
-      'Réponses J+2',
-      'Rapport mensuel'
+      'Gestion de 2 réseaux sociaux au choix',
+      '3 publications par semaine',
+      '3 stories par semaine',
+      'Modération des commentaires',
+      'Réponses aux messages privés (J+1)',
+      'Rapport mensuel de performance',
+      'Veille concurrentielle basique'
     ],
-    displayOrder: 4
+    paymentLink: 'https://buy.stripe.com/test_cm_essentielle_mensuel',
+    displayOrder: 9
   },
   {
     id: 'recCM002',
-    name: 'Community Management Croissance',
-    description: 'Développement actif de votre communauté',
-    price: 500,
-    priceFormatted: '500€',
+    name: 'Formule Croissance Mensuelle',
+    description: 'Pour développer activement votre communauté et votre engagement',
+    price: 649,
+    priceFormatted: '649,00 €',
     paymentType: 'MMR',
     duration: 'Mensuel',
     category: 'COMMUNITY MANAGEMENT',
     features: [
-      '3-4 réseaux sociaux',
-      '5 posts/semaine',
-      'Stories incluses',
-      'Réponses sous 24h'
+      'Gestion de 3-4 réseaux sociaux',
+      '5 publications par semaine',
+      '5 stories par semaine',
+      '1 Reel/TikTok par semaine',
+      'Modération avancée',
+      'Réponses aux messages privés (H+4)',
+      'Stratégie de hashtags optimisée',
+      'Analyse bi-mensuelle des performances',
+      'Gestion des avis et réputation en ligne'
     ],
-    displayOrder: 5
+    paymentLink: 'https://buy.stripe.com/test_cm_croissance_mensuel',
+    displayOrder: 10
   },
   {
     id: 'recCM003',
-    name: 'Community Management Premium',
-    description: 'Gestion complète et stratégique',
-    price: 900,
-    priceFormatted: '900€',
+    name: 'Formule Premium Mensuelle',
+    description: 'Gestion complète et stratégique de votre présence sociale',
+    price: 1249,
+    priceFormatted: '1 249,00 €',
     paymentType: 'MMR',
     duration: 'Mensuel',
     category: 'COMMUNITY MANAGEMENT',
     features: [
-      'Tous réseaux sociaux',
-      'Posts quotidiens',
-      'Création contenu premium',
-      'Modération active'
+      'Gestion de tous vos réseaux sociaux',
+      'Publications quotidiennes',
+      'Stories quotidiennes',
+      '2-3 Reels/TikToks par semaine',
+      'Création de contenu exclusif',
+      'Live streaming mensuel',
+      'Modération en temps réel',
+      'Réponses immédiates aux messages',
+      'Gestion des influenceurs et partenariats',
+      'Stratégie de growth hacking',
+      'Rapport hebdomadaire détaillé',
+      'Réunion stratégique mensuelle'
     ],
-    displayOrder: 6
+    paymentLink: 'https://buy.stripe.com/test_cm_premium_mensuel',
+    displayOrder: 11
+  },
+  {
+    id: 'recCM004',
+    name: 'Formule Essentielle Annuelle',
+    description: 'Formule Essentielle avec engagement annuel - 20% de réduction',
+    price: 3350,
+    priceFormatted: '3 350,00 €',
+    paymentType: 'ARR',
+    duration: 'Annuel',
+    category: 'COMMUNITY MANAGEMENT',
+    features: [
+      'Toutes les fonctionnalités Essentielle',
+      '20% de réduction sur le tarif mensuel',
+      '1 shooting photo professionnel offert',
+      'Audit réseaux sociaux trimestriel',
+      'Formation équipe aux réseaux sociaux'
+    ],
+    paymentLink: 'https://buy.stripe.com/test_cm_essentielle_annuel',
+    displayOrder: 12
+  },
+  {
+    id: 'recCM005',
+    name: 'Formule Croissance Annuelle',
+    description: 'Formule Croissance avec engagement annuel - 20% de réduction',
+    price: 6230,
+    priceFormatted: '6 230,00 €',
+    paymentType: 'ARR',
+    duration: 'Annuel',
+    category: 'COMMUNITY MANAGEMENT',
+    features: [
+      'Toutes les fonctionnalités Croissance',
+      '20% de réduction sur le tarif mensuel',
+      '2 shootings photo professionnels offerts',
+      '1 vidéo promotionnelle offerte',
+      'Audit concurrentiel trimestriel',
+      'Accès prioritaire aux nouvelles fonctionnalités'
+    ],
+    paymentLink: 'https://buy.stripe.com/test_cm_croissance_annuel',
+    displayOrder: 13
+  },
+  {
+    id: 'recCM006',
+    name: 'Formule Premium Annuelle',
+    description: 'Formule Premium avec engagement annuel - 20% de réduction',
+    price: 11990,
+    priceFormatted: '11 990,00 €',
+    paymentType: 'ARR',
+    duration: 'Annuel',
+    category: 'COMMUNITY MANAGEMENT',
+    features: [
+      'Toutes les fonctionnalités Premium',
+      '20% de réduction sur le tarif mensuel',
+      '4 shootings photo professionnels offerts',
+      '2 vidéos promotionnelles offertes',
+      'Community manager dédié',
+      'Veille et benchmark concurrentiel mensuel',
+      'Formation complète de votre équipe'
+    ],
+    paymentLink: 'https://buy.stripe.com/test_cm_premium_annuel',
+    displayOrder: 14
   },
 
   // DÉVELOPPEMENT WEB - ONE SHOT Products
