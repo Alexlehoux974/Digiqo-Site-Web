@@ -1,16 +1,112 @@
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import { Palette, ArrowRight, Sparkles, CheckCircle2, Layers, Brush, Gem, Package, HeartHandshake, Shield, Clock, PaintBucket, CheckSquare, Handshake } from 'lucide-react'
+import { Palette, ArrowRight, Sparkles, Check, ChevronRight, Clock, PaintBucket, CheckSquare, Handshake, Brush, Layers, Package, RefreshCw, Gem, CheckCircle2, HeartHandshake, Shield } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
-import { ServiceLayout } from '../../components/ServiceLayout'
+import ServiceLayout from '../../components/ServiceLayout/ServiceLayout'
 import { generateContactUrl } from '../../lib/contact-utils'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 import { ServiceHero } from './ServiceHero'
 import { getProductsForService } from '../../lib/airtable-products'
 
+interface BrandProduct {
+  id: string
+  name: string
+  price: string
+  description: string
+  features: string[]
+  paymentLink?: string
+  icon?: any
+  gradient?: string
+  bestValue?: boolean
+}
+
 
 export default function IdentitePage() {
   const seoData = servicesSEO['identite-marque-reunion']
+
+  // Get real products from Airtable - IDENTITÉ DE MARQUE (4 main products)
+  const brandProductsData = getProductsForService('identite')
+  
+  // Map the products to our interface with proper icons and gradients
+  const brandProducts: BrandProduct[] = [
+    {
+      id: brandProductsData[0]?.id || 'brand-001',
+      name: 'Création Logo',
+      price: '850€',
+      description: 'Logo professionnel unique et mémorable pour votre marque',
+      features: [
+        '🎨 3 propositions de concepts créatifs',
+        '✏️ Révisions illimitées pendant 30 jours',
+        '📁 Tous les formats vectoriels et bitmap',
+        '📜 Cession complète des droits',
+        '🎯 Brief créatif approfondi',
+        '🔍 Recherche de style et tendances',
+        '📐 Versions noir et blanc incluses',
+        '💾 Fichiers sources AI, EPS, PNG, JPG, PDF'
+      ],
+      paymentLink: brandProductsData.find(p => p.name === 'Création Logo')?.paymentLink,
+      icon: Brush,
+      gradient: 'from-purple-600 to-pink-700'
+    },
+    {
+      id: brandProductsData[3]?.id || 'brand-004',
+      name: 'Refonte Logo',
+      price: '650€',
+      description: 'Modernisation de votre logo existant en conservant votre ADN',
+      features: [
+        '🔍 Analyse de l\'existant',
+        '💡 2 propositions de modernisation',
+        '🧬 Conservation de l\'ADN de marque',
+        '📋 Guide de transition',
+        '✂️ Versions simplifiées',
+        '🔄 Migration progressive',
+        '📁 Tous les formats inclus'
+      ],
+      paymentLink: brandProductsData.find(p => p.name === 'Refonte Logo')?.paymentLink,
+      icon: RefreshCw,
+      gradient: 'from-emerald-600 to-teal-700'
+    },
+    {
+      id: brandProductsData[1]?.id || 'brand-002',
+      name: 'Charte Graphique Complète',
+      price: '2 800€',
+      description: 'Guide complet de votre identité visuelle pour une cohérence parfaite',
+      features: [
+        '📖 Document de 30+ pages personnalisé',
+        '🎨 Logo et toutes ses déclinaisons',
+        '🎨 Palette de couleurs complète',
+        '🔤 Typographies principales et secondaires',
+        '📏 Règles d\'utilisation détaillées',
+        '✨ Éléments graphiques distinctifs',
+        '📑 Templates pour documents',
+        '🖼️ Exemples d\'applications concrètes'
+      ],
+      paymentLink: brandProductsData.find(p => p.name === 'Charte Graphique Complète')?.paymentLink,
+      icon: Layers,
+      gradient: 'from-indigo-600 to-blue-700',
+      bestValue: true
+    },
+    {
+      id: brandProductsData[2]?.id || 'brand-003',
+      name: 'Branding Complet Startup',
+      price: '5 500€',
+      description: 'Pack identité complète pour lancer votre entreprise avec impact',
+      features: [
+        '🚀 Stratégie de marque complète',
+        '🎨 Logo et charte graphique',
+        '📇 Papeterie complète (cartes, en-têtes, etc.)',
+        '💻 Templates digitaux (réseaux sociaux, email)',
+        '🌐 Kit de lancement web',
+        '📊 Présentation investisseurs',
+        '🎯 Positionnement et messaging',
+        '📚 Guide de communication',
+        '🤝 3 mois d\'accompagnement inclus'
+      ],
+      paymentLink: brandProductsData.find(p => p.name === 'Branding Complet Startup')?.paymentLink,
+      icon: Package,
+      gradient: 'from-orange-600 to-red-700'
+    }
+  ]
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -29,41 +125,10 @@ export default function IdentitePage() {
     offers: {
       '@type': 'Offer',
       availability: 'https://schema.org/InStock',
-      price: '0',
+      price: '650',
       priceCurrency: 'EUR',
-      name: 'Consultation Gratuite',
-      description: 'Analyse de votre image de marque actuelle et recommandations personnalisées'
-    },
-    serviceType: 'Brand Identity Design',
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
       name: 'Services Identité de Marque',
-      itemListElement: [
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Création de Logo',
-            description: 'Design de logo professionnel et mémorable'
-          }
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Charte Graphique',
-            description: 'Guide complet de votre identité visuelle'
-          }
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Déclinaisons Visuelles',
-            description: 'Adaptation sur tous vos supports de communication'
-          }
-        }
-      ]
+      description: 'Création de logo, charte graphique et branding complet'
     }
   }
 
@@ -121,109 +186,9 @@ export default function IdentitePage() {
         iconColor="text-digiqo-accent"
       />
 
-      {/* Pourquoi l'identité de marque Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-5xl mx-auto px-4">
-          <motion.div
-            {...ANIMATION.entry.fadeInUp}
-            whileInView={ANIMATION.entry.fadeInUp.animate}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Pourquoi une <span className="text-digiqo-primary">identité forte</span> est cruciale ?
-            </h2>
-            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
-              Créez une <span className="text-digiqo-accent">identité unique</span> qui marque les esprits.
-              Démarquez-vous avec une image de marque mémorable.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: ANIMATION.delay.stagger }}
-              className="relative group"
-            >
-              <div className="bg-white/80 backdrop-blur-md rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-full border border-digiqo-primary/10 hover:border-digiqo-primary/20">
-                <div className="absolute inset-0 bg-gradient-to-br from-digiqo-primary/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <motion.div 
-                  className="relative w-24 h-24 mx-auto mb-6"
-                  whileHover={{ scale: ANIMATION.hover.scaleLarge.scale, rotate: 360 }}
-                  transition={{ duration: ANIMATION.duration.normal }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-digiqo-primary to-digiqo-accent rounded-full blur-xl opacity-30 animate-pulse" />
-                  <div className="relative w-full h-full bg-gradient-to-br from-digiqo-primary to-digiqo-accent rounded-full flex items-center justify-center">
-                    <span className="text-3xl font-bold text-white">5s</span>
-                  </div>
-                </motion.div>
-                <h3 className="text-xl font-bold mb-3">Première Impression</h3>
-                <p className="text-digiqo-primary/70">Il faut seulement 5 secondes pour qu'un client se fasse une opinion sur votre marque</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: ANIMATION.delay.stagger * 2 }}
-              className="relative group"
-            >
-              <div className="bg-white/80 backdrop-blur-md rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-full border border-digiqo-primary/10 hover:border-digiqo-accent/20">
-                <div className="absolute inset-0 bg-gradient-to-br from-digiqo-accent/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <motion.div 
-                  className="relative w-24 h-24 mx-auto mb-6"
-                  whileHover={{ scale: ANIMATION.hover.scaleLarge.scale, rotate: -360 }}
-                  transition={{ duration: ANIMATION.duration.normal }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-digiqo-accent to-amber-500 rounded-full blur-xl opacity-30 animate-pulse" />
-                  <div className="relative w-full h-full bg-gradient-to-br from-digiqo-accent to-amber-500 rounded-full flex items-center justify-center">
-                    <span className="text-3xl font-bold text-white">+23%</span>
-                  </div>
-                </motion.div>
-                <h3 className="text-xl font-bold mb-3">Valeur Perçue</h3>
-                <p className="text-digiqo-primary/70">Une identité cohérente augmente la valeur perçue de vos produits et services</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: ANIMATION.delay.stagger * 3 }}
-              className="relative group"
-            >
-              <div className="bg-white/80 backdrop-blur-md rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-full border border-digiqo-primary/10 hover:border-digiqo-secondary/20">
-                <div className="absolute inset-0 bg-gradient-to-br from-digiqo-secondary/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <motion.div 
-                  className="relative w-24 h-24 mx-auto mb-6"
-                  whileHover={{ scale: ANIMATION.hover.scaleLarge.scale, rotate: 360 }}
-                  transition={{ duration: ANIMATION.duration.normal }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-digiqo-secondary to-cyan-500 rounded-full blur-xl opacity-30 animate-pulse" />
-                  <div className="relative w-full h-full bg-gradient-to-br from-digiqo-secondary to-cyan-500 rounded-full flex items-center justify-center">
-                    <span className="text-3xl font-bold text-white">x3.5</span>
-                  </div>
-                </motion.div>
-                <h3 className="text-xl font-bold mb-3">Reconnaissance</h3>
-                <p className="text-digiqo-primary/70">Une marque cohérente est 3.5x plus mémorable qu'une marque incohérente</p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Notre Processus Section avec glassmorphism */}
-      <section id="processus" className="py-24 bg-gradient-to-br from-white via-digiqo-primary/5 to-white relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 -right-1/4 w-96 h-96 bg-gradient-to-br from-digiqo-primary/10 to-transparent rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 -left-1/4 w-96 h-96 bg-gradient-to-br from-digiqo-accent/10 to-transparent rounded-full blur-3xl" />
-        </div>
-
-        <div className="relative z-10 max-w-6xl mx-auto px-4">
+      {/* Products Section */}
+      <section id="produits" className="py-24 bg-gradient-to-br from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-4">
           <motion.div
             {...ANIMATION.entry.fadeInUp}
             whileInView={ANIMATION.entry.fadeInUp.animate}
@@ -231,370 +196,97 @@ export default function IdentitePage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Notre <span className="bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">Processus Créatif</span>
+              Nos <span className="bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">Solutions d'Identité</span>
             </h2>
             <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
-              De la découverte à la livraison, chaque étape est pensée pour créer une identité qui vous ressemble
+              De la création de logo à l'identité complète, nous avons la solution parfaite pour votre marque.
             </p>
           </motion.div>
 
-          <div className="space-y-8">
-            {/* Step 1 */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-digiqo-primary/10 to-transparent rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative bg-white/80 backdrop-blur-md rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-digiqo-primary/10 hover:border-digiqo-primary/20">
-                <div className="flex items-start gap-6">
-                  <motion.div 
-                    className="relative"
-                    whileHover={{ scale: ANIMATION.hover.scaleLarge.scale, rotate: 360 }}
-                    transition={{ duration: ANIMATION.duration.normal }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-digiqo-primary to-digiqo-accent rounded-2xl blur-lg opacity-50" />
-                    <div className="relative w-16 h-16 bg-gradient-to-br from-digiqo-primary to-digiqo-accent text-white rounded-2xl flex items-center justify-center text-2xl font-bold shadow-lg">
-                      1
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {brandProducts.map((product, index) => (
+              <motion.div
+                key={product.id}
+                {...ANIMATION.entry.fadeInUp}
+                whileInView={ANIMATION.entry.fadeInUp.animate}
+                viewport={{ once: true }}
+                transition={{ delay: getStaggerDelay(index) }}
+                className="relative"
+              >
+                {product.bestValue && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                    <span className="bg-gradient-to-r from-digiqo-accent to-orange-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg">
+                      Le plus populaire
+                    </span>
+                  </div>
+                )}
+                
+                <div className={`bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden h-full ${
+                  product.bestValue ? 'ring-2 ring-digiqo-accent' : ''
+                }`}>
+                  {/* Header */}
+                  <div className={`p-6 bg-gradient-to-br ${product.gradient}`}>
+                    <product.icon className="w-10 h-10 text-white mb-3" />
+                    <h3 className="text-xl font-bold text-white mb-2">{product.name}</h3>
+                    <p className="text-white/90 text-xs">{product.description}</p>
+                  </div>
+
+                  {/* Price */}
+                  <div className="p-4 bg-gray-50 border-b border-gray-100">
+                    <div className="text-center">
+                      <p className="text-3xl font-bold text-digiqo-primary">
+                        {product.price}
+                      </p>
+                      <p className="text-gray-600 text-sm mt-1">Projet unique</p>
                     </div>
-                  </motion.div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3 flex items-center gap-2">
-                      Découverte & Stratégie
-                      <Gem className="w-6 h-6 text-digiqo-primary" />
-                    </h3>
-                    <p className="text-digiqo-primary/70 mb-4">
-                      Nous plongeons dans l'univers de votre entreprise pour comprendre vos valeurs, 
-                      votre vision et votre positionnement unique sur le marché.
-                    </p>
-                    <ul className="space-y-2 text-digiqo-primary/70">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-digiqo-primary" />
-                        Analyse de votre marché et concurrence
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-digiqo-primary" />
-                        Définition de votre personnalité de marque
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-digiqo-primary" />
-                        Identification de votre audience cible
-                      </li>
+                  </div>
+
+                  {/* Features */}
+                  <div className="p-4">
+                    <ul className="space-y-2">
+                      {product.features.slice(0, 5).map((feature, idx) => (
+                        <li key={idx} className="flex items-start gap-2">
+                          <Check className="w-4 h-4 text-digiqo-accent shrink-0 mt-0.5" />
+                          <span className="text-gray-700 text-xs">{feature}</span>
+                        </li>
+                      ))}
                     </ul>
+                    
+                    {product.features.length > 5 && (
+                      <details className="mt-3 group">
+                        <summary className="cursor-pointer text-xs text-gray-600 hover:text-gray-800 font-medium">
+                          Voir plus
+                        </summary>
+                        <ul className="mt-2 space-y-1.5">
+                          {product.features.slice(5).map((feature, idx) => (
+                            <li key={idx} className="flex items-start gap-2">
+                              <ChevronRight className="w-3 h-3 text-gray-400 shrink-0 mt-0.5" />
+                              <span className="text-gray-600 text-xs">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </details>
+                    )}
+                  </div>
+
+                  {/* CTA */}
+                  <div className="p-4 bg-gray-50">
+                    <a
+                      href={product.paymentLink || generateContactUrl({ service: 'identite', description: `Je souhaite commander : ${product.name}` })}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`block w-full py-3 px-4 text-center font-semibold rounded-full transition-all text-sm
+                        ${product.bestValue 
+                          ? 'bg-gradient-to-r from-digiqo-accent to-orange-500 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1' 
+                          : 'bg-white border-2 border-gray-300 text-gray-700 hover:border-digiqo-accent hover:text-digiqo-accent'
+                        }`}
+                    >
+                      Commander
+                    </a>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-
-            {/* Step 2 */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-digiqo-accent/10 to-transparent rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative bg-white/80 backdrop-blur-md rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-digiqo-primary/10 hover:border-digiqo-accent/20">
-                <div className="flex items-start gap-6">
-                  <motion.div 
-                    className="relative"
-                    whileHover={{ scale: ANIMATION.hover.scaleLarge.scale, rotate: -360 }}
-                    transition={{ duration: ANIMATION.duration.normal }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-digiqo-accent to-amber-500 rounded-2xl blur-lg opacity-50" />
-                    <div className="relative w-16 h-16 bg-gradient-to-br from-digiqo-accent to-amber-500 text-white rounded-2xl flex items-center justify-center text-2xl font-bold shadow-lg">
-                      2
-                    </div>
-                  </motion.div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3 flex items-center gap-2">
-                      Création du Logo
-                      <Brush className="w-6 h-6 text-digiqo-accent" />
-                    </h3>
-                    <p className="text-digiqo-primary/70 mb-4">
-                      Nous concevons plusieurs propositions de logos uniques, 
-                      chacune racontant votre histoire d'une manière différente et mémorable.
-                    </p>
-                    <ul className="space-y-2 text-digiqo-primary/70">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-digiqo-accent" />
-                        2 à 3 concepts créatifs originaux
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-digiqo-accent" />
-                        Variations et déclinaisons
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-digiqo-accent" />
-                        Tests d'application sur différents supports
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Step 3 */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-digiqo-secondary/10 to-transparent rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative bg-white/80 backdrop-blur-md rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-digiqo-primary/10 hover:border-digiqo-secondary/20">
-                <div className="flex items-start gap-6">
-                  <motion.div 
-                    className="relative"
-                    whileHover={{ scale: ANIMATION.hover.scaleLarge.scale, rotate: 360 }}
-                    transition={{ duration: ANIMATION.duration.normal }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-digiqo-secondary to-cyan-500 rounded-2xl blur-lg opacity-50" />
-                    <div className="relative w-16 h-16 bg-gradient-to-br from-digiqo-secondary to-cyan-500 text-white rounded-2xl flex items-center justify-center text-2xl font-bold shadow-lg">
-                      3
-                    </div>
-                  </motion.div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3 flex items-center gap-2">
-                      Charte Graphique
-                      <Layers className="w-6 h-6 text-digiqo-secondary" />
-                    </h3>
-                    <p className="text-digiqo-primary/70 mb-4">
-                      Développement d'un guide complet qui assure la cohérence de votre identité 
-                      sur tous vos supports de communication.
-                    </p>
-                    <ul className="space-y-2 text-digiqo-primary/70">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-digiqo-secondary" />
-                        Palette de couleurs et typographies
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-digiqo-secondary" />
-                        Règles d'utilisation du logo
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-digiqo-secondary" />
-                        Templates pour vos documents
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Step 4 */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-digiqo-primary/10 to-transparent rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative bg-white/80 backdrop-blur-md rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/50 hover:border-digiqo-primary/20">
-                <div className="flex items-start gap-6">
-                  <motion.div 
-                    className="relative"
-                    whileHover={{ scale: ANIMATION.hover.scaleLarge.scale, rotate: -360 }}
-                    transition={{ duration: ANIMATION.duration.normal }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-digiqo-primary to-digiqo-accent rounded-2xl blur-lg opacity-50" />
-                    <div className="relative w-16 h-16 bg-gradient-to-br from-digiqo-primary to-digiqo-accent text-white rounded-2xl flex items-center justify-center text-2xl font-bold shadow-lg">
-                      4
-                    </div>
-                  </motion.div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3 flex items-center gap-2">
-                      Déclinaisons & Livraison
-                      <Package className="w-6 h-6 text-digiqo-primary" />
-                    </h3>
-                    <p className="text-digiqo-primary/70 mb-4">
-                      Application de votre nouvelle identité sur tous vos supports et formation 
-                      de votre équipe pour une utilisation optimale.
-                    </p>
-                    <ul className="space-y-2 text-digiqo-primary/70">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-digiqo-primary" />
-                        Cartes de visite et papeterie
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-digiqo-primary" />
-                        Signatures email et réseaux sociaux
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-digiqo-primary" />
-                        Fichiers sources et exports haute définition
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Ce qui est inclus Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-5xl mx-auto px-4">
-          <motion.div
-            {...ANIMATION.entry.fadeInUp}
-            whileInView={ANIMATION.entry.fadeInUp.animate}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Ce qui est <span className="text-digiqo-primary">inclus</span>
-            </h2>
-            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
-              Un package complet pour lancer votre marque avec professionnalisme
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Logo Professionnel */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: ANIMATION.delay.stagger }}
-              className="group relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-digiqo-primary/10 to-transparent rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-digiqo-primary/10 hover:border-digiqo-primary/20 h-full">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gradient-to-br from-digiqo-primary to-digiqo-accent rounded-xl text-white flex-shrink-0">
-                    <Palette className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Logo Professionnel</h3>
-                    <p className="text-digiqo-primary/70">
-                      Design unique et mémorable, livré en formats vectoriels et bitmap pour tous vos usages.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Charte Graphique */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: ANIMATION.delay.stagger * 2 }}
-              className="group relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-digiqo-accent/10 to-transparent rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-digiqo-primary/10 hover:border-digiqo-accent/20 h-full">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gradient-to-br from-digiqo-accent to-amber-500 rounded-xl text-white flex-shrink-0">
-                    <Layers className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Charte Graphique</h3>
-                    <p className="text-digiqo-primary/70">
-                      Guide détaillé avec couleurs, typographies et règles d'utilisation pour garantir la cohérence.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Déclinaisons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: ANIMATION.delay.stagger * 3 }}
-              className="group relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-digiqo-secondary/10 to-transparent rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-digiqo-primary/10 hover:border-digiqo-secondary/20 h-full">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gradient-to-br from-digiqo-secondary to-cyan-500 rounded-xl text-white flex-shrink-0">
-                    <Brush className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Déclinaisons</h3>
-                    <p className="text-digiqo-primary/70">
-                      Adaptations pour cartes de visite, en-têtes, signatures email et réseaux sociaux.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Fichiers Sources */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: ANIMATION.delay.stagger * 4 }}
-              className="group relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-digiqo-primary/10 to-transparent rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50 hover:border-digiqo-primary/20 h-full">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gradient-to-br from-digiqo-primary to-digiqo-accent rounded-xl text-white flex-shrink-0">
-                    <Package className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Fichiers Sources</h3>
-                    <p className="text-digiqo-primary/70">
-                      Tous les fichiers originaux en formats professionnels (AI, EPS, PNG, JPG, PDF).
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Support & Conseils */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: ANIMATION.delay.stagger * 5 }}
-              className="group relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-digiqo-primary/10 hover:border-indigo-500/20 h-full">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gradient-to-br from-digiqo-secondary to-digiqo-primary rounded-xl text-white flex-shrink-0">
-                    <HeartHandshake className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Support & Conseils</h3>
-                    <p className="text-digiqo-primary/70">
-                      Accompagnement personnalisé et conseils d'utilisation pendant 3 mois après livraison.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Propriété Totale */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6 }}
-              className="group relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-digiqo-secondary/10 to-transparent rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-digiqo-primary/10 hover:border-digiqo-secondary/20 h-full">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gradient-to-br from-digiqo-secondary to-digiqo-secondary/80 rounded-xl text-white flex-shrink-0">
-                    <Shield className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Propriété Totale</h3>
-                    <p className="text-digiqo-primary/70">
-                      Droits complets sur votre identité visuelle, sans redevances ni restrictions d'utilisation.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
