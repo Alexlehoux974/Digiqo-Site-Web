@@ -8,8 +8,12 @@ import { servicesSEO } from '../../lib/seo-data'
 import { generateContactUrl } from '../../lib/contact-utils'
 import { ServiceHero } from './ServiceHero'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
+import { 
+  getProductsForService
+} from '../../lib/airtable-products'
 
 interface MaintenancePackage {
+  id: string
   name: string
   price: string
   duration: string
@@ -17,96 +21,78 @@ interface MaintenancePackage {
   features: string[]
   highlighted?: boolean
   type: 'site' | 'shop'
+  paymentLink?: string
 }
 
 export default function SiteKeeperPage() {
   const [activeType, setActiveType] = useState<'site' | 'shop'>('site')
   const seoData = servicesSEO['maintenance-site-web-reunion']
 
-  const sitePackages: MaintenancePackage[] = [
-    {
-      name: 'SiteKeeper Essential',
-      price: '490€',
-      duration: 'HT /an',
-      description: 'Idéal pour les petits sites vitrines avec peu de mises à jour et une gestion technique basique.',
-      type: 'site',
-      features: [
-        'Mises à jour mensuelles du CMS (WordPress) et des plugins',
-        'Sauvegardes hebdomadaires automatisées avec restauration rapide',
-        'Monitoring de la disponibilité en temps réel',
-        '2 révisions/retouches par an pour ajustements mineurs',
-        'Mises à jour PHP sur demande (facturées séparément)',
-        'Support technique basique (réponse sous 72h)',
-        'Domaine, hébergement et abonnements à la charge du client'
-      ]
-    },
-    {
-      name: 'SiteKeeper Pro',
-      price: '990€',
-      duration: 'HT /an',
-      description: 'Parfait pour les sites de taille moyenne nécessitant un suivi régulier, des performances optimisées et des mises à jour fréquentes.',
-      type: 'site',
-      highlighted: true,
-      features: [
-        'Mises à jour hebdomadaires du CMS, plugins et thèmes',
-        'Sauvegardes hebdomadaires avec vérification manuelle',
-        'Monitoring performance et disponibilité',
-        '4 révisions/retouches par an pour ajustements mineurs',
-        'Mises à jour PHP incluses avec tests de compatibilité',
-        'Support prioritaire (réponse sous 48h)',
-        'Domaine, hébergement et abonnements à la charge du client'
-      ]
-    },
-    {
-      name: 'SiteKeeper Ultimate',
-      price: '1 990€',
-      duration: 'HT /an',
-      description: 'Solution complète pour les sites complexes avec un fort trafic, offrant sécurité renforcée, révisions illimitées et support premium.',
-      type: 'site',
-      features: [
-        'Mises à jour hebdomadaires complètes (CMS, plugins, thèmes, PHP)',
-        'Sauvegardes quotidiennes avec restauration prioritaire',
-        'Monitoring complet en temps réel (disponibilité, performances, sécurité)',
-        '6 révisions/retouches par an pour ajustements mineurs',
-        'Sécurité renforcée (pare-feu, protection DDoS, audits semestriels)',
-        'Support technique premium (réponse sous 24h)',
-        'Domaine, hébergement et abonnements à la charge du client'
-      ]
-    }
-  ]
+  // Get real product data from Airtable
+  const maintProducts = getProductsForService('sitekeeper')
+  
+  // Map Airtable products to maintenance packages - filter for SiteKeeper products
+  const sitePackages: MaintenancePackage[] = maintProducts
+    .filter(p => p.name.includes('SiteKeeper') && !p.name.includes('Annual'))
+    .slice(0, 3)
+    .map((product, index) => {      
+      return {
+        id: product.id,
+        name: product.name,
+        price: `${product.price}€`,
+        duration: product.paymentType === 'MMR' ? '/mois' : 
+                  product.paymentType === 'ARR' ? '/an' : '',
+        description: product.description,
+        type: 'site' as const,
+        highlighted: index === 1, // Highlight the Pro package
+        features: product.features || [],
+        paymentLink: product.paymentLink
+      }
+    })
 
+  // For e-commerce packages, we'll use other maintenance products or create based on pattern
   const shopPackages: MaintenancePackage[] = [
     {
+      id: 'shop-1',
       name: 'ShopKeeper Essential',
-      price: '690€',
-      duration: 'HT /an',
-      description: 'Ce forfait est parfait pour les petites boutiques en ligne avec un catalogue limité et des besoins techniques simples.',
+      price: '180€',
+      duration: '/mois',
+      description: 'Parfait pour les petites boutiques en ligne avec un catalogue limité et des besoins techniques simples.',
       type: 'shop',
       features: [
-        'Mises à jour mensuelles du CMS (Shopify/WooCommerce) et passerelle de paiement',
-        'Sauvegardes hebdomadaires automatisées avec restauration rapide',
+        'Mises à jour mensuelles du CMS et plugins e-commerce',
+        'Sauvegardes hebdomadaires automatisées',
         'Monitoring de la disponibilité de la boutique',
-        '2 révisions/retouches par an (produits, textes)',
-        'Support technique basique (réponse sous 72h)',
-        'Domaine, hébergement et abonnements à la charge du client'
-      ]
+        'Gestion basique du catalogue produits',
+        'Support technique (réponse sous 48h)',
+        'Rapport mensuel des performances'
+      ],
+      paymentLink: generateContactUrl({
+        service: 'sitekeeper',
+        description: 'Je suis intéressé par ShopKeeper Essential'
+      })
     },
     {
+      id: 'shop-2',
       name: 'ShopKeeper Pro',
-      price: '1 990€',
-      duration: 'HT /an',
-      description: 'Destiné aux boutiques en ligne de taille moyenne, ce forfait propose un suivi technique plus régulier avec des améliorations de performance et de sécurité.',
+      price: '360€',
+      duration: '/mois',
+      description: 'Pour les boutiques de taille moyenne nécessitant un suivi technique régulier et des optimisations.',
       type: 'shop',
       highlighted: true,
       features: [
-        'Mises à jour hebdomadaires du CMS, plugins et passerelle de paiement',
-        'Sauvegardes hebdomadaires avec vérification manuelle',
-        'Monitoring des performances et des transactions',
-        '4 révisions/retouches par an (produits, textes)',
-        'Optimisation des performances pour garantir la fluidité',
-        'Support prioritaire (réponse sous 48h)',
-        'Domaine, hébergement et abonnements à la charge du client'
-      ]
+        'Mises à jour hebdomadaires complètes',
+        'Sauvegardes quotidiennes avec vérification',
+        'Monitoring avancé des performances et transactions',
+        'Optimisation continue des temps de chargement',
+        'Gestion avancée du catalogue et des stocks',
+        'Support prioritaire (réponse sous 24h)',
+        'Rapports hebdomadaires détaillés'
+      ],
+      paymentLink: generateContactUrl({
+        service: 'sitekeeper',
+        description: 'Je suis intéressé par ShopKeeper Pro'
+      })
     }
   ]
 
@@ -274,7 +260,7 @@ export default function SiteKeeperPage() {
                       </ul>
 
                       <motion.a
-                        href={generateContactUrl({
+                        href={pkg.paymentLink || generateContactUrl({
                           service: 'sitekeeper',
                           description: `Je suis intéressé par le forfait ${pkg.name} - ${pkg.description}`
                         })}

@@ -6,6 +6,7 @@ import { ServiceLayout } from '../../components/ServiceLayout'
 import { generateContactUrl } from '../../lib/contact-utils'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 import { ServiceHero } from './ServiceHero'
+import { getProductsForService } from '../../lib/airtable-products'
 
 
 export default function IdentitePage() {
@@ -772,10 +773,14 @@ export default function IdentitePage() {
 
                 <div className="flex flex-col sm:flex-row gap-6 justify-center">
                   <motion.a
-                    href={generateContactUrl({ 
-                      service: 'identite',
-                      description: 'Je souhaite une consultation gratuite pour mon identité de marque' 
-                    })}
+                    href={(() => {
+                      const brandProducts = getProductsForService('identite')
+                      const logoProduct = brandProducts.find(p => p.name.includes('Logo'))
+                      return logoProduct?.paymentLink || generateContactUrl({ 
+                        service: 'identite',
+                        description: 'Je souhaite une consultation gratuite pour mon identité de marque' 
+                      })
+                    })()}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="group relative inline-flex items-center gap-3 px-8 py-4 overflow-hidden rounded-2xl font-bold transition-all duration-300"

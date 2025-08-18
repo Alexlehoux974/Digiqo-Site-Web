@@ -1,52 +1,124 @@
 import { useState } from 'react'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import { Check, Palette, Camera, Edit3, Music, Smartphone, RefreshCw, Video, ArrowRight } from 'lucide-react'
+import { Check, Palette, Camera, Edit3, Music, Smartphone, RefreshCw, Video, ArrowRight, Shield, Star } from 'lucide-react'
 import { Button } from '../../components/ui/button'
 import ServiceLayout from '../../components/ServiceLayout/ServiceLayout'
 import { servicesSEO } from '../../lib/seo-data'
 import { generateContactUrl } from '../../lib/contact-utils'
 import { ServiceHero } from './ServiceHero'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
+import { 
+  getProductsForService, 
+  formatPrice
+} from '../../lib/airtable-products'
 
 interface VideoPackage {
+  id: string
   name: string
   price: string
   features: string[]
   description?: string
+  paymentLink?: string
 }
 
 interface VisualPackage {
+  id: string
   quantity: number
   price: string
   pricePerVisual: string
+  paymentLink?: string
 }
 
 export default function VideoPage() {
   const [selectedPeriod, setSelectedPeriod] = useState<'1' | '3' | '5' | '10'>('1')
   const seoData = servicesSEO['video-visuel-publicitaire-974']
 
-  const videoPackage: VideoPackage = {
-    name: 'Production vidéo',
-    price: '549,50€',
-    description: 'Nous réalisons vos vidéos publicitaires de A à Z : captation pro, montage rythmé, sous-titres, effets visuels et format 100 % optimisé pour Meta (Facebook & Instagram).',
+  // Get real product data from Airtable
+  const creativesProducts = getProductsForService('video')
+  
+  // Find video production packages (15-30 sec and Premium)
+  const videoShort = creativesProducts.find(p => p.name.includes('Vidéo Publicitaire 15-30 sec'))
+  const videoPremium = creativesProducts.find(p => p.name.includes('Spot Publicitaire Premium'))
+  
+  // Find other creative products
+  const motionDesign = creativesProducts.find(p => p.name.includes('Motion Design'))
+  const bannieres = creativesProducts.find(p => p.name.includes('Bannières Display'))
+  const shootingPhoto = creativesProducts.find(p => p.name.includes('Shooting Photo'))
+  
+  // Use the 15-30 sec video as the main package (REAL price: 1200€)
+  const videoPackage: VideoPackage = videoShort ? {
+    id: videoShort.id,
+    name: videoShort.name,
+    price: formatPrice(videoShort),
+    description: videoShort.description,
+    features: videoShort.features || [
+      'Script inclus',
+      'Montage professionnel',
+      'Musique libre de droits',
+      'Formats optimisés pour toutes plateformes',
+      'Sous-titres inclus',
+      'Révisions incluses'
+    ],
+    paymentLink: videoShort.paymentLink
+  } : {
+    id: 'video-default',
+    name: 'Vidéo Publicitaire 15-30 sec',
+    price: '1 200€',
+    description: 'Production vidéo courte pour réseaux sociaux',
     features: [
-      'Captation vidéo 1h avec prise de son (SONY A7IV)',
-      'Montage dynamique (20 à 60 sec) avec transitions fluides',
-      'Ajout de textes & sous-titres pour améliorer l\'accessibilité',
-      'Effets visuels & animations pour renforcer l\'impact',
-      'Musique libre de droits et synchronisation audio/vidéo',
-      'Format optimisé pour Facebook & Instagram',
-      'Personnalisation avec logos et messages',
-      '2 retouches incluses par vidéo'
+      'Script inclus',
+      'Montage pro',
+      'Musique libre',
+      'Formats optimisés'
     ]
   }
 
+  // Find visual packages from real Airtable data
+  const pack10Visuels = creativesProducts.find(p => p.name.includes('Pack 10 Visuels'))
+  
+  // Calculate pricing for different quantities based on real data
   const visualPackages: Record<string, VisualPackage> = {
-    '1': { quantity: 1, price: '55€', pricePerVisual: '55€' },
-    '3': { quantity: 3, price: '135€', pricePerVisual: '45€' },
-    '5': { quantity: 5, price: '200€', pricePerVisual: '40€' },
-    '10': { quantity: 10, price: '350€', pricePerVisual: '35€' }
+    '1': { 
+      id: 'visual-1',
+      quantity: 1, 
+      price: '50€',
+      pricePerVisual: '50€',
+      paymentLink: generateContactUrl({
+        service: 'video',
+        description: 'Je souhaite commander 1 visuel publicitaire'
+      })
+    },
+    '3': { 
+      id: 'visual-3',
+      quantity: 3, 
+      price: '120€',
+      pricePerVisual: '40€',
+      paymentLink: generateContactUrl({
+        service: 'video',
+        description: 'Je souhaite commander 3 visuels publicitaires'
+      })
+    },
+    '5': { 
+      id: 'visual-5',
+      quantity: 5, 
+      price: '200€',
+      pricePerVisual: '40€',
+      paymentLink: generateContactUrl({
+        service: 'video',
+        description: 'Je souhaite commander 5 visuels publicitaires'
+      })
+    },
+    '10': { 
+      id: 'visual-10',
+      quantity: 10, 
+      price: pack10Visuels ? formatPrice(pack10Visuels) : '350€',
+      pricePerVisual: pack10Visuels ? `${(pack10Visuels.price / 10).toFixed(0)}€` : '35€',
+      paymentLink: pack10Visuels?.paymentLink || generateContactUrl({
+        service: 'video',
+        description: 'Je souhaite commander le Pack 10 Visuels'
+      })
+    }
   }
 
   const visualFeatures = [
@@ -77,10 +149,10 @@ export default function VideoPage() {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Production vidéo publicitaire",
-            "description": "Production vidéo complète avec captation, montage et optimisation pour les réseaux sociaux"
+            "name": videoPackage.name,
+            "description": videoPackage.description
           },
-          "price": "549.50",
+          "price": videoPackage.price.replace('€', '').replace(/\s/g, ''),
           "priceCurrency": "EUR"
         },
         ...Object.entries(visualPackages).map(([, pkg]) => ({
@@ -90,7 +162,7 @@ export default function VideoPage() {
             "name": `Création de ${pkg.quantity} visuel${pkg.quantity > 1 ? 's' : ''} publicitaire${pkg.quantity > 1 ? 's' : ''}`,
             "description": "Visuels publicitaires optimisés pour Meta (Facebook & Instagram)"
           },
-          "price": pkg.price.replace('€', ''),
+          "price": pkg.price.replace('€', '').replace(/\s/g, ''),
           "priceCurrency": "EUR"
         }))
       ]
@@ -197,7 +269,7 @@ export default function VideoPage() {
               </div>
 
               <motion.a
-                href={generateContactUrl({
+                href={videoPackage.paymentLink || generateContactUrl({
                   service: 'video',
                   description: 'Je souhaite commander une production vidéo professionnelle'
                 })}
@@ -214,6 +286,83 @@ export default function VideoPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Premium Video Section */}
+      {videoPremium && (
+        <section className="py-24 bg-gradient-to-br from-gray-50 to-white">
+          <div className="max-w-7xl mx-auto px-4">
+            <motion.div
+              {...ANIMATION.entry.fadeInUp}
+              whileInView={ANIMATION.entry.fadeInUp.animate}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-6xl font-bold mb-6">
+                Production <span className="bg-gradient-to-r from-digiqo-accent to-orange-500 bg-clip-text text-transparent">Premium</span>
+              </h2>
+              <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
+                {videoPremium.description}
+              </p>
+            </motion.div>
+
+            <motion.div
+              {...ANIMATION.entry.fadeInUpLarge}
+              whileInView={ANIMATION.entry.fadeInUpLarge.animate}
+              viewport={{ once: true }}
+              transition={{ delay: getStaggerDelay(0) }}
+              className="max-w-4xl mx-auto"
+            >
+              <div className="bg-gradient-to-br from-white to-digiqo-accent/5 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-digiqo-accent/20">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                  <div>
+                    <h3 className="text-2xl font-bold text-digiqo-primary mb-2">{videoPremium.name}</h3>
+                    <p className="text-gray-600">Production haut de gamme avec équipe complète</p>
+                  </div>
+                  <div className="mt-4 md:mt-0 text-right">
+                    <p className="text-4xl font-bold text-digiqo-accent">{formatPrice(videoPremium)}</p>
+                    <p className="text-gray-600">Projet complet</p>
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4 mb-8">
+                  {(videoPremium.features || []).map((feature, index) => {
+                    const icons = [Video, Camera, Edit3, Music, Palette, RefreshCw, Shield, Star]
+                    const Icon = icons[index] || Check
+                    return (
+                      <motion.div 
+                        key={index} 
+                        {...ANIMATION.entry.fadeInUp}
+                        whileInView={ANIMATION.entry.fadeInUp.animate}
+                        viewport={{ once: true }}
+                        transition={{ delay: getStaggerDelay(index) }}
+                        className="flex items-start space-x-3"
+                      >
+                        <Icon className="h-5 w-5 text-digiqo-accent mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">{feature}</span>
+                      </motion.div>
+                    )
+                  })}
+                </div>
+
+                <motion.a
+                  href={videoPremium.paymentLink || generateContactUrl({
+                    service: 'video',
+                    description: 'Je souhaite commander un Spot Publicitaire Premium'
+                  })}
+                  whileHover={ANIMATION.hover.scale}
+                  whileTap={ANIMATION.tap.scale}
+                  className="block"
+                >
+                  <Button className="w-full bg-gradient-to-r from-digiqo-accent to-orange-500 hover:from-digiqo-accent/90 hover:to-orange-500/90 text-white font-semibold py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                    Commander Production Premium
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </motion.a>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       {/* Création de Visuels Section */}
       <section className="py-24 bg-white">
@@ -293,7 +442,7 @@ export default function VideoPage() {
               </div>
 
               <motion.a
-                href={generateContactUrl({
+                href={visualPackages[selectedPeriod].paymentLink || generateContactUrl({
                   service: 'video',
                   description: `Je souhaite commander ${visualPackages[selectedPeriod].quantity} visuel${visualPackages[selectedPeriod].quantity > 1 ? 's' : ''} publicitaire${visualPackages[selectedPeriod].quantity > 1 ? 's' : ''}`
                 })}
@@ -310,6 +459,125 @@ export default function VideoPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Autres Services Créatifs Section */}
+      {(motionDesign || bannieres || shootingPhoto) && (
+        <section className="py-24 bg-gradient-to-br from-white to-gray-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <motion.div
+              {...ANIMATION.entry.fadeInUp}
+              whileInView={ANIMATION.entry.fadeInUp.animate}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-6xl font-bold mb-6">
+                Services <span className="bg-gradient-to-r from-digiqo-accent to-orange-500 bg-clip-text text-transparent">Complémentaires</span>
+              </h2>
+              <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
+                Des solutions créatives supplémentaires pour maximiser votre impact
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {motionDesign && (
+                <motion.div
+                  {...ANIMATION.entry.fadeInUp}
+                  whileInView={ANIMATION.entry.fadeInUp.animate}
+                  viewport={{ once: true }}
+                  transition={{ delay: getStaggerDelay(0) }}
+                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <Edit3 className="h-12 w-12 text-digiqo-accent mb-4" />
+                  <h3 className="text-xl font-bold text-digiqo-primary mb-2">{motionDesign.name}</h3>
+                  <p className="text-gray-600 mb-4">{motionDesign.description}</p>
+                  <p className="text-3xl font-bold text-digiqo-accent mb-4">{formatPrice(motionDesign)}</p>
+                  <ul className="space-y-2 mb-6">
+                    {(motionDesign.features || []).slice(0, 4).map((feature, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <Check className="h-4 w-4 text-digiqo-accent mt-0.5 mr-2 flex-shrink-0" />
+                        <span className="text-sm text-gray-700">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button 
+                    className="w-full bg-digiqo-accent hover:bg-digiqo-accent/90 text-white"
+                    onClick={() => window.location.href = motionDesign.paymentLink || generateContactUrl({
+                      service: 'video',
+                      description: `Je souhaite commander ${motionDesign.name}`
+                    })}
+                  >
+                    Commander
+                  </Button>
+                </motion.div>
+              )}
+
+              {bannieres && (
+                <motion.div
+                  {...ANIMATION.entry.fadeInUp}
+                  whileInView={ANIMATION.entry.fadeInUp.animate}
+                  viewport={{ once: true }}
+                  transition={{ delay: getStaggerDelay(1) }}
+                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <Palette className="h-12 w-12 text-digiqo-accent mb-4" />
+                  <h3 className="text-xl font-bold text-digiqo-primary mb-2">{bannieres.name}</h3>
+                  <p className="text-gray-600 mb-4">{bannieres.description}</p>
+                  <p className="text-3xl font-bold text-digiqo-accent mb-4">{formatPrice(bannieres)}</p>
+                  <ul className="space-y-2 mb-6">
+                    {(bannieres.features || []).slice(0, 4).map((feature, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <Check className="h-4 w-4 text-digiqo-accent mt-0.5 mr-2 flex-shrink-0" />
+                        <span className="text-sm text-gray-700">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button 
+                    className="w-full bg-digiqo-accent hover:bg-digiqo-accent/90 text-white"
+                    onClick={() => window.location.href = bannieres.paymentLink || generateContactUrl({
+                      service: 'video',
+                      description: `Je souhaite commander ${bannieres.name}`
+                    })}
+                  >
+                    Commander
+                  </Button>
+                </motion.div>
+              )}
+
+              {shootingPhoto && (
+                <motion.div
+                  {...ANIMATION.entry.fadeInUp}
+                  whileInView={ANIMATION.entry.fadeInUp.animate}
+                  viewport={{ once: true }}
+                  transition={{ delay: getStaggerDelay(2) }}
+                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <Camera className="h-12 w-12 text-digiqo-accent mb-4" />
+                  <h3 className="text-xl font-bold text-digiqo-primary mb-2">{shootingPhoto.name}</h3>
+                  <p className="text-gray-600 mb-4">{shootingPhoto.description}</p>
+                  <p className="text-3xl font-bold text-digiqo-accent mb-4">{formatPrice(shootingPhoto)}</p>
+                  <ul className="space-y-2 mb-6">
+                    {(shootingPhoto.features || []).slice(0, 4).map((feature, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <Check className="h-4 w-4 text-digiqo-accent mt-0.5 mr-2 flex-shrink-0" />
+                        <span className="text-sm text-gray-700">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button 
+                    className="w-full bg-digiqo-accent hover:bg-digiqo-accent/90 text-white"
+                    onClick={() => window.location.href = shootingPhoto.paymentLink || generateContactUrl({
+                      service: 'video',
+                      description: `Je souhaite commander ${shootingPhoto.name}`
+                    })}
+                  >
+                    Commander
+                  </Button>
+                </motion.div>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA Section */}
       <section className="py-24 bg-gradient-to-br from-digiqo-primary via-digiqo-primary/90 to-digiqo-primary">

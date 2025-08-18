@@ -28,6 +28,7 @@ import {
   MongoDBIcon, 
   TailwindCSSIcon 
 } from '@/components/icons'
+import { getProductsForService } from '../../lib/airtable-products'
 
 // Code particles are now handled by CodeParticleSystem component
 
@@ -80,6 +81,7 @@ const AnimatedMetric = ({ value, label, suffix = '', delay = 0 }: AnimatedMetric
 }
 
 interface WebPackage {
+  id: string
   name: string
   price: string
   description: string
@@ -106,191 +108,79 @@ interface WebPackage {
       items: string[]
     }
   }
+  paymentLink?: string
 }
 
-const packages: WebPackage[] = [
-  {
-    name: 'Landing Page',
-    price: '899,95€ HT',
-    description: '1 page unique sur-mesure, optimisée et parfaitement adaptée à tous les appareils',
-    deliveryTime: '7 jours ouvrés',
-    note: 'Les délais de livraison indiqués démarrent à compter de la réception complète de tous les éléments nécessaires fournis par le client : contenus textuels, visuels, accès techniques, etc.',
-    gradient: 'from-digiqo-secondary to-digiqo-secondary/80',
-    highlights: [
-      'Hébergement & Domaine 1 an',
-      'Maintenance 1 mois offerte',
-      '1 retouche comprise'
-    ],
+// Get real products from Airtable data
+const devProducts = getProductsForService('dev-web')
+
+// Transform products to match the WebPackage interface  
+const packages: WebPackage[] = devProducts.filter(p => 
+  p.name.includes('Site Vitrine') || 
+  p.name.includes('E-commerce') || 
+  p.name.includes('Landing Page')
+).slice(0, 4).map((product, index) => {
+  const gradients = [
+    'from-digiqo-secondary to-digiqo-secondary/80',
+    'from-digiqo-primary to-digiqo-accent',
+    'from-digiqo-accent to-orange-500',
+    'from-digiqo-primary to-digiqo-primary/80'
+  ]
+  
+  // Parse notes into sections
+  const noteLines = product.notes?.split('\n').filter(line => line.trim()) || []
+  const includedItems = noteLines.filter(line => line.startsWith('•')).map(line => line.substring(1).trim())
+  
+  // Separate items by category
+  const bonusItems = includedItems.filter(item => 
+    item.includes('Hébergement') || item.includes('Formation') || item.includes('offert')
+  )
+  const featureItems = includedItems.filter(item => 
+    !bonusItems.includes(item) && !item.includes('SEO') && !item.includes('SSL')
+  )
+  const technicalItems = includedItems.filter(item => 
+    item.includes('SEO') || item.includes('SSL') || item.includes('Analytics') || item.includes('Performance')
+  )
+  
+  return {
+    id: product.id,
+    name: product.name,
+    price: product.priceFormatted === 'Sur devis' ? product.priceFormatted : `${product.priceFormatted} HT`,
+    description: product.description,
+    deliveryTime: product.duration || '2-4 semaines',
+    gradient: gradients[index % gradients.length],
+    popular: product.name.includes('Premium'),
+    highlights: includedItems.slice(0, 3),
+    paymentLink: product.paymentLink,
     sections: {
       bonus: {
         title: 'Bonus inclus',
-        items: [
-          'Hébergement & Domaine : Inclus (1 an)',
-          'Maintenance : 1 mois offert',
-          'Retouches : 1 retouche comprise'
+        items: bonusItems.length > 0 ? bonusItems : [
+          'Hébergement 1 an offert',
+          'Maintenance incluse',
+          'Support technique'
         ]
       },
       features: {
         title: 'Fonctionnalités',
-        items: [
-          'Titre percutant, visuel fort, bouton d\'action bien visible',
-          'Témoignages clients, logos de partenaires, données chiffrées',
-          'Bullet points clairs, visuel illustratif',
-          'Formulaire de contact / Conversion',
-          'Intégration des éléments de la charte graphique du client'
+        items: featureItems.length > 0 ? featureItems.slice(0, 5) : [
+          'Design responsive',
+          'Formulaire de contact',
+          'Intégration réseaux sociaux',
+          'Optimisation mobile'
         ]
       },
       technical: {
         title: 'Technique',
-        items: [
-          'Liens directs vers les réseaux sociaux',
-          'Intégration Google Analytics pour suivi des conversions',
-          'Certificat SSL (HTTPS)',
-          'Implémentation et programmation pixel (sur devis)',
-          'Optimisation pour les campagnes publicitaires'
-        ]
-      }
-    }
-  },
-  {
-    name: 'Web Start',
-    price: '1 599,95€ HT',
-    description: 'Site de 1 à 3 pages sur-mesure responsive : Adapté aux mobiles et tablettes',
-    deliveryTime: '10 jours ouvrés',
-    note: 'démarrage après réception des éléments nécessaires du client',
-    gradient: 'from-digiqo-primary to-digiqo-accent',
-    highlights: [
-      '1-3 pages responsive',
-      'SEO avancé inclus',
-      'PageSpeed > 85/100'
-    ],
-    sections: {
-      bonus: {
-        title: 'Bonus inclus',
-        items: [
-          'Hébergement & Domaine : Inclus (1 an)',
-          'Maintenance : 1 mois offert',
-          'Retouches : 2 retouches comprises'
-        ]
-      },
-      features: {
-        title: 'Fonctionnalités',
-        items: [
-          'Formulaire de contact optimisé',
-          'Liens vers réseaux sociaux',
-          'Bouton WhatsApp / Messenger',
-          'Avis clients en page d\'accueil',
-          'Tunnel de conversion simplifié'
-        ]
-      },
-      technical: {
-        title: 'Technique & SEO',
-        items: [
-          'Certificat SSL (HTTPS)',
-          'SEO avancé (meta tags, indexation)',
-          'Performance : Score PageSpeed > 85/100',
-          'Conformité RGPD incluse'
-        ]
-      }
-    }
-  },
-  {
-    name: 'Web Plus',
-    price: '2 999,95€ HT',
-    description: 'Jusqu\'à 5 pages sur-mesure responsive : optimisé tous appareils',
-    deliveryTime: '20 jours ouvrés',
-    note: 'démarrage après réception des éléments nécessaires du client',
-    gradient: 'from-digiqo-accent to-orange-500',
-    popular: true,
-    highlights: [
-      'Jusqu\'à 5 pages',
-      '2000 mots SEO inclus',
-      'Chatbot FAQ inclus'
-    ],
-    sections: {
-      bonus: {
-        title: 'Bonus inclus',
-        items: [
-          'Hébergement & Domaine : Inclus (1 an)',
-          'Maintenance : 1 mois offert',
-          'Retouches : 2 retouches comprises'
-        ]
-      },
-      features: {
-        title: 'Fonctionnalités',
-        items: [
-          'Formulaire contact avec options dynamiques',
-          'Plan contenu SEO (2000 mots inclus)',
-          'Portfolio ou galerie photos/vidéos',
-          'Intégration Google Maps',
-          'Chatbot simple (FAQ automatisée)'
-        ]
-      },
-      technical: {
-        title: 'Technique & Performance',
-        items: [
-          'Tunnel de conversion optimisé',
-          'Pixel Meta et Google Analytics',
-          'Certificat SSL, protection anti-spam',
-          'Optimisation avancée (meta, images, cache)',
-          'Score PageSpeed garanti > 85/100'
-        ]
-      }
-    }
-  },
-  {
-    name: 'Web Premium',
-    price: '4 999,95€ HT',
-    description: 'Jusqu\'à 10 pages sur-mesure responsive : optimisé tous appareils',
-    deliveryTime: '30 jours ouvrés',
-    note: 'démarrage après réception des éléments nécessaires du client',
-    gradient: 'from-digiqo-primary to-digiqo-primary/80',
-    highlights: [
-      'Jusqu\'à 10 pages',
-      '5000 mots SEO inclus',
-      'Module RDV + Chat live'
-    ],
-    sections: {
-      bonus: {
-        title: 'Bonus inclus',
-        items: [
-          'Hébergement & Domaine : Inclus (1 an)',
-          'Maintenance : 1 mois offert',
-          'Retouches : 3 retouches comprises'
-        ]
-      },
-      features: {
-        title: 'Fonctionnalités',
-        items: [
-          'Module prise de RDV en ligne',
-          'Chat en direct (Messenger, WhatsApp)',
-          'Plan contenu SEO (5000 mots inclus)',
-          'Portfolio ou galerie avancée',
-          'Tunnel conversion avec relances email'
-        ]
-      },
-      technical: {
-        title: 'Technique & Sécurité',
-        items: [
-          'Pixel Meta et Google Analytics',
-          'Chatbot FAQ automatisée',
-          'Certificat SSL avancé, pare-feu',
-          'Sauvegardes automatiques',
-          'Optimisation SEO complète'
-        ]
-      },
-      included: {
-        title: 'Premium Plus',
-        items: [
-          'Score PageSpeed garanti > 85/100',
-          'Support prioritaire',
-          'Formation utilisateur incluse',
-          'Mises à jour de sécurité garanties'
+        items: technicalItems.length > 0 ? technicalItems : [
+          'Certificat SSL',
+          'SEO optimisé',
+          'Analytics intégré'
         ]
       }
     }
   }
-]
+})
 
 // Portfolio data is now handled differently in the portfolio section
 // const portfolio = [
@@ -321,7 +211,7 @@ export default function DevWebPage() {
     offers: packages.map(pkg => ({
       '@type': 'Offer',
       name: pkg.name,
-      price: pkg.price.replace(' HT', '').replace('€', ''),
+      price: pkg.price.replace(' HT', '').replace('€', '').replace(/\s/g, ''),
       priceCurrency: 'EUR',
       deliveryLeadTime: pkg.deliveryTime
     }))

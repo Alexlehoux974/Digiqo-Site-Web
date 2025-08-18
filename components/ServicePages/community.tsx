@@ -34,11 +34,14 @@ import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
 import { generateContactUrl } from '../../lib/contact-utils'
 import { ServiceHero } from './ServiceHero'
+import { getProductsForService } from '../../lib/airtable-products'
 
 interface Formula {
   id: string
   name: string
+  description: string
   price: {
+    monthly: string
     threeMonths: string
     sixMonths: string
     twelveMonths: string
@@ -72,137 +75,82 @@ interface Formula {
       items: string[]
     }
   }
+  paymentLink?: string
 }
 
-const formulas: Formula[] = [
-  {
-    id: 'essentielle',
-    name: 'Essentielle',
+// Get real products from Airtable data
+const communityProducts = getProductsForService('community')
+
+// Transform products to match the Formula interface
+const formulas: Formula[] = communityProducts.slice(0, 3).map((product, index) => {
+  const gradients = [
+    'from-amber-500 to-orange-600',
+    'from-blue-500 to-indigo-600',
+    'from-purple-500 to-pink-600'
+  ]
+  const accentColors = ['amber', 'blue', 'purple']
+  
+  // Parse notes into sections
+  const noteLines = product.notes?.split('\n').filter(line => line.trim()) || []
+  const includedItems = noteLines.filter(line => line.startsWith('•')).map(line => line.substring(1).trim())
+  
+  // Calculate prices with discounts for longer periods
+  const monthlyPrice = product.price // Already a number
+  const threeMonthsPrice = (monthlyPrice * 3).toFixed(0)
+  const sixMonthsPrice = (monthlyPrice * 0.9).toFixed(0) // 10% discount
+  const twelveMonthsPrice = (monthlyPrice * 0.8).toFixed(0) // 20% discount
+  
+  // Extract content metrics from notes
+  const posts = includedItems.find(item => item.includes('publication'))?.match(/\d+/)?.[0] || '10'
+  const stories = includedItems.find(item => item.includes('stories'))?.match(/\d+/)?.[0] || '10'
+  
+  return {
+    id: product.id,
+    name: product.name,
+    description: product.description,
     price: {
-      threeMonths: '690€',
-      sixMonths: '621€',
-      twelveMonths: '552€'
+      monthly: `${product.price}€`,
+      threeMonths: `${threeMonthsPrice}€`,
+      sixMonths: `${sixMonthsPrice}€`,
+      twelveMonths: `${twelveMonthsPrice}€`
     },
     savings: {
       sixMonths: '10%',
       twelveMonths: '20%'
     },
-    highlights: [
-      'Jusqu\'à 10 posts + 10 stories/mois',
-      'Modération 48h ouvrées',
-      '1 déplacement mensuel'
-    ],
-    gradient: 'from-amber-500 to-orange-600',
-    accentColor: 'amber',
+    highlights: includedItems.slice(0, 3),
+    gradient: gradients[index],
+    accentColor: accentColors[index],
+    popular: index === 1, // Mark middle option as popular
     sections: {
       content: {
         title: 'Contenu mensuel',
-        posts: 10,
-        stories: 10,
-        reels: 1,
-        visits: '1 déplacement mensuel (2h)'
+        posts: parseInt(posts),
+        stories: parseInt(stories),
+        reels: index === 0 ? 1 : index === 1 ? 4 : 8,
+        visits: index === 0 ? '1 déplacement mensuel' : index === 1 ? '2 déplacements mensuels' : 'Illimité'
       },
       moderation: {
         title: 'Modération & Engagement',
-        features: [
-          'Réponses aux commentaires et messages en 48h ouvrées',
-          'Gestion des interactions pendant les heures de bureau (lundi-vendredi, 9h-18h)',
-          'Suppression des commentaires inappropriés',
-          'Animation basique de la communauté',
-          'Veille sur la e-réputation'
-        ]
+        features: includedItems.filter(item => 
+          item.includes('Réponses') || 
+          item.includes('modération') ||
+          item.includes('Messages') ||
+          item.includes('Veille')
+        )
       },
       included: {
         title: 'Services inclus',
-        items: [
-          'Stratégie de contenu mensuelle',
-          'Calendrier éditorial détaillé',
-          'Création de visuels professionnels',
-          'Hashtags et SEO optimisés',
-          'Rapport mensuel avec KPIs',
-          'Analyse de la concurrence',
-          'Recommandations d\'amélioration'
-        ]
-      },
-      bonus: {
-        title: 'Bonus forfait annuel',
-        items: [
-          'Shooting photo professionnel (2h)',
-          'Création de 20 visuels premium',
-          'Audit complet de présence digitale',
-          'Formation de base réseaux sociaux',
-          '2 retouches vidéo incluses'
-        ]
+        items: includedItems.filter(item => 
+          item.includes('Création') ||
+          item.includes('Rapport') ||
+          item.includes('Animation')
+        )
       }
-    }
-  },
-  {
-    id: 'performance',
-    name: 'Performance',
-    price: {
-      threeMonths: '1 390€',
-      sixMonths: '1 251€',
-      twelveMonths: '1 112€'
     },
-    savings: {
-      sixMonths: '10%',
-      twelveMonths: '20%'
-    },
-    highlights: [
-      'Jusqu\'à 20 posts + 20 stories + 4 reels',
-      'Modération 24h (7j/7)',
-      '2 déplacements mensuels'
-    ],
-    gradient: 'from-blue-500 to-indigo-600',
-    accentColor: 'blue',
-    sections: {
-      content: {
-        title: 'Contenu mensuel',
-        posts: 20,
-        stories: 20,
-        reels: 4,
-        visits: '2 déplacements mensuels (4h)'
-      },
-      moderation: {
-        title: 'Modération & Engagement Premium',
-        features: [
-          'Réponses aux commentaires et messages en 24h maximum, 7j/7',
-          'Surveillance active des interactions de 9h à 20h',
-          'Modération proactive pour stimuler l\'engagement',
-          'Gestion avancée des avis clients',
-          'Community management actif avec animation de discussions',
-          'Gestion de crise et intervention rapide',
-          'Création d\'événements et jeux concours'
-        ]
-      },
-      included: {
-        title: 'Services inclus',
-        items: [
-          'Stratégie de contenu personnalisée',
-          'Calendrier éditorial multi-plateformes',
-          'Création de visuels et vidéos premium',
-          'Campagnes de croissance organique',
-          'Rapport bi-mensuel détaillé avec analyses',
-          'Veille concurrentielle active',
-          'Réunion stratégique mensuelle',
-          'A/B testing des contenus'
-        ]
-      },
-      bonus: {
-        title: 'Bonus forfait annuel',
-        items: [
-          'Shooting photo/vidéo professionnel (4h)',
-          'Création de 40 visuels premium',
-          'Formation équipe complète (1 jour)',
-          'Campagne publicitaire offerte (500€)',
-          'Montage vidéo professionnel',
-          'Accès prioritaire aux nouveautés',
-          'Révisions illimitées'
-        ]
-      }
-    }
+    paymentLink: product.paymentLink
   }
-]
+})
 
 
 // Animated engagement metric component
@@ -290,24 +238,24 @@ export default function CommunityPage() {
     offers: formulas.map(formula => ({
       '@type': 'Offer',
       name: `Formule ${formula.name}`,
-      price: formula.price.threeMonths.replace('€', '').replace(' ', ''),
+      price: formula.price.threeMonths.replace('€', '').replace(/\s/g, ''),
       priceCurrency: 'EUR',
       priceSpecification: [
         {
           '@type': 'PriceSpecification',
-          price: formula.price.threeMonths.replace('€', '').replace(' ', ''),
+          price: formula.price.threeMonths.replace('€', '').replace(/\s/g, ''),
           priceCurrency: 'EUR',
           unitText: '3 MONTHS'
         },
         {
           '@type': 'PriceSpecification',
-          price: formula.price.sixMonths.replace('€', '').replace(' ', ''),
+          price: formula.price.sixMonths.replace('€', '').replace(/\s/g, ''),
           priceCurrency: 'EUR',
           unitText: '6 MONTHS'
         },
         {
           '@type': 'PriceSpecification',
-          price: formula.price.twelveMonths.replace('€', '').replace(' ', ''),
+          price: formula.price.twelveMonths.replace('€', '').replace(/\s/g, ''),
           priceCurrency: 'EUR',
           unitText: '12 MONTHS'
         }
@@ -997,7 +945,7 @@ export default function CommunityPage() {
 
                                 {/* CTA */}
                                 <motion.a
-                                  href={generateContactUrl({ 
+                                  href={formula.paymentLink || generateContactUrl({ 
                                     service: 'community',
                                     formula: formula.name.toLowerCase(), 
                                     description: `Je suis intéressé par la formule ${formula.name} (${selectedPeriod === 'twelveMonths' ? '12 mois' : selectedPeriod === 'sixMonths' ? '6 mois' : '3 mois'}) - ${formula.sections.content.posts} posts, ${formula.sections.content.stories} stories${formula.sections.content.reels ? `, ${formula.sections.content.reels} reels` : ''} par mois`
@@ -1154,7 +1102,7 @@ export default function CommunityPage() {
                     {/* CTA */}
                     <div className="p-6 bg-digiqo-accent/5">
                       <motion.a
-                        href={generateContactUrl({ 
+                        href={formula.paymentLink || generateContactUrl({ 
                           service: 'community',
                           formula: formula.name.toLowerCase(),
                           description: `Je suis intéressé par la formule ${formula.name} (${selectedPeriod === 'twelveMonths' ? '12 mois' : selectedPeriod === 'sixMonths' ? '6 mois' : '3 mois'}) - ${formula.sections.content.posts} posts, ${formula.sections.content.stories} stories${formula.sections.content.reels ? `, ${formula.sections.content.reels} reels` : ''} par mois`
@@ -1284,7 +1232,7 @@ export default function CommunityPage() {
                           {formulas.map((formula) => (
                             <motion.a
                               key={formula.id}
-                              href={generateContactUrl({ 
+                              href={formula.paymentLink || generateContactUrl({ 
                                 service: 'community',
                                 formula: formula.name.toLowerCase(),
                                 description: `Je suis intéressé par la formule ${formula.name} (${selectedPeriod === 'twelveMonths' ? '12 mois' : selectedPeriod === 'sixMonths' ? '6 mois' : '3 mois'})`
