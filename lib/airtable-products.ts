@@ -419,91 +419,143 @@ export const airtableProducts: AirtableProduct[] = [
     displayOrder: 13
   },
 
-  // MAINTENANCE - MMR & ARR Products
+  // MAINTENANCE - REAL DATA FROM AIRTABLE
+  // ShopKeeper - Pour sites e-commerce
   {
-    id: 'recMaint001',
-    name: 'SiteKeeper Basic',
-    description: 'Maintenance basique mensuelle',
-    price: 99,
-    priceFormatted: '99€',
-    paymentType: 'MMR',
-    duration: 'Mensuel',
-    category: 'MAINTENANCE WEB',
-    features: [
-      'Sauvegardes hebdo',
-      'Mises à jour mensuelles',
-      'Monitoring uptime',
-      'Support email'
-    ],
-    displayOrder: 14
-  },
-  {
-    id: 'recMaint002',
-    name: 'SiteKeeper Pro',
-    description: 'Maintenance avancée avec optimisation',
-    price: 199,
-    priceFormatted: '199€',
-    paymentType: 'MMR',
-    duration: 'Mensuel',
-    category: 'MAINTENANCE WEB',
-    features: [
-      'Sauvegardes quotidiennes',
-      'Mises à jour hebdo',
-      'Sécurité renforcée',
-      'Support prioritaire'
-    ],
-    displayOrder: 15
-  },
-  {
-    id: 'recMaint003',
-    name: 'SiteKeeper Enterprise',
-    description: 'Solution complète pour sites critiques',
-    price: 399,
-    priceFormatted: '399€',
-    paymentType: 'MMR',
-    duration: 'Mensuel',
-    category: 'MAINTENANCE WEB',
-    features: [
-      'Sauvegardes temps réel',
-      'Monitoring 24/7',
-      'WAF inclus',
-      'SLA 99.9%'
-    ],
-    displayOrder: 16
-  },
-  {
-    id: 'recMaint004',
-    name: 'SiteKeeper Annual Basic',
-    description: 'Forfait annuel maintenance basique',
-    price: 990,
-    priceFormatted: '990€',
+    id: 'recO9R5Xzm5yRb9d8',
+    name: 'ShopKeeper Essential',
+    description: 'Maintenance essentielle pour votre boutique en ligne - Engagement annuel',
+    price: 890,
+    priceFormatted: '890€',
     paymentType: 'ARR',
     duration: 'Annuel',
     category: 'MAINTENANCE WEB',
     features: [
-      '2 mois offerts',
-      'Toutes features Basic',
-      'Audit annuel inclus',
-      'Migration offerte'
+      'Surveillance disponibilité 24/7',
+      'Sauvegardes quotidiennes',
+      'Mises à jour sécurité critiques',
+      'Monitoring des transactions',
+      'Certificat SSL géré',
+      'Rapport mensuel de performance',
+      'Support prioritaire 48h',
+      '1 intervention d\'urgence par an'
     ],
+    paymentLink: 'https://buy.stripe.com/4gw4klewL2XU4669AE',
+    displayOrder: 14
+  },
+  {
+    id: 'recN5Q7Yzl6xRc8e9',
+    name: 'ShopKeeper Pro',
+    description: 'Protection avancée pour votre e-commerce - Engagement annuel',
+    price: 1490,
+    priceFormatted: '1 490€',
+    paymentType: 'ARR',
+    duration: 'Annuel',
+    category: 'MAINTENANCE WEB',
+    features: [
+      'Tout ShopKeeper Essential +',
+      'Sauvegardes temps réel',
+      'Mises à jour hebdomadaires',
+      'Optimisation performances e-commerce',
+      'WAF (pare-feu applicatif)',
+      'Monitoring des stocks et commandes',
+      'Support prioritaire 24h',
+      '4h de modifications par mois',
+      'Assistance téléphonique'
+    ],
+    paymentLink: 'https://buy.stripe.com/28o8ADbgz3ZYeyA00j',
+    displayOrder: 15
+  },
+  {
+    id: 'recM4P6Wyk7zQd7f0',
+    name: 'ShopKeeper Ultimate',
+    description: 'Solution complète pour boutiques en ligne exigeantes - Engagement annuel',
+    price: 2490,
+    priceFormatted: '2 490€',
+    paymentType: 'ARR',
+    duration: 'Annuel',
+    category: 'MAINTENANCE WEB',
+    features: [
+      'Tout ShopKeeper Pro +',
+      'Infrastructure dédiée haute performance',
+      'CDN premium mondial',
+      'Protection DDoS avancée',
+      'Audit sécurité mensuel',
+      'Optimisation conversion continue',
+      'Support VIP 4h avec hotline',
+      '8h de développement par mois',
+      'Account manager dédié',
+      'SLA 99.9% garanti'
+    ],
+    paymentLink: 'https://buy.stripe.com/3cs4klewL2XU4669AF',
+    displayOrder: 16
+  },
+  // SiteKeeper - Pour sites vitrines
+  {
+    id: 'recP8S6Xyn4wQa7c9',
+    name: 'SiteKeeper Essential',
+    description: 'Maintenance essentielle pour votre site vitrine - Engagement annuel',
+    price: 690,
+    priceFormatted: '690€',
+    paymentType: 'ARR',
+    duration: 'Annuel',
+    category: 'MAINTENANCE WEB',
+    features: [
+      'Surveillance disponibilité 24/7',
+      'Sauvegardes hebdomadaires',
+      'Mises à jour de sécurité mensuelles',
+      'Certificat SSL inclus',
+      'Rapport mensuel d\'activité',
+      'Support email 72h',
+      '1 intervention d\'urgence par an'
+    ],
+    paymentLink: 'https://buy.stripe.com/9AQ4kl0BVc046ec7st',
     displayOrder: 17
   },
   {
-    id: 'recMaint005',
-    name: 'SiteKeeper Annual Pro',
-    description: 'Forfait annuel maintenance pro',
+    id: 'recQ7T9Wyn3vPb6d8',
+    name: 'SiteKeeper Pro',
+    description: 'Protection renforcée pour sites professionnels - Engagement annuel',
+    price: 1190,
+    priceFormatted: '1 190€',
+    paymentType: 'ARR',
+    duration: 'Annuel',
+    category: 'MAINTENANCE WEB',
+    features: [
+      'Tout SiteKeeper Essential +',
+      'Sauvegardes quotidiennes',
+      'Mises à jour bi-mensuelles',
+      'Monitoring performances',
+      'Scan antivirus mensuel',
+      'Support prioritaire 48h',
+      '2h de modifications par mois',
+      'CDN basique inclus'
+    ],
+    paymentLink: 'https://buy.stripe.com/28o7wzewL5622ZY8wx',
+    displayOrder: 18
+  },
+  {
+    id: 'recR6U8Xzo5yTc5e7',
+    name: 'SiteKeeper Ultimate',
+    description: 'Solution premium pour sites exigeants - Engagement annuel',
     price: 1990,
     priceFormatted: '1 990€',
     paymentType: 'ARR',
     duration: 'Annuel',
     category: 'MAINTENANCE WEB',
     features: [
-      '2 mois offerts',
-      'Toutes features Pro',
-      'Audits trimestriels',
-      'Optimisations incluses'
+      'Tout SiteKeeper Pro +',
+      'Sauvegardes temps réel',
+      'Mises à jour hebdomadaires',
+      'WAF entreprise',
+      'Protection DDoS',
+      'Audit sécurité trimestriel',
+      'Support prioritaire 12h',
+      '4h de développement par mois',
+      'Gestionnaire de compte dédié'
     ],
-    displayOrder: 18
+    paymentLink: 'https://buy.stripe.com/fZe2cf8ch9jicwA5kq',
+    displayOrder: 19
   },
 
   // CRÉATIFS PUBLICITAIRES - ONE SHOT & Packs

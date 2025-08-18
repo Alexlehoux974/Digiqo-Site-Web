@@ -607,7 +607,7 @@ export default function PublicitePage() {
                 >
                   Engagement annuel
                   <span className="ml-2 text-xs bg-white/20 px-2 py-1 rounded-full">
-                    -15%
+                    -20%
                   </span>
                 </button>
               </div>
@@ -1056,9 +1056,6 @@ export default function PublicitePage() {
             viewport={{ once: true }}
             className="mt-16 text-center"
           >
-            <p className="text-digiqo-primary/70 mb-4">
-              Des formules <span className="font-bold">Expansion</span> et <span className="font-bold">Domination</span> sont disponibles pour des besoins plus importants.
-            </p>
             <a
               href={generateContactUrl({ 
                 service: 'publicite', 

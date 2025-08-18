@@ -8,15 +8,17 @@ import { ServiceHero } from './ServiceHero'
 import { 
   Code, 
   ArrowRight, 
-  Clock, 
   Shield, 
-  Zap, 
   Rocket,
   CheckCircle2,
   Globe,
-  Lock,
   Sparkles,
-  Star
+  Star,
+  Coffee,
+  FileText,
+  CreditCard,
+  Headphones,
+  RefreshCw
 } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
@@ -279,21 +281,24 @@ export default function DevWebPage() {
               {...ANIMATION.entry.scaleIn}
               whileInView={ANIMATION.entry.scaleIn.animate}
               viewport={{ once: true }}
-              className="inline-block px-4 py-2 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 text-white text-sm font-bold rounded-full mb-6"
+              className="inline-block px-4 py-2 bg-gradient-to-r from-digiqo-accent to-orange-500 text-white text-sm font-bold rounded-full mb-6"
             >
-              EXPERTISE TECHNIQUE
+              NOUVEAU - SITES WEB EN ABONNEMENT
             </motion.span>
             
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Votre site web <span className="bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 bg-clip-text text-transparent">clé en main</span>
+              Sites Web <span className="bg-gradient-to-r from-digiqo-accent to-orange-500 bg-clip-text text-transparent">Sans Engagement</span>
             </h2>
-            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
-              Des standards de qualité exceptionnels pour des résultats qui dépassent vos attentes
+            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto mb-4">
+              Votre présence en ligne professionnelle dès 99€/mois
+            </p>
+            <p className="text-lg text-digiqo-primary/60 max-w-2xl mx-auto">
+              Sans frais de création • Hébergement inclus • Support technique inclus
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8 items-stretch">
-            {/* Performance Card */}
+            {/* Site One Page Essentiel */}
             <motion.div
               {...ANIMATION.entry.fadeInUpLarge}
               whileInView={ANIMATION.entry.fadeInUpLarge.animate}
@@ -302,76 +307,81 @@ export default function DevWebPage() {
               whileHover={ANIMATION.hover.liftLarge}
               className="group relative"
             >
-              {/* Gradient border effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-digiqo-accent to-orange-400 rounded-3xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
-              
-              <div className="relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
-                {/* Animated icon background */}
-                <div className="relative mb-6">
-                  <motion.div
-                    animate={{ 
-                      rotate: [0, 360],
-                    }}
-                    transition={{ 
-                      duration: ANIMATION.duration.verySlow * 13, 
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                    className="absolute inset-0 w-20 h-20 mx-auto bg-gradient-to-br from-digiqo-accent to-orange-400 rounded-2xl opacity-20 blur-xl"
-                  />
-                  <div className="relative w-20 h-20 mx-auto bg-gradient-to-br from-digiqo-accent to-orange-400 rounded-2xl flex items-center justify-center">
-                    <Zap className="w-10 h-10 text-white" />
+              <div className="relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col overflow-hidden">
+                {/* Header */}
+                <div className="p-8 bg-gradient-to-br from-digiqo-secondary to-digiqo-secondary-dark">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center">
+                    <Globe className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white text-center mb-2">Site One Page</h3>
+                  <p className="text-white/90 text-sm text-center">Idéal pour démarrer votre présence en ligne</p>
+                </div>
+                
+                {/* Prix */}
+                <div className="p-6 bg-gray-50 border-b border-gray-100">
+                  <div className="text-center">
+                    <p className="text-5xl font-bold text-digiqo-primary">
+                      99€
+                    </p>
+                    <p className="text-gray-600 mt-2">/mois</p>
+                    <p className="text-xs text-digiqo-primary/60 mt-2">Engagement minimum 3 mois</p>
                   </div>
                 </div>
                 
-                <h3 className="text-2xl font-bold mb-4 text-center">100% Responsive</h3>
-                
-                {/* Animated metrics */}
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center justify-between">
-                    <span className="text-digiqo-primary/70">PageSpeed</span>
-                    <span className="font-bold text-digiqo-accent">95+/100</span>
-                  </div>
-                  <div className="w-full bg-digiqo-primary/20 rounded-full h-2 overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: "95%" }}
-                      viewport={{ once: true }}
-                      transition={{ duration: ANIMATION.duration.slow, delay: ANIMATION.delay.section * 1.5 }}
-                      className="h-full bg-gradient-to-r from-digiqo-accent to-orange-400"
-                    />
-                  </div>
-                </div>
-                
-                <p className="text-digiqo-primary/70 text-center">
-                  Optimisation extrême : compression, lazy loading, CDN, cache intelligent
-                </p>
-                
-                {/* Hidden features on hover */}
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  whileHover={{ opacity: 1, height: "auto" }}
-                  className="mt-4 pt-4 border-t border-digiqo-accent/10"
-                >
-                  <ul className="space-y-2 text-sm text-digiqo-primary/70">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-digiqo-accent" />
-                      WebP & compression automatique
+                {/* Features */}
+                <div className="p-6 flex-grow">
+                  <h4 className="font-semibold text-gray-800 mb-4">Inclus :</h4>
+                  <ul className="space-y-3 text-sm">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Design professionnel sur-mesure</span>
                     </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-digiqo-accent" />
-                      Code splitting intelligent
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Page unique responsive (mobile/desktop)</span>
                     </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-digiqo-accent" />
-                      Service Workers & PWA
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Nom de domaine inclus</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Hébergement sécurisé inclus</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Certificat SSL (HTTPS)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Formulaire de contact</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Optimisation SEO de base</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
+                      <span className="text-gray-700">3 modifications par mois incluses</span>
                     </li>
                   </ul>
-                </motion.div>
+                </div>
+                
+                {/* CTA */}
+                <div className="p-6 bg-gray-50 border-t border-gray-100">
+                  <a
+                    href="https://buy.stripe.com/aEU6staoH9ji6ek001"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full py-4 px-6 text-center font-semibold rounded-full transition-all bg-white border-2 border-digiqo-secondary text-digiqo-secondary hover:bg-digiqo-secondary hover:text-white"
+                  >
+                    Démarrer maintenant
+                  </a>
+                </div>
               </div>
             </motion.div>
 
-            {/* Security Card */}
+            {/* Site One Page + Devis */}
             <motion.div
               {...ANIMATION.entry.fadeInUpLarge}
               whileInView={ANIMATION.entry.fadeInUpLarge.animate}
@@ -380,69 +390,88 @@ export default function DevWebPage() {
               whileHover={ANIMATION.hover.liftLarge}
               className="group relative"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 rounded-3xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
+              {/* Badge Populaire */}
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                <span className="bg-gradient-to-r from-digiqo-accent to-orange-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg">
+                  Le plus populaire
+                </span>
+              </div>
               
-              <div className="relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
-                <div className="relative mb-6">
-                  <motion.div
-                    animate={{ 
-                      scale: [1, 1.2, 1],
-                    }}
-                    transition={{ 
-                      duration: 3, 
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                    className="absolute inset-0 w-20 h-20 mx-auto bg-gradient-to-br from-digiqo-secondary to-digiqo-secondary/80 rounded-2xl opacity-20 blur-xl"
-                  />
-                  <div className="relative w-20 h-20 mx-auto bg-gradient-to-br from-digiqo-secondary to-digiqo-secondary/80 rounded-2xl flex items-center justify-center">
-                    <Shield className="w-10 h-10 text-white" />
+              <div className="relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col overflow-hidden ring-2 ring-digiqo-accent">
+                {/* Header */}
+                <div className="p-8 bg-gradient-to-br from-digiqo-accent to-orange-500">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center">
+                    <FileText className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white text-center mb-2">Site One Page + Devis</h3>
+                  <p className="text-white/90 text-sm text-center">Parfait pour artisans et PME</p>
+                </div>
+                
+                {/* Prix */}
+                <div className="p-6 bg-gray-50 border-b border-gray-100">
+                  <div className="text-center">
+                    <p className="text-5xl font-bold text-digiqo-accent">
+                      199€
+                    </p>
+                    <p className="text-gray-600 mt-2">/mois</p>
+                    <p className="text-xs text-digiqo-primary/60 mt-2">Engagement minimum 3 mois</p>
                   </div>
                 </div>
                 
-                <h3 className="text-2xl font-bold mb-4 text-center">Sécurité Renforcée</h3>
-                
-                {/* Security badges */}
-                <div className="flex justify-center gap-3 mb-6">
-                  <div className="px-3 py-1 bg-digiqo-secondary/10 text-digiqo-secondary text-xs font-bold rounded-full">
-                    SSL A+
-                  </div>
-                  <div className="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">
-                    RGPD
-                  </div>
-                  <div className="px-3 py-1 bg-digiqo-secondary/10 text-digiqo-secondary text-xs font-bold rounded-full">
-                    WAF
-                  </div>
-                </div>
-                
-                <p className="text-digiqo-primary/70 text-center">
-                  Protection maximale : pare-feu, anti-DDoS, sauvegardes automatiques
-                </p>
-                
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  whileHover={{ opacity: 1, height: "auto" }}
-                  className="mt-4 pt-4 border-t border-digiqo-accent/10"
-                >
-                  <ul className="space-y-2 text-sm text-digiqo-primary/70">
-                    <li className="flex items-center gap-2">
-                      <Lock className="w-4 h-4 text-digiqo-secondary" />
-                      Chiffrement bout en bout
+                {/* Features */}
+                <div className="p-6 flex-grow">
+                  <h4 className="font-semibold text-gray-800 mb-4">Tout le pack Essentiel, plus :</h4>
+                  <ul className="space-y-3 text-sm">
+                    <li className="flex items-start gap-2">
+                      <Star className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
+                      <span className="text-gray-700 font-semibold">Formulaire de devis interactif</span>
                     </li>
-                    <li className="flex items-center gap-2">
-                      <Lock className="w-4 h-4 text-digiqo-secondary" />
-                      Headers de sécurité avancés
+                    <li className="flex items-start gap-2">
+                      <Star className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
+                      <span className="text-gray-700 font-semibold">Système de calcul automatique</span>
                     </li>
-                    <li className="flex items-center gap-2">
-                      <Lock className="w-4 h-4 text-digiqo-secondary" />
-                      Monitoring 24/7
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Galerie photo/portfolio</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Intégration Google Maps</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Liens réseaux sociaux</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Optimisation SEO avancée</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
+                      <span className="text-gray-700">5 modifications par mois incluses</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Support prioritaire par email</span>
                     </li>
                   </ul>
-                </motion.div>
+                </div>
+                
+                {/* CTA */}
+                <div className="p-6 bg-gray-50 border-t border-gray-100">
+                  <a
+                    href="https://buy.stripe.com/bIY4kl4S99jidAE5km"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full py-4 px-6 text-center font-semibold rounded-full transition-all bg-gradient-to-r from-digiqo-accent to-orange-500 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  >
+                    Choisir cette formule
+                  </a>
+                </div>
               </div>
             </motion.div>
 
-            {/* Speed Card */}
+            {/* Site One Page Restaurant */}
             <motion.div
               {...ANIMATION.entry.fadeInUpLarge}
               whileInView={ANIMATION.entry.fadeInUpLarge.animate}
@@ -451,73 +480,110 @@ export default function DevWebPage() {
               whileHover={ANIMATION.hover.liftLarge}
               className="group relative"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-digiqo-primary to-digiqo-accent rounded-3xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
-              
-              <div className="relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
-                <div className="relative mb-6">
-                  <motion.div
-                    animate={{ 
-                      rotate: [0, -360],
-                    }}
-                    transition={{ 
-                      duration: ANIMATION.duration.verySlow * 7, 
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                    className="absolute inset-0 w-20 h-20 mx-auto"
-                  >
-                    <div className="w-full h-full border-4 border-digiqo-primary/20 border-t-digiqo-primary rounded-full" />
-                  </motion.div>
-                  <div className="relative w-20 h-20 mx-auto bg-gradient-to-br from-digiqo-primary to-digiqo-accent rounded-2xl flex items-center justify-center">
-                    <Rocket className="w-10 h-10 text-white" />
+              <div className="relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col overflow-hidden">
+                {/* Header */}
+                <div className="p-8 bg-gradient-to-br from-digiqo-primary to-digiqo-primary-dark">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center">
+                    <Coffee className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white text-center mb-2">Site Restaurant</h3>
+                  <p className="text-white/90 text-sm text-center">Spécialement conçu pour la restauration</p>
+                </div>
+                
+                {/* Prix */}
+                <div className="p-6 bg-gray-50 border-b border-gray-100">
+                  <div className="text-center">
+                    <p className="text-5xl font-bold text-digiqo-primary">
+                      299€
+                    </p>
+                    <p className="text-gray-600 mt-2">/mois</p>
+                    <p className="text-xs text-digiqo-primary/60 mt-2">Engagement minimum 3 mois</p>
                   </div>
                 </div>
                 
-                <h3 className="text-2xl font-bold mb-4 text-center">Clé en main</h3>
-                
-                {/* Timeline */}
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 bg-digiqo-primary rounded-full" />
-                    <span className="text-sm text-digiqo-primary/70">Landing Page : 7 jours</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 bg-digiqo-primary/60 rounded-full" />
-                    <span className="text-sm text-digiqo-primary/70">Site vitrine : 14 jours</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 bg-digiqo-primary/30 rounded-full" />
-                    <span className="text-sm text-digiqo-primary/70">E-commerce : 30 jours</span>
-                  </div>
-                </div>
-                
-                <p className="text-digiqo-primary/70 text-center">
-                  Process optimisé, équipe dédiée, livraison garantie dans les délais
-                </p>
-                
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  whileHover={{ opacity: 1, height: "auto" }}
-                  className="mt-4 pt-4 border-t border-digiqo-accent/10"
-                >
-                  <ul className="space-y-2 text-sm text-digiqo-primary/70">
-                    <li className="flex items-center gap-2">
-                      <Clock className="w-4 h-4 text-digiqo-primary" />
-                      Sprints hebdomadaires
+                {/* Features */}
+                <div className="p-6 flex-grow">
+                  <h4 className="font-semibold text-gray-800 mb-4">Solution complète restaurant :</h4>
+                  <ul className="space-y-3 text-sm">
+                    <li className="flex items-start gap-2">
+                      <Star className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
+                      <span className="text-gray-700 font-semibold">Menu digital interactif</span>
                     </li>
-                    <li className="flex items-center gap-2">
-                      <Clock className="w-4 h-4 text-digiqo-primary" />
-                      Points d'étape réguliers
+                    <li className="flex items-start gap-2">
+                      <Star className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
+                      <span className="text-gray-700 font-semibold">Système de réservation en ligne</span>
                     </li>
-                    <li className="flex items-center gap-2">
-                      <Clock className="w-4 h-4 text-digiqo-primary" />
-                      Validation continue
+                    <li className="flex items-start gap-2">
+                      <Star className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
+                      <span className="text-gray-700 font-semibold">Galerie photos des plats</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Horaires d'ouverture dynamiques</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Intégration Google Maps & avis</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Liens commande/livraison</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
+                      <span className="text-gray-700">10 modifications par mois incluses</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Support VIP téléphone & email</span>
                     </li>
                   </ul>
-                </motion.div>
+                </div>
+                
+                {/* CTA */}
+                <div className="p-6 bg-gray-50 border-t border-gray-100">
+                  <a
+                    href="https://buy.stripe.com/8wM8AD9gl7be9mo289"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full py-4 px-6 text-center font-semibold rounded-full transition-all bg-white border-2 border-digiqo-primary text-digiqo-primary hover:bg-digiqo-primary hover:text-white"
+                  >
+                    Découvrir la formule
+                  </a>
+                </div>
               </div>
             </motion.div>
           </div>
+
+          {/* Avantages Section */}
+          <motion.div
+            {...ANIMATION.entry.fadeInUp}
+            whileInView={ANIMATION.entry.fadeInUp.animate}
+            viewport={{ once: true }}
+            className="mt-16 grid md:grid-cols-4 gap-6"
+          >
+            {[
+              { icon: CreditCard, title: "Sans frais de création", desc: "0€ d'investissement initial" },
+              { icon: Shield, title: "Sans engagement", desc: "Résiliable après 3 mois" },
+              { icon: Headphones, title: "Support inclus", desc: "Assistance technique comprise" },
+              { icon: RefreshCw, title: "Mises à jour incluses", desc: "Site toujours à jour" }
+            ].map((feature, index) => (
+              <motion.div
+                key={index}
+                {...ANIMATION.entry.fadeInUp}
+                whileInView={ANIMATION.entry.fadeInUp.animate}
+                viewport={{ once: true }}
+                transition={{ delay: getStaggerDelay(index) }}
+                className="text-center"
+              >
+                <div className="w-14 h-14 mx-auto mb-3 bg-gradient-to-br from-digiqo-accent/10 to-orange-500/10 rounded-xl flex items-center justify-center">
+                  <feature.icon className="w-7 h-7 text-digiqo-accent" />
+                </div>
+                <h4 className="font-semibold text-sm mb-1">{feature.title}</h4>
+                <p className="text-xs text-gray-600">{feature.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
