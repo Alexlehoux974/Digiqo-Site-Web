@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import { Palette, ArrowRight, Sparkles, Check, ChevronRight, Clock, PaintBucket, CheckSquare, Handshake, Brush, Layers, Package, RefreshCw, Gem, CheckCircle2, HeartHandshake, Shield } from 'lucide-react'
+import { Palette, ArrowRight, Sparkles, Check, ChevronRight, Clock, PaintBucket, CheckSquare, Handshake, Brush, Layers, Package, RefreshCw } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import ServiceLayout from '../../components/ServiceLayout/ServiceLayout'
 import { generateContactUrl } from '../../lib/contact-utils'
