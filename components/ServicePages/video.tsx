@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import { Check, Camera, Edit3, Video, ArrowRight, Package, Image, Film, Sparkles, ChevronRight, Palette, Zap, Users, Drone, Gift, Rocket, Star } from 'lucide-react'
+import { Check, Camera, Video, ArrowRight, Package, Image, Film, Sparkles, ChevronRight, Palette, Drone, Gift, Rocket, Star } from 'lucide-react'
 import ServiceLayout from '../../components/ServiceLayout/ServiceLayout'
 import { servicesSEO } from '../../lib/seo-data'
 import { generateContactUrl } from '../../lib/contact-utils'
