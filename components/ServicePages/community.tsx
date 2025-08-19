@@ -6,23 +6,19 @@ import {
   MessageCircle, 
   ArrowRight, 
   BarChart3,
-  Gift,
   CheckCircle2,
-  ChevronRight,
   Sparkles,
   Target,
   ArrowUpRight,
   Crown,
   Rocket,
-  TrendingUp
+  TrendingUp,
+  Star
 } from 'lucide-react'
-// Removed unused icon imports
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
 import { generateContactUrl } from '../../lib/contact-utils'
 import { ServiceHero } from './ServiceHero'
-import { getProductsForService } from '../../lib/airtable-products'
-// Removed unused Button import
 
 interface Formula {
   id: string
@@ -31,29 +27,13 @@ interface Formula {
   price: {
     monthly: string
     annual: string
+    annualSaving?: string
   }
   highlights: string[]
   gradient: string
   accentColor: string
   icon: any
-  sections: {
-    content: {
-      title: string
-      items: string[]
-    }
-    engagement: {
-      title: string
-      items: string[]
-    }
-    analytics: {
-      title: string
-      items: string[]
-    }
-    bonus?: {
-      title: string
-      items: string[]
-    }
-  }
+  features: string[]
   paymentLinkMonthly?: string
   paymentLinkAnnual?: string
   bestValue?: boolean
@@ -63,205 +43,164 @@ export default function CommunityPage() {
   const [engagementType, setEngagementType] = useState<'mensuel' | 'annuel'>('mensuel')
   const seoData = servicesSEO['community-management-974']
   
-  // Get real products from Airtable
-  const communityProducts = getProductsForService('community')
-  
-  // Map products to formulas
-  const essMonthly = communityProducts.find(p => p.name.includes('Essentielle') && p.name.includes('Mensuelle'))
-  const essAnnual = communityProducts.find(p => p.name.includes('Essentielle') && p.name.includes('Annuelle'))
-  const croissMonthly = communityProducts.find(p => p.name.includes('Croissance') && p.name.includes('Mensuelle'))
-  const croissAnnual = communityProducts.find(p => p.name.includes('Croissance') && p.name.includes('Annuelle'))
-  const premMonthly = communityProducts.find(p => p.name.includes('Premium') && p.name.includes('Mensuelle'))
-  const premAnnual = communityProducts.find(p => p.name.includes('Premium') && p.name.includes('Annuelle'))
-  
+  // Données réelles depuis Airtable via MCP
   const formulas: Formula[] = [
     {
-      id: 'formula-essentielle',
-      name: 'Essentielle',
-      summary: 'Idéal pour maintenir une présence active sur les réseaux sociaux',
+      id: 'formula-essentiel',
+      name: 'Essentiel',
+      summary: 'Présence active et régulière sur les réseaux sociaux',
       price: {
-        monthly: essMonthly?.priceFormatted || '349,00 €',
-        annual: essAnnual?.priceFormatted || '3 350,00 €'
+        monthly: '662,40 €',
+        annual: '6 759,36 €',
+        annualSaving: '20% de remise'
       },
       highlights: [
-        '2 réseaux sociaux gérés',
-        '3 posts + 3 stories/semaine',
-        'Modération J+1'
+        '5 posts par mois',
+        '5 stories par mois',
+        '1 déplacement sur site (1h)'
       ],
       gradient: 'from-emerald-500 to-teal-600',
       accentColor: 'emerald',
       icon: Sparkles,
-      sections: {
-        content: {
-          title: '📱 Gestion & Création',
-          items: [
-            'Gestion de 2 réseaux sociaux au choix',
-            '3 publications par semaine',
-            '3 stories par semaine',
-            'Création de visuels adaptés',
-            'Rédaction de contenus engageants',
-            'Calendrier éditorial mensuel'
-          ]
-        },
-        engagement: {
-          title: '💬 Modération & Engagement',
-          items: [
-            'Modération des commentaires',
-            'Réponses aux messages privés (J+1)',
-            'Gestion basique de la e-réputation',
-            'Veille concurrentielle basique'
-          ]
-        },
-        analytics: {
-          title: '📊 Analyse & Reporting',
-          items: [
-            'Rapport mensuel de performance',
-            'Statistiques d\'engagement',
-            'Recommandations d\'amélioration'
-          ]
-        },
-        bonus: engagementType === 'annuel' ? {
-          title: '🎁 Bonus annuel',
-          items: [
-            '20% de réduction sur le tarif mensuel',
-            '1 shooting photo professionnel offert',
-            'Audit réseaux sociaux trimestriel',
-            'Formation équipe aux réseaux sociaux'
-          ]
-        } : undefined
-      },
-      paymentLinkMonthly: essMonthly?.paymentLink,
-      paymentLinkAnnual: essAnnual?.paymentLink
+      features: engagementType === 'mensuel' ? [
+        '📝 5 posts, 5 stories, 0 reels / mois',
+        '🚗 1 déplacement sur site (1h)',
+        '⏱️ Réponses aux commentaires et messages en 48h ouvrées',
+        '🕘 Gestion des interactions pendant les heures de bureau (lundi-vendredi, 9h-18h)',
+        '🧹 Suppression des commentaires inappropriés si nécessaire',
+        '📊 Abonnement de 3 mois minimum',
+        '♻️ Renouvellement automatique mensuel après 3 mois'
+      ] : [
+        '📝 5 posts, 5 stories, 0 reels / mois',
+        '🚗 1 déplacement sur site (1h)',
+        '⏱️ Réponses aux commentaires et messages en 48h ouvrées',
+        '🕘 Gestion des interactions pendant les heures de bureau (lundi-vendredi, 9h-18h)',
+        '🧹 Suppression des commentaires inappropriés si nécessaire',
+        '🎁 20% de remise sur le tarif annuel',
+        '📅 Engagement ferme de 12 mois',
+        '♻️ Renouvellement automatique annuel'
+      ],
+      paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/TNDWcYjrn6tgWJ?referrer=PAYMENT_LINK',
+      paymentLinkAnnual: 'https://app-eu1.hubspot.com/payments/NGdjtzHrmW6772ts?referrer=PAYMENT_LINK'
     },
     {
-      id: 'formula-croissance',
-      name: 'Croissance',
-      summary: 'Pour développer activement votre communauté et votre engagement',
+      id: 'formula-dynamique',
+      name: 'Dynamique',
+      summary: 'Pour développer activement votre communauté',
       price: {
-        monthly: croissMonthly?.priceFormatted || '649,00 €',
-        annual: croissAnnual?.priceFormatted || '6 230,00 €'
+        monthly: '1 142,40 €',
+        annual: '11 634,72 €',
+        annualSaving: '20% de remise'
       },
       highlights: [
-        '3-4 réseaux sociaux gérés',
-        '5 posts + 5 stories/semaine',
-        '1 Reel/TikTok par semaine'
+        '10 posts par mois',
+        '10 stories par mois',
+        '2 Reels/TikToks par mois'
       ],
       gradient: 'from-blue-500 to-indigo-600',
       accentColor: 'blue',
       icon: Rocket,
-      sections: {
-        content: {
-          title: '📱 Gestion & Création',
-          items: [
-            'Gestion de 3-4 réseaux sociaux',
-            '5 publications par semaine',
-            '5 stories par semaine',
-            '1 Reel/TikTok par semaine',
-            'Création de contenus variés',
-            'Planning éditorial bi-mensuel',
-            'Photographie et retouche'
-          ]
-        },
-        engagement: {
-          title: '💬 Modération & Engagement',
-          items: [
-            'Modération avancée',
-            'Réponses aux messages privés (H+4)',
-            'Stratégie de hashtags optimisée',
-            'Gestion des avis et réputation en ligne',
-            'Animation de la communauté',
-            'Jeux concours mensuels'
-          ]
-        },
-        analytics: {
-          title: '📊 Analyse & Reporting',
-          items: [
-            'Analyse bi-mensuelle des performances',
-            'Tracking des conversions',
-            'Étude de l\'audience',
-            'Benchmark concurrentiel'
-          ]
-        },
-        bonus: engagementType === 'annuel' ? {
-          title: '🎁 Bonus annuel',
-          items: [
-            '20% de réduction sur le tarif mensuel',
-            '2 shootings photo professionnels offerts',
-            '1 vidéo promotionnelle offerte',
-            'Audit concurrentiel trimestriel',
-            'Accès prioritaire aux nouvelles fonctionnalités'
-          ]
-        } : undefined
-      },
-      paymentLinkMonthly: croissMonthly?.paymentLink,
-      paymentLinkAnnual: croissAnnual?.paymentLink,
+      features: engagementType === 'mensuel' ? [
+        '📝 10 posts, 10 stories, 2 reels / mois',
+        '🚗 1 déplacement sur site (2h)',
+        '⏱️ Réponses aux commentaires et messages en 24h ouvrées',
+        '🕘 Gestion des interactions pendant les heures de bureau (lundi-vendredi, 9h-18h)',
+        '🧹 Suppression des commentaires inappropriés si nécessaire',
+        '📊 Abonnement de 3 mois minimum',
+        '♻️ Renouvellement automatique mensuel après 3 mois'
+      ] : [
+        '📝 10 posts, 10 stories, 2 reels / mois',
+        '🚗 1 déplacement sur site (2h)',
+        '⏱️ Réponses aux commentaires et messages en 24h ouvrées',
+        '🕘 Gestion des interactions pendant les heures de bureau (lundi-vendredi, 9h-18h)',
+        '🧹 Suppression des commentaires inappropriés si nécessaire',
+        '🎁 20% de remise sur le tarif annuel',
+        '📅 Engagement ferme de 12 mois',
+        '♻️ Renouvellement automatique annuel'
+      ],
+      paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/njwTQq7r?referrer=PAYMENT_LINK',
+      paymentLinkAnnual: 'https://app-eu1.hubspot.com/payments/pDpVRmkC?referrer=PAYMENT_LINK',
       bestValue: true
     },
     {
-      id: 'formula-premium',
-      name: 'Premium',
-      summary: 'Gestion complète et stratégique de votre présence sociale',
+      id: 'formula-strategique',
+      name: 'Stratégique',
+      summary: 'Gestion professionnelle avec modération proactive',
       price: {
-        monthly: premMonthly?.priceFormatted || '1 249,00 €',
-        annual: premAnnual?.priceFormatted || '11 990,00 €'
+        monthly: '1 718,40 €',
+        annual: '17 504,64 €',
+        annualSaving: '20% de remise'
       },
       highlights: [
-        'Tous réseaux sociaux',
-        'Publications quotidiennes',
-        '2-3 Reels/TikToks par semaine'
+        '20 posts par mois',
+        '20 stories par mois',
+        '4 Reels/TikToks par mois'
       ],
       gradient: 'from-purple-500 to-pink-600',
       accentColor: 'purple',
-      icon: Crown,
-      sections: {
-        content: {
-          title: '📱 Gestion & Création',
-          items: [
-            'Gestion de tous vos réseaux sociaux',
-            'Publications quotidiennes',
-            'Stories quotidiennes',
-            '2-3 Reels/TikToks par semaine',
-            'Création de contenu exclusif',
-            'Live streaming mensuel',
-            'Production vidéo professionnelle',
-            'Direction artistique'
-          ]
-        },
-        engagement: {
-          title: '💬 Modération & Engagement',
-          items: [
-            'Modération en temps réel',
-            'Réponses immédiates aux messages',
-            'Gestion des influenceurs et partenariats',
-            'Stratégie de growth hacking',
-            'Gestion de crise',
-            'Community management 24/7'
-          ]
-        },
-        analytics: {
-          title: '📊 Analyse & Reporting',
-          items: [
-            'Rapport hebdomadaire détaillé',
-            'Dashboard en temps réel',
-            'ROI et KPIs avancés',
-            'Réunion stratégique mensuelle',
-            'Recommandations personnalisées'
-          ]
-        },
-        bonus: engagementType === 'annuel' ? {
-          title: '🎁 Bonus annuel',
-          items: [
-            '20% de réduction sur le tarif mensuel',
-            '4 shootings photo professionnels offerts',
-            '2 vidéos promotionnelles offertes',
-            'Community manager dédié',
-            'Veille et benchmark concurrentiel mensuel',
-            'Formation complète de votre équipe'
-          ]
-        } : undefined
+      icon: Star,
+      features: engagementType === 'mensuel' ? [
+        '📝 20 posts, 20 stories, 4 reels / mois',
+        '🚗 2 déplacements sur site (3h)',
+        '⏱️ Réponses aux commentaires et messages en 12h maximum',
+        '🔥 Modération proactive pour stimuler l\'engagement (likes, réponses, conversations)',
+        '🧹 Suppression des commentaires inappropriés si nécessaire',
+        '📊 Abonnement de 3 mois minimum',
+        '♻️ Renouvellement automatique mensuel après 3 mois'
+      ] : [
+        '📝 20 posts, 20 stories, 4 reels / mois',
+        '🚗 2 déplacements sur site (3h)',
+        '⏱️ Réponses aux commentaires et messages en 12h maximum',
+        '🔥 Modération proactive pour stimuler l\'engagement (likes, réponses, conversations)',
+        '🧹 Suppression des commentaires inappropriés si nécessaire',
+        '🎁 20% de remise sur le tarif annuel',
+        '📅 Engagement ferme de 12 mois',
+        '♻️ Renouvellement automatique annuel'
+      ],
+      paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/TYMT9Tfyxyf?referrer=PAYMENT_LINK',
+      paymentLinkAnnual: 'https://app-eu1.hubspot.com/payments/6ChGWqRfYMf?referrer=PAYMENT_LINK'
+    },
+    {
+      id: 'formula-elite',
+      name: 'Élite',
+      summary: 'Gestion complète et animation continue 7j/7',
+      price: {
+        monthly: '2 678,40 €',
+        annual: '27 249,12 €',
+        annualSaving: '20% de remise'
       },
-      paymentLinkMonthly: premMonthly?.paymentLink,
-      paymentLinkAnnual: premAnnual?.paymentLink
+      highlights: [
+        '30 posts par mois',
+        '30 stories par mois',
+        '6 Reels/TikToks par mois'
+      ],
+      gradient: 'from-amber-500 to-orange-600',
+      accentColor: 'amber',
+      icon: Crown,
+      features: engagementType === 'mensuel' ? [
+        '📝 30 posts, 30 stories, 6 reels / mois',
+        '🚗 3 déplacements sur site (6h)',
+        '⚡ Réponses aux commentaires et messages en moins de 6h, 7j/7',
+        '🔁 Gestion et animation en continu de 8h à 22h',
+        '📈 Analyse des tendances et recommandations stratégiques pour l\'engagement',
+        '🛡️ Gestion avancée des avis et crises : signalement, modération et intervention rapide',
+        '🤝 Community management actif : relance des discussions, interaction stratégique avec les abonnés',
+        '📊 Abonnement de 3 mois minimum',
+        '♻️ Renouvellement automatique mensuel après 3 mois'
+      ] : [
+        '📝 30 posts, 30 stories, 6 reels / mois',
+        '🚗 3 déplacements sur site (6h)',
+        '⚡ Réponses aux commentaires et messages en moins de 6h, 7j/7',
+        '🔁 Gestion et animation en continu de 8h à 22h',
+        '📈 Analyse des tendances et recommandations stratégiques pour l\'engagement',
+        '🛡️ Gestion avancée des avis et crises : signalement, modération et intervention rapide',
+        '🤝 Community management actif : relance des discussions, interaction stratégique avec les abonnés',
+        '🎁 20% de remise sur le tarif annuel',
+        '📅 Engagement ferme de 12 mois',
+        '♻️ Renouvellement automatique annuel'
+      ],
+      paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/pjJS4ys7NnmKbctq?referrer=PAYMENT_LINK',
+      paymentLinkAnnual: 'https://app-eu1.hubspot.com/payments/66rx24Dn?referrer=PAYMENT_LINK'
     }
   ]
 
@@ -282,7 +221,7 @@ export default function CommunityPage() {
     offers: formulas.map(formula => ({
       '@type': 'Offer',
       name: `Formule ${formula.name}`,
-      price: formula.price.monthly.replace('€', '').replace(/\s/g, ''),
+      price: formula.price.monthly.replace('€', '').replace(/\s/g, '').replace(',', '.'),
       priceCurrency: 'EUR'
     }))
   }
@@ -346,7 +285,7 @@ export default function CommunityPage() {
               Nos <span className="bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary-dark bg-clip-text text-transparent">Formules</span>
             </h2>
             <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto mb-8">
-              Choisissez la formule adaptée à vos besoins et votre budget
+              Choisissez la formule adaptée à vos besoins et votre budget - Prix HT
             </p>
 
             {/* Engagement Selector */}
@@ -378,7 +317,7 @@ export default function CommunityPage() {
           </motion.div>
 
           {/* Formulas Grid */}
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {formulas.map((formula, index) => (
               <motion.div
                 key={formula.id}
@@ -390,108 +329,68 @@ export default function CommunityPage() {
               >
                 {formula.bestValue && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                    <span className="bg-gradient-to-r from-digiqo-accent to-orange-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg">
-                      Meilleur rapport qualité/prix
+                    <span className="bg-gradient-to-r from-digiqo-accent to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg whitespace-nowrap">
+                      Populaire
                     </span>
                   </div>
                 )}
                 
-                <div className={`bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden ${
+                <div className={`bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden h-full flex flex-col ${
                   formula.bestValue ? 'ring-2 ring-digiqo-accent' : ''
                 }`}>
                   {/* Header */}
-                  <div className={`p-8 bg-gradient-to-br ${formula.gradient}`}>
-                    <formula.icon className="w-12 h-12 text-white mb-4" />
-                    <h3 className="text-2xl font-bold text-white mb-2">{formula.name}</h3>
+                  <div className={`p-6 bg-gradient-to-br ${formula.gradient}`}>
+                    <formula.icon className="w-10 h-10 text-white mb-3" />
+                    <h3 className="text-xl font-bold text-white mb-1">{formula.name}</h3>
                     <p className="text-white/90 text-sm">{formula.summary}</p>
                   </div>
 
                   {/* Price */}
-                  <div className="p-8 bg-gray-50">
+                  <div className="p-6 bg-gray-50">
                     <div className="text-center">
-                      <p className="text-4xl font-bold text-digiqo-primary">
+                      <p className="text-3xl font-bold text-digiqo-primary">
                         {engagementType === 'mensuel' ? formula.price.monthly : formula.price.annual}
                       </p>
-                      <p className="text-gray-600 mt-2">
-                        {engagementType === 'mensuel' ? '/mois' : '/an'}
+                      <p className="text-gray-600 mt-1 text-sm">
+                        {engagementType === 'mensuel' ? 'HT/mois' : 'HT/an'}
                       </p>
-                      {engagementType === 'annuel' && (
-                        <p className="text-green-600 text-sm mt-1">
-                          Économisez 20% par rapport au mensuel
+                      {engagementType === 'annuel' && formula.price.annualSaving && (
+                        <p className="text-green-600 text-xs mt-1 font-medium">
+                          {formula.price.annualSaving}
                         </p>
                       )}
                     </div>
 
                     {/* Highlights */}
-                    <div className="mt-6 space-y-3">
+                    <div className="mt-4 space-y-2">
                       {formula.highlights.map((highlight, idx) => (
-                        <div key={idx} className="flex items-start">
-                          <CheckCircle2 className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                          <span className="text-gray-700">{highlight}</span>
+                        <div key={idx} className="flex items-center">
+                          <CheckCircle2 className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                          <span className="text-xs text-gray-700">{highlight}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* Sections */}
-                  <div className="p-8 space-y-6">
-                    {/* Content Section */}
-                    <div>
-                      <h4 className="font-bold text-digiqo-primary mb-3">{formula.sections.content.title}</h4>
-                      <ul className="space-y-2">
-                        {formula.sections.content.items.map((item, idx) => (
-                          <li key={idx} className="flex items-start text-sm">
-                            <ChevronRight className="w-4 h-4 text-digiqo-accent mt-0.5 mr-2 flex-shrink-0" />
-                            <span className="text-gray-600">{item}</span>
+                  {/* Features */}
+                  <div className="p-6 flex-grow">
+                    <h4 className="font-bold text-digiqo-primary mb-3 text-sm">Détails de la formule :</h4>
+                    <ul className="space-y-2">
+                      {formula.features.map((feature, idx) => {
+                        const isBonus = feature.includes('🎁') || feature.includes('remise')
+                        return (
+                          <li key={idx} className="flex items-start">
+                            <span className={`text-xs text-gray-700 ${isBonus ? 'font-medium' : ''}`}>
+                              {feature}
+                            </span>
                           </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Engagement Section */}
-                    <div>
-                      <h4 className="font-bold text-digiqo-primary mb-3">{formula.sections.engagement.title}</h4>
-                      <ul className="space-y-2">
-                        {formula.sections.engagement.items.map((item, idx) => (
-                          <li key={idx} className="flex items-start text-sm">
-                            <ChevronRight className="w-4 h-4 text-digiqo-accent mt-0.5 mr-2 flex-shrink-0" />
-                            <span className="text-gray-600">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Analytics Section */}
-                    <div>
-                      <h4 className="font-bold text-digiqo-primary mb-3">{formula.sections.analytics.title}</h4>
-                      <ul className="space-y-2">
-                        {formula.sections.analytics.items.map((item, idx) => (
-                          <li key={idx} className="flex items-start text-sm">
-                            <ChevronRight className="w-4 h-4 text-digiqo-accent mt-0.5 mr-2 flex-shrink-0" />
-                            <span className="text-gray-600">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Bonus Section */}
-                    {formula.sections.bonus && (
-                      <div className="border-t pt-6">
-                        <h4 className="font-bold text-digiqo-primary mb-3">{formula.sections.bonus.title}</h4>
-                        <ul className="space-y-2">
-                          {formula.sections.bonus.items.map((item, idx) => (
-                            <li key={idx} className="flex items-start text-sm">
-                              <Gift className="w-4 h-4 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
-                              <span className="text-gray-600 font-medium">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                        )
+                      })}
+                    </ul>
                   </div>
 
                   {/* CTA */}
-                  <div className="p-8 pt-0">
+                  <div className="p-6 pt-0">
                     <motion.a
                       href={
                         engagementType === 'mensuel'
@@ -508,10 +407,10 @@ export default function CommunityPage() {
                       }
                       whileHover={{ scale: 1.02 }}
                       whileTap={ANIMATION.tap.scaleSmall}
-                      className={`block w-full text-center px-8 py-4 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}
+                      className={`block w-full text-center px-6 py-3 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-sm`}
                     >
                       Choisir cette formule
-                      <ArrowUpRight className="inline-block ml-2 w-5 h-5" />
+                      <ArrowUpRight className="inline-block ml-1 w-4 h-4" />
                     </motion.a>
                   </div>
                 </div>
