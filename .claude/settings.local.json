@@ -108,7 +108,8 @@
       "mcp__airtable__list_records",
       "mcp__airtable__list_bases",
       "mcp__airtable__list_tables",
-      "Bash(git stash:*)"
+      "Bash(git stash:*)",
+      "Bash(git rm:*)"
     ],
     "deny": []
   }
