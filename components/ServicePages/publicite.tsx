@@ -129,7 +129,7 @@ export default function PublicitePage() {
         'Jusqu\'à 3 campagnes simultanées',
         '3 visuels publicitaires offerts/mois'
       ],
-      gradient: 'from-amber-500 to-orange-600',
+      gradient: 'from-amber-300 to-orange-400',
       accentColor: 'amber',
       icon: Target,
       sections: {
@@ -186,7 +186,7 @@ export default function PublicitePage() {
         'Jusqu\'à 4 campagnes simultanées',
         'Audiences similaires incluses'
       ],
-      gradient: 'from-blue-500 to-indigo-600',
+      gradient: 'from-blue-300 to-indigo-400',
       accentColor: 'blue',
       icon: Zap,
       sections: {
@@ -244,7 +244,7 @@ export default function PublicitePage() {
         'Jusqu\'à 6 campagnes simultanées',
         'Audiences similaires avancées'
       ],
-      gradient: 'from-purple-500 to-pink-600',
+      gradient: 'from-purple-300 to-pink-400',
       accentColor: 'purple',
       icon: Rocket,
       sections: {
@@ -302,7 +302,7 @@ export default function PublicitePage() {
         'Jusqu\'à 10 campagnes simultanées',
         'Implémentation Pixel incluse'
       ],
-      gradient: 'from-red-500 to-rose-600',
+      gradient: 'from-red-300 to-rose-400',
       accentColor: 'red',
       icon: Crown,
       sections: {

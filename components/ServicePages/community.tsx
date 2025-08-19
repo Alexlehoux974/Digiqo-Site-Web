@@ -174,7 +174,7 @@ export default function CommunityPage() {
         '30 stories par mois',
         '6 Reels/TikToks par mois'
       ],
-      gradient: 'from-amber-500 to-orange-600',
+      gradient: 'from-amber-300 to-orange-400',
       accentColor: 'amber',
       icon: Crown,
       features: engagementType === 'mensuel' ? [

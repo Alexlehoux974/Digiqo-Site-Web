@@ -100,7 +100,15 @@
       "mcp__playwright__playwright_screenshot",
       "Bash(npm run lint:*)",
       "Bash(do sed -i \"1s/^''use client'';//\" \"$file\")",
-      "Bash(do sed -i '/^$/N;/^\\n$/d' \"$file\")"
+      "Bash(do sed -i '/^$/N;/^\\n$/d' \"$file\")",
+      "Bash(curl:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(git commit -m \"refactor: réorganisation des produits IDENTITÉ DE MARQUE\n\n- Réordonnancement des sections dans l''ordre demandé :\n  1. Création Logo\n  2. Refonte Logo  \n  3. Charte Graphique Complète\n  4. Branding Complet Startup\n- Conservation de tous les contenus et fonctionnalités\n- Maintien de la FAQ existante\n- Intégration complète avec les données Airtable\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
+      "mcp__sequentialthinking__sequentialthinking",
+      "mcp__airtable__list_records",
+      "mcp__airtable__list_bases",
+      "mcp__airtable__list_tables",
+      "Bash(git stash:*)"
     ],
     "deny": []
   }

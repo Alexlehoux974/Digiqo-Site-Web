@@ -616,7 +616,7 @@ export const HeaderLuxury = () => {
                 href="/kap-numerik-la-reunion"
               >
                 <motion.button
-                  className="px-6 py-2.5 text-sm font-medium text-digiqo-secondary border-2 border-digiqo-secondary/20 rounded-full hover:border-digiqo-secondary/40 hover:bg-digiqo-secondary/5 transition-all"
+                  className="px-6 py-3 text-sm font-bold text-white bg-gradient-to-r from-digiqo-secondary to-cyan-500 border-2 border-transparent rounded-full hover:shadow-lg hover:shadow-digiqo-secondary/40 hover:scale-110 active:scale-105 transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
