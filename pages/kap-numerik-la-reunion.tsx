@@ -10,52 +10,52 @@ import { useState, useEffect } from 'react'
 const processSteps = [
   {
     number: 1,
-    title: 'Devis validé',
-    description: 'Validez et signez un devis avec une agence ou un freelance référencé',
+    title: 'Devis Kap Numérik',
+    description: 'Devis conforme au dispositif fourni par Digiqo',
     icon: FileSignature,
-    color: 'from-blue-500 to-blue-600'
+    color: 'from-blue-400 to-cyan-400'
   },
   {
     number: 2,
-    title: 'Pièces justificatives',
-    description: 'Rassemblez les pièces justificatives nécessaires',
-    icon: FolderOpen,
-    color: 'from-indigo-500 to-indigo-600'
+    title: 'Espace Région',
+    description: 'Créez votre espace sur la plateforme Kap Numérik',
+    icon: Globe,
+    color: 'from-indigo-400 to-purple-400'
   },
   {
     number: 3,
-    title: 'Dépôt du dossier',
-    description: 'Déposez votre demande sur la plateforme officielle Kap Numérik',
-    icon: Send,
-    color: 'from-purple-500 to-purple-600'
+    title: 'Facturation & Paiement',
+    description: 'Facture et paiement avant exécution',
+    icon: Receipt,
+    color: 'from-purple-400 to-pink-400'
   },
   {
     number: 4,
-    title: 'Validation Région',
-    description: 'Une fois le dossier validé par la Région, votre projet peut démarrer',
-    icon: CheckCircle2,
-    color: 'from-pink-500 to-pink-600'
+    title: 'Pièces justificatives',
+    description: 'Rassemblez tous les documents nécessaires',
+    icon: FolderOpen,
+    color: 'from-pink-400 to-rose-400'
   },
   {
     number: 5,
-    title: 'Réalisation',
-    description: 'Votre agence réalise la prestation (site web, pub, stratégie, etc.)',
-    icon: Rocket,
-    color: 'from-orange-500 to-orange-600'
+    title: 'Dépôt du dossier',
+    description: 'Déposez le dossier complet sur la plateforme',
+    icon: Send,
+    color: 'from-orange-400 to-amber-400'
   },
   {
     number: 6,
-    title: 'Paiement & Preuve',
-    description: 'Vous réglez la facture et déposez la preuve de paiement sur la plateforme',
-    icon: Receipt,
-    color: 'from-red-500 to-red-600'
+    title: 'Validation & Preuves',
+    description: 'Transmettez les preuves après validation',
+    icon: CheckCircle2,
+    color: 'from-emerald-400 to-teal-400'
   },
   {
     number: 7,
     title: 'Remboursement',
-    description: 'La Région vérifie les pièces finales et procède au remboursement',
+    description: 'Remboursement jusqu\'à 80% (max 3200€)',
     icon: Banknote,
-    color: 'from-green-500 to-green-600'
+    color: 'from-green-400 to-lime-400'
   }
 ]
 
@@ -142,7 +142,7 @@ export default function KapNumerik() {
 
       <main>
         {/* Hero Section - Ultra Premium */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-36">
           {/* Custom cursor glow effect */}
           <motion.div
             className="pointer-events-none fixed w-64 h-64 rounded-full"
@@ -501,19 +501,119 @@ export default function KapNumerik() {
 
             {/* Timeline Premium 3D */}
             <div className="relative max-w-7xl mx-auto perspective-1000">
-              {/* Ligne de connexion dorée animée */}
-              <div className="absolute top-1/2 left-0 right-0 h-px overflow-hidden -translate-y-1/2 hidden lg:block">
-                <div className="h-full w-full bg-gradient-to-r from-transparent via-amber-400/30 to-transparent relative">
-                  <motion.div 
-                    className="absolute inset-0 bg-gradient-to-r from-digiqo-secondary via-digiqo-primary to-digiqo-accent"
-                    animate={{ x: ['-100%', '100%'] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                  />
-                </div>
+              {/* Première rangée - 3 étapes */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 relative z-10 mb-8 lg:mb-12">
+                {processSteps.slice(0, 3).map((step, index) => {
+                  const Icon = step.icon
+                  const colors = [
+                    'from-blue-400 to-cyan-400',
+                    'from-indigo-400 to-purple-400', 
+                    'from-purple-400 to-pink-400',
+                    'from-pink-400 to-rose-400',
+                    'from-orange-400 to-amber-400',
+                    'from-emerald-400 to-teal-400',
+                    'from-green-400 to-lime-400'
+                  ]
+                  
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 100, rotateX: -60 }}
+                      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ 
+                        delay: index * 0.15,
+                        duration: 0.8,
+                        type: "spring",
+                        stiffness: 100
+                      }}
+                      whileHover={{ 
+                        y: -20,
+                        scale: 1.05,
+                        rotateY: 5,
+                        transition: { duration: 0.3 }
+                      }}
+                      onMouseEnter={() => setHoveredStep(index)}
+                      onMouseLeave={() => setHoveredStep(null)}
+                      className="group relative transform-gpu"
+                    >
+                      {/* Carte Premium Glass avec AnimatePresence */}
+                      <motion.div 
+                        className="relative bg-white/90 backdrop-blur-xl rounded-3xl p-4 sm:p-6 lg:p-8 shadow-2xl border border-white/50 hover:shadow-[0_20px_70px_-15px_rgba(0,0,0,0.3)] transition-all duration-500 h-full overflow-visible"
+                        animate={{
+                          scale: hoveredStep === index ? 1.02 : 1,
+                          boxShadow: hoveredStep === index 
+                            ? "0 25px 80px -20px rgba(0,0,0,0.4)" 
+                            : "0 10px 40px -10px rgba(0,0,0,0.2)"
+                        }}
+                      >
+                        {/* Effet de reflet lumineux */}
+                        <div className="absolute -inset-px bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 rounded-3xl blur-sm" />
+                        
+                        {/* Particules flottantes */}
+                        <div className="absolute inset-0 overflow-hidden rounded-3xl">
+                          <div className="absolute top-0 left-1/4 w-32 h-32 bg-gradient-to-br from-digiqo-secondary/10 to-transparent rounded-full blur-2xl animate-float" style={{ animationDelay: `${index * 0.5}s` }} />
+                          <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-gradient-to-tr from-digiqo-accent/10 to-transparent rounded-full blur-2xl animate-float" style={{ animationDelay: `${index * 0.3}s`, animationDuration: '4s' }} />
+                        </div>
+                        
+                        {/* Numéro d'étape en 3D */}
+                        <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-20">
+                          <div className={`relative w-12 sm:w-14 h-12 sm:h-14 bg-gradient-to-br ${colors[index]} rounded-2xl shadow-xl transform rotate-45 group-hover:rotate-[55deg] transition-all duration-500`}>
+                            <div className="absolute inset-0 bg-white/30 rounded-2xl" />
+                            <span className="absolute inset-0 flex items-center justify-center text-white font-bold text-lg sm:text-xl -rotate-45">
+                              {step.number}
+                            </span>
+                          </div>
+                        </div>
+                        
+                        {/* Icône avec effet premium */}
+                        <div className="mb-3 sm:mb-4 lg:mb-6 mt-2 sm:mt-3 lg:mt-4">
+                          <motion.div 
+                            className="relative mx-auto w-14 sm:w-16 lg:w-20 h-14 sm:h-16 lg:h-20"
+                            whileHover={{ rotate: 360 }}
+                            transition={{ duration: 0.8 }}
+                          >
+                            {/* Cercles concentriques animés */}
+                            <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${colors[index]} opacity-20 animate-pulse`} />
+                            <div className={`absolute inset-2 rounded-full bg-gradient-to-br ${colors[index]} opacity-30 animate-pulse`} style={{ animationDelay: '0.2s' }} />
+                            <div className={`absolute inset-4 rounded-full bg-gradient-to-br ${colors[index]} opacity-40`} />
+                            
+                            {/* Icône centrale avec fond blanc */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <div className="w-10 sm:w-12 h-10 sm:h-12 bg-white rounded-xl flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                                <div className={`w-full h-full rounded-xl bg-gradient-to-br ${colors[index]} p-2 sm:p-3 flex items-center justify-center`}>
+                                  <Icon className="w-full h-full text-white drop-shadow-sm" strokeWidth={1.5} />
+                                </div>
+                              </div>
+                            </div>
+                          </motion.div>
+                        </div>
+                        
+                        {/* Contenu élégant et responsive */}
+                        <div className="text-center relative z-10">
+                          <h3 className="text-sm sm:text-base lg:text-lg font-bold text-gray-900 mb-2 lg:mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-digiqo-secondary group-hover:to-digiqo-primary transition-all duration-300 break-words">
+                            {step.title}
+                          </h3>
+                          <p className="text-[11px] sm:text-xs lg:text-sm text-gray-600 leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity duration-300 break-words hyphens-auto" style={{ wordBreak: 'break-word' }}>
+                            {step.description}
+                          </p>
+                        </div>
+                        
+                        {/* Effet de brillance au hover */}
+                        <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-gradient-to-br from-white/0 via-white/30 to-white/0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl" />
+                      </motion.div>
+                      
+                      {/* Ombre colorée dynamique */}
+                      <div className={`absolute -bottom-4 left-1/2 -translate-x-1/2 w-3/4 h-8 bg-gradient-to-r ${colors[index]} rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500`} />
+                    </motion.div>
+                  )
+                })}
               </div>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4 md:gap-6 relative z-10">
-                {processSteps.map((step, index) => {
+              {/* Deuxième rangée - 4 étapes */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 relative z-10">
+                {processSteps.slice(3, 7).map((step, originalIndex) => {
+                  const index = originalIndex + 3
                   const Icon = step.icon
                   const colors = [
                     'from-blue-400 to-cyan-400',
