@@ -87,7 +87,7 @@ const services: Service[] = [
     title: 'Identité de Marque',
     description: 'Création d\'identité visuelle unique. Logo et branding.',
     icon: <Palette className="w-5 h-5" />,
-    gradient: 'from-purple-600 to-digiqo-bordeaux',
+    gradient: 'from-purple-600 to-pink-600',
     gridClass: 'col-span-1 md:col-span-2 row-span-1 md:col-start-3 md:row-start-4',
     size: 'small',
     link: '/services/identite',

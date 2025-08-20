@@ -115,7 +115,7 @@ export const ServiceConnections = ({ services }: { services: Array<{ id: string;
                            conn.gradient.includes('purple-600') ? '#9333ea' :
                            conn.gradient.includes('teal-500') ? '#14b8a6' :
                            conn.gradient.includes('orange-500') ? '#f97316' :
-                           conn.gradient.includes('digiqo-bordeaux') ? '#8B1431' :
+                           conn.gradient.includes('pink-600') ? '#db2777' :
                            conn.gradient.includes('blue-600') ? '#2563eb' : fromColor
             
             return (
