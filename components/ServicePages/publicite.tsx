@@ -9,11 +9,9 @@ import {
   Palette, 
   BarChart3, 
   ArrowRight, 
-  Calendar, 
   Zap,
   Users,
   LineChart,
-  Layers,
   Sparkles,
   ChevronRight,
   CheckCircle2,
@@ -97,7 +95,7 @@ const processSteps = [
 ]
 
 export default function PublicitePage() {
-  const [compareMode, setCompareMode] = useState(false)
+  const [compareMode] = useState(false)
   const [engagementType, setEngagementType] = useState<'3mois' | 'annuel'>('3mois')
   const seoData = servicesSEO['publicite-en-ligne-reunion']
   
