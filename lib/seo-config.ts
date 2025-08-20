@@ -2,7 +2,7 @@ export const seoConfig = {
   default: {
     siteName: 'Digiqo',
     siteUrl: 'https://www.digiqo.fr',
-    defaultImage: '/assets/digiqo-og-image.jpg',
+    defaultImage: 'https://digiqo.fr/assets/digiqo-og-image.png',
     locale: 'fr_FR',
     twitterHandle: '@digiqo',
   },

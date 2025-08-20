@@ -117,7 +117,7 @@ export default function AuditPage() {
         <meta property="og:description" content={seoData.description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://digiqo.fr/services/${seoData.urlSlug}`} />
-        <meta property="og:image" content="https://digiqo.fr/og-audit.jpg" />
+        <meta property="og:image" content="https://digiqo.fr/assets/digiqo-og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={seoData.title} />
         <meta name="twitter:description" content={seoData.description} />

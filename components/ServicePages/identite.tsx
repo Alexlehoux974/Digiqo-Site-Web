@@ -143,7 +143,7 @@ export default function IdentitePage() {
         <meta property="og:description" content={seoData.description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://digiqo.fr/services/${seoData.urlSlug}`} />
-        <meta property="og:image" content="https://digiqo.fr/og-identite.jpg" />
+        <meta property="og:image" content="https://digiqo.fr/assets/digiqo-og-image.png" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />

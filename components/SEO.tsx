@@ -16,7 +16,7 @@ export function SEO({
   title,
   description,
   keywords,
-  image = '/assets/digiqo-og-image.jpg',
+  image = 'https://digiqo.fr/assets/digiqo-og-image.png',
   url = 'https://www.digiqo.fr',
   type = 'website',
   locale = 'fr_FR',
