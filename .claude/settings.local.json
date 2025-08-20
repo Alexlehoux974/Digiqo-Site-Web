@@ -109,7 +109,10 @@
       "mcp__airtable__list_bases",
       "mcp__airtable__list_tables",
       "Bash(git stash:*)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "mcp__airtable__describe_table",
+      "mcp__airtable__update_records",
+      "Bash(PORT=3001 npm run dev)"
     ],
     "deny": []
   }

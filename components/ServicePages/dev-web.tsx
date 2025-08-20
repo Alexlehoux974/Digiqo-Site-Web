@@ -1060,6 +1060,74 @@ export default function DevWebPage() {
         </div>
       </section>
 
+      {/* Testimonial Section */}
+      <section className="py-24 bg-gradient-to-br from-white to-digiqo-primary/5">
+        <div className="max-w-6xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              Ils nous font <span className="bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">confiance</span>
+            </h2>
+            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
+              Découvrez ce que nos clients disent de notre collaboration
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="max-w-4xl mx-auto"
+          >
+            <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+              <div className="grid md:grid-cols-2 gap-0">
+                {/* Image Section */}
+                <div className="relative h-64 md:h-full group overflow-hidden">
+                  <img 
+                    alt="Raymond" 
+                    loading="lazy" 
+                    width="1024" 
+                    height="1024" 
+                    decoding="async" 
+                    data-nimg="1" 
+                    className="ease-in-out scale-100 blur-0 grayscale-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110 object-top" 
+                    style={{color:'transparent', objectFit:'cover'}}
+                    src="/partenaires/Raymond.webp"
+                  />
+                </div>
+                
+                {/* Testimonial Content */}
+                <div className="p-8 md:p-12 flex flex-col justify-center">
+                  <div className="mb-6">
+                    <Star className="w-6 h-6 text-yellow-500 fill-current inline-block" />
+                    <Star className="w-6 h-6 text-yellow-500 fill-current inline-block" />
+                    <Star className="w-6 h-6 text-yellow-500 fill-current inline-block" />
+                    <Star className="w-6 h-6 text-yellow-500 fill-current inline-block" />
+                    <Star className="w-6 h-6 text-yellow-500 fill-current inline-block" />
+                  </div>
+                  
+                  <blockquote className="text-lg text-digiqo-primary/80 mb-6 italic">
+                    "Digiqo a transformé notre présence en ligne avec un site web moderne et performant. 
+                    Leur expertise technique et leur approche sur-mesure ont dépassé toutes nos attentes. 
+                    Le résultat est simplement exceptionnel."
+                  </blockquote>
+                  
+                  <div className="border-t pt-4">
+                    <p className="font-bold text-digiqo-primary">Raymond Dupont</p>
+                    <p className="text-digiqo-primary/60">CEO, TechInnovate</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-24 bg-gradient-to-br from-digiqo-secondary to-digiqo-secondary/80">
         <div className="max-w-4xl mx-auto px-4 text-center">

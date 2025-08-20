@@ -210,7 +210,7 @@ const timelineData = [
             </span>
           </h4>
           <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
-            Avec l'arrivée d'Adrien et Thomas, nous renforçons notre expertise technique et créative.
+            Avec l'arrivée d'Adrien et Raymond, nous renforçons notre expertise technique et créative.
             Plus de 100 clients nous font confiance pour propulser leur croissance digitale.
           </p>
         </div>
@@ -242,21 +242,24 @@ const timelineData = [
             </div>
           </div>
           
-          {/* Thomas - Top Right */}
+          {/* Raymond - Top Right */}
           <div className="relative group overflow-hidden rounded-2xl">
             <div className="absolute -inset-1 bg-gradient-to-r from-digiqo-secondary to-digiqo-accent rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-700"></div>
             <div className="relative">
-              <OptimizedImage 
-                src="/partenaires/Thomas.webp" 
-                alt="Thomas"
-                width={1024}
-                height={1024}
-                className="w-full h-64 object-cover rounded-2xl transition-all duration-700 group-hover:scale-110 object-top"
-                objectFit="cover"
+              <img 
+                alt="Raymond" 
+                loading="lazy" 
+                width="482" 
+                height="482" 
+                decoding="async" 
+                data-nimg="1" 
+                className="ease-in-out scale-100 blur-0 grayscale-0 w-full h-64 object-cover rounded-2xl transition-all duration-700 group-hover:scale-110 object-top" 
+                style={{color:'transparent', objectFit:'cover'}}
+                src="/partenaires/Raymond-portrait.png"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-2xl">
                 <div className="absolute bottom-6 left-6 text-white">
-                  <p className="text-2xl font-bold mb-1">Thomas</p>
+                  <p className="text-2xl font-bold mb-1">Raymond</p>
                   <p className="text-sm opacity-90 mb-2">Directeur Commercial</p>
                   <div className="flex gap-2">
                     <span className="px-2 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs">Commercial</span>

@@ -26,6 +26,11 @@ npm run generate-sitemap  # Generate sitemap.xml manually
 # Common Development Workflows
 npm install         # Install dependencies (after pulling)
 npm run build && npm run start  # Test production build locally
+
+# Debugging
+npm run type-check  # Check TypeScript errors without building
+npm run lint        # Check for linting issues
+npx next info       # Display system information for debugging
 ```
 
 ## Architecture & Technical Stack
@@ -140,6 +145,12 @@ Based on AMELIORATIONS-RECOMMANDEES.md priorities:
 - `/api/contact` - Contact form submission
 - `/api/testimonials` - Testimonial data
 
+### Error Handling Patterns
+- API routes return structured JSON responses with status codes
+- Client-side form validation before submission
+- Fallback UI components for loading and error states
+- 404 page at `pages/404.tsx` for missing routes
+
 ## Important Notes
 
 1. **No README.md**: Documentation is in CLAUDE.md and other .md files
@@ -154,6 +165,8 @@ Based on AMELIORATIONS-RECOMMANDEES.md priorities:
 10. **Audit Form**: Complex multi-step form in `src/components/AuditForm/` with 11 steps
 11. **Path Alias**: `@/*` maps to project root - use for all imports
 12. **TypeScript**: Strict mode with noUnusedLocals and noUnusedParameters enabled
+13. **File Naming**: Components use PascalCase, utilities use kebab-case
+14. **Export Pattern**: Components exported via index.ts files in their folders
 
 ## Critical Architecture Patterns
 
@@ -175,6 +188,20 @@ The site uses a dynamic routing system for service pages:
 - Three.js (@react-three/fiber) for 3D effects
 - Custom animation utilities in `lib/animation-utils.ts`
 - Animation constants in `lib/animation-constants.ts`
+
+## Data Flow & Integration Points
+
+### Airtable Integration
+- Product data stored in `lib/airtable-products.ts`
+- Base: "Site web digiqo" / Table: "Tarifs produits"
+- Payment types: MMR (Monthly), ARR (Annual), ONE_SHOT
+- Product categories align with service offerings
+
+### Build Process
+1. `generate-sitemap.js` runs before Next.js build
+2. Next.js builds static pages with getStaticProps/getStaticPaths
+3. Service pages generated from `lib/services.ts` definitions
+4. Netlify plugin handles deployment optimizations
 
 ## Current Development Focus
 
