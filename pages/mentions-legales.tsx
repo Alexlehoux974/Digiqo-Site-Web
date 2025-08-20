@@ -11,7 +11,7 @@ export default function MentionsLegales() {
         url="https://digiqo.com/mentions-legales"
       />
 
-      <LegalLayout title="Mentions légales" lastUpdated="1er janvier 2025">
+      <LegalLayout title="Mentions légales" lastUpdated="20 août 2025">
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">1. Éditeur du site</h2>
           <p className="mb-4">
