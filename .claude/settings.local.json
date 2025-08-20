@@ -113,7 +113,8 @@
       "mcp__airtable__describe_table",
       "mcp__airtable__update_records",
       "Bash(PORT=3001 npm run dev)",
-      "Bash(do)"
+      "Bash(do)",
+      "mcp__airtable__search_records"
     ],
     "deny": []
   }

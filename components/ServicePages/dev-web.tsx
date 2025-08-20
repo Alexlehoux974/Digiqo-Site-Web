@@ -287,7 +287,7 @@ export default function DevWebPage() {
             </motion.span>
             
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Sites Web <span className="bg-gradient-to-r from-digiqo-accent to-orange-500 bg-clip-text text-transparent">Sans Engagement</span>
+              Sites Web <span className="bg-gradient-to-r from-digiqo-accent to-orange-500 bg-clip-text text-transparent">sur mesure ou en abonnement</span>
             </h2>
             <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto mb-4">
               Votre présence en ligne professionnelle dès 99€/mois
@@ -314,7 +314,7 @@ export default function DevWebPage() {
                     <Globe className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-white text-center mb-2">Site One Page</h3>
-                  <p className="text-white/90 text-sm text-center">Idéal pour démarrer votre présence en ligne</p>
+                  <p className="text-white/90 text-sm text-center">Landing page professionnelle – tout inclus</p>
                 </div>
                 
                 {/* Prix */}
@@ -334,35 +334,39 @@ export default function DevWebPage() {
                   <ul className="space-y-3 text-sm">
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Design professionnel sur-mesure</span>
+                      <span className="text-gray-700">Sections : Accueil, Services, Galerie, À propos, Témoignages, FAQ, Contact</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Page unique responsive (mobile/desktop)</span>
+                      <span className="text-gray-700">Mode jour/nuit – attirez l'attention de vos visiteurs</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Nom de domaine inclus</span>
+                      <span className="text-gray-700">Formulaire intelligent – recevez vos demandes directement</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Hébergement sécurisé inclus</span>
+                      <span className="text-gray-700">Galerie responsive – valorisez vos réalisations</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Certificat SSL (HTTPS)</span>
+                      <span className="text-gray-700">SEO + Analytics – soyez visible et mesurez vos résultats</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Formulaire de contact</span>
+                      <span className="text-gray-700">Design mobile-first – parfait sur tous les écrans</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Optimisation SEO de base</span>
+                      <span className="text-gray-700">Personnalisation complète – votre image, vos couleurs</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">3 modifications par mois incluses</span>
+                      <span className="text-gray-700">Hébergement sécurisé + support technique – nous gérons tout</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Témoignages intégrés – rassurez vos prospects</span>
                     </li>
                   </ul>
                 </div>
@@ -375,7 +379,7 @@ export default function DevWebPage() {
                     rel="noopener noreferrer"
                     className="block w-full py-4 px-6 text-center font-semibold rounded-full transition-all bg-white border-2 border-digiqo-secondary text-digiqo-secondary hover:bg-digiqo-secondary hover:text-white"
                   >
-                    Démarrer maintenant
+                    Choisir cette formule
                   </a>
                 </div>
               </div>
@@ -391,10 +395,19 @@ export default function DevWebPage() {
               className="group relative"
             >
               {/* Badge Populaire */}
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                <span className="bg-gradient-to-r from-digiqo-accent to-orange-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg">
-                  Le plus populaire
-                </span>
+              <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 z-10">
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-digiqo-accent via-orange-500 to-amber-500 rounded-full blur-sm opacity-75 group-hover:blur-md transition-all duration-300 animate-pulse"></div>
+                  <span className="relative flex items-center gap-2 bg-gradient-to-r from-digiqo-accent to-orange-500 text-white px-5 py-2 rounded-full text-sm font-bold shadow-xl border-2 border-white/20 backdrop-blur-sm">
+                    <svg className="w-4 h-4 animate-spin-slow" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    Le plus populaire
+                    <svg className="w-4 h-4 animate-spin-slow" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  </span>
+                </div>
               </div>
               
               <div className="relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col overflow-hidden ring-2 ring-digiqo-accent">
@@ -404,7 +417,7 @@ export default function DevWebPage() {
                     <FileText className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-white text-center mb-2">Site One Page + Devis</h3>
-                  <p className="text-white/90 text-sm text-center">Parfait pour artisans et PME</p>
+                  <p className="text-white/90 text-sm text-center">Landing page interactive – tout inclus</p>
                 </div>
                 
                 {/* Prix */}
@@ -420,39 +433,43 @@ export default function DevWebPage() {
                 
                 {/* Features */}
                 <div className="p-6 flex-grow">
-                  <h4 className="font-semibold text-gray-800 mb-4">Tout le pack Essentiel, plus :</h4>
+                  <h4 className="font-semibold text-gray-800 mb-4">Inclus :</h4>
                   <ul className="space-y-3 text-sm">
                     <li className="flex items-start gap-2">
                       <Star className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
-                      <span className="text-gray-700 font-semibold">Formulaire de devis interactif</span>
+                      <span className="text-gray-700 font-semibold">Sections : Accueil, Services, Estimation automatique, Galerie, À propos, Témoignages, FAQ, Contact</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Star className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
-                      <span className="text-gray-700 font-semibold">Système de calcul automatique</span>
+                      <span className="text-gray-700 font-semibold">Devis instantané – vos visiteurs obtiennent une estimation en direct</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Galerie photo/portfolio</span>
+                      <span className="text-gray-700">Formulaire intelligent – centralisez toutes les demandes</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Intégration Google Maps</span>
+                      <span className="text-gray-700">Galerie responsive – valorisez vos réalisations</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Liens réseaux sociaux</span>
+                      <span className="text-gray-700">SEO optimisé + Analytics – soyez visible et mesurez vos résultats</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Optimisation SEO avancée</span>
+                      <span className="text-gray-700">Design mobile-first – parfait sur tous les écrans</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
-                      <span className="text-gray-700">5 modifications par mois incluses</span>
+                      <span className="text-gray-700">Personnalisation complète – couleurs, logo, textes adaptés</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Support prioritaire par email</span>
+                      <span className="text-gray-700">Hébergement sécurisé + support technique inclus</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Témoignages intégrés – rassurez vos prospects</span>
                     </li>
                   </ul>
                 </div>
@@ -487,7 +504,7 @@ export default function DevWebPage() {
                     <Coffee className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-white text-center mb-2">Site Restaurant</h3>
-                  <p className="text-white/90 text-sm text-center">Spécialement conçu pour la restauration</p>
+                  <p className="text-white/90 text-sm text-center">Landing page interactive – tout inclus</p>
                 </div>
                 
                 {/* Prix */}
@@ -503,39 +520,43 @@ export default function DevWebPage() {
                 
                 {/* Features */}
                 <div className="p-6 flex-grow">
-                  <h4 className="font-semibold text-gray-800 mb-4">Solution complète restaurant :</h4>
+                  <h4 className="font-semibold text-gray-800 mb-4">Inclus :</h4>
                   <ul className="space-y-3 text-sm">
                     <li className="flex items-start gap-2">
                       <Star className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700 font-semibold">Menu digital interactif</span>
+                      <span className="text-gray-700 font-semibold">Sections : Accueil, Services, Estimation automatique, Galerie, À propos, Témoignages, FAQ, Contact</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Star className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700 font-semibold">Système de réservation en ligne</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Star className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700 font-semibold">Galerie photos des plats</span>
+                      <span className="text-gray-700 font-semibold">Devis instantané – vos visiteurs obtiennent une estimation en direct</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Horaires d'ouverture dynamiques</span>
+                      <span className="text-gray-700">Formulaire intelligent – centralisez toutes les demandes</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Intégration Google Maps & avis</span>
+                      <span className="text-gray-700">Galerie responsive – valorisez vos réalisations</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Liens commande/livraison</span>
+                      <span className="text-gray-700">SEO optimisé + Analytics – soyez visible et mesurez vos résultats</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">10 modifications par mois incluses</span>
+                      <span className="text-gray-700">Design mobile-first – parfait sur tous les écrans</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Support VIP téléphone & email</span>
+                      <span className="text-gray-700">Personnalisation complète – couleurs, logo, textes adaptés</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Hébergement sécurisé + support technique inclus</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Témoignages intégrés – rassurez vos prospects</span>
                     </li>
                   </ul>
                 </div>
@@ -548,7 +569,7 @@ export default function DevWebPage() {
                     rel="noopener noreferrer"
                     className="block w-full py-4 px-6 text-center font-semibold rounded-full transition-all bg-white border-2 border-digiqo-primary text-digiqo-primary hover:bg-digiqo-primary hover:text-white"
                   >
-                    Découvrir la formule
+                    Choisir cette formule
                   </a>
                 </div>
               </div>
