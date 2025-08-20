@@ -42,7 +42,7 @@ function Counter({ value, suffix, prefix, duration }: { value: number; suffix: s
   }, [isInView, value, duration])
 
   return (
-    <span ref={ref} className="text-3xl sm:text-4xl md:text-6xl font-bold bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">
+    <span ref={ref} className="text-3xl sm:text-4xl md:text-6xl font-bold bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent inline-block pr-1">
       {prefix}{count}{suffix}
     </span>
   )
