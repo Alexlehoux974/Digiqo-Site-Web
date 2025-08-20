@@ -370,7 +370,7 @@ export default function DevWebPage() {
                 {/* CTA */}
                 <div className="p-6 bg-gray-50 border-t border-gray-100">
                   <a
-                    href="https://buy.stripe.com/aEU6staoH9ji6ek001"
+                    href="https://app-eu1.hubspot.com/payments/tNtmnNDDGMvXRXR?referrer=PAYMENT_LINK"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full py-4 px-6 text-center font-semibold rounded-full transition-all bg-white border-2 border-digiqo-secondary text-digiqo-secondary hover:bg-digiqo-secondary hover:text-white"
@@ -460,7 +460,7 @@ export default function DevWebPage() {
                 {/* CTA */}
                 <div className="p-6 bg-gray-50 border-t border-gray-100">
                   <a
-                    href="https://buy.stripe.com/bIY4kl4S99jidAE5km"
+                    href="https://app-eu1.hubspot.com/payments/sg9GhNqGRxhm?referrer=PAYMENT_LINK"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full py-4 px-6 text-center font-semibold rounded-full transition-all bg-gradient-to-r from-digiqo-accent to-orange-500 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1"
@@ -543,7 +543,7 @@ export default function DevWebPage() {
                 {/* CTA */}
                 <div className="p-6 bg-gray-50 border-t border-gray-100">
                   <a
-                    href="https://buy.stripe.com/8wM8AD9gl7be9mo289"
+                    href="https://app-eu1.hubspot.com/payments/9z9ymxfC?referrer=PAYMENT_LINK"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full py-4 px-6 text-center font-semibold rounded-full transition-all bg-white border-2 border-digiqo-primary text-digiqo-primary hover:bg-digiqo-primary hover:text-white"

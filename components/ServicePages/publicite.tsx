@@ -168,8 +168,8 @@ export default function PublicitePage() {
           items: ['2 vidéos offertes/an', 'Économie de 20% sur le tarif mensuel']
         }
       },
-      paymentLinkMonthly: initMonthly?.paymentLink,
-      paymentLinkAnnual: initAnnual?.paymentLink,
+      paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/CqxfynTqvw?referrer=PAYMENT_LINK',
+      paymentLinkAnnual: 'https://app-eu1.hubspot.com/payments/cfbgbDkKrqhPX?referrer=PAYMENT_LINK',
       engagement: engagementType === '3mois' ? '3 mois minimum puis mensuel' : '12 mois fermes',
       bestValue: false
     },
@@ -226,8 +226,8 @@ export default function PublicitePage() {
           items: ['2 vidéos offertes/an', 'Économie de 20% sur le tarif mensuel']
         }
       },
-      paymentLinkMonthly: propMonthly?.paymentLink,
-      paymentLinkAnnual: propAnnual?.paymentLink,
+      paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/4gntC6Vznt2d?referrer=PAYMENT_LINK',
+      paymentLinkAnnual: 'https://app-eu1.hubspot.com/payments/bpgDysyjrtZmyhm9?referrer=PAYMENT_LINK',
       engagement: engagementType === '3mois' ? '3 mois minimum puis mensuel' : '12 mois fermes',
       bestValue: true
     },
@@ -284,8 +284,8 @@ export default function PublicitePage() {
           items: ['2 vidéos offertes/an', 'Économie de 20% sur le tarif mensuel']
         }
       },
-      paymentLinkMonthly: expMonthly?.paymentLink,
-      paymentLinkAnnual: expAnnual?.paymentLink,
+      paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/WQ6DrgtrDNrt7Dtr?referrer=PAYMENT_LINK',
+      paymentLinkAnnual: 'https://app-eu1.hubspot.com/payments/D7nW622G?referrer=PAYMENT_LINK',
       engagement: engagementType === '3mois' ? '3 mois minimum puis mensuel' : '12 mois fermes',
       bestValue: false
     },
@@ -343,8 +343,8 @@ export default function PublicitePage() {
           items: ['2 vidéos offertes/an', 'Économie de 20% sur le tarif mensuel']
         }
       },
-      paymentLinkMonthly: domMonthly?.paymentLink,
-      paymentLinkAnnual: domAnnual?.paymentLink,
+      paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/mvTgrMZSywVJ?referrer=PAYMENT_LINK',
+      paymentLinkAnnual: 'https://app-eu1.hubspot.com/payments/tYkDbW2X2HVgcD?referrer=PAYMENT_LINK',
       engagement: engagementType === '3mois' ? '3 mois minimum puis mensuel' : '12 mois fermes',
       bestValue: false
     }

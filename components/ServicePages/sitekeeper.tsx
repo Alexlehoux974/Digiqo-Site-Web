@@ -66,7 +66,7 @@ export default function SiteKeeperPage() {
       accentColor: 'purple',
       icon: Shield,
       features: shopKeeperEssential?.features || [],
-      paymentLink: shopKeeperEssential?.paymentLink
+      paymentLink: 'https://app-eu1.hubspot.com/payments/XjCpfQmChryHKxS?referrer=PAYMENT_LINK'
     },
     {
       id: 'shopkeeper-pro',
@@ -82,7 +82,7 @@ export default function SiteKeeperPage() {
       accentColor: 'orange',
       icon: Rocket,
       features: shopKeeperPro?.features || [],
-      paymentLink: shopKeeperPro?.paymentLink,
+      paymentLink: 'https://app-eu1.hubspot.com/payments/YDW7hsDG?referrer=PAYMENT_LINK',
       bestValue: true
     },
     {
@@ -99,7 +99,7 @@ export default function SiteKeeperPage() {
       accentColor: 'indigo',
       icon: Gem,
       features: shopKeeperUltimate?.features || [],
-      paymentLink: shopKeeperUltimate?.paymentLink
+      paymentLink: 'https://app-eu1.hubspot.com/payments/ztmdZqmRM?referrer=PAYMENT_LINK'
     }
   ]
 
@@ -118,7 +118,7 @@ export default function SiteKeeperPage() {
       accentColor: 'gray',
       icon: Shield,
       features: siteKeeperEssential?.features || [],
-      paymentLink: siteKeeperEssential?.paymentLink
+      paymentLink: 'https://app-eu1.hubspot.com/payments/qx9vNKwmy?referrer=PAYMENT_LINK'
     },
     {
       id: 'sitekeeper-pro',
@@ -134,7 +134,7 @@ export default function SiteKeeperPage() {
       accentColor: 'emerald',
       icon: Zap,
       features: siteKeeperPro?.features || [],
-      paymentLink: siteKeeperPro?.paymentLink
+      paymentLink: 'https://app-eu1.hubspot.com/payments/Mdj2bcwPx7bKY4?referrer=PAYMENT_LINK'
     },
     {
       id: 'sitekeeper-ultimate',
@@ -150,7 +150,7 @@ export default function SiteKeeperPage() {
       accentColor: 'blue',
       icon: Star,
       features: siteKeeperUltimate?.features || [],
-      paymentLink: siteKeeperUltimate?.paymentLink
+      paymentLink: 'https://app-eu1.hubspot.com/payments/QmxMmYXDdrqTZ?referrer=PAYMENT_LINK'
     }
   ]
 
