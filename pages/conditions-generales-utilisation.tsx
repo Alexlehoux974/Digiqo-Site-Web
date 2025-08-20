@@ -32,7 +32,7 @@ export default function ConditionsGeneralesUtilisation() {
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">3. Informations légales</h2>
           <ul className="space-y-2 text-gray-700">
             <li>✔ <strong>Éditeur :</strong> ARA CORP., SAS au capital de 1 000 €, immatriculée sous le numéro 941 181 232.</li>
-            <li>✔ <strong>Siège social :</strong> 39 Chemin Summer, 1er Étage, Appartement 5, 97434 Saint-Paul, La Réunion.</li>
+            <li>✔ <strong>Siège social :</strong> 8 Ruelle Boulot, 97400 Saint-Denis, La Réunion, France.</li>
             <li>✔ <strong>Directeur de la publication :</strong> Rodolphe Le Houx, Président de ARA CORP.</li>
             <li>✔ <strong>Hébergeur :</strong> Hostinger International Ltd, 61 Lordou Vironos Street, 6023 Larnaca, Chypre.</li>
           </ul>
