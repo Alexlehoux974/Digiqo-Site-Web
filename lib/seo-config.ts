@@ -15,7 +15,7 @@ export const seoConfig = {
     services: {
       publicite: {
         title: 'Publicité en ligne & SEA à La Réunion',
-        description: 'Boostez votre visibilité avec nos campagnes publicitaires sur Google Ads, Facebook Ads et Instagram. ROI garanti et suivi personnalisé.',
+        description: 'Boostez votre visibilité avec nos campagnes publicitaires sur Google Ads, Facebook Ads et Instagram. ROI optimisé et suivi personnalisé.',
         keywords: 'publicité en ligne réunion, google ads réunion, facebook ads réunion, SEA réunion, campagne publicitaire 974',
       },
       'dev-web': {

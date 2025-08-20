@@ -26,25 +26,6 @@ export default function VideoPage() {
   // Produits MRR depuis Airtable (4 abonnements mensuels)
   const mrrProducts: CreativeProduct[] = [
     {
-      id: 'recd5un6ZP7QrnG13',
-      name: 'Abonnement Vidéo Mensuel',
-      price: '449€/mois',
-      description: '1 vidéo par mois pour votre communication régulière',
-      features: [
-        '🎥 1 vidéo par mois',
-        '1h de tournage maximum',
-        'Durée finale : 20 à 60 secondes',
-        'Montage dynamique avec textes, musique et effets visuels',
-        '✂ Jusqu\'à 2 retouches incluses',
-        '📦 Livraison via Google Drive sous 5 jours ouvrés',
-        '🎯 Formats adaptés pour réseaux sociaux',
-        '💼 Idéal pour communication régulière'
-      ],
-      paymentLink: 'https://app-eu1.hubspot.com/payments/ThjGnSsb9J4JKy7?referrer=PAYMENT_LINK',
-      icon: Video,
-      gradient: 'from-purple-600 to-indigo-700'
-    },
-    {
       id: 'reczqLYRjB5SMRhbR',
       name: 'Abonnement Photo Mensuel',
       price: '300€/mois',
@@ -64,26 +45,6 @@ export default function VideoPage() {
       gradient: 'from-pink-600 to-rose-700'
     },
     {
-      id: 'recq3eiG1G0NYHdXZ',
-      name: 'Abonnement Créatif Mensuel',
-      price: '750€/mois',
-      description: 'Pack complet vidéo + photo pour une stratégie content complète',
-      features: [
-        '🎥 & 📸 Pack mensuel vidéo + photo',
-        '1 vidéo par mois (1h de tournage)',
-        '15 photos HD retouchées par mois',
-        '🎨 Retouches photo professionnelles',
-        'Montage vidéo dynamique (20-60 sec)',
-        '📂 Livraison Google Drive organisé',
-        '🗓 RDV mensuel stratégie contenu',
-        '🔁 2 retouches vidéo + illimitées photos'
-      ],
-      paymentLink: 'https://app-eu1.hubspot.com/payments/nX9dsyCXPnVRw?referrer=PAYMENT_LINK',
-      icon: Sparkles,
-      gradient: 'from-orange-600 to-red-700',
-      bestValue: true
-    },
-    {
       id: 'recuPCFUNllSLXNdT',
       name: 'Abonnement Drone Mensuel',
       price: '380€/mois',
@@ -101,6 +62,45 @@ export default function VideoPage() {
       paymentLink: '',
       icon: Drone,
       gradient: 'from-blue-600 to-cyan-700'
+    },
+    {
+      id: 'recd5un6ZP7QrnG13',
+      name: 'Abonnement Vidéo Mensuel',
+      price: '449€/mois',
+      description: '1 vidéo par mois pour votre communication régulière',
+      features: [
+        '🎥 1 vidéo par mois',
+        '1h de tournage maximum',
+        'Durée finale : 20 à 60 secondes',
+        'Montage dynamique avec textes, musique et effets visuels',
+        '✂ Jusqu\'à 2 retouches incluses',
+        '📦 Livraison via Google Drive sous 5 jours ouvrés',
+        '🎯 Formats adaptés pour réseaux sociaux',
+        '💼 Idéal pour communication régulière'
+      ],
+      paymentLink: 'https://app-eu1.hubspot.com/payments/ThjGnSsb9J4JKy7?referrer=PAYMENT_LINK',
+      icon: Video,
+      gradient: 'from-purple-600 to-indigo-700',
+      bestValue: true
+    },
+    {
+      id: 'recq3eiG1G0NYHdXZ',
+      name: 'Abonnement Créatif Mensuel',
+      price: '750€/mois',
+      description: 'Pack complet vidéo + photo pour une stratégie content complète',
+      features: [
+        '🎥 & 📸 Pack mensuel vidéo + photo',
+        '1 vidéo par mois (1h de tournage)',
+        '15 photos HD retouchées par mois',
+        '🎨 Retouches photo professionnelles',
+        'Montage vidéo dynamique (20-60 sec)',
+        '📂 Livraison Google Drive organisé',
+        '🗓 RDV mensuel stratégie contenu',
+        '🔁 2 retouches vidéo + illimitées photos'
+      ],
+      paymentLink: 'https://app-eu1.hubspot.com/payments/nX9dsyCXPnVRw?referrer=PAYMENT_LINK',
+      icon: Sparkles,
+      gradient: 'from-orange-600 to-red-700'
     }
   ]
 
@@ -353,10 +353,19 @@ export default function VideoPage() {
                 className="relative"
               >
                 {product.bestValue && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                    <span className="bg-gradient-to-r from-digiqo-accent to-orange-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg">
-                      Le plus populaire
-                    </span>
+                  <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 z-10">
+                    <div className="relative group">
+                      <div className="absolute inset-0 bg-gradient-to-r from-digiqo-accent via-orange-500 to-amber-500 rounded-full blur-sm opacity-75 group-hover:blur-md transition-all duration-300 animate-pulse"></div>
+                      <span className="relative flex items-center gap-2 bg-gradient-to-r from-digiqo-accent to-orange-500 text-white px-5 py-2 rounded-full text-sm font-bold shadow-xl border-2 border-white/20 backdrop-blur-sm">
+                        <svg className="w-4 h-4 animate-spin-slow" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        Le plus populaire
+                        <svg className="w-4 h-4 animate-spin-slow" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      </span>
+                    </div>
                   </div>
                 )}
                 

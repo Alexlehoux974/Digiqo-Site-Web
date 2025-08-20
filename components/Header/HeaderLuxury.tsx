@@ -90,8 +90,7 @@ const navigation = {
                 name: 'Identité de Marque', 
                 href: '/services/identite',
                 description: 'Votre image de marque unique',
-                icon: Sparkles,
-                premium: true
+                icon: Sparkles
               },
               { 
                 name: 'Visuels & Vidéos', 
@@ -114,7 +113,7 @@ const navigation = {
               { 
                 name: 'Maintenance Web', 
                 href: '/services/sitekeeper',
-                description: 'Sitekeeper/Shopkeeper - Maintenance premium',
+                description: 'Sitekeeper/Shopkeeper Maintenance premium',
                 icon: Shield
               },
               { 
@@ -507,9 +506,6 @@ export const HeaderLuxury = () => {
                                                     <span className="px-2 py-0.5 text-[10px] font-bold bg-digiqo-accent/10 text-digiqo-accent rounded-full">
                                                       {service.badge}
                                                     </span>
-                                                  )}
-                                                  {('premium' in service && service.premium) && (
-                                                    <Sparkles className="w-3 h-3 text-digiqo-accent" />
                                                   )}
                                                 </div>
                                                 <p className="text-sm text-gray-600 mt-0.5">

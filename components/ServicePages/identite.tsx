@@ -175,35 +175,66 @@ export default function IdentitePage() {
               service: 'identite',
               description: 'Je souhaite créer mon identité de marque' 
             })
-          },
-          secondary: {
-            text: "Découvrir le processus",
-            href: "#processus"
           }
         }}
-        gradientFrom="from-digiqo-primary"
+        gradientFrom="from-white"
         gradientTo="to-digiqo-accent"
         iconColor="text-digiqo-accent"
       />
 
       {/* Products Section */}
+      {/* TODO: Pour réactiver cette section, simplement retirer le div avec className="relative" et son contenu overlay */}
       <section id="produits" className="py-24 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <motion.div
-            {...ANIMATION.entry.fadeInUp}
-            whileInView={ANIMATION.entry.fadeInUp.animate}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Nos <span className="bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">Solutions d'Identité</span>
-            </h2>
-            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
-              De la création de logo à l'identité complète, nous avons la solution parfaite pour votre marque.
-            </p>
-          </motion.div>
+        <div className="relative">
+          {/* Overlay temporaire - À retirer pour activer la section */}
+          <div className="absolute inset-0 z-20 flex items-center justify-center">
+            <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl p-8 md:p-12 max-w-2xl mx-4 border-2 border-digiqo-primary/20">
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.5, type: "spring" }}
+                className="text-center"
+              >
+                <div className="mb-6">
+                  <span className="text-6xl">🎨</span>
+                </div>
+                <h3 className="text-3xl md:text-4xl font-bold text-digiqo-primary mb-4">
+                  Nos artistes sont en pleine création...
+                </h3>
+                <p className="text-lg text-digiqo-primary/70 mb-6">
+                  Cette section est actuellement en cours de personnalisation pour mieux vous servir.
+                  <br />
+                  <span className="text-base italic">
+                    (Traduction : on peaufine les prix pour que votre banquier sourie aussi 😉)
+                  </span>
+                </p>
+                <div className="inline-flex items-center gap-2 px-6 py-3 bg-digiqo-primary/10 rounded-full">
+                  <span className="text-digiqo-accent font-semibold">Disponible très bientôt</span>
+                  <span className="animate-pulse">✨</span>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+          {/* Fin de l'overlay temporaire */}
+          
+          {/* Contenu original avec blur - NE PAS SUPPRIMER */}
+          <div className="blur-sm pointer-events-none">
+            <div className="max-w-7xl mx-auto px-4">
+              <motion.div
+                {...ANIMATION.entry.fadeInUp}
+                whileInView={ANIMATION.entry.fadeInUp.animate}
+                viewport={{ once: true }}
+                className="text-center mb-16"
+              >
+                <h2 className="text-4xl md:text-6xl font-bold mb-6">
+                  Nos <span className="bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">Solutions d'Identité</span>
+                </h2>
+                <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
+                  De la création de logo à l'identité complète, nous avons la solution parfaite pour votre marque.
+                </p>
+              </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {brandProducts.map((product, index) => (
               <motion.div
                 key={product.id}
@@ -287,7 +318,10 @@ export default function IdentitePage() {
                 </div>
               </motion.div>
             ))}
+              </div>
+            </div>
           </div>
+          {/* Fin du contenu avec blur */}
         </div>
       </section>
 
@@ -318,7 +352,7 @@ export default function IdentitePage() {
             {[
               {
                 question: "Combien de temps prend la création d'une identité de marque ?",
-                answer: "En moyenne, comptez 2 à 4 semaines pour un projet complet incluant logo et charte graphique. Les délais peuvent varier selon la complexité et le nombre de révisions souhaitées.",
+                answer: "En moyenne, comptez 2 semaines à 2 mois pour un projet complet incluant logo et charte graphique. Les délais peuvent varier selon la taille du projet, la complexité et le nombre de révisions souhaitées.",
                 Icon: Clock
               },
               {

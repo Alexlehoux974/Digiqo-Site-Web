@@ -77,6 +77,7 @@ export default {
         'ripple': 'ripple 0.6s ease-out',
         'shimmer': 'shimmer 2s linear infinite',
         'bounce-soft': 'bounceSoft 2s infinite',
+        'spin-slow': 'spin 3s linear infinite',
       },
       keyframes: {
         float: {

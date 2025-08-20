@@ -618,15 +618,6 @@ export default function PublicitePage() {
                 }
               </p>
             </div>
-            
-            {/* Compare toggle */}
-            <button
-              onClick={() => setCompareMode(!compareMode)}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-digiqo-secondary/10 hover:bg-digiqo-secondary/20 rounded-full font-medium transition-colors"
-            >
-              <Layers className="w-5 h-5" />
-              {compareMode ? 'Vue normale' : 'Comparer les formules'}
-            </button>
           </motion.div>
 
           {/* Formula Cards - Mode normal ou comparatif */}
@@ -1093,21 +1084,7 @@ export default function PublicitePage() {
               Bénéficiez d'un audit gratuit et découvrez comment nos campagnes peuvent transformer votre présence digitale
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <motion.a
-                href={generateContactUrl({ 
-                  service: 'publicite', 
-                  description: 'Je souhaite planifier un rendez-vous pour discuter de mes besoins en publicité' 
-                })}
-                whileHover={ANIMATION.hover.scale}
-                whileTap={ANIMATION.tap.scale}
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-digiqo-accent to-amber-500 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <Calendar className="w-5 h-5" />
-                Planifier un rendez-vous
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.a>
-              
+            <div className="flex justify-center">
               <motion.a
                 href={generateContactUrl({ 
                   service: 'audit', 

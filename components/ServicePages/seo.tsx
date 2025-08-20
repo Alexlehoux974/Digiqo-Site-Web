@@ -166,11 +166,11 @@ export default function SEOPage() {
               <span className="text-digiqo-primary font-semibold">Nos Résultats Parlent</span>
             </motion.div>
             
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 px-4">
               Des <span className="bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">Résultats Exceptionnels</span>
             </h2>
             <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
-              Chaque jour, nous propulsons des entreprises réunionnaises vers les sommets de Google
+              Chaque jour, nous propulsons des entreprises vers les sommets de Google
             </p>
           </motion.div>
           
@@ -201,7 +201,7 @@ export default function SEOPage() {
                     <TrendingUp className="w-8 h-8 text-white" />
                   </div>
                   
-                  <h3 className="text-2xl font-bold mb-4">Score SEO Garanti</h3>
+                  <h3 className="text-2xl font-bold mb-4">Score SEO Optimisé</h3>
                   
                   {/* Score SEO animé */}
                   <div className="relative w-32 h-32 mx-auto mb-6">
@@ -380,7 +380,7 @@ export default function SEOPage() {
                   
                   <div className="flex items-center justify-between">
                     <span className="text-digiqo-primary/70">Retour sur investissement</span>
-                    <span className="text-lg font-bold text-digiqo-secondary">Garanti</span>
+                    <span className="text-lg font-bold text-digiqo-secondary">Optimisé</span>
                   </div>
                 </div>
               </div>
@@ -505,7 +505,7 @@ export default function SEOPage() {
                   service: 'seo',
                   description: 'Je souhaite un audit SEO gratuit' 
                 })}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-digiqo-secondary font-bold rounded-full hover:bg-digiqo-primary/20 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-digiqo-primary font-bold rounded-full hover:bg-white/90 hover:shadow-2xl transition-all duration-300 shadow-xl transform hover:scale-105"
               >
                 Audit SEO Gratuit
                 <ArrowRight className="w-5 h-5" />

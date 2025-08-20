@@ -2,7 +2,7 @@
 export const servicesSEO = {
   'publicite-en-ligne-reunion': {
     title: 'Publicité en Ligne La Réunion | Google Ads & Facebook Ads 974 - Digiqo',
-    description: 'Agence Google Ads et Facebook Ads à La Réunion. Campagnes publicitaires optimisées, ciblage local 974, ROI garanti. Devis gratuit pour votre publicité digitale.',
+    description: 'Agence Google Ads et Facebook Ads à La Réunion. Campagnes publicitaires optimisées, ciblage local 974, ROI optimisé. Devis gratuit pour votre publicité digitale.',
     keywords: 'Google Ads Réunion, Facebook Ads 974, publicité en ligne La Réunion, Meta Ads Réunion, campagne publicitaire 974, SMA Réunion, SEA Réunion',
     h1: 'Publicité en Ligne à La Réunion',
     urlSlug: 'publicite-en-ligne-reunion'

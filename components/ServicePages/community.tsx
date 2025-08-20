@@ -261,10 +261,6 @@ export default function CommunityPage() {
           primary: {
             text: "Découvrir nos formules",
             href: "#formules"
-          },
-          secondary: {
-            text: "Demander un devis",
-            href: generateContactUrl({ service: 'community' })
           }
         }}
         gradientFrom="from-digiqo-secondary"
@@ -405,6 +401,8 @@ export default function CommunityPage() {
                               description: `Formule ${formula.name} - Engagement annuel`
                             }))
                       }
+                      target="_blank"
+                      rel="noopener noreferrer"
                       whileHover={{ scale: 1.02 }}
                       whileTap={ANIMATION.tap.scaleSmall}
                       className={`block w-full text-center px-6 py-3 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-sm`}
@@ -515,7 +513,7 @@ export default function CommunityPage() {
               whileTap={ANIMATION.tap.scale}
               className="inline-flex items-center gap-3 px-8 py-4 bg-white text-digiqo-secondary font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              Demander un devis gratuit
+              Contactez-nous
               <ArrowRight className="w-5 h-5" />
             </motion.a>
           </motion.div>
