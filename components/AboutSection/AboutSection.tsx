@@ -127,8 +127,8 @@ const timelineData = [
           <div className="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 p-8">
             <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center">
               <OptimizedImage src="/partenaires/META-1024x1024.webp" alt="Meta" width={1024} height={1024} className="w-24 h-24 mb-4 bg-white rounded-2xl p-3" objectFit="contain" />
-              <p className="text-xl font-bold mb-2">Meta Certified</p>
-              <p className="text-sm opacity-90">2022</p>
+              <p className="text-xl font-bold mb-2">Experts Marketing</p>
+              <p className="text-sm opacity-90">Certifiés par Meta</p>
             </div>
             <div className="absolute inset-0 bg-white/10 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="absolute -top-12 -right-12 w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
@@ -148,20 +148,38 @@ const timelineData = [
             <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-digiqo-accent/20 to-transparent rounded-tl-full"></div>
           </div>
           
-          {/* Team Celebration - Bottom Left */}
-          <div className="relative group overflow-hidden rounded-2xl">
-            <OptimizedImage 
-              src="/partenaires/428642719_10225815770485084_3749116991826890590_n-970x1024.webp" 
-              alt="Équipe Digiqo"
-              width={970}
-              height={1024}
-              className="w-full h-64 object-cover grayscale-50 group-hover:grayscale-0 transition-all duration-700"
-              objectFit="cover"
-            />
+          {/* Partners Grid - Bottom Left */}
+          <div className="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 h-64">
+            <div className="grid grid-cols-4 gap-2 p-4 h-full">
+              <div className="bg-white rounded-lg p-1 shadow-sm hover:shadow-md transition-shadow flex items-center justify-center">
+                <OptimizedImage src="/partenaires/CCI-REUNION-1024x1024.webp" alt="CCI" width={1024} height={1024} className="w-full h-full object-contain" objectFit="contain" />
+              </div>
+              <div className="bg-white rounded-lg p-1 shadow-sm hover:shadow-md transition-shadow flex items-center justify-center">
+                <OptimizedImage src="/partenaires/FOOT-KORNER-1024x1024.webp" alt="Foot Korner" width={1024} height={1024} className="w-full h-full object-contain" objectFit="contain" />
+              </div>
+              <div className="bg-white rounded-lg p-1 shadow-sm hover:shadow-md transition-shadow flex items-center justify-center">
+                <OptimizedImage src="/partenaires/LA-BOUCHERIE-1024x1024.webp" alt="La Boucherie" width={1024} height={1024} className="w-full h-full object-contain" objectFit="contain" />
+              </div>
+              <div className="bg-white rounded-lg p-1 shadow-sm hover:shadow-md transition-shadow flex items-center justify-center">
+                <OptimizedImage src="/partenaires/BEAUVALLON-1024x1024.webp" alt="Beauvallon" width={1024} height={1024} className="w-full h-full object-contain" objectFit="contain" />
+              </div>
+              <div className="bg-white rounded-lg p-1 shadow-sm hover:shadow-md transition-shadow flex items-center justify-center">
+                <OptimizedImage src="/partenaires/PIZZA-STELLA-1024x1024.webp" alt="Pizza Stella" width={1024} height={1024} className="w-full h-full object-contain" objectFit="contain" />
+              </div>
+              <div className="bg-white rounded-lg p-1 shadow-sm hover:shadow-md transition-shadow flex items-center justify-center">
+                <OptimizedImage src="/partenaires/ISHYATIBEAUTY-1024x1024.webp" alt="Ishiaty Beauty" width={1024} height={1024} className="w-full h-full object-contain" objectFit="contain" />
+              </div>
+              <div className="bg-white rounded-lg p-1 shadow-sm hover:shadow-md transition-shadow flex items-center justify-center">
+                <OptimizedImage src="/partenaires/CBD-RUN-1024x1024.webp" alt="CBD Run" width={1024} height={1024} className="w-full h-full object-contain" objectFit="contain" />
+              </div>
+              <div className="bg-white rounded-lg p-1 shadow-sm hover:shadow-md transition-shadow flex items-center justify-center">
+                <OptimizedImage src="/partenaires/METISSAGE-1024x1024.webp" alt="Métiss'âge" width={1024} height={1024} className="w-full h-full object-contain" objectFit="contain" />
+              </div>
+            </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
               <div className="absolute bottom-6 left-6 text-white">
                 <p className="font-bold text-xl mb-1">50+ Clients</p>
-                <p className="text-sm opacity-90">Trust & Excellence</p>
+                <p className="text-sm opacity-90">Partenaires de Confiance</p>
               </div>
             </div>
             <div className="absolute inset-0 bg-digiqo-primary/20 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

@@ -178,7 +178,7 @@ export const FAQSection: React.FC = () => {
           <p className="text-gray-400 mb-6">
             Vous ne trouvez pas la réponse à votre question ?
           </p>
-          <Link href="/contact">
+          <Link href="/#contact">
             <motion.span
               className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-digiqo-primary to-digiqo-accent text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-digiqo-accent/25 transition-all duration-300 cursor-pointer"
               whileHover={{ scale: 1.05 }}
