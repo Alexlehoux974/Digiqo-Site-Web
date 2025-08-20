@@ -292,9 +292,6 @@ const timelineData = [
                 <OptimizedImage src="/partenaires/CCI-REUNION-1024x1024.webp" alt="CCI" width={1024} height={1024} className="w-full h-8 object-contain" objectFit="contain" />
               </div>
               <div className="bg-white rounded-lg p-2 shadow-sm hover:shadow-md transition-shadow">
-                <OptimizedImage src="/partenaires/HEC-1024x1024.webp" alt="HEC" width={1024} height={1024} className="w-full h-8 object-contain" objectFit="contain" />
-              </div>
-              <div className="bg-white rounded-lg p-2 shadow-sm hover:shadow-md transition-shadow">
                 <OptimizedImage src="/partenaires/FOOT-KORNER-1024x1024.webp" alt="Foot Korner" width={1024} height={1024} className="w-full h-8 object-contain" objectFit="contain" />
               </div>
               <div className="bg-white rounded-lg p-2 shadow-sm hover:shadow-md transition-shadow">

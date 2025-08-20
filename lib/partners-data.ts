@@ -32,11 +32,6 @@ export const partnersData: Partner[] = [
     alt: "CCI Réunion - Chambre de Commerce et d'Industrie, partenaire institutionnel Digiqo"
   },
   {
-    name: "HEC",
-    filename: "HEC-1024x1024.webp",
-    alt: "HEC - École de commerce, collaboration en marketing digital avec Digiqo"
-  },
-  {
     name: "Parapente Réunion",
     filename: "PARAPENTE-REUNION-1024x1024.webp",
     alt: "Parapente Réunion - Activité touristique, référencement SEO par Digiqo"
@@ -62,14 +57,14 @@ export const partnersData: Partner[] = [
     alt: "Sabaguina - Marque locale, community management assuré par Digiqo"
   },
   {
-    name: "Nenettes",
+    name: "Les nenettes du vin",
     filename: "NENETTES-1024x1024.webp",
-    alt: "Nenettes - Boutique de mode à La Réunion, publicité en ligne avec Digiqo"
+    alt: "Les nenettes du vin - Cave à vin et bar à vin, marketing digital avec Digiqo"
   },
   {
-    name: "Sergio",
+    name: "Sergio Burger",
     filename: "SERGIO-1024x1024.webp",
-    alt: "Sergio - Entreprise réunionnaise, développement web réalisé par Digiqo"
+    alt: "Sergio Burger - Restaurant burger à La Réunion, marketing digital par Digiqo"
   },
   {
     name: "Investis Dom",
@@ -77,9 +72,9 @@ export const partnersData: Partner[] = [
     alt: "Investis Dom - Société d'investissement, stratégie SEO par Digiqo"
   },
   {
-    name: "Emixem",
+    name: "L'Esplanade",
     filename: "EMIXEM-2-1024x1024.webp",
-    alt: "Emixem - Artiste réunionnais, promotion digitale assurée par Digiqo"
+    alt: "L'Esplanade - Centre commercial à La Réunion, marketing digital par Digiqo"
   },
   {
     name: "Sultania",
@@ -142,9 +137,9 @@ export const partnersData: Partner[] = [
     alt: "Bernard Contrain - Professionnel indépendant, stratégie digitale Digiqo"
   },
   {
-    name: "Boussole",
+    name: "La Boussole du manager",
     filename: "BOUSSOLE-1024x1024.webp",
-    alt: "Boussole - Service d'orientation, communication en ligne par Digiqo"
+    alt: "La Boussole du manager - Formation et coaching management, marketing digital par Digiqo"
   },
   {
     name: "CBD Run",
@@ -187,9 +182,9 @@ export const partnersData: Partner[] = [
     alt: "Coloctionneurs - Plateforme de colocation, développement web par Digiqo"
   },
   {
-    name: "Comptoir",
+    name: "Le Comptoir de la Casquette",
     filename: "COMPTOIR-1024x1024.webp",
-    alt: "Comptoir - Bar restaurant à La Réunion, réseaux sociaux gérés par Digiqo"
+    alt: "Le Comptoir de la Casquette - Boutique de casquettes et accessoires, marketing digital par Digiqo"
   },
   {
     name: "Côté Seine",
@@ -252,14 +247,14 @@ export const partnersData: Partner[] = [
     alt: "LCDA - Les Créateurs d'Avenir, partenaire en innovation digitale Digiqo"
   },
   {
-    name: "Lilo Beauty",
+    name: "Ishiaty Beauty",
     filename: "LILO-BEAUTY-1024x1024.webp",
-    alt: "Lilo Beauty - Salon de beauté à La Réunion, marketing digital Digiqo"
+    alt: "Ishiaty Beauty - Salon de beauté à La Réunion, marketing digital Digiqo"
   },
   {
-    name: "Mahaveli",
+    name: "Crossfit Mahaveli",
     filename: "MAHAVELI-1024x1024.webp",
-    alt: "Mahaveli - Restaurant sri-lankais, gestion réseaux sociaux par Digiqo"
+    alt: "Crossfit Mahaveli - Salle de sport crossfit, marketing digital par Digiqo"
   },
   {
     name: "Maison Nomade",
@@ -272,9 +267,9 @@ export const partnersData: Partner[] = [
     alt: "Meta - Partenaire technologique officiel de Digiqo à La Réunion"
   },
   {
-    name: "Métissage",
+    name: "Métiss'âge",
     filename: "METISSAGE-1024x1024.webp",
-    alt: "Métissage - Marque locale, stratégie de marque développée par Digiqo"
+    alt: "Métiss'âge - Marque locale, stratégie de marque développée par Digiqo"
   },
   {
     name: "My Bloom Story",
@@ -282,9 +277,9 @@ export const partnersData: Partner[] = [
     alt: "My Bloom Story - Boutique en ligne, e-commerce et SEO par Digiqo"
   },
   {
-    name: "Mystik",
+    name: "Mystik Sauna",
     filename: "MYSTIK-1024x1024.webp",
-    alt: "Mystik - Entreprise événementielle, communication digitale Digiqo"
+    alt: "Mystik Sauna - Centre de bien-être et sauna, marketing digital par Digiqo"
   },
   {
     name: "NSMT",
@@ -297,9 +292,9 @@ export const partnersData: Partner[] = [
     alt: "O2 - Services à domicile à La Réunion, campagnes Google Ads Digiqo"
   },
   {
-    name: "Pascal Des",
+    name: "Pascal Destercke",
     filename: "PASCAL-DES-1024x1024.webp",
-    alt: "Pascal Des - Professionnel local, stratégie digitale personnalisée Digiqo"
+    alt: "Pascal Destercke - Professionnel local, stratégie digitale personnalisée Digiqo"
   },
   {
     name: "Pizza Stella",

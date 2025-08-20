@@ -79,7 +79,7 @@ const VideoSection = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
-              href="/services"
+              href="/#services"
               className="inline-flex items-center gap-2 bg-digiqo-accent hover:bg-digiqo-accent/90 text-white font-bold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
               Découvrir nos services
@@ -88,7 +88,7 @@ const VideoSection = () => {
               </svg>
             </a>
             <a
-              href="/contact"
+              href="/#contact"
               className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-bold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 border border-white/30"
             >
               Nous contacter
