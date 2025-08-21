@@ -1016,7 +1016,7 @@ export default function Agence() {
                   />
                   
                   <Link
-                    href={generateContactUrl({ description: 'Je souhaite en savoir plus sur vos services et votre agence' })}
+                    href="/?openServices=true#services"
                     className="relative inline-flex items-center gap-3 px-10 py-5 bg-white text-digiqo-primary font-bold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300"
                   >
                     <span className="text-lg">Découvrir nos services</span>

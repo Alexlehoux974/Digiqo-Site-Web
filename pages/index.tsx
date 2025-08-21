@@ -57,8 +57,20 @@ export default function Home() {
   useInstantScroll()
   
   useEffect(() => {
-    // Forcer le scroll au top après le montage complet du DOM, sauf s'il y a un hash
-    if (!window.location.hash) {
+    // Vérifier si on doit ouvrir la section services
+    const urlParams = new URLSearchParams(window.location.search)
+    const shouldOpenServices = urlParams.get('openServices') === 'true'
+    
+    if (shouldOpenServices) {
+      // Attendre que le DOM soit prêt puis scroller vers services
+      setTimeout(() => {
+        const servicesSection = document.getElementById('services')
+        if (servicesSection) {
+          servicesSection.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 500)
+    } else if (!window.location.hash) {
+      // Forcer le scroll au top après le montage complet du DOM, sauf s'il y a un hash
       const timer = setTimeout(() => {
         window.scrollTo(0, 0)
       }, 100)
