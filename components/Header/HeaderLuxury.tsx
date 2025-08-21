@@ -736,8 +736,8 @@ export const HeaderLuxury = () => {
             </div>
 
             {/* Mobile Navigation */}
-            <nav className="p-6">
-              <div className="space-y-6">
+            <nav className="p-6 pt-4">
+              <div className="space-y-6 mt-4">
                 {navigation.main.map((item) => (
                   <div key={item.name}>
                     {item.megaMenu ? (
