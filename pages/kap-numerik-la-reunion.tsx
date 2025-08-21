@@ -6,6 +6,7 @@ import { Shield, Users, Globe, CheckCircle, ArrowRight, Award, Euro, Heart, File
 import Link from 'next/link'
 import { generateContactUrl } from '@/lib/contact-utils'
 import { useState, useEffect } from 'react'
+import EligibilityCalculator from '@/components/EligibilityCalculator'
 
 const processSteps = [
   {
@@ -86,8 +87,8 @@ const benefits = [
     highlight: false
   },
   {
-    title: 'Agence référencée',
-    description: 'Digiqo est officiellement référencée pour vous accompagner dans le cadre du Kap Numérik.',
+    title: 'Agence agréée',
+    description: 'Digiqo remplit tous les critères pour vous accompagner dans le cadre du Kap Numérik.',
     icon: Award,
     highlight: true
   }
@@ -286,7 +287,7 @@ export default function KapNumerik() {
                 transition={{ delay: 0.9, duration: 0.8 }}
                 className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-12 max-w-3xl mx-auto"
               >
-                Jusqu'à <span className="font-bold text-gray-900">3 200€</span> pour développer votre présence digitale à La Réunion<br/>
+                Jusqu'à <span className="font-bold text-gray-900">3 200€</span> pour développer votre présence digitale <span className="whitespace-nowrap">à La Réunion</span><br/>
                 <span className="text-lg md:text-xl">Le Kap Numérik est une aide régionale destinée aux entreprises réunionnaises 
                 qui souhaitent booster leur présence en ligne.</span>
               </motion.p>
@@ -308,16 +309,13 @@ export default function KapNumerik() {
                   <div className="absolute inset-0 -z-10 bg-gradient-to-r from-digiqo-secondary/50 to-digiqo-secondary-dark/50 blur-2xl transition-all duration-300 group-hover:blur-3xl" />
                 </Link>
                 
-                <Link
-                  href={generateContactUrl({
-                    service: 'kap-numerik',
-                    description: 'Je souhaite bénéficier du Kap Numérik'
-                  })}
+                <a
+                  href="#about-kap"
                   className="group relative inline-flex items-center gap-3 px-10 py-5 bg-white/80 backdrop-blur-sm text-digiqo-secondary font-semibold rounded-2xl border-2 border-digiqo-secondary/20 hover:border-digiqo-secondary transition-all duration-300 overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary-dark translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                   <span className="relative group-hover:text-white transition-colors duration-300">En savoir plus</span>
-                </Link>
+                </a>
               </motion.div>
             </motion.div>
             
@@ -326,6 +324,7 @@ export default function KapNumerik() {
 
         {/* About Kap Numérik - Modern Split Design with Parallax */}
         <motion.section 
+          id="about-kap"
           className="py-32 relative overflow-hidden"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -337,31 +336,6 @@ export default function KapNumerik() {
             <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-digiqo-secondary/5 to-transparent" />
           </div>
           
-          {/* Animated lines */}
-          <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-            <motion.line
-              x1="20%" y1="0" x2="30%" y2="100%"
-              stroke="url(#lineGradient)" strokeWidth="1" opacity="0.1"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 2 }}
-            />
-            <motion.line
-              x1="70%" y1="0" x2="80%" y2="100%"
-              stroke="url(#lineGradient)" strokeWidth="1" opacity="0.1"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 2, delay: 0.5 }}
-            />
-            <defs>
-              <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#199CB7" />
-                <stop offset="100%" stopColor="#8B1431" />
-              </linearGradient>
-            </defs>
-          </svg>
           
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -787,13 +761,6 @@ export default function KapNumerik() {
               transition={{ duration: 0.8 }}
               className="text-center mb-20"
             >
-              <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: '100px' }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.3 }}
-                className="h-1 bg-gradient-to-r from-digiqo-secondary to-digiqo-accent mx-auto mb-8"
-              />
               <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                 Montant de la <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-600">subvention</span>
               </h2>
@@ -833,7 +800,6 @@ export default function KapNumerik() {
                     80%
                   </motion.div>
                   <p className="text-2xl font-bold text-gray-900 mb-3">DU DEVIS HT</p>
-                  <div className="w-16 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mx-auto mb-3" />
                   <p className="text-lg text-gray-600">Pour les structures de</p>
                   <p className="text-xl font-semibold text-gray-900">0 à 9 salariés</p>
                   
@@ -872,7 +838,6 @@ export default function KapNumerik() {
                     50%
                   </motion.div>
                   <p className="text-2xl font-bold text-gray-900 mb-3">DU DEVIS HT</p>
-                  <div className="w-16 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mx-auto mb-3" />
                   <p className="text-lg text-gray-600">Pour les structures de</p>
                   <p className="text-xl font-semibold text-gray-900">10 à 19 salariés</p>
                   
@@ -913,7 +878,7 @@ export default function KapNumerik() {
                 Pourquoi choisir Digiqo ?
               </h2>
               <p className="text-xl text-gray-600">
-                Digiqo vous accompagne de A à Z
+                Votre partenaire digital local de confiance
               </p>
             </motion.div>
 
@@ -1017,7 +982,7 @@ export default function KapNumerik() {
           </div>
         </section>
 
-        {/* Eligibility - Interactive Checklist */}
+        {/* Eligibility Calculator - Interactive Form */}
         <section id="eligibilite" className="py-32 relative overflow-hidden">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -1028,96 +993,14 @@ export default function KapNumerik() {
                 className="text-center mb-12"
               >
                 <h2 className="text-4xl font-bold text-digiqo-black mb-4">
-                  Êtes-vous éligible ?
+                  Calculateur d'éligibilité Kap Numérik
                 </h2>
                 <p className="text-xl text-gray-600">
-                  Le Kap Numérik s'adresse aux entreprises basées à La Réunion
+                  Vérifiez votre éligibilité et estimez votre subvention en 30 secondes
                 </p>
               </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="bg-white rounded-lg shadow-xl p-8"
-              >
-                <h3 className="text-2xl font-bold text-digiqo-black mb-6">
-                  Critères d'éligibilité
-                </h3>
-                <ul className="space-y-6 mb-10">
-                  {eligibilityCriteria.map((criteria, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: -30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1, duration: 0.5 }}
-                      className="group relative flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-all duration-300"
-                    >
-                      {/* Animated checkbox */}
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        whileInView={{ scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 + index * 0.1, type: "spring", stiffness: 200 }}
-                        className="relative"
-                      >
-                        <AnimatePresence>
-                          {checkedCriteria[index] && (
-                            <motion.div
-                              initial={{ scale: 0, rotate: -180 }}
-                              animate={{ scale: 1, rotate: 0 }}
-                              exit={{ scale: 0, rotate: 180 }}
-                              transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                            >
-                              <div className="w-8 h-8 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-                                <CheckCircle className="w-5 h-5 text-white" />
-                              </div>
-                              <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </motion.div>
-                      
-                      {/* Criteria text with hover effect */}
-                      <span className="text-lg text-gray-700 group-hover:text-gray-900 transition-colors duration-300 flex-1">
-                        {criteria}
-                      </span>
-                      
-                      {/* Progress line */}
-                      {index < eligibilityCriteria.length - 1 && (
-                        <motion.div
-                          className="absolute left-7 top-12 w-0.5 h-12 bg-gradient-to-b from-green-300 to-transparent"
-                          initial={{ height: 0 }}
-                          whileInView={{ height: '48px' }}
-                          viewport={{ once: true }}
-                          transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
-                        />
-                      )}
-                    </motion.li>
-                  ))}
-                </ul>
-
-                <div className="bg-digiqo-secondary/5 rounded-lg p-6 mb-8">
-                  <p className="text-center text-gray-700 mb-4">
-                    <strong>Vous remplissez tous les critères ?</strong>
-                  </p>
-                  <p className="text-center text-gray-600">
-                    Et bonne nouvelle : Digiqo vous aide à vérifier ça en 2 minutes.
-                  </p>
-                </div>
-
-                <Link
-                  href={generateContactUrl({
-                    service: 'kap-numerik',
-                    description: 'Je veux vérifier mon éligibilité au Kap Numérik'
-                  })}
-                  className="block w-full text-center px-8 py-4 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary-dark text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300"
-                >
-                  Je démarre mon accompagnement
-                </Link>
-              </motion.div>
+              <EligibilityCalculator />
             </div>
           </div>
         </section>
