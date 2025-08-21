@@ -714,10 +714,11 @@ export const HeaderLuxury = () => {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-            className="lg:hidden fixed top-0 right-0 h-full w-[90%] max-w-md bg-white/95 backdrop-blur-2xl shadow-2xl z-[95] overflow-y-auto"
+            className="lg:hidden fixed top-0 right-0 h-full w-[90%] max-w-md bg-white/95 backdrop-blur-2xl shadow-2xl z-[95] overflow-y-auto safe-top"
+            style={{ paddingTop: 'env(safe-area-inset-top)' }}
           >
             {/* Close Button */}
-            <div className="flex justify-between items-center p-6 border-b border-gray-100">
+            <div className="flex justify-between items-center p-6 pt-8 border-b border-gray-100">
               <OptimizedImage 
                 src="/assets/logo1.png" 
                 alt="Digiqo"
