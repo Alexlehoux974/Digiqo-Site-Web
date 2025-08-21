@@ -5,7 +5,6 @@ import { Footer } from '@/components/Footer'
 import { Linkedin, Mail, Users, Rocket, Heart, Target, Calendar, Award, Sparkles, Clock } from 'lucide-react'
 import { OptimizedImage } from '@/components/ui/OptimizedImage'
 import Link from 'next/link'
-import { generateContactUrl } from '@/lib/contact-utils'
 import { useRef } from 'react'
 
 const team = [
