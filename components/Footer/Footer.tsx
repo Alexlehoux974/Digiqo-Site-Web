@@ -71,7 +71,6 @@ export const Footer = () => {
                     width={250}
                     height={100}
                     className="h-24 w-auto"
-                    style={{ filter: 'brightness(0) invert(1)' }}
                   />
                 </Link>
               </div>

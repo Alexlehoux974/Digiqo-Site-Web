@@ -22,15 +22,6 @@ npm run type-check  # TypeScript type checking without emit
 
 # Utilities
 npm run generate-sitemap  # Generate sitemap.xml manually
-
-# Common Development Workflows
-npm install         # Install dependencies (after pulling)
-npm run build && npm run start  # Test production build locally
-
-# Debugging
-npm run type-check  # Check TypeScript errors without building
-npm run lint        # Check for linting issues
-npx next info       # Display system information for debugging
 ```
 
 ## Architecture & Technical Stack
@@ -41,14 +32,7 @@ npx next info       # Display system information for debugging
 - **Tailwind CSS** with custom design system and extensive color palette
 - **Framer Motion** for sophisticated animations
 - **Three.js** (@react-three/fiber) for 3D effects
-- **React Router DOM v7** for additional routing capabilities
 - **N8N Chat** widget for customer support
-
-### Key Dependencies
-- **UI Utilities**: `clsx`, `tailwind-merge`, `class-variance-authority` (cva)
-- **Icons**: `lucide-react`, `react-icons`, custom SVG components
-- **SEO**: `react-helmet-async` for meta tag management
-- **Type Definitions**: @types/react, @types/react-dom, @types/three
 
 ### Project Structure
 ```
@@ -59,7 +43,7 @@ npx next info       # Display system information for debugging
 │   ├── magicui/       # Special UI effects components
 │   └── ui/            # Shared UI primitives
 ├── pages/             # Next.js Pages Router
-│   ├── api/          # API routes (contact, testimonials)
+│   ├── api/          # API routes (contact, testimonials, audit)
 │   ├── services/     # Dynamic service pages via [slug].tsx
 │   └── *.tsx         # Static pages
 ├── lib/              # Utilities and configurations
@@ -80,10 +64,11 @@ npx next info       # Display system information for debugging
 **Product Data Integration**:
 - Products sourced from Airtable base "Site web digiqo" / "Tarifs produits"
 - Three payment types: MMR (Monthly Recurring), ARR (Annual Recurring), ONE_SHOT
-- Categories: PUBLICITÉ EN LIGNE, COMMUNITY MANAGEMENT, DÉVELOPPEMENT WEB, IDENTITÉ DE MARQUE
+- Categories: PUBLICITÉ EN LIGNE, COMMUNITY MANAGEMENT, DÉVELOPPEMENT WEB, IDENTITÉ DE MARQUE, and more
+- Helper functions in `lib/airtable-products.ts` for filtering by category/payment type
 
 **Service Pages**:
-Dynamic routing with 8 service pages:
+Dynamic routing with 8 service pages defined in `lib/services.ts`:
 - `/services/publicite` - Publicité en ligne
 - `/services/dev-web` - Développement web
 - `/services/community` - Community management
@@ -135,38 +120,24 @@ Additional design tokens configured in `tailwind.config.js`:
 4. Shared UI primitives in `components/ui/`
 5. Special effects in `components/magicui/`
 
-### Performance Considerations
-Based on AMELIORATIONS-RECOMMANDEES.md priorities:
-- Image optimization: 70+ partner logos require lazy loading strategy
-- Bundle size: Three.js imports need code splitting
-- Lighthouse targets: 95+ score
-
 ### API Routes
 - `/api/contact` - Contact form submission
 - `/api/testimonials` - Testimonial data
-
-### Error Handling Patterns
-- API routes return structured JSON responses with status codes
-- Client-side form validation before submission
-- Fallback UI components for loading and error states
-- 404 page at `pages/404.tsx` for missing routes
+- `/api/audit` - Audit form submission
 
 ## Important Notes
 
-1. **No README.md**: Documentation is in CLAUDE.md and other .md files
-2. **Pages Router**: Using Next.js Pages Router, NOT App Router - important for routing patterns
-3. **Premium Quality**: Focus on sophisticated animations and glass effects
-4. **Partner Logos**: Large collection (70+) in `/public/partenaires/` requiring optimization
-5. **Sitemap Generation**: Auto-generated on build via `scripts/generate-sitemap.js`
-6. **External Content**: Service content stored in `/public/services-content/` as .txt files
-7. **Webpack Config**: External modules for utf-8-validate and bufferutil (WebSocket dependencies)
-8. **Security Headers**: Configured in netlify.toml with HSTS, CSP, X-Frame-Options, etc.
-9. **Chat Widget**: N8N chat integration for customer support (@n8n/chat package)
-10. **Audit Form**: Complex multi-step form in `src/components/AuditForm/` with 11 steps
-11. **Path Alias**: `@/*` maps to project root - use for all imports
-12. **TypeScript**: Strict mode with noUnusedLocals and noUnusedParameters enabled
-13. **File Naming**: Components use PascalCase, utilities use kebab-case
-14. **Export Pattern**: Components exported via index.ts files in their folders
+1. **Pages Router**: Using Next.js Pages Router, NOT App Router - important for routing patterns
+2. **Premium Quality**: Focus on sophisticated animations and glass effects
+3. **Partner Logos**: Large collection (70+) in `/public/partenaires/` requiring optimization
+4. **Sitemap Generation**: Auto-generated on build via `scripts/generate-sitemap.js`
+5. **External Content**: Service content stored in `/public/services-content/` as .txt files
+6. **Webpack Config**: External modules for utf-8-validate and bufferutil (WebSocket dependencies)
+7. **Security Headers**: Configured in netlify.toml with HSTS, CSP, X-Frame-Options, etc.
+8. **Chat Widget**: N8N chat integration for customer support (@n8n/chat package)
+9. **Audit Form**: Complex multi-step form in `src/components/AuditForm/` with 11 steps
+10. **Path Alias**: `@/*` maps to project root - use for all imports
+11. **TypeScript**: Strict mode with noUnusedLocals and noUnusedParameters enabled
 
 ## Critical Architecture Patterns
 
@@ -196,34 +167,10 @@ The site uses a dynamic routing system for service pages:
 - Base: "Site web digiqo" / Table: "Tarifs produits"
 - Payment types: MMR (Monthly), ARR (Annual), ONE_SHOT
 - Product categories align with service offerings
+- Service-to-category mapping in `serviceCategoryMapping` object
 
 ### Build Process
 1. `generate-sitemap.js` runs before Next.js build
 2. Next.js builds static pages with getStaticProps/getStaticPaths
 3. Service pages generated from `lib/services.ts` definitions
 4. Netlify plugin handles deployment optimizations
-
-## Current Development Focus
-
-From AMELIORATIONS-RECOMMANDEES.md:
-1. **Performance**: Bundle analysis, code splitting, image optimization (target: Lighthouse 95+)
-2. **Accessibility**: WCAG 2.1 AA compliance, ARIA labels, keyboard navigation
-3. **Security**: CSP headers, rate limiting, reCAPTCHA integration
-4. **SEO**: Content enrichment, structured data improvement (per SEO-ROADMAP.md)
-
-## Common Troubleshooting
-
-### TypeScript Errors
-- Run `npm run type-check` to see TypeScript errors without building
-- Check `tsconfig.json` for strict mode settings including `noUnusedLocals` and `noUnusedParameters`
-
-### Build Failures
-- Ensure sitemap generation succeeds: `npm run generate-sitemap`
-- Check for ESLint errors: `npm run lint` (max-warnings is set to 0)
-- Verify all service components exist in `components/ServicePages/`
-
-### Development Tips
-- Service pages must have corresponding components in `components/ServicePages/`
-- Always use `cn()` utility from `lib/utils.ts` for merging classNames
-- Partner logos are numerous (70+) - implement lazy loading when adding new features
-- Use `@/*` import alias instead of relative paths
