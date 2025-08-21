@@ -866,7 +866,7 @@ export default function DevWebPage() {
               </motion.a>
               
               <p className="text-sm text-digiqo-primary/60 mt-4">
-                Consultation gratuite • Devis personnalisé • Sans engagement
+                Consultation gratuite • Devis personnalisé
               </p>
             </div>
           </motion.div>
@@ -1043,111 +1043,15 @@ export default function DevWebPage() {
                       </div>
                     </div>
                     
-                    {/* CTA */}
-                    <motion.a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ x: 5 }}
-                      className="inline-flex items-center gap-2 text-digiqo-secondary font-bold hover:underline"
-                    >
-                      Découvrir le projet
-                      <ArrowRight className="w-5 h-5" />
-                    </motion.a>
                   </div>
                 </motion.div>
               </motion.div>
             ))}
           </div>
 
-          {/* View all projects */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mt-12"
-          >
-            <a
-              href={generateContactUrl({ 
-                service: 'portfolio',
-                description: 'Je souhaite voir plus de réalisations'
-              })}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 text-white font-bold rounded-2xl hover:shadow-xl transition-all duration-300"
-            >
-              Voir plus de projets
-              <ArrowRight className="w-5 h-5" />
-            </a>
-          </motion.div>
         </div>
       </section>
 
-      {/* Testimonial Section */}
-      <section className="py-24 bg-gradient-to-br from-white to-digiqo-primary/5">
-        <div className="max-w-6xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Ils nous font <span className="bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">confiance</span>
-            </h2>
-            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
-              Découvrez ce que nos clients disent de notre collaboration
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="max-w-4xl mx-auto"
-          >
-            <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-              <div className="grid md:grid-cols-2 gap-0">
-                {/* Image Section */}
-                <div className="relative h-64 md:h-full group overflow-hidden">
-                  <img 
-                    alt="Raymond" 
-                    loading="lazy" 
-                    width="1024" 
-                    height="1024" 
-                    decoding="async" 
-                    data-nimg="1" 
-                    className="ease-in-out scale-100 blur-0 grayscale-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110 object-top" 
-                    style={{color:'transparent', objectFit:'cover'}}
-                    src="/partenaires/Raymond.webp"
-                  />
-                </div>
-                
-                {/* Testimonial Content */}
-                <div className="p-8 md:p-12 flex flex-col justify-center">
-                  <div className="mb-6">
-                    <Star className="w-6 h-6 text-yellow-500 fill-current inline-block" />
-                    <Star className="w-6 h-6 text-yellow-500 fill-current inline-block" />
-                    <Star className="w-6 h-6 text-yellow-500 fill-current inline-block" />
-                    <Star className="w-6 h-6 text-yellow-500 fill-current inline-block" />
-                    <Star className="w-6 h-6 text-yellow-500 fill-current inline-block" />
-                  </div>
-                  
-                  <blockquote className="text-lg text-digiqo-primary/80 mb-6 italic">
-                    "Digiqo a transformé notre présence en ligne avec un site web moderne et performant. 
-                    Leur expertise technique et leur approche sur-mesure ont dépassé toutes nos attentes. 
-                    Le résultat est simplement exceptionnel."
-                  </blockquote>
-                  
-                  <div className="border-t pt-4">
-                    <p className="font-bold text-digiqo-primary">Raymond Dupont</p>
-                    <p className="text-digiqo-primary/60">CEO, TechInnovate</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-24 bg-gradient-to-br from-digiqo-secondary to-digiqo-secondary/80">
@@ -1164,13 +1068,10 @@ export default function DevWebPage() {
               Discutons de votre projet et trouvons ensemble la solution parfaite pour votre entreprise.
             </p>
             <motion.a
-              href={generateContactUrl({
-                service: 'dev-web',
-                description: 'Je souhaite discuter de mon projet de développement web'
-              })}
+              href="/#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-digiqo-secondary font-bold rounded-full hover:bg-digiqo-secondary/10 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-digiqo-accent text-white font-bold rounded-full hover:bg-digiqo-accent/90 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Démarrer mon projet
               <ArrowRight className="w-5 h-5" />

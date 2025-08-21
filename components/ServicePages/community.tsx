@@ -51,7 +51,7 @@ export default function CommunityPage() {
       summary: 'Présence active et régulière sur les réseaux sociaux',
       price: {
         monthly: '662,40 €',
-        annual: '6 759,36 €',
+        annual: '6 359,04 €',
         annualSaving: '20% de remise'
       },
       highlights: [
@@ -89,7 +89,7 @@ export default function CommunityPage() {
       summary: 'Pour développer activement votre communauté',
       price: {
         monthly: '1 142,40 €',
-        annual: '11 634,72 €',
+        annual: '10 967,04 €',
         annualSaving: '20% de remise'
       },
       highlights: [
@@ -128,7 +128,7 @@ export default function CommunityPage() {
       summary: 'Gestion professionnelle avec modération proactive',
       price: {
         monthly: '1 718,40 €',
-        annual: '17 504,64 €',
+        annual: '16 496,64 €',
         annualSaving: '20% de remise'
       },
       highlights: [
@@ -166,7 +166,7 @@ export default function CommunityPage() {
       summary: 'Gestion complète et animation continue 7j/7',
       price: {
         monthly: '2 678,40 €',
-        annual: '27 249,12 €',
+        annual: '25 712,64 €',
         annualSaving: '20% de remise'
       },
       highlights: [

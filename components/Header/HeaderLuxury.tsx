@@ -146,8 +146,8 @@ const navigation = {
       href: '/agence',
       submenu: [
         { name: 'Notre Histoire', href: '/agence#histoire' },
-        { name: 'L\'Équipe', href: '/agence#equipe' },
         { name: 'Nos Valeurs', href: '/agence#valeurs' },
+        { name: 'L\'Équipe', href: '/agence#equipe' },
         { name: 'Rejoignez-nous', href: '/recrutement', highlight: true }
       ]
     },

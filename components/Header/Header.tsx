@@ -69,10 +69,10 @@ export const Header = () => {
               <OptimizedImage 
                 src="/assets/logo1.png" 
                 alt="Digiqo - Ladi Lafé Zot Pub!" 
-                width={200}
-                height={60}
+                width={220}
+                height={66}
                 priority
-                className="h-16 w-auto"
+                className="h-[4.5rem] w-auto"
                 objectFit="contain"
               />
             </Link>

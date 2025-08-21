@@ -55,50 +55,73 @@ export default function SiteKeeperPage() {
     {
       id: 'shopkeeper-essential',
       name: 'ShopKeeper Essential',
-      summary: shopKeeperEssential?.description || 'Maintenance essentielle pour votre boutique en ligne',
+      summary: 'Mises à jour mensuelles du CMS + passerelle de paiement, sauvegardes hebdomadaires, monitoring de disponibilité',
       price: shopKeeperEssential?.priceFormatted || '890€',
       highlights: [
-        'Surveillance 24/7',
-        'Sauvegardes quotidiennes',
-        'Monitoring transactions'
+        'Mises à jour mensuelles',
+        'Sauvegardes hebdomadaires',
+        '2 retouches annuelles'
       ],
       gradient: 'from-purple-500 to-indigo-600',
       accentColor: 'purple',
       icon: Shield,
-      features: shopKeeperEssential?.features || [],
+      features: [
+        'Mises à jour mensuelles du CMS + passerelle de paiement',
+        'Sauvegardes hebdomadaires avec restauration rapide',
+        'Monitoring de disponibilité (boutique accessible)',
+        '2 retouches annuelles (textes ou photos)',
+        'Support basique (réponse < 72h)',
+        'Renouvellement domaine + hébergement inclus'
+      ],
       paymentLink: 'https://app-eu1.hubspot.com/payments/XjCpfQmChryHKxS?referrer=PAYMENT_LINK'
     },
     {
       id: 'shopkeeper-pro',
       name: 'ShopKeeper Pro',
-      summary: shopKeeperPro?.description || 'Protection avancée pour votre e-commerce',
+      summary: 'Mises à jour hebdomadaires CMS et plugins, monitoring transactions, optimisation de l\'expérience utilisateur',
       price: shopKeeperPro?.priceFormatted || '1 490€',
       highlights: [
-        'Sauvegardes temps réel',
-        'WAF inclus',
-        'Support 24h'
+        'Mises à jour hebdomadaires',
+        '4 retouches annuelles',
+        'Support prioritaire 48h'
       ],
       gradient: 'from-orange-500 to-red-600',
       accentColor: 'orange',
       icon: Rocket,
-      features: shopKeeperPro?.features || [],
+      features: [
+        'Mises à jour hebdomadaires CMS, plugins, passerelle de paiement',
+        'Sauvegardes hebdo avec restauration prioritaire',
+        'Monitoring transactions (détection de lenteurs ou bugs)',
+        '4 retouches annuelles (produits, visuels, textes)',
+        'Optimisation de l\'expérience utilisateur',
+        'Support prioritaire (réponse < 48h)',
+        'Renouvellement domaine + hébergement inclus'
+      ],
       paymentLink: 'https://app-eu1.hubspot.com/payments/YDW7hsDG?referrer=PAYMENT_LINK',
       bestValue: true
     },
     {
       id: 'shopkeeper-ultimate',
       name: 'ShopKeeper Ultimate',
-      summary: shopKeeperUltimate?.description || 'Solution complète pour boutiques exigeantes',
+      summary: 'Mises à jour hebdomadaires complètes, sauvegardes quotidiennes, sécurité renforcée anti-DDoS, 6 retouches incluses',
       price: shopKeeperUltimate?.priceFormatted || '2 490€',
       highlights: [
-        'Infrastructure dédiée',
-        'CDN premium mondial',
-        'Support VIP 4h'
+        'Sauvegardes quotidiennes',
+        '6 retouches annuelles',
+        'Support premium < 24h'
       ],
       gradient: 'from-indigo-600 to-purple-700',
       accentColor: 'indigo',
       icon: Gem,
-      features: shopKeeperUltimate?.features || [],
+      features: [
+        'Mises à jour hebdomadaires CMS, plugins, passerelle de paiement et catalogue produits',
+        'Sauvegardes quotidiennes avec restauration prioritaire',
+        'Monitoring complet transactions, performance & disponibilité',
+        'Sécurité renforcée (pare-feu, anti-DDoS)',
+        '6 retouches annuelles incluses',
+        'Support premium (réponse < 24h)',
+        'Renouvellement domaine + hébergement inclus'
+      ],
       paymentLink: 'https://app-eu1.hubspot.com/payments/ztmdZqmRM?referrer=PAYMENT_LINK'
     }
   ]
@@ -107,49 +130,73 @@ export default function SiteKeeperPage() {
     {
       id: 'sitekeeper-essential',
       name: 'SiteKeeper Essential',
-      summary: siteKeeperEssential?.description || 'Maintenance essentielle pour votre site vitrine',
+      summary: 'Mises à jour mensuelles, sauvegardes hebdomadaires, monitoring temps réel, 2 révisions par an',
       price: siteKeeperEssential?.priceFormatted || '690€',
       highlights: [
-        'Surveillance 24/7',
+        'Mises à jour mensuelles',
         'Sauvegardes hebdomadaires',
-        'Support email 72h'
+        'Support 72h'
       ],
       gradient: 'from-gray-500 to-gray-600',
       accentColor: 'gray',
       icon: Shield,
-      features: siteKeeperEssential?.features || [],
+      features: [
+        'Mises à jour mensuelles du CMS (WordPress) et des plugins',
+        'Sauvegardes hebdomadaires avec restauration rapide',
+        'Monitoring en temps réel de la disponibilité du site',
+        '2 révisions par an pour ajustements mineurs (textes, visuels légers)',
+        'Mises à jour PHP sur demande (facturation possible si ajustements nécessaires)',
+        'Support technique basique : réponse sous 72h pour bugs mineurs',
+        'Domaine, hébergement et abonnements aux plugins à la charge du client'
+      ],
       paymentLink: 'https://app-eu1.hubspot.com/payments/qx9vNKwmy?referrer=PAYMENT_LINK'
     },
     {
       id: 'sitekeeper-pro',
       name: 'SiteKeeper Pro',
-      summary: siteKeeperPro?.description || 'Protection renforcée pour sites professionnels',
+      summary: 'Mises à jour hebdomadaires complètes, monitoring performance, support prioritaire 48h',
       price: siteKeeperPro?.priceFormatted || '1 190€',
       highlights: [
-        'Sauvegardes quotidiennes',
-        'CDN basique inclus',
+        'Mises à jour hebdomadaires',
+        '4 révisions par an',
         'Support prioritaire 48h'
       ],
       gradient: 'from-emerald-500 to-teal-600',
       accentColor: 'emerald',
       icon: Zap,
-      features: siteKeeperPro?.features || [],
+      features: [
+        'Mises à jour hebdomadaires du CMS (WordPress), plugins et thèmes',
+        'Sauvegardes hebdomadaires avec vérification manuelle',
+        'Monitoring performance et disponibilité pour corriger lenteurs et problèmes',
+        '4 révisions par an pour ajustements mineurs (textes, visuels)',
+        'Mises à jour PHP incluses avec tests de compatibilité',
+        'Support prioritaire : réponse sous 48h',
+        'Domaine, hébergement et abonnements aux plugins à la charge du client'
+      ],
       paymentLink: 'https://app-eu1.hubspot.com/payments/Mdj2bcwPx7bKY4?referrer=PAYMENT_LINK'
     },
     {
       id: 'sitekeeper-ultimate',
       name: 'SiteKeeper Ultimate',
-      summary: siteKeeperUltimate?.description || 'Solution premium pour sites exigeants',
+      summary: 'Mises à jour hebdomadaires complètes, sauvegardes quotidiennes, sécurité renforcée, support premium 24h',
       price: siteKeeperUltimate?.priceFormatted || '1 990€',
       highlights: [
-        'Sauvegardes temps réel',
-        'WAF entreprise',
-        'Support prioritaire 12h'
+        'Sauvegardes quotidiennes',
+        '6 révisions par an',
+        'Support premium 24h'
       ],
       gradient: 'from-blue-500 to-indigo-600',
       accentColor: 'blue',
       icon: Star,
-      features: siteKeeperUltimate?.features || [],
+      features: [
+        'Mises à jour hebdomadaires du CMS, plugins, thèmes et PHP, avec tests de compatibilité et rollback possible',
+        'Sauvegardes quotidiennes avec restauration prioritaire',
+        'Monitoring en temps réel : disponibilité, performance et sécurité',
+        '6 révisions par an pour ajustements mineurs (textes, visuels)',
+        'Sécurité renforcée : pare-feu, protection DDoS, audits semestriels',
+        'Support premium : réponse sous 24h',
+        'Domaine, hébergement et abonnements aux plugins à la charge du client'
+      ],
       paymentLink: 'https://app-eu1.hubspot.com/payments/QmxMmYXDdrqTZ?referrer=PAYMENT_LINK'
     }
   ]
@@ -173,10 +220,6 @@ export default function SiteKeeperPage() {
           primary: {
             text: "Découvrir nos formules",
             href: "#formules"
-          },
-          secondary: {
-            text: "Audit gratuit",
-            href: generateContactUrl({ service: 'sitekeeper' })
           }
         }}
         gradientFrom="from-digiqo-secondary"

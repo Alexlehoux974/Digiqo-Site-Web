@@ -114,7 +114,10 @@
       "mcp__airtable__update_records",
       "Bash(PORT=3001 npm run dev)",
       "Bash(do)",
-      "mcp__airtable__search_records"
+      "mcp__airtable__search_records",
+      "Bash(journalctl:*)",
+      "Bash(docker system prune:*)",
+      "mcp__airtable__create_table"
     ],
     "deny": []
   }

@@ -140,7 +140,7 @@ export default function AuditPage() {
           ctaButtons={{
             primary: {
               text: "Demander mon audit",
-              href: generateContactUrl({ service: 'audit', description: 'Je souhaite recevoir mon audit digital gratuit' })
+              href: "/audit"
             },
             secondary: {
               text: "En savoir plus",
@@ -327,7 +327,7 @@ export default function AuditPage() {
                 Découvrez gratuitement les opportunités d'amélioration de votre stratégie digitale
               </p>
               <motion.a
-                href={generateContactUrl({ service: 'audit', description: 'Je souhaite recevoir mon audit digital gratuit' })}
+                href="/audit"
                 whileHover={ANIMATION.hover.scale}
                 whileTap={ANIMATION.tap.scale}
                 className="inline-flex items-center gap-3 px-8 py-4 bg-white text-digiqo-primary font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
@@ -336,7 +336,7 @@ export default function AuditPage() {
                 <ArrowRight className="w-5 h-5" />
               </motion.a>
               <p className="text-white/60 text-sm mt-6">
-                Aucune carte bancaire requise • Résultats sous 48h
+                Aucune carte bancaire requise
               </p>
             </motion.div>
           </div>

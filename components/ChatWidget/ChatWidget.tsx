@@ -144,16 +144,38 @@ export const ChatWidget = () => {
         'Je suis l\'assistant virtuel de Digiqo.',
         'Comment puis-je vous aider aujourd\'hui ?'
       ],
+      defaultLanguage: 'fr',
+      allowedFilesMimeTypes: '',
       i18n: {
         fr: {
           title: 'Assistant Digiqo',
           subtitle: 'Nous sommes là pour vous aider',
           footer: '',
-          getStarted: 'Commencer',
-          inputPlaceholder: 'Tapez votre message...',
+          getStarted: 'Démarrer la conversation',
+          inputPlaceholder: 'Écrivez votre message ici...',
           sendButtonText: 'Envoyer',
           closeButtonText: 'Fermer',
-          closeButtonTooltip: 'Fermer le chat'
+          closeButtonTooltip: 'Fermer la discussion',
+          openButtonTooltip: 'Ouvrir le chat',
+          typingMessage: 'En train d\'écrire...',
+          poweredBy: 'Propulsé par Digiqo',
+          connectingMessage: 'Connexion en cours...',
+          waitMessage: 'Un instant s\'il vous plaît...'
+        },
+        en: {
+          title: 'Digiqo Assistant',
+          subtitle: 'We\'re here to help',
+          footer: '',
+          getStarted: 'Start Conversation',
+          inputPlaceholder: 'Type your message...',
+          sendButtonText: 'Send',
+          closeButtonText: 'Close',
+          closeButtonTooltip: 'Close chat',
+          openButtonTooltip: 'Open chat',
+          typingMessage: 'Typing...',
+          poweredBy: 'Powered by Digiqo',
+          connectingMessage: 'Connecting...',
+          waitMessage: 'Please wait...'
         }
       },
       theme: {

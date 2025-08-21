@@ -43,7 +43,7 @@ export default function Recrutement() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-digiqo-primary/5 via-white to-digiqo-accent/5">
+        <section className="relative pt-40 pb-20 overflow-hidden bg-gradient-to-br from-digiqo-primary/5 via-white to-digiqo-accent/5">
           <div className="absolute inset-0">
             <div className="absolute top-20 right-0 w-96 h-96 bg-digiqo-accent/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-digiqo-primary/10 rounded-full blur-3xl" />
@@ -56,17 +56,27 @@ export default function Recrutement() {
               transition={{ duration: 0.6 }}
               className="text-center max-w-4xl mx-auto"
             >
-              <h1 className="text-5xl md:text-7xl font-bold text-digiqo-black mb-4">
+              <h1 className="text-5xl md:text-7xl font-bold text-digiqo-black mb-8">
                 On Recrute !
               </h1>
-              <p className="text-2xl md:text-3xl font-bold text-digiqo-primary mb-8">
-                Digiqo - Ladi Lafé zot Pub! 🇷🇪
-              </p>
               
-              <div className="inline-flex flex-col items-center gap-2 bg-digiqo-secondary/10 text-digiqo-secondary px-6 py-4 rounded-2xl">
-                <span className="text-lg font-semibold">Le recrutement</span>
-                <span className="text-base">Comment ça marche</span>
-              </div>
+              <motion.div 
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-digiqo-secondary/10 to-digiqo-secondary/5 text-digiqo-secondary px-8 py-4 rounded-full shadow-lg"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                <span className="text-lg font-semibold">
+                  💡 Comment ça marche ?
+                </span>
+                <motion.span
+                  animate={{ y: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                  className="text-xl"
+                >
+                  ↓
+                </motion.span>
+              </motion.div>
             </motion.div>
           </div>
         </section>

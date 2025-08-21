@@ -210,3 +210,20 @@ From AMELIORATIONS-RECOMMANDEES.md:
 2. **Accessibility**: WCAG 2.1 AA compliance, ARIA labels, keyboard navigation
 3. **Security**: CSP headers, rate limiting, reCAPTCHA integration
 4. **SEO**: Content enrichment, structured data improvement (per SEO-ROADMAP.md)
+
+## Common Troubleshooting
+
+### TypeScript Errors
+- Run `npm run type-check` to see TypeScript errors without building
+- Check `tsconfig.json` for strict mode settings including `noUnusedLocals` and `noUnusedParameters`
+
+### Build Failures
+- Ensure sitemap generation succeeds: `npm run generate-sitemap`
+- Check for ESLint errors: `npm run lint` (max-warnings is set to 0)
+- Verify all service components exist in `components/ServicePages/`
+
+### Development Tips
+- Service pages must have corresponding components in `components/ServicePages/`
+- Always use `cn()` utility from `lib/utils.ts` for merging classNames
+- Partner logos are numerous (70+) - implement lazy loading when adding new features
+- Use `@/*` import alias instead of relative paths

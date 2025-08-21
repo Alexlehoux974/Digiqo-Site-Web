@@ -200,7 +200,7 @@ export function ContactForm({ formData, setFormData, onSubmit }: ContactFormProp
                   onChange={(e) => setFormData(prev => ({ ...prev, firstName: e.target.value }))}
                   whileFocus={{ scale: 1.01 }}
                   className="w-full pl-11 pr-4 py-3 bg-white border border-digiqo-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-digiqo-accent focus:border-transparent transition-all hover:border-digiqo-gray-dark"
-                  placeholder="Nathalie"
+                  placeholder="Prénom"
                 />
               </div>
             </div>
@@ -217,7 +217,7 @@ export function ContactForm({ formData, setFormData, onSubmit }: ContactFormProp
                   onChange={(e) => setFormData(prev => ({ ...prev, lastName: e.target.value }))}
                   whileFocus={{ scale: 1.01 }}
                   className="w-full pl-11 pr-4 py-3 bg-white border border-digiqo-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-digiqo-accent focus:border-transparent transition-all hover:border-digiqo-gray-dark"
-                  placeholder="Payet"
+                  placeholder="Nom"
                 />
               </div>
             </div>
@@ -240,7 +240,7 @@ export function ContactForm({ formData, setFormData, onSubmit }: ContactFormProp
                     "w-full pl-11 pr-4 py-3 bg-white border rounded-lg focus:outline-none focus:ring-2 focus:ring-digiqo-accent focus:border-transparent transition-all hover:border-digiqo-gray-dark",
                     errors.phone ? "border-red-500" : "border-digiqo-gray"
                   )}
-                  placeholder="0692 12 34 56"
+                  placeholder="0692 92 92 92"
                 />
               </div>
               {errors.phone && (
@@ -263,7 +263,7 @@ export function ContactForm({ formData, setFormData, onSubmit }: ContactFormProp
                     "w-full pl-11 pr-4 py-3 bg-white border rounded-lg focus:outline-none focus:ring-2 focus:ring-digiqo-accent focus:border-transparent transition-all hover:border-digiqo-gray-dark",
                     errors.email ? "border-red-500" : "border-digiqo-gray"
                   )}
-                  placeholder="nathalie.payet@gmail.com"
+                  placeholder="nom.prenom@gmail.com"
                 />
               </div>
               {errors.email && (

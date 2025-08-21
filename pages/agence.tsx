@@ -34,12 +34,12 @@ const team = [
     email: 'alexandre@digiqo.fr'
   },
   {
-    name: 'Thomas Hoareau',
-    role: 'Directeur Commercial',
-    description: "Thomas est un commercial talentueux qui a fait ses armes en métropole au sein de grandes entreprises. Reconnu pour sa détermination, son sens du contact et son efficacité, il sait cerner rapidement les besoins des clients pour proposer des solutions sur-mesure, efficaces et rentables.",
-    image: '/partenaires/Thomas.webp',
-    linkedin: 'https://www.linkedin.com/in/thomas-hoareau/',
-    email: 'thomas@digiqo.fr'
+    name: 'Raymond Romero',
+    role: 'Responsable des revenus',
+    description: "Fort de 20 ans de management commercial, Raymond transforme les défis en opportunités mesurables. Ancien directeur d'une régie publicitaire multi-supports (journal, radio, magazines, web), il a piloté des équipes jusqu'à 10 personnes et bâti des stratégies gagnantes dans des secteurs en constante mutation. Chez Digiqo, il orchestre l'ensemble des sources de revenus — ventes, marketing, partenariats — avec un seul objectif : croissance et alignement stratégique. Ses forces : Leadership, vision business, adaptabilité hors norme, et une obsession pour la performance concrète.",
+    image: '/partenaires/Raymond (1).png',
+    linkedin: 'https://www.linkedin.com/in/raymond-romero/',
+    email: 'raymond@digiqo.fr'
   },
   {
     name: 'Adrien Trudel',
@@ -297,7 +297,7 @@ export default function Agence() {
             >
               {[
                 { number: '2020', label: 'Année de création', icon: Calendar },
-                { number: '150+', label: 'Clients satisfaits', icon: Award },
+                { number: '167', label: 'Clients satisfaits', icon: Award },
                 { number: '100%', label: 'Passion', icon: Heart }
               ].map((stat, index) => {
                 const Icon = stat.icon
@@ -316,7 +316,7 @@ export default function Agence() {
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
                     <motion.div
-                      className="absolute inset-0 bg-gradient-to-br from-digiqo-primary/20 to-digiqo-accent/20 rounded-2xl blur-xl"
+                      className="absolute inset-0 bg-gradient-to-br from-digiqo-primary/10 to-digiqo-accent/10 rounded-2xl blur-lg"
                       animate={{
                         scale: [1, 1.2, 1],
                         opacity: [0.5, 0.8, 0.5],
@@ -349,8 +349,7 @@ export default function Agence() {
 
         {/* Animated section divider */}
         <motion.div 
-          className="relative h-24 overflow-hidden"
-          style={{ opacity: valuesFade }}
+          className="relative h-8 overflow-hidden"
         >
           <motion.div
             className="absolute inset-0 bg-gradient-to-b from-transparent via-digiqo-primary/5 to-transparent"
@@ -370,10 +369,9 @@ export default function Agence() {
         <motion.section 
           ref={valuesRef}
           id="valeurs" 
-          className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden"
+          className="py-16 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden"
           style={{ 
-            y: valuesParallax,
-            opacity: valuesFade
+            y: valuesParallax
           }}
         >
           {/* Animated background pattern */}
@@ -433,8 +431,8 @@ export default function Agence() {
                     >
                       {/* Glow effect */}
                       <motion.div
-                        className="absolute inset-0 bg-gradient-to-br from-digiqo-primary/10 to-digiqo-accent/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                        style={{ filter: 'blur(20px)' }}
+                        className="absolute inset-0 bg-gradient-to-br from-digiqo-primary/5 to-digiqo-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{ filter: 'blur(8px)' }}
                       />
                       
                       <div className="relative">
@@ -473,10 +471,10 @@ export default function Agence() {
                               <Icon className="w-12 h-12 text-digiqo-primary" strokeWidth={1.5} />
                               {/* Pulsing glow effect */}
                               <motion.div
-                                className="absolute inset-0 blur-xl"
+                                className="absolute inset-0 blur-md"
                                 animate={{
-                                  opacity: [0.3, 0.6, 0.3],
-                                  scale: [1, 1.2, 1],
+                                  opacity: [0.2, 0.4, 0.2],
+                                  scale: [1, 1.1, 1],
                                 }}
                                 transition={{
                                   duration: 3,
@@ -484,7 +482,7 @@ export default function Agence() {
                                   delay: index * 0.2,
                                 }}
                               >
-                                <Icon className="w-12 h-12 text-digiqo-accent opacity-50" strokeWidth={1.5} />
+                                <Icon className="w-12 h-12 text-digiqo-accent opacity-30" strokeWidth={1.5} />
                               </motion.div>
                             </motion.div>
                           </div>
@@ -519,8 +517,7 @@ export default function Agence() {
 
         {/* Animated section divider */}
         <motion.div 
-          className="relative h-20 overflow-hidden"
-          style={{ opacity: teamFade }}
+          className="relative h-8 overflow-hidden"
         >
           <motion.div
             className="absolute inset-0"
@@ -543,10 +540,9 @@ export default function Agence() {
         <motion.section 
           ref={teamRef}
           id="equipe" 
-          className="py-24 relative overflow-hidden"
+          className="py-16 relative overflow-hidden"
           style={{ 
-            y: teamParallax,
-            opacity: teamFade
+            y: teamParallax
           }}
         >
           {/* Enhanced Background decoration */}
@@ -958,7 +954,7 @@ export default function Agence() {
                 >
                   <Sparkles className="w-4 h-4" />
                 </motion.div>
-                150+ clients satisfaits
+                167 clients satisfaits
               </motion.div>
               
               <motion.h2 

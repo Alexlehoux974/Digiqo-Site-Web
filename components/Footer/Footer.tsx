@@ -10,12 +10,17 @@ const navigation = {
     { name: 'Développement Web', href: '/services/dev-web' },
     { name: 'Community Management', href: '/services/community' },
     { name: 'Référencement SEO', href: '/services/seo' },
-    { name: 'Visuels & Vidéos', href: '/services/video' },
+    { name: 'Production Vidéo', href: '/services/video' },
     { name: 'Identité de Marque', href: '/services/identite' },
+    { name: 'Maintenance Web', href: '/services/sitekeeper' },
+    { name: 'Audit Digital Gratuit', href: '/audit' },
   ],
   company: [
     { name: "L'Agence", href: '/agence' },
-    { name: 'Le Blog', href: '/blog' },
+    { name: 'Notre Histoire', href: '/agence#histoire' },
+    { name: 'Nos Valeurs', href: '/agence#valeurs' },
+    { name: "L'Équipe", href: '/agence#equipe' },
+    { name: 'FAQ', href: '/?instant=true#faq' },
     { name: 'Digiqo Recrute !', href: '/recrutement' },
   ],
   legal: [
@@ -39,17 +44,18 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="relative bg-gradient-to-b from-cyan-600 via-cyan-500 to-cyan-400 text-white">
-      {/* Background pattern */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-digiqo-secondary/10 rounded-full blur-3xl" />
+    <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
+      {/* Modern gradient overlay */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-t from-cyan-600/10 via-transparent to-transparent" />
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-digiqo-accent/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
       </div>
 
       <div className="relative z-10">
         {/* Main footer content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-x-12 lg:gap-y-8">
             {/* Company info */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -63,27 +69,28 @@ export const Footer = () => {
                   <OptimizedImage
                     src="/assets/logo1.png"
                     alt="Digiqo Logo"
-                    width={200}
-                    height={80}
-                    className="h-20 w-auto"
+                    width={250}
+                    height={100}
+                    className="h-24 w-auto"
+                    style={{ filter: 'brightness(0) invert(1)' }}
                   />
                 </Link>
               </div>
-              <p className="text-white font-semibold mb-6 text-lg">
+              <p className="text-gray-300 mb-6 text-sm leading-relaxed">
                 Votre partenaire digital depuis 2020
               </p>
               <div className="space-y-3">
-                <a href="tel:+262262025102" className="flex items-center gap-3 text-white font-medium hover:text-white transition-colors">
-                  <Phone className="w-5 h-5" />
-                  <span className="font-semibold">+262 262 02 51 02</span>
+                <a href="tel:+262262025102" className="flex items-center gap-3 text-gray-300 hover:text-cyan-400 transition-colors group">
+                  <Phone className="w-4 h-4 text-cyan-500 group-hover:scale-110 transition-transform" />
+                  <span className="text-sm">+262 262 02 51 02</span>
                 </a>
-                <a href="mailto:contact@digiqo.fr" className="flex items-center gap-3 text-white font-medium hover:text-white transition-colors">
-                  <Mail className="w-5 h-5" />
-                  <span className="font-semibold">contact@digiqo.fr</span>
+                <a href="mailto:contact@digiqo.fr" className="flex items-center gap-3 text-gray-300 hover:text-cyan-400 transition-colors group">
+                  <Mail className="w-4 h-4 text-cyan-500 group-hover:scale-110 transition-transform" />
+                  <span className="text-sm">contact@digiqo.fr</span>
                 </a>
-                <div className="flex items-start gap-3 text-white font-medium">
-                  <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
-                  <span className="font-semibold">Saint-Denis, La Réunion</span>
+                <div className="flex items-start gap-3 text-gray-300">
+                  <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-cyan-500" />
+                  <span className="text-sm">Saint-Denis, La Réunion</span>
                 </div>
               </div>
             </motion.div>
@@ -95,15 +102,15 @@ export const Footer = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <h3 className="font-bold text-lg mb-6 text-white">Nos Services</h3>
-              <ul className="space-y-3">
+              <h3 className="text-cyan-400 text-sm font-semibold uppercase tracking-wider mb-6">Nos Services</h3>
+              <ul className="space-y-2.5">
                 {navigation.services.map((item) => (
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-white font-medium hover:text-white transition-colors duration-200 flex items-center gap-2 group"
+                      className="text-gray-300 text-sm hover:text-cyan-400 transition-colors duration-200 flex items-center gap-2 group"
                     >
-                      <span className="w-1 h-1 bg-digiqo-accent rounded-full group-hover:w-2 transition-all duration-200" />
+                      <span className="w-1 h-1 bg-cyan-500/50 rounded-full group-hover:w-2 group-hover:bg-cyan-400 transition-all duration-200" />
                       {item.name}
                     </Link>
                   </li>
@@ -118,15 +125,15 @@ export const Footer = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <h3 className="font-bold text-lg mb-6 text-white">L'Entreprise</h3>
-              <ul className="space-y-3">
+              <h3 className="text-cyan-400 text-sm font-semibold uppercase tracking-wider mb-6">L'Entreprise</h3>
+              <ul className="space-y-2">
                 {navigation.company.map((item) => (
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-white font-medium hover:text-white transition-colors duration-200 flex items-center gap-2 group"
+                      className="text-gray-300 text-sm hover:text-cyan-400 transition-colors duration-200 flex items-center gap-2 group"
                     >
-                      <span className="w-1 h-1 bg-digiqo-accent rounded-full group-hover:w-2 transition-all duration-200" />
+                      <span className="w-1 h-1 bg-cyan-500/50 rounded-full group-hover:w-2 group-hover:bg-cyan-400 transition-all duration-200" />
                       {item.name}
                     </Link>
                   </li>
@@ -141,20 +148,20 @@ export const Footer = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <h3 className="font-bold text-lg mb-6 text-white">Restez Connecté</h3>
+              <h3 className="text-cyan-400 text-sm font-semibold uppercase tracking-wider mb-6">Restez Connecté</h3>
               
               {/* Newsletter */}
-              <div className="mb-8">
-                <p className="text-white font-medium mb-4">Recevez nos dernières actualités</p>
-                <form className="flex flex-col gap-3">
+              <div className="mb-6">
+                <p className="text-gray-300 text-sm mb-3">Recevez nos dernières actualités</p>
+                <form className="flex flex-col gap-2">
                   <input
                     type="email"
                     placeholder="Votre email"
-                    className="px-4 py-3 bg-white/10 border border-white/20 rounded-full text-white placeholder:text-white/50 focus:outline-none focus:border-digiqo-accent transition-colors"
+                    className="px-4 py-2.5 bg-white/5 border border-gray-700 rounded-lg text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-cyan-500 focus:bg-white/10 transition-all"
                   />
                   <button
                     type="submit"
-                    className="px-6 py-3 bg-gradient-to-r from-digiqo-accent to-digiqo-secondary text-white font-semibold rounded-full hover:shadow-lg hover:shadow-digiqo-accent/20 transition-all duration-300 transform hover:scale-105"
+                    className="px-4 py-2.5 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white text-sm font-medium rounded-lg hover:from-cyan-600 hover:to-cyan-700 transition-all duration-300 transform hover:scale-[1.02]"
                   >
                     S'abonner
                   </button>
@@ -163,8 +170,8 @@ export const Footer = () => {
 
               {/* Social links */}
               <div>
-                <p className="text-white font-medium mb-4">Suivez-nous</p>
-                <div className="flex flex-wrap gap-3">
+                <p className="text-gray-300 text-sm mb-3">Suivez-nous</p>
+                <div className="flex flex-wrap gap-2">
                   {navigation.social.map((item) => {
                     const Icon = item.icon
                     return (
@@ -175,9 +182,9 @@ export const Footer = () => {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
-                        className="w-10 h-10 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-digiqo-accent rounded-full flex items-center justify-center transition-all duration-300"
+                        className="w-9 h-9 bg-white/5 hover:bg-cyan-500/20 border border-gray-700 hover:border-cyan-500 rounded-lg flex items-center justify-center transition-all duration-300 group"
                       >
-                        <Icon className="w-5 h-5 text-white" />
+                        <Icon className="w-4 h-4 text-gray-400 group-hover:text-cyan-400 transition-colors" />
                       </motion.a>
                     )
                   })}
@@ -188,28 +195,28 @@ export const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10">
+        <div className="border-t border-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               {/* Copyright */}
-              <div className="text-white font-medium text-sm text-center md:text-left">
+              <div className="text-gray-400 text-xs text-center md:text-left">
                 © {currentYear} Digiqo. Tous droits réservés. Made with 
-                <span className="text-digiqo-accent mx-1">♥</span> 
+                <span className="text-cyan-500 mx-1">♥</span> 
                 in La Réunion 🇷🇪
               </div>
 
               {/* Legal links */}
-              <div className="flex flex-wrap justify-center gap-4 text-sm">
+              <div className="flex flex-wrap justify-center gap-1 text-xs">
                 {navigation.legal.map((item, index) => (
                   <div key={item.name} className="flex items-center">
                     <Link
                       href={item.href}
-                      className="text-white font-medium hover:text-white transition-colors duration-200"
+                      className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 px-2"
                     >
                       {item.name}
                     </Link>
                     {index < navigation.legal.length - 1 && (
-                      <span className="ml-4 text-white/20">|</span>
+                      <span className="text-gray-700">•</span>
                     )}
                   </div>
                 ))}
