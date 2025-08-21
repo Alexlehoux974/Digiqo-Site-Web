@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 import { Check, Globe, Share2, Megaphone, Sparkles, Search, ArrowRight } from 'lucide-react'
 import ServiceLayout from '../../components/ServiceLayout/ServiceLayout'
 import { servicesSEO } from '../../lib/seo-data'
-import { generateContactUrl } from '../../lib/contact-utils'
 import { ServiceHero } from './ServiceHero'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 

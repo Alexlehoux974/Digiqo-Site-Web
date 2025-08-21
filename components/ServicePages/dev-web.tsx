@@ -22,7 +22,6 @@ import {
 } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
-import { generateContactUrl } from '../../lib/contact-utils'
 import { 
   ReactIcon, 
   NodejsIcon, 

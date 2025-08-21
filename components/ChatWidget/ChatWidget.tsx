@@ -144,7 +144,7 @@ export const ChatWidget = () => {
         'Je suis l\'assistant virtuel de Digiqo.',
         'Comment puis-je vous aider aujourd\'hui ?'
       ],
-      defaultLanguage: 'fr',
+      defaultLanguage: 'en',
       allowedFilesMimeTypes: '',
       i18n: {
         fr: {

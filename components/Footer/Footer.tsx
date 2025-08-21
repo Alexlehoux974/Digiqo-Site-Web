@@ -2,7 +2,6 @@ import { motion } from 'framer-motion'
 import { Instagram, Facebook, Linkedin, Youtube, Mail, Phone, MapPin } from 'lucide-react'
 import { SiTiktok, SiX } from 'react-icons/si'
 import Link from 'next/link'
-import { OptimizedImage } from '../ui/OptimizedImage'
 
 const navigation = {
   services: [
@@ -66,7 +65,7 @@ export const Footer = () => {
             >
               <div className="mb-6">
                 <Link href="/">
-                  <OptimizedImage
+                  <img
                     src="/assets/logo1.png"
                     alt="Digiqo Logo"
                     width={250}

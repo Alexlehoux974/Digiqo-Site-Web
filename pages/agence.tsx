@@ -96,8 +96,6 @@ export default function Agence() {
   const ctaParallax = useTransform(scrollYProgress, [0.7, 1], [50, 0])
   
   // Fade effects for sections
-  const valuesFade = useTransform(scrollYProgress, [0.15, 0.3], [0, 1])
-  const teamFade = useTransform(scrollYProgress, [0.35, 0.5], [0, 1])
   const ctaFade = useTransform(scrollYProgress, [0.65, 0.8], [0, 1])
 
   return (

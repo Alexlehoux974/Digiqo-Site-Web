@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { SEO } from '@/components/SEO'
 import { HeaderLuxury } from '@/components/Header'
 import { Footer } from '@/components/Footer'
@@ -94,16 +94,8 @@ const benefits = [
   }
 ]
 
-const eligibilityCriteria = [
-  'Entreprise basée à La Réunion',
-  'Moins de 20 salariés',
-  'Chiffre d\'affaires inférieur à 1 000 000€',
-  'Projet digital concret (création de site, visibilité en ligne, publicité)'
-]
-
 export default function KapNumerik() {
   const [hoveredStep, setHoveredStep] = useState<number | null>(null)
-  const [checkedCriteria, setCheckedCriteria] = useState<boolean[]>(new Array(eligibilityCriteria.length).fill(false))
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   
   useEffect(() => {
@@ -112,21 +104,8 @@ export default function KapNumerik() {
     }
     window.addEventListener('mousemove', handleMouseMove)
     
-    const timer = setTimeout(() => {
-      eligibilityCriteria.forEach((_, index) => {
-        setTimeout(() => {
-          setCheckedCriteria(prev => {
-            const newState = [...prev]
-            newState[index] = true
-            return newState
-          })
-        }, index * 300)
-      })
-    }, 1000)
-    
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)
-      clearTimeout(timer)
     }
   }, [])
   
