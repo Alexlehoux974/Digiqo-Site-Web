@@ -63,18 +63,18 @@ export const Footer = () => {
               transition={{ duration: 0.5 }}
               className="lg:col-span-1"
             >
-              <div className="mb-6">
-                <Link href="/">
+              <div className="mb-8 flex flex-col items-center">
+                <Link href="/" className="block">
                   <img
-                    src="/assets/logo1.png"
+                    src="/android-chrome-512x512.png"
                     alt="Digiqo Logo"
-                    width={250}
-                    height={100}
-                    className="h-24 w-auto"
+                    width={120}
+                    height={120}
+                    className="h-28 w-28 object-contain mx-auto"
                   />
                 </Link>
               </div>
-              <p className="text-gray-300 mb-6 text-sm leading-relaxed">
+              <p className="text-gray-300 mb-6 text-sm leading-relaxed text-center">
                 Votre partenaire digital depuis 2020
               </p>
               <div className="space-y-3">
