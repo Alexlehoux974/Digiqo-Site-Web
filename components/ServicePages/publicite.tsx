@@ -666,7 +666,7 @@ export default function PublicitePage() {
                                 <span className="text-5xl font-bold">
                                   {engagementType === '3mois' ? formula.price.threeMonths : formula.price.annual}
                                 </span>
-                                <span className="text-digiqo-primary/60">/mois</span>
+                                <span className="text-digiqo-primary/60">{engagementType === '3mois' ? '/mois' : '/an'}</span>
                                 {engagementType === '3mois' && (
                                   <span className="text-sm text-digiqo-primary/50">
                                     {formula.engagement || 'Engagement 3 mois minimum'}
@@ -674,7 +674,7 @@ export default function PublicitePage() {
                                 )}
                                 {engagementType === 'annuel' && (
                                   <span className="text-sm text-green-600 font-semibold">
-                                    Économisez 15%
+                                    Économisez 20%
                                   </span>
                                 )}
                               </div>
@@ -823,7 +823,7 @@ export default function PublicitePage() {
                           {engagementType === '3mois' ? formula.price.threeMonths : formula.price.annual}
                         </span>
                         <span className="text-digiqo-primary/60">
-                          {engagementType === '3mois' ? '/mois' : ''}
+                          {engagementType === '3mois' ? '/mois' : '/an'}
                         </span>
                       </div>
 
@@ -936,7 +936,7 @@ export default function PublicitePage() {
                               {engagementType === '3mois' ? formula.price.threeMonths : formula.price.annual}
                             </p>
                             <p className="text-sm opacity-80">
-                              {engagementType === '3mois' ? '/mois' : ''}
+                              {engagementType === '3mois' ? '/mois' : '/an'}
                             </p>
                           </div>
                         </th>
