@@ -273,7 +273,7 @@ const timelineData = [
                 data-nimg="1" 
                 className="ease-in-out scale-100 blur-0 grayscale-0 w-full h-64 object-cover rounded-2xl transition-all duration-700 group-hover:scale-110 object-top" 
                 style={{color:'transparent', objectFit:'cover'}}
-                src="/partenaires/Raymond-portrait.png"
+                src="/partenaires/raymondfinal.webp"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-2xl">
                 <div className="absolute bottom-6 left-6 text-white">

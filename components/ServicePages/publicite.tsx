@@ -160,7 +160,7 @@ export default function PublicitePage() {
         },
         bonus: engagementType === '3mois' ? {
           title: '🎆 Bonus',
-          items: ['1 vidéo offerte dès le 3ème mois']
+          items: ['1 vidéo offerte immédiatement']
         } : {
           title: '🎆 Bonus annuel',
           items: ['2 vidéos offertes/an', 'Économie de 20% sur le tarif mensuel']
@@ -218,7 +218,7 @@ export default function PublicitePage() {
         },
         bonus: engagementType === '3mois' ? {
           title: '🎆 Bonus',
-          items: ['1 vidéo offerte dès le 3ème mois']
+          items: ['1 vidéo offerte immédiatement']
         } : {
           title: '🎆 Bonus annuel',
           items: ['2 vidéos offertes/an', 'Économie de 20% sur le tarif mensuel']
@@ -276,7 +276,7 @@ export default function PublicitePage() {
         },
         bonus: engagementType === '3mois' ? {
           title: '🎆 Bonus',
-          items: ['1 vidéo offerte dès le 3ème mois']
+          items: ['1 vidéo offerte immédiatement']
         } : {
           title: '🎆 Bonus annuel',
           items: ['2 vidéos offertes/an', 'Économie de 20% sur le tarif mensuel']
@@ -335,7 +335,7 @@ export default function PublicitePage() {
         },
         bonus: engagementType === '3mois' ? {
           title: '🎆 Bonus',
-          items: ['1 vidéo offerte dès le 3ème mois']
+          items: ['1 vidéo offerte immédiatement']
         } : {
           title: '🎆 Bonus annuel',
           items: ['2 vidéos offertes/an', 'Économie de 20% sur le tarif mensuel']

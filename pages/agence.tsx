@@ -36,7 +36,7 @@ const team = [
     name: 'Raymond Romero',
     role: 'Responsable des revenus',
     description: "Fort de 20 ans de management commercial, Raymond transforme les défis en opportunités mesurables. Ancien directeur d'une régie publicitaire multi-supports (journal, radio, magazines, web), il a piloté des équipes jusqu'à 10 personnes et bâti des stratégies gagnantes dans des secteurs en constante mutation. Chez Digiqo, il orchestre l'ensemble des sources de revenus — ventes, marketing, partenariats — avec un seul objectif : croissance et alignement stratégique. Ses forces : Leadership, vision business, adaptabilité hors norme, et une obsession pour la performance concrète.",
-    image: '/partenaires/Raymond (1).png',
+    image: '/partenaires/raymondfinal.webp',
     linkedin: 'https://www.linkedin.com/in/raymond-romero/',
     email: 'raymond@digiqo.fr'
   },
