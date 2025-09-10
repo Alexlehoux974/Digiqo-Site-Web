@@ -24,13 +24,14 @@ const staticPages = [
   '/audit'
 ];
 
+// Service pages avec les nouveaux slugs SEO-friendly
 const servicePages = [
-  '/services/publicite',
-  '/services/dev-web',
-  '/services/community',
+  '/services/publicite-en-ligne',
+  '/services/sites-web',
+  '/services/community-management',
   '/services/seo',
   '/services/video',
-  '/services/identite',
+  '/services/identite-de-marque',
   '/services/audit',
   '/services/sitekeeper'
 ];

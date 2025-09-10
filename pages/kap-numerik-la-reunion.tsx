@@ -4,7 +4,6 @@ import { HeaderLuxury } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { Shield, Users, Globe, CheckCircle, ArrowRight, Award, Euro, Heart, FileSignature, FolderOpen, Send, CheckCircle2, Receipt, Banknote, Sparkles, Star } from 'lucide-react'
 import Link from 'next/link'
-import { generateContactUrl } from '@/lib/contact-utils'
 import { useState, useEffect } from 'react'
 import EligibilityCalculator from '@/components/EligibilityCalculator'
 
