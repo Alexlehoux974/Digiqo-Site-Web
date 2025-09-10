@@ -13,17 +13,17 @@ export const seoConfig = {
       keywords: 'agence marketing digital réunion, agence web réunion, marketing digital 974, développement web réunion, SEO réunion, publicité en ligne réunion',
     },
     services: {
-      publicite: {
+      'publicite-en-ligne': {
         title: 'Publicité en ligne & SEA à La Réunion',
         description: 'Boostez votre visibilité avec nos campagnes publicitaires sur Google Ads, Facebook Ads et Instagram. ROI optimisé et suivi personnalisé.',
         keywords: 'publicité en ligne réunion, google ads réunion, facebook ads réunion, SEA réunion, campagne publicitaire 974',
       },
-      'dev-web': {
+      'sites-web': {
         title: 'Développement Web & Applications à La Réunion',
         description: 'Création de sites web modernes, applications mobiles et solutions e-commerce sur mesure. Technologies de pointe et design responsive.',
         keywords: 'développement web réunion, création site internet 974, application mobile réunion, e-commerce réunion, développeur web 974',
       },
-      community: {
+      'community-management': {
         title: 'Community Management à La Réunion',
         description: 'Gestion professionnelle de vos réseaux sociaux. Stratégie de contenu, animation de communauté et croissance de votre audience.',
         keywords: 'community management réunion, gestion réseaux sociaux 974, social media manager réunion, animation communauté réunion',
@@ -38,7 +38,7 @@ export const seoConfig = {
         description: 'Création de contenus vidéo professionnels : spots publicitaires, vidéos corporate, motion design et montage créatif.',
         keywords: 'production vidéo réunion, motion design 974, vidéo corporate réunion, montage vidéo réunion, agence vidéo 974',
       },
-      identite: {
+      'identite-de-marque': {
         title: 'Identité Visuelle & Branding à La Réunion',
         description: 'Création de logos, chartes graphiques et identités visuelles complètes. Donnez une image professionnelle à votre entreprise.',
         keywords: 'identité visuelle réunion, création logo 974, charte graphique réunion, branding réunion, graphiste 974',

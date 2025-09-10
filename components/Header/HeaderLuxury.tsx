@@ -56,7 +56,7 @@ const navigation = {
           title: 'Service Premium',
           subtitle: 'Notre expertise à votre service',
           image: '/assets/services-featured.jpg',
-          href: '/services/publicite'
+          href: '/services/publicite-en-ligne'
         },
         categories: [
           {
@@ -64,13 +64,13 @@ const navigation = {
             items: [
               { 
                 name: 'Publicité en Ligne', 
-                href: '/services/publicite',
+                href: '/services/publicite-en-ligne',
                 description: 'Campagnes SMA/SEA haute performance',
                 icon: TrendingUp
               },
               { 
                 name: 'Community Management', 
-                href: '/services/community',
+                href: '/services/community-management',
                 description: 'Votre présence sociale optimisée',
                 icon: Users
               },
@@ -88,7 +88,7 @@ const navigation = {
             items: [
               { 
                 name: 'Identité de Marque', 
-                href: '/services/identite',
+                href: '/services/identite-de-marque',
                 description: 'Votre image de marque unique',
                 icon: Sparkles
               },
@@ -100,7 +100,7 @@ const navigation = {
               },
               { 
                 name: 'Développement Web', 
-                href: '/services/dev-web',
+                href: '/services/sites-web',
                 description: 'Sites web haute couture',
                 icon: Code,
                 badge: 'Sur mesure'
@@ -314,7 +314,7 @@ export const HeaderLuxury = () => {
                 className="relative"
               >
                 <OptimizedImage 
-                  src="/assets/logo1.png" 
+                  src="/apple-touch-icon.png" 
                   alt="Digiqo - Excellence Digitale" 
                   width={200}
                   height={60}

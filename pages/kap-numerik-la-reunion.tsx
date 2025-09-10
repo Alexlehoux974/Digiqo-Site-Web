@@ -1102,11 +1102,10 @@ export default function KapNumerik() {
                 className="flex flex-col sm:flex-row gap-6 justify-center items-center"
               >
                 {/* Primary CTA */}
-                <Link
-                  href={generateContactUrl({
-                    service: 'kap-numerik',
-                    description: 'Je souhaite démarrer mon projet Kap Numérik'
-                  })}
+                <a
+                  href="https://demarches.cr-reunion.fr/economie/kap-numerik-2023/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group relative inline-flex items-center gap-3 px-12 py-6 overflow-hidden rounded-2xl transition-all duration-300 transform hover:scale-105"
                 >
                   <div className="absolute inset-0 bg-white transition-transform duration-500 group-hover:scale-110" />
@@ -1124,7 +1123,7 @@ export default function KapNumerik() {
                   
                   {/* Glow effect */}
                   <div className="absolute inset-0 -z-10 bg-white/50 blur-2xl group-hover:blur-3xl transition-all duration-500" />
-                </Link>
+                </a>
                 
                 {/* Secondary CTA */}
                 <motion.a

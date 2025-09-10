@@ -438,12 +438,14 @@ export default function EligibilityCalculator() {
                 </div>
                 
                 <div className="space-y-3">
-                  <Link
-                    href={`#contact?service=kap-numerik&description=${encodeURIComponent(`Projet: ${formData.projectType}, Budget: ${formData.projectBudget}€, Subvention estimée: ${subsidyAmount}€`)}`}
+                  <a
+                    href="https://wa.me/262693538342"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full px-6 py-4 bg-gradient-to-r from-digiqo-secondary to-digiqo-primary text-white font-bold rounded-xl hover:shadow-lg transition-all"
                   >
                     Je démarre mon projet avec Digiqo
-                  </Link>
+                  </a>
                   
                   <button
                     onClick={resetCalculator}

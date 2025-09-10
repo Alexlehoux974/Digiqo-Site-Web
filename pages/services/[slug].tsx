@@ -19,12 +19,12 @@ interface ServicePageProps {
 
 // Map slugs to components
 const serviceComponents: Record<ServiceSlug, React.ComponentType> = {
-  'publicite': PublicitePage,
-  'dev-web': DevWebPage,
-  'community': CommunityPage,
+  'publicite-en-ligne': PublicitePage,
+  'sites-web': DevWebPage,
+  'community-management': CommunityPage,
   'seo': SEOPage,
   'video': VideoPage,
-  'identite': IdentitePage,
+  'identite-de-marque': IdentitePage,
   'audit': AuditPage,
   'sitekeeper': SitekeeperPage
 };

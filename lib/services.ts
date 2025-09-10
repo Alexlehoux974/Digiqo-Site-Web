@@ -1,11 +1,11 @@
 // Service definitions for static generation
 export const services = [
-  { slug: 'publicite', name: 'Publicité en ligne' },
-  { slug: 'dev-web', name: 'Développement web' },
-  { slug: 'community', name: 'Community management' },
+  { slug: 'publicite-en-ligne', name: 'Publicité en ligne' },
+  { slug: 'sites-web', name: 'Développement web' },
+  { slug: 'community-management', name: 'Community management' },
   { slug: 'seo', name: 'SEO' },
   { slug: 'video', name: 'Production vidéo' },
-  { slug: 'identite', name: 'Identité visuelle' },
+  { slug: 'identite-de-marque', name: 'Identité visuelle' },
   { slug: 'audit', name: 'Audit digital' },
   { slug: 'sitekeeper', name: 'Sitekeeper' }
 ] as const;
