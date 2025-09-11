@@ -18,7 +18,8 @@ import {
   FileText,
   CreditCard,
   Headphones,
-  RefreshCw
+  RefreshCw,
+  MessageCircle
 } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
@@ -855,13 +856,15 @@ export default function DevWebPage() {
               </div>
               
               <motion.a
-                href="/#contact"
+                href="https://wa.me/262693538342"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl hover:from-green-600 hover:to-green-700 transition-all duration-300"
               >
-                Parlons de votre projet
-                <ArrowRight className="w-5 h-5" />
+                Contactez-nous sur WhatsApp
+                <MessageCircle className="w-5 h-5" />
               </motion.a>
               
               <p className="text-sm text-digiqo-primary/60 mt-4">
@@ -1067,13 +1070,15 @@ export default function DevWebPage() {
               Discutons de votre projet et trouvons ensemble la solution parfaite pour votre entreprise.
             </p>
             <motion.a
-              href="/#contact"
+              href="https://wa.me/262693538342"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-digiqo-accent text-white font-bold rounded-full hover:bg-digiqo-accent/90 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
-              Démarrer mon projet
-              <ArrowRight className="w-5 h-5" />
+              Contactez-nous sur WhatsApp
+              <MessageCircle className="w-5 h-5" />
             </motion.a>
           </motion.div>
         </div>
