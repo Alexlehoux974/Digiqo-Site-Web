@@ -32,7 +32,7 @@ export default function IdentitePage() {
     {
       id: brandProductsData[0]?.id || 'brand-001',
       name: 'Création Logo',
-      price: '850€',
+      price: 'Sur devis',
       description: 'Logo professionnel unique et mémorable pour votre marque',
       features: [
         '🎨 3 propositions de concepts créatifs',
@@ -44,14 +44,17 @@ export default function IdentitePage() {
         '📐 Versions noir et blanc incluses',
         '💾 Fichiers sources AI, EPS, PNG, JPG, PDF'
       ],
-      paymentLink: brandProductsData.find(p => p.name === 'Création Logo')?.paymentLink,
+      paymentLink: generateContactUrl({ 
+        service: 'identite',
+        description: 'Je souhaite un devis pour une création de logo professionnel' 
+      }),
       icon: Brush,
       gradient: 'from-purple-600 to-pink-700'
     },
     {
       id: brandProductsData[3]?.id || 'brand-004',
       name: 'Refonte Logo',
-      price: '650€',
+      price: 'Sur devis',
       description: 'Modernisation de votre logo existant en conservant votre ADN',
       features: [
         '🔍 Analyse de l\'existant',
@@ -62,14 +65,17 @@ export default function IdentitePage() {
         '🔄 Migration progressive',
         '📁 Tous les formats inclus'
       ],
-      paymentLink: brandProductsData.find(p => p.name === 'Refonte Logo')?.paymentLink,
+      paymentLink: generateContactUrl({ 
+        service: 'identite',
+        description: 'Je souhaite un devis pour une refonte de mon logo existant' 
+      }),
       icon: RefreshCw,
       gradient: 'from-emerald-600 to-teal-700'
     },
     {
       id: brandProductsData[1]?.id || 'brand-002',
       name: 'Charte Graphique Complète',
-      price: '2 800€',
+      price: 'Sur devis',
       description: 'Guide complet de votre identité visuelle pour une cohérence parfaite',
       features: [
         '📖 Document de 30+ pages personnalisé',
@@ -81,7 +87,10 @@ export default function IdentitePage() {
         '📑 Templates pour documents',
         '🖼️ Exemples d\'applications concrètes'
       ],
-      paymentLink: brandProductsData.find(p => p.name === 'Charte Graphique Complète')?.paymentLink,
+      paymentLink: generateContactUrl({ 
+        service: 'identite',
+        description: 'Je souhaite un devis pour une charte graphique complète' 
+      }),
       icon: Layers,
       gradient: 'from-indigo-600 to-blue-700',
       bestValue: true
@@ -89,7 +98,7 @@ export default function IdentitePage() {
     {
       id: brandProductsData[2]?.id || 'brand-003',
       name: 'Branding Complet Startup',
-      price: '5 500€',
+      price: 'Sur devis',
       description: 'Pack identité complète pour lancer votre entreprise avec impact',
       features: [
         '🚀 Stratégie de marque complète',
@@ -102,7 +111,10 @@ export default function IdentitePage() {
         '📚 Guide de communication',
         '🤝 3 mois d\'accompagnement inclus'
       ],
-      paymentLink: brandProductsData.find(p => p.name === 'Branding Complet Startup')?.paymentLink,
+      paymentLink: generateContactUrl({ 
+        service: 'identite',
+        description: 'Je souhaite un devis pour un branding complet startup' 
+      }),
       icon: Package,
       gradient: 'from-orange-600 to-red-700'
     }
@@ -183,43 +195,8 @@ export default function IdentitePage() {
       />
 
       {/* Products Section */}
-      {/* TODO: Pour réactiver cette section, simplement retirer le div avec className="relative" et son contenu overlay */}
       <section id="produits" className="py-24 bg-gradient-to-br from-gray-50 to-white">
-        <div className="relative">
-          {/* Overlay temporaire - À retirer pour activer la section */}
-          <div className="absolute inset-0 z-20 flex items-center justify-center">
-            <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl p-8 md:p-12 max-w-2xl mx-4 border-2 border-digiqo-primary/20">
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.5, type: "spring" }}
-                className="text-center"
-              >
-                <div className="mb-6">
-                  <span className="text-6xl">🎨</span>
-                </div>
-                <h3 className="text-3xl md:text-4xl font-bold text-digiqo-primary mb-4">
-                  Nos artistes sont en pleine création...
-                </h3>
-                <p className="text-lg text-digiqo-primary/70 mb-6">
-                  Cette section est actuellement en cours de personnalisation pour mieux vous servir.
-                  <br />
-                  <span className="text-base italic">
-                    (Traduction : on peaufine les prix pour que votre banquier sourie aussi 😉)
-                  </span>
-                </p>
-                <div className="inline-flex items-center gap-2 px-6 py-3 bg-digiqo-primary/10 rounded-full">
-                  <span className="text-digiqo-accent font-semibold">Disponible très bientôt</span>
-                  <span className="animate-pulse">✨</span>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-          {/* Fin de l'overlay temporaire */}
-          
-          {/* Contenu original avec blur - NE PAS SUPPRIMER */}
-          <div className="blur-sm pointer-events-none">
-            <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4">
               <motion.div
                 {...ANIMATION.entry.fadeInUp}
                 whileInView={ANIMATION.entry.fadeInUp.animate}
@@ -274,10 +251,10 @@ export default function IdentitePage() {
                   {/* Price */}
                   <div className="p-4 bg-gray-50 border-b border-gray-100">
                     <div className="text-center">
-                      <p className="text-3xl font-bold text-digiqo-primary">
+                      <p className="text-2xl font-bold text-digiqo-primary">
                         {product.price}
                       </p>
-                      <p className="text-gray-600 text-sm mt-1">Projet unique</p>
+                      <p className="text-gray-600 text-sm mt-1">Tarif personnalisé selon vos besoins</p>
                     </div>
                   </div>
 
@@ -312,25 +289,20 @@ export default function IdentitePage() {
                   {/* CTA */}
                   <div className="p-4 bg-gray-50">
                     <a
-                      href={product.paymentLink || generateContactUrl({ service: 'identite', description: `Je souhaite commander : ${product.name}` })}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={product.paymentLink}
                       className={`block w-full py-3 px-4 text-center font-semibold rounded-full transition-all text-sm
                         ${product.bestValue 
                           ? 'bg-gradient-to-r from-digiqo-accent to-orange-500 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1' 
                           : 'bg-white border-2 border-gray-300 text-gray-700 hover:border-digiqo-accent hover:text-digiqo-accent'
                         }`}
                     >
-                      Commander
+                      Demander un devis
                     </a>
                   </div>
                 </div>
               </motion.div>
             ))}
-              </div>
-            </div>
           </div>
-          {/* Fin du contenu avec blur */}
         </div>
       </section>
 
@@ -508,14 +480,10 @@ export default function IdentitePage() {
 
                 <div className="flex flex-col sm:flex-row gap-6 justify-center">
                   <motion.a
-                    href={(() => {
-                      const brandProducts = getProductsForService('identite')
-                      const logoProduct = brandProducts.find(p => p.name.includes('Logo'))
-                      return logoProduct?.paymentLink || generateContactUrl({ 
-                        service: 'identite',
-                        description: 'Je souhaite une consultation gratuite pour mon identité de marque' 
-                      })
-                    })()}
+                    href={generateContactUrl({ 
+                      service: 'identite',
+                      description: 'Je souhaite une consultation gratuite pour mon identité de marque' 
+                    })}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="group relative inline-flex items-center gap-3 px-8 py-4 overflow-hidden rounded-2xl font-bold transition-all duration-300"
