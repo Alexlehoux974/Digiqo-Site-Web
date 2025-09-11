@@ -636,7 +636,7 @@ export default function PublicitePage() {
                   className="relative"
                 >
                   {/* Desktop: Dynamic Flip Card */}
-                  <div className="hidden md:block relative h-[450px]" style={{ perspective: '1000px' }}>
+                  <div className="hidden md:block relative h-[500px]" style={{ perspective: '1000px' }}>
                     <motion.div
                       className="absolute inset-0 w-full h-full"
                       animate={{ rotateY: isFlipped ? 180 : 0 }}
@@ -652,7 +652,7 @@ export default function PublicitePage() {
                           {/* Gradient accent */}
                           <div className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${formula.gradient}`} />
                           
-                          <div className="p-8">
+                          <div className="p-8 pb-10">
                             {/* Header */}
                             <div className="mb-8">
                               <h3 className={`text-4xl font-bold bg-gradient-to-r ${formula.gradient} bg-clip-text text-transparent mb-4`}>
