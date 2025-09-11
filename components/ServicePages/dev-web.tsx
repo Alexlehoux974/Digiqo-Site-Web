@@ -7,7 +7,6 @@ import { SectionGradientOrbs } from '@/components/ui/animated-gradient-orb'
 import { ServiceHero } from './ServiceHero'
 import { 
   Code, 
-  ArrowRight, 
   Shield, 
   Rocket,
   CheckCircle2,

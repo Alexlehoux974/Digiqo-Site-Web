@@ -12,7 +12,6 @@ import {
 } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
-import { generateContactUrl } from '../../lib/contact-utils'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 import { ServiceHero } from './ServiceHero'
 
