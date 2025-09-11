@@ -98,6 +98,7 @@ export const ServiceHero: React.FC<ServiceHeroProps> = ({
               {ctaButtons.primary && (
                 <motion.a
                   href={ctaButtons.primary.href}
+                  {...(ctaButtons.primary.href.startsWith('http') && !ctaButtons.primary.href.includes('digiqo') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                   whileHover={ANIMATION.hover.scale}
                   whileTap={ANIMATION.tap.scale}
                   className={`group inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r ${gradientFrom} ${gradientTo.replace('to-', 'to-')} text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto`}
@@ -110,6 +111,7 @@ export const ServiceHero: React.FC<ServiceHeroProps> = ({
               {ctaButtons.secondary && (
                 <motion.a
                   href={ctaButtons.secondary.href}
+                  {...(ctaButtons.secondary.href.startsWith('http') && !ctaButtons.secondary.href.includes('digiqo') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                   whileHover={ANIMATION.hover.scale}
                   whileTap={ANIMATION.tap.scale}
                   className="group inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-digiqo-secondary/90 text-white font-bold rounded-2xl border border-digiqo-secondary/50 hover:border-digiqo-secondary shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"

@@ -253,7 +253,7 @@ export default function DevWebPage() {
         ctaButtons={{
           primary: {
             text: "Demander un devis",
-            href: "/#contact"
+            href: "https://wa.me/262693538342"
           },
           secondary: {
             text: "Voir nos réalisations",
