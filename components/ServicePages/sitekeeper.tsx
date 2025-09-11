@@ -333,6 +333,8 @@ export default function SiteKeeperPage() {
                     <div className="p-6 bg-gray-50">
                       <a
                         href={formula.paymentLink || generateContactUrl({ service: 'sitekeeper', formula: formula.name })}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className={`block w-full py-4 px-6 text-center font-semibold rounded-full transition-all
                           ${formula.bestValue 
                             ? 'bg-gradient-to-r from-digiqo-accent to-orange-500 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1' 
@@ -418,6 +420,8 @@ export default function SiteKeeperPage() {
                     <div className="p-6 bg-gray-50">
                       <a
                         href={formula.paymentLink || generateContactUrl({ service: 'sitekeeper', formula: formula.name })}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="block w-full py-4 px-6 text-center font-semibold rounded-full transition-all bg-white border-2 border-gray-300 text-gray-700 hover:border-digiqo-secondary hover:text-digiqo-secondary"
                       >
                         Choisir cette formule

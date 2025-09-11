@@ -18,7 +18,8 @@ import {
   ArrowUpRight,
   X,
   Crown,
-  Rocket
+  Rocket,
+  MessageCircle
 } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
@@ -730,6 +731,8 @@ export default function PublicitePage() {
                                   ? (formula.paymentLinkMonthly || generateContactUrl({ formula: formula.name.toLowerCase(), service: 'publicite', description: `Formule ${formula.name} - Engagement 3 mois` }))
                                   : (formula.paymentLinkAnnual || generateContactUrl({ formula: formula.name.toLowerCase(), service: 'publicite', description: `Formule ${formula.name} - Engagement annuel` }))
                               }
+                              target="_blank"
+                              rel="noopener noreferrer"
                               whileHover={{ scale: 1.02 }}
                               whileTap={ANIMATION.tap.scaleSmall}
                               className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}
@@ -809,6 +812,8 @@ export default function PublicitePage() {
                                     ? (formula.paymentLinkMonthly || generateContactUrl({ formula: formula.name.toLowerCase(), service: activeSection, description: `Formule ${formula.name} - Engagement 3 mois` }))
                                     : (formula.paymentLinkAnnual || generateContactUrl({ formula: formula.name.toLowerCase(), service: activeSection, description: `Formule ${formula.name} - Engagement annuel` }))
                                 }
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={ANIMATION.tap.scaleSmall}
                                 className={`mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}
@@ -917,6 +922,8 @@ export default function PublicitePage() {
                             ? (formula.paymentLinkMonthly || generateContactUrl({ formula: formula.name.toLowerCase(), description: `Formule ${formula.name} - Engagement 3 mois` }))
                             : (formula.paymentLinkAnnual || generateContactUrl({ formula: formula.name.toLowerCase(), description: `Formule ${formula.name} - Engagement annuel` }))
                         }
+                        target="_blank"
+                        rel="noopener noreferrer"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-2xl shadow-lg`}
@@ -1036,6 +1043,8 @@ export default function PublicitePage() {
                             <motion.a
                               key={formula.id}
                               href={(engagementType === '3mois' ? formula.paymentLinkMonthly : formula.paymentLinkAnnual) || generateContactUrl({ formula: formula.name.toLowerCase(), service: 'publicite', description: `Formule ${formula.name} - Engagement ${engagementType === '3mois' ? '3 mois' : 'annuel'}` })}
+                              target="_blank"
+                              rel="noopener noreferrer"
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
                               className={`inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-xl shadow-lg`}
@@ -1053,7 +1062,7 @@ export default function PublicitePage() {
             </motion.div>
           )}
 
-          {/* Additional formulas mention */}
+          {/* WhatsApp CTA */}
           <motion.div
             {...ANIMATION.entry.fadeInUp}
             whileInView={ANIMATION.entry.fadeInUp.animate}
@@ -1061,14 +1070,14 @@ export default function PublicitePage() {
             className="mt-16 text-center"
           >
             <a
-              href={generateContactUrl({ 
-                service: 'publicite', 
-                description: 'Je souhaite des informations sur les formules Expansion et Domination' 
-              })}
-              className="inline-flex items-center gap-2 text-digiqo-accent font-bold hover:underline"
+              href="https://wa.me/262693538342"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
-              En savoir plus
-              <ArrowRight className="w-4 h-4" />
+              <MessageCircle className="w-6 h-6" />
+              Contactez-nous sur WhatsApp
+              <ArrowRight className="w-5 h-5" />
             </a>
           </motion.div>
         </div>
