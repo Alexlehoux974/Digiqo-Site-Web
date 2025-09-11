@@ -22,6 +22,7 @@ import {
 } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
+import { generateWhatsAppLink } from '../../lib/whatsapp-utils'
 import { 
   ReactIcon, 
   NodejsIcon, 
@@ -252,7 +253,7 @@ export default function DevWebPage() {
         ctaButtons={{
           primary: {
             text: "Demander un devis",
-            href: "https://wa.me/262693538342"
+            href: generateWhatsAppLink({ service: 'dev-web', context: 'devis' })
           },
           secondary: {
             text: "Voir nos réalisations",
@@ -855,7 +856,7 @@ export default function DevWebPage() {
               </div>
               
               <motion.a
-                href="https://wa.me/262693538342"
+                href={generateWhatsAppLink({ service: 'dev-web', context: 'projet' })}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -1069,7 +1070,7 @@ export default function DevWebPage() {
               Discutons de votre projet et trouvons ensemble la solution parfaite pour votre entreprise.
             </p>
             <motion.a
-              href="https://wa.me/262693538342"
+              href={generateWhatsAppLink({ service: 'dev-web' })}
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}

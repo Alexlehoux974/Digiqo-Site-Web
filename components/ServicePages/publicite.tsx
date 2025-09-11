@@ -24,6 +24,7 @@ import {
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
 import { generateContactUrl } from '../../lib/contact-utils'
+import { generateWhatsAppLink } from '../../lib/whatsapp-utils'
 import { 
   getProductsForService
 } from '../../lib/airtable-products'
@@ -1070,7 +1071,7 @@ export default function PublicitePage() {
             className="mt-16 text-center"
           >
             <a
-              href="https://wa.me/262693538342"
+              href={generateWhatsAppLink({ service: 'publicite' })}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
