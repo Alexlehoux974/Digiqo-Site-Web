@@ -505,12 +505,6 @@ export default function SEOPage() {
                 Audit SEO Gratuit
                 <ArrowRight className="w-5 h-5" />
               </a>
-              <a
-                href="tel:0692731111"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-digiqo-primary text-white font-bold rounded-full hover:bg-digiqo-primary-dark transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
-                Appeler maintenant
-              </a>
             </div>
           </motion.div>
         </div>
