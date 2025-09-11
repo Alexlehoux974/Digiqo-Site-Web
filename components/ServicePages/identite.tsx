@@ -219,7 +219,7 @@ export default function IdentitePage() {
                 whileInView={ANIMATION.entry.fadeInUp.animate}
                 viewport={{ once: true }}
                 transition={{ delay: getStaggerDelay(index) }}
-                className="relative"
+                className="relative flex"
               >
                 {product.bestValue && (
                   <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 z-10">
@@ -238,18 +238,18 @@ export default function IdentitePage() {
                   </div>
                 )}
                 
-                <div className={`bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden h-full ${
+                <div className={`bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden w-full flex flex-col ${
                   product.bestValue ? 'ring-2 ring-digiqo-accent' : ''
                 }`}>
-                  {/* Header */}
-                  <div className={`p-6 bg-gradient-to-br ${product.gradient}`}>
+                  {/* Header - Fixed height */}
+                  <div className={`p-6 bg-gradient-to-br ${product.gradient} min-h-[160px]`}>
                     <product.icon className="w-10 h-10 text-white mb-3" />
                     <h3 className="text-xl font-bold text-white mb-2">{product.name}</h3>
-                    <p className="text-white/90 text-xs">{product.description}</p>
+                    <p className="text-white/90 text-sm line-clamp-2">{product.description}</p>
                   </div>
 
-                  {/* Price */}
-                  <div className="p-4 bg-gray-50 border-b border-gray-100">
+                  {/* Price - Fixed height */}
+                  <div className="p-4 bg-gray-50 border-b border-gray-100 min-h-[100px] flex items-center justify-center">
                     <div className="text-center">
                       <p className="text-2xl font-bold text-digiqo-primary">
                         {product.price}
@@ -258,8 +258,8 @@ export default function IdentitePage() {
                     </div>
                   </div>
 
-                  {/* Features */}
-                  <div className="p-4">
+                  {/* Features - Flex grow to fill space */}
+                  <div className="p-4 flex-grow">
                     <ul className="space-y-2">
                       {product.features.slice(0, 5).map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-2">
@@ -286,8 +286,8 @@ export default function IdentitePage() {
                     )}
                   </div>
 
-                  {/* CTA */}
-                  <div className="p-4 bg-gray-50">
+                  {/* CTA - Always at bottom */}
+                  <div className="p-4 bg-gray-50 mt-auto">
                     <a
                       href={product.paymentLink}
                       className={`block w-full py-3 px-4 text-center font-semibold rounded-full transition-all text-sm
