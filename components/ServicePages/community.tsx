@@ -259,8 +259,8 @@ export default function CommunityPage() {
         subtitle="Développez votre communauté et votre engagement sur les réseaux sociaux"
         ctaButtons={{
           primary: {
-            text: "Découvrir nos formules",
-            href: "#formules"
+            text: "Contactez-nous sur WhatsApp",
+            href: "https://wa.me/262693538342"
           }
         }}
         gradientFrom="from-digiqo-secondary"
