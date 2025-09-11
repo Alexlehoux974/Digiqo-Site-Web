@@ -681,7 +681,7 @@ export default function PublicitePage() {
                             </div>
 
                             {/* Interactive sections grid - Show all 4 */}
-                            <div className="grid grid-cols-4 gap-3">
+                            <div className="grid grid-cols-4 gap-3 mb-6">
                               {Object.entries(formula.sections).map(([key, section]) => {
                                 if (!section) return null
                                 const Icon = key === 'services' ? TrendingUp : 
@@ -722,6 +722,21 @@ export default function PublicitePage() {
                                 )
                               })}
                             </div>
+
+                            {/* CTA Button on Front */}
+                            <motion.a
+                              href={
+                                engagementType === '3mois' 
+                                  ? (formula.paymentLinkMonthly || generateContactUrl({ formula: formula.name.toLowerCase(), service: 'publicite', description: `Formule ${formula.name} - Engagement 3 mois` }))
+                                  : (formula.paymentLinkAnnual || generateContactUrl({ formula: formula.name.toLowerCase(), service: 'publicite', description: `Formule ${formula.name} - Engagement annuel` }))
+                              }
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={ANIMATION.tap.scaleSmall}
+                              className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}
+                            >
+                              Choisir cette formule
+                              <ArrowUpRight className="w-5 h-5" />
+                            </motion.a>
                           </div>
                         </div>
                       </div>
