@@ -21,7 +21,7 @@ interface CreativeProduct {
 }
 
 export default function VideoPage() {
-  const seoData = servicesSEO['video-visuel-publicitaire-974']
+  const seoData = servicesSEO['creatifs-publicitaires-974']
 
   // Produits MRR depuis Airtable (4 abonnements mensuels)
   const mrrProducts: CreativeProduct[] = [
