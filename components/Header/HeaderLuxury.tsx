@@ -94,7 +94,7 @@ const navigation = {
               },
               { 
                 name: 'Visuels & Vidéos', 
-                href: '/services/video',
+                href: '/services/creatifs',
                 description: 'Contenus visuels impactants',
                 icon: Palette
               },

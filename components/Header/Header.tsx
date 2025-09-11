@@ -14,7 +14,7 @@ const navigation = {
       href: '#',
       submenu: [
         { name: 'Publicité en Ligne (SMA/SEA)', href: '/services/publicite' },
-        { name: 'Production Vidéo', href: '/services/video' },
+        { name: 'Production Vidéo', href: '/services/creatifs' },
         { name: 'Développement Web', href: '/services/dev-web' },
         { name: 'Référencement (SEO)', href: '/services/seo' },
         { name: 'Community Management', href: '/services/community' },

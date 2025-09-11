@@ -33,7 +33,7 @@ export const seoConfig = {
         description: 'Optimisez votre visibilité sur Google. Audit SEO, stratégie de contenu et amélioration du positionnement de votre site web.',
         keywords: 'SEO réunion, référencement naturel 974, consultant SEO réunion, optimisation site web réunion, audit SEO 974',
       },
-      video: {
+      creatifs: {
         title: 'Production Vidéo & Motion Design à La Réunion',
         description: 'Création de contenus vidéo professionnels : spots publicitaires, vidéos corporate, motion design et montage créatif.',
         keywords: 'production vidéo réunion, motion design 974, vidéo corporate réunion, montage vidéo réunion, agence vidéo 974',

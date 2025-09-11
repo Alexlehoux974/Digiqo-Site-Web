@@ -9,7 +9,7 @@ const navigation = {
     { name: 'Développement Web', href: '/services/dev-web' },
     { name: 'Community Management', href: '/services/community' },
     { name: 'Référencement SEO', href: '/services/seo' },
-    { name: 'Production Vidéo', href: '/services/video' },
+    { name: 'Production Vidéo', href: '/services/creatifs' },
     { name: 'Identité de Marque', href: '/services/identite' },
     { name: 'Maintenance Web', href: '/services/sitekeeper' },
     { name: 'Audit Digital Gratuit', href: '/audit' },

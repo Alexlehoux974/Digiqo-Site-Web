@@ -4,7 +4,7 @@ export const services = [
   { slug: 'sites-web', name: 'Développement web' },
   { slug: 'community-management', name: 'Community management' },
   { slug: 'seo', name: 'SEO' },
-  { slug: 'video', name: 'Production vidéo' },
+  { slug: 'creatifs', name: 'Production vidéo' },
   { slug: 'identite-de-marque', name: 'Identité visuelle' },
   { slug: 'audit', name: 'Audit digital' },
   { slug: 'sitekeeper', name: 'Sitekeeper' }

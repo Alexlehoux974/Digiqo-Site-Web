@@ -79,7 +79,7 @@ const services: Service[] = [
     gradient: 'from-red-500 to-orange-500',
     gridClass: 'col-span-2 row-span-2 md:col-start-1 md:row-start-3',
     size: 'medium',
-    link: '/services/video',
+    link: '/services/creatifs',
     keywords: ['production vidéo Réunion', 'création visuelle 974']
   },
   {

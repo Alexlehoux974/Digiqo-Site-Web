@@ -23,7 +23,7 @@ const serviceComponents: Record<ServiceSlug, React.ComponentType> = {
   'sites-web': DevWebPage,
   'community-management': CommunityPage,
   'seo': SEOPage,
-  'video': VideoPage,
+  'creatifs': VideoPage,
   'identite-de-marque': IdentitePage,
   'audit': AuditPage,
   'sitekeeper': SitekeeperPage
