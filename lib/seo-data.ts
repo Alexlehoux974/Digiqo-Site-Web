@@ -28,12 +28,12 @@ export const servicesSEO = {
     h1: 'Référencement SEO à La Réunion',
     urlSlug: 'referencement-seo-reunion'
   },
-  'video-visuel-publicitaire-974': {
-    title: 'Production Vidéo La Réunion | Création Visuelle 974 - Digiqo',
-    description: 'Production vidéo et création visuelle à La Réunion. Vidéos publicitaires, corporate, réseaux sociaux. Studio de production audiovisuelle 974.',
-    keywords: 'production vidéo Réunion, création visuelle 974, vidéo publicitaire La Réunion, montage vidéo 974, photographe professionnel Réunion',
-    h1: 'Production Vidéo & Visuelle à La Réunion',
-    urlSlug: 'video-visuel-publicitaire-974'
+  'creatifs-publicitaires-974': {
+    title: 'Créatifs Publicitaires La Réunion | Production Visuelle 974 - Digiqo',
+    description: 'Créatifs publicitaires et production visuelle à La Réunion. Vidéos publicitaires, corporate, réseaux sociaux. Studio de création audiovisuelle 974.',
+    keywords: 'créatifs publicitaires Réunion, production vidéo 974, création visuelle La Réunion, montage vidéo 974, agence créative Réunion',
+    h1: 'Créatifs Publicitaires à La Réunion',
+    urlSlug: 'creatifs-publicitaires-974'
   },
   'identite-marque-reunion': {
     title: 'Création Logo & Identité Visuelle La Réunion | Branding 974 - Digiqo',

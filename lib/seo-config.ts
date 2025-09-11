@@ -34,9 +34,9 @@ export const seoConfig = {
         keywords: 'SEO réunion, référencement naturel 974, consultant SEO réunion, optimisation site web réunion, audit SEO 974',
       },
       creatifs: {
-        title: 'Production Vidéo & Motion Design à La Réunion',
-        description: 'Création de contenus vidéo professionnels : spots publicitaires, vidéos corporate, motion design et montage créatif.',
-        keywords: 'production vidéo réunion, motion design 974, vidéo corporate réunion, montage vidéo réunion, agence vidéo 974',
+        title: 'Créatifs Publicitaires & Motion Design à La Réunion',
+        description: 'Création de contenus visuels professionnels : spots publicitaires, vidéos corporate, motion design et montage créatif.',
+        keywords: 'créatifs publicitaires réunion, production vidéo 974, motion design réunion, vidéo corporate 974, agence créative réunion',
       },
       'identite-de-marque': {
         title: 'Identité Visuelle & Branding à La Réunion',

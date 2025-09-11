@@ -73,7 +73,7 @@ const services: Service[] = [
   },
   {
     id: 'video',
-    title: 'Visuels & Vidéos',
+    title: 'Créatifs Publicitaires',
     description: 'Production de contenus visuels impactants pour votre communication.',
     icon: <Video className="w-6 h-6" />,
     gradient: 'from-red-500 to-orange-500',

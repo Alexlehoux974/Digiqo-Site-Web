@@ -93,7 +93,7 @@ const navigation = {
                 icon: Sparkles
               },
               { 
-                name: 'Visuels & Vidéos', 
+                name: 'Créatifs Publicitaires', 
                 href: '/services/creatifs',
                 description: 'Contenus visuels impactants',
                 icon: Palette
