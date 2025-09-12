@@ -35,7 +35,7 @@ const services: Service[] = [
     gradient: 'from-digiqo-orange via-amber-400 to-yellow-300',
     gridClass: 'col-span-2 md:col-span-4 row-span-3 md:col-start-3 md:row-start-1',
     size: 'large',
-    link: '/services/publicite',
+    link: '/services/publicite-en-ligne',
     keywords: ['Google Ads Réunion', 'Facebook Ads 974', 'publicité digitale']
   },
   {
@@ -46,7 +46,7 @@ const services: Service[] = [
     gradient: 'from-digiqo-blue-light to-digiqo-blue-dark',
     gridClass: 'col-span-2 md:col-span-3 row-span-2 md:col-start-7 md:row-start-1',
     size: 'medium',
-    link: '/services/dev-web',
+    link: '/services/sites-web',
     keywords: ['création site web Réunion', 'développeur web 974']
   },
   {
@@ -57,7 +57,7 @@ const services: Service[] = [
     gradient: 'from-pink-500 to-purple-600',
     gridClass: 'col-span-2 row-span-2 md:col-start-1 md:row-start-1',
     size: 'medium',
-    link: '/services/community',
+    link: '/services/community-management',
     keywords: ['community manager Réunion', 'gestion réseaux sociaux']
   },
   {
@@ -90,7 +90,7 @@ const services: Service[] = [
     gradient: 'from-purple-600 to-pink-600',
     gridClass: 'col-span-1 md:col-span-2 row-span-1 md:col-start-3 md:row-start-4',
     size: 'small',
-    link: '/services/identite',
+    link: '/services/identite-de-marque',
     keywords: ['branding Réunion', 'création logo 974']
   },
   {
