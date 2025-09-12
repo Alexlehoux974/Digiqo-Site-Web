@@ -222,10 +222,10 @@ export const HeaderLuxury = () => {
         //   scale: headerScaleSpring
         // }}
       >
-      {/* Ultra-luxury glass effect */}
+      {/* Ultra-luxury glass effect - Bordeaux on mobile */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-white/80 backdrop-blur-2xl" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-white/30" />
+        <div className="absolute inset-0 bg-digiqo-primary lg:bg-white/80 backdrop-blur-2xl" />
+        <div className="absolute inset-0 bg-gradient-to-b from-digiqo-primary/90 lg:from-white/50 to-digiqo-primary/80 lg:to-white/30" />
         <div className="absolute inset-0" 
           style={{
             backgroundImage: `radial-gradient(circle at 20% 50%, rgba(139, 20, 49, 0.05) 0%, transparent 50%),
@@ -305,7 +305,7 @@ export const HeaderLuxury = () => {
       <nav className="relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-24">
-            {/* Animated Logo */}
+            {/* Animated Logo - Different for mobile */}
             <Link href="/" className="relative">
               <motion.div
                 // Pas de transformation sur le logo
@@ -313,15 +313,30 @@ export const HeaderLuxury = () => {
                 whileHover={{ scale: 1.05 }}
                 className="relative"
               >
-                <OptimizedImage 
-                  src="/apple-touch-icon.png" 
-                  alt="Digiqo - Excellence Digitale" 
-                  width={200}
-                  height={60}
-                  priority
-                  className="h-16 w-auto relative z-10"
-                  objectFit="contain"
-                />
+                {/* Desktop logo */}
+                <div className="hidden lg:block">
+                  <OptimizedImage 
+                    src="/apple-touch-icon.png" 
+                    alt="Digiqo - Excellence Digitale" 
+                    width={200}
+                    height={60}
+                    priority
+                    className="h-16 w-auto relative z-10"
+                    objectFit="contain"
+                  />
+                </div>
+                {/* Mobile logo */}
+                <div className="block lg:hidden">
+                  <OptimizedImage 
+                    src="/logomobile.webp" 
+                    alt="Digiqo - Excellence Digitale" 
+                    width={160}
+                    height={48}
+                    priority
+                    className="h-12 w-auto relative z-10"
+                    objectFit="contain"
+                  />
+                </div>
                 
                 {/* Logo glow effect */}
                 <motion.div
@@ -655,7 +670,7 @@ export const HeaderLuxury = () => {
               </Link>
             </div>
 
-            {/* Mobile Luxury Menu */}
+            {/* Mobile Luxury Menu - White bars on bordeaux background */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="lg:hidden relative w-12 h-12 flex items-center justify-center"
@@ -670,14 +685,14 @@ export const HeaderLuxury = () => {
                     y: isMenuOpen ? 6 : 0,
                     width: isMenuOpen ? 24 : 28
                   }}
-                  className="block h-0.5 bg-gradient-to-r from-digiqo-primary to-digiqo-accent rounded-full"
+                  className="block h-0.5 bg-white rounded-full"
                 />
                 <motion.span
                   animate={{ 
                     opacity: isMenuOpen ? 0 : 1,
                     scaleX: isMenuOpen ? 0 : 1
                   }}
-                  className="block h-0.5 w-6 bg-gradient-to-r from-digiqo-primary to-digiqo-accent rounded-full mt-1.5"
+                  className="block h-0.5 w-6 bg-white rounded-full mt-1.5"
                 />
                 <motion.span
                   animate={{ 
@@ -685,7 +700,7 @@ export const HeaderLuxury = () => {
                     y: isMenuOpen ? -6 : 0,
                     width: isMenuOpen ? 24 : 20
                   }}
-                  className="block h-0.5 bg-gradient-to-r from-digiqo-primary to-digiqo-accent rounded-full mt-1.5"
+                  className="block h-0.5 bg-white rounded-full mt-1.5"
                 />
               </motion.div>
             </button>

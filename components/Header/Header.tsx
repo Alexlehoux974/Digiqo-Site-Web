@@ -47,6 +47,18 @@ const navigation = {
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
+  const [isMobile, setIsMobile] = useState(false)
+  
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
   
   useEffect(() => {
     console.log('Header mounted, isMenuOpen:', isMenuOpen)
@@ -58,23 +70,38 @@ export const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[100] shadow-lg">
-      {/* Glassmorphism background */}
-      <div className="absolute inset-0 bg-white/90 backdrop-blur-lg border-b border-digiqo-primary/10" />
+      {/* Glassmorphism background - Bordeaux on mobile, white on desktop */}
+      <div className="absolute inset-0 bg-digiqo-primary lg:bg-white/90 backdrop-blur-lg border-b border-digiqo-primary/10" />
       
       <nav className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+          {/* Logo - Different for mobile */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <OptimizedImage 
-                src="/assets/logo1.png" 
-                alt="Digiqo - Ladi Lafé Zot Pub!" 
-                width={220}
-                height={66}
-                priority
-                className="h-[4.5rem] w-auto"
-                objectFit="contain"
-              />
+              {/* Desktop logo */}
+              <div className="hidden lg:block">
+                <OptimizedImage 
+                  src="/assets/logo1.png" 
+                  alt="Digiqo - Ladi Lafé Zot Pub!" 
+                  width={220}
+                  height={66}
+                  priority
+                  className="h-[4.5rem] w-auto"
+                  objectFit="contain"
+                />
+              </div>
+              {/* Mobile logo */}
+              <div className="block lg:hidden">
+                <OptimizedImage 
+                  src="/logomobile.webp" 
+                  alt="Digiqo - Ladi Lafé Zot Pub!" 
+                  width={180}
+                  height={54}
+                  priority
+                  className="h-[3.5rem] w-auto"
+                  objectFit="contain"
+                />
+              </div>
             </Link>
           </div>
 
@@ -212,13 +239,13 @@ export const Header = () => {
             ))}
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu button - White on bordeaux background */}
           <button
             onClick={() => {
               console.log('Menu button clicked, current state:', isMenuOpen);
               setIsMenuOpen(!isMenuOpen);
             }}
-            className="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-digiqo-primary/5 hover:text-digiqo-primary relative z-[150]"
+            className="lg:hidden p-2 rounded-lg text-white hover:bg-white/10 relative z-[150]"
             aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

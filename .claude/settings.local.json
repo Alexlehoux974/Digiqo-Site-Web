@@ -117,7 +117,8 @@
       "mcp__airtable__search_records",
       "Bash(journalctl:*)",
       "Bash(docker system prune:*)",
-      "mcp__airtable__create_table"
+      "mcp__airtable__create_table",
+      "Read(//tmp/**)"
     ],
     "deny": []
   }
