@@ -381,6 +381,14 @@ export default function DevWebPage() {
                   >
                     Choisir cette formule
                   </a>
+                  <a
+                    href="https://demo-digiqo.netlify.app/club-plongee-saint-leu/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full py-3 px-6 mt-3 text-center font-semibold rounded-full transition-all bg-digiqo-secondary/10 text-digiqo-secondary hover:bg-digiqo-secondary/20"
+                  >
+                    Voir une démo
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -484,6 +492,14 @@ export default function DevWebPage() {
                   >
                     Choisir cette formule
                   </a>
+                  <a
+                    href="https://demo-digiqo.netlify.app/carreleur-devis/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full py-3 px-6 mt-3 text-center font-semibold rounded-full transition-all bg-digiqo-accent/10 text-digiqo-accent hover:bg-digiqo-accent/20"
+                  >
+                    Voir une démo
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -570,6 +586,14 @@ export default function DevWebPage() {
                     className="block w-full py-4 px-6 text-center font-semibold rounded-full transition-all bg-white border-2 border-digiqo-primary text-digiqo-primary hover:bg-digiqo-primary hover:text-white"
                   >
                     Choisir cette formule
+                  </a>
+                  <a
+                    href="https://demo-digiqo.netlify.app/snack-vente/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full py-3 px-6 mt-3 text-center font-semibold rounded-full transition-all bg-digiqo-primary/10 text-digiqo-primary hover:bg-digiqo-primary/20"
+                  >
+                    Voir une démo
                   </a>
                 </div>
               </div>

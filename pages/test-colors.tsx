@@ -1,11 +1,11 @@
 import React from 'react';
-import { Header } from '@/components/Header';
+import { HeaderLuxury } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 
 export default function TestColors() {
   return (
     <>
-      <Header />
+      <HeaderLuxury />
       <main className="pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-4xl font-bold text-center mb-12">Test des Couleurs et Animations Intensifiées</h1>
