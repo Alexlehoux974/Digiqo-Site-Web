@@ -9,6 +9,7 @@ import {
 } from "framer-motion"
 import Link from 'next/link'
 import { generateContactUrl } from '@/lib/contact-utils'
+import { OptimizedImage } from '@/components/ui/OptimizedImage'
 
 export const HeroParallax = ({
   products,
@@ -188,7 +189,6 @@ export const Header = () => {
       </div>
       {/* Logos Meta & Google Ads */}
       <div className="mt-8 flex items-center gap-4 group">
-        <span className="text-white/80 text-sm font-medium">Experts certifiés</span>
         <div className="bg-white rounded-xl px-5 py-3 shadow-xl hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
           <svg className="h-10 w-10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <title>Meta</title>
@@ -266,20 +266,13 @@ export const Header = () => {
         </div>
         {/* Logo Google Ads */}
         <div className="bg-white rounded-xl px-5 py-3 shadow-xl hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
-          <svg className="h-10 w-auto" viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg">
-            <title>Google Ads</title>
-            <g fill="none" fillRule="evenodd">
-              <path d="M31.5 11.5c0 2.8-2.2 5-5 5s-5-2.2-5-5 2.2-5 5-5 5 2.2 5 5zm-2.2 0c0-1.8-1.3-3-2.8-3s-2.8 1.2-2.8 3 1.3 3 2.8 3 2.8-1.3 2.8-3z" fill="#4285F4"/>
-              <path d="M41.5 11.5c0 2.8-2.2 5-5 5s-5-2.2-5-5 2.2-5 5-5 5 2.2 5 5zm-2.2 0c0-1.8-1.3-3-2.8-3s-2.8 1.2-2.8 3 1.3 3 2.8 3 2.8-1.3 2.8-3z" fill="#4285F4"/>
-              <path d="M51.2 6.8v9c0 3.7-2.2 5.2-4.8 5.2-2.4 0-3.9-1.6-4.5-3l1.9-.8c.3.8 1.2 1.7 2.5 1.7 1.7 0 2.7-.9 2.7-2.8v-.7h-.1c-.5.6-1.5 1.2-2.7 1.2-2.6 0-4.9-2.2-4.9-5.1s2.3-5.1 4.9-5.1c1.2 0 2.2.5 2.7 1.2h.1v-.9h2.2zm-2 4.7c0-1.8-1.2-3.1-2.7-3.1s-2.8 1.3-2.8 3.1 1.3 3 2.8 3 2.7-1.2 2.7-3z" fill="#4285F4"/>
-              <path d="M55 2v14h-2.2V2H55z" fill="#4285F4"/>
-              <path d="M63.8 13.3l1.7 1.2c-.6.8-1.9 2.2-4.2 2.2-2.9 0-5-2.2-5-5 0-3 2.2-5 4.8-5 2.6 0 3.9 2.1 4.3 3.2l.2.6-6.7 2.8c.5 1 1.3 1.5 2.4 1.5s1.9-.5 2.5-1.5zm-5.3-1.8l4.5-1.9c-.2-.6-1-1-1.8-1-1.1 0-2.6.9-2.7 2.9z" fill="#4285F4"/>
-              <path d="M14.5 10v-2h7c.1.4.1.8.1 1.3 0 1.6-.4 3.6-1.8 5s-3.2 2.2-5.4 2.2c-4.3 0-7.9-3.5-7.9-7.8S10.1 1 14.4 1c2.4 0 4.1.9 5.4 2.1l-1.5 1.5c-.9-.9-2.2-1.5-3.8-1.5-3.1 0-5.6 2.5-5.6 5.6s2.5 5.6 5.6 5.6c2 0 3.2-.8 3.9-1.6.6-.6.9-1.5 1.1-2.7h-5z" fill="#EA4335"/>
-              <path d="M71.8 7.8l-.9 3.4h-.1l-1-3.4h-2.3l2.5 6.8-1.4 3.1h2.2l3.8-9.9h-2.8zm7.5-.3c-2 0-3.7 1.6-3.7 3.7s1.6 3.7 3.7 3.7 3.7-1.6 3.7-3.7-1.6-3.7-3.7-3.7zm0 1.7c1 0 1.7.8 1.7 2s-.7 2-1.7 2-1.7-.8-1.7-2 .7-2 1.7-2z" fill="#34A853"/>
-              <path d="M93 7.8h-2.1l-1.4 4.5h-.1l-1.5-4.5h-2.1l2.8 7.2-.2.4c-.3.7-.7 1-1.3 1-.3 0-.6-.1-.8-.2l-.3 1.7c.3.1.8.2 1.3.2 1.5 0 2.3-.7 3-2.3l3.4-8z" fill="#FBBC04"/>
-              <text x="68" y="21" fontFamily="Arial, sans-serif" fontSize="10" fontWeight="bold" fill="#5F6368">Ads</text>
-            </g>
-          </svg>
+          <OptimizedImage 
+            src="/Google_Ads_logo.svg.png" 
+            alt="Google Ads"
+            width={100}
+            height={40}
+            className="h-10 w-auto"
+          />
         </div>
       </div>
     </div>
