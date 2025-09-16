@@ -65,8 +65,6 @@ interface AuditPageProps {
 }
 
 const AuditPage = ({ audit, error }: AuditPageProps) => {
-  const router = useRouter();
-
   if (error || !audit) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
