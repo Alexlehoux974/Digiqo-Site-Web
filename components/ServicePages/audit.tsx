@@ -138,7 +138,7 @@ export default function AuditPage() {
           subtitle="Découvrez le potentiel inexploité de votre présence en ligne"
           ctaButtons={{
             primary: {
-              text: "Demander mon audit",
+              text: "Réaliser mon audit maintenant",
               href: "/audit"
             },
             secondary: {
