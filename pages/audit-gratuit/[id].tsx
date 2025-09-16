@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import { CheckCircle, AlertTriangle, XCircle, Star, TrendingUp, Shield, Globe, Users, Zap, Target, FileText, AlertCircle } from 'lucide-react';
+import { CheckCircle, AlertTriangle, XCircle, TrendingUp, Shield, Globe, Users, Zap, Target, FileText } from 'lucide-react';
 import { HeaderLuxury } from '../../components/Header/HeaderLuxury';
 import { Footer } from '../../components/Footer/Footer';
 
@@ -105,11 +105,6 @@ const AuditPage = ({ audit, error }: AuditPageProps) => {
     return 'text-[#8B1431]';
   };
 
-  const renderStars = (rating: number) => {
-    return Array(5).fill(0).map((_, i) => (
-      <Star key={i} className={`w-5 h-5 ${i < rating ? 'text-[#199CB7] fill-current' : 'text-gray-300'}`} />
-    ));
-  };
 
   return (
     <>
