@@ -69,13 +69,6 @@ const navigation = {
                 icon: TrendingUp
               },
               {
-                name: 'Publicité Google',
-                href: '/services/publicite-google',
-                description: 'Google Ads & YouTube haute performance',
-                icon: TrendingUp,
-                badge: 'ROI Max'
-              },
-              {
                 name: 'Community Management',
                 href: '/services/community-management',
                 description: 'Votre présence sociale optimisée',
@@ -93,20 +86,20 @@ const navigation = {
           {
             title: 'Création & Design',
             items: [
-              { 
-                name: 'Identité de Marque', 
+              {
+                name: 'Identité de Marque',
                 href: '/services/identite-de-marque',
                 description: 'Votre image de marque unique',
                 icon: Sparkles
               },
-              { 
-                name: 'Créatifs Publicitaires', 
+              {
+                name: 'Créatifs Publicitaires',
                 href: '/services/creatifs',
                 description: 'Contenus visuels impactants',
                 icon: Palette
               },
-              { 
-                name: 'Développement Web', 
+              {
+                name: 'Développement Web',
                 href: '/services/sites-web',
                 description: 'Sites web haute couture',
                 icon: Code,
@@ -115,16 +108,23 @@ const navigation = {
             ]
           },
           {
-            title: 'Support & Conseil',
+            title: 'Performance & Conseil',
             items: [
-              { 
-                name: 'Maintenance Web', 
+              {
+                name: 'Publicité Google',
+                href: '/services/publicite-google',
+                description: 'Google Ads & YouTube haute performance',
+                icon: TrendingUp,
+                badge: 'ROI Max'
+              },
+              {
+                name: 'Maintenance Web',
                 href: '/services/sitekeeper',
                 description: 'Sitekeeper/Shopkeeper Maintenance premium',
                 icon: Shield
               },
-              { 
-                name: 'Audit Gratuit', 
+              {
+                name: 'Audit Gratuit',
                 href: '/services/audit',
                 description: 'Analyse complète offerte',
                 icon: Zap,
@@ -520,16 +520,14 @@ export const HeaderLuxury = () => {
                                                 <Icon className="w-4 h-4" />
                                               </motion.div>
                                               <div className="flex-1">
-                                                <div className="flex items-center space-x-2">
-                                                  <h5 className="font-semibold text-gray-900 group-hover:text-digiqo-primary transition-colors">
-                                                    {service.name}
-                                                  </h5>
-                                                  {('badge' in service && service.badge) && (
-                                                    <span className="px-2 py-0.5 text-[10px] font-bold bg-digiqo-accent/10 text-digiqo-accent rounded-full">
-                                                      {service.badge}
-                                                    </span>
-                                                  )}
-                                                </div>
+                                                <h5 className="font-semibold text-gray-900 group-hover:text-digiqo-primary transition-colors">
+                                                  {service.name}
+                                                </h5>
+                                                {('badge' in service && service.badge) && (
+                                                  <span className="inline-block mt-1 px-2 py-0.5 text-[10px] font-bold bg-digiqo-accent/10 text-digiqo-accent rounded-full">
+                                                    {service.badge}
+                                                  </span>
+                                                )}
                                                 <p className="text-sm text-gray-600 mt-0.5">
                                                   {service.description}
                                                 </p>

@@ -37,7 +37,7 @@ export const ServiceHero: React.FC<ServiceHeroProps> = ({
   iconColor = 'text-digiqo-accent'
 }) => {
   return (
-    <section className="relative min-h-[80vh] pt-48 sm:pt-32 pb-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-digiqo-primary via-digiqo-primary/80 to-digiqo-primary">
+    <section className="relative min-h-[80vh] pt-32 pb-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-digiqo-primary via-digiqo-primary/80 to-digiqo-primary">
       {/* Animated gradient orbs */}
       <HeroGradientOrbs />
       <div className="absolute inset-0">
