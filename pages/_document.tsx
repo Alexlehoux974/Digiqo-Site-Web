@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 
 export default function Document() {
   return (
@@ -34,6 +35,26 @@ export default function Document() {
         <meta name="geo.placename" content="Saint-Denis, La Réunion" />
         <meta name="geo.position" content="-20.8823;55.4504" />
         <meta name="ICBM" content="-20.8823, 55.4504" />
+
+        {/* Metricool Analytics */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              function loadScript(a){
+                var b=document.getElementsByTagName("head")[0],
+                c=document.createElement("script");
+                c.type="text/javascript",
+                c.src="https://tracker.metricool.com/resources/be.js",
+                c.onreadystatechange=a,
+                c.onload=a,
+                b.appendChild(c)
+              }
+              loadScript(function(){
+                beTracker.t({hash:"1a6eeac69b58a63cb160a61c39160d25"})
+              });
+            `,
+          }}
+        />
       </Head>
       <body>
         <Main />
