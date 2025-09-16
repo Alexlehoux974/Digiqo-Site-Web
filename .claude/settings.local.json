@@ -120,7 +120,8 @@
       "mcp__airtable__create_table",
       "Read(//tmp/**)",
       "WebFetch(domain:app.netlify.com)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(git fetch:*)"
     ],
     "deny": []
   }

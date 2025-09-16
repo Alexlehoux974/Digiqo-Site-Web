@@ -471,7 +471,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   // Configuration Airtable
   const AIRTABLE_PAT = process.env.AIRTABLE_PAT || '';
   const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID || 'appH46IBnNdYNrwZ9';
-  const AIRTABLE_TABLE_ID = 'tblUeG59DpymKc9Tx'; // Table "Audits Clients"
+  const AIRTABLE_TABLE_ID = 'tblMceHOda6CpUrwx'; // Table "Audits PDF"
 
   try {
     // Appel direct à l'API Airtable pour compatibilité Netlify Edge Functions
@@ -491,79 +491,80 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const data = await response.json();
 
     // Mapping des données Airtable avec gestion des valeurs undefined
+    // Utilisation des champs de la table "Audits PDF"
     const auditData = {
       id: data.id,
-      entreprise: data.fields['Nom Entreprise'] || null,
-      siteWeb: data.fields['Site Web'] || null,
-      dateAudit: data.fields['Date Audit'] || null,
+      entreprise: data.fields['Nom entreprise'] || null,
+      siteWeb: data.fields['Site web'] || null,
+      dateAudit: data.fields['Date audit'] || null,
       auditeur: data.fields['Auditeur'] || null,
-      verdictGlobal: data.fields['Verdict Global'] || null,
-      statutAudit: data.fields['Statut Audit'] || null,
+      verdictGlobal: data.fields['Verdict global'] || null,
+      statutAudit: null, // Pas dans la table Audits PDF
 
       // Résumé exécutif
-      resumeVerdict: data.fields['Résumé Verdict'] || null,
-      pointsCles: data.fields['Points Clés'] || [],
+      resumeVerdict: data.fields['Verdict global'] || null, // Utilisation du verdict global
+      pointsCles: [],
 
       // Contenu
-      pointsPositifsContenu: data.fields['Points Positifs Contenu'] || [],
-      pointsAmeliorationContenu: data.fields['Points Amélioration Contenu'] || [],
-      noteContenu: data.fields['Note Contenu'] || null,
+      pointsPositifsContenu: data.fields['Points positifs contenu'] ? [data.fields['Points positifs contenu']] : [],
+      pointsAmeliorationContenu: data.fields['Points amélioration contenu'] ? [data.fields['Points amélioration contenu']] : [],
+      noteContenu: data.fields['Score contenu'] || null,
 
       // SEO
-      pointsCritiquesSEO: data.fields['Points Critiques SEO'] || [],
-      recommandationsSEO: data.fields['Recommandations SEO'] || [],
-      noteSEO: data.fields['Note SEO'] || null,
+      pointsCritiquesSEO: data.fields['Points critiques SEO'] ? [data.fields['Points critiques SEO']] : [],
+      recommandationsSEO: [],
+      noteSEO: data.fields['Score SEO'] || null,
 
-      // RGPD
-      conformiteRGPD: data.fields['Conformité RGPD'] || null,
-      violationsIdentifiees: data.fields['Violations Identifiées'] || [],
-      risquesEncourus: data.fields['Risques Encourus'] || null,
-      actionsObligatoires: data.fields['Actions Obligatoires'] || [],
+      // RGPD - Ces champs ne sont pas dans la table Audits PDF, on met des valeurs par défaut
+      conformiteRGPD: null,
+      violationsIdentifiees: [],
+      risquesEncourus: null,
+      actionsObligatoires: [],
 
-      // Performance
-      vitesseDesktop: data.fields['Vitesse Desktop'] || null,
-      vitesseMobile: data.fields['Vitesse Mobile'] || null,
-      pointsAmeliorationPerformance: data.fields['Points Amélioration Performance'] || [],
-      notePerformance: data.fields['Note Performance'] || null,
+      // Performance - Pas dans la table Audits PDF, on utilise les scores techniques
+      vitesseDesktop: null,
+      vitesseMobile: null,
+      pointsAmeliorationPerformance: [],
+      notePerformance: data.fields['Score technique'] || null,
 
       // UX
-      pointsPositifsUX: data.fields['Points Positifs UX'] || [],
-      pointsNegatifsUX: data.fields['Points Négatifs UX'] || [],
-      recommandationsUX: data.fields['Recommandations UX'] || [],
-      noteUX: data.fields['Note UX'] || null,
+      pointsPositifsUX: [],
+      pointsNegatifsUX: [],
+      recommandationsUX: [],
+      noteUX: data.fields['Score UX'] || null,
 
-      // Réseaux sociaux
-      facebookPresent: data.fields['Facebook Présent'] || false,
-      instagramPresent: data.fields['Instagram Présent'] || false,
-      linkedinPresent: data.fields['LinkedIn Présent'] || false,
-      googleMyBusiness: data.fields['Google My Business'] || false,
-      analyseReseauxSociaux: data.fields['Analyse Réseaux Sociaux'] || null,
-      noteReseauxSociaux: data.fields['Note Réseaux Sociaux'] || null,
+      // Réseaux sociaux - Pas dans la table Audits PDF
+      facebookPresent: false,
+      instagramPresent: false,
+      linkedinPresent: false,
+      googleMyBusiness: false,
+      analyseReseauxSociaux: null,
+      noteReseauxSociaux: null,
 
-      // Concurrence
-      concurrentsAnalyses: data.fields['Concurrents Analysés'] || [],
-      positionMarche: data.fields['Position Marché'] || null,
-      avantagesConcurrentiels: data.fields['Avantages Concurrentiels'] || [],
+      // Concurrence - Pas dans la table Audits PDF
+      concurrentsAnalyses: [],
+      positionMarche: null,
+      avantagesConcurrentiels: [],
 
-      // Plan d'action
-      top3ActionsImmediates: data.fields['Top 3 Actions Immédiates'] || [],
-      actionsCourtTerme: data.fields['Actions Court Terme'] || [],
-      actionsMoyenTerme: data.fields['Actions Moyen Terme'] || [],
-      actionsLongTerme: data.fields['Actions Long Terme'] || [],
+      // Plan d'action - Pas dans la table Audits PDF
+      top3ActionsImmediates: [],
+      actionsCourtTerme: [],
+      actionsMoyenTerme: [],
+      actionsLongTerme: [],
 
-      // Recommandations Digiqo
-      servicesRecommandes: data.fields['Services Recommandés'] || [],
-      budgetEstime: data.fields['Budget Estimé'] || null,
-      roiAttendu: data.fields['ROI Attendu'] || null,
+      // Recommandations Digiqo - Pas dans la table Audits PDF
+      servicesRecommandes: [],
+      budgetEstime: null,
+      roiAttendu: null,
 
-      // Scores
-      scoreGlobal: data.fields['Score Global'] || null,
-      scoreContenu: data.fields['Score Contenu'] || null,
+      // Scores - Utilisation des champs de la table Audits PDF
+      scoreGlobal: data.fields['Score global'] || null,
+      scoreContenu: data.fields['Score contenu'] || null,
       scoreSEO: data.fields['Score SEO'] || null,
-      scoreTechnique: data.fields['Score Technique'] || null,
+      scoreTechnique: data.fields['Score technique'] || null,
       scoreUX: data.fields['Score UX'] || null,
-      scoreLegal: data.fields['Score Légal'] || null,
-      scoreReseauxSociaux: data.fields['Score Réseaux Sociaux'] || null,
+      scoreLegal: data.fields['Score légal'] || null,
+      scoreReseauxSociaux: null, // Pas dans la table Audits PDF
     };
 
     return {
