@@ -62,8 +62,8 @@ const navigation = {
           {
             title: 'Marketing Digital',
             items: [
-              { 
-                name: 'Publicité en Ligne', 
+              {
+                name: 'Publicité META',
                 href: '/services/publicite-en-ligne',
                 description: 'Campagnes SMA/SEA haute performance',
                 icon: TrendingUp
