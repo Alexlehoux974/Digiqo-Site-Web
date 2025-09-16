@@ -52,6 +52,14 @@ export const ANIMATION = {
       initial: { opacity: 0, y: 50 },
       animate: { opacity: 1, y: 0 },
     },
+    fadeInLeft: {
+      initial: { opacity: 0, x: -50 },
+      animate: { opacity: 1, x: 0 },
+    },
+    fadeInRight: {
+      initial: { opacity: 0, x: 50 },
+      animate: { opacity: 1, x: 0 },
+    },
     scaleIn: {
       initial: { opacity: 0, scale: 0.9 },
       animate: { opacity: 1, scale: 1 },
