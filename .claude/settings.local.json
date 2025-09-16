@@ -119,7 +119,8 @@
       "Bash(docker system prune:*)",
       "mcp__airtable__create_table",
       "Read(//tmp/**)",
-      "WebFetch(domain:app.netlify.com)"
+      "WebFetch(domain:app.netlify.com)",
+      "WebSearch"
     ],
     "deny": []
   }

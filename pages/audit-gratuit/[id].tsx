@@ -105,8 +105,11 @@ const AuditPage = ({ audit, error }: AuditPageProps) => {
     return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
   };
 
-  const formatText = (text: string) => {
+  const formatText = (text: string | string[]) => {
     if (!text) return [];
+    // Si c'est déjà un array, on le retourne
+    if (Array.isArray(text)) return text.filter(line => line && line.trim());
+    // Si c'est une string, on la split
     return text.split('\n').filter(line => line.trim());
   };
 
@@ -465,18 +468,103 @@ const AuditPage = ({ audit, error }: AuditPageProps) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.params as { id: string };
 
-  try {
-    // Utilisation de l'API route pour la compatibilité Netlify
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ||
-                    (process.env.NODE_ENV === 'production' ? 'https://digiqo.re' : 'http://localhost:3000');
+  // Configuration Airtable
+  const AIRTABLE_PAT = process.env.AIRTABLE_PAT || '';
+  const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID || 'appH46IBnNdYNrwZ9';
+  const AIRTABLE_TABLE_ID = 'tblUeG59DpymKc9Tx'; // Table "Audits Clients"
 
-    const response = await fetch(`${baseUrl}/api/audit/${id}`);
+  try {
+    // Appel direct à l'API Airtable pour compatibilité Netlify Edge Functions
+    const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}/${id}`;
+
+    const response = await fetch(url, {
+      headers: {
+        'Authorization': `Bearer ${AIRTABLE_PAT}`,
+        'Content-Type': 'application/json'
+      }
+    });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(`Airtable API error: ${response.status}`);
     }
 
-    const auditData = await response.json();
+    const data = await response.json();
+
+    // Mapping des données Airtable avec gestion des valeurs undefined
+    const auditData = {
+      id: data.id,
+      entreprise: data.fields['Nom Entreprise'] || null,
+      siteWeb: data.fields['Site Web'] || null,
+      dateAudit: data.fields['Date Audit'] || null,
+      auditeur: data.fields['Auditeur'] || null,
+      verdictGlobal: data.fields['Verdict Global'] || null,
+      statutAudit: data.fields['Statut Audit'] || null,
+
+      // Résumé exécutif
+      resumeVerdict: data.fields['Résumé Verdict'] || null,
+      pointsCles: data.fields['Points Clés'] || [],
+
+      // Contenu
+      pointsPositifsContenu: data.fields['Points Positifs Contenu'] || [],
+      pointsAmeliorationContenu: data.fields['Points Amélioration Contenu'] || [],
+      noteContenu: data.fields['Note Contenu'] || null,
+
+      // SEO
+      pointsCritiquesSEO: data.fields['Points Critiques SEO'] || [],
+      recommandationsSEO: data.fields['Recommandations SEO'] || [],
+      noteSEO: data.fields['Note SEO'] || null,
+
+      // RGPD
+      conformiteRGPD: data.fields['Conformité RGPD'] || null,
+      violationsIdentifiees: data.fields['Violations Identifiées'] || [],
+      risquesEncourus: data.fields['Risques Encourus'] || null,
+      actionsObligatoires: data.fields['Actions Obligatoires'] || [],
+
+      // Performance
+      vitesseDesktop: data.fields['Vitesse Desktop'] || null,
+      vitesseMobile: data.fields['Vitesse Mobile'] || null,
+      pointsAmeliorationPerformance: data.fields['Points Amélioration Performance'] || [],
+      notePerformance: data.fields['Note Performance'] || null,
+
+      // UX
+      pointsPositifsUX: data.fields['Points Positifs UX'] || [],
+      pointsNegatifsUX: data.fields['Points Négatifs UX'] || [],
+      recommandationsUX: data.fields['Recommandations UX'] || [],
+      noteUX: data.fields['Note UX'] || null,
+
+      // Réseaux sociaux
+      facebookPresent: data.fields['Facebook Présent'] || false,
+      instagramPresent: data.fields['Instagram Présent'] || false,
+      linkedinPresent: data.fields['LinkedIn Présent'] || false,
+      googleMyBusiness: data.fields['Google My Business'] || false,
+      analyseReseauxSociaux: data.fields['Analyse Réseaux Sociaux'] || null,
+      noteReseauxSociaux: data.fields['Note Réseaux Sociaux'] || null,
+
+      // Concurrence
+      concurrentsAnalyses: data.fields['Concurrents Analysés'] || [],
+      positionMarche: data.fields['Position Marché'] || null,
+      avantagesConcurrentiels: data.fields['Avantages Concurrentiels'] || [],
+
+      // Plan d'action
+      top3ActionsImmediates: data.fields['Top 3 Actions Immédiates'] || [],
+      actionsCourtTerme: data.fields['Actions Court Terme'] || [],
+      actionsMoyenTerme: data.fields['Actions Moyen Terme'] || [],
+      actionsLongTerme: data.fields['Actions Long Terme'] || [],
+
+      // Recommandations Digiqo
+      servicesRecommandes: data.fields['Services Recommandés'] || [],
+      budgetEstime: data.fields['Budget Estimé'] || null,
+      roiAttendu: data.fields['ROI Attendu'] || null,
+
+      // Scores
+      scoreGlobal: data.fields['Score Global'] || null,
+      scoreContenu: data.fields['Score Contenu'] || null,
+      scoreSEO: data.fields['Score SEO'] || null,
+      scoreTechnique: data.fields['Score Technique'] || null,
+      scoreUX: data.fields['Score UX'] || null,
+      scoreLegal: data.fields['Score Légal'] || null,
+      scoreReseauxSociaux: data.fields['Score Réseaux Sociaux'] || null,
+    };
 
     return {
       props: {
@@ -484,7 +572,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     };
   } catch (error) {
-    console.error('Error fetching audit:', error);
+    console.error('Error fetching audit from Airtable:', error);
     return {
       props: {
         audit: null,
