@@ -147,7 +147,7 @@ export const Header = () => {
       <div className="mb-4 inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full">
         <span className="text-white font-semibold">🏝️ N°1 à La Réunion</span>
         <span className="text-white/60">•</span>
-        <span className="text-white/90">+167 entreprises accompagnées</span>
+        <span className="text-white/90">+174 entreprises accompagnées</span>
       </div>
       <h1 className="text-4xl md:text-7xl font-bold">
         <span className="text-white drop-shadow-lg">
