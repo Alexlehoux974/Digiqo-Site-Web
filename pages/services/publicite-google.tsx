@@ -231,7 +231,7 @@ export default function PubliciteGooglePage() {
             <motion.div
               {...ANIMATION.entry.fadeInUp}
               transition={{ delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center pt-8"
+              className="flex justify-center pt-8"
             >
               <motion.a
                 href={generateContactUrl({
@@ -245,16 +245,6 @@ export default function PubliciteGooglePage() {
                 <Gift className="w-5 h-5" />
                 Audit Gratuit (Valeur 500€)
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.a>
-
-              <motion.a
-                href="tel:0692731111"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-md text-white font-bold rounded-2xl border border-white/20 hover:bg-white/20 transition-all"
-              >
-                <Clock className="w-5 h-5" />
-                Résultats en 48h
               </motion.a>
             </motion.div>
           </motion.div>
@@ -609,7 +599,7 @@ export default function PubliciteGooglePage() {
               Audit gratuit de 30 minutes, sans engagement.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <div className="flex justify-center">
               <motion.a
                 href={generateContactUrl({
                   service: 'publicite-google',
@@ -622,18 +612,6 @@ export default function PubliciteGooglePage() {
                 <Gift className="w-5 h-5" />
                 Réserver mon Audit Gratuit
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.a>
-
-              <motion.a
-                href="tel:0692731111"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-md text-white font-bold rounded-2xl border border-white/20 hover:bg-white/20 transition-all"
-              >
-                Appeler maintenant
-                <div className="flex items-center gap-2">
-                  <span className="text-digiqo-accent">0692 73 11 11</span>
-                </div>
               </motion.a>
             </div>
 
