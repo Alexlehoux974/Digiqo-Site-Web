@@ -464,69 +464,20 @@ const AuditPage = ({ audit, error }: AuditPageProps) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.params as { id: string };
-  
+
   try {
-    // En SSR, on utilise directement l'appel API interne
-    const Airtable = require('airtable');
-    const base = new Airtable({
-      apiKey: process.env.AIRTABLE_PAT!
-    }).base(process.env.AIRTABLE_BASE_ID || 'appH46IBnNdYNrwZ9');
-    
-    const record = await base('Audits Clients').find(id);
-    
-    const auditData = {
-      id: record.id,
-      entreprise: record.get('Nom Entreprise') || null,
-      siteWeb: record.get('Site Web') || null,
-      dateAudit: record.get('Date Audit') || null,
-      auditeur: record.get('Auditeur') || null,
-      verdictGlobal: record.get('Verdict Global') || null,
-      statutAudit: record.get('Statut Audit') || null,
-      resumeVerdict: record.get('Résumé Verdict') || null,
-      pointsCles: record.get('Points Clés') || null,
-      pointsPositifsContenu: record.get('Points Positifs Contenu') || null,
-      pointsAmeliorationContenu: record.get('Points Amélioration Contenu') || null,
-      noteContenu: record.get('Note Contenu') || 0,
-      pointsCritiquesSEO: record.get('Points Critiques SEO') || null,
-      recommandationsSEO: record.get('Recommandations SEO') || null,
-      noteSEO: record.get('Note SEO') || 0,
-      conformiteRGPD: record.get('Conformité RGPD') || null,
-      violationsIdentifiees: record.get('Violations Identifiées') || null,
-      risquesEncourus: record.get('Risques Encourus') || null,
-      actionsObligatoires: record.get('Actions Obligatoires') || null,
-      vitesseDesktop: record.get('Vitesse Desktop') || 0,
-      vitesseMobile: record.get('Vitesse Mobile') || 0,
-      pointsAmeliorationPerformance: record.get('Points Amélioration Performance') || null,
-      notePerformance: record.get('Note Performance') || 0,
-      pointsPositifsUX: record.get('Points Positifs UX') || null,
-      pointsNegatifsUX: record.get('Points Négatifs UX') || null,
-      recommandationsUX: record.get('Recommandations UX') || null,
-      noteUX: record.get('Note UX') || 0,
-      facebookPresent: record.get('Facebook Présent') || false,
-      instagramPresent: record.get('Instagram Présent') || false,
-      linkedinPresent: record.get('LinkedIn Présent') || false,
-      googleMyBusiness: record.get('Google My Business') || false,
-      analyseReseauxSociaux: record.get('Analyse Réseaux Sociaux') || null,
-      noteReseauxSociaux: record.get('Note Réseaux Sociaux') || 0,
-      concurrentsAnalyses: record.get('Concurrents Analysés') || null,
-      positionMarche: record.get('Position Marché') || null,
-      avantagesConcurrentiels: record.get('Avantages Concurrentiels') || null,
-      top3ActionsImmediates: record.get('Top 3 Actions Immédiates') || null,
-      actionsCourtTerme: record.get('Actions Court Terme') || null,
-      actionsMoyenTerme: record.get('Actions Moyen Terme') || null,
-      actionsLongTerme: record.get('Actions Long Terme') || null,
-      servicesRecommandes: record.get('Services Recommandés') || [],
-      budgetEstime: record.get('Budget Estimé') || 0,
-      roiAttendu: record.get('ROI Attendu') || null,
-      scoreGlobal: record.get('Score Global') || 0,
-      scoreContenu: record.get('Score Contenu') || 0,
-      scoreSEO: record.get('Score SEO') || 0,
-      scoreTechnique: record.get('Score Technique') || 0,
-      scoreUX: record.get('Score UX') || 0,
-      scoreLegal: record.get('Score Légal') || 0,
-      scoreReseauxSociaux: record.get('Score Réseaux Sociaux') || 0,
-    };
-    
+    // Utilisation de l'API route pour la compatibilité Netlify
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ||
+                    (process.env.NODE_ENV === 'production' ? 'https://digiqo.re' : 'http://localhost:3000');
+
+    const response = await fetch(`${baseUrl}/api/audit/${id}`);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const auditData = await response.json();
+
     return {
       props: {
         audit: auditData,

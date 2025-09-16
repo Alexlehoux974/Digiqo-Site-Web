@@ -118,7 +118,8 @@
       "Bash(journalctl:*)",
       "Bash(docker system prune:*)",
       "mcp__airtable__create_table",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "WebFetch(domain:app.netlify.com)"
     ],
     "deny": []
   }
