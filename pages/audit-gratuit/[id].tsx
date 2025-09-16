@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import { CheckCircle, AlertTriangle, XCircle, TrendingUp, Shield, Globe, Users, Zap, Target, FileText } from 'lucide-react';
+import { CheckCircle, AlertTriangle, XCircle, TrendingUp, Shield, Globe, Users, Zap, FileText } from 'lucide-react';
 import { HeaderLuxury } from '../../components/Header/HeaderLuxury';
 import { Footer } from '../../components/Footer/Footer';
 
@@ -173,7 +173,7 @@ const AuditPage = ({ audit, error }: AuditPageProps) => {
             <h2 className="text-3xl font-bold mb-6 text-center text-[#8B1431]">Score Global de Votre Présence Digitale</h2>
             <div className="text-center">
               <div className="text-7xl font-bold text-[#8B1431]">{audit.scoreGlobal}/100</div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-8">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-8">
                 <div className="text-center">
                   <div className="flex justify-center mb-2 text-[#8B1431]">
                     <Globe className="w-6 h-6" />
@@ -208,13 +208,6 @@ const AuditPage = ({ audit, error }: AuditPageProps) => {
                   </div>
                   <div className={`text-2xl font-bold ${getScoreColor(audit.scoreLegal)}`}>{audit.scoreLegal}</div>
                   <div className="text-sm text-gray-700 font-medium">Légal</div>
-                </div>
-                <div className="text-center">
-                  <div className="flex justify-center mb-2 text-[#8B1431]">
-                    <Target className="w-6 h-6" />
-                  </div>
-                  <div className="text-2xl font-bold text-gray-400">N/A</div>
-                  <div className="text-sm text-gray-700 font-medium">Réseaux</div>
                 </div>
               </div>
             </div>
@@ -434,7 +427,7 @@ const AuditPage = ({ audit, error }: AuditPageProps) => {
                 className="bg-white/95 backdrop-blur-sm rounded-xl shadow-xl p-8 border border-[#8B1431]/10 hover:shadow-2xl transition-all duration-300"
               >
                 <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-[#8B1431]">
-                  <Target className="w-7 h-7 text-[#8B1431]" />
+                  <Globe className="w-7 h-7 text-[#8B1431]" />
                   Présence en Ligne Recommandée
                 </h2>
                 <p className="text-gray-700 whitespace-pre-line">{audit.presenceEnLigneRecommandee}</p>
