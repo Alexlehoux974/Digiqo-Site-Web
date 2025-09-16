@@ -13,10 +13,15 @@ export const seoConfig = {
       keywords: 'agence marketing digital réunion, agence web réunion, marketing digital 974, développement web réunion, SEO réunion, publicité en ligne réunion',
     },
     services: {
-      'publicite-en-ligne': {
-        title: 'Publicité en ligne & SEA à La Réunion',
-        description: 'Boostez votre visibilité avec nos campagnes publicitaires sur Google Ads, Facebook Ads et Instagram. ROI optimisé et suivi personnalisé.',
-        keywords: 'publicité en ligne réunion, google ads réunion, facebook ads réunion, SEA réunion, campagne publicitaire 974',
+      'publicite-meta': {
+        title: 'Publicité META (Facebook & Instagram) à La Réunion',
+        description: 'Maximisez votre ROI avec nos campagnes publicitaires Facebook Ads et Instagram Ads. Ciblage précis et optimisation continue.',
+        keywords: 'facebook ads réunion, instagram ads réunion, publicité meta 974, meta business réunion, social ads réunion',
+      },
+      'publicite-google': {
+        title: 'Publicité Google Ads & YouTube à La Réunion',
+        description: 'Dominez Google avec nos campagnes Google Ads et YouTube Ads optimisées. SEA expert et gestion professionnelle de vos campagnes.',
+        keywords: 'google ads réunion, youtube ads réunion, SEA réunion, campagne google 974, adwords réunion',
       },
       'sites-web': {
         title: 'Développement Web & Applications à La Réunion',

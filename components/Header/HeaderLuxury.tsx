@@ -64,18 +64,25 @@ const navigation = {
             items: [
               {
                 name: 'Publicité META',
-                href: '/services/publicite-en-ligne',
-                description: 'Campagnes SMA/SEA haute performance',
+                href: '/services/publicite-meta',
+                description: 'Campagnes Facebook & Instagram',
                 icon: TrendingUp
               },
-              { 
-                name: 'Community Management', 
+              {
+                name: 'Publicité Google',
+                href: '/services/publicite-google',
+                description: 'Google Ads & YouTube haute performance',
+                icon: TrendingUp,
+                badge: 'ROI Max'
+              },
+              {
+                name: 'Community Management',
                 href: '/services/community-management',
                 description: 'Votre présence sociale optimisée',
                 icon: Users
               },
-              { 
-                name: 'Référencement SEO', 
+              {
+                name: 'Référencement SEO',
                 href: '/services/seo',
                 description: 'Dominez les résultats Google',
                 icon: Search,
