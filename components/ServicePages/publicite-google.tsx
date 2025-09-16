@@ -100,20 +100,20 @@ export default function PubliciteGooglePage() {
   // FAQ orientée business
   const faqs = [
     {
-      question: "Quel budget minimum pour des résultats ?",
-      answer: "Nous recommandons 500€/mois minimum pour des résultats significatifs. Ce budget inclut notre gestion (300€) + 200€ de budget publicitaire Google. Selon votre secteur et objectifs, nous ajustons pour maximiser votre ROI."
+      question: "Comment fonctionne Google Ads ?",
+      answer: "Google Ads fonctionne sur un système d'enchères : vous payez quand quelqu'un clique sur votre annonce. Nous créons des campagnes ciblées pour apparaître en haut de Google quand vos clients potentiels recherchent vos services à La Réunion."
     },
     {
-      question: "Combien de temps avant de voir des résultats ?",
-      answer: "Les premiers clics arrivent en 24h, les premiers leads sous 48-72h. Pour un ROI optimal, comptez 4-6 semaines d'optimisation. Nous vous fournirons des projections réalistes lors de l'audit gratuit."
+      question: "Pourquoi faire appel à une agence plutôt que gérer seul ?",
+      answer: "La gestion Google Ads demande expertise technique, temps et optimisation constante. Nous maîtrisons les stratégies avancées, évitons les erreurs coûteuses et optimisons continuellement vos campagnes pour de meilleurs résultats."
     },
     {
-      question: "Comment mesurez-vous le retour sur investissement ?",
-      answer: "Dashboard temps réel avec : nombre de leads, coût par acquisition, taux de conversion, chiffre d'affaires généré. Rapports mensuels avec analyse ROI détaillée et recommandations d'optimisation."
+      question: "Comment suivre les performances de mes campagnes ?",
+      answer: "Nous fournissons un accès à Google Ads pour suivre vos campagnes en temps réel. Vous recevez également des rapports réguliers avec analyse des performances, nombre de clics, conversions et recommandations d'amélioration."
     },
     {
-      question: "Que se passe-t-il si je n'ai pas de résultats ?",
-      answer: "Garantie satisfaction : si après 60 jours vous n'avez pas de résultats mesurables, nous remboursons nos frais de gestion. Nous optimisons jusqu'à atteindre vos objectifs."
+      question: "Google Ads convient-il à mon entreprise ?",
+      answer: "Google Ads est efficace pour la plupart des secteurs à La Réunion. Lors de notre audit gratuit, nous analysons votre marché, la concurrence locale et déterminons ensemble si c'est le bon canal pour atteindre vos objectifs commerciaux."
     }
   ]
 
@@ -130,15 +130,7 @@ export default function PubliciteGooglePage() {
       '@type': 'Place',
       name: 'La Réunion'
     },
-    description: 'Campagnes Google Ads sur-mesure avec ROI garanti. Audit gratuit, sans engagement, résultats dès 48h.',
-    offers: {
-      '@type': 'Offer',
-      availability: 'https://schema.org/InStock',
-      price: '500',
-      priceCurrency: 'EUR',
-      name: 'Gestion Google Ads',
-      description: 'Gestion complète de campagnes Google Ads avec optimisation continue'
-    }
+    description: 'Gestion professionnelle de campagnes Google Ads à La Réunion. Audit gratuit pour évaluer votre potentiel.'
   }
 
   return (
@@ -580,7 +572,7 @@ export default function PubliciteGooglePage() {
             >
               <Rocket className="w-4 h-4 text-digiqo-accent animate-pulse" />
               <span className="text-sm font-semibold text-white">
-                Offre limitée : Audit gratuit pour les 10 prochains inscrits
+                Audit gratuit : Découvrez votre potentiel sur Google Ads
               </span>
             </motion.div>
 
@@ -593,8 +585,8 @@ export default function PubliciteGooglePage() {
             </h2>
 
             <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-              Rejoignez les 50+ entreprises réunionnaises qui dominent déjà Google.
-              Audit gratuit de 30 minutes, sans engagement.
+              Découvrez comment Google Ads peut développer votre activité.
+              Audit gratuit personnalisé, sans engagement.
             </p>
 
             <div className="flex justify-center">
@@ -614,7 +606,7 @@ export default function PubliciteGooglePage() {
             </div>
 
             <p className="text-sm text-white/60 mt-8">
-              ✓ Sans engagement ✓ Résultats garantis ✓ ROI mesurable
+              ✓ Sans engagement ✓ Analyse personnalisée ✓ Stratégie sur-mesure
             </p>
           </motion.div>
         </div>
