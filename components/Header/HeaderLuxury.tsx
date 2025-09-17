@@ -59,7 +59,8 @@ const navigation = {
                 name: 'Publicité META',
                 href: '/services/publicite-meta',
                 description: 'Campagnes Facebook & Instagram',
-                icon: TrendingUp
+                icon: TrendingUp,
+                badge: 'Best Seller'
               },
               {
                 name: 'Publicité Google',
