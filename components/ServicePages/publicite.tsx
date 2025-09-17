@@ -3,12 +3,12 @@ import Head from 'next/head'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 import { HeroGradientOrbs } from '@/components/ui/animated-gradient-orb'
-import { 
-  TrendingUp, 
-  Target, 
-  Palette, 
-  BarChart3, 
-  ArrowRight, 
+import {
+  TrendingUp,
+  Target,
+  Palette,
+  BarChart3,
+  ArrowRight,
   Zap,
   Users,
   LineChart,
@@ -17,7 +17,6 @@ import {
   CheckCircle2,
   ArrowUpRight,
   X,
-  Crown,
   Rocket,
   MessageCircle
 } from 'lucide-react'
@@ -105,39 +104,36 @@ export default function PublicitePage() {
   const publiciteProducts = getProductsForService('publicite')
   
   // Map Airtable products by formula name
-  const initMonthly = publiciteProducts.find(p => p.name.includes('Initiation') && p.name.includes('Mensuelle'))
-  const initAnnual = publiciteProducts.find(p => p.name.includes('Initiation') && p.name.includes('Annuelle'))
-  const propMonthly = publiciteProducts.find(p => p.name.includes('Propulsion') && p.name.includes('Mensuelle'))
-  const propAnnual = publiciteProducts.find(p => p.name.includes('Propulsion') && p.name.includes('Annuelle'))
-  const expMonthly = publiciteProducts.find(p => p.name.includes('Expansion') && p.name.includes('Mensuelle'))
-  const expAnnual = publiciteProducts.find(p => p.name.includes('Expansion') && p.name.includes('Annuelle'))
-  const domMonthly = publiciteProducts.find(p => p.name.includes('Domination') && p.name.includes('Mensuelle'))
-  const domAnnual = publiciteProducts.find(p => p.name.includes('Domination') && p.name.includes('Annuelle'))
+  const starterMonthly = publiciteProducts.find(p => p.name.includes('Starter') && p.name.includes('Mensuelle')) || publiciteProducts.find(p => p.name.includes('Initiation') && p.name.includes('Mensuelle'))
+  const starterAnnual = publiciteProducts.find(p => p.name.includes('Starter') && p.name.includes('Annuelle')) || publiciteProducts.find(p => p.name.includes('Initiation') && p.name.includes('Annuelle'))
+  const growthMonthly = publiciteProducts.find(p => p.name.includes('Growth') && p.name.includes('Mensuelle')) || publiciteProducts.find(p => p.name.includes('Propulsion') && p.name.includes('Mensuelle'))
+  const growthAnnual = publiciteProducts.find(p => p.name.includes('Growth') && p.name.includes('Annuelle')) || publiciteProducts.find(p => p.name.includes('Propulsion') && p.name.includes('Annuelle'))
   
   // Create formulas with real data
   const formulas: Formula[] = [
     {
-      id: 'formula-initiation',
-      name: 'Initiation',
-      summary: 'Idéal pour débuter dans la publicité en ligne avec un budget maîtrisé',
+      id: 'formula-starter',
+      name: 'Starter',
+      summary: 'Idéal pour démarrer votre présence digitale avec un budget maîtrisé',
       price: {
-        threeMonths: initMonthly?.priceFormatted || '549,00 €',
-        annual: initAnnual?.priceFormatted || '5 270,00 €'
+        threeMonths: starterMonthly?.priceFormatted || '999,00 €',
+        annual: starterAnnual?.priceFormatted || '9 590,00 €'
       },
       highlights: [
-        'Jusqu\'à 1 000€ de budget publicitaire géré/mois',
+        'Jusqu\'à 2 000€ de budget publicitaire géré/mois',
         'Jusqu\'à 3 campagnes simultanées',
-        '3 visuels publicitaires offerts/mois'
+        '3 visuels publicitaires offerts/mois',
+        'Suivi et optimisation hebdomadaire'
       ],
-      gradient: 'from-amber-300 to-orange-400',
-      accentColor: 'amber',
+      gradient: 'from-emerald-400 to-teal-500',
+      accentColor: 'emerald',
       icon: Target,
       sections: {
         services: {
           title: '🎯 Services publicitaires',
           items: [
             'Gestion & diffusion sur Meta (Facebook & Instagram)',
-            'Jusqu\'à 1 000€ de budget publicitaire géré/mois',
+            'Jusqu\'à 2 000€ de budget publicitaire géré/mois',
             'Jusqu\'à 3 campagnes publicitaires simultanées',
             'Création, ciblage & testing stratégique',
             'Optimisation hebdomadaire des performances',
@@ -161,11 +157,11 @@ export default function PublicitePage() {
           ]
         },
         bonus: engagementType === '3mois' ? {
-          title: '🎆 Bonus',
-          items: ['1 vidéo offerte immédiatement']
+          title: '🎆 Bonus engagement',
+          items: ['100€ de budget publicitaire offert', 'Audit de votre concurrence inclus']
         } : {
           title: '🎆 Bonus annuel',
-          items: ['2 vidéos offertes/an', 'Économie de 20% sur le tarif mensuel']
+          items: ['200€ de budget publicitaire offert', 'Audit trimestriel inclus', 'Économie de 20% sur le tarif mensuel']
         }
       },
       paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/CqxfynTqvw?referrer=PAYMENT_LINK',
@@ -174,19 +170,21 @@ export default function PublicitePage() {
       bestValue: false
     },
     {
-      id: 'formula-propulsion',
-      name: 'Propulsion',
-      summary: 'Pour les entreprises en croissance cherchant à augmenter leur visibilité',
+      id: 'formula-growth',
+      name: 'Growth',
+      summary: 'Pour accélérer votre croissance et dominer votre marché',
       price: {
-        threeMonths: propMonthly?.priceFormatted || '949,00 €',
-        annual: propAnnual?.priceFormatted || '9 110,40 €'
+        threeMonths: growthMonthly?.priceFormatted || '1 499,00 €',
+        annual: growthAnnual?.priceFormatted || '14 390,00 €'
       },
       highlights: [
-        'Jusqu\'à 2 500€ de budget publicitaire géré/mois',
-        'Jusqu\'à 4 campagnes simultanées',
-        'Audiences similaires incluses'
+        'Jusqu\'à 5 000€ de budget publicitaire géré/mois',
+        'Campagnes illimitées',
+        '8 visuels publicitaires offerts/mois',
+        'Audiences similaires avancées',
+        'Account Manager dédié'
       ],
-      gradient: 'from-blue-300 to-indigo-400',
+      gradient: 'from-blue-400 to-indigo-500',
       accentColor: 'blue',
       icon: Zap,
       sections: {
@@ -194,36 +192,42 @@ export default function PublicitePage() {
           title: '🎯 Services publicitaires',
           items: [
             'Gestion & diffusion sur Meta (Facebook & Instagram)',
-            'Jusqu\'à 2 500€ de budget publicitaire géré/mois',
-            'Jusqu\'à 4 campagnes publicitaires simultanées',
-            'Création, ciblage & testing stratégique',
-            'Optimisation hebdomadaire des performances',
-            'Retargeting : reciblage des audiences',
-            'Création & exploitation d\'audiences similaires'
+            'Gestion Google Ads & YouTube Ads',
+            'Jusqu\'à 5 000€ de budget publicitaire géré/mois',
+            'Campagnes publicitaires illimitées',
+            'Création, ciblage & testing stratégique avancé',
+            'Optimisation quotidienne des performances',
+            'Retargeting : reciblage multi-plateformes',
+            'Création & exploitation d\'audiences similaires',
+            'Pixel & tracking avancé'
           ]
         },
         tracking: {
           title: '📂 Suivi & collaboration',
           items: [
-            'Canal Google Chat dédié pour vos questions',
+            'Account Manager dédié',
+            'Canal Google Chat prioritaire',
             'Espace Drive dédié pour vos contenus',
-            'Rapports d\'activité réguliers'
+            'Rapports d\'activité hebdomadaires',
+            'Call mensuel de suivi stratégique'
           ]
         },
         creation: {
           title: '🎨 Création visuelle',
           items: [
-            '3 créatifs publicitaires inclus chaque mois',
-            'Déclinés dans tous les formats (1:1, 9:16, 4:5)',
-            'Valeur de 135€ offerts chaque mois'
+            '8 créatifs publicitaires inclus chaque mois',
+            'Déclinés dans tous les formats (1:1, 9:16, 4:5, 16:9)',
+            '2 vidéos publicitaires par mois',
+            'Tests A/B illimités',
+            'Valeur de 500€ offerts chaque mois'
           ]
         },
         bonus: engagementType === '3mois' ? {
-          title: '🎆 Bonus',
-          items: ['1 vidéo offerte immédiatement']
+          title: '🎆 Bonus engagement',
+          items: ['300€ de budget publicitaire offert', 'Formation marketing digital incluse', 'Landing page offerte']
         } : {
           title: '🎆 Bonus annuel',
-          items: ['2 vidéos offertes/an', 'Économie de 20% sur le tarif mensuel']
+          items: ['500€ de budget publicitaire offert', 'Formation complète de vos équipes', '2 landing pages offertes', 'Économie de 20% sur le tarif mensuel']
         }
       },
       paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/4gntC6Vznt2d?referrer=PAYMENT_LINK',
@@ -232,120 +236,74 @@ export default function PublicitePage() {
       bestValue: true
     },
     {
-      id: 'formula-expansion',
-      name: 'Expansion',
-      summary: 'Stratégie avancée pour une présence dominante sur les réseaux sociaux',
+      id: 'formula-premium',
+      name: 'Premium',
+      summary: 'Solution sur-mesure pour les entreprises ambitieuses',
       price: {
-        threeMonths: expMonthly?.priceFormatted || '1 490,00 €',
-        annual: expAnnual?.priceFormatted || '14 304,00 €'
+        threeMonths: 'Sur devis',
+        annual: 'Sur devis'
       },
       highlights: [
-        'Jusqu\'à 5 000€ de budget publicitaire géré/mois',
-        'Jusqu\'à 6 campagnes simultanées',
-        'Audiences similaires avancées'
+        'Budget publicitaire illimité',
+        'Campagnes illimitées multi-plateformes',
+        'Créations publicitaires illimitées',
+        'Stratégie personnalisée',
+        'Équipe dédiée'
       ],
-      gradient: 'from-purple-300 to-pink-400',
+      gradient: 'from-purple-400 to-pink-500',
       accentColor: 'purple',
       icon: Rocket,
       sections: {
         services: {
           title: '🎯 Services publicitaires',
           items: [
-            'Gestion & diffusion sur Meta (Facebook & Instagram)',
-            'Jusqu\'à 5 000€ de budget publicitaire géré/mois',
-            'Jusqu\'à 6 campagnes publicitaires simultanées',
-            'Création, ciblage & testing stratégique',
-            'Optimisation hebdomadaire des performances',
-            'Retargeting : reciblage des audiences',
-            'Création & exploitation d\'audiences similaires'
+            'Gestion multi-plateformes : Meta, Google, LinkedIn, TikTok',
+            'Budget publicitaire illimité',
+            'Campagnes publicitaires illimitées',
+            'Stratégie sur-mesure pour votre secteur',
+            'Équipe dédiée d\'experts',
+            'Optimisation en temps réel avec IA',
+            'Retargeting avancé multi-touch',
+            'Audiences personnalisées et lookalike',
+            'Tracking server-side et attribution avancée'
           ]
         },
         tracking: {
           title: '📂 Suivi & collaboration',
           items: [
-            'Canal Google Chat dédié pour vos questions',
-            'Espace Drive dédié pour vos contenus',
-            'Rapports d\'activité réguliers'
+            'Équipe dédiée (Account Manager + Créatifs + Data Analyst)',
+            'Ligne directe prioritaire 7j/7',
+            'Dashboard personnalisé en temps réel',
+            'Rapports quotidiens personnalisés',
+            'Réunions stratégiques bi-hebdomadaires',
+            'Formation de vos équipes incluse'
           ]
         },
         creation: {
           title: '🎨 Création visuelle',
           items: [
-            '3 créatifs publicitaires inclus chaque mois',
-            'Déclinés dans tous les formats (1:1, 9:16, 4:5)',
-            'Valeur de 135€ offerts chaque mois'
+            'Créations publicitaires illimitées',
+            'Vidéos publicitaires professionnelles illimitées',
+            'Landing pages sur-mesure',
+            'Tests A/B/C/D illimités',
+            'Studio créatif dédié',
+            'Direction artistique personnalisée'
           ]
         },
-        bonus: engagementType === '3mois' ? {
-          title: '🎆 Bonus',
-          items: ['1 vidéo offerte immédiatement']
-        } : {
-          title: '🎆 Bonus annuel',
-          items: ['2 vidéos offertes/an', 'Économie de 20% sur le tarif mensuel']
+        bonus: {
+          title: '🎆 Bonus Premium',
+          items: [
+            'Budget publicitaire selon vos besoins',
+            'Stratégie personnalisée offerte',
+            'Formation équipe complète incluse',
+            'Accès prioritaire aux nouvelles fonctionnalités',
+            'Partenariat stratégique'
+          ]
         }
       },
-      paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/WQ6DrgtrDNrt7Dtr?referrer=PAYMENT_LINK',
-      paymentLinkAnnual: 'https://app-eu1.hubspot.com/payments/D7nW622G?referrer=PAYMENT_LINK',
-      engagement: engagementType === '3mois' ? '3 mois minimum puis mensuel' : '12 mois fermes',
-      bestValue: false
-    },
-    {
-      id: 'formula-domination',
-      name: 'Domination',
-      summary: 'Solution complète pour les leaders du marché',
-      price: {
-        threeMonths: domMonthly?.priceFormatted || '1 990,00 €',
-        annual: domAnnual?.priceFormatted || '19 104,00 €'
-      },
-      highlights: [
-        'Jusqu\'à 10 000€ de budget publicitaire géré/mois',
-        'Jusqu\'à 10 campagnes simultanées',
-        'Implémentation Pixel incluse'
-      ],
-      gradient: 'from-red-300 to-rose-400',
-      accentColor: 'red',
-      icon: Crown,
-      sections: {
-        services: {
-          title: '🎯 Services publicitaires',
-          items: [
-            'Gestion & diffusion sur Meta (Facebook & Instagram)',
-            'Jusqu\'à 10 000€ de budget publicitaire géré/mois',
-            'Jusqu\'à 10 campagnes publicitaires simultanées',
-            'Création, ciblage & testing stratégique',
-            'Optimisation hebdomadaire des performances',
-            'Retargeting : reciblage des audiences',
-            'Création & exploitation d\'audiences similaires',
-            'Implémentation & programmation du Pixel de base'
-          ]
-        },
-        tracking: {
-          title: '📂 Suivi & collaboration',
-          items: [
-            'Canal Google Chat dédié pour vos questions',
-            'Espace Drive dédié pour vos contenus',
-            'Rapports d\'activité réguliers'
-          ]
-        },
-        creation: {
-          title: '🎨 Création visuelle',
-          items: [
-            '3 créatifs publicitaires inclus chaque mois',
-            'Déclinés dans tous les formats (1:1, 9:16, 4:5)',
-            'Valeur de 135€ offerts chaque mois'
-          ]
-        },
-        bonus: engagementType === '3mois' ? {
-          title: '🎆 Bonus',
-          items: ['1 vidéo offerte immédiatement']
-        } : {
-          title: '🎆 Bonus annuel',
-          items: ['2 vidéos offertes/an', 'Économie de 20% sur le tarif mensuel']
-        }
-      },
-      paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/mvTgrMZSywVJ?referrer=PAYMENT_LINK',
-      paymentLinkAnnual: 'https://app-eu1.hubspot.com/payments/tYkDbW2X2HVgcD?referrer=PAYMENT_LINK',
-      engagement: engagementType === '3mois' ? '3 mois minimum puis mensuel' : '12 mois fermes',
+      paymentLinkMonthly: undefined,
+      paymentLinkAnnual: undefined,
+      engagement: 'Sur-mesure selon vos besoins',
       bestValue: false
     }
   ]
@@ -970,27 +928,33 @@ export default function PublicitePage() {
                     {/* Budget géré */}
                     <tr className="border-t border-digiqo-primary/10">
                       <td className="p-4 font-medium text-digiqo-primary">Budget publicitaire géré</td>
-                      <td className="p-4 text-center">Jusqu'à 1 000€</td>
-                      <td className="p-4 text-center">Jusqu'à 2 500€</td>
+                      <td className="p-4 text-center">Jusqu'à 2 000€</td>
                       <td className="p-4 text-center">Jusqu'à 5 000€</td>
-                      <td className="p-4 text-center">Jusqu'à 10 000€</td>
+                      <td className="p-4 text-center">Illimité</td>
                     </tr>
                     {/* Campagnes simultanées */}
                     <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
                       <td className="p-4 font-medium text-digiqo-primary">Campagnes simultanées</td>
-                      <td className="p-4 text-center">1 campagne</td>
-                      <td className="p-4 text-center">2-3 campagnes</td>
+                      <td className="p-4 text-center">3 campagnes</td>
+                      <td className="p-4 text-center">Illimitées</td>
                       <td className="p-4 text-center">Illimitées</td>
                     </tr>
-                    {/* Créatifs offerts */}
+                    {/* Plateformes */}
                     <tr className="border-t border-digiqo-primary/10">
+                      <td className="p-4 font-medium text-digiqo-primary">Plateformes gérées</td>
+                      <td className="p-4 text-center">Meta</td>
+                      <td className="p-4 text-center">Meta + Google</td>
+                      <td className="p-4 text-center">Toutes plateformes</td>
+                    </tr>
+                    {/* Créatifs offerts */}
+                    <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
                       <td className="p-4 font-medium text-digiqo-primary">Créatifs publicitaires/mois</td>
-                      <td className="p-4 text-center">Basiques</td>
-                      <td className="p-4 text-center">Avancés</td>
-                      <td className="p-4 text-center">Premium</td>
+                      <td className="p-4 text-center">3 créatifs</td>
+                      <td className="p-4 text-center">8 créatifs + 2 vidéos</td>
+                      <td className="p-4 text-center">Illimités</td>
                     </tr>
                     {/* Audiences similaires */}
-                    <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
+                    <tr className="border-t border-digiqo-primary/10">
                       <td className="p-4 font-medium text-digiqo-primary">Audiences personnalisées</td>
                       <td className="p-4 text-center">
                         <X className="w-5 h-5 text-red-500 mx-auto" />
@@ -1003,25 +967,25 @@ export default function PublicitePage() {
                       </td>
                     </tr>
                     {/* Optimisation */}
-                    <tr className="border-t border-digiqo-primary/10">
+                    <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
                       <td className="p-4 font-medium text-digiqo-primary">Optimisation</td>
-                      <td className="p-4 text-center">Mensuelle</td>
-                      <td className="p-4 text-center">Bi-hebdomadaire</td>
                       <td className="p-4 text-center">Hebdomadaire</td>
+                      <td className="p-4 text-center">Quotidienne</td>
+                      <td className="p-4 text-center">Temps réel avec IA</td>
                     </tr>
                     {/* Support */}
-                    <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
+                    <tr className="border-t border-digiqo-primary/10">
                       <td className="p-4 font-medium text-digiqo-primary">Support</td>
-                      <td className="p-4 text-center">Email</td>
-                      <td className="p-4 text-center">Prioritaire</td>
-                      <td className="p-4 text-center">Dédié 7j/7</td>
+                      <td className="p-4 text-center">Email & Chat</td>
+                      <td className="p-4 text-center">Prioritaire + AM dédié</td>
+                      <td className="p-4 text-center">Équipe dédiée 7j/7</td>
                     </tr>
                     {/* Rapports */}
-                    <tr className="border-t border-digiqo-primary/10">
+                    <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
                       <td className="p-4 font-medium text-digiqo-primary">Rapports</td>
                       <td className="p-4 text-center">Mensuel</td>
-                      <td className="p-4 text-center">Bi-mensuel + appel</td>
-                      <td className="p-4 text-center">Hebdomadaire + réunions</td>
+                      <td className="p-4 text-center">Hebdomadaire + calls</td>
+                      <td className="p-4 text-center">Dashboard temps réel</td>
                     </tr>
                     {/* Account Manager */}
                     <tr className="border-t border-digiqo-primary/10 bg-gradient-to-r from-digiqo-accent/10 to-amber-500/10">
@@ -1030,7 +994,7 @@ export default function PublicitePage() {
                         <X className="w-5 h-5 text-red-500 mx-auto" />
                       </td>
                       <td className="p-4 text-center">
-                        <X className="w-5 h-5 text-red-500 mx-auto" />
+                        <CheckCircle2 className="w-5 h-5 text-green-500 mx-auto" />
                       </td>
                       <td className="p-4 text-center">
                         <CheckCircle2 className="w-5 h-5 text-green-500 mx-auto" />
@@ -1038,7 +1002,7 @@ export default function PublicitePage() {
                     </tr>
                     {/* CTA */}
                     <tr className="bg-gradient-to-r from-digiqo-primary/5 to-digiqo-accent/5">
-                      <td className="p-6" colSpan={3}>
+                      <td className="p-6" colSpan={4}>
                         <div className="flex flex-col md:flex-row gap-4 justify-center">
                           {formulas.map((formula) => (
                             <motion.a
