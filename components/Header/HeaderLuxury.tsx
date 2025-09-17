@@ -60,14 +60,16 @@ const navigation = {
                 href: '/services/publicite-meta',
                 description: 'Campagnes Facebook & Instagram',
                 icon: TrendingUp,
-                badge: 'Best Seller'
+                badge: 'Best Seller',
+                certifiedBadge: 'Expert certifié'
               },
               {
                 name: 'Publicité Google',
                 href: '/services/publicite-google',
                 description: 'Google Ads & YouTube',
                 icon: Search,
-                badge: 'Experts certifiés'
+                badge: 'ROI Max',
+                certifiedBadge: 'Expert certifié'
               },
               {
                 name: 'Community Management',
@@ -141,6 +143,10 @@ const navigation = {
         { name: 'L\'Équipe', href: '/agence#equipe' },
         { name: 'Rejoignez-nous', href: '/recrutement', highlight: true }
       ]
+    },
+    {
+      name: 'BLOG',
+      href: '/blog'
     },
     { name: 'FAQ', href: '/?instant=true#faq' }
   ],
@@ -473,16 +479,23 @@ export const HeaderLuxury = () => {
                                       }`}
                                     >
                                       <div className="flex flex-col items-center text-center space-y-2">
-                                        <motion.div
-                                          className={`p-3 rounded-lg ${
-                                            service.highlight
-                                              ? 'bg-gradient-to-br from-digiqo-primary to-digiqo-accent text-white'
-                                              : 'bg-gray-100 text-gray-600 group-hover:bg-digiqo-primary/10 group-hover:text-digiqo-primary'
-                                          } transition-all`}
-                                          whileHover={{ scale: 1.1, rotate: 5 }}
-                                        >
-                                          <Icon className="w-5 h-5" />
-                                        </motion.div>
+                                        <div className="relative">
+                                          <motion.div
+                                            className={`p-3 rounded-lg ${
+                                              service.highlight
+                                                ? 'bg-gradient-to-br from-digiqo-primary to-digiqo-accent text-white'
+                                                : 'bg-gray-100 text-gray-600 group-hover:bg-digiqo-primary/10 group-hover:text-digiqo-primary'
+                                            } transition-all`}
+                                            whileHover={{ scale: 1.1, rotate: 5 }}
+                                          >
+                                            <Icon className="w-5 h-5" />
+                                          </motion.div>
+                                          {(service as any).certifiedBadge && (
+                                            <span className="absolute -top-1 -right-1 px-1.5 py-0.5 text-[8px] font-bold bg-green-500 text-white rounded-full whitespace-nowrap text-[7px]">
+                                              {(service as any).certifiedBadge}
+                                            </span>
+                                          )}
+                                        </div>
                                         <div>
                                           <h5 className="font-semibold text-gray-900 group-hover:text-digiqo-primary transition-colors text-sm">
                                             {service.name}
