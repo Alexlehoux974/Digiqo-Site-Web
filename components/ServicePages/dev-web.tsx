@@ -930,7 +930,7 @@ export default function DevWebPage() {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-2 gap-8 items-stretch">
             {[
               {
                 name: 'VELOCIT AI',
@@ -960,7 +960,7 @@ export default function DevWebPage() {
                 tags: ['Services', 'Landing Page', 'Conversion', 'Analytics'],
                 stats: { performance: 98, conversions: '+72%', loading: '0.9s' },
                 gradient: 'from-digiqo-accent to-orange-500',
-                image: '/services-content/2025-08-20 17_14_55-Runcall - Multipliez vos ventes par 3 avec nos closers créolophones _ La Réunion.png'
+                image: '/services-content/screenshotruncall.png'
               },
               {
                 name: 'VEYANOU',
@@ -979,11 +979,11 @@ export default function DevWebPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: getStaggerDelay(index) }}
-                className="group relative"
+                className="group relative h-full"
               >
                 <motion.div
                   whileHover={ANIMATION.hover.liftLarge}
-                  className="relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500"
+                  className="relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 h-full flex flex-col"
                 >
                   {/* Project preview with actual image */}
                   <div className="relative aspect-video overflow-hidden">
@@ -992,7 +992,7 @@ export default function DevWebPage() {
                       src={project.image}
                       alt={project.name}
                       fill
-                      className="object-cover"
+                      className="object-cover object-top"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     
@@ -1037,9 +1037,9 @@ export default function DevWebPage() {
                   </div>
                   
                   {/* Project info */}
-                  <div className="p-8">
+                  <div className="p-8 flex-1 flex flex-col">
                     <h3 className="text-2xl font-bold mb-3">{project.name}</h3>
-                    <p className="text-digiqo-primary/70 mb-6">{project.description}</p>
+                    <p className="text-digiqo-primary/70 mb-6 flex-1">{project.description}</p>
                     
                     {/* Technologies */}
                     <div className="flex flex-wrap gap-2 mb-6">
