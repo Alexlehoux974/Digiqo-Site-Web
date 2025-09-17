@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Modal } from '../ui/Modal'
 import { OptimizedImage } from '../ui/OptimizedImage'
@@ -12,105 +12,10 @@ const clientLogos = [
   { name: 'Chokaae', logo: '/partenaires/CHOKAAE-1024x1024.webp', videoUrl: 'https://raw.githubusercontent.com/Alexlehoux974/Vid-os-Site-web-Digiqo/main/CULINARION.mp4' }
 ]
 
-const caseStudies = [
-  {
-    id: 'lead-generation-veille',
-    title: 'Lead Generation Expert',
-    result: '854 leads générés',
-    description: 'Campagne multi-phase haute performance',
-    client: 'Veille A Nou',
-    videoUrl: 'https://raw.githubusercontent.com/Alexlehoux974/Vid-os-Site-web-Digiqo/main/VEILLE-ANOU.mp4',
-    mission: {
-      contexte: 'Veille A Nou, service de maintien à domicile pour personnes âgées à La Réunion, avait besoin de générer des leads qualifiés pour développer son activité et toucher les familles concernées.',
-      objectifs: [
-        'Générer des leads qualifiés pour le service de maintien à domicile',
-        'Sensibiliser les familles réunionnaises aux solutions disponibles',
-        'Optimiser le coût par lead tout en maintenant la qualité',
-        'Établir une présence digitale forte sur le marché local'
-      ],
-      solutions: [
-        'Stratégie multi-phase : éducation, engagement et conversion',
-        'Ciblage précis des aidants familiaux et seniors autonomes',
-        'Contenus éducatifs sur le maintien à domicile et les aides disponibles',
-        'Campagnes Facebook/Instagram optimisées avec A/B testing continu',
-        'Landing pages spécifiques avec formulaires adaptés aux seniors'
-      ],
-      resultats: [
-        '854 leads générés en 6 mois',
-        'Coût par lead optimisé à 3,51€',
-        '195 000 personnes touchées avec un CTR de 2,27%',
-        '1,6 million d\'impressions générées',
-        'ROI exceptionnel avec un budget maîtrisé de 3 000€'
-      ]
-    }
-  },
-  {
-    id: 'performance-cbienglade',
-    title: 'Performance Publicitaire',
-    result: 'CPC -82%',
-    description: 'Optimisation exceptionnelle des campagnes',
-    client: 'CbienGlacé',
-    videoUrl: 'https://raw.githubusercontent.com/Alexlehoux974/Vid-os-Site-web-Digiqo/main/C_BIEN_GLACE%CC%81_.mp4',
-    mission: {
-      contexte: 'CbienGlacé, entreprise de glaces artisanales à La Réunion, cherchait à optimiser ses campagnes publicitaires pour augmenter ses ventes tout en réduisant ses coûts d\'acquisition.',
-      objectifs: [
-        'Réduire les coûts publicitaires tout en augmentant la performance',
-        'Augmenter la visibilité de la marque sur le marché local',
-        'Générer plus de trafic qualifié vers les points de vente',
-        'Optimiser le retour sur investissement publicitaire'
-      ],
-      solutions: [
-        'Audit complet et refonte de la stratégie publicitaire',
-        'Optimisation avancée des audiences et du ciblage géographique',
-        'Création de visuels percutants mettant en valeur les produits',
-        'A/B testing continu sur les créatives et les messages',
-        'Stratégie de remarketing pour maximiser les conversions'
-      ],
-      resultats: [
-        'CPM réduit de 43% pour plus d\'efficacité',
-        'CPC diminué de 82% grâce à l\'optimisation',
-        'Couverture en hausse de 908% sur le marché cible',
-        'Clics multipliés par 81 (+8 014%)',
-        'Augmentation significative des ventes confirmée par le client'
-      ]
-    }
-  },
-  {
-    id: 'lancement-culinanion',
-    title: 'Lancement Grand Public',
-    result: '325K personnes',
-    description: 'Campagne de lancement à succès',
-    client: 'Culinarion',
-    videoUrl: 'https://raw.githubusercontent.com/Alexlehoux974/Vid-os-Site-web-Digiqo/main/CULINARION.mp4',
-    mission: {
-      contexte: 'Culinarion ouvrait son nouveau magasin à La Réunion et avait besoin d\'une campagne de lancement percutante pour attirer les clients dès l\'ouverture et établir sa notoriété sur le marché local.',
-      objectifs: [
-        'Maximiser la visibilité pour l\'ouverture du magasin',
-        'Créer un buzz autour de la nouvelle enseigne',
-        'Générer du trafic en magasin dès les premiers jours',
-        'Établir une présence digitale forte sur le marché réunionnais'
-      ],
-      solutions: [
-        'Campagne de teasing pré-ouverture pour créer l\'attente',
-        'Stratégie multi-canal Facebook/Instagram avec ciblage géolocalisé',
-        'Contenus visuels premium showcasing les produits phares',
-        'Promotion d\'ouverture exclusive pour les premiers clients',
-        'Community management actif pour créer l\'engagement'
-      ],
-      resultats: [
-        '325 752 personnes touchées dans la zone de chalandise',
-        '2,2 millions d\'impressions générées',
-        'CPM ultra-optimisé à 0,24€ seulement',
-        '74 213 interactions avec la page',
-        'Succès commercial confirmé dès l\'ouverture'
-      ]
-    }
-  }
-]
+// Removed unused caseStudies array - data is now integrated in clientLogos if needed
 
 export function CaseStudiesSection() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const digiqoRef = useRef<HTMLDivElement>(null)
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
 
   return (

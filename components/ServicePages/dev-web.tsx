@@ -933,44 +933,44 @@ export default function DevWebPage() {
           <div className="grid lg:grid-cols-2 gap-8">
             {[
               {
-                name: 'CMX FACTORY',
-                description: 'E-commerce haute performance pour pièces Cross & Supermot',
-                url: 'cmxfactory.com',
-                link: 'https://cmxfactory.com/',
-                tags: ['E-commerce', 'React', 'Node.js', 'Stripe'],
-                stats: { performance: 98, conversions: '+45%', loading: '1.2s' },
-                gradient: 'from-orange-500 to-red-600',
-                image: '/portfolio/cmx-factory.png'
+                name: 'VELOCIT AI',
+                description: 'Plateforme d\'intelligence artificielle pour l\'optimisation des processus métiers',
+                url: 'velocit-ai.fr',
+                link: 'https://velocit-ai.fr/',
+                tags: ['AI Platform', 'Next.js', 'Machine Learning', 'API'],
+                stats: { performance: 99, conversions: '+68%', loading: '0.8s' },
+                gradient: 'from-blue-500 to-purple-600',
+                image: '/services-content/velocit-ai-hero.png'
               },
               {
-                name: 'CBD RUN',
-                description: 'Plateforme de vente en ligne de CBD bio à La Réunion',
-                url: 'cbd-run.com',
-                link: 'https://cbd-run.com/',
-                tags: ['E-commerce', 'Next.js', 'Shopify', 'SEO'],
-                stats: { performance: 96, conversions: '+62%', loading: '0.9s' },
+                name: 'INVESTIS DOM',
+                description: 'Solution d\'investissement immobilier et défiscalisation dans les DOM-TOM',
+                url: 'investis-dom.com',
+                link: 'https://investis-dom.com/',
+                tags: ['Fintech', 'React', 'Node.js', 'SEO'],
+                stats: { performance: 97, conversions: '+55%', loading: '1.0s' },
                 gradient: 'from-digiqo-secondary to-digiqo-secondary/80',
-                image: '/portfolio/cbd-run.png'
+                image: '/services-content/investis-dom-hero.png'
               },
               {
-                name: 'SNOWKITE SENSATION',
-                description: 'Site vitrine immersif pour école de snowkite',
-                url: 'snowkitesensation.com',
-                link: 'https://www.snowkitesensation.com/fr/',
-                tags: ['Vitrine', 'Animation 3D', 'Booking', 'PWA'],
-                stats: { performance: 97, conversions: '+38%', loading: '1.1s' },
-                gradient: 'from-blue-500 to-cyan-600',
-                image: '/portfolio/snowkite.png'
+                name: 'RUNCALL',
+                description: 'Centre d\'appels spécialisé avec closers créolophones pour La Réunion',
+                url: 'runcall.re',
+                link: 'https://runcall.re/',
+                tags: ['Services', 'Landing Page', 'Conversion', 'Analytics'],
+                stats: { performance: 98, conversions: '+72%', loading: '0.9s' },
+                gradient: 'from-digiqo-accent to-orange-500',
+                image: '/services-content/2025-08-20 17_14_55-Runcall - Multipliez vos ventes par 3 avec nos closers créolophones _ La Réunion.png'
               },
               {
-                name: 'CLICKNVAN',
-                description: 'Application de location de vans entre particuliers',
-                url: 'clicknvan.re',
-                link: 'https://clicknvan.re/presentation-du-projet/',
-                tags: ['Web App', 'React Native', 'Firebase', 'Maps API'],
-                stats: { performance: 95, conversions: '+52%', loading: '1.3s' },
-                gradient: 'from-digiqo-primary to-digiqo-accent',
-                image: '/portfolio/clicknvan.png'
+                name: 'VEYANOU',
+                description: 'Boutique en ligne de produits locaux et artisanaux de La Réunion',
+                url: 'veyanou.fr',
+                link: 'https://veyanou.fr/',
+                tags: ['E-commerce', 'WordPress', 'WooCommerce', 'Local'],
+                stats: { performance: 96, conversions: '+49%', loading: '1.1s' },
+                gradient: 'from-green-500 to-emerald-600',
+                image: '/services-content/veyanou-hero.png'
               }
             ].map((project, index) => (
               <motion.div
@@ -1068,7 +1068,17 @@ export default function DevWebPage() {
                         <div className="text-xs text-digiqo-primary/70">Chargement</div>
                       </div>
                     </div>
-                    
+
+                    {/* CTA Button */}
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 text-white font-semibold rounded-full hover:from-digiqo-secondary/90 hover:to-digiqo-secondary/70 transition-all duration-300 shadow-md hover:shadow-lg"
+                    >
+                      Voir le site
+                      <Globe className="w-4 h-4" />
+                    </a>
                   </div>
                 </motion.div>
               </motion.div>
