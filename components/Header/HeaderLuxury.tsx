@@ -411,7 +411,7 @@ export const HeaderLuxury = () => {
                         {item.name}
                       </span>
                       {item.badge && (
-                        <span className="px-2 py-0.5 text-[10px] font-bold bg-digiqo-accent text-white rounded-full">
+                        <span className="px-2 py-0.5 text-[10px] font-bold bg-digiqo-secondary text-white rounded-full">
                           {item.badge}
                         </span>
                       )}
@@ -489,7 +489,7 @@ export const HeaderLuxury = () => {
                                             {service.name}
                                           </h5>
                                           {service.badge && (
-                                            <span className="inline-block mt-1 px-2 py-0.5 text-[10px] font-bold bg-digiqo-accent/10 text-digiqo-accent rounded-full">
+                                            <span className="inline-block mt-1 px-2 py-0.5 text-[10px] font-bold bg-digiqo-secondary/10 text-digiqo-secondary rounded-full">
                                               {service.badge}
                                             </span>
                                           )}
