@@ -52,15 +52,8 @@ const navigation = {
       href: '#',
       luxuryIcon: Award,
       megaMenu: {
-        featured: {
-          title: 'Service Premium',
-          subtitle: 'Notre expertise à votre service',
-          image: '/assets/services-featured.jpg',
-          href: '/services/publicite-en-ligne'
-        },
         categories: [
           {
-            title: 'Marketing Digital',
             items: [
               {
                 name: 'Publicité META',
@@ -69,27 +62,29 @@ const navigation = {
                 icon: TrendingUp
               },
               {
+                name: 'Publicité Google',
+                href: '/services/publicite-google',
+                description: 'Google Ads & YouTube',
+                icon: Search,
+                badge: 'ROI Max'
+              },
+              {
                 name: 'Community Management',
                 href: '/services/community-management',
-                description: 'Votre présence sociale optimisée',
+                description: 'Présence sociale optimisée',
                 icon: Users
               },
               {
                 name: 'Référencement SEO',
                 href: '/services/seo',
-                description: 'Dominez les résultats Google',
-                icon: Search,
+                description: 'Dominez Google',
+                icon: Zap,
                 badge: 'Top 3'
-              }
-            ]
-          },
-          {
-            title: 'Création & Design',
-            items: [
+              },
               {
                 name: 'Identité de Marque',
                 href: '/services/identite-de-marque',
-                description: 'Votre image de marque unique',
+                description: 'Image de marque unique',
                 icon: Sparkles
               },
               {
@@ -101,34 +96,23 @@ const navigation = {
               {
                 name: 'Développement Web',
                 href: '/services/sites-web',
-                description: 'Sites web haute couture',
+                description: 'Sites web sur mesure',
                 icon: Code,
-                badge: 'Sur mesure'
-              }
-            ]
-          },
-          {
-            title: 'Performance & Conseil',
-            items: [
-              {
-                name: 'Publicité Google',
-                href: '/services/publicite-google',
-                description: 'Google Ads & YouTube haute performance',
-                icon: TrendingUp,
-                badge: 'ROI Max'
+                badge: 'Premium'
               },
               {
                 name: 'Maintenance Web',
                 href: '/services/sitekeeper',
-                description: 'Sitekeeper/Shopkeeper Maintenance premium',
+                description: 'Sitekeeper/Shopkeeper',
                 icon: Shield
               },
               {
-                name: 'Audit Gratuit',
+                name: 'Audit Digital',
                 href: '/services/audit',
-                description: 'Analyse complète offerte',
-                icon: Zap,
-                highlight: true
+                description: 'Analyse gratuite',
+                icon: Award,
+                highlight: true,
+                badge: 'Gratuit'
               }
             ]
           }
@@ -463,83 +447,59 @@ export const HeaderLuxury = () => {
                         <div className="bg-white/95 backdrop-blur-2xl rounded-2xl shadow-2xl border border-gray-100 overflow-hidden max-h-[calc(100vh-120px)] overflow-y-auto">
                             {/* Premium gradient border */}
                             <div className="absolute inset-0 p-[1px] bg-gradient-to-br from-digiqo-primary/20 via-transparent to-digiqo-accent/20 rounded-2xl" />
-                            
+
                             <div className="relative bg-white rounded-2xl">
-                              {/* Featured section */}
-                              {item.megaMenu.featured && (
-                                <div className="p-4 lg:p-8 bg-gradient-to-br from-digiqo-primary/5 to-digiqo-accent/5 border-b border-gray-100">
-                                  <div>
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                                      {item.megaMenu.featured.title}
-                                    </h3>
-                                    <p className="text-gray-600">
-                                      {item.megaMenu.featured.subtitle}
-                                    </p>
-                                  </div>
-                                </div>
-                              )}
-                              
-                              {/* Services grid */}
-                              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8 p-4 lg:p-8">
-                                {item.megaMenu.categories.map((category) => (
-                                  <div key={category.title}>
-                                    <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">
-                                      {category.title}
-                                    </h4>
-                                    <div className="space-y-3">
-                                      {category.items.map((service) => {
-                                        const Icon = service.icon
-                                        return (
-                                          <Link
-                                            key={service.name}
-                                            href={service.href}
-                                            onClick={() => {
-                                              setIsNavigating(true)
-                                              // Reset after navigation
-                                              setTimeout(() => setIsNavigating(false), 1000)
-                                            }}
-                                            onMouseEnter={() => setHoveredService(service.name)}
-                                            onMouseLeave={() => setHoveredService(null)}
-                                            className={`group block p-2 lg:p-3 rounded-xl transition-all ${
-                                              ('premium' in service && service.premium) 
-                                                ? 'bg-gradient-to-r from-digiqo-primary/5 to-digiqo-accent/5 border border-digiqo-primary/10' 
-                                                : hoveredService === service.name
-                                                ? 'bg-gray-50'
-                                                : ''
-                                            }`}
-                                          >
-                                            <div className="flex items-start space-x-3">
-                                              <motion.div 
-                                                className={`p-2 rounded-lg ${
-                                                  ('premium' in service && service.premium)
-                                                    ? 'bg-gradient-to-br from-digiqo-primary to-digiqo-accent text-white'
-                                                    : 'bg-gray-100 text-gray-600 group-hover:bg-digiqo-primary/10 group-hover:text-digiqo-primary'
-                                                } transition-all`}
-                                                whileHover={{ scale: 1.1, rotate: 5 }}
-                                              >
-                                                <Icon className="w-4 h-4" />
-                                              </motion.div>
-                                              <div className="flex-1">
-                                                <h5 className="font-semibold text-gray-900 group-hover:text-digiqo-primary transition-colors">
-                                                  {service.name}
-                                                </h5>
-                                                {('badge' in service && service.badge) && (
-                                                  <span className="inline-block mt-1 px-2 py-0.5 text-[10px] font-bold bg-digiqo-accent/10 text-digiqo-accent rounded-full">
-                                                    {service.badge}
-                                                  </span>
-                                                )}
-                                                <p className="text-sm text-gray-600 mt-0.5">
-                                                  {service.description}
-                                                </p>
-                                              </div>
-                                              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-digiqo-accent opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all" />
-                                            </div>
-                                          </Link>
-                                        )
-                                      })}
-                                    </div>
-                                  </div>
-                                ))}
+                              {/* Services grid 3x3 */}
+                              <div className="grid grid-cols-3 gap-4 p-6 lg:p-8">
+                                {item.megaMenu.categories[0].items.map((service) => {
+                                  const Icon = service.icon
+                                  return (
+                                    <Link
+                                      key={service.name}
+                                      href={service.href}
+                                      onClick={() => {
+                                        setIsNavigating(true)
+                                        // Reset after navigation
+                                        setTimeout(() => setIsNavigating(false), 1000)
+                                      }}
+                                      onMouseEnter={() => setHoveredService(service.name)}
+                                      onMouseLeave={() => setHoveredService(null)}
+                                      className={`group block p-3 rounded-xl transition-all ${
+                                        service.highlight
+                                          ? 'bg-gradient-to-r from-digiqo-primary/5 to-digiqo-accent/5 border border-digiqo-primary/10'
+                                          : hoveredService === service.name
+                                          ? 'bg-gray-50'
+                                          : ''
+                                      }`}
+                                    >
+                                      <div className="flex flex-col items-center text-center space-y-2">
+                                        <motion.div
+                                          className={`p-3 rounded-lg ${
+                                            service.highlight
+                                              ? 'bg-gradient-to-br from-digiqo-primary to-digiqo-accent text-white'
+                                              : 'bg-gray-100 text-gray-600 group-hover:bg-digiqo-primary/10 group-hover:text-digiqo-primary'
+                                          } transition-all`}
+                                          whileHover={{ scale: 1.1, rotate: 5 }}
+                                        >
+                                          <Icon className="w-5 h-5" />
+                                        </motion.div>
+                                        <div>
+                                          <h5 className="font-semibold text-gray-900 group-hover:text-digiqo-primary transition-colors text-sm">
+                                            {service.name}
+                                          </h5>
+                                          {service.badge && (
+                                            <span className="inline-block mt-1 px-2 py-0.5 text-[10px] font-bold bg-digiqo-accent/10 text-digiqo-accent rounded-full">
+                                              {service.badge}
+                                            </span>
+                                          )}
+                                          <p className="text-xs text-gray-600 mt-1">
+                                            {service.description}
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </Link>
+                                  )
+                                })}
                               </div>
                               
                               {/* CTA Section */}
@@ -784,21 +744,19 @@ export const HeaderLuxury = () => {
                               transition={{ duration: 0.3 }}
                               className="overflow-hidden mt-4 ml-4 space-y-3"
                             >
-                              {item.megaMenu.categories.flatMap(category => 
-                                category.items.map(service => (
-                                  <Link
-                                    key={service.href}
-                                    href={service.href}
-                                    onClick={() => {
-                                      setIsMenuOpen(false)
-                                      setActiveSubmenu(null)
-                                    }}
-                                    className="block py-2 text-gray-600 hover:text-digiqo-primary transition-colors"
-                                  >
-                                    {service.name}
-                                  </Link>
-                                ))
-                              )}
+                              {item.megaMenu.categories[0].items.map(service => (
+                                <Link
+                                  key={service.href}
+                                  href={service.href}
+                                  onClick={() => {
+                                    setIsMenuOpen(false)
+                                    setActiveSubmenu(null)
+                                  }}
+                                  className="block py-2 text-gray-600 hover:text-digiqo-primary transition-colors"
+                                >
+                                  {service.name}
+                                </Link>
+                              ))}
                             </motion.div>
                           )}
                         </AnimatePresence>
