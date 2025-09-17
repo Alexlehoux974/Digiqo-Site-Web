@@ -492,7 +492,7 @@ export const HeaderLuxury = () => {
                                           </motion.div>
                                           {(service as any).certifiedBadge && (
                                             <div className="absolute -top-2 -right-2 transform rotate-12 origin-center">
-                                              <span className="inline-block px-1.5 py-0.5 text-[7px] font-bold bg-green-500 text-white rounded-sm shadow-md border border-green-600 whitespace-nowrap">
+                                              <span className="inline-block px-2 py-1 text-[9px] font-bold bg-green-500 text-white rounded-md shadow-md border border-green-600 whitespace-nowrap">
                                                 {(service as any).certifiedBadge}
                                               </span>
                                             </div>
