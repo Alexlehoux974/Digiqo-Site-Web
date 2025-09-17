@@ -59,42 +59,6 @@ const VideoSection = () => {
             </div>
           </div>
         </div>
-
-        {/* Texte sous la vidéo */}
-        <div className="mt-12 text-center max-w-4xl mx-auto">
-          <h4 className="text-2xl md:text-3xl font-bold text-white mb-6">
-            Votre Partenaire Digital à La Réunion
-          </h4>
-          <p className="text-white/90 text-lg leading-relaxed mb-6">
-            Digiqo est une agence de marketing digital qui vous accompagne dans votre transformation digitale. 
-            Nous proposons des solutions innovantes et sur-mesure pour booster votre présence en ligne et 
-            atteindre vos objectifs business.
-          </p>
-          <p className="text-white/90 text-lg leading-relaxed mb-8">
-            De la publicité en ligne au développement web, en passant par le community management, nous 
-            mettons notre expertise au service de votre croissance. Notre équipe est composée d'<span className="text-digiqo-accent font-semibold">experts 
-            certifiés META et GOOGLE</span>, ce qui nous permet de vous garantir les meilleures pratiques et les résultats 
-            les plus performants du marché. Découvrez dans cette vidéo comment nous pouvons transformer votre vision 
-            en réalité digitale.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a
-              href="/#services"
-              className="inline-flex items-center gap-2 bg-digiqo-accent hover:bg-digiqo-accent/90 text-white font-bold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
-            >
-              Découvrir nos services
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-            <a
-              href="/#contact"
-              className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-bold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 border border-white/30"
-            >
-              Nous contacter
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   )

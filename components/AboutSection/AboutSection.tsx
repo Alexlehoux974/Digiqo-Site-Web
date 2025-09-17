@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { Timeline } from '../ui/timeline';
 import { OptimizedImage } from '../ui/OptimizedImage';
 
@@ -339,90 +338,97 @@ const timelineData = [
             </span>
           </h4>
           <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
-            Des innovations qui transforment radicalement la manière dont les entreprises 
+            Des innovations qui transforment radicalement la manière dont les entreprises
             investissent dans leur croissance digitale.
           </p>
         </div>
-        
+
         {/* Grille responsive : 1 colonne mobile, 2 colonnes desktop */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
-          {/* Mensualisation - Top Left */}
+          {/* Plus de 200 clients actifs - Top Left */}
           <div className="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-digiqo-accent/10 to-transparent p-8">
             <div className="relative z-10">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-digiqo-accent to-digiqo-primary p-3 mb-4">
                 <svg className="w-full h-full text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               </div>
               <p className="text-xl font-bold text-gray-900 mb-2">
-                Mensualisation
+                +200 clients actifs
               </p>
               <p className="text-sm text-gray-600 mb-4">
-                Payez vos campagnes publicitaires mensuellement, sans intérêts.
+                Des entreprises leaders qui nous font confiance pour leur croissance digitale
               </p>
               <div className="flex gap-2">
-                <span className="px-3 py-1 bg-digiqo-accent/10 rounded-full text-xs font-semibold text-digiqo-accent">0% intérêts</span>
-                <span className="px-3 py-1 bg-digiqo-primary/10 rounded-full text-xs font-semibold text-digiqo-primary">Flexible</span>
+                <span className="px-3 py-1 bg-digiqo-accent/10 rounded-full text-xs font-semibold text-digiqo-accent">Confiance</span>
+                <span className="px-3 py-1 bg-digiqo-primary/10 rounded-full text-xs font-semibold text-digiqo-primary">Résultats</span>
               </div>
             </div>
             <div className="absolute -bottom-8 -right-8 w-24 h-24 bg-digiqo-accent/10 rounded-full blur-2xl"></div>
           </div>
-          
-          {/* Vidéo Pro - Top Right */}
+
+          {/* Créatifs publicitaires inclus - Top Right */}
           <div className="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-digiqo-secondary/10 to-transparent p-8">
             <div className="relative z-10">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-digiqo-secondary to-digiqo-primary p-3 mb-4">
-                <svg className="w-full h-full text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <p className="text-xl font-bold text-gray-900 mb-2">
-                Vidéo offerte
-              </p>
-              <p className="text-sm text-gray-600 mb-4">
-                Vidéo offerte dans chaque nouveau partenariat
-              </p>
-              <div className="flex gap-2">
-                <span className="px-3 py-1 bg-digiqo-secondary/10 rounded-full text-xs font-semibold text-digiqo-secondary">4K</span>
-                <span className="px-3 py-1 bg-digiqo-secondary/10 rounded-full text-xs font-semibold text-digiqo-secondary">Pro</span>
-              </div>
-            </div>
-            <div className="absolute -bottom-8 -right-8 w-24 h-24 bg-digiqo-secondary/10 rounded-full blur-2xl"></div>
-          </div>
-          
-          {/* Visuels Mensuels - Bottom Left */}
-          <div className="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-digiqo-primary/10 to-transparent p-8">
-            <div className="relative z-10">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-digiqo-primary to-digiqo-accent p-3 mb-4">
                 <svg className="w-full h-full text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               </div>
               <p className="text-xl font-bold text-gray-900 mb-2">
-                Visuels Renouvelés
+                Créatifs publicitaires inclus
               </p>
               <p className="text-sm text-gray-600 mb-4">
-                Créations fraîches chaque mois pour maintenir l'engagement.
+                Visuels professionnels inclus dans chaque collaboration
               </p>
               <div className="flex gap-2">
-                <span className="px-3 py-1 bg-digiqo-primary/10 rounded-full text-xs font-semibold text-digiqo-primary">Design</span>
-                <span className="px-3 py-1 bg-digiqo-accent/10 rounded-full text-xs font-semibold text-digiqo-accent">A/B Test</span>
+                <span className="px-3 py-1 bg-digiqo-secondary/10 rounded-full text-xs font-semibold text-digiqo-secondary">Design Pro</span>
+                <span className="px-3 py-1 bg-digiqo-secondary/10 rounded-full text-xs font-semibold text-digiqo-secondary">A/B Test</span>
+              </div>
+            </div>
+            <div className="absolute -bottom-8 -right-8 w-24 h-24 bg-digiqo-secondary/10 rounded-full blur-2xl"></div>
+          </div>
+
+          {/* Équipe de production intégrée - Bottom Left */}
+          <div className="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-digiqo-primary/10 to-transparent p-8">
+            <div className="relative z-10">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-digiqo-primary to-digiqo-accent p-3 mb-4">
+                <svg className="w-full h-full text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <p className="text-xl font-bold text-gray-900 mb-2">
+                Équipe de production intégrée
+              </p>
+              <p className="text-sm text-gray-600 mb-4">
+                Studio vidéo et photo professionnel à Digiqo
+              </p>
+              <div className="flex gap-2">
+                <span className="px-3 py-1 bg-digiqo-primary/10 rounded-full text-xs font-semibold text-digiqo-primary">4K</span>
+                <span className="px-3 py-1 bg-digiqo-accent/10 rounded-full text-xs font-semibold text-digiqo-accent">Studio</span>
               </div>
             </div>
             <div className="absolute -bottom-8 -right-8 w-24 h-24 bg-digiqo-primary/10 rounded-full blur-2xl"></div>
           </div>
-          
-          {/* Call to Action - Bottom Right */}
-          <div className="relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 flex flex-col justify-center text-white overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-br from-digiqo-primary/20 to-digiqo-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-            <div className="relative z-10 text-center">
-              <p className="text-2xl font-bold mb-3">Prêt pour 2025 ?</p>
-              <p className="text-sm text-gray-300 mb-4">
-                Rejoignez les leaders qui nous font confiance.
+
+          {/* Mensualisation - Bottom Right */}
+          <div className="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 p-8">
+            <div className="relative z-10">
+              <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm p-3 mb-4">
+                <svg className="w-full h-full text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                </svg>
+              </div>
+              <p className="text-xl font-bold text-white mb-2">
+                Mensualisation
               </p>
-              <Link href="/#contact" className="inline-block bg-white text-gray-900 font-bold px-6 py-2 rounded-full hover:scale-105 transition-transform">
-                Découvrir
-              </Link>
+              <p className="text-sm text-gray-300 mb-4">
+                Payez vos campagnes publicitaires mensuellement, sans intérêts.
+              </p>
+              <div className="flex gap-2">
+                <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-semibold text-white">0% intérêts</span>
+                <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-semibold text-white">Flexible</span>
+              </div>
             </div>
             <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
           </div>
