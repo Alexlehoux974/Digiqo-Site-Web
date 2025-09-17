@@ -10,9 +10,7 @@ import {
   Palette,
   Shield,
   FileSearch,
-  X,
-  Globe,
-  Facebook
+  X
 } from 'lucide-react'
 import { IconCloud } from '../IconCloud'
 import { generateContactUrl } from '@/lib/contact-utils'
