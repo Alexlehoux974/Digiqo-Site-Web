@@ -471,9 +471,11 @@ export default function CommunityPage() {
               {
                 number: '04',
                 title: 'Optimisation',
-                description: 'Ajustements basés sur les performances',
+                description: 'Reporting Mensuel',
                 icon: TrendingUp,
-                color: 'from-green-500 to-teal-600'
+                color: 'from-green-500 to-teal-600',
+                hasButton: true,
+                buttonUrl: 'https://claude.ai/public/artifacts/720d5c82-ac2c-4a39-8a4b-51654abd9677'
               }
             ].map((step, index) => (
               <motion.div
@@ -490,7 +492,18 @@ export default function CommunityPage() {
                   </div>
                   <div className="text-4xl font-bold text-gray-200 mb-2">{step.number}</div>
                   <h3 className="text-xl font-bold text-digiqo-primary mb-3">{step.title}</h3>
-                  <p className="text-gray-600">{step.description}</p>
+                  <p className="text-gray-600 mb-4">{step.description}</p>
+                  {(step as any).hasButton && (
+                    <a
+                      href={(step as any).buttonUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-4 py-2 bg-digiqo-secondary hover:bg-digiqo-secondary-dark text-white font-medium rounded-lg transition-colors duration-200"
+                    >
+                      Voir exemple
+                      <ArrowUpRight className="w-4 h-4 ml-2" />
+                    </a>
+                  )}
                 </div>
                 {index < 3 && (
                   <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2">

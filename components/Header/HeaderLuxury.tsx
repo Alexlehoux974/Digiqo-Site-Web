@@ -67,7 +67,7 @@ const navigation = {
                 href: '/services/publicite-google',
                 description: 'Google Ads & YouTube',
                 icon: Search,
-                badge: 'ROI Max'
+                badge: 'Experts certifiés'
               },
               {
                 name: 'Community Management',
@@ -79,8 +79,7 @@ const navigation = {
                 name: 'Référencement SEO',
                 href: '/services/seo',
                 description: 'Dominez Google',
-                icon: Zap,
-                badge: 'Top 3'
+                icon: Zap
               },
               {
                 name: 'Identité de Marque',
@@ -97,9 +96,9 @@ const navigation = {
               {
                 name: 'Développement Web',
                 href: '/services/sites-web',
-                description: 'Sites web sur mesure',
+                description: 'Votre vitrine digitale personnalisée',
                 icon: Code,
-                badge: 'Premium'
+                badge: 'Sur Mesure'
               },
               {
                 name: 'Maintenance Web',
