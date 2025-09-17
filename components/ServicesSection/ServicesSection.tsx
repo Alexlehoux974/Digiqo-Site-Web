@@ -497,10 +497,14 @@ export const ServicesSection = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             className="fixed inset-0 flex items-center justify-center z-[120] p-4"
+            onClick={() => setShowAdvertisingModal(false)}
           >
-            <div className="relative bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
-              {/* Header avec gradient digiqo */}
-              <div className="relative bg-gradient-to-r from-digiqo-primary to-digiqo-primary/90 p-8 text-white">
+            <div
+              className="relative bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header avec gradient digiqo - fixe */}
+              <div className="relative bg-gradient-to-r from-digiqo-primary to-digiqo-primary/90 p-8 text-white flex-shrink-0">
                 <button
                   onClick={() => setShowAdvertisingModal(false)}
                   className="absolute top-4 right-4 p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
@@ -511,8 +515,9 @@ export const ServicesSection = () => {
                 <p className="text-white/80">Sélectionnez la solution qui correspond à vos objectifs</p>
               </div>
 
-              {/* Body avec les deux options */}
-              <div className="p-8 grid md:grid-cols-2 gap-6">
+              {/* Body avec les deux options - scrollable */}
+              <div className="flex-1 overflow-y-auto overscroll-contain">
+                <div className="p-8 grid md:grid-cols-2 gap-6">
                 {/* Option Meta */}
                 <Link href="/services/publicite-meta" onClick={() => setShowAdvertisingModal(false)}>
                   <motion.div
@@ -608,10 +613,11 @@ export const ServicesSection = () => {
                     </div>
                   </motion.div>
                 </Link>
+                </div>
               </div>
 
-              {/* Footer */}
-              <div className="bg-gray-50 p-6 text-center">
+              {/* Footer - fixe */}
+              <div className="bg-gray-50 p-6 text-center flex-shrink-0">
                 <p className="text-gray-600 mb-4">Besoin d'aide pour choisir ?</p>
                 <Link href={generateContactUrl({ description: "J'ai besoin de conseils pour choisir entre Meta Ads et Google Ads" })}>
                   <motion.button
