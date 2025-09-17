@@ -16,6 +16,7 @@ import {
 } from 'lucide-react'
 import { IconCloud } from '../IconCloud'
 import { generateContactUrl } from '@/lib/contact-utils'
+import { OptimizedImage } from '../ui/OptimizedImage'
 
 interface Service {
   id: string
@@ -489,7 +490,7 @@ export const ServicesSection = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setShowAdvertisingModal(false)}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[110]"
           />
 
           {/* Modal Content */}
@@ -497,7 +498,7 @@ export const ServicesSection = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="fixed inset-0 flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 flex items-center justify-center z-[120] p-4"
           >
             <div className="relative bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
               {/* Header avec gradient digiqo */}
@@ -521,8 +522,15 @@ export const ServicesSection = () => {
                     whileTap={{ scale: 0.98 }}
                     className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 border-2 border-transparent hover:border-blue-400 transition-all cursor-pointer group"
                   >
-                    <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 text-white mb-4 mx-auto group-hover:scale-110 transition-transform">
-                      <Facebook className="w-8 h-8" />
+                    <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-white shadow-md mb-4 mx-auto group-hover:scale-110 transition-transform">
+                      <OptimizedImage
+                        src="/partenaires/META-1024x1024.webp"
+                        alt="Meta"
+                        width={48}
+                        height={48}
+                        className="w-12 h-12 object-contain"
+                        objectFit="contain"
+                      />
                     </div>
                     <h3 className="text-2xl font-bold text-center mb-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                       Publicité META
@@ -562,8 +570,15 @@ export const ServicesSection = () => {
                     whileTap={{ scale: 0.98 }}
                     className="bg-gradient-to-br from-green-50 to-yellow-50 rounded-2xl p-6 border-2 border-transparent hover:border-green-400 transition-all cursor-pointer group"
                   >
-                    <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-green-600 to-yellow-600 text-white mb-4 mx-auto group-hover:scale-110 transition-transform">
-                      <Globe className="w-8 h-8" />
+                    <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-white shadow-md mb-4 mx-auto group-hover:scale-110 transition-transform">
+                      <OptimizedImage
+                        src="/Google_Ads_logo.svg.png"
+                        alt="Google Ads"
+                        width={48}
+                        height={48}
+                        className="w-12 h-12 object-contain"
+                        objectFit="contain"
+                      />
                     </div>
                     <h3 className="text-2xl font-bold text-center mb-3 bg-gradient-to-r from-green-600 to-yellow-600 bg-clip-text text-transparent">
                       Publicité Google
