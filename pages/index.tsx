@@ -13,6 +13,9 @@ import { FAQSection } from '../components/FAQSection'
 import { ContactSection } from '../components/ContactSection'
 import { Footer } from '../components/Footer'
 import { useInstantScroll } from '@/hooks/useInstantScroll'
+import { BlogCarousel } from '@/components/BlogCarousel'
+import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 // Code splitting pour les composants lourds
 const HeroParallax = dynamic(
@@ -103,6 +106,34 @@ export default function Home() {
         <TestimonialsSection />
         <div className="py-8" />
         <ServicesSection />
+        <div className="py-8" />
+
+        {/* Blog Carousel Section */}
+        <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold text-digiqo-primary mb-4">
+                Blog & Actualités
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Découvrez nos conseils d'experts et les dernières tendances du marketing digital à La Réunion
+              </p>
+            </div>
+
+            <BlogCarousel />
+
+            <div className="text-center mt-12">
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-digiqo-primary text-white font-semibold rounded-xl hover:bg-digiqo-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              >
+                Voir tous les articles
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <div className="py-8" />
         <AboutSection />
         <div className="py-8" />
