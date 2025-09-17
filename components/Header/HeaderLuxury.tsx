@@ -491,9 +491,11 @@ export const HeaderLuxury = () => {
                                             <Icon className="w-5 h-5" />
                                           </motion.div>
                                           {(service as any).certifiedBadge && (
-                                            <span className="absolute -top-1 -right-1 px-1.5 py-0.5 text-[8px] font-bold bg-green-500 text-white rounded-full whitespace-nowrap text-[7px]">
-                                              {(service as any).certifiedBadge}
-                                            </span>
+                                            <div className="absolute -top-2 -right-2 transform rotate-12 origin-center">
+                                              <span className="inline-block px-1.5 py-0.5 text-[7px] font-bold bg-green-500 text-white rounded-sm shadow-md border border-green-600 whitespace-nowrap">
+                                                {(service as any).certifiedBadge}
+                                              </span>
+                                            </div>
                                           )}
                                         </div>
                                         <div>

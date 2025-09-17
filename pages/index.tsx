@@ -99,14 +99,6 @@ export default function Home() {
         <div className="py-8" />
         <CaseStudiesSection />
         <div className="py-8" />
-        <div className="relative py-20">
-          <VideoSection />
-        </div>
-        <div className="py-8" />
-        <TestimonialsSection />
-        <div className="py-8" />
-        <ServicesSection />
-        <div className="py-8" />
 
         {/* Blog Carousel Section */}
         <section className="py-20 bg-gradient-to-b from-white to-gray-50">
@@ -133,6 +125,16 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <div className="py-8" />
+        <div className="relative py-20">
+          <VideoSection />
+        </div>
+        <div className="py-8" />
+        <TestimonialsSection />
+        <div className="py-8" />
+        <ServicesSection />
+        <div className="py-8" />
 
         <div className="py-8" />
         <AboutSection />
