@@ -816,7 +816,7 @@ L'identité visuelle ne doit pas être vue comme un élément statique mais comm
     date: "17 Septembre 2025",
     readTime: "13 min",
     author: "Équipe Digiqo",
-    featuredImage: "/blog-images/video-hero.jpeg",
+    featuredImage: "/blog-images/video-studio.jpeg",
     images: [
       "/blog-images/video-studio.jpeg",
       "/blog-images/video-drone.jpeg",
@@ -834,7 +834,7 @@ La production vidéo représente aujourd'hui l'arme ultime du marketing digital,
 
 Notre expertise, forgée à travers plus de 500 productions vidéo réalisées sur l'île, nous a permis de comprendre les spécificités uniques du marché réunionnais. Des spots publicitaires aux documentaires d'entreprise, en passant par les contenus pour les réseaux sociaux et les vidéos événementielles, chaque production nécessite une approche sur-mesure qui combine excellence technique, créativité débordante et compréhension profonde de l'audience locale.
 
-![Production vidéo professionnelle](/blog-images/video-hero.jpeg)
+![Production vidéo professionnelle](/blog-images/video-studio.jpeg)
 
 ## 1. L'écosystème vidéo à La Réunion : opportunités et défis
 
