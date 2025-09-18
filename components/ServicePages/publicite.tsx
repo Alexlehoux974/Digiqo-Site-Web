@@ -418,7 +418,7 @@ export default function PublicitePage() {
               >
                 {/* Badge populaire qui suit le mouvement de hover */}
                 {index === 1 && (
-                  <div className="absolute -top-3 right-2 bg-white text-[#8B1431] px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-[#8B1431]">
+                  <div className="absolute -top-3 -right-10 bg-white text-[#8B1431] px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-[#8B1431]">
                     LE PLUS POPULAIRE
                   </div>
                 )}
