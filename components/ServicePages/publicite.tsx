@@ -75,19 +75,22 @@ const formulas = [
     id: 1,
     name: 'INITIATION',
     price: '549,00',
-    engagement: 'Sans engagement • Résiliable à tout moment',
+    engagement: 'Sans engagement • Budget publicitaire non inclus',
     features: [
-      '1 campagne active',
-      'Gestion du budget publicitaire',
-      'Création visuelle basique',
-      'Rapport mensuel',
-      'Support par email',
-      'Optimisation mensuelle'
+      'Gestion publicités META',
+      'Jusqu\'à 1 000€ de budget géré/mois',
+      'Jusqu\'à 3 campagnes simultanées',
+      'Création, ciblage & testing',
+      'Optimisation hebdomadaire',
+      'Retargeting des audiences',
+      'Canal Google Chat dédié',
+      'Espace Drive collaboratif',
+      '3 créatifs publicitaires/mois offerts'
     ],
     details: [
       'Idéal pour découvrir la publicité en ligne',
       'Budget publicitaire non inclus',
-      'Formation initiale incluse'
+      'Pixel/API exploitation incluse'
     ],
     gradient: 'from-gray-400 to-gray-500'
   },
@@ -98,18 +101,21 @@ const formulas = [
     isPopular: true,
     engagement: 'Sans engagement • Le plus populaire',
     features: [
-      '2-3 campagnes actives',
-      'Gestion optimisée du budget',
-      'Créations visuelles avancées',
-      'Audiences personnalisées',
-      'Rapport bi-mensuel + appel',
-      'Support prioritaire',
-      'Optimisation bi-hebdomadaire'
+      'Gestion publicités META',
+      'Jusqu\'à 2 500€ de budget géré/mois',
+      'Jusqu\'à 4 campagnes simultanées',
+      'Création, ciblage & testing',
+      'Optimisation hebdomadaire',
+      'Retargeting des audiences',
+      'Audiences similaires',
+      'Canal Google Chat dédié',
+      'Espace Drive collaboratif',
+      '3 créatifs publicitaires/mois offerts'
     ],
     details: [
       'Pour une croissance rapide et maîtrisée',
       'Budget publicitaire non inclus',
-      'Stratégie multi-plateformes'
+      'Bonus vidéo pro avec forfait annuel'
     ],
     gradient: 'from-digiqo to-red-600'
   },
@@ -119,14 +125,16 @@ const formulas = [
     price: '1990,00',
     engagement: 'Sans engagement • Service premium',
     features: [
+      'Gestion publicités META + Google Ads',
+      'Budget publicitaire illimité géré',
       'Campagnes illimitées',
       'Account Manager dédié',
       'Créations premium illimitées',
       'Audiences avancées + lookalike',
-      'Rapports hebdomadaires',
-      'Support dédié 7j/7',
-      'Optimisation continue',
-      'Tests A/B systématiques'
+      'Optimisation quotidienne',
+      'Tests A/B systématiques',
+      'Support prioritaire 7j/7',
+      'Rapports hebdomadaires détaillés'
     ],
     details: [
       'Solution complète pour entreprises ambitieuses',
