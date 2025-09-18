@@ -4,8 +4,24 @@ import { Users, Briefcase, ArrowRight, CheckCircle, Send, Heart, Rocket, Target 
 import ServiceLayout from '../components/ServiceLayout/ServiceLayout'
 import { ANIMATION } from '@/lib/animation-constants'
 import FreelanceRecruitmentForm from '@/components/FreelanceRecruitmentForm'
+import { useState } from 'react'
+import { JobModal } from '@/components/JobModal'
+import { getJobById } from '@/lib/job-descriptions'
 
 export default function RecrutementFreelances() {
+  const [selectedJob, setSelectedJob] = useState<string | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleJobClick = (jobId: string) => {
+    setSelectedJob(jobId)
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setSelectedJob(null)
+    setIsModalOpen(false)
+  }
+
   const benefits = [
     {
       icon: Briefcase,
@@ -30,16 +46,16 @@ export default function RecrutementFreelances() {
   ]
 
   const expertises = [
-    "Développeur Web Full-Stack",
-    "Designer UI/UX",
-    "Community Manager",
-    "Expert SEO",
-    "Monteur Vidéo / Motion Designer",
-    "Spécialiste Google Ads & Meta Ads",
-    "Photographe / Créateur de Contenu",
-    "Influenceur Marketing Manager",
-    "Commercial Outbound",
-    "Business Developer"
+    { id: 'developpeur-web', title: 'Développeur Web Full-Stack' },
+    { id: 'designer-ui-ux', title: 'Designer UI/UX' },
+    { id: 'community-manager', title: 'Community Manager' },
+    { id: 'expert-seo', title: 'Expert SEO' },
+    { id: 'monteur-video', title: 'Monteur Vidéo / Motion Designer' },
+    { id: 'specialiste-ads', title: 'Spécialiste Google Ads & Meta Ads' },
+    { id: 'photographe', title: 'Photographe / Créateur de Contenu' },
+    { id: 'influenceur-manager', title: 'Influenceur Marketing Manager' },
+    { id: 'commercial-outbound', title: 'Commercial Outbound' },
+    { id: 'business-developer', title: 'Business Developer' }
   ]
 
   return (
@@ -169,15 +185,17 @@ export default function RecrutementFreelances() {
           <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
             {expertises.map((expertise, index) => (
               <motion.div
-                key={index}
+                key={expertise.id}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
+                onClick={() => handleJobClick(expertise.id)}
+                className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group"
               >
-                <CheckCircle className="w-5 h-5 text-digiqo-accent shrink-0" />
-                <span className="text-gray-700 font-medium">{expertise}</span>
+                <CheckCircle className="w-5 h-5 text-digiqo-accent shrink-0 group-hover:scale-110 transition-transform" />
+                <span className="text-gray-700 font-medium group-hover:text-digiqo-primary transition-colors">{expertise.title}</span>
+                <ArrowRight className="w-4 h-4 text-gray-400 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
               </motion.div>
             ))}
           </div>
@@ -311,6 +329,13 @@ export default function RecrutementFreelances() {
           </motion.div>
         </div>
       </section>
+
+      {/* Job Modal */}
+      <JobModal
+        job={selectedJob ? getJobById(selectedJob) || null : null}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      />
     </ServiceLayout>
   )
 }

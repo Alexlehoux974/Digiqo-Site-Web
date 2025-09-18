@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Send, AlertCircle, CheckCircle, Globe, Briefcase, FileText, Users } from 'lucide-react';
+import { useRouter } from 'next/router';
 
 interface FormData {
   nomPrenom: string;
@@ -29,6 +30,7 @@ interface FormData {
 }
 
 export default function FreelanceRecruitmentForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState<FormData>({
     nomPrenom: '',
     email: '',
@@ -57,6 +59,38 @@ export default function FreelanceRecruitmentForm() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  // Liste des postes disponibles (correspondant aux job descriptions)
+  const postesDisponibles = [
+    'Développeur Web Full-Stack',
+    'Designer UI/UX',
+    'Community Manager',
+    'Expert SEO',
+    'Monteur Vidéo / Motion Designer',
+    'Spécialiste Google Ads & Meta Ads',
+    'Photographe / Créateur de Contenu',
+    'Influenceur Marketing Manager',
+    'Commercial Outbound',
+    'Business Developer'
+  ];
+
+  // Pre-remplir le formulaire si un poste est passé en paramètre URL
+  useEffect(() => {
+    if (router.query.poste) {
+      const poste = decodeURIComponent(router.query.poste as string);
+      if (postesDisponibles.includes(poste)) {
+        setFormData(prev => ({
+          ...prev,
+          metierPrincipal: poste
+        }));
+        // Faire défiler jusqu'au formulaire
+        const formElement = document.getElementById('formulaire');
+        if (formElement) {
+          formElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  }, [router.query]);
 
   const statutsAdministratifs = [
     'Auto-entrepreneur',
@@ -508,18 +542,24 @@ export default function FreelanceRecruitmentForm() {
               {/* Métier principal */}
               <div>
                 <label htmlFor="metierPrincipal" className="block text-sm font-medium text-gray-700 mb-2">
-                  Métier principal (graphiste, dev, closer, etc.) *
+                  Poste souhaité *
                 </label>
-                <input
-                  type="text"
+                <select
                   id="metierPrincipal"
                   name="metierPrincipal"
                   required
                   value={formData.metierPrincipal}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B1431] focus:border-transparent transition-colors"
-                  placeholder="Développeur web"
-                />
+                >
+                  <option value="">Sélectionnez un poste</option>
+                  {postesDisponibles.map((poste) => (
+                    <option key={poste} value={poste}>
+                      {poste}
+                    </option>
+                  ))}
+                  <option value="Autre">Autre (préciser dans spécialités)</option>
+                </select>
               </div>
 
               {/* Spécialités / Logiciels maîtrisés */}
