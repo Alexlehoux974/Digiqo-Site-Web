@@ -127,7 +127,8 @@
       "mcp__replicate__get_predictions",
       "mcp__replicate__create_predictions",
       "mcp__airtable__get_record",
-      "Bash(git log:*)"
+      "Bash(git log:*)",
+      "Bash(pdftotext:*)"
     ],
     "deny": []
   }

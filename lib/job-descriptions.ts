@@ -29,7 +29,7 @@ export const jobDescriptions: JobDescription[] = [
       'Sens du design et de l\'UX',
       'Autonomie et rigueur dans le code'
     ],
-    remuneration: '350-600€/jour selon expérience',
+    remuneration: 'Rémunération sur devis',
     location: 'Remote ou La Réunion',
     status: 'Freelance',
     highlights: ['Projets variés', 'Technologies modernes', 'Formation continue']
@@ -98,7 +98,7 @@ export const jobDescriptions: JobDescription[] = [
       'Veille constante sur les algorithmes Google',
       'Esprit analytique et orienté résultats'
     ],
-    remuneration: '400-600€/jour selon mission',
+    remuneration: 'Rémunération sur devis',
     location: 'Remote',
     status: 'Freelance',
     highlights: ['Missions stratégiques', 'Impact direct', 'Formation continue']
@@ -121,7 +121,7 @@ export const jobDescriptions: JobDescription[] = [
       'Compréhension des codes publicitaires',
       'Réactivité et respect des délais'
     ],
-    remuneration: '300-500€/jour selon projet',
+    remuneration: 'Rémunération sur devis',
     location: 'Remote ou La Réunion',
     status: 'Freelance',
     highlights: ['Projets créatifs', 'Contenus variés', 'Liberté créative']
@@ -144,7 +144,7 @@ export const jobDescriptions: JobDescription[] = [
       'Esprit analytique et data-driven',
       'Orienté performance et résultats'
     ],
-    remuneration: '400-700€/jour selon expertise',
+    remuneration: 'Rémunération sur devis',
     location: 'Remote',
     status: 'Freelance',
     highlights: ['Budgets importants', 'Formation continue', 'Impact direct']
@@ -167,7 +167,7 @@ export const jobDescriptions: JobDescription[] = [
       'Créativité et sens de la mise en scène',
       'Équipement professionnel'
     ],
-    remuneration: '250-500€/shooting',
+    remuneration: 'Rémunération sur devis',
     location: 'La Réunion',
     status: 'Freelance',
     highlights: ['Clients variés', 'Projets créatifs', 'Flexibilité']
@@ -190,7 +190,7 @@ export const jobDescriptions: JobDescription[] = [
       'Connaissance des KPIs d\'influence',
       'Créativité et sens relationnel'
     ],
-    remuneration: 'Fixe + commissions sur partenariats',
+    remuneration: 'Rémunération sur devis',
     location: 'La Réunion',
     status: 'Freelance',
     highlights: ['Secteur en croissance', 'Relations variées', 'Impact direct']
