@@ -410,27 +410,36 @@ export default function PublicitePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className={`relative bg-white rounded-2xl overflow-hidden shadow-xl ${
-                  index === 1 ? 'ring-4 ring-[#8B1431] shadow-2xl md:scale-105' : ''
-                }`}
+                className="relative"
               >
-                {/* Badge populaire pour PROPULSION */}
+                {/* Badge populaire HORS de la carte, positionné au-dessus */}
                 {index === 1 && (
-                  <div className="absolute top-0 right-0 bg-[#8B1431] text-white px-4 py-2 rounded-bl-lg text-sm font-bold z-10">
+                  <div className="absolute -top-3 -right-3 bg-[#8B1431] text-white px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12">
                     LE PLUS POPULAIRE
                   </div>
                 )}
 
-                {/* Header with colored gradient */}
-                <div className={`p-6 bg-gradient-to-br ${
-                  index === 0 ? 'from-gray-100 to-gray-200' :
-                  index === 1 ? 'from-[#8B1431] to-red-700' :
-                  'from-orange-100 to-amber-200'
-                }`}>
-                  <h3 className={`text-2xl font-bold text-center ${
-                    index === 1 ? 'text-white' : 'text-gray-800'
-                  }`}>{formula.name}</h3>
-                </div>
+                {/* Carte avec effet hover */}
+                <motion.div
+                  className={`relative bg-white rounded-2xl overflow-hidden shadow-xl h-full transition-all duration-300 ${
+                    index === 1 ? 'ring-4 ring-[#8B1431] shadow-2xl md:scale-105' : ''
+                  }`}
+                  whileHover={{
+                    y: -10,
+                    shadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+                    transition: { duration: 0.3 }
+                  }}
+                >
+                  {/* Header with colored gradient */}
+                  <div className={`p-6 bg-gradient-to-br ${
+                    index === 0 ? 'from-gray-100 to-gray-200' :
+                    index === 1 ? 'from-[#8B1431] to-red-700' :
+                    'from-orange-100 to-amber-200'
+                  }`}>
+                    <h3 className={`text-2xl font-bold text-center ${
+                      index === 1 ? 'text-white' : 'text-gray-800'
+                    }`}>{formula.name}</h3>
+                  </div>
 
                 <div className="p-8">
                   {/* Prix */}
@@ -490,6 +499,7 @@ export default function PublicitePage() {
                     </div>
                   )}
                 </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
