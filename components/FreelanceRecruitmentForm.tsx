@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, AlertCircle, CheckCircle, Globe, Calendar, Briefcase, FileText, Clock, DollarSign, Users } from 'lucide-react';
+import { Send, AlertCircle, CheckCircle, Globe, Briefcase, FileText, Users } from 'lucide-react';
 
 interface FormData {
   nomPrenom: string;
