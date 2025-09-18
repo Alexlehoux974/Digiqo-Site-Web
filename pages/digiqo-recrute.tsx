@@ -38,7 +38,7 @@ export default function RecrutementFreelances() {
     "Spécialiste Google Ads & Meta Ads",
     "Photographe / Créateur de Contenu",
     "Influenceur Marketing Manager",
-    "Commercial",
+    "Commercial Outbound",
     "Business Developer"
   ]
 
