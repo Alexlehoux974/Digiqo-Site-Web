@@ -75,22 +75,16 @@ const formulas = [
     id: 1,
     name: 'INITIATION',
     price: '549,00',
-    engagement: 'Sans engagement • Budget publicitaire non inclus',
+    engagement: 'PAR MOIS',
     features: [
-      '✅ Gestion publicités META (Facebook & Instagram)',
-      '💰 Jusqu\'à 1 000€ de budget publicitaire géré/mois',
-      '📈 Jusqu\'à 3 campagnes simultanées',
-      '🎯 Création, ciblage & testing stratégique',
-      '⚙️ Optimisation hebdomadaire',
-      '🔄 Retargeting des audiences',
-      '💬 Canal Google Chat dédié',
-      '📁 Espace Drive collaboratif',
-      '🎨 3 créatifs publicitaires/mois offerts (valeur 135€)',
-      '🔧 Exploitation Pixel/API existants'
+      '💰 Jusqu\'à 2 500 € de budget publicitaire géré / mois',
+      '📊 3 visuels publicitaires inclus / mois (non cumulables)',
+      '🚫 Création & ciblage stratégique des campagnes',
+      '🎯 Optimisation des performances',
+      '📋 Reporting mensuel',
+      '📁 Espace collaboratif : Google chat + Google drive'
     ],
-    details: [
-      'Idéal pour : Découvrir la publicité en ligne avec un accompagnement professionnel'
-    ],
+    details: [],
     gradient: 'from-gray-400 to-gray-500'
   },
   {
@@ -98,45 +92,37 @@ const formulas = [
     name: 'PROPULSION',
     price: '949,00',
     isPopular: true,
-    engagement: 'LE PLUS POPULAIRE • Sans engagement',
+    engagement: 'PAR MOIS',
     features: [
-      '✅ Gestion publicités META (Facebook & Instagram)',
-      '💰 Jusqu\'à 2 500€ de budget publicitaire géré/mois',
-      '📈 Jusqu\'à 4 campagnes simultanées',
-      '🎯 Création, ciblage & testing stratégique',
-      '⚙️ Optimisation hebdomadaire',
-      '🔄 Retargeting des audiences',
-      '👥 Création d\'audiences similaires (lookalike)',
-      '💬 Canal Google Chat dédié',
-      '📁 Espace Drive collaboratif',
-      '🎨 3 créatifs publicitaires/mois offerts (valeur 135€)'
+      '💰 Jusqu\'à 5 000 € de budget publicitaire géré / mois',
+      '📊 6 visuels publicitaires inclus / mois (non cumulables)',
+      '🚫 Création & ciblage stratégique des campagnes',
+      '🎯 Optimisation des performances',
+      '📋 Reporting mensuel',
+      '📁 Espace collaboratif : Google chat + Google drive',
+      '👥 Exploitation des audiences similaires',
+      '🔧 Intégration basique des pixels & API'
     ],
-    details: [
-      'BONUS forfait annuel : Vidéo professionnelle incluse (captation + montage)',
-      'Idéal pour : Croissance rapide et maîtrisée'
-    ],
+    details: [],
     gradient: 'from-digiqo to-red-600'
   },
   {
     id: 3,
     name: 'EXPANSION',
     price: '1990,00',
-    engagement: 'Service Premium • Sans engagement',
+    engagement: 'PAR MOIS',
     features: [
-      '✅ Gestion META + Google Ads',
-      '💰 Budget publicitaire ILLIMITÉ géré',
-      '📈 Campagnes ILLIMITÉES',
-      '👤 Account Manager dédié',
-      '🎨 Créations premium illimitées',
-      '👥 Audiences avancées + lookalike',
-      '⚡ Optimisation QUOTIDIENNE',
-      '🔬 Tests A/B systématiques',
-      '🚨 Support prioritaire 7j/7',
-      '📊 Rapports hebdomadaires détaillés',
-      '🤝 Réunions stratégiques mensuelles'
+      '💰 Jusqu\'à 10 000 € de budget publicitaire géré / mois',
+      '📊 9 visuels publicitaires inclus / mois (non cumulables)',
+      '🚫 Création & ciblage stratégique des campagnes',
+      '🎯 Optimisation des performances',
+      '📋 Reporting mensuel',
+      '📁 Espace collaboratif : Google chat + drive',
+      '👥 Exploitation des audiences similaires',
+      '🔧 Intégration avancée des pixels & API'
     ],
     details: [
-      'Idéal pour : Entreprises ambitieuses avec objectifs de forte croissance'
+      '(+10 % du dépassement facturé séparément en fin de mois si budget > 10 000 €)'
     ],
     gradient: 'from-amber-500 to-orange-600'
   }
@@ -430,7 +416,7 @@ export default function PublicitePage() {
 
                 {/* Carte */}
                 <div
-                  className={`relative bg-white rounded-2xl overflow-hidden shadow-xl h-full transition-all duration-300 hover:shadow-2xl ${
+                  className={`relative bg-white rounded-2xl shadow-xl h-full flex flex-col transition-all duration-300 hover:shadow-2xl ${
                     index === 1 ? 'ring-4 ring-[#8B1431] shadow-2xl md:scale-105' : ''
                   }`}
                 >
@@ -439,13 +425,13 @@ export default function PublicitePage() {
                     index === 0 ? 'from-gray-100 to-gray-200' :
                     index === 1 ? 'from-[#8B1431] to-red-700' :
                     'from-orange-100 to-amber-200'
-                  }`}>
+                  } rounded-t-2xl`}>
                     <h3 className={`text-2xl font-bold text-center ${
                       index === 1 ? 'text-white' : 'text-gray-800'
                     }`}>{formula.name}</h3>
                   </div>
 
-                <div className="p-8">
+                <div className="p-8 flex flex-col flex-grow">
                   {/* Prix */}
                   <div className="text-center mb-6">
                     <div className="flex items-baseline justify-center gap-1">
@@ -459,13 +445,13 @@ export default function PublicitePage() {
                         €
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600 mt-2 font-medium">
+                    <p className="text-sm text-gray-600 mt-2 font-medium h-5">
                       {formula.engagement}
                     </p>
                   </div>
 
-                  {/* Caractéristiques principales */}
-                  <div className="space-y-3 mb-8 min-h-[280px]">
+                  {/* Caractéristiques principales - Flex grow pour prendre tout l'espace disponible */}
+                  <div className="space-y-3 mb-6 flex-grow">
                     {formula.features.map((feature, idx) => (
                       <div key={idx} className="flex items-start gap-3">
                         <CheckCircle2 className="w-5 h-5 text-[#8B1431] mt-0.5 flex-shrink-0" />
@@ -474,24 +460,9 @@ export default function PublicitePage() {
                     ))}
                   </div>
 
-                  {/* Bouton CTA */}
-                  <motion.a
-                    href={generateContactUrl({ service: 'publicite', formula: formula.name })}
-                    className={`block w-full py-4 px-6 font-bold rounded-full text-center transition-all duration-300 ${
-                      index === 1
-                        ? 'bg-[#8B1431] text-white hover:bg-[#6B0F25] shadow-lg'
-                        : 'bg-white text-[#8B1431] border-2 border-[#8B1431] hover:bg-[#8B1431] hover:text-white'
-                    }`}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    Je choisis cette formule
-                  </motion.a>
-
-                  {/* Section détails supplémentaires */}
+                  {/* Section détails supplémentaires - Hauteur fixe mais réduite */}
                   {formula.details && formula.details.length > 0 && (
-                    <div className="mt-6 pt-6 border-t border-gray-200">
-                      <p className="text-xs text-gray-500 font-semibold mb-3 tracking-wider">INCLUS ÉGALEMENT :</p>
+                    <div className="border-t border-gray-200 pt-4 mb-6 min-h-[40px]">
                       <div className="space-y-2">
                         {formula.details.slice(0, 3).map((detail, idx) => (
                           <div key={idx} className="flex items-start gap-2">
@@ -502,6 +473,20 @@ export default function PublicitePage() {
                       </div>
                     </div>
                   )}
+
+                  {/* Bouton CTA - Sans marge excessive */}
+                  <motion.a
+                    href={generateContactUrl({ service: 'publicite', formula: formula.name })}
+                    className={`block w-full py-4 px-6 font-bold rounded-full text-center transition-all duration-300 mt-auto ${
+                      index === 1
+                        ? 'bg-[#8B1431] text-white hover:bg-[#6B0F25] shadow-lg'
+                        : 'bg-white text-[#8B1431] border-2 border-[#8B1431] hover:bg-[#8B1431] hover:text-white'
+                    }`}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    CHOISIR CE PLAN
+                  </motion.a>
                 </div>
                 </div>
               </motion.div>
