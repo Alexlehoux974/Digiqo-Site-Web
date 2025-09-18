@@ -77,20 +77,19 @@ const formulas = [
     price: '549,00',
     engagement: 'Sans engagement • Budget publicitaire non inclus',
     features: [
-      'Gestion publicités META',
-      'Jusqu\'à 1 000€ de budget géré/mois',
-      'Jusqu\'à 3 campagnes simultanées',
-      'Création, ciblage & testing',
-      'Optimisation hebdomadaire',
-      'Retargeting des audiences',
-      'Canal Google Chat dédié',
-      'Espace Drive collaboratif',
-      '3 créatifs publicitaires/mois offerts'
+      '✅ Gestion publicités META (Facebook & Instagram)',
+      '💰 Jusqu\'à 1 000€ de budget publicitaire géré/mois',
+      '📈 Jusqu\'à 3 campagnes simultanées',
+      '🎯 Création, ciblage & testing stratégique',
+      '⚙️ Optimisation hebdomadaire',
+      '🔄 Retargeting des audiences',
+      '💬 Canal Google Chat dédié',
+      '📁 Espace Drive collaboratif',
+      '🎨 3 créatifs publicitaires/mois offerts (valeur 135€)',
+      '🔧 Exploitation Pixel/API existants'
     ],
     details: [
-      'Idéal pour découvrir la publicité en ligne',
-      'Budget publicitaire non inclus',
-      'Pixel/API exploitation incluse'
+      'Idéal pour : Découvrir la publicité en ligne avec un accompagnement professionnel'
     ],
     gradient: 'from-gray-400 to-gray-500'
   },
@@ -99,23 +98,22 @@ const formulas = [
     name: 'PROPULSION',
     price: '949,00',
     isPopular: true,
-    engagement: 'Sans engagement • Le plus populaire',
+    engagement: 'LE PLUS POPULAIRE • Sans engagement',
     features: [
-      'Gestion publicités META',
-      'Jusqu\'à 2 500€ de budget géré/mois',
-      'Jusqu\'à 4 campagnes simultanées',
-      'Création, ciblage & testing',
-      'Optimisation hebdomadaire',
-      'Retargeting des audiences',
-      'Audiences similaires',
-      'Canal Google Chat dédié',
-      'Espace Drive collaboratif',
-      '3 créatifs publicitaires/mois offerts'
+      '✅ Gestion publicités META (Facebook & Instagram)',
+      '💰 Jusqu\'à 2 500€ de budget publicitaire géré/mois',
+      '📈 Jusqu\'à 4 campagnes simultanées',
+      '🎯 Création, ciblage & testing stratégique',
+      '⚙️ Optimisation hebdomadaire',
+      '🔄 Retargeting des audiences',
+      '👥 Création d\'audiences similaires (lookalike)',
+      '💬 Canal Google Chat dédié',
+      '📁 Espace Drive collaboratif',
+      '🎨 3 créatifs publicitaires/mois offerts (valeur 135€)'
     ],
     details: [
-      'Pour une croissance rapide et maîtrisée',
-      'Budget publicitaire non inclus',
-      'Bonus vidéo pro avec forfait annuel'
+      'BONUS forfait annuel : Vidéo professionnelle incluse (captation + montage)',
+      'Idéal pour : Croissance rapide et maîtrisée'
     ],
     gradient: 'from-digiqo to-red-600'
   },
@@ -123,23 +121,22 @@ const formulas = [
     id: 3,
     name: 'EXPANSION',
     price: '1990,00',
-    engagement: 'Sans engagement • Service premium',
+    engagement: 'Service Premium • Sans engagement',
     features: [
-      'Gestion publicités META + Google Ads',
-      'Budget publicitaire illimité géré',
-      'Campagnes illimitées',
-      'Account Manager dédié',
-      'Créations premium illimitées',
-      'Audiences avancées + lookalike',
-      'Optimisation quotidienne',
-      'Tests A/B systématiques',
-      'Support prioritaire 7j/7',
-      'Rapports hebdomadaires détaillés'
+      '✅ Gestion META + Google Ads',
+      '💰 Budget publicitaire ILLIMITÉ géré',
+      '📈 Campagnes ILLIMITÉES',
+      '👤 Account Manager dédié',
+      '🎨 Créations premium illimitées',
+      '👥 Audiences avancées + lookalike',
+      '⚡ Optimisation QUOTIDIENNE',
+      '🔬 Tests A/B systématiques',
+      '🚨 Support prioritaire 7j/7',
+      '📊 Rapports hebdomadaires détaillés',
+      '🤝 Réunions stratégiques mensuelles'
     ],
     details: [
-      'Solution complète pour entreprises ambitieuses',
-      'Budget publicitaire non inclus',
-      'Réunions stratégiques mensuelles'
+      'Idéal pour : Entreprises ambitieuses avec objectifs de forte croissance'
     ],
     gradient: 'from-amber-500 to-orange-600'
   }
@@ -519,13 +516,14 @@ export default function PublicitePage() {
             viewport={{ once: true }}
             className="text-center mt-12"
           >
-            <p className="text-gray-600">
-              <span className="font-semibold">Sans engagement</span> •
-              <span className="mx-2">Résultats garantis</span> •
-              <span>Support dédié</span>
+            <p className="text-gray-600 font-semibold">
+              ⚠️ Note importante :
             </p>
-            <p className="text-sm text-gray-500 mt-2">
-              Budget publicitaire non inclus dans les tarifs affichés
+            <p className="text-gray-600 mt-2">
+              Le budget publicitaire (montant dépensé sur les plateformes) n'est PAS inclus dans ces tarifs.
+            </p>
+            <p className="text-gray-600">
+              Ces prix correspondent uniquement à la gestion et l'optimisation des campagnes par Digiqo.
             </p>
           </motion.div>
         </div>
