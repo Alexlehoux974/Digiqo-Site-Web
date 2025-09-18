@@ -30,16 +30,16 @@ export default function RecrutementFreelances() {
   ]
 
   const expertises = [
-    "Développement web (React, Next.js, Node.js)",
-    "Design graphique et UI/UX",
-    "Community management",
-    "Rédaction de contenus SEO",
-    "Montage vidéo et motion design",
-    "Publicité digitale (Google Ads, Meta Ads)",
-    "Photographie et création visuelle",
-    "Marketing d'influence",
-    "Data analyse et reporting",
-    "Stratégie digitale"
+    "Développeur Web Full-Stack",
+    "Designer UI/UX",
+    "Community Manager",
+    "Expert SEO",
+    "Monteur Vidéo / Motion Designer",
+    "Spécialiste Google Ads & Meta Ads",
+    "Photographe / Créateur de Contenu",
+    "Influenceur Marketing Manager",
+    "Commercial",
+    "Business Developer"
   ]
 
   return (
