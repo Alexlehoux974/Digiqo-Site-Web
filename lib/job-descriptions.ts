@@ -52,7 +52,7 @@ export const jobDescriptions: JobDescription[] = [
       'Créativité et sens du détail',
       'Connaissance des contraintes mobile'
     ],
-    remuneration: '1500€/mois pour 30h/semaine',
+    remuneration: 'Rémunération sur devis',
     location: '100% Remote',
     status: 'Freelance',
     highlights: ['Projets créatifs', 'Clients variés', 'Flexibilité']
@@ -75,10 +75,10 @@ export const jobDescriptions: JobDescription[] = [
       'Organisation et réactivité',
       'Bases en photo/vidéo (bonus)'
     ],
-    remuneration: '331-1339€/mois selon les formules clients',
+    remuneration: '50% du prix HT des formules clients (331€ à 1339€+ par formule)',
     location: 'La Réunion',
     status: 'Freelance',
-    highlights: ['50% du CA client', 'Projets variés', 'Pas de plafond']
+    highlights: ['50% du CA client', 'Pas de plafond de revenus', 'Cumul possible']
   },
   {
     id: 'expert-seo',

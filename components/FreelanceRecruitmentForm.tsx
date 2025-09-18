@@ -116,8 +116,7 @@ export default function FreelanceRecruitmentForm() {
   const fuseauxHoraires = [
     'UTC+4 (La Réunion, Maurice)',
     'UTC+3 (Madagascar, Mayotte)',
-    'UTC+1 (France métropolitaine - Hiver)',
-    'UTC+2 (France métropolitaine - Été)',
+    'UTC+1 (France métropolitaine)',
     'UTC+0 (Londres)',
     'UTC-5 (New York)',
     'Autre'
@@ -181,8 +180,7 @@ export default function FreelanceRecruitmentForm() {
       const fuseauMapping: { [key: string]: string } = {
         'UTC+4 (La Réunion, Maurice)': 'GMT+4 (La Réunion)',
         'UTC+3 (Madagascar, Mayotte)': 'GMT+3',
-        'UTC+1 (France métropolitaine - Hiver)': 'GMT+1',
-        'UTC+2 (France métropolitaine - Été)': 'GMT+2',
+        'UTC+1 (France métropolitaine)': 'GMT+1',
         'UTC+0 (Londres)': 'GMT+0',
         'UTC-5 (New York)': 'GMT-5'
       };
