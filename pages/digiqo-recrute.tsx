@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Users, Briefcase, ArrowRight, CheckCircle, Send, Heart, Rocket, Target } from 'lucide-react'
 import ServiceLayout from '../components/ServiceLayout/ServiceLayout'
 import { ANIMATION } from '@/lib/animation-constants'
+import FreelanceRecruitmentForm from '@/components/FreelanceRecruitmentForm'
 
 export default function RecrutementFreelances() {
   const benefits = [
@@ -261,25 +262,7 @@ export default function RecrutementFreelances() {
             </p>
           </motion.div>
 
-          <motion.div
-            {...ANIMATION.entry.fadeInUp}
-            whileInView={ANIMATION.entry.fadeInUp.animate}
-            viewport={{ once: true }}
-            className="bg-white rounded-3xl shadow-2xl overflow-hidden"
-          >
-            <div className="p-4 bg-gradient-to-r from-digiqo-primary to-digiqo-accent text-center">
-              <p className="text-white font-semibold">Formulaire de candidature freelance</p>
-            </div>
-            <div className="relative w-full" style={{ paddingBottom: '150%' }}>
-              <iframe
-                src="https://docs.google.com/forms/d/e/1FAIpQLSdBGwXIHJigV7ko40SQEUmhSFRsgiPFI1iNF_k3vHFCND5fBg/viewform?embedded=true"
-                className="absolute top-0 left-0 w-full h-full border-0"
-                loading="lazy"
-              >
-                Chargement…
-              </iframe>
-            </div>
-          </motion.div>
+          <FreelanceRecruitmentForm />
 
           {/* Alternative CTA */}
           <motion.div

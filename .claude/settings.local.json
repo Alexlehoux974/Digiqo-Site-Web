@@ -126,7 +126,8 @@
       "mcp__replicate__create_models_predictions",
       "mcp__replicate__get_predictions",
       "mcp__replicate__create_predictions",
-      "mcp__airtable__get_record"
+      "mcp__airtable__get_record",
+      "Bash(git log:*)"
     ],
     "deny": []
   }
