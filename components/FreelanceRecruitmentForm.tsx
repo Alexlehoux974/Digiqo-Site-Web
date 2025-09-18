@@ -83,14 +83,24 @@ export default function FreelanceRecruitmentForm() {
           ...prev,
           metierPrincipal: poste
         }));
-        // Faire défiler jusqu'au formulaire
-        const formElement = document.getElementById('formulaire');
-        if (formElement) {
-          formElement.scrollIntoView({ behavior: 'smooth' });
-        }
       }
     }
   }, [router.query]);
+
+  // Gérer le scroll vers le formulaire si l'ancre est présente
+  useEffect(() => {
+    // Petit délai pour s'assurer que la page est chargée
+    const timer = setTimeout(() => {
+      if (window.location.hash === '#formulaire') {
+        const formElement = document.getElementById('formulaire');
+        if (formElement) {
+          formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const statutsAdministratifs = [
     'Auto-entrepreneur',

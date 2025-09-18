@@ -14,7 +14,7 @@ export const JobModal = ({ job, isOpen, onClose }: JobModalProps) => {
 
   // Encode the job title for URL parameter
   const encodedJob = encodeURIComponent(job.title)
-  const applyUrl = `/digiqo-recrute#formulaire?poste=${encodedJob}`
+  const applyUrl = `/digiqo-recrute?poste=${encodedJob}#formulaire`
 
   return (
     <AnimatePresence>
