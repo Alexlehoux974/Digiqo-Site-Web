@@ -86,7 +86,7 @@ export default function TimelinePaymentStep({ data, updateData }: TimelinePaymen
 
         {data.timeline?.paymentMode === 'onetime' && (
           <p className="mt-2 text-sm text-gray-600 bg-yellow-50 p-3 rounded-lg">
-            ⚠️ Le paiement unique ne comprend pas l'hébergement ni la maintenance. Vous devrez gérer ces aspects vous-même.
+            ⚠️ Le paiement unique ne comprend pas l'hébergement ni la maintenance. Vous devrez gérer ces aspects vous-même, ou souscrire à une de nos offres SiteKeeper ou ShopKeeper.
           </p>
         )}
       </div>

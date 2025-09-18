@@ -253,7 +253,7 @@ export default function DevWebPage() {
         ctaButtons={{
           primary: {
             text: "Demander un devis",
-            href: generateWhatsAppLink({ service: 'dev-web', context: 'devis' })
+            href: "/devis-site-web"
           },
           secondary: {
             text: "Voir nos réalisations",
@@ -878,19 +878,17 @@ export default function DevWebPage() {
                   </p>
                 </div>
               </div>
-              
+
               <motion.a
-                href={generateWhatsAppLink({ service: 'dev-web', context: 'projet' })}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/devis-site-web"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl hover:from-green-600 hover:to-green-700 transition-all duration-300"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl hover:from-digiqo-secondary/90 hover:to-digiqo-secondary/70 transition-all duration-300"
               >
-                Contactez-nous sur WhatsApp
-                <MessageCircle className="w-5 h-5" />
+                Demander un devis
+                <CheckCircle2 className="w-5 h-5" />
               </motion.a>
-              
+
               <p className="text-sm text-digiqo-primary/60 mt-4">
                 Consultation gratuite • Devis personnalisé
               </p>

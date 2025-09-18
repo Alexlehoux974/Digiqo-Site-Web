@@ -206,7 +206,7 @@ export default function WebQuoteForm() {
             className={`px-8 py-3 rounded-full transition-colors ${
               isSubmitting
                 ? 'bg-gray-400 text-white cursor-not-allowed'
-                : 'bg-[#DA6530] text-white hover:bg-[#C5582A]'
+                : 'bg-[#8B1431] text-white hover:bg-[#6B0F25]'
             }`}
           >
             {isSubmitting ? 'Envoi...' : 'Envoyer la demande'}

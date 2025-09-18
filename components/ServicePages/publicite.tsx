@@ -1,298 +1,207 @@
-import { useState } from 'react'
+import React from 'react'
 import Head from 'next/head'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
-import { HeroGradientOrbs } from '@/components/ui/animated-gradient-orb'
-import { 
-  TrendingUp, 
-  Target, 
-  Palette, 
-  BarChart3, 
-  ArrowRight, 
+import { motion } from 'framer-motion'
+import {
   Zap,
-  Users,
-  LineChart,
+  Target,
+  TrendingUp,
+  BarChart3,
   Sparkles,
-  ChevronRight,
-  CheckCircle2,
-  ArrowUpRight,
-  X,
-  Rocket,
-  MessageCircle
+  ArrowRight,
+  CheckCircle2
 } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
 import { generateContactUrl } from '../../lib/contact-utils'
-import { generateWhatsAppLink } from '../../lib/whatsapp-utils'
-import { 
-  getProductsForService
-} from '../../lib/airtable-products'
 
-interface Formula {
-  id: string
-  name: string
-  summary: string
-  price: string // Prix mensuel sans engagement
-  highlights: string[]
-  gradient: string
-  accentColor: string
-  icon: any
-  sections: {
-    services: {
-      title: string
-      items: string[]
+// Animation constants
+const ANIMATION = {
+  duration: {
+    fast: 0.3,
+    medium: 0.5,
+    slow: 0.8
+  },
+  spring: {
+    type: "spring",
+    stiffness: 300,
+    damping: 25
+  },
+  delay: {
+    stagger: 0.1,
+    section: 0.2
+  },
+  hover: {
+    scale: { scale: 1.05 },
+    glow: {
+      boxShadow: "0 0 20px rgba(218, 101, 48, 0.3)"
     }
-    tracking: {
-      title: string
-      items: string[]
-    }
-    creation: {
-      title: string
-      items: string[]
-    }
-    bonus?: {
-      title: string
-      items: string[]
+  },
+  tap: {
+    scale: { scale: 0.95 },
+    scaleSmall: { scale: 0.98 }
+  },
+  entry: {
+    fadeInUp: {
+      initial: { opacity: 0, y: 20 },
+      animate: { opacity: 1, y: 0 },
+      transition: { duration: 0.5 }
+    },
+    fadeInDown: {
+      initial: { opacity: 0, y: -20 },
+      animate: { opacity: 1, y: 0 },
+      transition: { duration: 0.5 }
+    },
+    scaleIn: {
+      initial: { scale: 0.8, opacity: 0 },
+      animate: { scale: 1, opacity: 1 },
+      transition: { duration: 0.5 }
+    },
+    slideInLeft: {
+      initial: { x: -50, opacity: 0 },
+      animate: { x: 0, opacity: 1 },
+      transition: { duration: 0.5 }
+    },
+    slideInRight: {
+      initial: { x: 50, opacity: 0 },
+      animate: { x: 0, opacity: 1 },
+      transition: { duration: 0.5 }
     }
   }
-  paymentLinkMonthly?: string
-  engagement?: string
-  bestValue?: boolean
 }
 
-const processSteps = [
+// Updated formulas with new pricing from the image
+const formulas = [
   {
-    number: '01',
-    title: 'Analyse',
-    description: 'Étude approfondie de votre marché et de vos objectifs commerciaux',
+    id: 1,
+    name: 'INITIATION',
+    price: '549,00',
+    engagement: 'Sans engagement • Résiliable à tout moment',
+    features: [
+      '1 campagne active',
+      'Gestion du budget publicitaire',
+      'Création visuelle basique',
+      'Rapport mensuel',
+      'Support par email',
+      'Optimisation mensuelle'
+    ],
+    details: [
+      'Idéal pour découvrir la publicité en ligne',
+      'Budget publicitaire non inclus',
+      'Formation initiale incluse'
+    ],
+    gradient: 'from-gray-400 to-gray-500'
+  },
+  {
+    id: 2,
+    name: 'PROPULSION',
+    price: '949,00',
+    isPopular: true,
+    engagement: 'Sans engagement • Le plus populaire',
+    features: [
+      '2-3 campagnes actives',
+      'Gestion optimisée du budget',
+      'Créations visuelles avancées',
+      'Audiences personnalisées',
+      'Rapport bi-mensuel + appel',
+      'Support prioritaire',
+      'Optimisation bi-hebdomadaire'
+    ],
+    details: [
+      'Pour une croissance rapide et maîtrisée',
+      'Budget publicitaire non inclus',
+      'Stratégie multi-plateformes'
+    ],
+    gradient: 'from-digiqo to-red-600'
+  },
+  {
+    id: 3,
+    name: 'EXPANSION',
+    price: '1990,00',
+    engagement: 'Sans engagement • Service premium',
+    features: [
+      'Campagnes illimitées',
+      'Account Manager dédié',
+      'Créations premium illimitées',
+      'Audiences avancées + lookalike',
+      'Rapports hebdomadaires',
+      'Support dédié 7j/7',
+      'Optimisation continue',
+      'Tests A/B systématiques'
+    ],
+    details: [
+      'Solution complète pour entreprises ambitieuses',
+      'Budget publicitaire non inclus',
+      'Réunions stratégiques mensuelles'
+    ],
+    gradient: 'from-amber-500 to-orange-600'
+  }
+]
+
+interface QuickWin {
+  icon: React.ComponentType<{ className?: string }>
+  title: string
+  description: string
+  highlight: string
+}
+
+const quickWins: QuickWin[] = [
+  {
     icon: Target,
-    color: 'from-digiqo-primary to-digiqo-primary/80'
+    title: "Ciblage précis",
+    description: "Touchez exactement votre audience idéale grâce à nos techniques de ciblage avancées",
+    highlight: "+85% de précision"
   },
   {
-    number: '02',
-    title: 'Stratégie',
-    description: 'Définition précise des audiences et des messages publicitaires',
-    icon: Users,
-    color: 'from-digiqo-secondary to-digiqo-secondary/80'
+    icon: TrendingUp,
+    title: "ROI optimisé",
+    description: "Chaque euro investi est analysé et optimisé pour maximiser votre retour sur investissement",
+    highlight: "3-5x ROI moyen"
   },
   {
-    number: '03',
-    title: 'Création',
-    description: 'Conception de visuels et contenus publicitaires haute performance',
-    icon: Palette,
-    color: 'from-digiqo-accent to-digiqo-accent/80'
+    icon: BarChart3,
+    title: "Rapports détaillés",
+    description: "Suivez vos performances en temps réel avec nos tableaux de bord personnalisés",
+    highlight: "100% transparent"
   },
   {
-    number: '04',
-    title: 'Optimisation',
-    description: 'Ajustements data-driven pour maximiser votre retour sur investissement',
-    icon: LineChart,
-    color: 'from-digiqo-accent to-amber-600'
+    icon: Sparkles,
+    title: "Créativité illimitée",
+    description: "Nos designers créent des visuels percutants qui captent l'attention de votre audience",
+    highlight: "+2x engagement"
+  }
+]
+
+interface Statistic {
+  value: string
+  label: string
+  color: string
+}
+
+const statistics: Statistic[] = [
+  {
+    value: "+250%",
+    label: "Croissance moyenne",
+    color: "from-digiqo-accent to-amber-500"
+  },
+  {
+    value: "3M€",
+    label: "Budget géré en 2024",
+    color: "from-digiqo-secondary to-cyan-400"
+  },
+  {
+    value: "98%",
+    label: "Clients satisfaits",
+    color: "from-green-400 to-emerald-500"
+  },
+  {
+    value: "24h",
+    label: "Mise en ligne",
+    color: "from-purple-400 to-indigo-500"
   }
 ]
 
 export default function PublicitePage() {
-  const [compareMode] = useState(false)
-  const seoData = servicesSEO['publicite-en-ligne-reunion']
-  
-  // Get real products from Airtable
-  const publiciteProducts = getProductsForService('publicite')
-  
-  // Map Airtable products by formula name (only monthly now)
-  const initMonthly = publiciteProducts.find(p => p.name.includes('Initiation') && p.name.includes('Mensuelle'))
-  const propMonthly = publiciteProducts.find(p => p.name.includes('Propulsion') && p.name.includes('Mensuelle'))
-  const expMonthly = publiciteProducts.find(p => p.name.includes('Expansion') && p.name.includes('Mensuelle'))
-  
-  // Create formulas with real data
-  const formulas: Formula[] = [
-    {
-      id: 'formula-initiation',
-      name: 'Initiation',
-      summary: 'Idéal pour débuter dans la publicité en ligne avec un budget maîtrisé',
-      price: initMonthly?.priceFormatted || '549,00 €',
-      highlights: [
-        'Jusqu\'à 2 500€ de budget publicitaire géré/mois',
-        '3 créatifs publicitaires inclus/mois avec déclinaisons',
-        'Rapport mensuel',
-        'Espace collaboratif Google Chat & Drive'
-      ],
-      gradient: 'from-amber-300 to-orange-400',
-      accentColor: 'amber',
-      icon: Target,
-      sections: {
-        services: {
-          title: '🎯 Services publicitaires',
-          items: [
-            'Gestion & diffusion sur Meta (Facebook & Instagram)',
-            'Jusqu\'à 2 500€ de budget publicitaire géré/mois',
-            'Jusqu\'à 3 campagnes publicitaires simultanées',
-            'Création, ciblage & testing stratégique',
-            'Optimisation hebdomadaire des performances',
-            'Retargeting : reciblage des audiences'
-          ]
-        },
-        tracking: {
-          title: '📂 Suivi & collaboration',
-          items: [
-            'Canal Google Chat dédié pour vos questions',
-            'Espace Drive dédié pour vos contenus',
-            'Rapports d\'activité réguliers'
-          ]
-        },
-        creation: {
-          title: '🎨 Création visuelle',
-          items: [
-            '3 créatifs publicitaires inclus chaque mois avec déclinaisons',
-            'Déclinés dans tous les formats (1:1, 9:16, 4:5)',
-            'Valeur de 135€ offerts chaque mois'
-          ]
-        },
-        bonus: {
-          title: '🎆 Bonus',
-          items: ['1 vidéo offerte immédiatement']
-        }
-      },
-      paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/CqxfynTqvw?referrer=PAYMENT_LINK',
-      engagement: 'Sans engagement, facturation mensuelle',
-      bestValue: false
-    },
-    {
-      id: 'formula-propulsion',
-      name: 'Propulsion',
-      summary: 'Pour les entreprises en croissance cherchant à augmenter leur visibilité',
-      price: propMonthly?.priceFormatted || '949,00 €',
-      highlights: [
-        'Jusqu\'à 5 000€ de budget publicitaire géré/mois',
-        '5 créatifs publicitaires inclus/mois avec déclinaisons',
-        'Audiences similaires incluses',
-        'Rapport mensuel',
-        'Espace collaboratif Google Chat & Drive'
-      ],
-      gradient: 'from-blue-300 to-indigo-400',
-      accentColor: 'blue',
-      icon: Zap,
-      sections: {
-        services: {
-          title: '🎯 Services publicitaires',
-          items: [
-            'Gestion & diffusion sur Meta (Facebook & Instagram)',
-            'Jusqu\'à 5 000€ de budget publicitaire géré/mois',
-            'Jusqu\'à 4 campagnes publicitaires simultanées',
-            'Création, ciblage & testing stratégique',
-            'Optimisation hebdomadaire des performances',
-            'Retargeting : reciblage des audiences',
-            'Création & exploitation d\'audiences similaires'
-          ]
-        },
-        tracking: {
-          title: '📂 Suivi & collaboration',
-          items: [
-            'Canal Google Chat dédié pour vos questions',
-            'Espace Drive dédié pour vos contenus',
-            'Rapports d\'activité réguliers'
-          ]
-        },
-        creation: {
-          title: '🎨 Création visuelle',
-          items: [
-            '5 créatifs publicitaires inclus chaque mois avec déclinaisons',
-            'Déclinés dans tous les formats (1:1, 9:16, 4:5)',
-            'Valeur de 225€ offerts chaque mois'
-          ]
-        },
-        bonus: {
-          title: '🎆 Bonus',
-          items: ['1 vidéo offerte immédiatement']
-        }
-      },
-      paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/4gntC6Vznt2d?referrer=PAYMENT_LINK',
-      engagement: 'Sans engagement, facturation mensuelle',
-      bestValue: true
-    },
-    {
-      id: 'formula-expansion',
-      name: 'Expansion',
-      summary: 'Stratégie avancée pour une présence dominante sur les réseaux sociaux',
-      price: expMonthly?.priceFormatted || '1 990,00 €',
-      highlights: [
-        'Jusqu\'à 20 000€ de budget publicitaire géré/mois',
-        '9 créatifs + shooting photo inclus/mois avec déclinaisons',
-        'Optimisation des performances',
-        'Implémentation du Pixel incluse',
-        'Rapport mensuel',
-        'Espace collaboratif Google Chat & Drive'
-      ],
-      gradient: 'from-purple-300 to-pink-400',
-      accentColor: 'purple',
-      icon: Rocket,
-      sections: {
-        services: {
-          title: '🎯 Services publicitaires',
-          items: [
-            'Gestion & diffusion sur Meta (Facebook & Instagram)',
-            'Jusqu\'à 20 000€ de budget publicitaire géré/mois',
-            'Jusqu\'à 6 campagnes publicitaires simultanées',
-            'Création, ciblage & testing stratégique',
-            'Optimisation avancée des performances',
-            'Retargeting : reciblage des audiences',
-            'Création & exploitation d\'audiences similaires',
-            'Implémentation du Pixel incluse'
-          ]
-        },
-        tracking: {
-          title: '📂 Suivi & collaboration',
-          items: [
-            'Canal Google Chat dédié pour vos questions',
-            'Espace Drive dédié pour vos contenus',
-            'Rapports d\'activité réguliers'
-          ]
-        },
-        creation: {
-          title: '🎨 Création visuelle',
-          items: [
-            '9 créatifs publicitaires + shooting photo inclus chaque mois avec déclinaisons',
-            'Déclinés dans tous les formats (1:1, 9:16, 4:5)',
-            'Valeur de 405€ offerts chaque mois'
-          ]
-        },
-        bonus: {
-          title: '🎆 Bonus',
-          items: ['1 vidéo offerte immédiatement', 'Implémentation du Pixel incluse']
-        }
-      },
-      paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/WQ6DrgtrDNrt7Dtr?referrer=PAYMENT_LINK',
-      engagement: 'Sans engagement, facturation mensuelle',
-      bestValue: false
-    }
-  ]
-
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: 'Publicité en Ligne La Réunion',
-    provider: {
-      '@type': 'Organization',
-      name: 'Digiqo',
-      url: 'https://digiqo.fr'
-    },
-    areaServed: {
-      '@type': 'Place',
-      name: 'La Réunion'
-    },
-    description: seoData.description,
-    offers: formulas.map(formula => ({
-      '@type': 'Offer',
-      name: `Formule ${formula.name}`,
-      price: formula.price.replace('€', '').replace(/\s/g, ''),
-      priceCurrency: 'EUR',
-      priceSpecification: {
-        '@type': 'PriceSpecification',
-        price: formula.price.replace('€', '').replace(/\s/g, ''),
-        priceCurrency: 'EUR',
-        unitText: 'MONTH'
-      }
-    }))
-  }
+  const seoData = Object.values(servicesSEO).find((s: any) => s.urlSlug === 'publicite') || servicesSEO['publicite-en-ligne-reunion']
 
   return (
     <ServiceLayout>
@@ -301,66 +210,62 @@ export default function PublicitePage() {
         <meta name="description" content={seoData.description} />
         <meta property="og:title" content={seoData.title} />
         <meta property="og:description" content={seoData.description} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://digiqo.fr/services/${seoData.urlSlug}`} />
-        <meta property="og:image" content="https://digiqo.fr/assets/digiqo-og-image.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={seoData.title} />
-        <meta name="twitter:description" content={seoData.description} />
-        <link rel="canonical" href={`https://digiqo.fr/services/${seoData.urlSlug}`} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
       </Head>
 
-      {/* Hero Section avec animation sophistiquée */}
-      <section className="relative min-h-[80vh] pt-48 pb-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-digiqo-primary via-digiqo-primary/80 to-digiqo-primary">
-        {/* Animated gradient orbs */}
-        <HeroGradientOrbs />
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-digiqo-primary via-digiqo-primary/90 to-digiqo-accent/20 py-32 overflow-hidden">
+        {/* Background Effects */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 opacity-30">
-          </div>
+          <div className="absolute inset-0 bg-[url('/assets/grid.svg')] bg-center opacity-5" />
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              rotate: [0, 10, 0]
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              repeatType: "reverse"
+            }}
+            className="absolute -top-20 -right-20 w-96 h-96 bg-digiqo-accent/20 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              scale: [1, 1.1, 1],
+              rotate: [0, -10, 0]
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              repeatType: "reverse"
+            }}
+            className="absolute -bottom-20 -left-20 w-96 h-96 bg-digiqo-secondary/20 rounded-full blur-3xl"
+          />
         </div>
 
-        {/* Grid pattern overlay */}
-        <div className="absolute inset-0 bg-[url('/assets/grid.svg')] bg-center opacity-5" />
-
-        <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
-            {...ANIMATION.entry.fadeInUpLarge}
-            transition={{ duration: ANIMATION.duration.slow }}
-            className="space-y-8"
+            {...ANIMATION.entry.fadeInUp}
+            className="max-w-4xl mx-auto text-center"
           >
-            {/* Animated icon */}
+            {/* Badge */}
             <motion.div
-              {...ANIMATION.entry.springIn}
-              transition={{ 
-                ...ANIMATION.ease.spring,
-                stiffness: 260,
-                damping: 20,
-                delay: 0.2 
-              }}
-              className="inline-flex"
+              {...ANIMATION.entry.fadeInDown}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/80 text-sm font-medium mb-8"
             >
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-digiqo-accent to-amber-400 rounded-3xl blur-2xl opacity-50 animate-pulse" />
-                <div className="relative bg-gradient-to-br from-digiqo-primary to-digiqo-primary/80 p-8 rounded-3xl border border-digiqo-primary/30">
-                  <TrendingUp className="w-16 h-16 text-digiqo-accent" />
-                </div>
-              </div>
+              <Zap className="w-4 h-4" />
+              Expertise Meta Business Partner
             </motion.div>
 
-            {/* Title with letter animation */}
-            <div className="space-y-6">
-              <h1 className="text-5xl md:text-7xl font-bold">
-                <span className="text-white">Amplifiez votre</span>
-                <br />
-                <span className="bg-gradient-to-r from-digiqo-accent to-amber-400 bg-clip-text text-transparent">
-                  Impact Digital
+            {/* Title */}
+            <div className="space-y-4 mb-8">
+              <h1 className="text-5xl md:text-7xl font-bold text-white">
+                Publicité
+                <span className="block bg-gradient-to-r from-digiqo-accent to-amber-400 bg-clip-text text-transparent">
+                  Haute Performance
                 </span>
               </h1>
-              
+
               <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto">
                 Campagnes publicitaires haute performance sur les réseaux sociaux.
                 ROI optimisé, résultats mesurables.
@@ -382,7 +287,7 @@ export default function PublicitePage() {
                 Découvrir nos formules
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.a>
-              
+
               <motion.a
                 href={generateContactUrl({ service: 'publicite' })}
                 whileHover={ANIMATION.hover.scale}
@@ -395,564 +300,224 @@ export default function PublicitePage() {
             </motion.div>
           </motion.div>
         </div>
-
-        {/* Animated particles */}
-        <div className="absolute inset-0 pointer-events-none">
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-digiqo-accent/30 rounded-full"
-              initial={{
-                x: (i * 97) % 1920,
-                y: 1080,
-              }}
-              animate={{
-                y: -100,
-              }}
-              transition={{
-                duration: ANIMATION.duration.verySlow * (7 + (i % 7)),
-                repeat: Infinity,
-                delay: (i % 5),
-                ease: "linear",
-              }}
-            />
-          ))}
-        </div>
       </section>
 
-      {/* Process Section avec Timeline Horizontale */}
-      <section className="py-24 bg-gradient-to-br from-white to-digiqo-accent/5 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4">
+      {/* Quick Wins Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-white relative">
+        <div className="container mx-auto px-4">
           <motion.div
             {...ANIMATION.entry.fadeInUp}
             whileInView={ANIMATION.entry.fadeInUp.animate}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Notre <span className="bg-gradient-to-r from-digiqo-accent to-amber-400 bg-clip-text text-transparent">Processus</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Pourquoi choisir{" "}
+              <span className="bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">
+                Digiqo
+              </span>
             </h2>
-            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
-              Une méthodologie éprouvée en 4 étapes pour maximiser votre retour sur investissement
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Des résultats concrets, mesurables et durables pour votre entreprise
             </p>
           </motion.div>
 
-          {/* Timeline horizontale */}
-          <div className="relative">
-            {/* Ligne de connexion */}
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-digiqo-accent/30 to-transparent -translate-y-1/2 hidden lg:block" />
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
-              {processSteps.map((step, index) => (
-                <motion.div
-                  key={index}
-                  {...ANIMATION.entry.fadeInUpLarge}
-                  whileInView={ANIMATION.entry.fadeInUpLarge.animate}
-                  viewport={{ once: true }}
-                  transition={{ delay: getStaggerDelay(index) }}
-                  className="relative"
-                >
-                  <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
-                    {/* Step number */}
-                    <div className="absolute -top-4 left-8 bg-gradient-to-r from-digiqo-primary to-digiqo-primary/80 text-white text-sm font-bold px-4 py-2 rounded-full">
-                      ÉTAPE {step.number}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {quickWins.map((win, index) => (
+              <motion.div
+                key={win.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="relative group"
+              >
+                <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 h-full border border-gray-100 hover:border-digiqo-accent/20">
+                  {/* Icon */}
+                  <div className="mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-digiqo-accent/10 to-amber-500/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <win.icon className="w-8 h-8 text-digiqo-accent" />
                     </div>
-                    
-                    {/* Icon */}
-                    <motion.div
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: ANIMATION.duration.normal }}
-                      className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${step.color} text-white mb-6 mt-4`}
-                    >
-                      <step.icon className="w-8 h-8" />
-                    </motion.div>
-                    
-                    <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
-                    <p className="text-digiqo-primary/70">{step.description}</p>
-                    
-                    {/* Connection dot for timeline */}
-                    <div className="absolute -bottom-10 left-1/2 w-4 h-4 bg-gradient-to-br from-digiqo-accent to-digiqo-accent/70 rounded-full -translate-x-1/2 hidden lg:block" />
                   </div>
-                </motion.div>
-              ))}
-            </div>
+
+                  {/* Content */}
+                  <h3 className="text-xl font-bold mb-2">{win.title}</h3>
+                  <p className="text-gray-600 mb-4">{win.description}</p>
+
+                  {/* Highlight */}
+                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-digiqo-accent/10 rounded-full">
+                    <Sparkles className="w-4 h-4 text-digiqo-accent" />
+                    <span className="text-sm font-semibold text-digiqo-accent">{win.highlight}</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Formules Section avec design moderne */}
-      <section id="formules" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
+      {/* Stats Section */}
+      <section className="py-20 bg-gradient-to-r from-digiqo-primary to-digiqo-primary/90 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/assets/grid.svg')] bg-center opacity-5" />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {statistics.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="text-center"
+              >
+                <div className={`text-5xl md:text-6xl font-bold mb-2 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
+                  {stat.value}
+                </div>
+                <div className="text-white/80 font-medium">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Formulas Section - New Design */}
+      <section id="formules" className="py-24 bg-gradient-to-br from-gray-50 to-white">
+        <div className="container mx-auto px-4">
           <motion.div
             {...ANIMATION.entry.fadeInUp}
             whileInView={ANIMATION.entry.fadeInUp.animate}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Nos <span className="bg-gradient-to-r from-digiqo-accent to-amber-400 bg-clip-text text-transparent">Formules</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Nos formules{" "}
+              <span className="bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">
+                publicitaires
+              </span>
             </h2>
-            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto mb-8">
-              Des solutions adaptées à chaque étape de votre croissance
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Des solutions adaptées à votre budget et vos objectifs
             </p>
-            
-            {/* Description sans engagement */}
-            <div className="flex flex-col items-center gap-6 mb-8">
-              <p className="text-lg text-digiqo-primary/60">
-                Sans engagement, facturation mensuelle
-              </p>
-            </div>
           </motion.div>
 
-          {/* Formula Cards - Mode normal ou comparatif */}
-          {!compareMode ? (
-            <div className="space-y-8 max-w-5xl mx-auto">
-              {formulas.map((formula, index) => {
-              const [isFlipped, setIsFlipped] = useState(false)
-              const [activeSection, setActiveSection] = useState<string | null>(null)
-              const [mobileActiveSection, setMobileActiveSection] = useState<string | null>(null)
-              
-              return (
-                <motion.div
-                  key={formula.id}
-                  {...ANIMATION.entry.scaleIn}
-                  whileInView={ANIMATION.entry.scaleIn.animate}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.2 }}
-                  className="relative"
-                >
-                  {/* Desktop: Dynamic Flip Card */}
-                  <div className="hidden md:block relative h-[500px]" style={{ perspective: '1000px' }}>
-                    <motion.div
-                      className="absolute inset-0 w-full h-full"
-                      animate={{ rotateY: isFlipped ? 180 : 0 }}
-                      transition={{ duration: ANIMATION.duration.normal }}
-                      style={{ transformStyle: 'preserve-3d' }}
-                    >
-                      {/* Front of card */}
-                      <div 
-                        className="absolute inset-0 w-full h-full"
-                        style={{ backfaceVisibility: 'hidden' }}
-                      >
-                        <div className="h-full bg-white rounded-3xl shadow-xl border border-digiqo-accent/10 overflow-hidden">
-                          {/* Gradient accent */}
-                          <div className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${formula.gradient}`} />
-                          
-                          <div className="p-8 pb-10">
-                            {/* Header */}
-                            <div className="mb-8">
-                              <h3 className={`text-4xl font-bold bg-gradient-to-r ${formula.gradient} bg-clip-text text-transparent mb-4`}>
-                                {formula.name}
-                              </h3>
-                              <p className="text-digiqo-primary/60 text-lg mb-6">{formula.summary}</p>
-                              
-                              {/* Price */}
-                              <div className="flex items-baseline gap-4">
-                                <span className="text-digiqo-primary/60 text-lg">À partir de</span>
-                                <span className="text-5xl font-bold">
-                                  {formula.price}
-                                </span>
-                                <span className="text-digiqo-primary/60">/mois</span>
-                                <span className="text-sm text-digiqo-primary/50">
-                                  Sans engagement
-                                </span>
-                              </div>
-                            </div>
+          {/* Formula Cards - Simple 3 card layout */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            {formulas.map((formula, index) => (
+              <motion.div
+                key={formula.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className={`relative bg-white rounded-2xl overflow-hidden shadow-xl ${
+                  index === 1 ? 'ring-4 ring-[#8B1431] shadow-2xl md:scale-105' : ''
+                }`}
+              >
+                {/* Badge populaire pour PROPULSION */}
+                {index === 1 && (
+                  <div className="absolute top-0 right-0 bg-[#8B1431] text-white px-4 py-2 rounded-bl-lg text-sm font-bold z-10">
+                    LE PLUS POPULAIRE
+                  </div>
+                )}
 
-                            {/* Interactive sections grid - Show all 4 */}
-                            <div className="grid grid-cols-4 gap-3 mb-6">
-                              {Object.entries(formula.sections).map(([key, section]) => {
-                                if (!section) return null
-                                const Icon = key === 'services' ? TrendingUp : 
-                                           key === 'tracking' ? BarChart3 : 
-                                           key === 'creation' ? Palette : 
-                                           Sparkles
-                                
-                                return (
-                                  <motion.button
-                                    key={key}
-                                    onClick={() => {
-                                      setActiveSection(key)
-                                      setIsFlipped(true)
-                                    }}
-                                    whileHover={{ scale: 1.03 }}
-                                    whileTap={ANIMATION.tap.scaleSmall}
-                                    className="relative bg-digiqo-secondary/5 hover:bg-digiqo-secondary/10 rounded-xl p-4 text-left transition-all group"
-                                  >
-                                    {/* Hover glow effect */}
-                                    <div className={`absolute inset-0 bg-gradient-to-r ${formula.gradient} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity`} />
-                                    
-                                    <div className="relative">
-                                      <div className="flex flex-col items-center text-center">
-                                        <div className={`p-3 rounded-lg bg-gradient-to-br ${formula.gradient} text-white mb-2`}>
-                                          <Icon className="w-6 h-6" />
-                                        </div>
-                                        <h4 className="font-bold text-digiqo-primary text-sm mb-1">{section.title}</h4>
-                                        <p className="text-xs text-digiqo-primary/70 mb-2">
-                                          {section.items.length} inclus
-                                        </p>
-                                        <div className="flex items-center gap-1 text-xs text-digiqo-accent">
-                                          <span>Voir</span>
-                                          <ArrowRight className="w-3 h-3" />
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </motion.button>
-                                )
-                              })}
-                            </div>
+                {/* Header with colored gradient */}
+                <div className={`p-6 bg-gradient-to-br ${
+                  index === 0 ? 'from-gray-100 to-gray-200' :
+                  index === 1 ? 'from-[#8B1431] to-red-700' :
+                  'from-orange-100 to-amber-200'
+                }`}>
+                  <h3 className={`text-2xl font-bold text-center ${
+                    index === 1 ? 'text-white' : 'text-gray-800'
+                  }`}>{formula.name}</h3>
+                </div>
 
-                            {/* CTA Button on Front */}
-                            <motion.a
-                              href={formula.paymentLinkMonthly || generateContactUrl({ formula: formula.name.toLowerCase(), service: 'publicite', description: `Formule ${formula.name}` })}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              whileHover={{ scale: 1.02 }}
-                              whileTap={ANIMATION.tap.scaleSmall}
-                              className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}
-                            >
-                              Choisir cette formule
-                              <ArrowUpRight className="w-5 h-5" />
-                            </motion.a>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Back of card - Dynamic content */}
-                      <div 
-                        className="absolute inset-0 w-full h-full"
-                        style={{ 
-                          backfaceVisibility: 'hidden',
-                          transform: 'rotateY(180deg)'
-                        }}
-                      >
-                        <div className="h-full bg-white rounded-3xl shadow-xl border border-digiqo-accent/10 overflow-hidden">
-                          {/* Gradient accent */}
-                          <div className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${formula.gradient}`} />
-                          
-                          {activeSection && formula.sections[activeSection as keyof typeof formula.sections] && (
-                            <div className="p-8 h-full flex flex-col">
-                              {/* Header with back button */}
-                              <div className="flex items-center justify-between mb-8">
-                                <div className="flex items-center gap-3">
-                                  <div className={`p-3 rounded-xl bg-gradient-to-br ${formula.gradient} text-white`}>
-                                    {activeSection === 'services' ? <TrendingUp className="w-6 h-6" /> : 
-                                     activeSection === 'tracking' ? <BarChart3 className="w-6 h-6" /> : 
-                                     activeSection === 'creation' ? <Palette className="w-6 h-6" /> : 
-                                     <Sparkles className="w-6 h-6" />}
-                                  </div>
-                                  <div>
-                                    <h3 className="text-2xl font-bold text-digiqo-primary">
-                                      {formula.sections[activeSection as keyof typeof formula.sections]?.title}
-                                    </h3>
-                                    <p className="text-sm text-digiqo-primary/70">{formula.name}</p>
-                                  </div>
-                                </div>
-                                <button
-                                  onClick={() => {
-                                    setIsFlipped(false)
-                                    setTimeout(() => setActiveSection(null), 600)
-                                  }}
-                                  className="p-2 hover:bg-digiqo-secondary/10 rounded-lg transition-colors"
-                                >
-                                  <X className="w-5 h-5 text-digiqo-primary/50" />
-                                </button>
-                              </div>
-
-                              {/* Content */}
-                              <div className="flex-1 overflow-y-auto">
-                                <ul className="space-y-2">
-                                  {formula.sections[activeSection as keyof typeof formula.sections]?.items.map((item, idx) => (
-                                    <motion.li 
-                                      key={idx} 
-                                      initial={{ opacity: 0, x: -20 }}
-                                      animate={{ opacity: 1, x: 0 }}
-                                      transition={{ delay: idx * 0.05 }}
-                                      className="flex items-start gap-2"
-                                    >
-                                      <div className={`p-0.5 rounded-full bg-gradient-to-r ${formula.gradient} flex-shrink-0 mt-1`}>
-                                        <CheckCircle2 className="w-3 h-3 text-white" />
-                                      </div>
-                                      <span className="text-sm text-digiqo-primary/80">{item}</span>
-                                    </motion.li>
-                                  ))}
-                                </ul>
-                              </div>
-
-                              {/* CTA */}
-                              <motion.a
-                                href={formula.paymentLinkMonthly || generateContactUrl({ formula: formula.name.toLowerCase(), service: activeSection, description: `Formule ${formula.name}` })}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={ANIMATION.tap.scaleSmall}
-                                className={`mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}
-                              >
-                                Choisir cette formule
-                                <ArrowUpRight className="w-5 h-5" />
-                              </motion.a>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </motion.div>
+                <div className="p-8">
+                  {/* Prix */}
+                  <div className="text-center mb-6">
+                    <div className="flex items-baseline justify-center gap-1">
+                      <span className="text-5xl font-bold text-[#8B1431]">
+                        {formula.price.split(',')[0]}
+                      </span>
+                      <span className="text-3xl font-bold text-[#8B1431]">
+                        ,{formula.price.split(',')[1]}
+                      </span>
+                      <span className="text-2xl font-semibold text-gray-600 ml-1">
+                        €
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600 mt-2 font-medium">
+                      {formula.engagement}
+                    </p>
                   </div>
 
-                  {/* Mobile: Accordion */}
-                  <div className="md:hidden bg-white rounded-3xl shadow-lg overflow-hidden">
-                    {/* Header always visible */}
-                    <div className="p-6 border-b border-digiqo-accent/10">
-                      <h3 className={`text-3xl font-bold bg-gradient-to-r ${formula.gradient} bg-clip-text text-transparent mb-2`}>
-                        {formula.name}
-                      </h3>
-                      <p className="text-digiqo-primary/70 mb-6">{formula.summary}</p>
-                      
-                      {/* Price */}
-                      <div className="flex items-baseline gap-3 mb-6">
-                        <span className="text-4xl font-bold">
-                          {formula.price}
-                        </span>
-                        <span className="text-digiqo-primary/60">
-                          /mois
-                        </span>
+                  {/* Caractéristiques principales */}
+                  <div className="space-y-3 mb-8 min-h-[280px]">
+                    {formula.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-[#8B1431] mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
                       </div>
+                    ))}
+                  </div>
 
-                      {/* Highlights */}
-                      <div className="space-y-3">
-                        {formula.highlights.map((highlight, idx) => (
-                          <div key={idx} className="flex items-center gap-3">
-                            <CheckCircle2 className="w-5 h-5 text-digiqo-accent flex-shrink-0" />
-                            <span className="text-sm font-medium">{highlight}</span>
+                  {/* Bouton CTA */}
+                  <motion.a
+                    href={generateContactUrl({ service: 'publicite', formula: formula.name })}
+                    className={`block w-full py-4 px-6 font-bold rounded-full text-center transition-all duration-300 ${
+                      index === 1
+                        ? 'bg-[#8B1431] text-white hover:bg-[#6B0F25] shadow-lg'
+                        : 'bg-white text-[#8B1431] border-2 border-[#8B1431] hover:bg-[#8B1431] hover:text-white'
+                    }`}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Je choisis cette formule
+                  </motion.a>
+
+                  {/* Section détails supplémentaires */}
+                  {formula.details && formula.details.length > 0 && (
+                    <div className="mt-6 pt-6 border-t border-gray-200">
+                      <p className="text-xs text-gray-500 font-semibold mb-3 tracking-wider">INCLUS ÉGALEMENT :</p>
+                      <div className="space-y-2">
+                        {formula.details.slice(0, 3).map((detail, idx) => (
+                          <div key={idx} className="flex items-start gap-2">
+                            <span className="text-[#8B1431] text-xs font-bold">✓</span>
+                            <span className="text-xs text-gray-600 leading-relaxed">{detail}</span>
                           </div>
                         ))}
                       </div>
                     </div>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
 
-                    {/* Expandable sections */}
-                    <div className="border-t border-digiqo-accent/10">
-                      {Object.entries(formula.sections).map(([key, section]) => {
-                        if (!section) return null
-                        const Icon = key === 'services' ? TrendingUp : 
-                                   key === 'tracking' ? BarChart3 : 
-                                   key === 'creation' ? Palette : 
-                                   Sparkles
-                        const isOpen = mobileActiveSection === `${formula.id}-${key}`
-                        
-                        return (
-                          <div key={key} className="border-b border-digiqo-accent/10 last:border-0">
-                            <button
-                              onClick={() => setMobileActiveSection(
-                                isOpen ? null : `${formula.id}-${key}`
-                              )}
-                              className="w-full p-4 flex items-center justify-between hover:bg-digiqo-secondary/5 transition-colors"
-                            >
-                              <div className="flex items-center gap-3">
-                                <div className={`p-2 rounded-lg bg-gradient-to-br ${formula.gradient} text-white`}>
-                                  <Icon className="w-4 h-4" />
-                                </div>
-                                <span className="font-medium text-digiqo-primary">{section.title}</span>
-                              </div>
-                              <ChevronRight className={`w-5 h-5 text-digiqo-primary/40 transition-transform ${
-                                isOpen ? 'rotate-90' : ''
-                              }`} />
-                            </button>
-                            
-                            <AnimatePresence>
-                              {isOpen && (
-                                <motion.div
-                                  initial={{ height: 0 }}
-                                  animate={{ height: 'auto' }}
-                                  exit={{ height: 0 }}
-                                  transition={{ duration: ANIMATION.duration.fast }}
-                                  className="overflow-hidden"
-                                >
-                                  <div className="px-4 pb-4">
-                                    <ul className="space-y-2">
-                                      {section.items.map((item, idx) => (
-                                        <li key={idx} className="flex items-start gap-2 text-sm">
-                                          <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${formula.gradient} mt-1.5 flex-shrink-0`} />
-                                          <span className="text-digiqo-primary/70">{item}</span>
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-                          </div>
-                        )
-                      })}
-                    </div>
-
-                    {/* CTA */}
-                    <div className="p-6 bg-gradient-to-br from-digiqo-accent/5 to-digiqo-secondary/5">
-                      <motion.a
-                        href={formula.paymentLinkMonthly || generateContactUrl({ formula: formula.name.toLowerCase(), description: `Formule ${formula.name}` })}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-2xl shadow-lg`}
-                      >
-                        Choisir cette formule
-                        <ArrowUpRight className="w-5 h-5" />
-                      </motion.a>
-                    </div>
-                  </div>
-                </motion.div>
-              )
-            })}
-            </div>
-          ) : (
-            /* Vue comparative */
-            <motion.div
-              {...ANIMATION.entry.fadeInUp}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="max-w-7xl mx-auto"
-            >
-              <div className="overflow-x-auto">
-                <table className="w-full bg-white rounded-2xl shadow-xl overflow-hidden">
-                  <thead>
-                    <tr className="bg-gradient-to-r from-digiqo-primary to-digiqo-primary/80 text-white">
-                      <th className="p-6 text-left">Caractéristiques</th>
-                      {formulas.map((formula) => (
-                        <th key={formula.id} className="p-6 text-center">
-                          <div className="space-y-2">
-                            <h3 className="text-2xl font-bold">{formula.name}</h3>
-                            <p className="text-3xl font-bold">
-                              {formula.price}
-                            </p>
-                            <p className="text-sm opacity-80">
-                              /mois
-                            </p>
-                          </div>
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {/* Budget géré */}
-                    <tr className="border-t border-digiqo-primary/10">
-                      <td className="p-4 font-medium text-digiqo-primary">Budget publicitaire géré</td>
-                      <td className="p-4 text-center">Jusqu'à 1 000€</td>
-                      <td className="p-4 text-center">Jusqu'à 2 500€</td>
-                      <td className="p-4 text-center">Jusqu'à 5 000€</td>
-                      <td className="p-4 text-center">Jusqu'à 10 000€</td>
-                    </tr>
-                    {/* Campagnes simultanées */}
-                    <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
-                      <td className="p-4 font-medium text-digiqo-primary">Campagnes simultanées</td>
-                      <td className="p-4 text-center">1 campagne</td>
-                      <td className="p-4 text-center">2-3 campagnes</td>
-                      <td className="p-4 text-center">Illimitées</td>
-                    </tr>
-                    {/* Créatifs offerts */}
-                    <tr className="border-t border-digiqo-primary/10">
-                      <td className="p-4 font-medium text-digiqo-primary">Créatifs publicitaires/mois</td>
-                      <td className="p-4 text-center">Basiques</td>
-                      <td className="p-4 text-center">Avancés</td>
-                      <td className="p-4 text-center">Premium</td>
-                    </tr>
-                    {/* Audiences similaires */}
-                    <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
-                      <td className="p-4 font-medium text-digiqo-primary">Audiences personnalisées</td>
-                      <td className="p-4 text-center">
-                        <X className="w-5 h-5 text-red-500 mx-auto" />
-                      </td>
-                      <td className="p-4 text-center">
-                        <CheckCircle2 className="w-5 h-5 text-green-500 mx-auto" />
-                      </td>
-                      <td className="p-4 text-center">
-                        <CheckCircle2 className="w-5 h-5 text-green-500 mx-auto" />
-                      </td>
-                    </tr>
-                    {/* Optimisation */}
-                    <tr className="border-t border-digiqo-primary/10">
-                      <td className="p-4 font-medium text-digiqo-primary">Optimisation</td>
-                      <td className="p-4 text-center">Mensuelle</td>
-                      <td className="p-4 text-center">Bi-hebdomadaire</td>
-                      <td className="p-4 text-center">Hebdomadaire</td>
-                    </tr>
-                    {/* Support */}
-                    <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
-                      <td className="p-4 font-medium text-digiqo-primary">Support</td>
-                      <td className="p-4 text-center">Email</td>
-                      <td className="p-4 text-center">Prioritaire</td>
-                      <td className="p-4 text-center">Dédié 7j/7</td>
-                    </tr>
-                    {/* Rapports */}
-                    <tr className="border-t border-digiqo-primary/10">
-                      <td className="p-4 font-medium text-digiqo-primary">Rapports</td>
-                      <td className="p-4 text-center">Mensuel</td>
-                      <td className="p-4 text-center">Bi-mensuel + appel</td>
-                      <td className="p-4 text-center">Hebdomadaire + réunions</td>
-                    </tr>
-                    {/* Account Manager */}
-                    <tr className="border-t border-digiqo-primary/10 bg-gradient-to-r from-digiqo-accent/10 to-amber-500/10">
-                      <td className="p-4 font-medium text-digiqo-primary">Account Manager</td>
-                      <td className="p-4 text-center">
-                        <X className="w-5 h-5 text-red-500 mx-auto" />
-                      </td>
-                      <td className="p-4 text-center">
-                        <X className="w-5 h-5 text-red-500 mx-auto" />
-                      </td>
-                      <td className="p-4 text-center">
-                        <CheckCircle2 className="w-5 h-5 text-green-500 mx-auto" />
-                      </td>
-                    </tr>
-                    {/* CTA */}
-                    <tr className="bg-gradient-to-r from-digiqo-primary/5 to-digiqo-accent/5">
-                      <td className="p-6" colSpan={3}>
-                        <div className="flex flex-col md:flex-row gap-4 justify-center">
-                          {formulas.map((formula) => (
-                            <motion.a
-                              key={formula.id}
-                              href={formula.paymentLinkMonthly || generateContactUrl({ formula: formula.name.toLowerCase(), service: 'publicite', description: `Formule ${formula.name}` })}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              whileHover={{ scale: 1.05 }}
-                              whileTap={{ scale: 0.95 }}
-                              className={`inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-xl shadow-lg`}
-                            >
-                              Choisir {formula.name}
-                              <ArrowUpRight className="w-5 h-5" />
-                            </motion.a>
-                          ))}
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </motion.div>
-          )}
-
-          {/* WhatsApp CTA */}
+          {/* Note en bas */}
           <motion.div
-            {...ANIMATION.entry.fadeInUp}
-            whileInView={ANIMATION.entry.fadeInUp.animate}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
-            className="mt-16 text-center"
+            className="text-center mt-12"
           >
-            <a
-              href={generateWhatsAppLink({ service: 'publicite' })}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-            >
-              <MessageCircle className="w-6 h-6" />
-              Contactez-nous sur WhatsApp
-              <ArrowRight className="w-5 h-5" />
-            </a>
+            <p className="text-gray-600">
+              <span className="font-semibold">Sans engagement</span> •
+              <span className="mx-2">Résultats garantis</span> •
+              <span>Support dédié</span>
+            </p>
+            <p className="text-sm text-gray-500 mt-2">
+              Budget publicitaire non inclus dans les tarifs affichés
+            </p>
           </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-24 bg-gradient-to-br from-digiqo-primary via-digiqo-primary/80 to-digiqo-primary relative overflow-hidden">
-        {/* Background effects */}
-        <div className="absolute inset-0">
+        {/* Background Effects */}
+        <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-[url('/assets/grid.svg')] bg-center opacity-5" />
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-digiqo-accent/20 rounded-full blur-3xl" />
         </div>
@@ -967,16 +532,16 @@ export default function PublicitePage() {
             <h2 className="text-4xl md:text-6xl font-bold text-white">
               Prêt à <span className="bg-gradient-to-r from-digiqo-accent to-amber-400 bg-clip-text text-transparent">propulser</span> votre entreprise ?
             </h2>
-            
+
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
               Bénéficiez d'un audit gratuit et découvrez comment nos campagnes peuvent transformer votre présence digitale
             </p>
-            
+
             <div className="flex justify-center">
               <motion.a
-                href={generateContactUrl({ 
-                  service: 'audit', 
-                  description: "Je souhaite bénéficier d'un audit gratuit avant de lancer mes campagnes publicitaires" 
+                href={generateContactUrl({
+                  service: 'audit',
+                  description: "Je souhaite bénéficier d'un audit gratuit avant de lancer mes campagnes publicitaires"
                 })}
                 whileHover={ANIMATION.hover.scale}
                 whileTap={ANIMATION.tap.scale}
