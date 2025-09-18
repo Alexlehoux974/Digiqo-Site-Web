@@ -20,7 +20,7 @@ const navigation = {
     { name: 'Nos Valeurs', href: '/agence#valeurs' },
     { name: "L'Équipe", href: '/agence#equipe' },
     { name: 'FAQ', href: '/?instant=true#faq' },
-    { name: 'Digiqo Recrute !', href: '/recrutement' },
+    { name: 'Digiqo Recrute !', href: '/digiqo-recrute' },
   ],
   legal: [
     { name: 'Mentions Légales', href: '/mentions-legales' },
