@@ -411,24 +411,23 @@ export default function PublicitePage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 className="relative"
+                whileHover={{
+                  y: -10,
+                  transition: { duration: 0.3 }
+                }}
               >
-                {/* Badge populaire HORS de la carte, positionné au-dessus */}
+                {/* Badge populaire qui suit le mouvement de hover */}
                 {index === 1 && (
                   <div className="absolute -top-3 -right-3 bg-[#8B1431] text-white px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12">
                     LE PLUS POPULAIRE
                   </div>
                 )}
 
-                {/* Carte avec effet hover */}
-                <motion.div
-                  className={`relative bg-white rounded-2xl overflow-hidden shadow-xl h-full transition-all duration-300 ${
+                {/* Carte */}
+                <div
+                  className={`relative bg-white rounded-2xl overflow-hidden shadow-xl h-full transition-all duration-300 hover:shadow-2xl ${
                     index === 1 ? 'ring-4 ring-[#8B1431] shadow-2xl md:scale-105' : ''
                   }`}
-                  whileHover={{
-                    y: -10,
-                    shadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-                    transition: { duration: 0.3 }
-                  }}
                 >
                   {/* Header with colored gradient */}
                   <div className={`p-6 bg-gradient-to-br ${
@@ -499,7 +498,7 @@ export default function PublicitePage() {
                     </div>
                   )}
                 </div>
-                </motion.div>
+                </div>
               </motion.div>
             ))}
           </div>
