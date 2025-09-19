@@ -809,12 +809,6 @@ export default function FreelanceRecruitmentForm() {
               En soumettant ce formulaire, vous acceptez que vos données soient traitées
               conformément à notre politique de confidentialité.
             </p>
-            <p className="mt-2">
-              Problème avec le formulaire ? Contactez-nous :
-              <a href="mailto:recrutement@digiqo.fr" className="text-[#8B1431] hover:underline ml-1">
-                recrutement@digiqo.fr
-              </a>
-            </p>
           </div>
         </div>
       </motion.div>
