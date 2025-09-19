@@ -238,13 +238,14 @@ const timelineData = [
           <div className="relative group overflow-hidden rounded-2xl">
             <div className="absolute -inset-1 bg-gradient-to-r from-digiqo-primary to-digiqo-accent rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-700"></div>
             <div className="relative">
-              <OptimizedImage 
-                src="/partenaires/Adrien.webp" 
+              <OptimizedImage
+                src="/partenaires/Adrien.webp"
                 alt="Adrien"
                 width={1024}
                 height={1024}
-                className="w-full h-64 object-cover rounded-2xl transition-all duration-700 group-hover:scale-110 object-top"
+                className="w-full h-64 object-cover rounded-2xl transition-all duration-700 group-hover:scale-110"
                 objectFit="cover"
+                style={{ objectPosition: 'center 30%' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-2xl">
                 <div className="absolute bottom-6 left-6 text-white">
@@ -263,16 +264,14 @@ const timelineData = [
           <div className="relative group overflow-hidden rounded-2xl">
             <div className="absolute -inset-1 bg-gradient-to-r from-digiqo-secondary to-digiqo-accent rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-700"></div>
             <div className="relative">
-              <img 
-                alt="Raymond" 
-                loading="lazy" 
-                width="482" 
-                height="482" 
-                decoding="async" 
-                data-nimg="1" 
-                className="ease-in-out scale-100 blur-0 grayscale-0 w-full h-64 object-cover rounded-2xl transition-all duration-700 group-hover:scale-110 object-top" 
-                style={{color:'transparent', objectFit:'cover'}}
+              <OptimizedImage
                 src="/partenaires/raymondfinal.webp"
+                alt="Raymond"
+                width={1024}
+                height={1024}
+                className="w-full h-64 object-cover rounded-2xl transition-all duration-700 group-hover:scale-110"
+                objectFit="cover"
+                style={{ objectPosition: 'center 35%' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-2xl">
                 <div className="absolute bottom-6 left-6 text-white">
