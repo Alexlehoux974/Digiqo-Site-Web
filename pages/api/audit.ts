@@ -232,13 +232,31 @@ function mapFormDataToAirtable(formData: Partial<AuditFormData>, reference: stri
 
 // Fonction pour envoyer les données à Airtable
 async function sendToAirtable(formData: Partial<AuditFormData>, reference: string): Promise<{ success: boolean; recordId?: string; error?: string }> {
-  if (!AIRTABLE_API_KEY) {
+  if (!AIRTABLE_API_KEY || AIRTABLE_API_KEY === '') {
     console.warn('Airtable API key not configured, skipping Airtable integration');
     return { success: false, error: 'Airtable not configured' };
   }
 
   try {
-    const record = mapFormDataToAirtable(formData, reference);
+    let record;
+
+    try {
+      record = mapFormDataToAirtable(formData, reference);
+    } catch (mappingError) {
+      console.error('Error mapping form data to Airtable format:', mappingError);
+      return {
+        success: false,
+        error: `Mapping error: ${mappingError instanceof Error ? mappingError.message : 'Unknown error'}`
+      };
+    }
+
+    // Log pour debugging
+    console.log('Sending to Airtable:', {
+      baseId: AIRTABLE_BASE_ID,
+      tableId: AIRTABLE_TABLE_ID,
+      hasApiKey: !!AIRTABLE_API_KEY,
+      recordFieldsCount: Object.keys(record.fields).length
+    });
 
     const response = await fetch(
       `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`,
@@ -586,6 +604,14 @@ export default async function handler(
   }
 
   try {
+    // Log de la requête pour debugging
+    console.log('Audit API called:', {
+      method: req.method,
+      hasBody: !!req.body,
+      bodyKeys: req.body ? Object.keys(req.body) : [],
+      ip: ipAddress
+    });
+
     // Parser et valider les données
     const { formData } = req.body as {
       formData: Partial<AuditFormData>;
@@ -593,6 +619,10 @@ export default async function handler(
 
     // Validation basique
     if (!validateFormData(formData)) {
+      console.error('Form validation failed:', {
+        companyName: !!formData?.general?.companyName,
+        email: !!formData?.contact?.email
+      });
       return res.status(400).json({
         success: false,
         message: 'Données du formulaire invalides. Veuillez vérifier les champs requis.',
@@ -615,15 +645,25 @@ export default async function handler(
     }
 
     // Envoyer à Airtable (toutes les données du formulaire)
-    const airtableResult = await sendToAirtable(formData, reference);
+    let airtableResult = { success: false, error: 'Not attempted' };
 
-    if (airtableResult.success) {
-      console.log('Successfully sent to Airtable:', {
-        recordId: airtableResult.recordId,
-        reference: reference
-      });
-    } else {
-      console.error('Failed to send to Airtable:', airtableResult.error);
+    try {
+      airtableResult = await sendToAirtable(formData, reference);
+
+      if (airtableResult.success) {
+        console.log('Successfully sent to Airtable:', {
+          recordId: airtableResult.recordId,
+          reference: reference
+        });
+      } else {
+        console.error('Failed to send to Airtable:', airtableResult.error);
+      }
+    } catch (airtableError) {
+      console.error('Exception while sending to Airtable:', airtableError);
+      airtableResult = {
+        success: false,
+        error: airtableError instanceof Error ? airtableError.message : 'Unknown error'
+      };
     }
 
     // Si au moins un envoi a réussi, considérer comme succès
