@@ -128,7 +128,13 @@
       "mcp__replicate__create_predictions",
       "mcp__airtable__get_record",
       "Bash(git log:*)",
-      "Bash(pdftotext:*)"
+      "Bash(pdftotext:*)",
+      "mcp__hubspot__hubspot-get-user-details",
+      "mcp__hubspot__hubspot-list-objects",
+      "mcp__hubspot__hubspot-list-properties",
+      "mcp__hubspot__hubspot-get-property",
+      "mcp__hubspot__hubspot-create-property",
+      "Read(//root/**)"
     ],
     "deny": []
   }

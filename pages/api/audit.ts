@@ -2,9 +2,10 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { AuditFormData } from '@/src/lib/audit-types';
 import { calculateAuditScore, validateFormData } from '@/src/lib/audit-utils';
 
-// Configuration N8N webhook (à adapter avec votre URL N8N)
-const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || 'https://n8n.digiqo.fr/webhook/audit-submission';
-const N8N_API_KEY = process.env.N8N_API_KEY || '';
+// Configuration HubSpot
+const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN || '';
+const HUBSPOT_API_URL = 'https://api.hubapi.com';
+const RODOLPHE_OWNER_ID = '554004217'; // Owner ID de Rodolphe Le Houx
 
 // Rate limiting simple (en production, utiliser une solution plus robuste)
 const requestCounts = new Map<string, { count: number; resetTime: number }>();
@@ -18,43 +19,6 @@ interface AuditSubmissionResponse {
   error?: string;
 }
 
-interface N8NPayload {
-  formData: Partial<AuditFormData>;
-  scores: {
-    overall: number;
-    categories: {
-      website: number;
-      socialMedia: number;
-      advertising: number;
-      content: number;
-      conversion: number;
-      crm: number;
-      reputation: number;
-    };
-    strengths: string[];
-    improvements: string[];
-    recommendations: Array<{
-      priority: 'high' | 'medium' | 'low';
-      title: string;
-      description: string;
-      impact: string;
-    }>;
-  };
-  metadata: {
-    timestamp: string;
-    source: string;
-    ip: string;
-    userAgent: string;
-    completionPercentage: number;
-    formVersion: string;
-  };
-  businessContext: {
-    estimatedBudget: string;
-    priority: 'high' | 'medium' | 'low';
-    leadScore: number;
-    assignTo?: string;
-  };
-}
 
 // Fonction pour vérifier le rate limiting
 function checkRateLimit(ip: string): boolean {
@@ -74,54 +38,6 @@ function checkRateLimit(ip: string): boolean {
   return true;
 }
 
-// Fonction pour déterminer la priorité business
-function determineBusinessPriority(
-  formData: Partial<AuditFormData>,
-  overallScore: number
-): { priority: 'high' | 'medium' | 'low'; leadScore: number } {
-  let leadScore = overallScore;
-  let priority: 'high' | 'medium' | 'low' = 'medium';
-
-  // Ajuster le score selon le budget
-  const budget = formData.objectives?.budget;
-  if (budget === '> 10000€/mois' || budget === '5000-10000€/mois') {
-    leadScore += 20;
-    priority = 'high';
-  } else if (budget === '2500-5000€/mois' || budget === '1000-2500€/mois') {
-    leadScore += 10;
-    priority = overallScore > 60 ? 'high' : 'medium';
-  }
-
-  // Ajuster selon la timeline
-  const timeline = formData.objectives?.timeline;
-  if (timeline === 'immediate' || timeline === '< 1 month') {
-    leadScore += 15;
-    if (priority === 'medium') priority = 'high';
-  }
-
-  // Ajuster selon la taille de l'entreprise
-  const companySize = formData.general?.companySize;
-  if (companySize === '50+' || companySize === '20-50') {
-    leadScore += 10;
-  }
-
-  // Ajuster selon les objectifs
-  const goals = formData.objectives?.goals || [];
-  if (goals.includes('increase-revenue') || goals.includes('expand-market')) {
-    leadScore += 5;
-  }
-
-  // Déterminer la priorité finale
-  if (leadScore >= 80) {
-    priority = 'high';
-  } else if (leadScore >= 50) {
-    priority = 'medium';
-  } else {
-    priority = 'low';
-  }
-
-  return { priority, leadScore: Math.min(100, leadScore) };
-}
 
 // Fonction pour générer une référence unique
 function generateReference(): string {
@@ -132,65 +48,346 @@ function generateReference(): string {
   return `AUD-${year}${month}-${random}`;
 }
 
-// Fonction pour envoyer les données à N8N
-async function sendToN8N(payload: N8NPayload): Promise<{ success: boolean; reference?: string; error?: string }> {
+// Fonction pour mapper les données du formulaire vers HubSpot
+function mapFormDataToHubSpot(formData: Partial<AuditFormData>) {
+  const companyProperties: any = {
+    name: formData.general?.companyName || 'Entreprise inconnue',
+    industry: formData.general?.industry || formData.general?.sector,
+    city: formData.general?.location,
+    website: formData.digitalAssets?.website,
+    hubspot_owner_id: RODOLPHE_OWNER_ID, // Attribuer à Rodolphe
+    // Propriétés sociales
+    facebook_company_page: formData.digitalAssets?.socialMedia?.facebook,
+    page_instagram_de_votre_entreprise: formData.digitalAssets?.socialMedia?.instagram,
+    linkedin_company_page: formData.digitalAssets?.socialMedia?.linkedin,
+    twitterhandle: formData.digitalAssets?.socialMedia?.twitter,
+    // Propriétés personnalisées créées
+    youtube_channel_url: formData.digitalAssets?.socialMedia?.youtube,
+    tiktok_account: formData.digitalAssets?.socialMedia?.tiktok,
+    google_business_listing: formData.digitalAssets?.businessListings?.googleBusiness,
+    tripadvisor_listing: formData.digitalAssets?.businessListings?.tripadvisor,
+    audit_company_age: formData.general?.companyAge,
+    audit_business_model: formData.general?.businessModel,
+    audit_team_size: formData.general?.teamSize,
+    sales_platforms: formData.digitalAssets?.salesPlatforms?.join(', '),
+  };
+
+  // Nettoyer les propriétés undefined
+  Object.keys(companyProperties).forEach(key => {
+    if (companyProperties[key] === undefined || companyProperties[key] === '') {
+      delete companyProperties[key];
+    }
+  });
+
+  const contactProperties: any = {
+    firstname: formData.contact?.firstName || '',
+    lastname: formData.contact?.lastName || '',
+    email: formData.contact?.email || '',
+    phone: formData.contact?.phone || '',
+    company: formData.general?.companyName,
+    website: formData.digitalAssets?.website,
+    city: formData.general?.location,
+    hubspot_owner_id: RODOLPHE_OWNER_ID, // Attribuer à Rodolphe
+  };
+
+  // Nettoyer les propriétés undefined
+  Object.keys(contactProperties).forEach(key => {
+    if (contactProperties[key] === undefined || contactProperties[key] === '') {
+      delete contactProperties[key];
+    }
+  });
+
+  return { companyProperties, contactProperties };
+}
+
+// Fonction pour envoyer au webhook n8n quand le contact existe déjà
+async function sendContactToN8N(contactData: any): Promise<void> {
+  const N8N_WEBHOOK_URL = 'https://n8n.srv763918.hstgr.cloud/webhook/be081ee9-cb98-4f3b-b014-6cf893b4fc28';
+
   try {
-    const response = await fetch(N8N_WEBHOOK_URL, {
+    await fetch(N8N_WEBHOOK_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-API-Key': N8N_API_KEY,
-        'X-Source': 'digiqo-website',
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({
+        event: 'existing_contact_audit_submission',
+        contact: contactData,
+        timestamp: new Date().toISOString(),
+        source: 'digiqo-audit-form'
+      }),
     });
+    console.log('Contact existant envoyé au webhook n8n:', contactData);
+  } catch (error) {
+    console.error('Erreur lors de l\'envoi au webhook n8n:', error);
+  }
+}
 
-    if (!response.ok) {
-      throw new Error(`N8N webhook returned ${response.status}: ${response.statusText}`);
+// Fonction pour envoyer les données à HubSpot
+async function sendToHubSpot(formData: Partial<AuditFormData>): Promise<{ success: boolean; companyId?: string; contactId?: string; error?: string }> {
+  if (!HUBSPOT_ACCESS_TOKEN) {
+    console.warn('HubSpot token not configured, skipping HubSpot integration');
+    return { success: false, error: 'HubSpot not configured' };
+  }
+
+  try {
+    const { companyProperties, contactProperties } = mapFormDataToHubSpot(formData);
+
+    // 1. Créer ou mettre à jour l'entreprise
+    let companyId: string | undefined;
+
+    try {
+      // Rechercher si l'entreprise existe déjà
+      if (companyProperties.name) {
+        const searchResponse = await fetch(
+          `${HUBSPOT_API_URL}/crm/v3/objects/companies/search`,
+          {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              filterGroups: [{
+                filters: [{
+                  propertyName: 'name',
+                  operator: 'EQ',
+                  value: companyProperties.name
+                }]
+              }]
+            })
+          }
+        );
+
+        if (searchResponse.ok) {
+          const searchResult = await searchResponse.json();
+          if (searchResult.results && searchResult.results.length > 0) {
+            // L'entreprise existe, la mettre à jour
+            companyId = searchResult.results[0].id;
+
+            await fetch(
+              `${HUBSPOT_API_URL}/crm/v3/objects/companies/${companyId}`,
+              {
+                method: 'PATCH',
+                headers: {
+                  'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ properties: companyProperties })
+              }
+            );
+          }
+        }
+      }
+
+      // Si l'entreprise n'existe pas, la créer
+      if (!companyId) {
+        const createCompanyResponse = await fetch(
+          `${HUBSPOT_API_URL}/crm/v3/objects/companies`,
+          {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ properties: companyProperties })
+          }
+        );
+
+        if (createCompanyResponse.ok) {
+          const company = await createCompanyResponse.json();
+          companyId = company.id;
+        }
+      }
+    } catch (companyError) {
+      console.error('Error creating/updating company:', companyError);
     }
 
-    const result = await response.json();
-    return { 
-      success: true, 
-      reference: result.reference || generateReference() 
-    };
-  } catch (error) {
-    console.error('Error sending to N8N:', error);
-    
-    // Retry logic with exponential backoff
-    for (let attempt = 1; attempt <= 3; attempt++) {
-      await new Promise(resolve => setTimeout(resolve, Math.pow(2, attempt) * 1000));
-      
-      try {
-        const retryResponse = await fetch(N8N_WEBHOOK_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-API-Key': N8N_API_KEY,
-            'X-Source': 'digiqo-website',
-            'X-Retry-Attempt': attempt.toString(),
-          },
-          body: JSON.stringify(payload),
-        });
+    // 2. Créer ou mettre à jour le contact
+    let contactId: string | undefined;
+    let isExistingContact = false;
 
-        if (retryResponse.ok) {
-          const result = await retryResponse.json();
-          return { 
-            success: true, 
-            reference: result.reference || generateReference() 
-          };
+    if (contactProperties.email) {
+      try {
+        // Rechercher si le contact existe déjà
+        const searchContactResponse = await fetch(
+          `${HUBSPOT_API_URL}/crm/v3/objects/contacts/search`,
+          {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              filterGroups: [{
+                filters: [{
+                  propertyName: 'email',
+                  operator: 'EQ',
+                  value: contactProperties.email
+                }]
+              }]
+            })
+          }
+        );
+
+        if (searchContactResponse.ok) {
+          const searchResult = await searchContactResponse.json();
+          if (searchResult.results && searchResult.results.length > 0) {
+            // Le contact existe déjà
+            isExistingContact = true;
+            const existingContact = searchResult.results[0];
+            contactId = existingContact.id;
+
+            // Envoyer les infos du contact existant au webhook n8n
+            await sendContactToN8N({
+              id: contactId,
+              properties: existingContact.properties,
+              formData: formData,
+              companyName: formData.general?.companyName
+            });
+
+            // Mettre à jour le contact avec les nouvelles propriétés
+            await fetch(
+              `${HUBSPOT_API_URL}/crm/v3/objects/contacts/${contactId}`,
+              {
+                method: 'PATCH',
+                headers: {
+                  'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ properties: contactProperties })
+              }
+            );
+          } else {
+            // Le contact n'existe pas, le créer
+            const createContactResponse = await fetch(
+              `${HUBSPOT_API_URL}/crm/v3/objects/contacts`,
+              {
+                method: 'POST',
+                headers: {
+                  'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ properties: contactProperties })
+              }
+            );
+
+            if (createContactResponse.ok) {
+              const contact = await createContactResponse.json();
+              contactId = contact.id;
+            }
+          }
         }
-      } catch (retryError) {
-        console.error(`Retry attempt ${attempt} failed:`, retryError);
+      } catch (contactError) {
+        console.error('Error creating/updating contact:', contactError);
       }
     }
 
-    return { 
-      success: false, 
-      error: error instanceof Error ? error.message : 'Unknown error occurred' 
+    // 3. Associer le contact à l'entreprise
+    if (companyId && contactId) {
+      try {
+        await fetch(
+          `${HUBSPOT_API_URL}/crm/v4/objects/contacts/${contactId}/associations/companies/${companyId}`,
+          {
+            method: 'PUT',
+            headers: {
+              'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify([{
+              associationCategory: 'HUBSPOT_DEFINED',
+              associationTypeId: 279 // Contact to Company association
+            }])
+          }
+        );
+      } catch (associationError) {
+        console.error('Error associating contact to company:', associationError);
+      }
+    }
+
+    // 4. Créer une note avec les détails de l'audit
+    if (companyId || contactId) {
+      try {
+        const auditDetails = `
+Audit Digital - ${new Date().toLocaleDateString('fr-FR')}
+
+🏢 Entreprise: ${formData.general?.companyName || 'Non renseigné'}
+📍 Localisation: ${formData.general?.location || 'Non renseigné'}
+👥 Taille équipe: ${formData.general?.teamSize || 'Non renseigné'}
+📅 Ancienneté: ${formData.general?.companyAge || 'Non renseigné'}
+💼 Modèle: ${formData.general?.businessModel || 'Non renseigné'}
+
+📊 Objectifs:
+${formData.objectives?.goals?.join(', ') || 'Non renseignés'}
+
+💰 Budget: ${formData.objectives?.budget || 'Non renseigné'}
+⏱️ Timeline: ${formData.objectives?.timeline || 'Non renseigné'}
+
+🌐 Site web: ${formData.digitalAssets?.website || 'Non renseigné'}
+📱 Réseaux sociaux:
+${Object.entries(formData.digitalAssets?.socialMedia || {}).map(([platform, url]) => url ? `- ${platform}: ${url}` : '').filter(Boolean).join('\n') || 'Aucun'}
+
+📝 Remarques: ${formData.contact?.message || 'Aucune'}
+`;
+
+        const notePayload = {
+          properties: {
+            hs_timestamp: new Date().toISOString(),
+            hs_note_body: auditDetails,
+          },
+          associations: []
+        };
+
+        if (companyId) {
+          notePayload.associations.push({
+            to: { id: companyId },
+            types: [{
+              associationCategory: 'HUBSPOT_DEFINED',
+              associationTypeId: 190 // Note to Company
+            }]
+          });
+        }
+
+        if (contactId) {
+          notePayload.associations.push({
+            to: { id: contactId },
+            types: [{
+              associationCategory: 'HUBSPOT_DEFINED',
+              associationTypeId: 194 // Note to Contact
+            }]
+          });
+        }
+
+        await fetch(
+          `${HUBSPOT_API_URL}/crm/v3/objects/notes`,
+          {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(notePayload)
+          }
+        );
+      } catch (noteError) {
+        console.error('Error creating note:', noteError);
+      }
+    }
+
+    return {
+      success: true,
+      companyId: companyId,
+      contactId: contactId
+    };
+  } catch (error) {
+    console.error('Error sending to HubSpot:', error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error'
     };
   }
 }
+
 
 export default async function handler(
   req: NextApiRequest,
@@ -234,56 +431,31 @@ export default async function handler(
     // Calculer les scores si non fournis
     const auditScore = score || calculateAuditScore(formData);
 
-    // Déterminer la priorité business
-    const { priority, leadScore } = determineBusinessPriority(formData, auditScore.overall);
+    // Envoyer à HubSpot
+    const hubspotResult = await sendToHubSpot(formData);
 
-    // Calculer le pourcentage de complétion
-    const completionPercentage = Math.round(
-      (Object.keys(formData).filter(key => formData[key as keyof AuditFormData]).length / 11) * 100
-    );
+    if (hubspotResult.success) {
+      console.log('Successfully sent to HubSpot:', {
+        companyId: hubspotResult.companyId,
+        contactId: hubspotResult.contactId
+      });
 
-    // Préparer le payload pour N8N
-    const n8nPayload: N8NPayload = {
-      formData,
-      scores: auditScore,
-      metadata: {
-        timestamp: new Date().toISOString(),
-        source: 'website',
-        ip: ipAddress,
-        userAgent: req.headers['user-agent'] || 'unknown',
-        completionPercentage,
-        formVersion: '1.0.0',
-      },
-      businessContext: {
-        estimatedBudget: formData.objectives?.budget || 'non spécifié',
-        priority,
-        leadScore,
-        assignTo: priority === 'high' ? 'senior-sales' : 'sales-team',
-      },
-    };
+      // Succès
+      return res.status(200).json({
+        success: true,
+        message: 'Votre audit a été soumis avec succès. Nous vous contacterons sous 24h.',
+        reference: generateReference(),
+      });
+    } else {
+      console.error('Failed to send to HubSpot:', hubspotResult.error);
 
-    // Envoyer à N8N
-    const n8nResult = await sendToN8N(n8nPayload);
-
-    if (!n8nResult.success) {
-      // En cas d'échec, stocker localement (à implémenter avec une base de données)
-      console.error('Failed to send to N8N, storing locally:', n8nResult.error);
-      
-      // Pour l'instant, on retourne quand même un succès à l'utilisateur
-      // mais on log l'erreur pour investigation
+      // Retourner quand même un succès à l'utilisateur mais logger l'erreur
       return res.status(200).json({
         success: true,
         message: 'Votre audit a été enregistré. Nous vous contacterons sous 48h.',
         reference: generateReference(),
       });
     }
-
-    // Succès
-    return res.status(200).json({
-      success: true,
-      message: 'Votre audit a été soumis avec succès. Nous vous contacterons sous 24h.',
-      reference: n8nResult.reference,
-    });
 
   } catch (error) {
     console.error('Error processing audit submission:', error);
