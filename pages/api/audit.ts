@@ -645,7 +645,10 @@ export default async function handler(
     }
 
     // Envoyer à Airtable (toutes les données du formulaire)
-    let airtableResult = { success: false, error: 'Not attempted' };
+    let airtableResult: { success: boolean; recordId?: string; error?: string } = {
+      success: false,
+      error: 'Not attempted'
+    };
 
     try {
       airtableResult = await sendToAirtable(formData, reference);
