@@ -10,7 +10,7 @@ const RODOLPHE_OWNER_ID = '554004217'; // Owner ID de Rodolphe Le Houx
 // Configuration Airtable
 const AIRTABLE_API_KEY = process.env.AIRTABLE_PAT || '';
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID || 'appH46IBnNdYNrwZ9'; // Site Web Digiqo
-const AIRTABLE_TABLE_ID = process.env.AIRTABLE_AUDITS_TABLE_ID || 'tblUeG59DpymKc9Tx'; // Audits Clients
+const AIRTABLE_TABLE_ID = process.env.AIRTABLE_AUDITS_TABLE_ID || 'tblhL360zjgTecSID'; // Formulaires Audit Digital
 
 // Rate limiting simple (en production, utiliser une solution plus robuste)
 const requestCounts = new Map<string, { count: number; resetTime: number }>();
