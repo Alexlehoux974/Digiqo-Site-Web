@@ -645,11 +645,17 @@ export default async function handler(
 
   } catch (error) {
     console.error('Error processing audit submission:', error);
-    
+    console.error('Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+      body: req.body ? 'Body present' : 'No body',
+      method: req.method,
+    });
+
     return res.status(500).json({
       success: false,
       message: 'Une erreur est survenue lors de l\'envoi de votre audit. Veuillez réessayer.',
-      error: process.env.NODE_ENV === 'development' 
+      error: process.env.NODE_ENV === 'development'
         ? (error instanceof Error ? error.message : 'Unknown error')
         : undefined,
     });
