@@ -243,9 +243,8 @@ const timelineData = [
                 alt="Adrien"
                 width={1024}
                 height={1024}
-                className="w-full h-64 object-cover rounded-2xl transition-all duration-700 group-hover:scale-110"
+                className="w-full h-64 object-cover rounded-2xl transition-all duration-700 group-hover:scale-110 [object-position:center_30%]"
                 objectFit="cover"
-                style={{ objectPosition: 'center 30%' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-2xl">
                 <div className="absolute bottom-6 left-6 text-white">
@@ -269,9 +268,8 @@ const timelineData = [
                 alt="Raymond"
                 width={1024}
                 height={1024}
-                className="w-full h-64 object-cover rounded-2xl transition-all duration-700 group-hover:scale-110"
+                className="w-full h-64 object-cover rounded-2xl transition-all duration-700 group-hover:scale-110 [object-position:center_35%]"
                 objectFit="cover"
-                style={{ objectPosition: 'center 35%' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-2xl">
                 <div className="absolute bottom-6 left-6 text-white">

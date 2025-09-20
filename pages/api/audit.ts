@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { AuditFormData } from '@/src/lib/audit-types';
-import { calculateAuditScore, validateFormData } from '@/src/lib/audit-utils';
+import { validateFormData } from '@/src/lib/audit-utils';
 
 // Configuration HubSpot
 const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN || '';
@@ -52,7 +52,7 @@ function generateReference(): string {
 function mapFormDataToHubSpot(formData: Partial<AuditFormData>) {
   const companyProperties: any = {
     name: formData.general?.companyName || 'Entreprise inconnue',
-    industry: formData.general?.industry || formData.general?.sector,
+    industry: formData.general?.sector,
     city: formData.general?.location,
     website: formData.digitalAssets?.website,
     hubspot_owner_id: RODOLPHE_OWNER_ID, // Attribuer à Rodolphe
@@ -205,7 +205,6 @@ async function sendToHubSpot(formData: Partial<AuditFormData>): Promise<{ succes
 
     // 2. Créer ou mettre à jour le contact
     let contactId: string | undefined;
-    let isExistingContact = false;
 
     if (contactProperties.email) {
       try {
@@ -234,7 +233,6 @@ async function sendToHubSpot(formData: Partial<AuditFormData>): Promise<{ succes
           const searchResult = await searchContactResponse.json();
           if (searchResult.results && searchResult.results.length > 0) {
             // Le contact existe déjà
-            isExistingContact = true;
             const existingContact = searchResult.results[0];
             contactId = existingContact.id;
 
@@ -326,11 +324,9 @@ ${formData.objectives?.goals?.join(', ') || 'Non renseignés'}
 🌐 Site web: ${formData.digitalAssets?.website || 'Non renseigné'}
 📱 Réseaux sociaux:
 ${Object.entries(formData.digitalAssets?.socialMedia || {}).map(([platform, url]) => url ? `- ${platform}: ${url}` : '').filter(Boolean).join('\n') || 'Aucun'}
-
-📝 Remarques: ${formData.contact?.message || 'Aucune'}
 `;
 
-        const notePayload = {
+        const notePayload: any = {
           properties: {
             hs_timestamp: new Date().toISOString(),
             hs_note_body: auditDetails,
@@ -415,9 +411,8 @@ export default async function handler(
 
   try {
     // Parser et valider les données
-    const { formData, score } = req.body as { 
-      formData: Partial<AuditFormData>; 
-      score: any;
+    const { formData } = req.body as {
+      formData: Partial<AuditFormData>;
     };
 
     // Validation basique
@@ -427,9 +422,6 @@ export default async function handler(
         message: 'Données du formulaire invalides. Veuillez vérifier les champs requis.',
       });
     }
-
-    // Calculer les scores si non fournis
-    const auditScore = score || calculateAuditScore(formData);
 
     // Envoyer à HubSpot
     const hubspotResult = await sendToHubSpot(formData);
