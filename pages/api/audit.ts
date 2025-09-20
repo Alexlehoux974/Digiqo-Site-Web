@@ -7,6 +7,11 @@ const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN || '';
 const HUBSPOT_API_URL = 'https://api.hubapi.com';
 const RODOLPHE_OWNER_ID = '554004217'; // Owner ID de Rodolphe Le Houx
 
+// Configuration Airtable
+const AIRTABLE_API_KEY = process.env.AIRTABLE_PAT || '';
+const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID || 'appH46IBnNdYNrwZ9'; // Site Web Digiqo
+const AIRTABLE_TABLE_ID = process.env.AIRTABLE_AUDITS_TABLE_ID || 'tblUeG59DpymKc9Tx'; // Audits Clients
+
 // Rate limiting simple (en production, utiliser une solution plus robuste)
 const requestCounts = new Map<string, { count: number; resetTime: number }>();
 const RATE_LIMIT = 5; // 5 requêtes
@@ -98,6 +103,177 @@ function mapFormDataToHubSpot(formData: Partial<AuditFormData>) {
   });
 
   return { companyProperties, contactProperties };
+}
+
+// Fonction pour mapper les données du formulaire vers Airtable
+function mapFormDataToAirtable(formData: Partial<AuditFormData>, reference: string) {
+  const record: any = {
+    fields: {
+      // Informations générales
+      'Nom Entreprise': formData.general?.companyName || '',
+      'Secteur': formData.general?.sector || '',
+      'Localisation': formData.general?.location || '',
+      'Taille Équipe': formData.general?.teamSize || '',
+      'Ancienneté': formData.general?.companyAge || '',
+      'Modèle Business': formData.general?.businessModel || '',
+      'Référence': reference,
+      'Date Audit': new Date().toISOString(),
+
+      // Contact
+      'Prénom Contact': formData.contact?.firstName || '',
+      'Nom Contact': formData.contact?.lastName || '',
+      'Email': formData.contact?.email || '',
+      'Téléphone': formData.contact?.phone || '',
+      'Canal Préféré': formData.contact?.preferredContact || '',
+
+      // Assets digitaux
+      'Site Web': formData.digitalAssets?.website || '',
+      'Facebook': formData.digitalAssets?.socialMedia?.facebook || '',
+      'Instagram': formData.digitalAssets?.socialMedia?.instagram || '',
+      'LinkedIn': formData.digitalAssets?.socialMedia?.linkedin || '',
+      'Twitter': formData.digitalAssets?.socialMedia?.twitter || '',
+      'TikTok': formData.digitalAssets?.socialMedia?.tiktok || '',
+      'YouTube': formData.digitalAssets?.socialMedia?.youtube || '',
+      'Google Business': formData.digitalAssets?.businessListings?.googleBusiness || '',
+      'Plateformes Vente': formData.digitalAssets?.salesPlatforms?.join(', ') || '',
+
+      // Site web
+      'Site Optimisé Mobile': formData.website?.mobileOptimized || false,
+      'SEO Optimisé': formData.website?.seoOptimized || false,
+      'Performance Site': formData.website?.performance || '',
+      'Analytics Installé': formData.website?.analytics || false,
+
+      // Réseaux sociaux - stratégie
+      'Plateformes Actives': formData.socialMediaStrategy?.activePlatforms?.join(', ') || '',
+      'Fréquence Publication': formData.socialMediaStrategy?.publicationFrequency || '',
+      'Heure Publication': formData.socialMediaStrategy?.publicationTime || '',
+      'Géré Par': formData.socialMediaStrategy?.managedBy || '',
+      'Taille Communauté': formData.socialMediaStrategy?.communitySize || '',
+      'Taux Engagement': formData.socialMediaStrategy?.engagement || '',
+      'Community Management': formData.socialMediaStrategy?.communityManagement || false,
+      'Objectifs Sociaux': formData.socialMediaStrategy?.objectives?.join(', ') || '',
+      'Types Contenu': formData.socialMediaStrategy?.contentTypes || '',
+      'Outils Sociaux': formData.socialMediaStrategy?.tools || '',
+
+      // Publicité
+      'Types Pub': formData.advertising?.types?.join(', ') || '',
+      'Plateformes Testées': formData.advertising?.testedPlatforms?.join(', ') || '',
+      'Budget Pub': formData.advertising?.budget || '',
+      'Budget Moyen': formData.advertising?.averageBudget || '',
+      'ROI': formData.advertising?.perceivedResults || '',
+      'Objectifs Campagne': formData.advertising?.campaignObjectives?.join(', ') || '',
+      'Tracking Pub': formData.advertising?.tracking || false,
+
+      // Contenu
+      'A Photos': formData.content?.hasPhotos || false,
+      'A Vidéos': formData.content?.hasVideos || false,
+      'A Graphiques': formData.content?.hasGraphics || false,
+      'Contenu Géré': formData.content?.contentManaged || false,
+      'Types Contenu Créés': formData.content?.contentTypes?.join(', ') || '',
+      'Moyens Production': formData.content?.productionMeans || '',
+      'Consistance Marque': formData.content?.brandConsistency || '',
+
+      // Conversion et données
+      'Landing Pages': formData.conversion?.hasLandingPages || false,
+      'Formulaires': formData.conversion?.hasForms || false,
+      'CTA Optimisés': formData.conversion?.hasCtaButtons || false,
+      'Étapes Tunnel': formData.conversion?.funnelStages?.join(', ') || '',
+      'Taux Conversion': formData.conversion?.estimatedConversionRate || '',
+      'Valeur Moyenne Client': formData.conversion?.averageOrderValue || '',
+      'Points Friction': formData.conversion?.frictionPoints || '',
+      'E-commerce': formData.conversion?.hasEcommerce || false,
+      'Taux Abandon Panier': formData.conversion?.cartAbandonmentRate || '',
+      'Ventes Mensuelles': formData.conversion?.monthlySales || '',
+      'Outils Tracking': formData.conversion?.trackingTools?.join(', ') || '',
+      'Analyse Données': formData.conversion?.dataAnalysis || false,
+      'Décisions Data': formData.conversion?.dataDecisions || false,
+      'RGPD Conforme': formData.conversion?.gdprCompliant || false,
+      'Fréquence Analyse': formData.conversion?.analysisFrequency || '',
+      'Tests AB': formData.conversion?.abTesting || false,
+      'Heatmaps': formData.conversion?.heatmaps || false,
+      'Feedback Utilisateur': formData.conversion?.userFeedback || false,
+      'Tracking Lead': formData.conversion?.leadTracking || false,
+      'Lead Nurturing': formData.conversion?.leadNurturing || false,
+
+      // CRM
+      'A CRM': formData.crm?.hasCRM || false,
+      'Type CRM': formData.crm?.crmType || '',
+      'Features CRM': formData.crm?.features?.join(', ') || '',
+      'Email Marketing': formData.crm?.emailMarketing || false,
+      'Automation': formData.crm?.automation || false,
+      'Segmentation': formData.crm?.segmentation || false,
+      'Intégration CRM': formData.crm?.integration || '',
+      'Qualité Data': formData.crm?.dataQuality || 0,
+      'Durée CRM': formData.crm?.crmDuration || '',
+      'Nombre Contacts': formData.crm?.contactsCount || '',
+      'Taille Liste Email': formData.crm?.emailListSize || '',
+      'Taux Ouverture': formData.crm?.openRate || '',
+      'Taux Clic': formData.crm?.clickRate || '',
+
+      // Réputation
+      'Monitoring Réputation': formData.reputation?.monitoring || false,
+      'Répond Avis': formData.reputation?.reviewsResponse || false,
+      'Note Moyenne': formData.reputation?.averageRating || '',
+      'Plateformes Avis': formData.reputation?.reviewPlatforms?.join(', ') || '',
+
+      // Objectifs
+      'Objectifs': formData.objectives?.goals?.join(', ') || '',
+      'Défis': formData.objectives?.challenges || '',
+      'Timeline': formData.objectives?.timeline || '',
+      'Budget Global': formData.objectives?.budget || '',
+
+      // Status
+      'Status': 'Nouveau'
+    }
+  };
+
+  return record;
+}
+
+// Fonction pour envoyer les données à Airtable
+async function sendToAirtable(formData: Partial<AuditFormData>, reference: string): Promise<{ success: boolean; recordId?: string; error?: string }> {
+  if (!AIRTABLE_API_KEY) {
+    console.warn('Airtable API key not configured, skipping Airtable integration');
+    return { success: false, error: 'Airtable not configured' };
+  }
+
+  try {
+    const record = mapFormDataToAirtable(formData, reference);
+
+    const response = await fetch(
+      `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`,
+      {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(record)
+      }
+    );
+
+    if (response.ok) {
+      const result = await response.json();
+      console.log('Successfully sent to Airtable:', result.id);
+      return {
+        success: true,
+        recordId: result.id
+      };
+    } else {
+      const errorText = await response.text();
+      console.error('Airtable API error:', errorText);
+      return {
+        success: false,
+        error: errorText
+      };
+    }
+  } catch (error) {
+    console.error('Error sending to Airtable:', error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error'
+    };
+  }
 }
 
 // Fonction pour envoyer au webhook n8n quand le contact existe déjà
@@ -423,6 +599,9 @@ export default async function handler(
       });
     }
 
+    // Générer la référence une fois pour l'utiliser partout
+    const reference = generateReference();
+
     // Envoyer à HubSpot
     const hubspotResult = await sendToHubSpot(formData);
 
@@ -431,21 +610,36 @@ export default async function handler(
         companyId: hubspotResult.companyId,
         contactId: hubspotResult.contactId
       });
+    } else {
+      console.error('Failed to send to HubSpot:', hubspotResult.error);
+    }
 
-      // Succès
+    // Envoyer à Airtable (toutes les données du formulaire)
+    const airtableResult = await sendToAirtable(formData, reference);
+
+    if (airtableResult.success) {
+      console.log('Successfully sent to Airtable:', {
+        recordId: airtableResult.recordId,
+        reference: reference
+      });
+    } else {
+      console.error('Failed to send to Airtable:', airtableResult.error);
+    }
+
+    // Si au moins un envoi a réussi, considérer comme succès
+    if (hubspotResult.success || airtableResult.success) {
       return res.status(200).json({
         success: true,
         message: 'Votre audit a été soumis avec succès. Nous vous contacterons sous 24h.',
-        reference: generateReference(),
+        reference: reference,
       });
     } else {
-      console.error('Failed to send to HubSpot:', hubspotResult.error);
-
-      // Retourner quand même un succès à l'utilisateur mais logger l'erreur
+      // Si les deux ont échoué, retourner quand même un succès à l'utilisateur mais logger l'erreur
+      console.error('Both HubSpot and Airtable submissions failed');
       return res.status(200).json({
         success: true,
         message: 'Votre audit a été enregistré. Nous vous contacterons sous 48h.',
-        reference: generateReference(),
+        reference: reference,
       });
     }
 

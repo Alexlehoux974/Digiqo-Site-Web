@@ -134,7 +134,8 @@
       "mcp__hubspot__hubspot-list-properties",
       "mcp__hubspot__hubspot-get-property",
       "mcp__hubspot__hubspot-create-property",
-      "Read(//root/**)"
+      "Read(//root/**)",
+      "Bash(while read file)"
     ],
     "deny": []
   }

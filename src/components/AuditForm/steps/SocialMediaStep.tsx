@@ -113,9 +113,9 @@ export default function SocialMediaStep({ data, updateData }: SocialMediaStepPro
               { value: 'random', label: 'Aléatoire' },
               { value: 'scheduled', label: 'Planifiées' },
             ]}
-            value={''}
-            onChange={() => {}}
-            helper="Configuration des heures de publication - non encore intégrée"
+            value={data.socialMediaStrategy?.publicationTime || ''}
+            onChange={(e) => updateData('socialMediaStrategy.publicationTime', e.target.value)}
+            helper=""
           />
         </div>
       </div>
@@ -141,9 +141,9 @@ export default function SocialMediaStep({ data, updateData }: SocialMediaStepPro
                 { value: '5000-10000', label: '5 000 à 10 000' },
                 { value: '10000+', label: 'Plus de 10 000' },
               ]}
-              value={''}
-              onChange={() => {}}
-              helper="Taille de communauté - non encore intégrée"
+              value={data.socialMediaStrategy?.communitySize || ''}
+              onChange={(e) => updateData('socialMediaStrategy.communitySize', e.target.value)}
+              helper=""
             />
           </div>
           <div>
@@ -170,9 +170,9 @@ export default function SocialMediaStep({ data, updateData }: SocialMediaStepPro
           name="communityManagement"
           type="checkbox"
           placeholder="Nous répondons activement aux commentaires et messages"
-          value={false}
-          onChange={() => {}}
-          helper="Community management - non encore intégré"
+          value={data.socialMediaStrategy?.communityManagement || false}
+          onChange={(e) => updateData('socialMediaStrategy.communityManagement', (e.target as HTMLInputElement).checked)}
+          helper=""
         />
       </div>
 
@@ -191,9 +191,14 @@ export default function SocialMediaStep({ data, updateData }: SocialMediaStepPro
               <input
                 type="checkbox"
                 value={objective.value}
-                checked={false}
-                onChange={() => {
-                  // Objectifs spécifiques - non encore intégrés
+                checked={data.socialMediaStrategy?.objectives?.includes(objective.value) || false}
+                onChange={(e) => {
+                  const current = data.socialMediaStrategy?.objectives || [];
+                  if (e.target.checked) {
+                    updateData('socialMediaStrategy.objectives', [...current, objective.value]);
+                  } else {
+                    updateData('socialMediaStrategy.objectives', current.filter(v => v !== objective.value));
+                  }
                 }}
                 className="w-4 h-4 text-accent"
               />
@@ -213,9 +218,9 @@ export default function SocialMediaStep({ data, updateData }: SocialMediaStepPro
           label="Types de contenu (séparez par des virgules)"
           name="contentTypes"
           placeholder="Ex: Photos produits, vidéos tutoriels, stories, articles de blog, témoignages clients..."
-          value={''}
-          onChange={() => {}}
-          helper="Types de contenu - non encore intégré"
+          value={data.socialMediaStrategy?.contentTypes || ''}
+          onChange={(e) => updateData('socialMediaStrategy.contentTypes', e.target.value)}
+          helper=""
         />
       </div>
 
@@ -241,9 +246,9 @@ export default function SocialMediaStep({ data, updateData }: SocialMediaStepPro
             label="Outils utilisés"
             name="tools"
             placeholder="Ex: Hootsuite, Buffer, Later, Meta Business Suite..."
-            value={''}
-            onChange={() => {}}
-            helper="Outils utilisés - non encore intégré"
+            value={data.socialMediaStrategy?.tools || ''}
+            onChange={(e) => updateData('socialMediaStrategy.tools', e.target.value)}
+            helper=""
           />
         </div>
       </div>

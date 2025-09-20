@@ -54,8 +54,9 @@ export default function AdvertisingStep({ data, updateData }: AdvertisingStepPro
           name="useAdvertising"
           type="checkbox"
           placeholder="Nous utilisons de la publicité payante"
-          value={(data.advertising?.testedPlatforms?.length || 0) > 0}
+          value={data.advertising?.useAdvertising || false}
           onChange={(e) => {
+            updateData('advertising.useAdvertising', (e.target as HTMLInputElement).checked);
             if (!(e.target as HTMLInputElement).checked) {
               updateData('advertising.testedPlatforms', []);
             }
@@ -63,7 +64,7 @@ export default function AdvertisingStep({ data, updateData }: AdvertisingStepPro
         />
       </div>
 
-      {(data.advertising?.testedPlatforms?.length || 0) > 0 && (
+      {data.advertising?.useAdvertising && (
         <>
           {/* Plateformes publicitaires */}
           <div className="space-y-4">

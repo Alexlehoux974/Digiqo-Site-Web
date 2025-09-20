@@ -98,7 +98,7 @@ function calculateConversionScore(data: Partial<AuditFormData>): number {
   if (c.conversionRate && c.conversionRate !== 'unknown') score += 20;
   if (c.salesProcess === 'automated' || c.salesProcess === 'semi-automated') score += 20;
   if (c.crm) score += 15;
-  if (c.dataAnalysis === 'advanced' || c.dataAnalysis === 'basic') score += 15;
+  if (c.dataAnalysis) score += 15;
   if (c.abTesting) score += 10;
   
   return score;
@@ -115,7 +115,7 @@ function calculateCRMScore(data: Partial<AuditFormData>): number {
   if (c.automation) score += 20;
   if (c.segmentation) score += 15;
   if (c.integration === 'full' || c.integration === 'partial') score += 10;
-  if (c.dataQuality === 'excellent' || c.dataQuality === 'good') score += 10;
+  if (c.dataQuality >= 7) score += 10;
   
   return score;
 }

@@ -90,9 +90,8 @@ export default function CrmStep({ data, updateData }: CrmStepProps) {
                 { value: '2-5years', label: '2 à 5 ans' },
                 { value: '5years+', label: 'Plus de 5 ans' },
               ]}
-              value={''}
-              onChange={() => {}}
-              helper="Durée d'utilisation - non encore intégrée"
+              value={data.crm?.crmDuration || ''}
+              onChange={(e) => updateData('crm.crmDuration', e.target.value)}
             />
             <FormField
               label="Nombre de contacts dans le CRM"
@@ -106,9 +105,8 @@ export default function CrmStep({ data, updateData }: CrmStepProps) {
                 { value: '5000-10000', label: '5 000 à 10 000' },
                 { value: '10000+', label: 'Plus de 10 000' },
               ]}
-              value={''}
-              onChange={() => {}}
-              helper="Nombre de contacts - non encore intégré"
+              value={data.crm?.contactsCount || ''}
+              onChange={(e) => updateData('crm.contactsCount', e.target.value)}
             />
           </div>
         )}
@@ -142,9 +140,8 @@ export default function CrmStep({ data, updateData }: CrmStepProps) {
             name="hasDataEnrichment"
             type="checkbox"
             placeholder="Nous enrichissons nos données clients"
-            value={false}
-            onChange={() => {}}
-            helper="Enrichissement des données - non encore intégré"
+            value={data.crm?.hasDataEnrichment || false}
+            onChange={(e) => updateData('crm.hasDataEnrichment', (e.target as HTMLInputElement).checked)}
           />
         </div>
         <div>
@@ -153,8 +150,8 @@ export default function CrmStep({ data, updateData }: CrmStepProps) {
             label=""
             name="dataQuality"
             type="range"
-            value={5}
-            onChange={() => {}}
+            value={data.crm?.dataQuality || 5}
+            onChange={(e) => updateData('crm.dataQuality', parseInt((e.target as HTMLInputElement).value))}
           />
         </div>
       </div>
@@ -170,11 +167,10 @@ export default function CrmStep({ data, updateData }: CrmStepProps) {
           name="hasEmailMarketing"
           type="checkbox"
           placeholder="Nous faisons de l'email marketing"
-          value={false}
-          onChange={() => {}}
-          helper="Email marketing - non encore intégré"
+          value={data.crm?.hasEmailMarketing || false}
+          onChange={(e) => updateData('crm.hasEmailMarketing', (e.target as HTMLInputElement).checked)}
         />
-        {false && (
+        {data.crm?.hasEmailMarketing && (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FormField
@@ -189,8 +185,8 @@ export default function CrmStep({ data, updateData }: CrmStepProps) {
                   { value: 'quarterly', label: 'Trimestrielle' },
                   { value: 'occasional', label: 'Occasionnelle' },
                 ]}
-                value={''}
-                onChange={() => {}}
+                value={data.crm?.emailFrequency || ''}
+                onChange={(e) => updateData('crm.emailFrequency', e.target.value)}
               />
               <FormField
                 label="Taille de la liste email"
@@ -203,8 +199,8 @@ export default function CrmStep({ data, updateData }: CrmStepProps) {
                   { value: '5000-10000', label: '5 000 à 10 000' },
                   { value: '10000+', label: 'Plus de 10 000' },
                 ]}
-                value={''}
-                onChange={() => {}}
+                value={data.crm?.emailListSize || ''}
+                onChange={(e) => updateData('crm.emailListSize', e.target.value)}
               />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -220,8 +216,8 @@ export default function CrmStep({ data, updateData }: CrmStepProps) {
                   { value: '40+', label: 'Plus de 40%' },
                   { value: 'unknown', label: 'Non mesuré' },
                 ]}
-                value={''}
-                onChange={() => {}}
+                value={data.crm?.openRate || ''}
+                onChange={(e) => updateData('crm.openRate', e.target.value)}
               />
               <FormField
                 label="Taux de clic moyen"
@@ -235,8 +231,8 @@ export default function CrmStep({ data, updateData }: CrmStepProps) {
                   { value: '15+', label: 'Plus de 15%' },
                   { value: 'unknown', label: 'Non mesuré' },
                 ]}
-                value={''}
-                onChange={() => {}}
+                value={data.crm?.clickRate || ''}
+                onChange={(e) => updateData('crm.clickRate', e.target.value)}
               />
             </div>
           </>
@@ -290,9 +286,14 @@ export default function CrmStep({ data, updateData }: CrmStepProps) {
               <input
                 type="checkbox"
                 value={usage.value}
-                checked={false}
-                onChange={() => {
-                  // Utilisation des données - non encore intégrée
+                checked={data.crm?.dataUsage?.includes(usage.value) || false}
+                onChange={(e) => {
+                  const current = data.crm?.dataUsage || [];
+                  if (e.target.checked) {
+                    updateData('crm.dataUsage', [...current, usage.value]);
+                  } else {
+                    updateData('crm.dataUsage', current.filter(v => v !== usage.value));
+                  }
                 }}
                 className="w-4 h-4 text-accent"
               />
@@ -312,9 +313,8 @@ export default function CrmStep({ data, updateData }: CrmStepProps) {
           label="Intégrations actuelles"
           name="integrations"
           placeholder="Ex: Site web, réseaux sociaux, outils comptables, e-commerce..."
-          value={''}
-          onChange={() => {}}
-          helper="Intégrations - non encore intégrées"
+          value={data.crm?.integrations || ''}
+          onChange={(e) => updateData('crm.integrations', e.target.value)}
         />
       </div>
 
@@ -330,27 +330,24 @@ export default function CrmStep({ data, updateData }: CrmStepProps) {
             name="hasSalesPipeline"
             type="checkbox"
             placeholder="Nous avons un pipeline de vente défini"
-            value={false}
-            onChange={() => {}}
-            helper="Pipeline de vente - non encore intégré"
+            value={data.crm?.hasSalesPipeline || false}
+            onChange={(e) => updateData('crm.hasSalesPipeline', (e.target as HTMLInputElement).checked)}
           />
           <FormField
             label=""
             name="hasLeadScoring"
             type="checkbox"
             placeholder="Nous qualifions nos leads (lead scoring)"
-            value={false}
-            onChange={() => {}}
-            helper="Lead scoring - non encore intégré"
+            value={data.crm?.hasLeadScoring || false}
+            onChange={(e) => updateData('crm.hasLeadScoring', (e.target as HTMLInputElement).checked)}
           />
           <FormField
             label=""
             name="hasAutomatedFollowUp"
             type="checkbox"
             placeholder="Nous avons des relances automatisées"
-            value={false}
-            onChange={() => {}}
-            helper="Relances automatisées - non encore intégrées"
+            value={data.crm?.hasAutomatedFollowUp || false}
+            onChange={(e) => updateData('crm.hasAutomatedFollowUp', (e.target as HTMLInputElement).checked)}
           />
         </div>
       </div>
@@ -373,17 +370,15 @@ export default function CrmStep({ data, updateData }: CrmStepProps) {
             { value: '3-6months', label: '3 à 6 mois' },
             { value: '6months+', label: 'Plus de 6 mois' },
           ]}
-          value={''}
-          onChange={() => {}}
-          helper="Cycle de vente - non encore intégré"
+          value={data.crm?.salesCycleDuration || ''}
+          onChange={(e) => updateData('crm.salesCycleDuration', e.target.value)}
         />
         <FormField
           label="Valeur vie client moyenne (LTV)"
           name="customerLTV"
           placeholder="Ex: 500€, 5000€, 50000€..."
-          value={''}
-          onChange={() => {}}
-          helper="LTV client - non encore intégrée"
+          value={data.crm?.customerLTV || ''}
+          onChange={(e) => updateData('crm.customerLTV', e.target.value)}
         />
       </div>
 

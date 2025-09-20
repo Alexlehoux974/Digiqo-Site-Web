@@ -88,9 +88,14 @@ export default function ConversionStep({ data, updateData }: ConversionStepProps
                   <input
                     type="checkbox"
                     value={stage.value}
-                    checked={false}
-                    onChange={() => {
-                      // Funnel stages not available in current type definition
+                    checked={data.conversion?.funnelStages?.includes(stage.value) || false}
+                    onChange={(e) => {
+                      const current = data.conversion?.funnelStages || [];
+                      if (e.target.checked) {
+                        updateData('conversion.funnelStages', [...current, stage.value]);
+                      } else {
+                        updateData('conversion.funnelStages', current.filter(v => v !== stage.value));
+                      }
                     }}
                     className="w-4 h-4 text-accent"
                   />
@@ -137,9 +142,8 @@ export default function ConversionStep({ data, updateData }: ConversionStepProps
             label="Valeur moyenne par client"
             name="averageOrderValue"
             placeholder="Ex: 150€, 1500€..."
-            value={''}
-            onChange={() => {}}
-            helper="Donnée non encore intégrée dans cette version"
+            value={data.conversion?.averageOrderValue || ''}
+            onChange={(e) => updateData('conversion.averageOrderValue', e.target.value)}
           />
         </div>
         <FormField
@@ -148,9 +152,8 @@ export default function ConversionStep({ data, updateData }: ConversionStepProps
           multiline
           rows={3}
           placeholder="Ex: Abandon de panier élevé, formulaires trop longs, manque de confiance..."
-          value={''}
-          onChange={() => {}}
-          helper="Analyse des points de friction - donnée non encore intégrée"
+          value={data.conversion?.frictionPoints || ''}
+          onChange={(e) => updateData('conversion.frictionPoints', e.target.value)}
         />
       </div>
 
@@ -165,11 +168,10 @@ export default function ConversionStep({ data, updateData }: ConversionStepProps
           name="hasEcommerce"
           type="checkbox"
           placeholder="Nous vendons en ligne"
-          value={false}
-          onChange={() => {}}
-          helper="Fonctionnalité e-commerce - non encore intégrée"
+          value={data.conversion?.hasEcommerce || false}
+          onChange={(e) => updateData('conversion.hasEcommerce', (e.target as HTMLInputElement).checked)}
         />
-        {false && (
+        {data.conversion?.hasEcommerce && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField
               label="Taux d'abandon de panier"
@@ -183,15 +185,15 @@ export default function ConversionStep({ data, updateData }: ConversionStepProps
                 { value: '80+', label: 'Plus de 80%' },
                 { value: 'unknown', label: 'Non mesuré' },
               ]}
-              value={''}
-              onChange={() => {}}
+              value={data.conversion?.cartAbandonmentRate || ''}
+              onChange={(e) => updateData('conversion.cartAbandonmentRate', e.target.value)}
             />
             <FormField
               label="Nombre de ventes/mois"
               name="monthlySales"
               placeholder="Ex: 10, 100, 1000..."
-              value={''}
-              onChange={() => {}}
+              value={data.conversion?.monthlySales || ''}
+              onChange={(e) => updateData('conversion.monthlySales', e.target.value)}
             />
           </div>
         )}
@@ -212,9 +214,14 @@ export default function ConversionStep({ data, updateData }: ConversionStepProps
               <input
                 type="checkbox"
                 value={tool.value}
-                checked={false}
-                onChange={() => {
-                  // Tracking tools configuration - non encore intégré
+                checked={data.conversion?.trackingTools?.includes(tool.value) || false}
+                onChange={(e) => {
+                  const current = data.conversion?.trackingTools || [];
+                  if (e.target.checked) {
+                    updateData('conversion.trackingTools', [...current, tool.value]);
+                  } else {
+                    updateData('conversion.trackingTools', current.filter(v => v !== tool.value));
+                  }
                 }}
                 className="w-4 h-4 text-accent"
               />
@@ -236,24 +243,24 @@ export default function ConversionStep({ data, updateData }: ConversionStepProps
             name="dataAnalysis"
             type="checkbox"
             placeholder="Nous analysons régulièrement nos données"
-            value={false}
-            onChange={() => {}}
+            value={data.conversion?.dataAnalysis || false}
+            onChange={(e) => updateData('conversion.dataAnalysis', (e.target as HTMLInputElement).checked)}
           />
           <FormField
             label=""
             name="dataDecisions"
             type="checkbox"
             placeholder="Nous prenons des décisions basées sur les données"
-            value={false}
-            onChange={() => {}}
+            value={data.conversion?.dataDecisions || false}
+            onChange={(e) => updateData('conversion.dataDecisions', (e.target as HTMLInputElement).checked)}
           />
           <FormField
             label=""
             name="gdprCompliant"
             type="checkbox"
             placeholder="Nous sommes conformes RGPD"
-            value={false}
-            onChange={() => {}}
+            value={data.conversion?.gdprCompliant || false}
+            onChange={(e) => updateData('conversion.gdprCompliant', (e.target as HTMLInputElement).checked)}
           />
         </div>
         <FormField
@@ -268,8 +275,8 @@ export default function ConversionStep({ data, updateData }: ConversionStepProps
             { value: 'yearly', label: 'Annuelle' },
             { value: 'never', label: 'Jamais' },
           ]}
-          value={''}
-          onChange={() => {}}
+          value={data.conversion?.analysisFrequency || ''}
+          onChange={(e) => updateData('conversion.analysisFrequency', e.target.value)}
         />
       </div>
 
@@ -285,24 +292,24 @@ export default function ConversionStep({ data, updateData }: ConversionStepProps
             name="abTesting"
             type="checkbox"
             placeholder="Nous faisons des tests A/B"
-            value={false}
-            onChange={() => {}}
+            value={data.conversion?.abTesting || false}
+            onChange={(e) => updateData('conversion.abTesting', (e.target as HTMLInputElement).checked)}
           />
           <FormField
             label=""
             name="heatmaps"
             type="checkbox"
             placeholder="Nous utilisons des heatmaps"
-            value={false}
-            onChange={() => {}}
+            value={data.conversion?.heatmaps || false}
+            onChange={(e) => updateData('conversion.heatmaps', (e.target as HTMLInputElement).checked)}
           />
           <FormField
             label=""
             name="userFeedback"
             type="checkbox"
             placeholder="Nous collectons les retours utilisateurs"
-            value={false}
-            onChange={() => {}}
+            value={data.conversion?.userFeedback || false}
+            onChange={(e) => updateData('conversion.userFeedback', (e.target as HTMLInputElement).checked)}
           />
         </div>
       </div>

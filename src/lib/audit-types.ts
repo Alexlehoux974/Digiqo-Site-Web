@@ -74,8 +74,14 @@ export interface AuditFormData {
   socialMediaStrategy: {
     activePlatforms: string[];
     publicationFrequency: string;
+    publicationTime: string;
     managedBy: string;
     engagement: string;
+    objectives: string[];
+    communityManagement: boolean;
+    communitySize: string;
+    contentTypes: string;
+    tools: string;
   };
   
   // Advertising
@@ -90,6 +96,7 @@ export interface AuditFormData {
     expectations: string;
     roi: string;
     tracking: boolean;
+    useAdvertising: boolean;
   };
   
   // Content
@@ -111,13 +118,25 @@ export interface AuditFormData {
     estimatedConversionRate: string;
     hasLandingPages: boolean;
     hasForms: boolean;
-    hasCtaButtons: string;
-    leadTracking: string;
-    leadNurturing: string;
+    hasCtaButtons: boolean;
+    leadTracking: boolean;
+    leadNurturing: boolean;
     salesProcess: string;
     crm: boolean;
-    dataAnalysis: string;
+    dataAnalysis: boolean;
     abTesting: boolean;
+    funnelStages: string[];
+    averageOrderValue: string;
+    frictionPoints: string;
+    hasEcommerce: boolean;
+    cartAbandonmentRate: string;
+    monthlySales: string;
+    trackingTools: string[];
+    dataDecisions: boolean;
+    gdprCompliant: boolean;
+    analysisFrequency: string;
+    heatmaps: boolean;
+    userFeedback: boolean;
   };
   
   // CRM
@@ -133,7 +152,22 @@ export interface AuditFormData {
     toolsUsed: string[];
     automations: string[];
     integration: string;
-    dataQuality: string;
+    dataQuality: number;
+    crmDuration: string;
+    contactsCount: string;
+    hasDataEnrichment: boolean;
+    hasEmailMarketing: boolean;
+    emailFrequency: string;
+    emailListSize: string;
+    openRate: string;
+    clickRate: string;
+    dataUsage: string[];
+    integrations: string;
+    hasSalesPipeline: boolean;
+    hasLeadScoring: boolean;
+    hasAutomatedFollowUp: boolean;
+    salesCycleDuration: string;
+    customerLTV: string;
   };
   
   // Reputation
