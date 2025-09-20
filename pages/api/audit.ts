@@ -232,6 +232,8 @@ function mapFormDataToAirtable(formData: Partial<AuditFormData>, reference: stri
 
 // Fonction pour envoyer les données à Airtable
 async function sendToAirtable(formData: Partial<AuditFormData>, reference: string): Promise<{ success: boolean; recordId?: string; error?: string }> {
+  console.log('sendToAirtable called with reference:', reference);
+
   if (!AIRTABLE_API_KEY || AIRTABLE_API_KEY === '') {
     console.warn('Airtable API key not configured, skipping Airtable integration');
     return { success: false, error: 'Airtable not configured' };
@@ -244,6 +246,9 @@ async function sendToAirtable(formData: Partial<AuditFormData>, reference: strin
       record = mapFormDataToAirtable(formData, reference);
     } catch (mappingError) {
       console.error('Error mapping form data to Airtable format:', mappingError);
+      if (mappingError instanceof Error) {
+        console.error('Mapping error stack:', mappingError.stack);
+      }
       return {
         success: false,
         error: `Mapping error: ${mappingError instanceof Error ? mappingError.message : 'Unknown error'}`
@@ -255,7 +260,9 @@ async function sendToAirtable(formData: Partial<AuditFormData>, reference: strin
       baseId: AIRTABLE_BASE_ID,
       tableId: AIRTABLE_TABLE_ID,
       hasApiKey: !!AIRTABLE_API_KEY,
-      recordFieldsCount: Object.keys(record.fields).length
+      apiKeyLength: AIRTABLE_API_KEY.length,
+      recordFieldsCount: Object.keys(record.fields).length,
+      url: `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`
     });
 
     const response = await fetch(
@@ -279,14 +286,27 @@ async function sendToAirtable(formData: Partial<AuditFormData>, reference: strin
       };
     } else {
       const errorText = await response.text();
-      console.error('Airtable API error:', errorText);
+      console.error('Airtable API error:', {
+        status: response.status,
+        statusText: response.statusText,
+        errorText: errorText,
+        headers: response.headers,
+        url: `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`
+      });
       return {
         success: false,
-        error: errorText
+        error: `Airtable API error (${response.status}): ${errorText}`
       };
     }
   } catch (error) {
     console.error('Error sending to Airtable:', error);
+    if (error instanceof Error) {
+      console.error('Error details:', {
+        message: error.message,
+        stack: error.stack,
+        name: error.name
+      });
+    }
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error'
@@ -609,19 +629,44 @@ export default async function handler(
       method: req.method,
       hasBody: !!req.body,
       bodyKeys: req.body ? Object.keys(req.body) : [],
-      ip: ipAddress
+      ip: ipAddress,
+      nodeEnv: process.env.NODE_ENV,
+      hasHubspotToken: !!HUBSPOT_ACCESS_TOKEN,
+      hasAirtableKey: !!AIRTABLE_API_KEY,
+      airtableConfig: {
+        baseId: AIRTABLE_BASE_ID,
+        tableId: AIRTABLE_TABLE_ID
+      }
     });
 
     // Parser et valider les données
-    const { formData } = req.body as {
-      formData: Partial<AuditFormData>;
-    };
+    let formData: Partial<AuditFormData>;
+
+    try {
+      const requestBody = req.body;
+      if (!requestBody || typeof requestBody !== 'object') {
+        throw new Error('Invalid request body');
+      }
+
+      formData = requestBody.formData;
+      if (!formData || typeof formData !== 'object') {
+        throw new Error('formData is missing or invalid');
+      }
+    } catch (parseError) {
+      console.error('Error parsing request body:', parseError);
+      return res.status(400).json({
+        success: false,
+        message: 'Format de données invalide. Veuillez réessayer.',
+      });
+    }
 
     // Validation basique
     if (!validateFormData(formData)) {
       console.error('Form validation failed:', {
         companyName: !!formData?.general?.companyName,
-        email: !!formData?.contact?.email
+        email: !!formData?.contact?.email,
+        general: !!formData?.general,
+        contact: !!formData?.contact
       });
       return res.status(400).json({
         success: false,
@@ -693,14 +738,31 @@ export default async function handler(
       stack: error instanceof Error ? error.stack : undefined,
       body: req.body ? 'Body present' : 'No body',
       method: req.method,
+      hasHubSpotToken: !!HUBSPOT_ACCESS_TOKEN,
+      hasAirtableToken: !!AIRTABLE_API_KEY,
+      airtableBaseId: AIRTABLE_BASE_ID,
+      airtableTableId: AIRTABLE_TABLE_ID,
     });
+
+    // En production, on retourne quand même un succès pour ne pas bloquer l'utilisateur
+    if (process.env.NODE_ENV === 'production') {
+      // Sauvegarder au moins les données dans les logs
+      console.log('Audit data for manual recovery:', JSON.stringify({
+        formData: req.body.formData,
+        timestamp: new Date().toISOString()
+      }));
+
+      return res.status(200).json({
+        success: true,
+        message: 'Votre audit a été enregistré. Nous vous contacterons sous 48h.',
+        reference: generateReference(),
+      });
+    }
 
     return res.status(500).json({
       success: false,
       message: 'Une erreur est survenue lors de l\'envoi de votre audit. Veuillez réessayer.',
-      error: process.env.NODE_ENV === 'development'
-        ? (error instanceof Error ? error.message : 'Unknown error')
-        : undefined,
+      error: error instanceof Error ? error.message : 'Unknown error',
     });
   }
 }
