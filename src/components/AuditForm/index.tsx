@@ -213,27 +213,34 @@ export default function AuditForm() {
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
-    
+
     // Calculate audit score
     const score = calculateAuditScore(formData as AuditFormData);
     setAuditScore(score);
-    
+
     try {
-      // Send data to API
+      // Send data to API - format attendu par l'API
       const response = await fetch('/api/audit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, score })
+        body: JSON.stringify({
+          formData: formData,
+          score: score
+        })
       });
-      
+
       if (response.ok) {
         setShowSummary(true);
         localStorage.removeItem('auditFormData');
+      } else {
+        // Log l'erreur pour debug
+        const errorText = await response.text();
+        console.error('Audit submission failed:', response.status, errorText);
       }
     } catch (error) {
       console.error('Error submitting audit:', error);
     }
-    
+
     setIsSubmitting(false);
   };
 
