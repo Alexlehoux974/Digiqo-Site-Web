@@ -4,7 +4,7 @@ import { AIRTABLE_CONFIG, transformFormDataToAirtable } from '../../lib/airtable
 // Configuration HubSpot
 const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN || '';
 const HUBSPOT_API_URL = 'https://api.hubapi.com';
-const ROMAIN_OWNER_ID = '554004217'; // TODO: Remplacer par l'ID exact de Romain quand disponible
+const ROMAIN_OWNER_ID = '30244580'; // Romain Cano
 const N8N_WEBHOOK_URL = 'https://n8n.srv763918.hstgr.cloud/webhook/9848ecf9-764d-4ccd-90c4-6d91c16eeba9';
 
 async function createOrUpdateHubSpotLead(formData: any) {
@@ -62,6 +62,22 @@ async function createOrUpdateHubSpotLead(formData: any) {
         body: JSON.stringify({ properties: contactProperties })
       });
       console.log('Contact HubSpot mis à jour:', contactId);
+
+      // Déclencher le webhook N8N uniquement pour les contacts existants
+      await fetch(N8N_WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          source: 'web-quote-form',
+          hubspot_contact_id: contactId,
+          form_data: formData,
+          timestamp: new Date().toISOString(),
+          is_existing_contact: true
+        })
+      });
+      console.log('Webhook N8N déclenché pour contact existant');
     } else {
       // Le contact n'existe pas, on le crée
       const createResponse = await fetch(`${HUBSPOT_API_URL}/crm/v3/objects/contacts`, {
@@ -76,21 +92,6 @@ async function createOrUpdateHubSpotLead(formData: any) {
       contactId = createData.id;
       console.log('Nouveau contact HubSpot créé:', contactId);
     }
-
-    // Déclencher le webhook N8N
-    await fetch(N8N_WEBHOOK_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        source: 'web-quote-form',
-        hubspot_contact_id: contactId,
-        form_data: formData,
-        timestamp: new Date().toISOString()
-      })
-    });
-    console.log('Webhook N8N déclenché avec succès');
 
     return contactId;
   } catch (error) {
