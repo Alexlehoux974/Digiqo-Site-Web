@@ -108,17 +108,26 @@ export function ContactForm({ formData, setFormData, onSubmit }: ContactFormProp
       await response.json()
 
       // Tracker l'événement GA4 de conversion
+      console.log('Tentative d\'envoi de l\'événement GA4...')
       if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('event', 'generate_lead', {
-          event_category: 'engagement',
-          event_label: 'contact_form',
-          value: 1,
-          currency: 'EUR',
-          // Données du formulaire pour le remarketing
-          form_name: 'Contact Principal',
-          services: formData.services.join(', '),
-          company_type: formData.companyType
-        })
+        console.log('gtag trouvé, envoi de generate_lead...')
+        try {
+          (window as any).gtag('event', 'generate_lead', {
+            event_category: 'engagement',
+            event_label: 'contact_form',
+            value: 1,
+            currency: 'EUR',
+            // Données du formulaire pour le remarketing
+            form_name: 'Contact Principal',
+            services: formData.services.join(', '),
+            company_type: formData.companyType
+          })
+          console.log('Événement generate_lead envoyé avec succès!')
+        } catch (error) {
+          console.error('Erreur envoi GA4:', error)
+        }
+      } else {
+        console.warn('gtag non trouvé - GA4 non chargé?')
       }
 
       // Attendre un peu pour l'animation
