@@ -5,7 +5,7 @@ import { AIRTABLE_CONFIG, transformFormDataToAirtable } from '../../lib/airtable
 const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN || '';
 const HUBSPOT_API_URL = 'https://api.hubapi.com';
 const ROMAIN_OWNER_ID = '30244580'; // Romain Cano
-const N8N_WEBHOOK_URL = 'https://n8n.srv763918.hstgr.cloud/webhook/9848ecf9-764d-4ccd-90c4-6d91c16eeba9';
+const N8N_WEBHOOK_URL = 'https://n8n.srv763918.hstgr.cloud/webhook-test/9848ecf9-764d-4ccd-90c4-6d91c16eeba9';
 
 async function createOrUpdateHubSpotLead(formData: any) {
   const email = formData.contact?.email;
@@ -34,6 +34,8 @@ async function createOrUpdateHubSpotLead(formData: any) {
     });
 
     const searchData = await searchResponse.json();
+    console.log('Résultat de recherche HubSpot:', searchData);
+    console.log('Nombre de contacts trouvés:', searchData.total);
     let contactId = null;
 
     // Préparer les propriétés du contact
@@ -64,20 +66,28 @@ async function createOrUpdateHubSpotLead(formData: any) {
       console.log('Contact HubSpot mis à jour:', contactId);
 
       // Déclencher le webhook N8N uniquement pour les contacts existants
-      await fetch(N8N_WEBHOOK_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          source: 'web-quote-form',
-          hubspot_contact_id: contactId,
-          form_data: formData,
-          timestamp: new Date().toISOString(),
-          is_existing_contact: true
-        })
-      });
-      console.log('Webhook N8N déclenché pour contact existant');
+      console.log('Tentative de déclenchement du webhook N8N vers:', N8N_WEBHOOK_URL);
+      try {
+        const webhookResponse = await fetch(N8N_WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            source: 'web-quote-form',
+            hubspot_contact_id: contactId,
+            form_data: formData,
+            timestamp: new Date().toISOString(),
+            is_existing_contact: true
+          })
+        });
+        console.log('Statut de la réponse webhook:', webhookResponse.status);
+        const webhookText = await webhookResponse.text();
+        console.log('Réponse webhook:', webhookText);
+        console.log('Webhook N8N déclenché pour contact existant avec succès');
+      } catch (webhookError) {
+        console.error('Erreur lors du déclenchement du webhook N8N:', webhookError);
+      }
     } else {
       // Le contact n'existe pas, on le crée
       const createResponse = await fetch(`${HUBSPOT_API_URL}/crm/v3/objects/contacts`, {
