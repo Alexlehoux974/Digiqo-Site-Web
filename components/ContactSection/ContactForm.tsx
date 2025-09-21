@@ -19,6 +19,8 @@ const services = [
 export interface FormData {
   firstName: string
   lastName: string
+  companyName: string
+  companyType: string
   phone: string
   email: string
   services: string[]
@@ -122,8 +124,8 @@ export function ContactForm({ formData, setFormData, onSubmit }: ContactFormProp
     }
   }
 
-  const canProceedToStep2 = formData.firstName && formData.lastName && formData.phone && formData.email && 
-    !errors.email && !errors.phone && validateEmail(formData.email) && validatePhone(formData.phone)
+  const canProceedToStep2 = formData.firstName && formData.lastName && formData.companyName && formData.companyType &&
+    formData.phone && formData.email && !errors.email && !errors.phone && validateEmail(formData.email) && validatePhone(formData.phone)
   const canSubmit = formData.services.length > 0 && formData.description
 
   if (isSubmitted) {
@@ -185,7 +187,7 @@ export function ContactForm({ formData, setFormData, onSubmit }: ContactFormProp
           className="space-y-6"
         >
           <h3 className="text-lg font-semibold text-digiqo-black">Vos informations</h3>
-          
+
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-digiqo-gray-dark mb-2">
@@ -219,6 +221,57 @@ export function ContactForm({ formData, setFormData, onSubmit }: ContactFormProp
                   className="w-full pl-11 pr-4 py-3 bg-white border border-digiqo-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-digiqo-accent focus:border-transparent transition-all hover:border-digiqo-gray-dark"
                   placeholder="Nom"
                 />
+              </div>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-digiqo-gray-dark mb-2">
+                Nom de l'entreprise *
+              </label>
+              <div className="relative">
+                <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-digiqo-gray-dark/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-1 4h1m4-4h1M9 15h1m-1 4h1m4-4h1m-1 4h1" />
+                </svg>
+                <motion.input
+                  type="text"
+                  required
+                  value={formData.companyName}
+                  onChange={(e) => setFormData(prev => ({ ...prev, companyName: e.target.value }))}
+                  whileFocus={{ scale: 1.01 }}
+                  className="w-full pl-11 pr-4 py-3 bg-white border border-digiqo-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-digiqo-accent focus:border-transparent transition-all hover:border-digiqo-gray-dark"
+                  placeholder="Nom de votre entreprise"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-digiqo-gray-dark mb-2">
+                Raison sociale *
+              </label>
+              <div className="relative">
+                <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-digiqo-gray-dark/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <motion.select
+                  required
+                  value={formData.companyType}
+                  onChange={(e) => setFormData(prev => ({ ...prev, companyType: e.target.value }))}
+                  whileFocus={{ scale: 1.01 }}
+                  className="w-full pl-11 pr-4 py-3 bg-white border border-digiqo-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-digiqo-accent focus:border-transparent transition-all hover:border-digiqo-gray-dark appearance-none cursor-pointer"
+                >
+                  <option value="">Sélectionnez...</option>
+                  <option value="EI">EI - Entreprise Individuelle</option>
+                  <option value="EURL">EURL - Entreprise Unipersonnelle</option>
+                  <option value="SARL">SARL - Société à Responsabilité Limitée</option>
+                  <option value="SAS">SAS - Société par Actions Simplifiée</option>
+                  <option value="SASU">SASU - SAS Unipersonnelle</option>
+                  <option value="SA">SA - Société Anonyme</option>
+                  <option value="SNC">SNC - Société en Nom Collectif</option>
+                  <option value="Association">Association</option>
+                  <option value="Micro-entreprise">Micro-entreprise</option>
+                  <option value="Autre">Autre</option>
+                </motion.select>
               </div>
             </div>
           </div>

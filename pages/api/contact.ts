@@ -13,13 +13,15 @@ export default async function handler(
     // Récupérer les données du formulaire
     const formData = req.body
 
-    // Préparer les données pour n8n
+    // Préparer les données pour n8n ou HubSpot
     const webhookData = {
       timestamp: new Date().toISOString(),
       source: 'website-contact-form',
       data: {
         firstName: formData.firstName,
         lastName: formData.lastName,
+        companyName: formData.companyName,
+        companyType: formData.companyType,
         phone: formData.phone,
         email: formData.email,
         services: formData.services,

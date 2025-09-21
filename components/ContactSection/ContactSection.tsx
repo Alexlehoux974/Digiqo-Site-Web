@@ -12,6 +12,8 @@ export function ContactSection() {
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
+    companyName: '',
+    companyType: '',
     phone: '',
     email: '',
     services: [],
