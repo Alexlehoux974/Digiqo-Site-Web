@@ -1,11 +1,4 @@
 import { useState } from 'react'
-
-// Déclaration TypeScript pour gtag
-declare global {
-  interface Window {
-    gtag?: (...args: any[]) => void
-  }
-}
 import { motion } from 'framer-motion'
 import { Check, Mail, Phone, User, FileText, MessageSquare, Send, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
