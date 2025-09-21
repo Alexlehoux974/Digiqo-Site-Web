@@ -71,96 +71,19 @@ export default function AuditSummary({ data, score }: AuditSummaryProps) {
           </p>
         </motion.div>
 
-        {/* Score Overview */}
+        {/* Analysis Complete */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
           className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 mb-8"
         >
-          <div className="text-center mb-8">
-            <div className="relative inline-flex items-center justify-center">
-              <svg className="w-48 h-48">
-                <circle
-                  cx="96"
-                  cy="96"
-                  r="88"
-                  stroke="currentColor"
-                  strokeWidth="12"
-                  fill="none"
-                  className="text-gray-200 dark:text-gray-700"
-                />
-                <motion.circle
-                  cx="96"
-                  cy="96"
-                  r="88"
-                  stroke="url(#gradient)"
-                  strokeWidth="12"
-                  fill="none"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: score.overall / 100 }}
-                  transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
-                  style={{
-                    strokeDasharray: 553,
-                    strokeDashoffset: 0,
-                    transform: 'rotate(-90deg)',
-                    transformOrigin: '50% 50%'
-                  }}
-                />
-                <defs>
-                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#8B1431" />
-                    <stop offset="100%" stopColor="#DA6530" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <motion.span
-                  className={`text-5xl font-bold ${getScoreColor(score.overall)}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.5 }}
-                >
-                  {score.overall}%
-                </motion.span>
-                <span className="text-gray-500 dark:text-gray-400 text-sm">Score Global</span>
-              </div>
-            </div>
-            
-            <div className="mt-4">
-              <span className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium ${priorityBadge.bg} ${priorityBadge.text}`}>
-                Niveau d'urgence: {priorityBadge.label}
-              </span>
-            </div>
-          </div>
-
-          {/* Category Scores */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
-            {categories.map((category, index) => (
-              <motion.div
-                key={category.name}
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.8 + index * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-2xl mb-2">{category.icon}</div>
-                <div className={`text-2xl font-bold ${getScoreColor(category.score)}`}>
-                  {category.score}%
-                </div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">
-                  {category.name}
-                </div>
-              </motion.div>
-            ))}
-          </div>
 
           {/* Top Recommendations */}
-          <div className="border-t border-gray-200 dark:border-gray-700 pt-8">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
-              <TrendingUp className="w-6 h-6 mr-2 text-accent" />
-              Recommandations Prioritaires
+          <div>
+            <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-6 flex items-center">
+              <TrendingUp className="w-7 h-7 mr-3 text-accent" />
+              Points d'Amélioration Prioritaires pour votre Transformation Digitale
             </h3>
             <div className="space-y-3">
               {score.recommendations.map((rec, index) => (
@@ -171,12 +94,12 @@ export default function AuditSummary({ data, score }: AuditSummaryProps) {
                   transition={{ delay: 1.2 + index * 0.1 }}
                   className="flex items-start space-x-3"
                 >
-                  <div className="flex-shrink-0 w-6 h-6 bg-accent/20 rounded-full flex items-center justify-center mt-0.5">
-                    <span className="text-xs font-bold text-accent">{index + 1}</span>
+                  <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center shadow-md">
+                    <span className="text-base font-bold text-white">{index + 1}</span>
                   </div>
                   <div className="flex-1">
-                    <p className="text-gray-700 dark:text-gray-300 font-medium">{rec.title}</p>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">{rec.description}</p>
+                    <p className="text-gray-900 dark:text-gray-100 font-semibold text-lg">{rec.title}</p>
+                    <p className="text-gray-700 dark:text-gray-300 text-base mt-1 leading-relaxed">{rec.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -189,47 +112,56 @@ export default function AuditSummary({ data, score }: AuditSummaryProps) {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="bg-gradient-to-r from-primary to-accent rounded-2xl shadow-xl p-8 text-white"
+          className="bg-gradient-to-r from-primary via-primary/90 to-accent rounded-2xl shadow-xl p-8 text-white relative overflow-hidden"
         >
-          <h2 className="text-2xl font-bold mb-4">Prochaines Étapes</h2>
+          <div className="absolute inset-0 bg-black/10"></div>
+          <div className="relative">
+            <h2 className="text-3xl font-bold mb-6">Prochaines Étapes</h2>
           
-          <div className="space-y-4 mb-6">
-            <div className="flex items-center space-x-3">
-              <Mail className="w-5 h-5 flex-shrink-0" />
-              <p>Vous recevrez votre audit complet par email dans les 24h</p>
-            </div>
-            
-            {data.contact.preferredContact === 'phone' && (
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 flex-shrink-0" />
-                <p>Un conseiller vous contactera sous 48h au {data.contact.phone}</p>
+            <div className="space-y-5 mb-8">
+              <div className="flex items-center space-x-4 bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
+                  <Mail className="w-6 h-6" />
+                </div>
+                <p className="text-lg">Vous recevrez votre audit complet personnalisé par email dans les 24h</p>
               </div>
-            )}
-            
-            {data.contact.preferredContact === 'visio' && (
-              <div className="flex items-center space-x-3">
-                <Calendar className="w-5 h-5 flex-shrink-0" />
-                <p>Nous vous proposerons un créneau pour une visioconférence</p>
-              </div>
-            )}
-          </div>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button
-              onClick={() => window.print()}
-              className="flex items-center justify-center space-x-2 px-6 py-3 bg-white/20 backdrop-blur-sm rounded-lg hover:bg-white/30 transition-colors"
-            >
-              <Download className="w-5 h-5" />
-              <span>Télécharger le résumé</span>
-            </button>
-            
-            <a
-              href="/"
-              className="flex items-center justify-center space-x-2 px-6 py-3 bg-white text-primary rounded-lg hover:bg-gray-100 transition-colors font-semibold"
-            >
-              <span>Retour au site</span>
-              <ArrowRight className="w-5 h-5" />
-            </a>
+              {data.contact.preferredContact === 'phone' && (
+                <div className="flex items-center space-x-4 bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
+                    <Phone className="w-6 h-6" />
+                  </div>
+                  <p className="text-lg">Un conseiller expert vous contactera sous 48h au {data.contact.phone}</p>
+                </div>
+              )}
+
+              {data.contact.preferredContact === 'visio' && (
+                <div className="flex items-center space-x-4 bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
+                    <Calendar className="w-6 h-6" />
+                  </div>
+                  <p className="text-lg">Nous vous proposerons un créneau pour une visioconférence personnalisée</p>
+                </div>
+              )}
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button
+                onClick={() => window.print()}
+                className="flex items-center justify-center space-x-2 px-6 py-3 bg-white/20 backdrop-blur-sm rounded-lg hover:bg-white/30 transition-all duration-300 font-medium border border-white/30"
+              >
+                <Download className="w-5 h-5" />
+                <span>Télécharger le résumé</span>
+              </button>
+
+              <a
+                href="/"
+                className="flex items-center justify-center space-x-2 px-6 py-3 bg-white text-primary rounded-lg hover:bg-gray-50 transition-all duration-300 font-semibold shadow-lg"
+              >
+                <span>Retour au site</span>
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </div>
           </div>
         </motion.div>
 
