@@ -15,8 +15,9 @@ export default function Document() {
         {/* Pour iOS */}
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         
-        {/* Pour Android */}
-        <link rel="manifest" href="/site.webmanifest" />
+        {/* PWA Manifest */}
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="alternate manifest" href="/site.webmanifest" />
         
         {/* Couleurs du thème */}
         <meta name="theme-color" content="#8B1431" />

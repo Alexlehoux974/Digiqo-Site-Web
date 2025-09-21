@@ -1,19 +1,70 @@
 # Robots.txt pour Digiqo.fr
 # Agence Marketing Digital La Réunion
+# https://www.digiqo.fr
 
+# Règles pour tous les robots
 User-agent: *
 Allow: /
-Disallow: /admin/
 Disallow: /api/
+Disallow: /admin/
 Disallow: /private/
+Disallow: /_next/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: *.json$
+Disallow: /*?*
+Allow: /api/sitemap
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+Allow: /*.woff$
+Allow: /*.woff2$
 
-# Sitemaps
-Sitemap: https://www.digiqo.fr/sitemap.xml
-
-# Crawl-delay pour être respectueux
-Crawl-delay: 1
-
-# Googlebot spécifique
+# Googlebot spécifique (pas de crawl-delay)
 User-agent: Googlebot
 Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /_next/static/
+Allow: /_next/image
 Crawl-delay: 0
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Crawl-delay: 1
+
+# AhrefsBot - Limiter l'accès
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+# SemrushBot - Limiter l'accès
+User-agent: SemrushBot
+Crawl-delay: 10
+
+# Bots malveillants à bloquer
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: SemrushBot-SA
+Disallow: /
+
+User-agent: dotbot
+Disallow: /
+
+# Sitemaps
+Sitemap: https://www.digiqo.fr/sitemap_index.xml
+Sitemap: https://www.digiqo.fr/sitemap.xml
+Sitemap: https://www.digiqo.fr/sitemap-blog.xml
+Sitemap: https://www.digiqo.fr/sitemap-services.xml
+
+# Host directive (pour Yandex)
+Host: https://www.digiqo.fr

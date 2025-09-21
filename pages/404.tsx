@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
-import { Home, ArrowLeft } from 'lucide-react'
+import { Home, ArrowLeft, Phone } from 'lucide-react'
 import { Button } from '../components/Button'
 import { HeaderLuxury } from '../components/Header'
-import Head from 'next/head'
+import { SEO } from '../components/SEO'
+import Link from 'next/link'
 
 export default function Custom404() {
   const router = useRouter()
@@ -51,11 +52,39 @@ export default function Custom404() {
 
   return (
     <>
-      <Head>
-        <title>404 - Page non trouvée | Digiqo</title>
-        <meta name="description" content="Oops! La page que vous cherchez n'existe pas. Retournez à l'accueil de Digiqo, votre agence digitale à La Réunion." />
-        <meta name="robots" content="noindex, nofollow" />
-      </Head>
+      <SEO
+        title="404 - Page non trouvée"
+        description="Oops! La page que vous cherchez n'existe pas. Retournez à l'accueil de Digiqo, votre agence de marketing digital à La Réunion."
+        noindex={true}
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Page 404 - Erreur",
+          "description": "Page d'erreur 404 du site Digiqo",
+          "url": "https://www.digiqo.fr/404",
+          "isPartOf": {
+            "@type": "WebSite",
+            "name": "Digiqo",
+            "url": "https://www.digiqo.fr"
+          },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Accueil",
+                "item": "https://www.digiqo.fr"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "404"
+              }
+            ]
+          }
+        }}
+      />
 
       <HeaderLuxury />
 
@@ -223,8 +252,40 @@ export default function Custom404() {
                 La page que vous cherchez s'est perdue dans l'espace digital.
               </p>
               <p className="text-lg text-white/60">
-                Pas de panique, on va vous aider à retrouver votre trajectoire ! 🚀
+                Pas de panique, on va vous aider à retrouver votre trajectoire !
               </p>
+            </motion.div>
+
+            {/* Suggestions de pages */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="mb-8"
+            >
+              <h3 className="text-xl text-white/80 mb-4">Pages populaires :</h3>
+              <div className="flex flex-wrap gap-3 justify-center">
+                <Link href="/services/publicite-google">
+                  <a className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white hover:bg-white/20 transition-colors">
+                    Publicité Google
+                  </a>
+                </Link>
+                <Link href="/services/sites-web">
+                  <a className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white hover:bg-white/20 transition-colors">
+                    Développement Web
+                  </a>
+                </Link>
+                <Link href="/services/seo">
+                  <a className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white hover:bg-white/20 transition-colors">
+                    SEO
+                  </a>
+                </Link>
+                <Link href="/contact">
+                  <a className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white hover:bg-white/20 transition-colors">
+                    Contact
+                  </a>
+                </Link>
+              </div>
             </motion.div>
 
             {/* Boutons d'action */}
@@ -262,10 +323,11 @@ export default function Custom404() {
               className="mt-12 text-white/60 text-sm"
             >
               PS : Si vous êtes vraiment perdu, appelez-nous au{' '}
-              <a href="tel:+262262025102" className="text-digiqo-accent hover:text-digiqo-secondary transition-colors">
+              <a href="tel:+262262025102" className="text-digiqo-accent hover:text-digiqo-secondary transition-colors inline-flex items-center gap-1">
+                <Phone className="w-4 h-4" />
                 +262 262 02 51 02
               </a>
-              {' '}— on a le GPS marketing ! 📍
+              {' '}— on a le GPS marketing !
             </motion.p>
           </motion.div>
         </div>

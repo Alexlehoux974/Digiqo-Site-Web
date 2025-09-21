@@ -1,0 +1,87 @@
+{
+  "name": "Digiqo - Agence Marketing Digital La Réunion",
+  "short_name": "Digiqo",
+  "description": "Agence de marketing digital à La Réunion spécialisée en publicité en ligne, développement web, SEO et community management",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#8B1431",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "fr-FR",
+  "dir": "ltr",
+  "categories": ["business", "marketing", "productivity"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/home-desktop.png",
+      "type": "image/png",
+      "sizes": "1920x1080",
+      "form_factor": "wide",
+      "label": "Page d'accueil Digiqo"
+    },
+    {
+      "src": "/screenshots/home-mobile.png",
+      "type": "image/png",
+      "sizes": "390x844",
+      "form_factor": "narrow",
+      "label": "Page d'accueil mobile"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Contactez Digiqo",
+      "url": "/contact",
+      "icons": [{"src": "/icons/contact.png", "sizes": "96x96"}]
+    },
+    {
+      "name": "Services",
+      "short_name": "Services",
+      "description": "Nos services",
+      "url": "/services",
+      "icons": [{"src": "/icons/services.png", "sizes": "96x96"}]
+    },
+    {
+      "name": "Devis gratuit",
+      "short_name": "Devis",
+      "description": "Demander un devis",
+      "url": "/devis-web",
+      "icons": [{"src": "/icons/devis.png", "sizes": "96x96"}]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "protocol_handlers": [],
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": ["navigate-existing", "auto"]
+  }
+}
