@@ -106,7 +106,21 @@ export function ContactForm({ formData, setFormData, onSubmit }: ContactFormProp
       })
 
       await response.json()
-      
+
+      // Tracker l'événement GA4 de conversion
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', 'generate_lead', {
+          event_category: 'engagement',
+          event_label: 'contact_form',
+          value: 1,
+          currency: 'EUR',
+          // Données du formulaire pour le remarketing
+          form_name: 'Contact Principal',
+          services: formData.services.join(', '),
+          company_type: formData.companyType
+        })
+      }
+
       // Attendre un peu pour l'animation
       await new Promise(resolve => setTimeout(resolve, 500))
 
