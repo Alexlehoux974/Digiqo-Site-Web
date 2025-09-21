@@ -1,9 +1,28 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 
 export default function Document() {
+  const GA_MEASUREMENT_ID = 'G-NFN3PN0GLY'
+
   return (
     <Html lang="fr">
       <Head>
+        {/* Google Analytics 4 - Doit être placé en premier après l'ouverture de <head> */}
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_MEASUREMENT_ID}');
+            `,
+          }}
+        />
+
         {/* Viewport avec support des safe areas pour appareils avec encoche */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
         
