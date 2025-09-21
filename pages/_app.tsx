@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { CookieConsent } from '@/components/CookieConsent'
 import { ScrollToTop } from '@/components/ScrollToTop'
 import { ChatWidget } from '@/components/ChatWidget'
+import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 import '../styles/globals.css'
 import '../styles/enhanced-colors.css'
 import '@n8n/chat/style.css'
@@ -24,6 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <GoogleAnalytics />
       <Component {...pageProps} />
       <CookieConsent />
       <ScrollToTop />
