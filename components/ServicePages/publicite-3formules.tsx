@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Head from 'next/head'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 import { HeroGradientOrbs } from '@/components/ui/animated-gradient-orb'
 import {
@@ -13,11 +13,9 @@ import {
   Users,
   LineChart,
   Sparkles,
-  ChevronRight,
   CheckCircle2,
   ArrowUpRight,
   X,
-  Crown,
   Rocket,
   MessageCircle
 } from 'lucide-react'
@@ -307,10 +305,7 @@ export default function PublicitePage() {
   ]
 
   return (
-    <ServiceLayout
-      title="Agence Publicité Facebook Ads Google Ads La Réunion"
-      description="Expert en publicité Facebook et Google Ads à La Réunion depuis +7 ans. ROI Optimisé, +500 campagnes réussies. Audit gratuit offert. Démarrez aujourd'hui!"
-    >
+    <ServiceLayout>
       <Head>
         <title>{seoData.title}</title>
         <meta name="description" content={seoData.description} />
@@ -369,7 +364,7 @@ export default function PublicitePage() {
               </motion.a>
 
               <motion.a
-                href={generateWhatsAppLink('Je souhaite discuter de mes besoins en publicité digitale')}
+                href={generateWhatsAppLink({ context: 'publicite' })}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={ANIMATION.hover.scale}
@@ -699,7 +694,7 @@ export default function PublicitePage() {
             </motion.a>
 
             <motion.a
-              href={generateWhatsAppLink('Je souhaite en savoir plus sur vos formules publicitaires')}
+              href={generateWhatsAppLink({ service: 'publicite' })}
               target="_blank"
               rel="noopener noreferrer"
               whileHover={ANIMATION.hover.scale}
