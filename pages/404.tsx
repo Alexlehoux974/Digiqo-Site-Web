@@ -55,7 +55,6 @@ export default function Custom404() {
       <SEO
         title="404 - Page non trouvée"
         description="Oops! La page que vous cherchez n'existe pas. Retournez à l'accueil de Digiqo, votre agence de marketing digital à La Réunion."
-        noindex={true}
         structuredData={{
           "@context": "https://schema.org",
           "@type": "WebPage",
