@@ -5,7 +5,7 @@ import { AIRTABLE_CONFIG, transformFormDataToAirtable } from '../../lib/airtable
 const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN || '';
 const HUBSPOT_API_URL = 'https://api.hubapi.com';
 const ROMAIN_OWNER_ID = '30244580'; // Romain Cano
-const N8N_WEBHOOK_URL = 'https://n8n.srv763918.hstgr.cloud/webhook-test/9848ecf9-764d-4ccd-90c4-6d91c16eeba9';
+const N8N_WEBHOOK_URL = 'https://n8n.srv763918.hstgr.cloud/webhook/9848ecf9-764d-4ccd-90c4-6d91c16eeba9';
 
 async function createOrUpdateHubSpotLead(formData: any) {
   const email = formData.contact?.email;
@@ -14,41 +14,49 @@ async function createOrUpdateHubSpotLead(formData: any) {
     return null;
   }
 
+  console.log('Recherche HubSpot pour l\'email:', email);
+
   try {
     // Rechercher si le contact existe déjà
+    const searchBody = {
+      filterGroups: [{
+        filters: [{
+          propertyName: 'email',
+          operator: 'EQ',
+          value: email.toLowerCase().trim()
+        }]
+      }]
+    };
+
+    console.log('Corps de la recherche HubSpot:', JSON.stringify(searchBody));
+
     const searchResponse = await fetch(`${HUBSPOT_API_URL}/crm/v3/objects/contacts/search`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        filterGroups: [{
-          filters: [{
-            propertyName: 'email',
-            operator: 'EQ',
-            value: email
-          }]
-        }]
-      })
+      body: JSON.stringify(searchBody)
     });
+
+    if (!searchResponse.ok) {
+      const errorText = await searchResponse.text();
+      console.error('Erreur lors de la recherche HubSpot:', searchResponse.status, errorText);
+      return null;
+    }
 
     const searchData = await searchResponse.json();
     console.log('Résultat de recherche HubSpot:', searchData);
     console.log('Nombre de contacts trouvés:', searchData.total);
     let contactId = null;
 
-    // Préparer les propriétés du contact
+    // Préparer les propriétés du contact (propriétés standard HubSpot uniquement)
     const contactProperties = {
       email: email,
       firstname: formData.contact?.firstName || '',
       lastname: formData.contact?.lastName || '',
       phone: formData.contact?.phone || '',
       company: formData.project?.companyName || '',
-      jobtitle: formData.contact?.position || '',
-      message: formData.contact?.message || '',
-      website_type: formData.websiteType?.type || '',
-      project_description: formData.project?.projectDescription || '',
       hubspot_owner_id: ROMAIN_OWNER_ID
     };
 
@@ -98,6 +106,13 @@ async function createOrUpdateHubSpotLead(formData: any) {
         },
         body: JSON.stringify({ properties: contactProperties })
       });
+
+      if (!createResponse.ok) {
+        const errorText = await createResponse.text();
+        console.error('Erreur lors de la création du contact HubSpot:', createResponse.status, errorText);
+        return null;
+      }
+
       const createData = await createResponse.json();
       contactId = createData.id;
       console.log('Nouveau contact HubSpot créé:', contactId);
@@ -156,6 +171,7 @@ export default async function handler(
     }
 
     // 2. Créer/mettre à jour le lead HubSpot et déclencher le webhook N8N
+    console.log('Token HubSpot présent:', !!HUBSPOT_ACCESS_TOKEN);
     if (HUBSPOT_ACCESS_TOKEN) {
       try {
         hubspotContactId = await createOrUpdateHubSpotLead(formData);
@@ -163,6 +179,8 @@ export default async function handler(
         console.error('Erreur lors de l\'envoi à HubSpot:', error);
         errors.push('HubSpot: ' + (error as Error).message);
       }
+    } else {
+      console.log('Pas de token HubSpot configuré, intégration HubSpot ignorée');
     }
 
     // Retourner le succès si au moins un service a fonctionné
