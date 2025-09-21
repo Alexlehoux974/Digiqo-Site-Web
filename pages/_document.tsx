@@ -22,7 +22,10 @@ export default function Document() {
         {/* Couleurs du thème */}
         <meta name="theme-color" content="#8B1431" />
         <meta name="msapplication-TileColor" content="#8B1431" />
-        
+
+        {/* Google Search Console Verification */}
+        <meta name="google-site-verification" content="-mBAAsZ3X_8gyG-3MAN7Ww86tsF452BbvWmgz3SLiBY" />
+
         {/* Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
