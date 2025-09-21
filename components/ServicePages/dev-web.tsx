@@ -266,7 +266,7 @@ export default function DevWebPage() {
       />
 
       {/* Features Section Premium */}
-      <section className="py-24 bg-gradient-to-br from-white to-digiqo-accent/5 relative overflow-hidden">
+      <section id="sites-abonnement" className="py-24 bg-gradient-to-br from-white to-digiqo-accent/5 relative overflow-hidden">
         {/* Background decoration */}
         <SectionGradientOrbs />
 
