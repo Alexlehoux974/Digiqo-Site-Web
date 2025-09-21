@@ -117,14 +117,16 @@ export function ContactForm({ formData, setFormData, onSubmit }: ContactFormProp
               event_category: 'engagement',
               event_label: 'contact_form',
               value: 1,
-              currency: 'EUR'
+              currency: 'EUR',
+              debug_mode: true // Active le mode debug pour voir immédiatement dans DebugView
             })
             console.log('Événement generate_lead envoyé avec succès!')
 
             // Aussi envoyer un page_view virtuel pour faciliter le tracking
             window.gtag('event', 'page_view', {
               page_path: '/virtual/merci-contact',
-              page_title: 'Merci - Formulaire Contact Envoyé'
+              page_title: 'Merci - Formulaire Contact Envoyé',
+              debug_mode: true
             })
             console.log('Page virtuelle /virtual/merci-contact envoyée!')
           } catch (error) {
