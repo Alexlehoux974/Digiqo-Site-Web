@@ -1,4 +1,11 @@
 import { useState } from 'react'
+
+// Déclaration TypeScript pour gtag
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void
+  }
+}
 import { motion } from 'framer-motion'
 import { Check, Mail, Phone, User, FileText, MessageSquare, Send, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -107,28 +114,33 @@ export function ContactForm({ formData, setFormData, onSubmit }: ContactFormProp
 
       await response.json()
 
-      // Tracker l'événement GA4 de conversion
-      console.log('Tentative d\'envoi de l\'événement GA4...')
-      if (typeof window !== 'undefined' && (window as any).gtag) {
-        console.log('gtag trouvé, envoi de generate_lead...')
-        try {
-          (window as any).gtag('event', 'generate_lead', {
-            event_category: 'engagement',
-            event_label: 'contact_form',
-            value: 1,
-            currency: 'EUR',
-            // Données du formulaire pour le remarketing
-            form_name: 'Contact Principal',
-            services: formData.services.join(', '),
-            company_type: formData.companyType
-          })
-          console.log('Événement generate_lead envoyé avec succès!')
-        } catch (error) {
-          console.error('Erreur envoi GA4:', error)
+      // Tracker l'événement GA4 de conversion - Utilisation de setTimeout pour éviter les problèmes d'hydratation
+      setTimeout(() => {
+        console.log('Tentative d\'envoi de l\'événement GA4...')
+        if (typeof window !== 'undefined' && window.gtag) {
+          console.log('gtag trouvé, envoi de generate_lead...')
+          try {
+            window.gtag('event', 'generate_lead', {
+              event_category: 'engagement',
+              event_label: 'contact_form',
+              value: 1,
+              currency: 'EUR'
+            })
+            console.log('Événement generate_lead envoyé avec succès!')
+
+            // Aussi envoyer un page_view virtuel pour faciliter le tracking
+            window.gtag('event', 'page_view', {
+              page_path: '/virtual/merci-contact',
+              page_title: 'Merci - Formulaire Contact Envoyé'
+            })
+            console.log('Page virtuelle /virtual/merci-contact envoyée!')
+          } catch (error) {
+            console.error('Erreur envoi GA4:', error)
+          }
+        } else {
+          console.warn('gtag non trouvé - GA4 non chargé?')
         }
-      } else {
-        console.warn('gtag non trouvé - GA4 non chargé?')
-      }
+      }, 100)
 
       // Attendre un peu pour l'animation
       await new Promise(resolve => setTimeout(resolve, 500))
