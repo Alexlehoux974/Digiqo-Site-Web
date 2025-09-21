@@ -12,39 +12,6 @@ interface AuditSummaryProps {
 }
 
 export default function AuditSummary({ data, score }: AuditSummaryProps) {
-  const getScoreColor = (score: number) => {
-    if (score >= 80) return 'text-green-600';
-    if (score >= 60) return 'text-yellow-600';
-    if (score >= 40) return 'text-orange-600';
-    return 'text-red-600';
-  };
-
-  const getPriorityBadge = (priority: 'high' | 'medium' | 'low') => {
-    const badges = {
-      low: { bg: 'bg-green-100', text: 'text-green-800', label: 'Faible' },
-      medium: { bg: 'bg-yellow-100', text: 'text-yellow-800', label: 'Moyen' },
-      high: { bg: 'bg-orange-100', text: 'text-orange-800', label: 'Élevé' }
-    };
-    return badges[priority];
-  };
-
-  // Calculate priority based on overall score
-  const getPriority = (overall: number): 'high' | 'medium' | 'low' => {
-    if (overall < 40) return 'high';
-    if (overall < 70) return 'medium';
-    return 'low';
-  };
-
-  const categories = [
-    { name: 'Site Web', score: score.categories.website, icon: '🌐' },
-    { name: 'Réseaux Sociaux', score: score.categories.socialMedia, icon: '📱' },
-    { name: 'Conversion', score: score.categories.conversion, icon: '🎯' },
-    { name: 'CRM', score: score.categories.crm, icon: '⚙️' },
-    { name: 'Réputation', score: score.categories.reputation, icon: '⭐' }
-  ];
-
-  const priority = getPriority(score.overall);
-  const priorityBadge = getPriorityBadge(priority);
 
   return (
     <motion.div
