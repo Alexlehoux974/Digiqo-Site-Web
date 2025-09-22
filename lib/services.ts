@@ -2,7 +2,7 @@
 export const services = [
   { slug: 'publicite-meta', name: 'Publicité META' },
   { slug: 'publicite-google', name: 'Publicité Google' },
-  { slug: 'sites-web', name: 'Développement web' },
+  { slug: 'sites-web', name: 'Site-web, Ecommerce, Plateforme' },
   { slug: 'community-management', name: 'Community management' },
   { slug: 'seo', name: 'SEO' },
   { slug: 'creatifs', name: 'Production vidéo' },

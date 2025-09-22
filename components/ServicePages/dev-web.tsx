@@ -246,8 +246,8 @@ export default function DevWebPage() {
       <ServiceHero
         icon={Code}
         title={{
-          line1: "Code qui",
-          line2: "Performe"
+          line1: "Votre site web",
+          line2: "à la carte"
         }}
         subtitle="Sites web haute performance, sur-mesure et optimisés SEO. Technologie de pointe, design premium, résultats garantis."
         ctaButtons={{
@@ -313,8 +313,8 @@ export default function DevWebPage() {
                   <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center">
                     <Globe className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white text-center mb-2">Site One Page</h3>
-                  <p className="text-white/90 text-sm text-center">Landing page professionnelle – tout inclus</p>
+                  <h3 className="text-2xl font-bold text-white text-center mb-2">Site vitrine + formulaire de contact</h3>
+                  <p className="text-white/90 text-sm text-center">Affichez votre entreprise et votre activité</p>
                 </div>
                 
                 {/* Prix */}
@@ -334,11 +334,11 @@ export default function DevWebPage() {
                   <ul className="space-y-3 text-sm">
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Sections : Accueil, Services, Galerie, À propos, Témoignages, FAQ, Contact</span>
+                      <span className="text-gray-700">Présentation complète de votre entreprise et services</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Mode jour/nuit – attirez l'attention de vos visiteurs</span>
+                      <span className="text-gray-700">Formulaire de contact professionnel intégré</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
@@ -424,8 +424,8 @@ export default function DevWebPage() {
                   <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center">
                     <FileText className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white text-center mb-2">Site One Page + Devis</h3>
-                  <p className="text-white/90 text-sm text-center">Landing page interactive – tout inclus</p>
+                  <h3 className="text-2xl font-bold text-white text-center mb-2">Site vitrine + formulaire devis</h3>
+                  <p className="text-white/90 text-sm text-center">Collectez efficacement des demandes de devis</p>
                 </div>
                 
                 {/* Prix */}
@@ -445,11 +445,11 @@ export default function DevWebPage() {
                   <ul className="space-y-3 text-sm">
                     <li className="flex items-start gap-2">
                       <Star className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
-                      <span className="text-gray-700 font-semibold">Sections : Accueil, Services, Estimation automatique, Galerie, À propos, Témoignages, FAQ, Contact</span>
+                      <span className="text-gray-700 font-semibold">Formulaire de devis détaillé et personnalisable</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Star className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
-                      <span className="text-gray-700 font-semibold">Devis instantané – vos visiteurs obtiennent une estimation en direct</span>
+                      <span className="text-gray-700 font-semibold">Système de collecte de demandes de devis automatisé</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
@@ -519,8 +519,8 @@ export default function DevWebPage() {
                   <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center">
                     <Coffee className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white text-center mb-2">Site Restaurant</h3>
-                  <p className="text-white/90 text-sm text-center">Landing page interactive – tout inclus</p>
+                  <h3 className="text-2xl font-bold text-white text-center mb-2">Site vitrine + commande en ligne</h3>
+                  <p className="text-white/90 text-sm text-center">Adaptés au Snack, Pizzerias. Affichez le menu et recevez les commandes</p>
                 </div>
                 
                 {/* Prix */}
@@ -540,11 +540,11 @@ export default function DevWebPage() {
                   <ul className="space-y-3 text-sm">
                     <li className="flex items-start gap-2">
                       <Star className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700 font-semibold">Sections : Accueil, Services, Estimation automatique, Galerie, À propos, Témoignages, FAQ, Contact</span>
+                      <span className="text-gray-700 font-semibold">Menu interactif avec photos et descriptions</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Star className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700 font-semibold">Devis instantané – vos visiteurs obtiennent une estimation en direct</span>
+                      <span className="text-gray-700 font-semibold">Système de commande en ligne intégré</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
