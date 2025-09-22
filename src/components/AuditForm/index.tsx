@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/router';
 import { ChevronLeft, ChevronRight, Send, CheckCircle, Loader2 } from 'lucide-react';
 import StepIndicator from './StepIndicator';
 import GeneralInfoStep from './steps/GeneralInfoStep';
@@ -13,7 +14,6 @@ import CrmStep from './steps/CrmStep';
 import ReputationStep from './steps/ReputationStep';
 import ObjectivesStep from './steps/ObjectivesStep';
 import ContactStep from './steps/ContactStep';
-import AuditSummary from './AuditSummary';
 import { AuditFormData, AuditStep } from '@/src/lib/audit-types';
 import { calculateAuditScore } from '@/src/lib/audit-utils';
 
@@ -109,13 +109,12 @@ const steps: AuditStep[] = [
 ];
 
 export default function AuditForm() {
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
   const [formData, setFormData] = useState<Partial<AuditFormData>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showSummary, setShowSummary] = useState(false);
-  const [auditScore, setAuditScore] = useState<any>(null);
   const [savedProgress, setSavedProgress] = useState(false);
 
   // Auto-save to localStorage
@@ -216,7 +215,6 @@ export default function AuditForm() {
 
     // Calculate audit score
     const score = calculateAuditScore(formData as AuditFormData);
-    setAuditScore(score);
 
     try {
       // Send data to API - format attendu par l'API
@@ -230,8 +228,9 @@ export default function AuditForm() {
       });
 
       if (response.ok) {
-        setShowSummary(true);
         localStorage.removeItem('auditFormData');
+        // Redirect to thank you page
+        router.push('/merci');
       } else {
         // Log l'erreur pour debug
         const errorText = await response.text();
@@ -273,9 +272,7 @@ export default function AuditForm() {
     }
   };
 
-  if (showSummary && auditScore) {
-    return <AuditSummary data={formData as AuditFormData} score={auditScore} />;
-  }
+  // Removed AuditSummary display since we're redirecting to /merci
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-digiqo-gray-light via-white to-digiqo-accent/5 dark:from-gray-900 dark:to-gray-800 py-12 px-4">

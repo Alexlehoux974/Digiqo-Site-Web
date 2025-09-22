@@ -20,7 +20,7 @@ export function ContactSection() {
     description: '',
     consent: false
   })
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false)
+  const [isFormSubmitted] = useState(false)
 
   // Effect to handle URL parameters and auto-scroll
   useEffect(() => {
@@ -152,10 +152,9 @@ export function ContactSection() {
               
               {/* Form container */}
               <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-8 md:p-10 border border-white/50">
-                <ContactForm 
-                  formData={formData} 
-                  setFormData={setFormData} 
-                  onSubmit={() => setIsFormSubmitted(true)}
+                <ContactForm
+                  formData={formData}
+                  setFormData={setFormData}
                 />
               </div>
             </motion.div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Send, AlertCircle, CheckCircle, Globe, Briefcase, FileText, Users } from 'lucide-react';
+import { Send, AlertCircle, Globe, Briefcase, FileText, Users } from 'lucide-react';
 import { useRouter } from 'next/router';
 
 interface FormData {
@@ -244,6 +244,10 @@ export default function FreelanceRecruitmentForm() {
       }
 
       setSubmitStatus('success');
+      // Redirect to thank you page
+      setTimeout(() => {
+        router.push('/merci');
+      }, 100);
       // Reset form
       setFormData({
         nomPrenom: '',
@@ -748,17 +752,7 @@ export default function FreelanceRecruitmentForm() {
             </div>
           </div>
 
-          {/* Messages de statut */}
-          {submitStatus === 'success' && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-green-50 border border-green-400 text-green-700 px-4 py-3 rounded-lg flex items-center"
-            >
-              <CheckCircle className="w-5 h-5 mr-2" />
-              Votre candidature a été envoyée avec succès ! Nous vous contacterons prochainement.
-            </motion.div>
-          )}
+          {/* Message de succès supprimé car redirection vers /merci */}
 
           {submitStatus === 'error' && (
             <motion.div

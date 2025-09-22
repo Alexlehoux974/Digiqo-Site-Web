@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { useRouter } from 'next/router'
 import { Check, Mail, Phone, User, FileText, MessageSquare, Send, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -31,13 +32,11 @@ export interface FormData {
 interface ContactFormProps {
   formData: FormData
   setFormData: React.Dispatch<React.SetStateAction<FormData>>
-  onSubmit?: () => void
 }
 
-export function ContactForm({ formData, setFormData, onSubmit }: ContactFormProps) {
-
+export function ContactForm({ formData, setFormData }: ContactFormProps) {
+  const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
   const [errors, setErrors] = useState<{
     email?: string
@@ -137,46 +136,30 @@ export function ContactForm({ formData, setFormData, onSubmit }: ContactFormProp
         }
       }, 100)
 
-      // Attendre un peu pour l'animation
-      await new Promise(resolve => setTimeout(resolve, 500))
+      // Attendre un peu pour l'animation et le tracking GA4
+      await new Promise(resolve => setTimeout(resolve, 600))
+
+      // Rediriger vers la page de remerciement
+      router.push('/merci')
 
     } catch (error) {
       console.error('Error submitting form:', error)
       // On continue même en cas d'erreur
+      // Rediriger même en cas d'erreur après un délai
+      setTimeout(() => {
+        router.push('/merci')
+      }, 500)
     }
 
     setIsSubmitting(false)
-    setIsSubmitted(true)
-    
-    // Trigger countdown animation
-    if (onSubmit) {
-      onSubmit()
-    }
   }
 
   const canProceedToStep2 = formData.firstName && formData.lastName && formData.companyName && formData.companyType &&
     formData.phone && formData.email && !errors.email && !errors.phone && validateEmail(formData.email) && validatePhone(formData.phone)
   const canSubmit = formData.services.length > 0 && formData.description
 
-  if (isSubmitted) {
-    return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="text-center py-20"
-      >
-        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-digiqo-accent to-digiqo-accent-dark mb-6">
-          <Check className="w-10 h-10 text-white" />
-        </div>
-        <h3 className="text-2xl font-semibold text-digiqo-black mb-4">
-          Merci pour votre demande !
-        </h3>
-        <p className="text-digiqo-gray-dark max-w-md mx-auto">
-          Nous avons bien reçu votre projet. Notre équipe vous contactera dans les plus brefs délais avec une proposition sur mesure.
-        </p>
-      </motion.div>
-    )
-  }
+  // Remove success message display since we're redirecting to /merci
+  // The redirect happens in handleSubmit after GA4 tracking completes
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">

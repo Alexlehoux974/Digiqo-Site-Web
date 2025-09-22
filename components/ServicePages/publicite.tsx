@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
-import { HeroGradientOrbs } from '@/components/ui/animated-gradient-orb'
+import { ANIMATION } from '@/lib/animation-constants'
 import {
   TrendingUp,
   Target,
@@ -12,7 +11,6 @@ import {
   Zap,
   Users,
   LineChart,
-  Sparkles,
   CheckCircle2,
   ArrowUpRight,
   X,
@@ -21,6 +19,7 @@ import {
 } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
+import { ServiceHero } from '@/components/ServicePages/ServiceHero'
 import { generateContactUrl } from '../../lib/contact-utils'
 import { generateWhatsAppLink } from '../../lib/whatsapp-utils'
 import {
@@ -322,74 +321,32 @@ export default function PublicitePage() {
         <meta name="description" content={seoData.description} />
       </Head>
 
-      {/* Hero Section avec animations premium */}
-      <section className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-br from-digiqo-primary/10 via-white to-digiqo-accent/10">
-        <HeroGradientOrbs />
+      {/* Hero Section avec ServiceHero */}
+      <ServiceHero
+        icon={Target}
+        title={{
+          line1: "Publicité",
+          line2: "META"
+        }}
+        subtitle="Des campagnes ultra-performantes qui transforment vos prospects en clients fidèles"
+        ctaButtons={{
+          primary: {
+            text: "Découvrir nos formules",
+            href: "#formules"
+          },
+          secondary: {
+            text: "Parler à un expert",
+            href: generateWhatsAppLink({ context: 'publicite' })
+          }
+        }}
+        gradientFrom="from-digiqo-accent"
+        gradientTo="to-amber-400"
+      />
 
+      {/* Quick Wins Section */}
+      <section className="relative py-16 -mt-20">
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="text-center">
-            <motion.div
-              {...ANIMATION.entry.fadeInUp}
-              transition={{ delay: getStaggerDelay(0) }}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full shadow-lg mb-6"
-            >
-              <Sparkles className="w-5 h-5 text-digiqo-accent" />
-              <span className="text-sm font-semibold text-digiqo-primary">
-                Expert en Publicité Digitale à La Réunion
-              </span>
-              <Sparkles className="w-5 h-5 text-digiqo-accent" />
-            </motion.div>
-
-            <motion.h1
-              {...ANIMATION.entry.fadeInUp}
-              transition={{ delay: getStaggerDelay(1) }}
-              className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-digiqo-primary via-digiqo-accent to-digiqo-secondary bg-clip-text text-transparent leading-tight"
-            >
-              Boostez votre visibilité<br />
-              <span className="text-3xl md:text-5xl">avec la publicité en ligne</span>
-            </motion.h1>
-
-            <motion.p
-              {...ANIMATION.entry.fadeInUp}
-              transition={{ delay: getStaggerDelay(2) }}
-              className="text-xl md:text-2xl text-digiqo-primary/80 max-w-3xl mx-auto mb-8"
-            >
-              Transformez vos visiteurs en clients grâce à des campagnes publicitaires
-              ultra-ciblées sur Meta Ads (Facebook & Instagram) et Google Ads.
-            </motion.p>
-
-            {/* CTA Section avec WhatsApp */}
-            <motion.div
-              {...ANIMATION.entry.fadeInUp}
-              transition={{ delay: getStaggerDelay(3) }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <motion.a
-                href="#formules"
-                whileHover={ANIMATION.hover.scale}
-                whileTap={ANIMATION.tap.scale}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-digiqo-accent to-amber-400 text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all"
-              >
-                Découvrir nos formules
-                <ArrowRight className="w-5 h-5" />
-              </motion.a>
-
-              <motion.a
-                href={generateWhatsAppLink({ context: 'publicite' })}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={ANIMATION.hover.scale}
-                whileTap={ANIMATION.tap.scale}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all"
-              >
-                <MessageCircle className="w-5 h-5" />
-                Discuter sur WhatsApp
-              </motion.a>
-            </motion.div>
-          </div>
-
-          {/* Quick Wins Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {quickWins.map((item, index) => (
               <motion.div
                 key={index}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/router';
 import ProjectInfoStep from './steps/ProjectInfoStep';
 import WebsiteTypeStep from './steps/WebsiteTypeStep';
 import FeaturesStep from './steps/FeaturesStep';
@@ -22,10 +23,10 @@ const STEPS = [
 ];
 
 export default function WebQuoteForm() {
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<Partial<WebQuoteFormData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isComplete, setIsComplete] = useState(false);
 
   // Charger les données depuis localStorage
   useEffect(() => {
@@ -87,8 +88,9 @@ export default function WebQuoteForm() {
       });
 
       if (response.ok) {
-        setIsComplete(true);
         localStorage.removeItem('webQuoteFormData');
+        // Redirect to thank you page
+        router.push('/merci');
       } else {
         alert('Une erreur est survenue. Veuillez réessayer.');
       }
@@ -100,32 +102,7 @@ export default function WebQuoteForm() {
     }
   };
 
-  if (isComplete) {
-    return (
-      <div className="max-w-2xl mx-auto p-8 text-center">
-        <div className="bg-green-50 rounded-2xl p-12">
-          <div className="text-6xl mb-6">✓</div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Merci pour votre demande !
-          </h2>
-          <p className="text-gray-600 text-lg mb-8">
-            Nous avons bien reçu votre demande de devis. Notre équipe va l'étudier
-            et vous recontactera dans les plus brefs délais.
-          </p>
-          <button
-            onClick={() => {
-              setFormData({});
-              setCurrentStep(1);
-              setIsComplete(false);
-            }}
-            className="bg-[#8B1431] text-white px-8 py-3 rounded-full hover:bg-[#6B0F25] transition-colors"
-          >
-            Faire une nouvelle demande
-          </button>
-        </div>
-      </div>
-    );
-  }
+  // Removed success message display since we're redirecting to /merci
 
   const CurrentStepComponent = STEPS[currentStep - 1].component;
 
