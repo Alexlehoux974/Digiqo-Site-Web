@@ -96,7 +96,7 @@ const navigation = {
                 icon: Palette
               },
               {
-                name: 'Développement Web',
+                name: 'Site-web, Ecommerce, Plateforme',
                 href: '/services/sites-web',
                 description: 'Votre vitrine digitale personnalisée',
                 icon: Code,
