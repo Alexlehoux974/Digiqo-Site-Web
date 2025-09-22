@@ -629,6 +629,26 @@ export default function DevWebPage() {
               </motion.div>
             ))}
           </motion.div>
+
+          {/* CTA Sur-mesure */}
+          <motion.div
+            {...ANIMATION.entry.fadeInUp}
+            whileInView={ANIMATION.entry.fadeInUp.animate}
+            viewport={{ once: true }}
+            className="mt-12 text-center"
+          >
+            <a
+              href="/devis-site-web"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-digiqo-primary to-digiqo-primary-dark text-white font-bold rounded-full hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+            >
+              <Sparkles className="w-5 h-5" />
+              Je préfère un site web sur-mesure
+              <Sparkles className="w-5 h-5" />
+            </a>
+            <p className="mt-4 text-sm text-gray-600">
+              Projet complexe ? Besoins spécifiques ? Optez pour du développement sur-mesure
+            </p>
+          </motion.div>
         </div>
       </section>
 

@@ -97,10 +97,21 @@ const processSteps = [
 
 export default function PublicitePage() {
   const [compareMode] = useState(false)
+  const [isAnnual, setIsAnnual] = useState(false)
   const seoData = servicesSEO['publicite-en-ligne-reunion']
 
   // Get real products from Airtable
   const publiciteProducts = getProductsForService('publicite')
+
+  // Helper function to calculate annual price with discount
+  const calculateAnnualPrice = (monthlyPrice: number, discount: number): string => {
+    const annualTotal = monthlyPrice * 12
+    const discountedTotal = annualTotal * (1 - discount / 100)
+    return new Intl.NumberFormat('fr-FR', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(discountedTotal) + ' €'
+  }
 
   // Map Airtable products by formula name
   const initMonthly = publiciteProducts.find(p => p.name.includes('Initiation') && p.name.includes('Mensuelle'))
@@ -117,7 +128,7 @@ export default function PublicitePage() {
       name: 'INITIATION',
       summary: 'Idéal pour débuter dans la publicité en ligne avec un budget maîtrisé',
       price: {
-        threeMonths: initMonthly?.priceFormatted || '549,00 €',
+        threeMonths: isAnnual ? calculateAnnualPrice(549, 20) : (initMonthly?.priceFormatted || '549,00 €'),
         annual: initAnnual?.priceFormatted || '5 270,00 €'
       },
       highlights: [
@@ -170,7 +181,7 @@ export default function PublicitePage() {
       name: 'PROPULSION',
       summary: 'Pour les entreprises en croissance cherchant à augmenter leur visibilité',
       price: {
-        threeMonths: propMonthly?.priceFormatted || '949,00 €',
+        threeMonths: isAnnual ? calculateAnnualPrice(990, 15) : (propMonthly?.priceFormatted || '990,00 €'),
         annual: propAnnual?.priceFormatted || '9 110,40 €'
       },
       highlights: [
@@ -226,7 +237,7 @@ export default function PublicitePage() {
       name: 'EXPANSION',
       summary: 'Pour les entreprises ambitieuses visant une croissance forte',
       price: {
-        threeMonths: expMonthly?.priceFormatted || '1 990,00 €',
+        threeMonths: isAnnual ? calculateAnnualPrice(1490, 10) : (expMonthly?.priceFormatted || '1 490,00 €'),
         annual: expAnnual?.priceFormatted || '19 104,00 €'
       },
       highlights: [
@@ -482,9 +493,41 @@ export default function PublicitePage() {
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
               Nos <span className="bg-gradient-to-r from-digiqo-accent to-amber-400 bg-clip-text text-transparent">Formules</span>
             </h2>
-            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
+            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto mb-8">
               Des solutions adaptées à chaque étape de votre croissance
             </p>
+
+            {/* Toggle Mensuel/Annuel */}
+            <div className="flex items-center justify-center gap-4">
+              <span className={`text-lg font-semibold transition-colors ${!isAnnual ? 'text-digiqo-primary' : 'text-gray-500'}`}>
+                Mensuel
+              </span>
+              <button
+                onClick={() => setIsAnnual(!isAnnual)}
+                className="relative w-20 h-10 bg-gray-300 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-digiqo-accent focus:ring-offset-2"
+                style={{ backgroundColor: isAnnual ? '#8B1431' : '#D1D5DB' }}
+              >
+                <motion.div
+                  className="absolute top-1 w-8 h-8 bg-white rounded-full shadow-md"
+                  animate={{ left: isAnnual ? '44px' : '4px' }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                />
+              </button>
+              <div className="flex items-center gap-2">
+                <span className={`text-lg font-semibold transition-colors ${isAnnual ? 'text-digiqo-primary' : 'text-gray-500'}`}>
+                  Annuel
+                </span>
+                {isAnnual && (
+                  <motion.span
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="bg-gradient-to-r from-green-500 to-green-600 text-white px-3 py-1 rounded-full text-sm font-bold"
+                  >
+                    Jusqu'à -20%
+                  </motion.span>
+                )}
+              </div>
+            </div>
           </motion.div>
 
           {/* Formula Cards - Simple 3 card layout */}
@@ -535,8 +578,15 @@ export default function PublicitePage() {
                         </span>
                       </div>
                       <p className="text-sm text-gray-600 mt-2 font-medium h-5">
-                        PAR MOIS
+                        {isAnnual ? 'PAR AN' : 'PAR MOIS'}
                       </p>
+                      {isAnnual && (
+                        <p className="text-xs text-green-600 mt-1 font-semibold">
+                          {formula.name === 'INITIATION' ? '-20% de réduction' :
+                           formula.name === 'PROPULSION' ? '-15% de réduction' :
+                           '-10% de réduction'}
+                        </p>
+                      )}
                     </div>
 
                     {/* Caractéristiques principales - Flex grow pour prendre tout l'espace disponible */}
