@@ -19,8 +19,9 @@
   NEXT_TELEMETRY_DISABLED = "1"
 
 # Asset optimization
-[[plugins]]
-  package = "netlify-plugin-image-optim"
+# Temporairement désactivé - cause des erreurs de build
+# [[plugins]]
+#   package = "netlify-plugin-image-optim"
 
 # Performance optimizations
 [dev]
