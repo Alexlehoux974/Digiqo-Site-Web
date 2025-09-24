@@ -127,8 +127,8 @@ export default function PublicitePage() {
       name: 'INITIATION',
       summary: 'Idéal pour débuter dans la publicité en ligne avec un budget maîtrisé',
       price: {
-        threeMonths: isAnnual ? calculateAnnualPrice(549, 20) : (initMonthly?.priceFormatted || '549,00 €'),
-        annual: initAnnual?.priceFormatted || '5 270,00 €'
+        threeMonths: isAnnual ? calculateAnnualPrice(549, 15) : (initMonthly?.priceFormatted || '549,00 €'),
+        annual: initAnnual?.priceFormatted || '5 604,60 €'
       },
       highlights: [
         'Jusqu\'à 2 500€ de budget publicitaire géré/mois',
@@ -180,8 +180,8 @@ export default function PublicitePage() {
       name: 'PROPULSION',
       summary: 'Pour les entreprises en croissance cherchant à augmenter leur visibilité',
       price: {
-        threeMonths: isAnnual ? calculateAnnualPrice(990, 15) : (propMonthly?.priceFormatted || '990,00 €'),
-        annual: propAnnual?.priceFormatted || '9 110,40 €'
+        threeMonths: isAnnual ? calculateAnnualPrice(949, 15) : (propMonthly?.priceFormatted || '949,00 €'),
+        annual: propAnnual?.priceFormatted || '9 690,60 €'
       },
       highlights: [
         'Jusqu\'à 5 000€ de budget publicitaire géré/mois',
@@ -226,9 +226,8 @@ export default function PublicitePage() {
           items: ['2 vidéos offertes immédiatement', 'Audiences similaires incluses']
         }
       },
-      paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/CqxfynTqvw?referrer=PAYMENT_LINK',
-      paymentLinkAnnual: 'https://app-eu1.hubspot.com/payments/cfbgbDkKrqhPX?referrer=PAYMENT_LINK',
-      engagement: '3 mois minimum puis mensuel',
+      paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/4gntC6Vznt2d?referrer=PAYMENT_LINK',
+      paymentLinkAnnual: 'https://app-eu1.hubspot.com/payments/bpgDysyjrtZmyhm9?referrer=PAYMENT_LINK',
       bestValue: true
     },
     {
@@ -236,8 +235,8 @@ export default function PublicitePage() {
       name: 'EXPANSION',
       summary: 'Pour les entreprises ambitieuses visant une croissance forte',
       price: {
-        threeMonths: isAnnual ? calculateAnnualPrice(1490, 10) : (expMonthly?.priceFormatted || '1 490,00 €'),
-        annual: expAnnual?.priceFormatted || '19 104,00 €'
+        threeMonths: isAnnual ? calculateAnnualPrice(1990, 15) : (expMonthly?.priceFormatted || '1 990,00 €'),
+        annual: expAnnual?.priceFormatted || '20 292,60 €'
       },
       highlights: [
         'Jusqu\'à 10 000€ de budget publicitaire géré/mois',
@@ -286,9 +285,8 @@ export default function PublicitePage() {
       details: [
         '(+10% du dépassement facturé séparément en fin de mois si budget > 10 000€)'
       ],
-      paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/CqxfynTqvw?referrer=PAYMENT_LINK',
-      paymentLinkAnnual: 'https://app-eu1.hubspot.com/payments/cfbgbDkKrqhPX?referrer=PAYMENT_LINK',
-      engagement: '3 mois minimum puis mensuel',
+      paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/WQ6DrgtrDNrt7Dtr?referrer=PAYMENT_LINK',
+      paymentLinkAnnual: 'https://app-eu1.hubspot.com/payments/D7nW622G?referrer=PAYMENT_LINK',
       bestValue: false
     }
   ]
@@ -539,9 +537,7 @@ export default function PublicitePage() {
                       </p>
                       {isAnnual && (
                         <p className="text-xs text-green-600 mt-1 font-semibold">
-                          {formula.name === 'INITIATION' ? '-20% de réduction' :
-                           formula.name === 'PROPULSION' ? '-15% de réduction' :
-                           '-10% de réduction'}
+                          -15% de réduction
                         </p>
                       )}
                     </div>
@@ -575,7 +571,7 @@ export default function PublicitePage() {
 
                     {/* Bouton CTA - Sans marge excessive */}
                     <motion.a
-                      href={generateContactUrl({ service: 'publicite', formula: formula.name })}
+                      href={isAnnual ? formula.paymentLinkAnnual : formula.paymentLinkMonthly}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-2xl shadow-lg`}

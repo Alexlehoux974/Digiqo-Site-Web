@@ -136,7 +136,8 @@
       "mcp__hubspot__hubspot-create-property",
       "Read(//root/**)",
       "Bash(while read file)",
-      "mcp__hubspot__hubspot-search-objects"
+      "mcp__hubspot__hubspot-search-objects",
+      "Bash(git restore:*)"
     ],
     "deny": []
   }

@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { OptimizedImage } from '../ui/OptimizedImage'
 import { generateContactUrl } from '../../lib/contact-utils'
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  ChevronDown, 
+import {
+  Phone,
+  Mail,
+  MapPin,
+  ChevronDown,
   ArrowRight,
   Sparkles,
   TrendingUp,
@@ -614,7 +614,7 @@ export const HeaderLuxury = () => {
                   Kap Numérik
                 </motion.button>
               </Link>
-              
+
               {/* Contact Button */}
               <Link 
                 href={navigation.cta.contact.href}
