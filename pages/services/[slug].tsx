@@ -6,6 +6,8 @@ import { seoConfig } from '@/lib/seo-config';
 // Import service components
 import PublicitePage from '@/components/ServicePages/publicite';
 import PubliciteGooglePage from '@/components/ServicePages/publicite-google';
+import PubliciteSnapchatPage from '@/components/ServicePages/snapchat';
+import PubliciteTikTokPage from '@/components/ServicePages/tiktok';
 import DevWebPage from '@/components/ServicePages/dev-web';
 import CommunityPage from '@/components/ServicePages/community';
 import SEOPage from '@/components/ServicePages/seo';
@@ -22,6 +24,8 @@ interface ServicePageProps {
 const serviceComponents: Record<ServiceSlug, React.ComponentType> = {
   'publicite-meta': PublicitePage,
   'publicite-google': PubliciteGooglePage,
+  'publicite-snapchat': PubliciteSnapchatPage,
+  'publicite-tiktok': PubliciteTikTokPage,
   'sites-web': DevWebPage,
   'community-management': CommunityPage,
   'seo': SEOPage,

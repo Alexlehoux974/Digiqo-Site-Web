@@ -23,6 +23,16 @@ export const seoConfig = {
         description: 'Dominez Google avec nos campagnes Google Ads et YouTube Ads optimisées. SEA expert et gestion professionnelle de vos campagnes.',
         keywords: 'google ads réunion, youtube ads réunion, SEA réunion, campagne google 974, adwords réunion',
       },
+      'publicite-snapchat': {
+        title: 'Publicité Snapchat La Réunion | Snap Ads & AR Lenses 974',
+        description: 'Agence Snapchat Ads à La Réunion. Touchez la Gen Z et les Millennials avec des Snap Ads, AR Lenses et Story Ads. Campagnes créatives et engageantes 974.',
+        keywords: 'Snapchat Ads Réunion, publicité Snapchat 974, Snap Ads La Réunion, AR Lenses Réunion, Story Ads 974, marketing Snapchat',
+      },
+      'publicite-tiktok': {
+        title: 'Publicité TikTok La Réunion | TikTok Ads & Vidéos Virales 974',
+        description: 'Agence TikTok Ads à La Réunion. Créez le buzz avec des In-Feed Ads, TopView et Branded Hashtag Challenges. Marketing viral pour toucher 1 milliard d\'utilisateurs.',
+        keywords: 'TikTok Ads Réunion, publicité TikTok 974, In-Feed Ads La Réunion, TopView Réunion, Spark Ads 974, marketing TikTok',
+      },
       'sites-web': {
         title: 'Développement Web & Applications à La Réunion',
         description: 'Création de sites web modernes, applications mobiles et solutions e-commerce sur mesure. Technologies de pointe et design responsive.',

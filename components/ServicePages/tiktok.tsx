@@ -1,11 +1,8 @@
 import { useState } from 'react'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import { ANIMATION } from '@/lib/animation-constants'
 import {
-  TrendingUp,
   Target,
-  Palette,
   BarChart3,
   ArrowRight,
   Zap,
@@ -15,9 +12,10 @@ import {
   ArrowUpRight,
   X,
   Rocket,
-  MessageCircle
+  MessageCircle,
+  Music,
+  Hash
 } from 'lucide-react'
-import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
 import { ServiceHero } from '@/components/ServicePages/ServiceHero'
 import { generateContactUrl } from '../../lib/contact-utils'
@@ -67,39 +65,38 @@ const processSteps = [
   {
     number: '01',
     title: 'Analyse',
-    description: 'Étude approfondie de votre marché et de vos objectifs commerciaux',
+    description: 'Étude approfondie des tendances TikTok et de votre audience cible',
     icon: Target,
-    color: 'from-digiqo-primary to-digiqo-primary/80'
+    color: 'from-digiqo-primary to-digiqo-secondary'
   },
   {
     number: '02',
     title: 'Stratégie',
-    description: 'Définition précise des audiences et des messages publicitaires',
+    description: 'Création de contenu viral adapté aux codes de TikTok',
     icon: Users,
-    color: 'from-digiqo-secondary to-digiqo-secondary/80'
+    color: 'from-digiqo-accent to-digiqo-primary'
   },
   {
     number: '03',
     title: 'Création',
-    description: 'Conception de visuels et contenus publicitaires haute performance',
-    icon: Palette,
-    color: 'from-digiqo-accent to-digiqo-accent/80'
+    description: 'Production de vidéos engageantes et de campagnes créatives',
+    icon: Music,
+    color: 'from-digiqo-secondary to-digiqo-accent'
   },
   {
     number: '04',
     title: 'Optimisation',
-    description: 'Ajustements data-driven pour maximiser votre retour sur investissement',
+    description: 'Analyse des performances et ajustements pour maximiser la viralité',
     icon: LineChart,
-    color: 'from-digiqo-accent to-amber-600'
+    color: 'from-digiqo-primary to-digiqo-secondary'
   }
 ]
 
-export default function PublicitePage() {
+export default function TikTokPage() {
   const [compareMode] = useState(false)
   const [isAnnual, setIsAnnual] = useState(false)
-  const seoData = servicesSEO['publicite-en-ligne-reunion']
 
-  // Get real products from Airtable
+  // Get real products from Airtable (même que publicité)
   const publiciteProducts = getProductsForService('publicite')
 
   // Helper function to calculate annual price with discount
@@ -120,7 +117,7 @@ export default function PublicitePage() {
   const expMonthly = publiciteProducts.find(p => p.name.includes('Expansion') && p.name.includes('Mensuelle'))
   const expAnnual = publiciteProducts.find(p => p.name.includes('Expansion') && p.name.includes('Annuelle'))
 
-  // Create formulas with real data - 3 formules uniquement
+  // Create formulas with real data - EXACTEMENT LES MEMES PRIX QUE PUBLICITE
   const formulas: Formula[] = [
     {
       id: 'formula-initiation',
@@ -142,7 +139,7 @@ export default function PublicitePage() {
         services: {
           title: '🎯 Services publicitaires',
           items: [
-            'Gestion & diffusion sur Meta (Facebook & Instagram)',
+            'Gestion & diffusion sur TikTok',
             'Jusqu\'à 2 500€ de budget publicitaire géré/mois',
             'Création & ciblage stratégique des campagnes',
             'Optimisation hebdomadaire des performances',
@@ -195,7 +192,7 @@ export default function PublicitePage() {
         services: {
           title: '🎯 Services publicitaires',
           items: [
-            'Gestion & diffusion sur Meta (Facebook & Instagram)',
+            'Gestion & diffusion sur TikTok',
             'Jusqu\'à 5 000€ de budget publicitaire géré/mois',
             'Création & ciblage stratégique des campagnes',
             'Optimisation hebdomadaire des performances',
@@ -250,7 +247,7 @@ export default function PublicitePage() {
         services: {
           title: '🎯 Services publicitaires',
           items: [
-            'Gestion & diffusion sur Meta (Facebook & Instagram)',
+            'Gestion & diffusion sur TikTok',
             'Jusqu\'à 10 000€ de budget publicitaire géré/mois',
             'Création & ciblage stratégique des campagnes',
             'Optimisation quotidienne des performances',
@@ -293,40 +290,40 @@ export default function PublicitePage() {
 
   const quickWins = [
     {
-      icon: Target,
-      title: "Ciblage précis",
-      description: "Touchez exactement votre audience idéale grâce à nos techniques de ciblage avancées",
-      highlight: "+85% de précision"
+      icon: Music,
+      title: "1 Milliard+ d'utilisateurs",
+      description: "Touchez l'audience la plus engagée avec du contenu viral et créatif",
+      highlight: "Croissance explosive"
     },
     {
-      icon: TrendingUp,
-      title: "ROI optimisé",
-      description: "Chaque euro investi est analysé et optimisé pour maximiser votre retour sur investissement",
-      highlight: "3-5x ROI moyen"
+      icon: Hash,
+      title: "Hashtag Challenges",
+      description: "Créez des tendances virales et engagez votre communauté",
+      highlight: "Viralité x10"
     },
     {
       icon: BarChart3,
-      title: "Reporting en temps réel",
-      description: "Suivez vos performances avec des tableaux de bord actualisés et des rapports détaillés",
-      highlight: "24/7 accessible"
+      title: "ROI impressionnant",
+      description: "67% des utilisateurs affirment que TikTok les inspire à acheter",
+      highlight: "Conversions élevées"
     }
   ]
 
   return (
     <ServiceLayout>
       <Head>
-        <title>{seoData.title}</title>
-        <meta name="description" content={seoData.description} />
+        <title>Publicité TikTok à La Réunion | Agence Digitale Digiqo</title>
+        <meta name="description" content="Boostez votre visibilité sur TikTok avec nos services publicitaires. In-Feed Ads, TopView, Spark Ads, Branded Hashtag Challenges." />
       </Head>
 
       {/* Hero Section avec ServiceHero */}
       <ServiceHero
-        icon={Target}
+        icon={Music}
         title={{
           line1: "Publicité",
-          line2: "META"
+          line2: "TIKTOK"
         }}
-        subtitle="Des campagnes ultra-performantes qui transforment vos prospects en clients fidèles"
+        subtitle="Créez le buzz et touchez une audience massive avec des campagnes TikTok virales"
         ctaButtons={{
           primary: {
             text: "Découvrir nos formules",
@@ -334,11 +331,11 @@ export default function PublicitePage() {
           },
           secondary: {
             text: "Parler à un expert",
-            href: generateWhatsAppLink({ context: 'publicite' })
+            href: generateWhatsAppLink({ context: 'tiktok' })
           }
         }}
-        gradientFrom="from-digiqo-accent"
-        gradientTo="to-amber-400"
+        gradientFrom="from-digiqo-primary"
+        gradientTo="to-digiqo-accent"
       />
 
       {/* Quick Wins Section */}
@@ -348,15 +345,15 @@ export default function PublicitePage() {
             {quickWins.map((item, index) => (
               <motion.div
                 key={index}
-                {...ANIMATION.entry.scaleIn}
-                whileInView={ANIMATION.entry.scaleIn.animate}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -10 }}
                 className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all"
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-digiqo-accent to-amber-400 rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-gradient-to-br from-digiqo-primary to-digiqo-accent rounded-2xl flex items-center justify-center flex-shrink-0">
                     <item.icon className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1">
@@ -374,25 +371,25 @@ export default function PublicitePage() {
       </section>
 
       {/* Process Steps Section */}
-      <section className="py-24 bg-gradient-to-b from-white to-digiqo-primary/5">
+      <section className="py-24 bg-gradient-to-b from-white to-purple-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <motion.h2
-              {...ANIMATION.entry.fadeInUp}
-              whileInView={ANIMATION.entry.fadeInUp.animate}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="text-4xl md:text-6xl font-bold mb-6"
             >
               Notre <span className="bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">Processus</span>
             </motion.h2>
             <motion.p
-              {...ANIMATION.entry.fadeInUp}
-              whileInView={ANIMATION.entry.fadeInUp.animate}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
               className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto"
             >
-              Une méthodologie éprouvée pour maximiser votre retour sur investissement publicitaire
+              Une méthodologie virale pour conquérir TikTok
             </motion.p>
           </div>
 
@@ -404,20 +401,20 @@ export default function PublicitePage() {
               {processSteps.map((step, index) => (
                 <motion.div
                   key={index}
-                  {...ANIMATION.entry.scaleIn}
-                  whileInView={ANIMATION.entry.scaleIn.animate}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.15 }}
                   className="relative"
                 >
                   <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all text-center">
-                    <div className="text-6xl font-bold text-digiqo-primary/10 mb-4">
+                    <div className="text-6xl font-bold text-digiqo-accent/20 mb-4">
                       {step.number}
                     </div>
 
                     <motion.div
                       whileHover={{ rotate: 360 }}
-                      transition={{ duration: ANIMATION.duration.normal }}
+                      transition={{ duration: 0.6 }}
                       className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${step.color} text-white mb-6 mt-4`}
                     >
                       <step.icon className="w-8 h-8" />
@@ -427,7 +424,7 @@ export default function PublicitePage() {
                     <p className="text-digiqo-primary/70">{step.description}</p>
 
                     {/* Connection dot for timeline */}
-                    <div className="absolute -bottom-10 left-1/2 w-4 h-4 bg-gradient-to-br from-digiqo-accent to-digiqo-accent/70 rounded-full -translate-x-1/2 hidden lg:block" />
+                    <div className="absolute -bottom-10 left-1/2 w-4 h-4 bg-gradient-to-br from-digiqo-accent to-digiqo-primary rounded-full -translate-x-1/2 hidden lg:block" />
                   </div>
                 </motion.div>
               ))}
@@ -440,16 +437,16 @@ export default function PublicitePage() {
       <section id="formules" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
-            {...ANIMATION.entry.fadeInUp}
-            whileInView={ANIMATION.entry.fadeInUp.animate}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Nos <span className="bg-gradient-to-r from-digiqo-accent to-amber-400 bg-clip-text text-transparent">Formules</span>
+              Nos <span className="bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">Formules</span>
             </h2>
             <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto mb-8">
-              Des solutions adaptées à chaque étape de votre croissance
+              Des solutions pour dominer TikTok à tous les niveaux
             </p>
 
             {/* Toggle Mensuel/Annuel */}
@@ -460,7 +457,7 @@ export default function PublicitePage() {
               <button
                 onClick={() => setIsAnnual(!isAnnual)}
                 className="relative w-20 h-10 bg-gray-300 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-digiqo-accent focus:ring-offset-2"
-                style={{ backgroundColor: isAnnual ? '#8B1431' : '#D1D5DB' }}
+                style={{ backgroundColor: isAnnual ? '#DA6530' : '#D1D5DB' }}
               >
                 <motion.div
                   className="absolute top-1 w-8 h-8 bg-white rounded-full shadow-md"
@@ -502,7 +499,7 @@ export default function PublicitePage() {
               >
                 {/* Badge populaire qui suit le mouvement de hover */}
                 {formula.bestValue && (
-                  <div className="absolute -top-3 -right-10 bg-white text-[#8B1431] px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-[#8B1431]">
+                  <div className="absolute -top-3 -right-10 bg-white text-digiqo-accent px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-digiqo-accent">
                     LE PLUS POPULAIRE
                   </div>
                 )}
@@ -510,7 +507,7 @@ export default function PublicitePage() {
                 {/* Carte */}
                 <div
                   className={`relative bg-white rounded-2xl shadow-xl h-full flex flex-col transition-all duration-300 hover:shadow-2xl ${
-                    formula.bestValue ? 'ring-4 ring-[#8B1431] shadow-2xl md:scale-105' : ''
+                    formula.bestValue ? 'ring-4 ring-digiqo-accent shadow-2xl md:scale-105' : ''
                   }`}
                 >
                   {/* Header with colored gradient */}
@@ -522,10 +519,10 @@ export default function PublicitePage() {
                     {/* Prix */}
                     <div className="text-center mb-6">
                       <div className="flex items-baseline justify-center gap-1">
-                        <span className="text-5xl font-bold text-[#8B1431]">
+                        <span className="text-5xl font-bold text-digiqo-primary">
                           {formula.price.threeMonths.split(',')[0]}
                         </span>
-                        <span className="text-3xl font-bold text-[#8B1431]">
+                        <span className="text-3xl font-bold text-digiqo-primary">
                           {',' + (formula.price.threeMonths.split(',')[1] || '00')}
                         </span>
                         <span className="text-2xl font-semibold text-gray-600 ml-1">
@@ -549,7 +546,7 @@ export default function PublicitePage() {
                         formula.sections.tracking.items.slice(0, 1)
                       ).slice(0, 6).map((feature, idx) => (
                         <div key={idx} className="flex items-start gap-3">
-                          <CheckCircle2 className="w-5 h-5 text-[#8B1431] mt-0.5 flex-shrink-0" />
+                          <CheckCircle2 className="w-5 h-5 text-digiqo-accent mt-0.5 flex-shrink-0" />
                           <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
                         </div>
                       ))}
@@ -561,7 +558,7 @@ export default function PublicitePage() {
                         <div className="space-y-2">
                           {formula.details.map((detail, idx) => (
                             <div key={idx} className="flex items-start gap-2">
-                              <span className="text-[#8B1431] text-xs font-bold">✓</span>
+                              <span className="text-digiqo-accent text-xs font-bold">✓</span>
                               <span className="text-xs text-gray-600 leading-relaxed">{detail}</span>
                             </div>
                           ))}
@@ -590,15 +587,14 @@ export default function PublicitePage() {
           {/* Vue comparative */}
           {compareMode && (
             <motion.div
-              {...ANIMATION.entry.fadeInUp}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               className="max-w-7xl mx-auto mt-12"
             >
               <div className="overflow-x-auto">
                 <table className="w-full bg-white rounded-2xl shadow-xl overflow-hidden">
                   <thead>
-                    <tr className="bg-gradient-to-r from-digiqo-primary to-digiqo-primary/80 text-white">
+                    <tr className="bg-gradient-to-r from-digiqo-primary to-digiqo-accent text-white">
                       <th className="p-6 text-left">Caractéristiques</th>
                       {formulas.map((formula) => (
                         <th key={formula.id} className="p-6 text-center">
@@ -617,22 +613,22 @@ export default function PublicitePage() {
                   </thead>
                   <tbody>
                     {/* Budget géré */}
-                    <tr className="border-t border-digiqo-primary/10">
+                    <tr className="border-t border-digiqo-accent/20">
                       <td className="p-4 font-medium text-digiqo-primary">Budget publicitaire géré</td>
                       <td className="p-4 text-center">Jusqu'à 2 500€</td>
                       <td className="p-4 text-center">Jusqu'à 5 000€</td>
                       <td className="p-4 text-center">Jusqu'à 10 000€</td>
                     </tr>
-                    {/* Visuels inclus */}
-                    <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
-                      <td className="p-4 font-medium text-digiqo-primary">Visuels publicitaires/mois</td>
-                      <td className="p-4 text-center">3 visuels</td>
-                      <td className="p-4 text-center">6 visuels</td>
-                      <td className="p-4 text-center">9 visuels</td>
+                    {/* Contenus inclus */}
+                    <tr className="border-t border-digiqo-accent/20 bg-digiqo-accent/5">
+                      <td className="p-4 font-medium text-digiqo-primary">Contenus TikTok/mois</td>
+                      <td className="p-4 text-center">3 vidéos</td>
+                      <td className="p-4 text-center">6 vidéos</td>
+                      <td className="p-4 text-center">9 contenus</td>
                     </tr>
-                    {/* Audiences similaires */}
-                    <tr className="border-t border-digiqo-primary/10">
-                      <td className="p-4 font-medium text-digiqo-primary">Audiences similaires</td>
+                    {/* Spark Ads */}
+                    <tr className="border-t border-digiqo-accent/20">
+                      <td className="p-4 font-medium text-digiqo-primary">Spark Ads</td>
                       <td className="p-4 text-center">
                         <X className="w-5 h-5 text-red-500 mx-auto" />
                       </td>
@@ -643,12 +639,12 @@ export default function PublicitePage() {
                         <CheckCircle2 className="w-5 h-5 text-green-500 mx-auto" />
                       </td>
                     </tr>
-                    {/* Intégration Pixels & API */}
-                    <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
-                      <td className="p-4 font-medium text-digiqo-primary">Intégration Pixels & API</td>
+                    {/* Branded Effects */}
+                    <tr className="border-t border-digiqo-accent/20 bg-digiqo-accent/5">
+                      <td className="p-4 font-medium text-digiqo-primary">Branded Effects</td>
                       <td className="p-4 text-center">-</td>
-                      <td className="p-4 text-center">Basique</td>
-                      <td className="p-4 text-center">Avancée</td>
+                      <td className="p-4 text-center">-</td>
+                      <td className="p-4 text-center">Inclus</td>
                     </tr>
                   </tbody>
                 </table>
@@ -662,8 +658,8 @@ export default function PublicitePage() {
       <section className="py-24 bg-gradient-to-br from-digiqo-primary via-digiqo-primary/90 to-digiqo-accent">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.h2
-            {...ANIMATION.entry.fadeInUp}
-            whileInView={ANIMATION.entry.fadeInUp.animate}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-bold text-white mb-6"
           >
@@ -671,8 +667,8 @@ export default function PublicitePage() {
           </motion.h2>
 
           <motion.p
-            {...ANIMATION.entry.fadeInUp}
-            whileInView={ANIMATION.entry.fadeInUp.animate}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             className="text-xl text-white/90 mb-8"
@@ -682,16 +678,16 @@ export default function PublicitePage() {
           </motion.p>
 
           <motion.div
-            {...ANIMATION.entry.fadeInUp}
-            whileInView={ANIMATION.entry.fadeInUp.animate}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <motion.a
-              href={generateContactUrl({ service: 'publicite' })}
-              whileHover={ANIMATION.hover.scale}
-              whileTap={ANIMATION.tap.scale}
+              href={generateContactUrl({ service: 'tiktok' })}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-digiqo-primary font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all"
             >
               Demander un devis gratuit
@@ -699,11 +695,11 @@ export default function PublicitePage() {
             </motion.a>
 
             <motion.a
-              href={generateWhatsAppLink({ service: 'publicite' })}
+              href={generateWhatsAppLink({ service: 'tiktok' })}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={ANIMATION.hover.scale}
-              whileTap={ANIMATION.tap.scale}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all"
             >
               <MessageCircle className="w-5 h-5" />

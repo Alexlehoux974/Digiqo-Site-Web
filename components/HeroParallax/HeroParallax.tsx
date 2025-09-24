@@ -175,7 +175,7 @@ export const Header = () => {
       <div className="flex flex-wrap gap-6 mt-12 text-sm">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-          <span className="text-white/80">🔵 Experts Certifiés <span className="font-bold text-white">Meta & Google Ads</span></span>
+          <span className="text-white/80">🔵 4 Experts Certifiés <span className="font-bold text-white">Meta & Google Ads</span></span>
         </div>
         <div className="flex items-center gap-2">
           <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">

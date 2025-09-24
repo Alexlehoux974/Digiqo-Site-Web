@@ -137,7 +137,9 @@
       "Read(//root/**)",
       "Bash(while read file)",
       "mcp__hubspot__hubspot-search-objects",
-      "Bash(git restore:*)"
+      "Bash(git restore:*)",
+      "Bash(lsof:*)",
+      "Read(//var/**)"
     ],
     "deny": []
   }

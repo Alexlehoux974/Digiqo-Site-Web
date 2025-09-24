@@ -1,27 +1,23 @@
 import { useState } from 'react'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import { ANIMATION } from '@/lib/animation-constants'
 import {
-  TrendingUp,
   Target,
-  Palette,
-  BarChart3,
   ArrowRight,
+  ArrowUpRight,
   Zap,
   Users,
   LineChart,
   CheckCircle2,
-  ArrowUpRight,
-  X,
   Rocket,
-  MessageCircle
+  MessageCircle,
+  Camera,
+  Sparkles
 } from 'lucide-react'
-import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
 import { ServiceHero } from '@/components/ServicePages/ServiceHero'
-import { generateContactUrl } from '../../lib/contact-utils'
 import { generateWhatsAppLink } from '../../lib/whatsapp-utils'
+import { generateContactUrl } from '../../lib/contact-utils'
 import {
   getProductsForService
 } from '../../lib/airtable-products'
@@ -67,39 +63,37 @@ const processSteps = [
   {
     number: '01',
     title: 'Analyse',
-    description: 'Étude approfondie de votre marché et de vos objectifs commerciaux',
+    description: 'Étude approfondie de votre audience Gen Z et Millennials',
     icon: Target,
     color: 'from-digiqo-primary to-digiqo-primary/80'
   },
   {
     number: '02',
     title: 'Stratégie',
-    description: 'Définition précise des audiences et des messages publicitaires',
+    description: 'Création de contenus natifs et authentiques pour Snapchat',
     icon: Users,
     color: 'from-digiqo-secondary to-digiqo-secondary/80'
   },
   {
     number: '03',
     title: 'Création',
-    description: 'Conception de visuels et contenus publicitaires haute performance',
-    icon: Palette,
+    description: 'Conception de Snap Ads, AR Lenses et filtres interactifs',
+    icon: Sparkles,
     color: 'from-digiqo-accent to-digiqo-accent/80'
   },
   {
     number: '04',
     title: 'Optimisation',
-    description: 'Ajustements data-driven pour maximiser votre retour sur investissement',
+    description: 'Ajustements continus pour maximiser l\'engagement',
     icon: LineChart,
     color: 'from-digiqo-accent to-amber-600'
   }
 ]
 
-export default function PublicitePage() {
-  const [compareMode] = useState(false)
+export default function SnapchatPage() {
   const [isAnnual, setIsAnnual] = useState(false)
-  const seoData = servicesSEO['publicite-en-ligne-reunion']
 
-  // Get real products from Airtable
+  // Get real products from Airtable (même que publicité)
   const publiciteProducts = getProductsForService('publicite')
 
   // Helper function to calculate annual price with discount
@@ -142,7 +136,7 @@ export default function PublicitePage() {
         services: {
           title: '🎯 Services publicitaires',
           items: [
-            'Gestion & diffusion sur Meta (Facebook & Instagram)',
+            'Gestion & diffusion sur Snapchat',
             'Jusqu\'à 2 500€ de budget publicitaire géré/mois',
             'Création & ciblage stratégique des campagnes',
             'Optimisation hebdomadaire des performances',
@@ -195,7 +189,7 @@ export default function PublicitePage() {
         services: {
           title: '🎯 Services publicitaires',
           items: [
-            'Gestion & diffusion sur Meta (Facebook & Instagram)',
+            'Gestion & diffusion sur Snapchat',
             'Jusqu\'à 5 000€ de budget publicitaire géré/mois',
             'Création & ciblage stratégique des campagnes',
             'Optimisation hebdomadaire des performances',
@@ -250,7 +244,7 @@ export default function PublicitePage() {
         services: {
           title: '🎯 Services publicitaires',
           items: [
-            'Gestion & diffusion sur Meta (Facebook & Instagram)',
+            'Gestion & diffusion sur Snapchat',
             'Jusqu\'à 10 000€ de budget publicitaire géré/mois',
             'Création & ciblage stratégique des campagnes',
             'Optimisation quotidienne des performances',
@@ -291,147 +285,72 @@ export default function PublicitePage() {
     }
   ]
 
-  const quickWins = [
-    {
-      icon: Target,
-      title: "Ciblage précis",
-      description: "Touchez exactement votre audience idéale grâce à nos techniques de ciblage avancées",
-      highlight: "+85% de précision"
-    },
-    {
-      icon: TrendingUp,
-      title: "ROI optimisé",
-      description: "Chaque euro investi est analysé et optimisé pour maximiser votre retour sur investissement",
-      highlight: "3-5x ROI moyen"
-    },
-    {
-      icon: BarChart3,
-      title: "Reporting en temps réel",
-      description: "Suivez vos performances avec des tableaux de bord actualisés et des rapports détaillés",
-      highlight: "24/7 accessible"
-    }
-  ]
-
   return (
     <ServiceLayout>
       <Head>
-        <title>{seoData.title}</title>
-        <meta name="description" content={seoData.description} />
+        <title>Publicité Snapchat à La Réunion | Agence Digitale Digiqo</title>
+        <meta name="description" content="Boostez votre visibilité sur Snapchat avec nos services publicitaires. Snap Ads, AR Lenses, Story Ads. Touchez la Gen Z et les Millennials à La Réunion." />
       </Head>
 
-      {/* Hero Section avec ServiceHero */}
+      {/* Hero Section */}
       <ServiceHero
-        icon={Target}
+        icon={Camera}
         title={{
-          line1: "Publicité",
-          line2: "META"
+          line1: "Publicité Snapchat",
+          line2: "Touchez la Gen Z"
         }}
-        subtitle="Des campagnes ultra-performantes qui transforment vos prospects en clients fidèles"
+        subtitle="Créez des expériences immersives avec Snap Ads, AR Lenses et Story Ads. Touchez 397 millions d'utilisateurs actifs quotidiens."
         ctaButtons={{
           primary: {
-            text: "Découvrir nos formules",
-            href: "#formules"
+            text: "Démarrer sur Snapchat",
+            href: generateWhatsAppLink({ service: 'publicite-snapchat', context: 'hero' })
           },
           secondary: {
-            text: "Parler à un expert",
-            href: generateWhatsAppLink({ context: 'publicite' })
+            text: "Voir les formules",
+            href: "#formules"
           }
         }}
-        gradientFrom="from-digiqo-accent"
-        gradientTo="to-amber-400"
+        gradientFrom="from-digiqo-primary"
+        gradientTo="to-digiqo-accent"
+        iconColor="text-white"
       />
 
-      {/* Quick Wins Section */}
-      <section className="relative py-16 -mt-20">
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {quickWins.map((item, index) => (
+      {/* Process Section */}
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Notre processus Snapchat Ads
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Une approche créative et data-driven pour maximiser votre impact sur Snapchat
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {processSteps.map((step, index) => (
               <motion.div
-                key={index}
-                {...ANIMATION.entry.scaleIn}
-                whileInView={ANIMATION.entry.scaleIn.animate}
-                transition={{ delay: index * 0.1 }}
+                key={step.number}
+                className="relative"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-                className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all"
+                transition={{ delay: index * 0.1 }}
               >
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-digiqo-accent to-amber-400 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-6 h-6 text-white" />
+                <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                  <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${step.color} flex items-center justify-center mb-4`}>
+                    <step.icon className="w-8 h-8 text-white" />
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-digiqo-primary mb-2">{item.title}</h3>
-                    <p className="text-sm text-digiqo-primary/70 mb-2">{item.description}</p>
-                    <span className="text-xs font-semibold text-digiqo-accent bg-digiqo-accent/10 px-3 py-1 rounded-full">
-                      {item.highlight}
-                    </span>
-                  </div>
+                  <div className="text-3xl font-bold text-gray-200 mb-2">{step.number}</div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{step.title}</h3>
+                  <p className="text-gray-600">{step.description}</p>
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Steps Section */}
-      <section className="py-24 bg-gradient-to-b from-white to-digiqo-primary/5">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <motion.h2
-              {...ANIMATION.entry.fadeInUp}
-              whileInView={ANIMATION.entry.fadeInUp.animate}
-              viewport={{ once: true }}
-              className="text-4xl md:text-6xl font-bold mb-6"
-            >
-              Notre <span className="bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">Processus</span>
-            </motion.h2>
-            <motion.p
-              {...ANIMATION.entry.fadeInUp}
-              whileInView={ANIMATION.entry.fadeInUp.animate}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto"
-            >
-              Une méthodologie éprouvée pour maximiser votre retour sur investissement publicitaire
-            </motion.p>
-          </div>
-
-          <div className="relative">
-            {/* Connection line for desktop */}
-            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-digiqo-accent to-transparent -translate-y-1/2" />
-
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              {processSteps.map((step, index) => (
-                <motion.div
-                  key={index}
-                  {...ANIMATION.entry.scaleIn}
-                  whileInView={ANIMATION.entry.scaleIn.animate}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.15 }}
-                  className="relative"
-                >
-                  <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all text-center">
-                    <div className="text-6xl font-bold text-digiqo-primary/10 mb-4">
-                      {step.number}
-                    </div>
-
-                    <motion.div
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: ANIMATION.duration.normal }}
-                      className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${step.color} text-white mb-6 mt-4`}
-                    >
-                      <step.icon className="w-8 h-8" />
-                    </motion.div>
-
-                    <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
-                    <p className="text-digiqo-primary/70">{step.description}</p>
-
-                    {/* Connection dot for timeline */}
-                    <div className="absolute -bottom-10 left-1/2 w-4 h-4 bg-gradient-to-br from-digiqo-accent to-digiqo-accent/70 rounded-full -translate-x-1/2 hidden lg:block" />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -440,9 +359,10 @@ export default function PublicitePage() {
       <section id="formules" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
-            {...ANIMATION.entry.fadeInUp}
-            whileInView={ANIMATION.entry.fadeInUp.animate}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
@@ -586,75 +506,6 @@ export default function PublicitePage() {
               </motion.div>
             ))}
           </div>
-
-          {/* Vue comparative */}
-          {compareMode && (
-            <motion.div
-              {...ANIMATION.entry.fadeInUp}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="max-w-7xl mx-auto mt-12"
-            >
-              <div className="overflow-x-auto">
-                <table className="w-full bg-white rounded-2xl shadow-xl overflow-hidden">
-                  <thead>
-                    <tr className="bg-gradient-to-r from-digiqo-primary to-digiqo-primary/80 text-white">
-                      <th className="p-6 text-left">Caractéristiques</th>
-                      {formulas.map((formula) => (
-                        <th key={formula.id} className="p-6 text-center">
-                          <div className="space-y-2">
-                            <h3 className="text-2xl font-bold">{formula.name}</h3>
-                            <p className="text-3xl font-bold">
-                              {formula.price.threeMonths}
-                            </p>
-                            <p className="text-sm opacity-80">
-                              /mois
-                            </p>
-                          </div>
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {/* Budget géré */}
-                    <tr className="border-t border-digiqo-primary/10">
-                      <td className="p-4 font-medium text-digiqo-primary">Budget publicitaire géré</td>
-                      <td className="p-4 text-center">Jusqu'à 2 500€</td>
-                      <td className="p-4 text-center">Jusqu'à 5 000€</td>
-                      <td className="p-4 text-center">Jusqu'à 10 000€</td>
-                    </tr>
-                    {/* Visuels inclus */}
-                    <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
-                      <td className="p-4 font-medium text-digiqo-primary">Visuels publicitaires/mois</td>
-                      <td className="p-4 text-center">3 visuels</td>
-                      <td className="p-4 text-center">6 visuels</td>
-                      <td className="p-4 text-center">9 visuels</td>
-                    </tr>
-                    {/* Audiences similaires */}
-                    <tr className="border-t border-digiqo-primary/10">
-                      <td className="p-4 font-medium text-digiqo-primary">Audiences similaires</td>
-                      <td className="p-4 text-center">
-                        <X className="w-5 h-5 text-red-500 mx-auto" />
-                      </td>
-                      <td className="p-4 text-center">
-                        <CheckCircle2 className="w-5 h-5 text-green-500 mx-auto" />
-                      </td>
-                      <td className="p-4 text-center">
-                        <CheckCircle2 className="w-5 h-5 text-green-500 mx-auto" />
-                      </td>
-                    </tr>
-                    {/* Intégration Pixels & API */}
-                    <tr className="border-t border-digiqo-primary/10 bg-digiqo-primary/5">
-                      <td className="p-4 font-medium text-digiqo-primary">Intégration Pixels & API</td>
-                      <td className="p-4 text-center">-</td>
-                      <td className="p-4 text-center">Basique</td>
-                      <td className="p-4 text-center">Avancée</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </motion.div>
-          )}
         </div>
       </section>
 
@@ -662,8 +513,9 @@ export default function PublicitePage() {
       <section className="py-24 bg-gradient-to-br from-digiqo-primary via-digiqo-primary/90 to-digiqo-accent">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.h2
-            {...ANIMATION.entry.fadeInUp}
-            whileInView={ANIMATION.entry.fadeInUp.animate}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-bold text-white mb-6"
           >
@@ -671,10 +523,10 @@ export default function PublicitePage() {
           </motion.h2>
 
           <motion.p
-            {...ANIMATION.entry.fadeInUp}
-            whileInView={ANIMATION.entry.fadeInUp.animate}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
             className="text-xl text-white/90 mb-8"
           >
             Rejoignez les entreprises réunionnaises qui font confiance à Digiqo
@@ -682,16 +534,16 @@ export default function PublicitePage() {
           </motion.p>
 
           <motion.div
-            {...ANIMATION.entry.fadeInUp}
-            whileInView={ANIMATION.entry.fadeInUp.animate}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <motion.a
-              href={generateContactUrl({ service: 'publicite' })}
-              whileHover={ANIMATION.hover.scale}
-              whileTap={ANIMATION.tap.scale}
+              href={generateContactUrl({ service: 'snapchat' })}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-digiqo-primary font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all"
             >
               Demander un devis gratuit
@@ -699,11 +551,11 @@ export default function PublicitePage() {
             </motion.a>
 
             <motion.a
-              href={generateWhatsAppLink({ service: 'publicite' })}
+              href={generateWhatsAppLink({ service: 'snapchat' })}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={ANIMATION.hover.scale}
-              whileTap={ANIMATION.tap.scale}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all"
             >
               <MessageCircle className="w-5 h-5" />

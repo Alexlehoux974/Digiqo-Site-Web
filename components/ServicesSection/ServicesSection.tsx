@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   Megaphone,
   Code,
@@ -515,7 +516,7 @@ export const ServicesSection = () => {
                 <p className="text-white/80">Sélectionnez la solution qui correspond à vos objectifs</p>
               </div>
 
-              {/* Body avec les deux options - scrollable */}
+              {/* Body avec les quatre options - scrollable */}
               <div className="flex-1 overflow-y-auto overscroll-contain">
                 <div className="p-8 grid md:grid-cols-2 gap-6">
                 {/* Option Meta */}
@@ -613,13 +614,107 @@ export const ServicesSection = () => {
                     </div>
                   </motion.div>
                 </Link>
+
+                {/* Option Snapchat */}
+                <Link href="/services/publicite-snapchat" onClick={() => setShowAdvertisingModal(false)}>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl p-6 border-2 border-transparent hover:border-yellow-400 transition-all cursor-pointer group"
+                  >
+                    <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-white shadow-md mb-4 mx-auto group-hover:scale-110 transition-transform">
+                      <Image
+                        src="/partenaires/snapchat.png"
+                        alt="Snapchat"
+                        width={48}
+                        height={48}
+                        className="w-12 h-12 object-contain"
+                      />
+                    </div>
+                    <h3 className="text-2xl font-bold text-center mb-3 bg-gradient-to-r from-yellow-500 to-amber-500 bg-clip-text text-transparent">
+                      Publicité Snapchat
+                    </h3>
+                    <p className="text-gray-700 text-center mb-4">
+                      Snap Ads & Filtres AR
+                    </p>
+                    <ul className="space-y-2 text-sm">
+                      <li className="flex items-start gap-2">
+                        <span className="text-yellow-500 mt-1">✓</span>
+                        <span>Audience jeune et engagée</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-yellow-500 mt-1">✓</span>
+                        <span>Contenu immersif vertical</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-yellow-500 mt-1">✓</span>
+                        <span>Réalité augmentée innovante</span>
+                      </li>
+                    </ul>
+                    <div className="mt-6 text-center">
+                      <span className="inline-flex items-center gap-2 font-semibold text-yellow-600 group-hover:gap-3 transition-all">
+                        Découvrir Snapchat Ads
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </span>
+                    </div>
+                  </motion.div>
+                </Link>
+
+                {/* Option TikTok */}
+                <Link href="/services/publicite-tiktok" onClick={() => setShowAdvertisingModal(false)}>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-2xl p-6 border-2 border-transparent hover:border-pink-400 transition-all cursor-pointer group"
+                  >
+                    <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-white shadow-md mb-4 mx-auto group-hover:scale-110 transition-transform">
+                      <Image
+                        src="/partenaires/tiktok.png"
+                        alt="TikTok"
+                        width={48}
+                        height={48}
+                        className="w-12 h-12 object-contain"
+                      />
+                    </div>
+                    <h3 className="text-2xl font-bold text-center mb-3 bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
+                      Publicité TikTok
+                    </h3>
+                    <p className="text-gray-700 text-center mb-4">
+                      TikTok Ads & Influenceurs
+                    </p>
+                    <ul className="space-y-2 text-sm">
+                      <li className="flex items-start gap-2">
+                        <span className="text-pink-500 mt-1">✓</span>
+                        <span>Viralité et créativité</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-pink-500 mt-1">✓</span>
+                        <span>Contenu authentique</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-pink-500 mt-1">✓</span>
+                        <span>Engagement exceptionnel</span>
+                      </li>
+                    </ul>
+                    <div className="mt-6 text-center">
+                      <span className="inline-flex items-center gap-2 font-semibold text-pink-600 group-hover:gap-3 transition-all">
+                        Découvrir TikTok Ads
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </span>
+                    </div>
+                  </motion.div>
+                </Link>
                 </div>
               </div>
 
               {/* Footer - fixe */}
               <div className="bg-gray-50 p-6 text-center flex-shrink-0">
                 <p className="text-gray-600 mb-4">Besoin d'aide pour choisir ?</p>
-                <Link href={generateContactUrl({ description: "J'ai besoin de conseils pour choisir entre Meta Ads et Google Ads" })}>
+                <Link href={generateContactUrl({ description: "J'ai besoin de conseils pour choisir la meilleure plateforme publicitaire (Meta, Google, Snapchat ou TikTok)" })}>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}

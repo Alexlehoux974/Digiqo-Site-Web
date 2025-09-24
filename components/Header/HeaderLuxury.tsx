@@ -17,7 +17,6 @@ import {
   Search,
   Shield,
   Zap,
-  Star,
   Award,
   MessageCircle,
   X,
@@ -42,15 +41,10 @@ const navigation = {
     ]
   },
   main: [
-    { 
-      name: 'ACCUEIL', 
-      href: '/',
-      luxuryIcon: Star
-    },
-    { 
-      name: 'SERVICES', 
+    {
+      name: 'PUBLICITÉ',
       href: '#',
-      luxuryIcon: Award,
+      luxuryIcon: TrendingUp,
       megaMenu: {
         categories: [
           {
@@ -71,6 +65,41 @@ const navigation = {
                 badge: 'ROI Max',
                 certifiedBadge: 'Expert certifié'
               },
+              {
+                name: 'Publicité Snapchat',
+                href: '/services/publicite-snapchat',
+                description: 'Touchez la génération Z',
+                icon: Sparkles,
+                badge: 'Nouveau'
+              },
+              {
+                name: 'Publicité TikTok',
+                href: '/services/publicite-tiktok',
+                description: 'Viralité et engagement maximum',
+                icon: Zap,
+                badge: 'Tendance'
+              }
+            ]
+          }
+        ],
+        cta: {
+          title: 'Lancez vos campagnes publicitaires',
+          subtitle: 'Consultation gratuite avec nos experts',
+          href: generateContactUrl({
+            description: 'Je souhaite discuter de mes campagnes publicitaires'
+          }),
+          icon: MessageCircle
+        }
+      }
+    },
+    {
+      name: 'NOS AUTRES SERVICES',
+      href: '#',
+      luxuryIcon: Award,
+      megaMenu: {
+        categories: [
+          {
+            items: [
               {
                 name: 'Community Management',
                 href: '/services/community-management',
@@ -129,13 +158,13 @@ const navigation = {
         }
       }
     },
-    { 
-      name: 'RÉALISATIONS', 
+    {
+      name: 'RÉALISATIONS',
       href: '/#case-studies',
       badge: 'New'
     },
-    { 
-      name: 'L\'AGENCE', 
+    {
+      name: 'L\'AGENCE',
       href: '/agence',
       submenu: [
         { name: 'Notre Histoire', href: '/agence#histoire' },
@@ -147,8 +176,7 @@ const navigation = {
     {
       name: 'BLOG',
       href: '/blog'
-    },
-    { name: 'FAQ', href: '/?instant=true#faq' }
+    }
   ],
   cta: {
     contact: { text: 'Contact', href: '/?instant=true#contact' }
@@ -471,7 +499,7 @@ export const HeaderLuxury = () => {
                                       onMouseEnter={() => setHoveredService(service.name)}
                                       onMouseLeave={() => setHoveredService(null)}
                                       className={`group block p-3 rounded-xl transition-all ${
-                                        service.highlight
+                                        'highlight' in service && service.highlight
                                           ? 'bg-gradient-to-r from-digiqo-primary/5 to-digiqo-accent/5 border border-digiqo-primary/10'
                                           : hoveredService === service.name
                                           ? 'bg-gray-50'
@@ -482,7 +510,7 @@ export const HeaderLuxury = () => {
                                         <div className="relative">
                                           <motion.div
                                             className={`p-3 rounded-lg ${
-                                              service.highlight
+                                              'highlight' in service && service.highlight
                                                 ? 'bg-gradient-to-br from-digiqo-primary to-digiqo-accent text-white'
                                                 : 'bg-gray-100 text-gray-600 group-hover:bg-digiqo-primary/10 group-hover:text-digiqo-primary'
                                             } transition-all`}
