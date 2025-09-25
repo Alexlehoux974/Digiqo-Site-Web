@@ -82,7 +82,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="h-auto py-20 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] z-10"
+      className="h-auto py-0 md:py-20 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] z-10"
       style={{ position: 'relative' }}
     >
       {/* Background gradient avec les vraies couleurs Digiqo */}
@@ -143,8 +143,8 @@ export const HeroParallax = ({
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl relative mx-auto py-12 md:py-24 px-4 w-full left-0 top-0 z-20">
-      <div className="mb-4 inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full">
+    <div className="max-w-7xl relative mx-auto py-6 md:py-24 px-4 w-full left-0 top-0 z-20">
+      <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full">
         <span className="text-white font-semibold">🏝️ N°1 à La Réunion</span>
         <span className="text-white/60">•</span>
         <span className="text-white/90">+174 entreprises accompagnées</span>

@@ -260,7 +260,7 @@ export function ContactForm({ formData, setFormData }: ContactFormProps) {
             </div>
             <div>
               <label className="block text-sm font-medium text-digiqo-gray-dark mb-2">
-                Raison sociale *
+                Forme Juridique *
               </label>
               <div className="relative">
                 <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-digiqo-gray-dark/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">

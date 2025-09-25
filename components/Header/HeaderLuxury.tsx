@@ -96,7 +96,7 @@ const navigation = {
       }
     },
     {
-      name: 'NOS AUTRES SERVICES',
+      name: 'AUTRES SERVICES',
       href: '#',
       luxuryIcon: Award,
       megaMenu: {
@@ -252,8 +252,8 @@ export const HeaderLuxury = () => {
       >
       {/* Ultra-luxury glass effect - Bordeaux on mobile */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-digiqo-primary lg:bg-white/80 backdrop-blur-2xl" />
-        <div className="absolute inset-0 bg-gradient-to-b from-digiqo-primary/90 lg:from-white/50 to-digiqo-primary/80 lg:to-white/30" />
+        <div className="absolute inset-0 bg-digiqo-primary/95 lg:bg-white/80 backdrop-blur-2xl" />
+        <div className="absolute inset-0 bg-gradient-to-b from-digiqo-primary/85 lg:from-white/50 to-digiqo-primary/75 lg:to-white/30" />
         <div className="absolute inset-0" 
           style={{
             backgroundImage: `radial-gradient(circle at 20% 50%, rgba(139, 20, 49, 0.05) 0%, transparent 50%),
@@ -332,7 +332,7 @@ export const HeaderLuxury = () => {
       {/* Main Luxury Navigation */}
       <nav className="relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-24">
+          <div className="flex items-center justify-between h-20 lg:h-24">
             {/* Animated Logo - Different for mobile */}
             <Link href="/" className="relative">
               <motion.div
@@ -344,21 +344,21 @@ export const HeaderLuxury = () => {
               >
                 {/* Desktop logo */}
                 <div className="hidden lg:block">
-                  <OptimizedImage 
-                    src="/apple-touch-icon.png" 
-                    alt="Digiqo - Excellence Digitale" 
-                    width={200}
-                    height={60}
+                  <OptimizedImage
+                    src="/apple-touch-icon.png"
+                    alt="Digiqo - Excellence Digitale"
+                    width={120}
+                    height={40}
                     priority
-                    className="h-16 w-auto relative z-10"
+                    className="h-12 w-auto relative z-10"
                     objectFit="contain"
                   />
                 </div>
-                {/* Mobile logo */}
+                {/* Mobile logo - Using same as desktop */}
                 <div className="block lg:hidden">
-                  <OptimizedImage 
-                    src="/logomobile.webp" 
-                    alt="Digiqo - Excellence Digitale" 
+                  <OptimizedImage
+                    src="/apple-touch-icon.png"
+                    alt="Digiqo - Excellence Digitale"
                     width={160}
                     height={48}
                     priority
@@ -383,7 +383,7 @@ export const HeaderLuxury = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-2">
+            <div className="hidden lg:flex items-center space-x-1">
               {navigation.main.map((item) => (
                 <div key={item.name} className="relative">
                   <motion.button
@@ -426,7 +426,7 @@ export const HeaderLuxury = () => {
                         window.location.href = item.href
                       }
                     }}
-                    className="px-6 py-3 text-sm font-medium text-gray-700 hover:text-digiqo-primary transition-all relative group"
+                    className="px-3 py-3 text-xs font-medium text-gray-700 hover:text-digiqo-primary transition-all relative group"
                     whileHover={{ y: -2 }}
                   >
                     {/* Luxury hover effect */}
@@ -864,7 +864,7 @@ export const HeaderLuxury = () => {
             {/* Mobile Luxury Menu - White bars on bordeaux background */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden relative w-12 h-12 flex items-center justify-center"
+              className="lg:hidden relative w-12 h-12 flex items-center justify-center z-50 bg-digiqo-primary/20 backdrop-blur-sm rounded-lg"
             >
               <motion.div
                 className="w-8 h-8 flex flex-col justify-center items-center"

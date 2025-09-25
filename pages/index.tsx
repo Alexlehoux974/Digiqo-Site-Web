@@ -93,7 +93,7 @@ export default function Home() {
       />
 
       <HeaderLuxury />
-      <main className="pt-32">
+      <main className="pt-28 md:pt-32">
         <HeroParallax products={products} />
         <ResultsSection />
         <div className="py-8" />
