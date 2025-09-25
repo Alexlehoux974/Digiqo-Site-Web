@@ -30,10 +30,10 @@ export default function ArticlePage({ article }: ArticlePageProps) {
         {/* Header */}
         <div className="bg-gradient-digiqo text-white">
           <div className="container mx-auto px-4 py-12">
-            <Link href="/blog">
+            <Link href="/blog" className="inline-block mb-8">
               <motion.div
                 whileHover={{ x: -5 }}
-                className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors mb-8 cursor-pointer"
+                className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors cursor-pointer"
               >
                 <ArrowLeft className="w-5 h-5" />
                 Retour au blog
@@ -250,20 +250,37 @@ export default function ArticlePage({ article }: ArticlePageProps) {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl font-bold mb-4">
-                Prêt à optimiser vos campagnes Google Ads ?
+                {article.category === 'Social Media' || article.slug.includes('tiktok') || article.slug.includes('snapchat')
+                  ? 'Prêt à booster votre présence sur les réseaux sociaux ?'
+                  : article.category === 'SEO'
+                  ? 'Prêt à améliorer votre référencement naturel ?'
+                  : article.category === 'Développement Web'
+                  ? 'Prêt à créer votre site web performant ?'
+                  : 'Prêt à optimiser vos campagnes Google Ads ?'}
               </h2>
               <p className="text-xl mb-8 text-white/90">
-                Contactez nos experts pour un audit gratuit de vos campagnes
+                {article.category === 'Social Media' || article.slug.includes('tiktok') || article.slug.includes('snapchat')
+                  ? 'Contactez nos experts pour une stratégie social media sur mesure'
+                  : article.category === 'SEO'
+                  ? 'Contactez nos experts pour un audit SEO complet'
+                  : article.category === 'Développement Web'
+                  ? 'Contactez nos experts pour votre projet web'
+                  : 'Contactez nos experts pour un audit gratuit de vos campagnes'}
               </p>
-              <Link href="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-white text-bordeaux-primary px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl transition-shadow"
-                >
-                  Demander un audit gratuit
-                </motion.button>
-              </Link>
+              <motion.a
+                href="/contact"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-block bg-white text-[#8B1431] px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 hover:shadow-xl transition-all cursor-pointer"
+              >
+                {article.category === 'Social Media' || article.slug.includes('tiktok') || article.slug.includes('snapchat')
+                  ? 'Découvrir nos offres social media'
+                  : article.category === 'SEO'
+                  ? 'Demander un audit SEO'
+                  : article.category === 'Développement Web'
+                  ? 'Démarrer mon projet'
+                  : 'Demander un audit gratuit'}
+              </motion.a>
             </div>
           </div>
         </div>
@@ -274,18 +291,30 @@ export default function ArticlePage({ article }: ArticlePageProps) {
 
 function formatContent(content: string): string {
   // Convert Markdown to HTML (basic conversion)
-  return content
+  // Process links separately to avoid conflicts with Next.js Link component
+  let formattedContent = content
     .replace(/^# (.*$)/gim, '<h1>$1</h1>')
     .replace(/^## (.*$)/gim, '<h2>$1</h2>')
     .replace(/^### (.*$)/gim, '<h3>$1</h3>')
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
     .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" />')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
     .replace(/^- (.+)$/gim, '<li>$1</li>')
     .replace(/(<li>.*<\/li>)/, '<ul>$1</ul>')
     .replace(/\n\n/g, '</p><p>')
     .replace(/^([^<].*)$/gim, '<p>$1</p>')
+
+  // Handle links separately - use a span with onClick for internal links
+  formattedContent = formattedContent.replace(
+    /\[([^\]]+)\]\(([^)]+)\)/g,
+    (_match, text, href) => {
+      // For internal links, we'll just use a regular anchor tag
+      // Next.js will handle client-side navigation automatically
+      return `<a href="${href}">${text}</a>`
+    }
+  )
+
+  return formattedContent
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

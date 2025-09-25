@@ -264,25 +264,29 @@ export default function Custom404() {
             >
               <h3 className="text-xl text-white/80 mb-4">Pages populaires :</h3>
               <div className="flex flex-wrap gap-3 justify-center">
-                <Link href="/services/publicite-google">
-                  <a className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white hover:bg-white/20 transition-colors">
-                    Publicité Google
-                  </a>
+                <Link
+                  href="/services/publicite-google"
+                  className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white hover:bg-white/20 transition-colors"
+                >
+                  Publicité Google
                 </Link>
-                <Link href="/services/sites-web">
-                  <a className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white hover:bg-white/20 transition-colors">
-                    Développement Web
-                  </a>
+                <Link
+                  href="/services/sites-web"
+                  className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white hover:bg-white/20 transition-colors"
+                >
+                  Développement Web
                 </Link>
-                <Link href="/services/seo">
-                  <a className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white hover:bg-white/20 transition-colors">
-                    SEO
-                  </a>
+                <Link
+                  href="/services/seo"
+                  className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white hover:bg-white/20 transition-colors"
+                >
+                  SEO
                 </Link>
-                <Link href="/contact">
-                  <a className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white hover:bg-white/20 transition-colors">
-                    Contact
-                  </a>
+                <Link
+                  href="/contact"
+                  className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white hover:bg-white/20 transition-colors"
+                >
+                  Contact
                 </Link>
               </div>
             </motion.div>
