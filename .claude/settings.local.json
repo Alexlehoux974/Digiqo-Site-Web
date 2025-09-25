@@ -139,7 +139,8 @@
       "mcp__hubspot__hubspot-search-objects",
       "Bash(git restore:*)",
       "Bash(lsof:*)",
-      "Read(//var/**)"
+      "Read(//var/**)",
+      "Bash(do grep -B1 -A1 \"text-4xl\\|text-5xl\\|text-6xl\" \"$file\")"
     ],
     "deny": []
   }
