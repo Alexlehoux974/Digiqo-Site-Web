@@ -250,39 +250,38 @@ export const TestimonialsSection = () => {
                           <div className="absolute inset-0">
                             {/* Utilise img pour les URLs externes (Airtable) */}
                             {(typeof testimonial.thumbnail === 'string' && testimonial.thumbnail.startsWith('http')) ? (
-                              <img 
-                                src={testimonial.thumbnail} 
+                              <img
+                                src={testimonial.thumbnail}
                                 alt={testimonial.username}
-                                className="w-full h-full object-cover opacity-30"
+                                className="w-full h-full object-cover"
                               />
                             ) : (
-                              <OptimizedImage 
-                                src={testimonial.thumbnail} 
+                              <OptimizedImage
+                                src={testimonial.thumbnail}
                                 alt={testimonial.username}
                                 fill
-                                className="object-cover opacity-30"
+                                className="object-cover"
                                 objectFit="cover"
                               />
                             )}
                           </div>
                         )}
-                        <div className="absolute inset-0 bg-gradient-to-br from-digiqo-primary/20 to-digiqo-accent/20" />
-                        
+
                         {testimonial.isVideo && testimonial.videoUrl && (
-                          <a 
-                            href={testimonial.videoUrl} 
-                            target="_blank" 
+                          <a
+                            href={testimonial.videoUrl}
+                            target="_blank"
                             rel="noopener noreferrer"
-                            className="absolute inset-0 flex items-center justify-center bg-black/20 cursor-pointer hover:bg-black/30 transition-colors"
+                            className="absolute inset-0 flex items-center justify-center cursor-pointer hover:bg-black/10 transition-colors"
                           >
                             <div className="text-center">
                               <motion.div
-                                className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center mb-4 mx-auto shadow-lg"
+                                className="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center mb-3 mx-auto shadow-lg"
                                 whileHover={{ scale: 1.1 }}
-                                animate={{ scale: [1, 1.1, 1] }}
+                                animate={{ scale: [1, 1.05, 1] }}
                                 transition={{ duration: 2, repeat: Infinity }}
                               >
-                                <svg className="w-10 h-10 text-digiqo-accent ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-7 h-7 text-digiqo-accent ml-1" fill="currentColor" viewBox="0 0 24 24">
                                   <path d="M8 5v14l11-7z" />
                                 </svg>
                               </motion.div>

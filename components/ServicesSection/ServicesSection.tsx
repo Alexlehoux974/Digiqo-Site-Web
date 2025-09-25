@@ -526,15 +526,34 @@ export const ServicesSection = () => {
                     whileTap={{ scale: 0.98 }}
                     className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 border-2 border-transparent hover:border-blue-400 transition-all cursor-pointer group"
                   >
-                    <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-white shadow-md mb-4 mx-auto group-hover:scale-110 transition-transform">
-                      <OptimizedImage
-                        src="/partenaires/META-1024x1024.webp"
-                        alt="Meta"
-                        width={48}
-                        height={48}
-                        className="w-12 h-12 object-contain"
-                        objectFit="contain"
-                      />
+                    <div className="flex items-center justify-center gap-2 mb-4 mx-auto">
+                      <div className="w-12 h-12 rounded-lg bg-white shadow-md p-2 group-hover:scale-110 transition-transform">
+                        <Image
+                          src="/instagram.jpg"
+                          alt="Instagram"
+                          width={40}
+                          height={40}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <div className="w-12 h-12 rounded-lg bg-white shadow-md p-2 group-hover:scale-110 transition-transform">
+                        <Image
+                          src="/facebook.jpg"
+                          alt="Facebook"
+                          width={40}
+                          height={40}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <div className="w-12 h-12 rounded-lg bg-white shadow-md p-2 group-hover:scale-110 transition-transform">
+                        <Image
+                          src="/whatsapp.png"
+                          alt="WhatsApp"
+                          width={40}
+                          height={40}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
                     </div>
                     <h3 className="text-2xl font-bold text-center mb-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                       Publicité META
