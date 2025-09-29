@@ -218,7 +218,6 @@ export default function DomeGallery({
   const autoRotateSpeed = useRef(0.2); // Vitesse de rotation automatique
   const lastInteractionTime = useRef(Date.now());
 
-  const scrollLockedRef = useRef(false);
   const lockScroll = useCallback(() => {
     // No-op to prevent scroll issues
     return;

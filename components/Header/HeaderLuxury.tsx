@@ -442,9 +442,9 @@ export const HeaderLuxury = () => {
                       <span className={('highlight' in item && item.highlight) ? 'text-digiqo-accent font-semibold' : ''}>
                         {item.name}
                       </span>
-                      {item.badge && (
+                      {'badge' in item && (item as any).badge && (
                         <span className="px-2 py-0.5 text-[10px] font-bold bg-digiqo-secondary text-white rounded-full">
-                          {item.badge}
+                          {(item as any).badge}
                         </span>
                       )}
                       {(item.megaMenu || item.submenu) && (
