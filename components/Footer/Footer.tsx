@@ -5,12 +5,12 @@ import Link from 'next/link'
 
 const navigation = {
   services: [
-    { name: 'Publicité en Ligne', href: '/services/publicite' },
-    { name: 'Développement Web', href: '/services/dev-web' },
-    { name: 'Community Management', href: '/services/community' },
+    { name: 'Publicité META', href: '/services/publicite-meta' },
+    { name: 'Développement Web', href: '/services/sites-web' },
+    { name: 'Community Management', href: '/services/community-management' },
     { name: 'Référencement SEO', href: '/services/seo' },
     { name: 'Créatifs Publicitaires', href: '/services/creatifs' },
-    { name: 'Identité de Marque', href: '/services/identite' },
+    { name: 'Identité de Marque', href: '/services/identite-de-marque' },
     { name: 'Maintenance Web', href: '/services/sitekeeper' },
     { name: 'Audit Digital Gratuit', href: '/audit' },
   ],

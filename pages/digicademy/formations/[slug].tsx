@@ -229,6 +229,7 @@ export default function FormationPage({ formation }: FormationPageProps) {
                             <div>
                               <DigicademyYouTubePlayer
                                 videoId={module.video?.youtubeId}
+                                googleDriveId={module.video?.googleDriveId}
                                 placeholder={module.video?.placeholder}
                                 className="sticky top-24"
                               />

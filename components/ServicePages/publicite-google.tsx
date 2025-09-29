@@ -8,13 +8,6 @@ import { HeroGradientOrbs } from '@/components/ui/animated-gradient-orb'
 
 export default function PubliciteGooglePage() {
 
-  // Statistiques percutantes
-  const stats = [
-    { value: '3x', label: 'ROI moyen', desc: 'Retour sur investissement' },
-    { value: '48h', label: 'Premiers résultats', desc: 'Leads dès 2 jours' },
-    { value: '+250%', label: 'Augmentation trafic', desc: 'En 3 mois' },
-    { value: '97%', label: 'Satisfaction client', desc: 'Résultats garantis' }
-  ]
 
   // Processus en 4 étapes
   const processSteps = [
@@ -198,23 +191,6 @@ export default function PubliciteGooglePage() {
                 Campagnes Google Ads sur-mesure qui génèrent un
                 <span className="font-bold text-digiqo-accent"> ROI mesurable dès le premier mois</span>
               </p>
-            </div>
-
-            {/* Stats rapides */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-12">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 + index * 0.1 }}
-                  className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20"
-                >
-                  <div className="text-3xl font-bold text-digiqo-accent">{stat.value}</div>
-                  <div className="text-sm font-semibold text-white">{stat.label}</div>
-                  <div className="text-xs text-white/60 mt-1">{stat.desc}</div>
-                </motion.div>
-              ))}
             </div>
 
             {/* CTA Hero */}

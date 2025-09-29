@@ -3,12 +3,14 @@ import { Play, Pause, Volume2, VolumeX, Maximize, SkipBack, SkipForward, X } fro
 
 interface DigicademyYouTubePlayerProps {
   videoId?: string
+  googleDriveId?: string
   placeholder?: string
   className?: string
 }
 
 export default function DigicademyYouTubePlayer({
   videoId,
+  googleDriveId,
   placeholder = 'Vidéo de formation',
   className = ''
 }: DigicademyYouTubePlayerProps) {
@@ -24,9 +26,9 @@ export default function DigicademyYouTubePlayer({
   const containerRef = useRef<HTMLDivElement>(null)
   const controlsTimeoutRef = useRef<NodeJS.Timeout>()
 
-  // Charger l'API YouTube
+  // Charger l'API YouTube (seulement si c'est une vidéo YouTube)
   useEffect(() => {
-    if (!isPlaying || !videoId) return
+    if (!isPlaying || !videoId || googleDriveId) return
 
     // Charger le script YouTube IFrame API
     const tag = document.createElement('script')
@@ -185,7 +187,7 @@ export default function DigicademyYouTubePlayer({
     }, 3000)
   }
 
-  if (!videoId) {
+  if (!videoId && !googleDriveId) {
     return (
       <div className={`bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl p-8 flex flex-col items-center justify-center min-h-[360px] ${className}`}>
         <div className="w-20 h-20 rounded-full bg-white/50 backdrop-blur-sm flex items-center justify-center mb-4">
@@ -193,6 +195,25 @@ export default function DigicademyYouTubePlayer({
         </div>
         <p className="text-gray-500 text-center font-medium">{placeholder}</p>
         <p className="text-sm text-gray-400 mt-2">Vidéo bientôt disponible</p>
+      </div>
+    )
+  }
+
+  // Si c'est une vidéo Google Drive, afficher directement l'iframe
+  if (googleDriveId) {
+    return (
+      <div className={`relative rounded-xl overflow-hidden shadow-lg bg-black ${className}`}>
+        <div className="relative aspect-video">
+          <iframe
+            src={`https://drive.google.com/file/d/${googleDriveId}/preview`}
+            className="absolute inset-0 w-full h-full"
+            style={{
+              border: 'none',
+            }}
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+          />
+        </div>
       </div>
     )
   }
@@ -221,7 +242,7 @@ export default function DigicademyYouTubePlayer({
     )
   }
 
-  // Lecteur personnalisé avec contrôles custom
+  // Lecteur personnalisé avec contrôles custom pour YouTube
   return (
     <div
       ref={containerRef}

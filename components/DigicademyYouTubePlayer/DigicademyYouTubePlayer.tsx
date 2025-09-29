@@ -3,18 +3,20 @@ import { Play, Clock } from 'lucide-react'
 
 interface DigicademyYouTubePlayerProps {
   videoId?: string
+  googleDriveId?: string
   placeholder?: string
   className?: string
 }
 
 export default function DigicademyYouTubePlayer({
   videoId,
+  googleDriveId,
   placeholder = 'Vidéo de formation',
   className = ''
 }: DigicademyYouTubePlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false)
 
-  if (!videoId) {
+  if (!videoId && !googleDriveId) {
     // Si pas de videoId, afficher un placeholder élégant
     return (
       <div className={`bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl p-8 flex flex-col items-center justify-center min-h-[360px] ${className}`}>
@@ -67,26 +69,41 @@ export default function DigicademyYouTubePlayer({
     )
   }
 
-  // Lecteur YouTube avec iframe masqué
+  // Lecteur vidéo avec iframe (YouTube ou Google Drive)
   return (
     <div className={`relative rounded-xl overflow-hidden shadow-lg bg-black ${className}`}>
       <div className="relative aspect-video">
-        {/* Container avec overflow caché pour masquer les éléments YouTube */}
+        {/* Container avec overflow caché pour masquer les éléments indésirables */}
         <div className="absolute inset-0 overflow-hidden">
-          {/* iframe YouTube avec paramètres pour masquer au maximum les contrôles */}
-          <iframe
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=0&fs=0&playsinline=1&origin=${typeof window !== 'undefined' ? window.location.origin : ''}`}
-            className="absolute top-[-60px] left-[-2px] w-[calc(100%+4px)] h-[calc(100%+120px)] pointer-events-auto"
-            style={{
-              border: 'none',
-            }}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
+          {googleDriveId ? (
+            // Google Drive iframe
+            <iframe
+              src={`https://drive.google.com/file/d/${googleDriveId}/preview`}
+              className="absolute inset-0 w-full h-full"
+              style={{
+                border: 'none',
+              }}
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+            />
+          ) : (
+            <>
+              {/* YouTube iframe avec paramètres pour masquer au maximum les contrôles */}
+              <iframe
+                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=0&fs=0&playsinline=1&origin=${typeof window !== 'undefined' ? window.location.origin : ''}`}
+                className="absolute top-[-60px] left-[-2px] w-[calc(100%+4px)] h-[calc(100%+120px)] pointer-events-auto"
+                style={{
+                  border: 'none',
+                }}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
 
-          {/* Masques pour cacher les éléments YouTube indésirables */}
-          <div className="absolute top-0 left-0 right-0 h-[60px] bg-black pointer-events-none z-10" />
-          <div className="absolute bottom-0 left-0 right-0 h-[60px] bg-black pointer-events-none z-10" />
+              {/* Masques pour cacher les éléments YouTube indésirables */}
+              <div className="absolute top-0 left-0 right-0 h-[60px] bg-black pointer-events-none z-10" />
+              <div className="absolute bottom-0 left-0 right-0 h-[60px] bg-black pointer-events-none z-10" />
+            </>
+          )}
         </div>
 
         {/* Bouton pour fermer et revenir à la miniature */}

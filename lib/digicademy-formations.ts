@@ -1,7 +1,8 @@
 // Formation data structure for Digicademy
 export interface VideoContent {
   placeholder: string // Placeholder text for video
-  youtubeId?: string // YouTube video ID (will be added later)
+  youtubeId?: string // YouTube video ID
+  googleDriveId?: string // Google Drive video ID
   duration?: string // Video duration
 }
 
@@ -114,6 +115,7 @@ export const formationPubliciteMeta: Formation = {
       ],
       video: {
         placeholder: 'Vidéo : Configuration pas à pas du Business Manager (20 min)',
+        googleDriveId: '1GFu9I90DrVVLUZgBqGAQNWLnCPMvJQLH',
         duration: '20:00'
       },
       keyPoints: [

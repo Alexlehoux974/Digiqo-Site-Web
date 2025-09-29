@@ -16,6 +16,8 @@ import { useInstantScroll } from '@/hooks/useInstantScroll'
 import { BlogCarousel } from '@/components/BlogCarousel'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import DomeGallery from '@/components/ui/dome-gallery'
+import { getAllClientVideos } from '@/lib/client-videos'
 
 // Code splitting pour les composants lourds
 const HeroParallax = dynamic(
@@ -97,8 +99,51 @@ export default function Home() {
         <HeroParallax products={products} />
         <ResultsSection />
         <div className="py-8" />
-        <CaseStudiesSection />
+
+        {/* Dome Gallery - Publicités clients */}
+        <section className="py-20 bg-digiqo-primary relative overflow-hidden">
+          {/* Background decoration */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-digiqo-accent/20 rounded-full blur-3xl"></div>
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              <span className="text-white">Nos productions</span>{' '}
+              <span className="bg-gradient-to-r from-digiqo-accent to-yellow-400 bg-clip-text text-transparent">
+                vidéos publicitaires
+              </span>
+            </h2>
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              Découvrez nos réalisations créatives pour nos clients
+            </p>
+          </div>
+          <div className="h-[900px] w-full">
+            <DomeGallery
+              images={getAllClientVideos()}
+              fit={0.8}
+              minRadius={400}
+              maxRadius={800}
+              padFactor={0.2}
+              overlayBlurColor="#060010"
+              maxVerticalRotationDeg={15}
+              dragSensitivity={15}
+              enlargeTransitionMs={400}
+              segments={30}
+              dragDampening={3}
+              openedImageWidth="600px"
+              openedImageHeight="600px"
+              imageBorderRadius="20px"
+              openedImageBorderRadius="20px"
+              grayscale={false}
+            />
+          </div>
+        </section>
         <div className="py-8" />
+
+        {/* <CaseStudiesSection /> */}
+        {/* <div className="py-8" /> */}
 
         {/* Blog Carousel Section */}
         <section className="py-20 bg-gradient-to-b from-white to-gray-50">

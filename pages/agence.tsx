@@ -55,6 +55,22 @@ const team = [
     image: '/partenaires/Romain.webp',
     linkedin: 'https://www.linkedin.com/in/romain-cano/',
     email: 'romain@digiqo.fr'
+  },
+  {
+    name: 'Jaemeson Dieu',
+    role: 'Expert Google Ads & Publicité en ligne',
+    description: "Jaemeson est notre maître d'orchestre de la publicité sur Google. Grâce à sa parfaite maîtrise des outils et langages de l'écosystème Google (Ads, Analytics, Tag Manager, etc.), il conçoit des campagnes précises et redoutablement efficaces. Sa force ? Transformer chaque clic en opportunité, en alliant stratégie, optimisation et analyse poussée des résultats pour générer un maximum de valeur pour nos clients. Toujours en veille sur les dernières tendances et nouveautés de Google, il sait adapter les stratégies pour garder une longueur d'avance sur la concurrence.",
+    image: '/partenaires/jaemeson.webp',
+    linkedin: 'https://www.linkedin.com/in/jaemeson-dieu/',
+    email: 'jaemeson@digiqo.fr'
+  },
+  {
+    name: 'Lilian Apithy',
+    role: 'Expert Meta Ads & Relation Clients',
+    description: "Lilian est notre véritable couteau suisse : il veille à ce que chaque client Digiqo soit écouté, accompagné et satisfait. Toujours réactif, il s'assure que les demandes trouvent une réponse rapide et efficace, tout en récoltant témoignages et fichiers essentiels pour enrichir nos projets. En parallèle, il met sa créativité au service des visuels et contenus photo, apportant une touche soignée et percutante à nos campagnes. Spécialiste des publicités Meta (Facebook & Instagram Ads), Lilian combine expertise technique et sens du relationnel pour offrir des résultats concrets et une expérience client irréprochable.",
+    image: '/partenaires/lilian.webp',
+    linkedin: 'https://www.linkedin.com/in/lilian-apithy/',
+    email: 'lilian@digiqo.fr'
   }
 ]
 

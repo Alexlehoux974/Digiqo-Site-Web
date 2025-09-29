@@ -127,8 +127,8 @@ export default function PublicitePage() {
       name: 'INITIATION',
       summary: 'Idéal pour débuter dans la publicité en ligne avec un budget maîtrisé',
       price: {
-        threeMonths: isAnnual ? calculateAnnualPrice(549, 15) : (initMonthly?.priceFormatted || '549,00 €'),
-        annual: initAnnual?.priceFormatted || '5 604,60 €'
+        threeMonths: isAnnual ? calculateAnnualPrice(549, 20) : (initMonthly?.priceFormatted || '549,00 €'),
+        annual: initAnnual?.priceFormatted || '5 269,20 €'
       },
       highlights: [
         'Jusqu\'à 2 500€ de budget publicitaire géré/mois',
@@ -235,8 +235,8 @@ export default function PublicitePage() {
       name: 'EXPANSION',
       summary: 'Pour les entreprises ambitieuses visant une croissance forte',
       price: {
-        threeMonths: isAnnual ? calculateAnnualPrice(1990, 15) : (expMonthly?.priceFormatted || '1 990,00 €'),
-        annual: expAnnual?.priceFormatted || '20 292,60 €'
+        threeMonths: isAnnual ? calculateAnnualPrice(1990, 10) : (expMonthly?.priceFormatted || '1 990,00 €'),
+        annual: expAnnual?.priceFormatted || '21 492,00 €'
       },
       highlights: [
         'Jusqu\'à 10 000€ de budget publicitaire géré/mois',
@@ -537,7 +537,7 @@ export default function PublicitePage() {
                       </p>
                       {isAnnual && (
                         <p className="text-xs text-green-600 mt-1 font-semibold">
-                          -15% de réduction
+                          {formula.name === 'INITIATION' ? '-20%' : formula.name === 'PROPULSION' ? '-15%' : '-10%'} de réduction
                         </p>
                       )}
                     </div>
