@@ -23,9 +23,6 @@ import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
 import { generateContactUrl } from '../../lib/contact-utils'
 import { generateWhatsAppLink } from '../../lib/whatsapp-utils'
-import {
-  getProductsForService
-} from '../../lib/airtable-products'
 
 interface Formula {
   id: string
@@ -99,17 +96,6 @@ export default function PublicitePage() {
   const [compareMode] = useState(false)
   const seoData = servicesSEO['publicite-en-ligne-reunion']
 
-  // Get real products from Airtable
-  const publiciteProducts = getProductsForService('publicite')
-
-  // Map Airtable products by formula name
-  const initMonthly = publiciteProducts.find(p => p.name.includes('Initiation') && p.name.includes('Mensuelle'))
-  const initAnnual = publiciteProducts.find(p => p.name.includes('Initiation') && p.name.includes('Annuelle'))
-  const propMonthly = publiciteProducts.find(p => p.name.includes('Propulsion') && p.name.includes('Mensuelle'))
-  const propAnnual = publiciteProducts.find(p => p.name.includes('Propulsion') && p.name.includes('Annuelle'))
-  const expMonthly = publiciteProducts.find(p => p.name.includes('Expansion') && p.name.includes('Mensuelle'))
-  const expAnnual = publiciteProducts.find(p => p.name.includes('Expansion') && p.name.includes('Annuelle'))
-
   // Create formulas with real data - 3 formules uniquement
   const formulas: Formula[] = [
     {
@@ -117,8 +103,8 @@ export default function PublicitePage() {
       name: 'INITIATION',
       summary: 'Idéal pour débuter dans la publicité en ligne avec un budget maîtrisé',
       price: {
-        threeMonths: initMonthly?.priceFormatted || '549,00 €',
-        annual: initAnnual?.priceFormatted || '5 270,00 €'
+        threeMonths: '549,00 €',
+        annual: '5 270,40 €'
       },
       highlights: [
         'Jusqu\'à 2 500€ de budget publicitaire géré/mois',
@@ -170,8 +156,8 @@ export default function PublicitePage() {
       name: 'PROPULSION',
       summary: 'Pour les entreprises en croissance cherchant à augmenter leur visibilité',
       price: {
-        threeMonths: propMonthly?.priceFormatted || '949,00 €',
-        annual: propAnnual?.priceFormatted || '9 110,40 €'
+        threeMonths: '990,00 €',
+        annual: '10 098,00 €'
       },
       highlights: [
         'Jusqu\'à 5 000€ de budget publicitaire géré/mois',
@@ -226,8 +212,8 @@ export default function PublicitePage() {
       name: 'EXPANSION',
       summary: 'Pour les entreprises ambitieuses visant une croissance forte',
       price: {
-        threeMonths: expMonthly?.priceFormatted || '1 990,00 €',
-        annual: expAnnual?.priceFormatted || '19 104,00 €'
+        threeMonths: '1 490,00 €',
+        annual: '16 092,00 €'
       },
       highlights: [
         'Jusqu\'à 10 000€ de budget publicitaire géré/mois',
