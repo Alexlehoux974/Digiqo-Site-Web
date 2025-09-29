@@ -220,11 +220,11 @@ export default function DomeGallery({
 
   const scrollLockedRef = useRef(false);
   const lockScroll = useCallback(() => {
-    // Disable scroll locking to prevent mobile scroll issues
+    // No-op to prevent scroll issues
     return;
   }, []);
   const unlockScroll = useCallback(() => {
-    // Disable scroll unlocking as we're not locking anymore
+    // No-op to prevent scroll issues
     return;
   }, []);
 
@@ -1064,6 +1064,7 @@ export default function DomeGallery({
           ref={mainRef}
           className="absolute inset-0 grid place-items-center overflow-hidden select-none bg-transparent"
           style={{
+            touchAction: "pan-y",
             WebkitUserSelect: "none",
           }}
         >
@@ -1140,14 +1141,6 @@ export default function DomeGallery({
                             }}
                           />
                         )}
-                        {/* Icône play au centre */}
-                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                          <div className="bg-white/80 rounded-full p-3 shadow-lg">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>
-                            </svg>
-                          </div>
-                        </div>
                       </>
                     ) : (
                       <img
