@@ -3,15 +3,15 @@ import { motion } from 'framer-motion'
 import {
   Target,
   ArrowRight,
-  Zap,
+  // Zap,
   Users,
   LineChart,
   CheckCircle2,
   MessageCircle,
   Camera,
-  Sparkles,
-  Shield,
-  Award
+  Sparkles
+  // Shield,
+  // Award
 } from 'lucide-react'
 import { ServiceLayout } from '../../components/ServiceLayout'
 import { ServiceHero } from '@/components/ServicePages/ServiceHero'
@@ -54,54 +54,54 @@ const processSteps = [
 
 export default function SnapchatPage() {
 
-  // Avantages différenciants
-  const advantages = [
-    {
-      title: 'Audience Gen Z',
-      description: '90% des utilisateurs ont moins de 35 ans',
-      icon: Users
-    },
-    {
-      title: 'Engagement Record',
-      description: '5x plus d\'engagement que les autres réseaux',
-      icon: Zap
-    },
-    {
-      title: 'Tarifs Sur Mesure',
-      description: 'Budget adapté à vos objectifs et moyens',
-      icon: Shield
-    },
-    {
-      title: 'Expertise Locale',
-      description: 'Connaissance du marché réunionnais',
-      icon: Award
-    }
-  ]
+  // Avantages différenciants - À implémenter dans une prochaine version
+  // const advantages = [
+  //   {
+  //     title: 'Audience Gen Z',
+  //     description: '90% des utilisateurs ont moins de 35 ans',
+  //     icon: Users
+  //   },
+  //   {
+  //     title: 'Engagement Record',
+  //     description: '5x plus d\'engagement que les autres réseaux',
+  //     icon: Zap
+  //   },
+  //   {
+  //     title: 'Tarifs Sur Mesure',
+  //     description: 'Budget adapté à vos objectifs et moyens',
+  //     icon: Shield
+  //   },
+  //   {
+  //     title: 'Expertise Locale',
+  //     description: 'Connaissance du marché réunionnais',
+  //     icon: Award
+  //   }
+  // ]
 
-  // Exemples de campagnes réussies
-  const successCases = [
-    {
-      client: 'Boutique Mode',
-      metric: '+180%',
-      detail: 'de ventes en ligne',
-      period: 'en 3 mois',
-      testimonial: 'ROI exceptionnel avec les filtres AR'
-    },
-    {
-      client: 'Restaurant Fast-Food',
-      metric: '25K',
-      detail: 'vues sur les stories',
-      period: 'par semaine',
-      testimonial: 'Files d\'attente tous les soirs'
-    },
-    {
-      client: 'Salle de Sport',
-      metric: '150',
-      detail: 'nouveaux abonnés',
-      period: 'en 1 mois',
-      testimonial: 'Campagne virale avec les lenses'
-    }
-  ]
+  // Exemples de campagnes réussies - À implémenter dans une prochaine version
+  // const successCases = [
+  //   {
+  //     client: 'Boutique Mode',
+  //     metric: '+180%',
+  //     detail: 'de ventes en ligne',
+  //     period: 'en 3 mois',
+  //     testimonial: 'ROI exceptionnel avec les filtres AR'
+  //   },
+  //   {
+  //     client: 'Restaurant Fast-Food',
+  //     metric: '25K',
+  //     detail: 'vues sur les stories',
+  //     period: 'par semaine',
+  //     testimonial: 'Files d\'attente tous les soirs'
+  //   },
+  //   {
+  //     client: 'Salle de Sport',
+  //     metric: '150',
+  //     detail: 'nouveaux abonnés',
+  //     period: 'en 1 mois',
+  //     testimonial: 'Campagne virale avec les lenses'
+  //   }
+  // ]
 
   // Suppression des formules - pas nécessaire ici
   // Quote-based pricing approach (similar to Google Ads)

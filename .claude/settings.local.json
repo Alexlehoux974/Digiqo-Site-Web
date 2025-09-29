@@ -140,7 +140,9 @@
       "Bash(git restore:*)",
       "Bash(lsof:*)",
       "Read(//var/**)",
-      "Bash(do grep -B1 -A1 \"text-4xl\\|text-5xl\\|text-6xl\" \"$file\")"
+      "Bash(do grep -B1 -A1 \"text-4xl\\|text-5xl\\|text-6xl\" \"$file\")",
+      "Bash(do echo \"=== $icon ===\")",
+      "Bash(do echo -n \"$icon: \")"
     ],
     "deny": []
   }

@@ -5,19 +5,19 @@ import {
   Target,
   BarChart3,
   ArrowRight,
-  Zap,
+  // Zap,
   Users,
   LineChart,
   CheckCircle2,
   MessageCircle,
   Music,
-  Hash,
-  Shield,
-  Award,
-  TrendingUp,
-  Sparkles,
-  Eye,
-  Gift
+  Hash
+  // Shield,
+  // Award
+  // TrendingUp,
+  // Sparkles,
+  // Eye,
+  // Gift
 } from 'lucide-react'
 import { ServiceLayout } from '../../components/ServiceLayout'
 import { ServiceHero } from '@/components/ServicePages/ServiceHero'
@@ -73,54 +73,54 @@ export default function TikTokPage() {
     ]
   }
 
-  // Avantages différenciants
-  const advantages = [
-    {
-      title: 'Audience Gen Z',
-      description: '60% des utilisateurs ont moins de 30 ans',
-      icon: Users
-    },
-    {
-      title: 'Engagement Record',
-      description: 'Taux d\'engagement 15% supérieur aux autres réseaux',
-      icon: Zap
-    },
-    {
-      title: 'Tarifs Sur Mesure',
-      description: 'Budget adapté à vos objectifs et moyens',
-      icon: Shield
-    },
-    {
-      title: 'Expertise Locale',
-      description: 'Connaissance du marché réunionnais',
-      icon: Award
-    }
-  ]
+  // Avantages différenciants - À implémenter dans une prochaine version
+  // const advantages = [
+  //   {
+  //     title: 'Audience Gen Z',
+  //     description: '60% des utilisateurs ont moins de 30 ans',
+  //     icon: Users
+  //   },
+  //   {
+  //     title: 'Engagement Record',
+  //     description: 'Taux d\'engagement 15% supérieur aux autres réseaux',
+  //     icon: Zap
+  //   },
+  //   {
+  //     title: 'Tarifs Sur Mesure',
+  //     description: 'Budget adapté à vos objectifs et moyens',
+  //     icon: Shield
+  //   },
+  //   {
+  //     title: 'Expertise Locale',
+  //     description: 'Connaissance du marché réunionnais',
+  //     icon: Award
+  //   }
+  // ]
 
-  // Exemples de campagnes réussies
-  const successCases = [
-    {
-      client: 'Marque de mode',
-      metric: '+300%',
-      detail: 'de vues en 2 semaines',
-      period: 'Challenge viral',
-      testimonial: 'Buzz incroyable sur TikTok'
-    },
-    {
-      client: 'Restaurant tendance',
-      metric: '500K',
-      detail: 'vues sur une vidéo',
-      period: 'en 48h',
-      testimonial: 'File d\'attente tous les soirs'
-    },
-    {
-      client: 'E-commerce beauté',
-      metric: '+250%',
-      detail: 'de ventes',
-      period: 'en 1 mois',
-      testimonial: 'Produits en rupture de stock'
-    }
-  ]
+  // Exemples de campagnes réussies - À implémenter dans une prochaine version
+  // const successCases = [
+  //   {
+  //     client: 'Marque de mode',
+  //     metric: '+300%',
+  //     detail: 'de vues en 2 semaines',
+  //     period: 'Challenge viral',
+  //     testimonial: 'Buzz incroyable sur TikTok'
+  //   },
+  //   {
+  //     client: 'Restaurant tendance',
+  //     metric: '500K',
+  //     detail: 'vues sur une vidéo',
+  //     period: 'en 48h',
+  //     testimonial: 'File d\'attente tous les soirs'
+  //   },
+  //   {
+  //     client: 'E-commerce beauté',
+  //     metric: '+250%',
+  //     detail: 'de ventes',
+  //     period: 'en 1 mois',
+  //     testimonial: 'Produits en rupture de stock'
+  //   }
+  // ]
 
   const quickWins = [
     {

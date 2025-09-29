@@ -15,7 +15,8 @@ import {
   ArrowUpRight,
   X,
   Rocket,
-  MessageCircle
+  MessageCircle,
+  Video
 } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
@@ -309,6 +310,12 @@ export default function PublicitePage() {
       title: "Reporting en temps réel",
       description: "Suivez vos performances avec des tableaux de bord actualisés et des rapports détaillés",
       highlight: "24/7 accessible"
+    },
+    {
+      icon: Video,
+      title: "Vidéos publicitaires premium",
+      description: "Tarif préférentiel exclusif pour les clients abonnés en Social Media Ads",
+      highlight: "300€/mois au lieu de 549€"
     }
   ]
 
@@ -344,7 +351,7 @@ export default function PublicitePage() {
       {/* Quick Wins Section */}
       <section className="relative py-16 -mt-20">
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {quickWins.map((item, index) => (
               <motion.div
                 key={index}
