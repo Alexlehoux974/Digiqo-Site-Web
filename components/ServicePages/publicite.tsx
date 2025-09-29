@@ -23,9 +23,7 @@ import { ServiceLayout } from '../../components/ServiceLayout'
 import { ServiceHero } from '@/components/ServicePages/ServiceHero'
 import { generateContactUrl } from '../../lib/contact-utils'
 import { generateWhatsAppLink } from '../../lib/whatsapp-utils'
-import {
-  getProductsForService
-} from '../../lib/airtable-products'
+// Removed Airtable import - prices are now hardcoded
 
 interface Formula {
   id: string
@@ -100,26 +98,7 @@ export default function PublicitePage() {
   const [isAnnual, setIsAnnual] = useState(false)
   const seoData = servicesSEO['publicite-en-ligne-reunion']
 
-  // Get real products from Airtable
-  const publiciteProducts = getProductsForService('publicite')
-
-  // Helper function to calculate annual price with discount
-  const calculateAnnualPrice = (monthlyPrice: number, discount: number): string => {
-    const annualTotal = monthlyPrice * 12
-    const discountedTotal = annualTotal * (1 - discount / 100)
-    return new Intl.NumberFormat('fr-FR', {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    }).format(discountedTotal) + ' €'
-  }
-
-  // Map Airtable products by formula name
-  const initMonthly = publiciteProducts.find(p => p.name.includes('Initiation') && p.name.includes('Mensuelle'))
-  const initAnnual = publiciteProducts.find(p => p.name.includes('Initiation') && p.name.includes('Annuelle'))
-  const propMonthly = publiciteProducts.find(p => p.name.includes('Propulsion') && p.name.includes('Mensuelle'))
-  const propAnnual = publiciteProducts.find(p => p.name.includes('Propulsion') && p.name.includes('Annuelle'))
-  const expMonthly = publiciteProducts.find(p => p.name.includes('Expansion') && p.name.includes('Mensuelle'))
-  const expAnnual = publiciteProducts.find(p => p.name.includes('Expansion') && p.name.includes('Annuelle'))
+  // Prices are now hardcoded directly
 
   // Create formulas with real data - 3 formules uniquement
   const formulas: Formula[] = [
@@ -128,8 +107,8 @@ export default function PublicitePage() {
       name: 'INITIATION',
       summary: 'Idéal pour débuter dans la publicité en ligne avec un budget maîtrisé',
       price: {
-        threeMonths: isAnnual ? calculateAnnualPrice(549, 20) : (initMonthly?.priceFormatted || '549,00 €'),
-        annual: initAnnual?.priceFormatted || '5 269,20 €'
+        threeMonths: isAnnual ? '5 270,40 €' : '549,00 €',
+        annual: '5 270,40 €'  // -20% discount
       },
       highlights: [
         'Jusqu\'à 2 500€ de budget publicitaire géré/mois',
@@ -181,8 +160,8 @@ export default function PublicitePage() {
       name: 'PROPULSION',
       summary: 'Pour les entreprises en croissance cherchant à augmenter leur visibilité',
       price: {
-        threeMonths: isAnnual ? calculateAnnualPrice(949, 15) : (propMonthly?.priceFormatted || '949,00 €'),
-        annual: propAnnual?.priceFormatted || '9 690,60 €'
+        threeMonths: isAnnual ? '10 098,00 €' : '990,00 €',
+        annual: '10 098,00 €'  // -15% discount
       },
       highlights: [
         'Jusqu\'à 5 000€ de budget publicitaire géré/mois',
@@ -236,8 +215,8 @@ export default function PublicitePage() {
       name: 'EXPANSION',
       summary: 'Pour les entreprises ambitieuses visant une croissance forte',
       price: {
-        threeMonths: isAnnual ? calculateAnnualPrice(1990, 10) : (expMonthly?.priceFormatted || '1 990,00 €'),
-        annual: expAnnual?.priceFormatted || '21 492,00 €'
+        threeMonths: isAnnual ? '16 092,00 €' : '1 490,00 €',
+        annual: '16 092,00 €'  // -10% discount
       },
       highlights: [
         'Jusqu\'à 10 000€ de budget publicitaire géré/mois',
