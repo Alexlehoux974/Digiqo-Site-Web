@@ -360,16 +360,28 @@ export default function PublicitePage() {
                 transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -10 }}
-                className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all"
+                className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all flex flex-col h-full"
               >
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-digiqo-accent to-amber-400 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-digiqo-primary mb-2">{item.title}</h3>
-                    <p className="text-sm text-digiqo-primary/70 mb-2">{item.description}</p>
-                    <span className="text-xs font-semibold text-digiqo-accent bg-digiqo-accent/10 px-3 py-1 rounded-full">
+                {/* Icône centrée en haut */}
+                <div className="w-12 h-12 bg-gradient-to-br from-digiqo-accent to-amber-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <item.icon className="w-6 h-6 text-white" />
+                </div>
+
+                {/* Contenu centré */}
+                <div className="flex flex-col flex-grow text-center">
+                  {/* Titre avec hauteur fixe */}
+                  <h3 className="text-lg font-bold text-digiqo-primary mb-3 min-h-[28px]">
+                    {item.title}
+                  </h3>
+
+                  {/* Description avec hauteur minimale pour uniformité */}
+                  <p className="text-sm text-digiqo-primary/70 mb-4 flex-grow min-h-[60px]">
+                    {item.description}
+                  </p>
+
+                  {/* Badge toujours en bas */}
+                  <div className="mt-auto">
+                    <span className="inline-block text-xs font-semibold text-digiqo-accent bg-digiqo-accent/10 px-3 py-1 rounded-full">
                       {item.highlight}
                     </span>
                   </div>
