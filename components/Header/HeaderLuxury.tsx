@@ -162,11 +162,6 @@ const navigation = {
       }
     },
     {
-      name: 'RÉALISATIONS',
-      href: '/#case-studies',
-      badge: 'New'
-    },
-    {
       name: 'L\'AGENCE',
       href: '/agence',
       submenu: [
