@@ -987,6 +987,52 @@ export const HeaderLuxury = () => {
                           )}
                         </AnimatePresence>
                       </>
+                    ) : item.submenu ? (
+                      // Items with submenu (like L'AGENCE)
+                      <>
+                        <button
+                          onClick={() => setActiveSubmenu(activeSubmenu === item.name ? null : item.name)}
+                          className="flex items-center justify-between w-full text-left"
+                        >
+                          <span className="text-lg font-semibold text-gray-900">{item.name}</span>
+                          <ChevronRight
+                            className={`w-5 h-5 text-gray-400 transition-transform ${
+                              activeSubmenu === item.name ? 'rotate-90' : ''
+                            }`}
+                          />
+                        </button>
+
+                        <AnimatePresence>
+                          {activeSubmenu === item.name && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="overflow-hidden mt-4 ml-4 space-y-3"
+                            >
+                              {item.submenu.map(subitem => (
+                                <Link
+                                  key={subitem.href}
+                                  href={subitem.href}
+                                  onClick={(e) => {
+                                    handleHashLink(e, subitem.href)
+                                    setIsMenuOpen(false)
+                                    setActiveSubmenu(null)
+                                  }}
+                                  className={`block py-2 transition-colors ${
+                                    subitem.highlight
+                                      ? 'text-digiqo-accent font-medium hover:text-digiqo-accent/80'
+                                      : 'text-gray-600 hover:text-digiqo-primary'
+                                  }`}
+                                >
+                                  {subitem.name}
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </>
                     ) : (
                       // Regular links
                       <Link
@@ -998,8 +1044,8 @@ export const HeaderLuxury = () => {
                           setIsMenuOpen(false)
                         }}
                         className={`block text-lg font-semibold ${
-                          'highlight' in item && item.highlight 
-                            ? 'text-digiqo-accent hover:text-digiqo-accent/80' 
+                          'highlight' in item && item.highlight
+                            ? 'text-digiqo-accent hover:text-digiqo-accent/80'
                             : 'text-gray-900 hover:text-digiqo-primary'
                         } transition-colors`}
                       >

@@ -220,15 +220,12 @@ export default function DomeGallery({
 
   const scrollLockedRef = useRef(false);
   const lockScroll = useCallback(() => {
-    if (scrollLockedRef.current) return;
-    scrollLockedRef.current = true;
-    document.body.classList.add("dg-scroll-lock");
+    // Disable scroll locking to prevent mobile scroll issues
+    return;
   }, []);
   const unlockScroll = useCallback(() => {
-    if (!scrollLockedRef.current) return;
-    if (rootRef.current?.getAttribute("data-enlarging") === "true") return;
-    scrollLockedRef.current = false;
-    document.body.classList.remove("dg-scroll-lock");
+    // Disable scroll unlocking as we're not locking anymore
+    return;
   }, []);
 
   const items = useMemo(() => buildItems(images, segments), [images, segments]);
@@ -686,12 +683,6 @@ export default function DomeGallery({
                 el.style.transition = "";
                 el.style.opacity = "";
                 openingRef.current = false;
-                if (
-                  !draggingRef.current &&
-                  rootRef.current?.getAttribute("data-enlarging") !== "true"
-                ) {
-                  document.body.classList.remove("dg-scroll-lock");
-                }
               }, 300);
             });
           });
@@ -967,7 +958,7 @@ export default function DomeGallery({
 
   useEffect(() => {
     return () => {
-      document.body.classList.remove("dg-scroll-lock");
+      // Cleanup no longer needed as we disabled scroll locking
     };
   }, []);
 
@@ -1032,16 +1023,6 @@ export default function DomeGallery({
       }
     }
     
-    // body.dg-scroll-lock {
-    //   position: fixed !important;
-    //   top: 0;
-    //   left: 0;
-    //   width: 100% !important;
-    //   height: 100% !important;
-    //   overflow: hidden !important;
-    //   touch-action: none !important;
-    //   overscroll-behavior: contain !important;
-    // }
     .item__image {
       position: absolute;
       inset: 10px;
@@ -1083,7 +1064,6 @@ export default function DomeGallery({
           ref={mainRef}
           className="absolute inset-0 grid place-items-center overflow-hidden select-none bg-transparent"
           style={{
-            touchAction: "none",
             WebkitUserSelect: "none",
           }}
         >
