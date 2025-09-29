@@ -101,15 +101,15 @@ export default function Home() {
         <div className="py-8" />
 
         {/* Dome Gallery - Publicités clients */}
-        <section className="py-20 bg-digiqo-primary relative overflow-hidden">
+        <section className="py-8 md:py-20 bg-digiqo-primary relative overflow-hidden">
           {/* Background decoration */}
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
             <div className="absolute bottom-10 right-10 w-96 h-96 bg-digiqo-accent/20 rounded-full blur-3xl"></div>
           </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 text-center mb-6 md:mb-12">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
               <span className="text-white">Nos productions</span>{' '}
               <span className="bg-gradient-to-r from-digiqo-accent to-yellow-400 bg-clip-text text-transparent">
                 vidéos publicitaires
@@ -119,7 +119,7 @@ export default function Home() {
               Découvrez nos réalisations créatives pour nos clients
             </p>
           </div>
-          <div className="h-[900px] w-full">
+          <div className="h-[600px] md:h-[900px] w-full">
             <DomeGallery
               images={getAllClientVideos()}
               fit={0.8}
@@ -140,7 +140,7 @@ export default function Home() {
             />
           </div>
         </section>
-        <div className="py-8" />
+        <div className="py-4 md:py-8" />
 
         {/* <CaseStudiesSection /> */}
         {/* <div className="py-8" /> */}

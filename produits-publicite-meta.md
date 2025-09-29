@@ -172,10 +172,10 @@ Services de gestion publicitaire sur Meta (Facebook & Instagram) avec trois form
 
 ---
 
-# Produits Google Ads - Publicité en Ligne
+# Produits Community Management
 
 ## Vue d'ensemble
-Services de gestion publicitaire sur Google Ads avec quatre formules adaptées à vos besoins et votre budget.
+Services de gestion de communauté sur les réseaux sociaux avec quatre formules adaptées à vos besoins et votre budget.
 
 ---
 
