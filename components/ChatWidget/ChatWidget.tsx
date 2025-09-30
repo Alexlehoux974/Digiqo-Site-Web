@@ -144,12 +144,12 @@ export const ChatWidget = () => {
         'Je suis l\'assistant virtuel de Digiqo.',
         'Comment puis-je vous aider aujourd\'hui ?'
       ],
-      defaultLanguage: 'en',
+      defaultLanguage: 'fr' as 'en',
       allowedFilesMimeTypes: '',
       i18n: {
         fr: {
           title: 'Assistant Digiqo',
-          subtitle: 'Nous sommes là pour vous aider',
+          subtitle: '💬 Nous sommes là pour vous aider',
           footer: '',
           getStarted: 'Démarrer la conversation',
           inputPlaceholder: 'Écrivez votre message ici...',
