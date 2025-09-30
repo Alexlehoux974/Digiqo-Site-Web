@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
 import { OptimizedImage } from '../ui/OptimizedImage'
 import { generateContactUrl } from '../../lib/contact-utils'
 import {
@@ -495,30 +494,33 @@ export const HeaderLuxury = () => {
                                     >
                                       <div className="flex items-center justify-center gap-2 mb-4 mx-auto">
                                         <div className="w-12 h-12 rounded-lg bg-white shadow-md p-2 group-hover:scale-110 transition-transform">
-                                          <Image
+                                          <OptimizedImage
                                             src="/instagram.jpg"
                                             alt="Instagram"
                                             width={40}
                                             height={40}
                                             className="w-full h-full object-contain"
+                                            objectFit="contain"
                                           />
                                         </div>
                                         <div className="w-12 h-12 rounded-lg bg-white shadow-md p-2 group-hover:scale-110 transition-transform">
-                                          <Image
+                                          <OptimizedImage
                                             src="/facebook.jpg"
                                             alt="Facebook"
                                             width={40}
                                             height={40}
                                             className="w-full h-full object-contain"
+                                            objectFit="contain"
                                           />
                                         </div>
                                         <div className="w-12 h-12 rounded-lg bg-white shadow-md p-2 group-hover:scale-110 transition-transform">
-                                          <Image
+                                          <OptimizedImage
                                             src="/whatsapp.png"
                                             alt="WhatsApp"
                                             width={40}
                                             height={40}
                                             className="w-full h-full object-contain"
+                                            objectFit="contain"
                                           />
                                         </div>
                                       </div>
@@ -616,8 +618,8 @@ export const HeaderLuxury = () => {
                                         </li>
                                       </ul>
                                       <div className="absolute -top-2 -right-2 transform rotate-12 origin-center">
-                                        <span className="inline-block px-2 py-1 text-[9px] font-bold bg-green-500 text-white rounded-md shadow-md border border-green-600 whitespace-nowrap">
-                                          Expert certifié
+                                        <span className="inline-block px-2 py-1 text-[9px] font-bold bg-amber-500 text-white rounded-md shadow-md border border-amber-600 whitespace-nowrap">
+                                          Bientôt disponible
                                         </span>
                                       </div>
                                     </motion.div>
@@ -652,8 +654,8 @@ export const HeaderLuxury = () => {
                                         </li>
                                       </ul>
                                       <div className="absolute -top-2 -right-2 transform rotate-12 origin-center">
-                                        <span className="inline-block px-2 py-1 text-[9px] font-bold bg-green-500 text-white rounded-md shadow-md border border-green-600 whitespace-nowrap">
-                                          Expert certifié
+                                        <span className="inline-block px-2 py-1 text-[9px] font-bold bg-amber-500 text-white rounded-md shadow-md border border-amber-600 whitespace-nowrap">
+                                          Bientôt disponible
                                         </span>
                                       </div>
                                     </motion.div>
