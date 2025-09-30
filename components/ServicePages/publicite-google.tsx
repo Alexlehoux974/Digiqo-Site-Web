@@ -45,7 +45,7 @@ export default function PubliciteGooglePage() {
   const advantages = [
     {
       title: 'Sans Engagement',
-      description: 'Résultats ou remboursement, vous restez libre',
+      description: 'Contrats flexibles, vous restez libre de vos choix',
       icon: Shield
     },
     {
@@ -55,7 +55,7 @@ export default function PubliciteGooglePage() {
     },
     {
       title: 'Support WhatsApp',
-      description: 'Réponse en moins de 2h, suivi personnalisé',
+      description: 'Réponse rapide, suivi personnalisé et réactif',
       icon: Users
     },
     {
@@ -65,28 +65,28 @@ export default function PubliciteGooglePage() {
     }
   ]
 
-  // Résultats clients
-  const results = [
+  // Exemples de services
+  const services = [
     {
-      client: 'E-commerce Mode',
-      metric: '+420%',
-      detail: 'de ventes en ligne',
-      period: 'en 6 mois',
-      testimonial: 'ROI exceptionnel dès le 2ème mois'
+      client: 'E-commerce',
+      metric: 'Campagnes',
+      detail: 'de visibilité immédiate',
+      period: 'Search & Shopping',
+      testimonial: 'Ciblage précis de votre audience'
     },
     {
-      client: 'Cabinet Dentaire',
-      metric: '73',
-      detail: 'nouveaux patients',
-      period: 'par mois',
-      testimonial: 'Agenda complet en 3 semaines'
+      client: 'Services Locaux',
+      metric: 'Géo-ciblage',
+      detail: 'La Réunion & alentours',
+      period: 'Stratégie locale',
+      testimonial: 'Touchez vos clients au bon moment'
     },
     {
-      client: 'Agence Immobilière',
-      metric: '5x',
-      detail: 'plus de leads qualifiés',
-      period: 'en 2 mois',
-      testimonial: 'Meilleur investissement marketing'
+      client: 'B2B & Prestations',
+      metric: 'Leads',
+      detail: 'qualifiés ciblés',
+      period: 'Budget optimisé',
+      testimonial: 'Maximisez votre budget publicitaire'
     }
   ]
 
@@ -129,20 +129,20 @@ export default function PubliciteGooglePage() {
   return (
     <ServiceLayout>
       <Head>
-        <title>Google Ads La Réunion - Campagnes ROI Garanties | Digiqo</title>
-        <meta name="description" content="Transformez vos clics en clients avec Google Ads. Campagnes sur-mesure, ROI x3 moyen, résultats dès 48h. Audit gratuit et sans engagement." />
+        <title>Google Ads La Réunion - Gestion Campagnes Professionnelle | Digiqo</title>
+        <meta name="description" content="Transformez vos clics en clients avec Google Ads. Campagnes sur-mesure, gestion experte, suivi détaillé. Audit gratuit et sans engagement." />
 
         {/* Open Graph */}
-        <meta property="og:title" content="Google Ads La Réunion - Campagnes ROI Garanties | Digiqo" />
-        <meta property="og:description" content="Transformez vos clics en clients avec Google Ads. ROI x3 moyen, résultats dès 48h." />
+        <meta property="og:title" content="Google Ads La Réunion - Gestion Campagnes Professionnelle | Digiqo" />
+        <meta property="og:description" content="Transformez vos clics en clients avec Google Ads. Gestion experte, suivi détaillé." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://digiqo.fr/services/publicite-google" />
         <meta property="og:image" content="https://digiqo.fr/assets/digiqo-og-image.png" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Google Ads La Réunion - ROI Garanties" />
-        <meta name="twitter:description" content="Campagnes Google Ads sur-mesure avec ROI x3 moyen" />
+        <meta name="twitter:title" content="Google Ads La Réunion - Gestion Professionnelle" />
+        <meta name="twitter:description" content="Campagnes Google Ads sur-mesure avec gestion experte" />
 
         {/* Canonical URL */}
         <link rel="canonical" href="https://digiqo.fr/services/publicite-google" />
@@ -188,8 +188,8 @@ export default function PubliciteGooglePage() {
               </h1>
 
               <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto">
-                Campagnes Google Ads sur-mesure qui génèrent un
-                <span className="font-bold text-digiqo-accent"> ROI mesurable dès le premier mois</span>
+                Campagnes Google Ads sur-mesure avec
+                <span className="font-bold text-digiqo-accent"> suivi et optimisation continue</span>
               </p>
             </div>
 
@@ -257,7 +257,7 @@ export default function PubliciteGooglePage() {
                 'Perte de parts de marché face aux concurrents',
                 'Croissance lente et opportunités manquées',
                 'Dépendance au bouche-à-oreille uniquement',
-                'Impossibilité de mesurer votre ROI marketing'
+                'Difficulté à suivre l\'efficacité de vos actions'
               ].map((risk, index) => (
                 <motion.div
                   key={index}
@@ -288,9 +288,9 @@ export default function PubliciteGooglePage() {
               {[
                 'Top 3 Google sur vos mots-clés business',
                 'Leads qualifiés qui cherchent vos services',
-                'ROI mesurable et prévisible chaque mois',
+                'Suivi détaillé de vos performances publicitaires',
                 'Contrôle total sur votre budget et ciblage',
-                'Croissance rapide et scalable'
+                'Stratégie évolutive selon vos objectifs'
               ].map((solution, index) => (
                 <motion.div
                   key={index}
@@ -383,16 +383,16 @@ export default function PubliciteGooglePage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Des résultats qui parlent
-              <span className="bg-gradient-to-r from-digiqo-accent to-amber-400 bg-clip-text text-transparent"> d'eux-mêmes</span>
+              Des campagnes adaptées
+              <span className="bg-gradient-to-r from-digiqo-accent to-amber-400 bg-clip-text text-transparent"> à vos besoins</span>
             </h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              Découvrez comment nos clients ont transformé leur business avec Google Ads
+              Découvrez nos solutions Google Ads pour tous types d'activités
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {results.map((result, index) => (
+            {services.map((result, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
