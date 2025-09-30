@@ -107,13 +107,16 @@ export default function PublicitePage() {
       name: 'INITIATION',
       summary: 'Idéal pour débuter dans la publicité en ligne avec un budget maîtrisé',
       price: {
-        threeMonths: isAnnual ? '5 270,40 €' : '549,00 €',
-        annual: '5 270,40 €'  // -20% discount
+        threeMonths: isAnnual ? '5 604,60 €' : '549,00 €',
+        annual: '5 604,60 €'  // -20% discount
       },
       highlights: [
-        'Jusqu\'à 2 500€ de budget publicitaire géré/mois',
-        '3 visuels publicitaires inclus/mois',
-        'Création & ciblage stratégique'
+        '💰 Jusqu\'à 2 500€ de budget publicitaire géré/mois',
+        '🎨 3 visuels publicitaires inclus/mois (non cumulables)',
+        '🧠 Création & ciblage stratégique des campagnes',
+        '⚙️ Optimisation des performances',
+        '📈 Reporting mensuel',
+        '📂 Espace collaboratif : Google Chat + Drive'
       ],
       gradient: 'from-gray-400 to-gray-600',
       accentColor: 'gray',
@@ -160,13 +163,18 @@ export default function PublicitePage() {
       name: 'PROPULSION',
       summary: 'Pour les entreprises en croissance cherchant à augmenter leur visibilité',
       price: {
-        threeMonths: isAnnual ? '10 098,00 €' : '990,00 €',
-        annual: '10 098,00 €'  // -15% discount
+        threeMonths: isAnnual ? '9 690,60 €' : '949,00 €',
+        annual: '9 690,60 €'  // -15% discount
       },
       highlights: [
-        'Jusqu\'à 5 000€ de budget publicitaire géré/mois',
-        '6 visuels publicitaires inclus/mois',
-        'Audiences similaires incluses'
+        '💰 Jusqu\'à 5 000€ de budget publicitaire géré/mois',
+        '🎨 6 visuels publicitaires inclus/mois (non cumulables)',
+        '🧠 Création & ciblage stratégique des campagnes',
+        '⚙️ Optimisation des performances',
+        '📈 Reporting mensuel',
+        '📂 Espace collaboratif : Google Chat + Drive',
+        '👥 Exploitation des audiences similaires',
+        '🔧 Intégration basique des pixels & API'
       ],
       gradient: 'from-[#8B1431] to-red-700',
       accentColor: 'red',
@@ -201,7 +209,7 @@ export default function PublicitePage() {
         },
         bonus: {
           title: '🎆 Bonus',
-          items: ['2 vidéos offertes immédiatement', 'Audiences similaires incluses']
+          items: ['2 vidéos offertes immédiatement', 'Audiences similaires incluses', 'Intégration basique des pixels & API']
         }
       },
       paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/4gntC6Vznt2d?referrer=PAYMENT_LINK',
@@ -213,13 +221,19 @@ export default function PublicitePage() {
       name: 'EXPANSION',
       summary: 'Pour les entreprises ambitieuses visant une croissance forte',
       price: {
-        threeMonths: isAnnual ? '16 092,00 €' : '1 490,00 €',
-        annual: '16 092,00 €'  // -15% discount
+        threeMonths: isAnnual ? '20 292,60 €' : '1 990,00 €',
+        annual: '20 292,60 €'  // -15% discount
       },
       highlights: [
-        'Jusqu\'à 10 000€ de budget publicitaire géré/mois',
-        '9 visuels publicitaires inclus/mois',
-        'Intégration avancée pixels & API'
+        '💰 Jusqu\'à 10 000€ de budget publicitaire géré/mois',
+        '⚠️ +10% du dépassement facturé séparément si budget > 10 000€',
+        '🎨 9 visuels publicitaires inclus/mois (non cumulables)',
+        '🧠 Création & ciblage stratégique des campagnes',
+        '⚙️ Optimisation des performances',
+        '📈 Reporting mensuel',
+        '📂 Espace collaboratif : Google Chat + Drive',
+        '👥 Exploitation des audiences similaires avancées',
+        '🔧 Intégration avancée des pixels & API'
       ],
       gradient: 'from-[#199CB7] to-[#0F6980]',
       accentColor: 'blue',
@@ -255,7 +269,7 @@ export default function PublicitePage() {
         },
         bonus: {
           title: '🎆 Bonus',
-          items: ['3 vidéos offertes immédiatement', 'Intégration avancée incluse']
+          items: ['3 vidéos offertes immédiatement', 'Audiences similaires avancées', 'Intégration avancée des pixels & API']
         }
       },
       details: [
@@ -538,10 +552,7 @@ export default function PublicitePage() {
 
                     {/* Caractéristiques principales - Flex grow pour prendre tout l'espace disponible */}
                     <div className="space-y-3 mb-6 flex-grow">
-                      {formula.sections.services.items.concat(
-                        formula.sections.creation.items.slice(0, 1),
-                        formula.sections.tracking.items.slice(0, 1)
-                      ).slice(0, 6).map((feature, idx) => (
+                      {formula.highlights.map((feature, idx) => (
                         <div key={idx} className="flex items-start gap-3">
                           <CheckCircle2 className="w-5 h-5 text-[#8B1431] mt-0.5 flex-shrink-0" />
                           <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
