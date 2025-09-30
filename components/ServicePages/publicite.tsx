@@ -179,9 +179,7 @@ export default function PublicitePage() {
             'Jusqu\'à 5 000€ de budget publicitaire géré/mois',
             'Création & ciblage stratégique des campagnes',
             'Optimisation hebdomadaire des performances',
-            'Retargeting : reciblage des audiences',
-            'Exploitation des audiences similaires',
-            'Intégration basique des pixels & API'
+            'Retargeting : reciblage des audiences'
           ]
         },
         tracking: {
@@ -216,7 +214,7 @@ export default function PublicitePage() {
       summary: 'Pour les entreprises ambitieuses visant une croissance forte',
       price: {
         threeMonths: isAnnual ? '16 092,00 €' : '1 490,00 €',
-        annual: '16 092,00 €'  // -10% discount
+        annual: '16 092,00 €'  // -15% discount
       },
       highlights: [
         'Jusqu\'à 10 000€ de budget publicitaire géré/mois',
@@ -234,9 +232,7 @@ export default function PublicitePage() {
             'Jusqu\'à 10 000€ de budget publicitaire géré/mois',
             'Création & ciblage stratégique des campagnes',
             'Optimisation quotidienne des performances',
-            'Retargeting avancé : reciblage des audiences',
-            'Exploitation des audiences similaires',
-            'Intégration avancée des pixels & API'
+            'Retargeting avancé : reciblage des audiences'
           ]
         },
         tracking: {
@@ -535,7 +531,7 @@ export default function PublicitePage() {
                       </p>
                       {isAnnual && (
                         <p className="text-xs text-green-600 mt-1 font-semibold">
-                          {formula.name === 'INITIATION' ? '-20%' : formula.name === 'PROPULSION' ? '-15%' : '-10%'} de réduction
+                          {formula.name === 'INITIATION' ? '-20%' : formula.name === 'PROPULSION' ? '-15%' : '-15%'} de réduction
                         </p>
                       )}
                     </div>
