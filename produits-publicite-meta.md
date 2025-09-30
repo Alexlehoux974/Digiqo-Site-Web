@@ -631,3 +631,554 @@ Captation professionnelle et montage dynamique pour votre marque.
 - **Campagne régulière** : Abonnement Vidéo (populaire)
 - **Lancement produit** : Pack Lancement Social
 - **Campagne d'envergure** : Pack 10 visuels + Abonnement Créatif
+
+---
+
+# Identité de Marque
+
+## Vue d'ensemble
+Nos Solutions d'Identité pour créer, faire évoluer ou définir complètement votre image de marque.
+
+---
+
+## NOS SOLUTIONS D'IDENTITÉ
+
+### ✏️ CRÉATION LOGO
+**Sur devis**
+
+#### Caractéristiques :
+- ✅ Nouvelle création de A à Z d'un logo personnalisé
+- ✅ Format haute définition
+- ✅ Décliné sur fond blanc et noir
+- ✅ Mise à disposition du fichier source
+- ✅ Charte graphique du logo comprise
+
+#### Voir plus :
+Demander un devis
+
+---
+
+### 🎨 REFONTE LOGO
+**Sur devis**
+
+#### Caractéristiques :
+- ✅ Format haute définition
+- ✅ Alignement avec la stratégie de l'entreprise
+- ✅ Respect de l'identité actuelle avec modernisation
+- ✅ Décliné sur fond blanc et noir
+- ✅ Mise à disposition du fichier source
+
+#### Voir plus :
+Demander un devis
+
+---
+
+### 📘 CHARTE GRAPHIQUE COMPLÈTE
+**Sur devis**
+**🌟 Le plus populaire**
+
+#### Caractéristiques :
+- ✅ Logo pro (création ou refonte)
+- ✅ Palette de couleurs et typographie unique
+- ✅ Guide d'utilisation complet
+- ✅ Support imprimés (carte de visite, entête)
+- ✅ Modèles pour documents commerciaux
+- ✅ Guide des bonnes pratiques d'utilisation
+
+#### Voir plus :
+Demander un devis
+
+---
+
+### 🚀 BRANDING COMPLET STARTUP
+**Sur devis**
+
+#### Caractéristiques :
+- ✅ Création complète identité de marque
+- ✅ Logo, charte graphique complète
+- ✅ Pack communication (cartes, flyers, roll-up)
+- ✅ Kit réseaux sociaux complet (bannières, templates)
+- ✅ Modèles de présentation PowerPoint
+- ✅ Guide de marque détaillé
+
+#### Voir plus :
+Demander un devis
+
+---
+
+## POINTS CLÉS À RETENIR
+
+### 🎯 Éléments différenciateurs :
+- **Création Logo** : Nouveau design personnalisé de A à Z
+- **Refonte Logo** : Modernisation respectueuse de l'identité existante
+- **Charte Graphique** : Solution complète la plus populaire
+- **Branding Startup** : Pack tout-en-un pour lancement d'entreprise
+
+### 💡 Services inclus selon la formule :
+- Logo haute définition
+- Déclinaisons sur fonds variés
+- Fichiers sources
+- Guides d'utilisation
+- Supports de communication
+- Templates réseaux sociaux
+
+### 📊 Recommandations :
+- **Nouvelle entreprise** : Création Logo ou Branding Complet Startup
+- **Modernisation** : Refonte Logo
+- **Image professionnelle complète** : Charte Graphique Complète (Le plus populaire)
+- **Lancement startup** : Branding Complet Startup
+
+### ⚠️ Note importante :
+- Toutes les prestations sont sur devis personnalisé
+- Adaptation selon les besoins spécifiques de chaque entreprise
+- Livraison des fichiers sources incluse
+
+---
+
+# Site Web E-commerce Plateforme
+
+## Vue d'ensemble
+Solutions de création de sites web professionnels, avec formulaires de contact, de devis ou e-commerce complet.
+
+---
+
+## NOS FORMULES SITE WEB
+
+### 🌐 SITE VITRINE + FORMULAIRE DE CONTACT
+**Prix : 99€/mois**
+**Engagement minimum 3 mois**
+
+#### Description :
+Affichez votre entreprise et votre activité et services
+
+#### Inclus :
+- ☑️ Présentation complète de votre entreprise et services
+- ☑️ Formulaire de contact professionnel intégré
+- ☑️ Formulaire intelligent - recevez vos demandes directement
+- ☑️ Galerie responsive - valorisez vos réalisations
+- ☑️ SEO + Analytics - soyez visible et mesurez vos résultats
+- ☑️ Design mobile-first - parfait sur tous les écrans
+- ☑️ Personnalisation complète - votre image, vos couleurs
+- ☑️ Hébergement sécurisé + support technique - nous gérons tout
+- ☑️ Témoignages intégrés - rassurez vos prospects
+
+#### Choisir cette formule
+
+#### Voir une démo
+
+---
+
+### 📝 SITE VITRINE + FORMULAIRE DEVIS
+**Prix : 199€/mois**
+**Engagement minimum 3 mois**
+**🔥 Le plus populaire**
+
+#### Description :
+Collectez efficacement des demandes de devis
+
+#### Inclus :
+- 🔥 Formulaire de devis détaillé et personnalisable
+- 🔥 Système de collecte de demandes de devis automatisé
+- 🔥 Formulaire intelligent - centralisez toutes les demandes
+- 🔥 Galerie responsive - valorisez vos réalisations
+- 🔥 SEO optimisé + Analytics - soyez visible et mesurez vos résultats
+- 🔥 Design mobile-first - parfait sur tous les écrans
+- 🔥 Personnalisation complète - couleurs, logo, textes adaptés
+- 🔥 Hébergement sécurisé + support technique inclus
+- 🔥 Témoignages intégrés - rassurez vos prospects
+
+#### Choisir cette formule
+
+#### Voir une démo
+
+---
+
+### 🛒 SITE VITRINE + COMMANDE EN LIGNE
+**Prix : 299€/mois**
+**Engagement minimum 3 mois**
+
+#### Description :
+Adaptée au Snack, Pizzeria, Affichez le menu et recevez les commandes
+
+#### Inclus :
+- ⭐ Menu interactif avec photos et descriptions
+- ⭐ Système de commande en ligne intégré
+- ⭐ Formulaire intelligent - centralisez toutes les demandes
+- ⭐ Galerie responsive - valorisez vos réalisations
+- ⭐ SEO optimisé + Analytics - soyez visible et mesurez vos résultats
+- ⭐ Design mobile-first - parfait sur tous les écrans
+- ⭐ Personnalisation complète - couleurs, logo, textes adaptés
+- ⭐ Hébergement sécurisé + support technique inclus
+- ⭐ Témoignages intégrés - rassurez vos prospects
+
+#### Choisir cette formule
+
+#### Voir une démo
+
+---
+
+## 🚀 Je préfère un site web sur-mesure 🚀
+
+**Projet complexe ? Besoins spécifiques ? Optez pour du développement sur-mesure**
+
+---
+
+## Notre Méthode Premium
+**PROCESSUS & TECHNOLOGIES**
+
+Une approche structurée et des technologies de pointe pour des résultats exceptionnels
+
+### Processus de Développement
+
+#### 1. 📋 Découverte
+- Analyse des besoins, audit technique, définition du cahier des charges
+
+#### 2. 🎨 Design
+- Maquettes UI/UX, prototypage interactif, validation client
+
+#### 3. 💻 Développement
+- Codage sur-mesure, intégrations API, tests unitaires
+
+#### 4. 🚀 Déploiement
+- Mise en production, monitoring, maintenance évolutive
+
+---
+
+## COMPARAISON DES FORMULES
+
+| Critère | VITRINE + CONTACT | VITRINE + DEVIS | VITRINE + COMMANDE |
+|---------|-------------------|-----------------|-------------------|
+| **Prix mensuel** | 99€ | 199€ | 299€ |
+| **Engagement min** | 3 mois | 3 mois | 3 mois |
+| **Formulaire contact** | ✅ | ✅ | ✅ |
+| **Formulaire devis** | ❌ | ✅ Détaillé | ✅ |
+| **Commande en ligne** | ❌ | ❌ | ✅ Menu interactif |
+| **SEO + Analytics** | ✅ | ✅ | ✅ |
+| **Design responsive** | ✅ | ✅ | ✅ |
+| **Hébergement sécurisé** | ✅ | ✅ | ✅ |
+| **Support technique** | ✅ | ✅ | ✅ |
+| **Personnalisation** | ✅ | ✅ | ✅ |
+| **Galerie photos** | ✅ | ✅ | ✅ |
+| **Témoignages** | ✅ | ✅ | ✅ |
+
+---
+
+## POINTS CLÉS À RETENIR
+
+### 🎯 Éléments communs à toutes les formules :
+- Design mobile-first responsive
+- Hébergement sécurisé inclus
+- Support technique complet
+- SEO et Analytics intégrés
+- Personnalisation complète (couleurs, logo, textes)
+- Galerie responsive
+- Témoignages intégrés
+
+### 💡 Différenciateurs principaux :
+1. **Vitrine + Contact** : Solution basique pour présence en ligne
+2. **Vitrine + Devis** : Collecte automatisée de demandes de devis (Le plus populaire)
+3. **Vitrine + Commande** : Solution complète pour restauration avec menu et commandes
+
+### 📊 Recommandations :
+- **Présence simple** : Formule Vitrine + Contact (99€/mois)
+- **Génération de leads** : Formule Vitrine + Devis (199€/mois) - Le plus populaire
+- **Restauration/Snack** : Formule Vitrine + Commande (299€/mois)
+- **Besoins complexes** : Site web sur-mesure
+
+### ⚠️ Notes importantes :
+- Engagement minimum de 3 mois pour toutes les formules
+- Renouvellement automatique mensuel après la période initiale
+- Option sur-mesure disponible pour les projets complexes
+
+---
+
+# Maintenance Web
+
+## Vue d'ensemble
+ShopKeeper pour e-commerce, SiteKeeper pour sites vitrines - Solutions de maintenance complètes pour garantir la performance et la sécurité de vos sites web.
+
+---
+
+## SHOPKEEPER - POUR SITES E-COMMERCE
+
+### 🛡️ SHOPKEEPER ESSENTIAL
+**Prix : 890€/an**
+
+#### Description :
+Mises à jour mensuelles du CMS + passerelle de paiement, sauvegardes hebdomadaires, monitoring de disponibilité
+
+#### Points clés :
+- ⭕ Mises à jour mensuelles
+- ⭕ Sauvegardes hebdomadaires
+- ⭕ 2 retouches annuelles
+
+#### ▸ Voir tous les détails
+
+#### Choisir cette formule
+
+---
+
+### 🚀 SHOPKEEPER PRO
+**Prix : 1 490€/an**
+**🔥 Meilleur rapport qualité/prix**
+
+#### Description :
+Mises à jour hebdomadaires CMS et plugins, monitoring transactions, optimisation de l'expérience utilisateur
+
+#### Points clés :
+- ⭕ Mises à jour hebdomadaires
+- ⭕ 4 retouches annuelles
+- ⭕ Support prioritaire 48h
+
+#### ▸ Voir tous les détails
+
+#### Choisir cette formule
+
+---
+
+### 💎 SHOPKEEPER ULTIMATE
+**Prix : 2 490€/an**
+
+#### Description :
+Mises à jour hebdomadaires complètes, sauvegardes quotidiennes, sécurité renforcée anti-DDoS, 6 retouches incluses
+
+#### Points clés :
+- ⭕ Sauvegardes quotidiennes
+- ⭕ 6 retouches annuelles
+- ⭕ Support premium < 24h
+
+#### ▸ Voir tous les détails
+
+#### Choisir cette formule
+
+---
+
+## SITEKEEPER - POUR SITES VITRINES
+
+### 🛡️ SITEKEEPER ESSENTIAL
+**Prix : 690€/an**
+
+#### Description :
+Mises à jour mensuelles, sauvegardes hebdomadaires, monitoring temps réel, 2 révisions par an
+
+#### Points clés :
+- ⭕ Mises à jour mensuelles
+- ⭕ Sauvegardes hebdomadaires
+- ⭕ Support 72h
+
+#### ▸ Voir tous les détails
+
+#### Choisir cette formule
+
+---
+
+### ⚡ SITEKEEPER PRO
+**Prix : 1 190€/an**
+
+#### Description :
+Mises à jour hebdomadaires complètes, monitoring performance, support prioritaire 48h
+
+#### Points clés :
+- ⭕ Mises à jour hebdomadaires
+- ⭕ 4 révisions par an
+- ⭕ Support prioritaire 48h
+
+#### ▸ Voir tous les détails
+
+#### Choisir cette formule
+
+---
+
+### ⭐ SITEKEEPER ULTIMATE
+**Prix : 1 990€/an**
+
+#### Description :
+Mises à jour hebdomadaires complètes, sauvegardes quotidiennes, sécurité renforcée, support premium 24h
+
+#### Points clés :
+- ⭕ Sauvegardes quotidiennes
+- ⭕ 6 révisions par an
+- ⭕ Support premium 24h
+
+#### ▸ Voir tous les détails
+
+#### Choisir cette formule
+
+---
+
+## COMPARAISON DES FORMULES
+
+### ShopKeeper (Sites E-commerce)
+
+| Critère | ESSENTIAL | PRO | ULTIMATE |
+|---------|-----------|-----|----------|
+| **Prix annuel** | 890€ | 1 490€ | 2 490€ |
+| **Mises à jour** | Mensuelles | Hebdomadaires | Hebdomadaires |
+| **Sauvegardes** | Hebdomadaires | - | Quotidiennes |
+| **Retouches/an** | 2 | 4 | 6 |
+| **Support** | Standard | Prioritaire 48h | Premium < 24h |
+| **Monitoring** | Disponibilité | Transactions | Complet + Anti-DDoS |
+
+### SiteKeeper (Sites Vitrines)
+
+| Critère | ESSENTIAL | PRO | ULTIMATE |
+|---------|-----------|-----|----------|
+| **Prix annuel** | 690€ | 1 190€ | 1 990€ |
+| **Mises à jour** | Mensuelles | Hebdomadaires | Hebdomadaires |
+| **Sauvegardes** | Hebdomadaires | - | Quotidiennes |
+| **Révisions/an** | 2 | 4 | 6 |
+| **Support** | 72h | Prioritaire 48h | Premium 24h |
+| **Monitoring** | Temps réel | Performance | Complet + Sécurité |
+
+---
+
+## POINTS CLÉS À RETENIR
+
+### 🎯 Différences ShopKeeper vs SiteKeeper :
+- **ShopKeeper** : Spécialisé e-commerce avec gestion CMS, passerelles de paiement, monitoring transactions
+- **SiteKeeper** : Optimisé pour sites vitrines avec monitoring performance et temps réel
+
+### 💡 Services inclus selon la formule :
+1. **Essential** : Maintenance de base, idéal pour petits sites
+2. **Pro** : Meilleur rapport qualité/prix, maintenance proactive
+3. **Ultimate** : Protection maximale avec support premium
+
+### 📊 Recommandations :
+- **Petit site vitrine** : SiteKeeper Essential (690€/an)
+- **Site e-commerce actif** : ShopKeeper Pro (1 490€/an) - Meilleur rapport qualité/prix
+- **E-commerce critique** : ShopKeeper Ultimate (2 490€/an)
+- **Site vitrine professionnel** : SiteKeeper Pro (1 190€/an)
+
+### ⚠️ Notes importantes :
+- Tous les tarifs sont annuels
+- Les retouches/révisions incluent modifications mineures de contenu
+- Support technique inclus selon le niveau de formule
+- Monitoring et sauvegardes automatiques
+
+---
+
+# Audit Digital
+
+## Pourquoi un Audit Digital ?
+
+Un diagnostic complet pour identifier vos opportunités de croissance
+
+### 🎯 DIAGNOSTIC COMPLET
+360° de votre présence digitale
+
+### 📊 RAPPORT DÉTAILLÉ
+Document PDF avec recommandations
+
+### ✅ 100% GRATUIT
+Sans engagement ni frais cachés
+
+### 📍 EXPERTISE LOCALE
+Analyse de votre marché local
+
+---
+
+## Notre Audit Complet
+
+3 axes d'analyse pour une vision à 360° de votre présence digitale
+
+---
+
+## 🌐 ANALYSE DE VOS SUPPORTS
+
+Nous analysons en détail votre site web, blog, boutique en ligne, application mobile, tunnel de vente ou plateforme pour identifier les points forts et les opportunités d'amélioration.
+
+### Points d'analyse :
+- ✓ Performance et vitesse de chargement
+- ✓ Responsive design et compatibilité mobile
+- ✓ Analyse SEO technique
+- ✓ Taux de conversion et parcours client
+- ✓ Expérience utilisateur (UX) et navigation
+- ✓ Architecture de l'information
+- ✓ Sécurité et certificats SSL
+- ✓ Accessibilité web (WCAG)
+
+---
+
+## 📱 ANALYSE DE VOS RÉSEAUX SOCIAUX
+
+Nous évaluons votre présence sur les réseaux sociaux, y compris Facebook, Instagram, Twitter, LinkedIn et TikTok, pour optimiser votre stratégie de communication et augmenter votre engagement.
+
+### Points d'analyse :
+- ✓ Cohérence de l'image de marque
+- ✓ Taux d'engagement et portée
+- ✓ Interaction avec la communauté
+- ✓ Optimisation des profils
+- ✓ Qualité et pertinence du contenu
+- ✓ Fréquence de publication
+- ✓ Analyse de la concurrence
+- ✓ Stratégie de hashtags
+
+---
+
+## 📊 ANALYSE DE VOS CAMPAGNES PUB
+
+Nous scrutons vos campagnes SMA et SEA (Réseaux Sociaux et Moteurs de Recherche), Meta Ads, TikTok Ads et Google Ads pour maximiser leur efficacité et atteindre vos objectifs de conversion.
+
+### Points d'analyse :
+- ✓ ROI et performance des campagnes
+- ✓ Qualité des créatives publicitaires
+- ✓ Taux de conversion
+- ✓ A/B testing et optimisations
+- ✓ Ciblage et audiences
+- ✓ Budget et enchères optimales
+- ✓ Score de qualité Google Ads
+- ✓ Tracking et attribution
+
+---
+
+## PROCESSUS D'AUDIT
+
+### 1️⃣ COLLECTE D'INFORMATIONS
+Nous recueillons les données nécessaires sur votre présence digitale actuelle
+
+### 2️⃣ ANALYSE APPROFONDIE
+Notre équipe d'experts analyse chaque aspect de votre présence en ligne
+
+### 3️⃣ RAPPORT DÉTAILLÉ
+Vous recevez un document PDF complet avec :
+- État des lieux détaillé
+- Points forts identifiés
+- Axes d'amélioration prioritaires
+- Recommandations concrètes
+- Plan d'action personnalisé
+
+### 4️⃣ PRÉSENTATION DES RÉSULTATS
+Session de présentation pour expliquer les résultats et répondre à vos questions
+
+---
+
+## POINTS CLÉS À RETENIR
+
+### 🎯 Couverture complète :
+- **Supports digitaux** : Site web, blog, e-commerce, applications
+- **Réseaux sociaux** : Facebook, Instagram, Twitter, LinkedIn, TikTok
+- **Publicité** : Meta Ads, Google Ads, TikTok Ads
+
+### 💡 Bénéfices de l'audit :
+- Identification des forces et faiblesses
+- Opportunités de croissance détectées
+- Recommandations personnalisées
+- Plan d'action concret
+- Benchmark concurrentiel
+
+### 📊 Livrables :
+- Rapport PDF détaillé
+- Analyse à 360°
+- Recommandations prioritaires
+- Session de présentation
+
+### ✅ Avantages :
+- **100% GRATUIT** : Aucun frais caché
+- **Sans engagement** : Liberté totale
+- **Expertise locale** : Connaissance du marché réunionnais
+- **Vision globale** : Analyse complète de votre présence digitale
+
+### ⚠️ Note importante :
+- Audit gratuit et sans engagement
+- Rapport remis sous 5 jours ouvrés
+- Accompagnement personnalisé disponible suite à l'audit

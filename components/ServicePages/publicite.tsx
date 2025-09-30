@@ -476,7 +476,7 @@ export default function PublicitePage() {
                     animate={{ opacity: 1, scale: 1 }}
                     className="bg-gradient-to-r from-green-500 to-green-600 text-white px-3 py-1 rounded-full text-sm font-bold"
                   >
-                    Jusqu'à -20%
+                    Jusqu'à -15%
                   </motion.span>
                 )}
               </div>
