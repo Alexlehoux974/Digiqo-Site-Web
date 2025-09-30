@@ -545,7 +545,7 @@ export default function PublicitePage() {
                       </p>
                       {isAnnual && (
                         <p className="text-xs text-green-600 mt-1 font-semibold">
-                          {formula.name === 'INITIATION' ? '-20%' : formula.name === 'PROPULSION' ? '-15%' : '-15%'} de réduction
+                          -15% de réduction
                         </p>
                       )}
                     </div>
