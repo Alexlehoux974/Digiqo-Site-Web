@@ -1,0 +1,614 @@
+{
+  "metadata": {
+    "source": "Digiqo Site Web - Produits et Services",
+    "version": "1.0",
+    "date": "2025-09-29",
+    "total_products": 48,
+    "categories": 7
+  },
+  "products": [
+    {
+      "category": "PUBLICITÉ META",
+      "product": "Formule Initiation",
+      "type": "MENSUEL",
+      "price": 549,
+      "budget": 2500,
+      "features": [
+        "Gestion & diffusion sur Meta (Facebook & Instagram)",
+        "Jusqu'à 2 500€ de budget publicitaire géré/mois",
+        "Création & ciblage stratégique des campagnes",
+        "Optimisation hebdomadaire des performances",
+        "Retargeting : reciblage des audiences",
+        "3 visuels publicitaires inclus chaque mois (non cumulables)"
+      ]
+    },
+    {
+      "category": "PUBLICITÉ META",
+      "product": "Formule Initiation Annuelle",
+      "type": "ANNUEL",
+      "price": 5599.80,
+      "budget": 2500,
+      "features": [
+        "Gestion & diffusion sur Meta (Facebook & Instagram)",
+        "Jusqu'à 2 500€ de budget publicitaire géré/mois",
+        "Création & ciblage stratégique des campagnes",
+        "Optimisation hebdomadaire des performances",
+        "Retargeting : reciblage des audiences",
+        "3 visuels publicitaires inclus chaque mois (non cumulables)",
+        "Économie de 15% (-988,20€/an)"
+      ]
+    },
+    {
+      "category": "PUBLICITÉ META",
+      "product": "Formule Propulsion",
+      "type": "MENSUEL",
+      "price": 990,
+      "budget": 5000,
+      "popular": true,
+      "features": [
+        "Gestion & diffusion sur Meta (Facebook & Instagram)",
+        "Jusqu'à 5 000€ de budget publicitaire géré/mois",
+        "Création & ciblage stratégique des campagnes",
+        "Optimisation hebdomadaire des performances",
+        "Retargeting : reciblage des audiences",
+        "Exploitation des audiences similaires",
+        "Formule la plus populaire"
+      ]
+    },
+    {
+      "category": "PUBLICITÉ META",
+      "product": "Formule Propulsion Annuelle",
+      "type": "ANNUEL",
+      "price": 9679.80,
+      "budget": 5000,
+      "features": [
+        "Gestion & diffusion sur Meta (Facebook & Instagram)",
+        "Jusqu'à 5 000€ de budget publicitaire géré/mois",
+        "Création & ciblage stratégique des campagnes",
+        "Optimisation hebdomadaire des performances",
+        "Retargeting : reciblage des audiences",
+        "Exploitation des audiences similaires",
+        "Économie de 15% (-2200,20€/an)"
+      ]
+    },
+    {
+      "category": "PUBLICITÉ META",
+      "product": "Formule Expansion",
+      "type": "MENSUEL",
+      "price": 1490,
+      "budget": 10000,
+      "features": [
+        "Gestion & diffusion sur Meta (Facebook & Instagram)",
+        "Jusqu'à 10 000€ de budget publicitaire géré/mois",
+        "Création & ciblage stratégique des campagnes",
+        "Optimisation QUOTIDIENNE des performances",
+        "Retargeting avancé : reciblage des audiences",
+        "Exploitation des audiences similaires",
+        "+10% du dépassement si budget > 10 000€"
+      ]
+    },
+    {
+      "category": "PUBLICITÉ META",
+      "product": "Formule Expansion Annuelle",
+      "type": "ANNUEL",
+      "price": 20298,
+      "budget": 10000,
+      "features": [
+        "Gestion & diffusion sur Meta (Facebook & Instagram)",
+        "Jusqu'à 10 000€ de budget publicitaire géré/mois",
+        "Création & ciblage stratégique des campagnes",
+        "Optimisation QUOTIDIENNE des performances",
+        "Retargeting avancé : reciblage des audiences",
+        "Exploitation des audiences similaires",
+        "Économie de 15% (-2582€/an)"
+      ]
+    },
+    {
+      "category": "COMMUNITY MANAGEMENT",
+      "product": "Formule Essentiel",
+      "type": "MENSUEL",
+      "price": 662.40,
+      "posts": 5,
+      "stories": 5,
+      "features": [
+        "5 posts par mois",
+        "5 stories par mois",
+        "1 déplacement sur site (1h)",
+        "Réponses aux commentaires et messages en 48h ouvrées",
+        "Gestion des interactions pendant les heures de bureau",
+        "Suppression des commentaires inappropriés",
+        "Abonnement de 3 mois minimum"
+      ]
+    },
+    {
+      "category": "COMMUNITY MANAGEMENT",
+      "product": "Formule Essentiel Annuelle",
+      "type": "ANNUEL",
+      "price": 6359.04,
+      "posts": 5,
+      "stories": 5,
+      "features": [
+        "5 posts par mois",
+        "5 stories par mois",
+        "1 déplacement sur site (1h)",
+        "Réponses aux commentaires et messages en 48h ouvrées",
+        "Économie de 20% (-1589,76€/an)"
+      ]
+    },
+    {
+      "category": "COMMUNITY MANAGEMENT",
+      "product": "Formule Dynamique",
+      "type": "MENSUEL",
+      "price": 1142.40,
+      "posts": 10,
+      "stories": 10,
+      "reels": 2,
+      "popular": true,
+      "features": [
+        "10 posts par mois",
+        "10 stories par mois",
+        "2 Reels/TikToks par mois",
+        "1 déplacement sur site (1h)",
+        "Réponses aux commentaires et messages en 24h ouvrées",
+        "Abonnement de 3 mois minimum",
+        "Formule populaire"
+      ]
+    },
+    {
+      "category": "COMMUNITY MANAGEMENT",
+      "product": "Formule Dynamique Annuelle",
+      "type": "ANNUEL",
+      "price": 10967.04,
+      "posts": 10,
+      "stories": 10,
+      "reels": 2,
+      "features": [
+        "10 posts par mois",
+        "10 stories par mois",
+        "2 Reels/TikToks par mois",
+        "1 déplacement sur site (1h)",
+        "Économie de 20% (-2741,76€/an)"
+      ]
+    },
+    {
+      "category": "COMMUNITY MANAGEMENT",
+      "product": "Formule Stratégique",
+      "type": "MENSUEL",
+      "price": 1718.40,
+      "posts": 20,
+      "stories": 20,
+      "reels": 4,
+      "features": [
+        "20 posts par mois",
+        "20 stories par mois",
+        "4 Reels/TikToks par mois",
+        "2 déplacements sur site (3h)",
+        "Réponses aux commentaires en 12h maximum",
+        "Modération proactive pour stimuler l'engagement",
+        "Engagement de 12 mois ferme"
+      ]
+    },
+    {
+      "category": "COMMUNITY MANAGEMENT",
+      "product": "Formule Stratégique Annuelle",
+      "type": "ANNUEL",
+      "price": 16496.64,
+      "posts": 20,
+      "stories": 20,
+      "reels": 4,
+      "features": [
+        "20 posts par mois",
+        "20 stories par mois",
+        "4 Reels/TikToks par mois",
+        "2 déplacements sur site (3h)",
+        "Économie de 20% (-4124,16€/an)"
+      ]
+    },
+    {
+      "category": "COMMUNITY MANAGEMENT",
+      "product": "Formule Élite",
+      "type": "MENSUEL",
+      "price": 2678.40,
+      "posts": 30,
+      "stories": 30,
+      "reels": 6,
+      "features": [
+        "30 posts par mois",
+        "30 stories par mois",
+        "6 Reels/TikToks par mois",
+        "3 déplacements sur site (6h)",
+        "Réponses en moins de 6h 7j/7",
+        "Gestion et animation de 8h à 22h",
+        "Analyse des tendances et recommandations stratégiques",
+        "Gestion avancée des avis et crises",
+        "Engagement de 12 mois ferme"
+      ]
+    },
+    {
+      "category": "COMMUNITY MANAGEMENT",
+      "product": "Formule Élite Annuelle",
+      "type": "ANNUEL",
+      "price": 25712.64,
+      "posts": 30,
+      "stories": 30,
+      "reels": 6,
+      "features": [
+        "30 posts par mois",
+        "30 stories par mois",
+        "6 Reels/TikToks par mois",
+        "3 déplacements sur site (6h)",
+        "Réponses en moins de 6h 7j/7",
+        "Économie de 20% (-6428,16€/an)"
+      ]
+    },
+    {
+      "category": "CRÉATIFS PUBLICITAIRES",
+      "product": "Abonnement Photo Mensuel",
+      "type": "MENSUEL",
+      "price": 300,
+      "features": [
+        "1 session photo par mois",
+        "1h de prise de vue maximum",
+        "Portrait, produit ou lifestyle",
+        "15 photos HD soigneusement retouchées",
+        "Colorimétrie professionnelle",
+        "Engagement 3 mois minimum"
+      ]
+    },
+    {
+      "category": "CRÉATIFS PUBLICITAIRES",
+      "product": "Abonnement Drone Mensuel",
+      "type": "MENSUEL",
+      "price": 380,
+      "features": [
+        "Session drone mensuelle",
+        "1 session drone par mois (1h sur site)",
+        "Montage dynamique (20-25 sec)",
+        "OU livraison des rushs bruts",
+        "Livraison sous 5 jours ouvrés",
+        "Engagement 3 mois minimum"
+      ]
+    },
+    {
+      "category": "CRÉATIFS PUBLICITAIRES",
+      "product": "Abonnement Vidéo Mensuel",
+      "type": "MENSUEL",
+      "price": 449,
+      "popular": true,
+      "features": [
+        "1 vidéo par mois",
+        "1h de tournage maximum",
+        "Durée finale : 20 à 60 secondes",
+        "Montage dynamique avec textes, musique et effets visuels",
+        "Jusqu'à 2 retouches incluses",
+        "Engagement 3 mois minimum",
+        "Le plus populaire"
+      ]
+    },
+    {
+      "category": "CRÉATIFS PUBLICITAIRES",
+      "product": "Abonnement Créatif Mensuel",
+      "type": "MENSUEL",
+      "price": 750,
+      "features": [
+        "Pack mensuel vidéo + photo",
+        "1 vidéo par mois (1h de tournage)",
+        "15 photos HD retouchées par mois",
+        "Retouches photo professionnelles",
+        "Montage vidéo dynamique (20-60 sec)",
+        "Engagement 3 mois minimum"
+      ]
+    },
+    {
+      "category": "CRÉATIFS PUBLICITAIRES",
+      "product": "Créatif Publicitaire (1 visuel)",
+      "type": "ACHAT_UNIQUE",
+      "price": 55,
+      "features": [
+        "3 formats livrés",
+        "1:1 (1080x1080 px)",
+        "9:16 (1080x1920 px - story/reel)",
+        "4:5 (1080x1350 px - fil d'actualité)",
+        "Personnalisation avec logo et message",
+        "Optimisé pour l'engagement",
+        "Livraison sous 2 jours"
+      ]
+    },
+    {
+      "category": "CRÉATIFS PUBLICITAIRES",
+      "product": "Créatifs Publicitaires (3 visuels)",
+      "type": "ACHAT_UNIQUE",
+      "price": 135,
+      "features": [
+        "3 visuels différents",
+        "3 formats pour chaque visuel",
+        "Total : 9 fichiers livrés",
+        "Personnalisation complète",
+        "Optimisés pour Meta",
+        "Livraison sous 3 jours"
+      ]
+    },
+    {
+      "category": "CRÉATIFS PUBLICITAIRES",
+      "product": "Créatifs Publicitaires (5 visuels)",
+      "type": "ACHAT_UNIQUE",
+      "price": 200,
+      "popular": true,
+      "features": [
+        "5 visuels différents",
+        "3 formats pour chaque visuel",
+        "Total : 15 fichiers livrés",
+        "Personnalisation avec identité",
+        "Optimisés pour conversion",
+        "Livraison sous 5 jours",
+        "Meilleur rapport qualité/prix"
+      ]
+    },
+    {
+      "category": "CRÉATIFS PUBLICITAIRES",
+      "product": "Créatifs Publicitaires (10 visuels)",
+      "type": "ACHAT_UNIQUE",
+      "price": 350,
+      "features": [
+        "10 visuels différents",
+        "3 formats pour chaque visuel",
+        "Total : 30 fichiers livrés",
+        "Direction artistique complète",
+        "A/B testing ready",
+        "Livraison sous 7 jours"
+      ]
+    },
+    {
+      "category": "CRÉATIFS PUBLICITAIRES",
+      "product": "Shooting Essentiel 15",
+      "type": "PRESTATION_UNIQUE",
+      "price": 349.90,
+      "features": [
+        "Session photo pro (1h)",
+        "Portrait, produit ou lifestyle",
+        "15 photos HD retouchées",
+        "Colorimétrie & retouches",
+        "Export multi-formats",
+        "Version web optimisée"
+      ]
+    },
+    {
+      "category": "CRÉATIFS PUBLICITAIRES",
+      "product": "Vidéo Signature",
+      "type": "PRESTATION_UNIQUE",
+      "price": 549.90,
+      "features": [
+        "Captation vidéo pro (1h)",
+        "Sony A7IV qualité exceptionnelle",
+        "Montage dynamique (20-25 sec)",
+        "Transitions fluides et rythmées",
+        "Textes & sous-titres inclus",
+        "Effets visuels & animations"
+      ]
+    },
+    {
+      "category": "CRÉATIFS PUBLICITAIRES",
+      "product": "Pack Lancement Social",
+      "type": "PRESTATION_UNIQUE",
+      "price": 799,
+      "features": [
+        "1 vidéo dynamique de teasing",
+        "Durée : 20 à 25 secondes",
+        "10 photos d'ambiance/teasing",
+        "Montages & retouches incluses",
+        "Contenu prêt à poster",
+        "Formats Facebook & Instagram"
+      ]
+    },
+    {
+      "category": "IDENTITÉ DE MARQUE",
+      "product": "Création Logo",
+      "type": "SUR_DEVIS",
+      "features": [
+        "Nouvelle création de A à Z d'un logo personnalisé",
+        "Format haute définition",
+        "Décliné sur fond blanc et noir",
+        "Mise à disposition du fichier source",
+        "Charte graphique du logo comprise"
+      ]
+    },
+    {
+      "category": "IDENTITÉ DE MARQUE",
+      "product": "Refonte Logo",
+      "type": "SUR_DEVIS",
+      "features": [
+        "Format haute définition",
+        "Alignement avec la stratégie de l'entreprise",
+        "Respect de l'identité actuelle avec modernisation",
+        "Décliné sur fond blanc et noir",
+        "Mise à disposition du fichier source"
+      ]
+    },
+    {
+      "category": "IDENTITÉ DE MARQUE",
+      "product": "Charte Graphique Complète",
+      "type": "SUR_DEVIS",
+      "popular": true,
+      "features": [
+        "Logo pro (création ou refonte)",
+        "Palette de couleurs et typographie unique",
+        "Guide d'utilisation complet",
+        "Support imprimés (carte de visite, entête)",
+        "Modèles pour documents commerciaux",
+        "Guide des bonnes pratiques d'utilisation",
+        "Le plus populaire"
+      ]
+    },
+    {
+      "category": "IDENTITÉ DE MARQUE",
+      "product": "Branding Complet Startup",
+      "type": "SUR_DEVIS",
+      "features": [
+        "Création complète identité de marque",
+        "Logo, charte graphique complète",
+        "Pack communication (cartes, flyers, roll-up)",
+        "Kit réseaux sociaux complet (bannières, templates)",
+        "Modèles de présentation PowerPoint",
+        "Guide de marque détaillé"
+      ]
+    },
+    {
+      "category": "SITE WEB",
+      "product": "Site Vitrine + Formulaire de Contact",
+      "type": "MENSUEL",
+      "price": 99,
+      "features": [
+        "Présentation complète de votre entreprise et services",
+        "Formulaire de contact professionnel intégré",
+        "Formulaire intelligent - recevez vos demandes directement",
+        "Galerie responsive - valorisez vos réalisations",
+        "SEO + Analytics - soyez visible et mesurez vos résultats",
+        "Design mobile-first - parfait sur tous les écrans",
+        "Personnalisation complète - votre image, vos couleurs",
+        "Hébergement sécurisé + support technique",
+        "Témoignages intégrés",
+        "Engagement minimum 3 mois"
+      ]
+    },
+    {
+      "category": "SITE WEB",
+      "product": "Site Vitrine + Formulaire Devis",
+      "type": "MENSUEL",
+      "price": 199,
+      "popular": true,
+      "features": [
+        "Formulaire de devis détaillé et personnalisable",
+        "Système de collecte de demandes de devis automatisé",
+        "Formulaire intelligent - centralisez toutes les demandes",
+        "Galerie responsive - valorisez vos réalisations",
+        "SEO optimisé + Analytics",
+        "Design mobile-first",
+        "Personnalisation complète",
+        "Hébergement sécurisé + support technique inclus",
+        "Témoignages intégrés",
+        "Engagement minimum 3 mois",
+        "Le plus populaire"
+      ]
+    },
+    {
+      "category": "SITE WEB",
+      "product": "Site Vitrine + Commande en Ligne",
+      "type": "MENSUEL",
+      "price": 299,
+      "features": [
+        "Menu interactif avec photos et descriptions",
+        "Système de commande en ligne intégré",
+        "Formulaire intelligent - centralisez toutes les demandes",
+        "Galerie responsive",
+        "SEO optimisé + Analytics",
+        "Design mobile-first",
+        "Personnalisation complète",
+        "Hébergement sécurisé + support technique inclus",
+        "Témoignages intégrés",
+        "Engagement minimum 3 mois",
+        "Adapté au Snack, Pizzeria"
+      ]
+    },
+    {
+      "category": "MAINTENANCE WEB",
+      "product": "ShopKeeper Essential",
+      "type": "ANNUEL",
+      "price": 890,
+      "features": [
+        "Mises à jour mensuelles du CMS + passerelle de paiement",
+        "Sauvegardes hebdomadaires",
+        "Monitoring de disponibilité",
+        "2 retouches annuelles",
+        "Pour sites e-commerce"
+      ]
+    },
+    {
+      "category": "MAINTENANCE WEB",
+      "product": "ShopKeeper Pro",
+      "type": "ANNUEL",
+      "price": 1490,
+      "popular": true,
+      "features": [
+        "Mises à jour hebdomadaires CMS et plugins",
+        "Monitoring transactions",
+        "Optimisation de l'expérience utilisateur",
+        "4 retouches annuelles",
+        "Support prioritaire 48h",
+        "Pour sites e-commerce",
+        "Meilleur rapport qualité/prix"
+      ]
+    },
+    {
+      "category": "MAINTENANCE WEB",
+      "product": "ShopKeeper Ultimate",
+      "type": "ANNUEL",
+      "price": 2490,
+      "features": [
+        "Mises à jour hebdomadaires complètes",
+        "Sauvegardes quotidiennes",
+        "Sécurité renforcée anti-DDoS",
+        "6 retouches incluses",
+        "Support premium < 24h",
+        "Pour sites e-commerce"
+      ]
+    },
+    {
+      "category": "MAINTENANCE WEB",
+      "product": "SiteKeeper Essential",
+      "type": "ANNUEL",
+      "price": 690,
+      "features": [
+        "Mises à jour mensuelles",
+        "Sauvegardes hebdomadaires",
+        "Monitoring temps réel",
+        "2 révisions par an",
+        "Support 72h",
+        "Pour sites vitrines"
+      ]
+    },
+    {
+      "category": "MAINTENANCE WEB",
+      "product": "SiteKeeper Pro",
+      "type": "ANNUEL",
+      "price": 1190,
+      "features": [
+        "Mises à jour hebdomadaires complètes",
+        "Monitoring performance",
+        "4 révisions par an",
+        "Support prioritaire 48h",
+        "Pour sites vitrines"
+      ]
+    },
+    {
+      "category": "MAINTENANCE WEB",
+      "product": "SiteKeeper Ultimate",
+      "type": "ANNUEL",
+      "price": 1990,
+      "features": [
+        "Mises à jour hebdomadaires complètes",
+        "Sauvegardes quotidiennes",
+        "Sécurité renforcée",
+        "6 révisions par an",
+        "Support premium 24h",
+        "Pour sites vitrines"
+      ]
+    },
+    {
+      "category": "AUDIT DIGITAL",
+      "product": "Audit Complet Digital GRATUIT",
+      "type": "GRATUIT",
+      "price": 0,
+      "features": [
+        "Diagnostic complet à 360° de votre présence digitale",
+        "Analyse de vos supports (site web, blog, boutique, application)",
+        "Analyse de vos réseaux sociaux (Facebook, Instagram, Twitter, LinkedIn, TikTok)",
+        "Analyse de vos campagnes publicitaires (Meta Ads, Google Ads, TikTok Ads)",
+        "Rapport PDF détaillé avec recommandations",
+        "Session de présentation des résultats",
+        "100% GRATUIT et sans engagement",
+        "Expertise locale du marché réunionnais",
+        "Remis sous 5 jours ouvrés"
+      ]
+    }
+  ]
+}

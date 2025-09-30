@@ -1,0 +1,40 @@
+Catégorie,Produit,Type,Prix,Prix_Annuel,Budget_Pub,Posts,Stories,Reels,Caractéristiques_Principales
+PUBLICITÉ META,Formule Initiation,MENSUEL,549,,2500,,,,"Gestion Meta (Facebook & Instagram), Budget jusqu'à 2500€/mois, Optimisation hebdomadaire, Retargeting, 3 visuels inclus/mois"
+PUBLICITÉ META,Formule Initiation Annuelle,ANNUEL,,5599.80,2500,,,,"Économie 15% (-988€/an), Gestion Meta, Budget jusqu'à 2500€/mois, Optimisation hebdomadaire, Retargeting, 3 visuels inclus/mois"
+PUBLICITÉ META,Formule Propulsion,MENSUEL,990,,5000,,,,"LA PLUS POPULAIRE, Gestion Meta, Budget jusqu'à 5000€/mois, Optimisation hebdomadaire, Retargeting, Audiences similaires"
+PUBLICITÉ META,Formule Propulsion Annuelle,ANNUEL,,9679.80,5000,,,,"Économie 15% (-2200€/an), Gestion Meta, Budget jusqu'à 5000€/mois, Optimisation hebdomadaire, Audiences similaires"
+PUBLICITÉ META,Formule Expansion,MENSUEL,1490,,10000,,,,"Gestion Meta, Budget jusqu'à 10000€/mois, Optimisation QUOTIDIENNE, Retargeting avancé, Audiences similaires, +10% si >10k€"
+PUBLICITÉ META,Formule Expansion Annuelle,ANNUEL,,20298,10000,,,,"Économie 15% (-2582€/an), Gestion Meta, Budget jusqu'à 10000€/mois, Optimisation QUOTIDIENNE, Retargeting avancé"
+COMMUNITY MANAGEMENT,Formule Essentiel,MENSUEL,662.40,,,5,5,0,"1 déplacement sur site (1h), Réponses en 48h ouvrées, Gestion heures bureau, Engagement 3 mois min"
+COMMUNITY MANAGEMENT,Formule Essentiel Annuelle,ANNUEL,,6359.04,,5,5,0,"Économie 20% (-1590€/an), 1 déplacement/mois, Réponses en 48h"
+COMMUNITY MANAGEMENT,Formule Dynamique,MENSUEL,1142.40,,,10,10,2,"POPULAIRE, 1 déplacement sur site (1h), Réponses en 24h ouvrées, Engagement 3 mois min"
+COMMUNITY MANAGEMENT,Formule Dynamique Annuelle,ANNUEL,,10967.04,,10,10,2,"Économie 20% (-2742€/an), 1 déplacement/mois, Réponses en 24h"
+COMMUNITY MANAGEMENT,Formule Stratégique,MENSUEL,1718.40,,,20,20,4,"2 déplacements (3h), Réponses en 12h max, Modération proactive, Engagement 12 mois ferme"
+COMMUNITY MANAGEMENT,Formule Stratégique Annuelle,ANNUEL,,16496.64,,20,20,4,"Économie 20% (-4124€/an), 2 déplacements/mois, Modération proactive"
+COMMUNITY MANAGEMENT,Formule Élite,MENSUEL,2678.40,,,30,30,6,"3 déplacements (6h), Réponses <6h 7j/7, Gestion 8h-22h, Analyse tendances, Gestion crises, Engagement 12 mois"
+COMMUNITY MANAGEMENT,Formule Élite Annuelle,ANNUEL,,25712.64,,30,30,6,"Économie 20% (-6428€/an), Gestion premium 7j/7, Animation continue"
+CRÉATIFS PUBLICITAIRES,Abonnement Photo Mensuel,MENSUEL,300,,,,,,"1 session photo/mois (1h), 15 photos HD retouchées, Colorimétrie pro, Engagement 3 mois min"
+CRÉATIFS PUBLICITAIRES,Abonnement Drone Mensuel,MENSUEL,380,,,,,,"1 session drone/mois (1h), Montage 20-25 sec OU rushs bruts, Livraison 5 jours, Engagement 3 mois"
+CRÉATIFS PUBLICITAIRES,Abonnement Vidéo Mensuel,MENSUEL,449,,,,,,"LE PLUS POPULAIRE, 1 vidéo/mois (1h), 20-60 secondes, Montage dynamique, 2 retouches incluses, Engagement 3 mois"
+CRÉATIFS PUBLICITAIRES,Abonnement Créatif Mensuel,MENSUEL,750,,,,,,"Pack vidéo + photo, 1 vidéo/mois, 15 photos HD/mois, Montage dynamique, Engagement 3 mois"
+CRÉATIFS PUBLICITAIRES,Créatif Publicitaire (1 visuel),ACHAT_UNIQUE,55,,,,,,"3 formats livrés, Optimisé Meta, Personnalisation complète, Livraison 2 jours"
+CRÉATIFS PUBLICITAIRES,Créatifs Publicitaires (3 visuels),ACHAT_UNIQUE,135,,,,,,"3 visuels, 9 fichiers total, Optimisés Meta, Livraison 3 jours"
+CRÉATIFS PUBLICITAIRES,Créatifs Publicitaires (5 visuels),ACHAT_UNIQUE,200,,,,,,"MEILLEUR RAPPORT QUALITÉ/PRIX, 5 visuels, 15 fichiers, Optimisés conversion, Livraison 5 jours"
+CRÉATIFS PUBLICITAIRES,Créatifs Publicitaires (10 visuels),ACHAT_UNIQUE,350,,,,,,"10 visuels, 30 fichiers, Direction artistique complète, A/B testing ready, Livraison 7 jours"
+CRÉATIFS PUBLICITAIRES,Shooting Essentiel 15,PRESTATION_UNIQUE,349.90,,,,,,"Session photo pro (1h), 15 photos HD retouchées, Export multi-formats, Version web optimisée"
+CRÉATIFS PUBLICITAIRES,Vidéo Signature,PRESTATION_UNIQUE,549.90,,,,,,"Captation vidéo pro (1h), Sony A7IV, Montage 20-25 sec, Textes & sous-titres, Effets visuels"
+CRÉATIFS PUBLICITAIRES,Pack Lancement Social,PRESTATION_UNIQUE,799,,,,,,"1 vidéo teasing 20-25 sec, 10 photos ambiance, Contenu prêt à poster, Formats FB & Instagram"
+IDENTITÉ DE MARQUE,Création Logo,SUR_DEVIS,,,,,,,Création A à Z personnalisée, Format HD, Déclinaisons fond blanc/noir, Fichier source, Charte graphique
+IDENTITÉ DE MARQUE,Refonte Logo,SUR_DEVIS,,,,,,,Format HD, Alignement stratégie entreprise, Modernisation respectueuse, Fichier source
+IDENTITÉ DE MARQUE,Charte Graphique Complète,SUR_DEVIS,,,,,,,LE PLUS POPULAIRE, Logo pro, Palette couleurs, Guide utilisation, Supports imprimés, Modèles commerciaux
+IDENTITÉ DE MARQUE,Branding Complet Startup,SUR_DEVIS,,,,,,,Identité complète, Logo + charte, Pack communication, Kit réseaux sociaux, Modèles PowerPoint, Guide marque
+SITE WEB,Site Vitrine + Formulaire Contact,MENSUEL,99,,,,,,"Présentation entreprise, Formulaire contact, Galerie responsive, SEO + Analytics, Mobile-first, Hébergement inclus, Engagement 3 mois"
+SITE WEB,Site Vitrine + Formulaire Devis,MENSUEL,199,,,,,,"LE PLUS POPULAIRE, Formulaire devis personnalisable, Collecte automatisée, SEO optimisé, Hébergement inclus, Engagement 3 mois"
+SITE WEB,Site Vitrine + Commande en Ligne,MENSUEL,299,,,,,,"Pour Snack/Pizzeria, Menu interactif, Commande en ligne, SEO optimisé, Hébergement inclus, Engagement 3 mois"
+MAINTENANCE WEB,ShopKeeper Essential,ANNUEL,,890,,,,,Pour e-commerce, MAJ mensuelles CMS, Sauvegardes hebdo, Monitoring disponibilité, 2 retouches/an
+MAINTENANCE WEB,ShopKeeper Pro,ANNUEL,,1490,,,,,MEILLEUR RAPPORT pour e-commerce, MAJ hebdo, Monitoring transactions, 4 retouches/an, Support 48h
+MAINTENANCE WEB,ShopKeeper Ultimate,ANNUEL,,2490,,,,,E-commerce premium, MAJ hebdo, Sauvegardes quotidiennes, Anti-DDoS, 6 retouches/an, Support <24h
+MAINTENANCE WEB,SiteKeeper Essential,ANNUEL,,690,,,,,Pour sites vitrines, MAJ mensuelles, Sauvegardes hebdo, Monitoring temps réel, 2 révisions/an, Support 72h
+MAINTENANCE WEB,SiteKeeper Pro,ANNUEL,,1190,,,,,Sites vitrines pro, MAJ hebdo, Monitoring performance, 4 révisions/an, Support prioritaire 48h
+MAINTENANCE WEB,SiteKeeper Ultimate,ANNUEL,,1990,,,,,Sites vitrines premium, MAJ hebdo, Sauvegardes quotidiennes, Sécurité renforcée, 6 révisions/an, Support 24h
+AUDIT DIGITAL,Audit Complet Digital GRATUIT,GRATUIT,0,0,,,,,"100% GRATUIT, Diagnostic 360°, Analyse supports web, Analyse réseaux sociaux, Analyse campagnes pub, Rapport PDF détaillé, Expertise locale, Livraison 5 jours"

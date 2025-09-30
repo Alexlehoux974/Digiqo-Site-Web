@@ -1,0 +1,2424 @@
+{
+  "metadata": {
+    "source": "Digiqo Site Web - FAQ et Questions Fréquentes",
+    "version": "1.0",
+    "date": "2025-09-29",
+    "total_questions": 122,
+    "categories": 20
+  },
+  "faqs": [
+    {
+      "id": "faq_001",
+      "category": "Services généraux",
+      "subcategory": "Offres Digiqo",
+      "question": "Quels services propose Digiqo ?",
+      "answer": "Digiqo propose une gamme complète de services de marketing digital incluant : la publicité en ligne (Google Ads, Meta Ads), le community management, le développement web, le SEO, la production vidéo, l'identité visuelle, et l'audit digital.",
+      "keywords": [
+        "services",
+        "marketing digital",
+        "publicité",
+        "community management",
+        "développement web",
+        "SEO",
+        "production vidéo",
+        "identité visuelle",
+        "audit digital"
+      ],
+      "context": "Question générale sur l'offre de services de Digiqo",
+      "intent": "découverte_services",
+      "embedding_text": "Quels services propose Digiqo ? Digiqo propose une gamme complète de services de marketing digital incluant la publicité en ligne Google Ads Meta Ads le community management le développement web le SEO la production vidéo l'identité visuelle et l'audit digital"
+    },
+    {
+      "id": "faq_002",
+      "category": "Services généraux",
+      "subcategory": "Zone d'intervention",
+      "question": "Dans quelles zones géographiques intervenez-vous ?",
+      "answer": "Nous intervenons principalement à La Réunion, mais nous accompagnons également des clients dans toute la zone Océan Indien (Maurice, Mayotte, Madagascar) et en métropole.",
+      "keywords": [
+        "zones géographiques",
+        "La Réunion",
+        "Océan Indien",
+        "Maurice",
+        "Mayotte",
+        "Madagascar",
+        "métropole",
+        "intervention"
+      ],
+      "context": "Zone de couverture géographique de Digiqo",
+      "intent": "zone_intervention",
+      "embedding_text": "Dans quelles zones géographiques intervenez-vous ? Nous intervenons principalement à La Réunion mais nous accompagnons également des clients dans toute la zone Océan Indien Maurice Mayotte Madagascar et en métropole"
+    },
+    {
+      "id": "faq_003",
+      "category": "Services généraux",
+      "subcategory": "Processus",
+      "question": "Comment se déroule un projet avec Digiqo ?",
+      "answer": "Un projet avec Digiqo suit généralement ces étapes : 1) Audit initial gratuit pour comprendre vos besoins, 2) Proposition stratégique personnalisée, 3) Validation et lancement du projet, 4) Suivi régulier avec reporting mensuel, 5) Optimisation continue basée sur les résultats.",
+      "keywords": [
+        "projet",
+        "processus",
+        "étapes",
+        "audit",
+        "stratégie",
+        "suivi",
+        "reporting",
+        "optimisation"
+      ],
+      "context": "Méthodologie de travail et déroulement d'un projet",
+      "intent": "processus_projet",
+      "embedding_text": "Comment se déroule un projet avec Digiqo ? Un projet suit ces étapes audit initial gratuit proposition stratégique personnalisée validation lancement suivi régulier reporting mensuel optimisation continue basée résultats"
+    },
+    {
+      "id": "faq_004",
+      "category": "Services généraux",
+      "subcategory": "Délais",
+      "question": "Quels sont les délais moyens de réalisation ?",
+      "answer": "Les délais varient selon le type de projet : Site vitrine (2-4 semaines), E-commerce (4-8 semaines), Campagne publicitaire (48h après validation), Community management (démarrage sous 48h), Audit digital (1 semaine), Production vidéo (2-3 semaines).",
+      "keywords": [
+        "délais",
+        "réalisation",
+        "site vitrine",
+        "e-commerce",
+        "campagne publicitaire",
+        "community management",
+        "audit digital",
+        "production vidéo"
+      ],
+      "context": "Temps de réalisation des différents services",
+      "intent": "delais_realisation",
+      "embedding_text": "Quels sont les délais moyens de réalisation ? Les délais varient site vitrine 2-4 semaines e-commerce 4-8 semaines campagne publicitaire 48h après validation community management démarrage 48h audit digital 1 semaine production vidéo 2-3 semaines"
+    },
+    {
+      "id": "faq_005",
+      "category": "Publicité en ligne",
+      "subcategory": "Google Ads",
+      "question": "Qu'est-ce que Google Ads et comment ça fonctionne ?",
+      "answer": "Google Ads est la plateforme publicitaire de Google qui permet d'afficher vos annonces dans les résultats de recherche, sur YouTube, Gmail et des millions de sites partenaires. Vous ne payez que lorsqu'un utilisateur clique sur votre annonce (système CPC - Coût Par Clic).",
+      "keywords": [
+        "Google Ads",
+        "plateforme publicitaire",
+        "annonces",
+        "résultats recherche",
+        "YouTube",
+        "Gmail",
+        "CPC",
+        "coût par clic"
+      ],
+      "context": "Explication du fonctionnement de Google Ads",
+      "intent": "comprendre_google_ads",
+      "embedding_text": "Qu'est-ce que Google Ads et comment ça fonctionne ? Google Ads plateforme publicitaire Google afficher annonces résultats recherche YouTube Gmail sites partenaires payez utilisateur clique annonce système CPC coût par clic"
+    },
+    {
+      "id": "faq_006",
+      "category": "Publicité en ligne",
+      "subcategory": "Budget",
+      "question": "Quel budget prévoir pour une campagne Google Ads ?",
+      "answer": "Le budget minimum recommandé est de 500€/mois pour obtenir des résultats significatifs. Cependant, le budget optimal dépend de votre secteur d'activité, de la concurrence sur vos mots-clés et de vos objectifs. Nous proposons des forfaits à partir de 349€/mois de gestion + votre budget publicitaire.",
+      "keywords": [
+        "budget",
+        "Google Ads",
+        "campagne",
+        "500€",
+        "forfaits",
+        "349€",
+        "gestion",
+        "budget publicitaire"
+      ],
+      "context": "Investissement nécessaire pour Google Ads",
+      "intent": "budget_google_ads",
+      "embedding_text": "Quel budget prévoir pour une campagne Google Ads ? Budget minimum recommandé 500€/mois résultats significatifs budget optimal dépend secteur activité concurrence mots-clés objectifs forfaits 349€/mois gestion plus budget publicitaire"
+    },
+    {
+      "id": "faq_007",
+      "category": "Publicité en ligne",
+      "subcategory": "ROI",
+      "question": "Quel retour sur investissement puis-je espérer ?",
+      "answer": "Le ROI moyen de nos campagnes est de 300% à 800%. Cela signifie que pour 1€ investi, vous générez entre 3€ et 8€ de chiffre d'affaires. Ces résultats varient selon votre secteur, votre site web et la qualité de votre offre. Nous garantissons transparence et optimisation continue.",
+      "keywords": [
+        "ROI",
+        "retour investissement",
+        "300%",
+        "800%",
+        "chiffre affaires",
+        "résultats",
+        "transparence",
+        "optimisation"
+      ],
+      "context": "Performance et retour sur investissement des campagnes",
+      "intent": "roi_publicite",
+      "embedding_text": "Quel retour sur investissement puis-je espérer ? ROI moyen campagnes 300% 800% signifie 1€ investi générez entre 3€ 8€ chiffre affaires résultats varient secteur site web qualité offre garantissons transparence optimisation continue"
+    },
+    {
+      "id": "faq_008",
+      "category": "Publicité en ligne",
+      "subcategory": "Délais résultats",
+      "question": "En combien de temps vais-je voir des résultats ?",
+      "answer": "Les premiers résultats sont visibles dès les premières 48h après le lancement. Cependant, une période d'optimisation de 2 à 4 semaines est nécessaire pour atteindre les performances optimales. L'algorithme de Google a besoin de cette période d'apprentissage pour maximiser vos conversions.",
+      "keywords": [
+        "résultats",
+        "48h",
+        "optimisation",
+        "2-4 semaines",
+        "performances",
+        "algorithme Google",
+        "apprentissage",
+        "conversions"
+      ],
+      "context": "Délais pour obtenir des résultats publicitaires",
+      "intent": "delais_resultats_pub",
+      "embedding_text": "En combien de temps vais-je voir des résultats ? Premiers résultats visibles 48h après lancement période optimisation 2-4 semaines nécessaire atteindre performances optimales algorithme Google besoin période apprentissage maximiser conversions"
+    },
+    {
+      "id": "faq_009",
+      "category": "Publicité en ligne",
+      "subcategory": "Ciblage",
+      "question": "Comment ciblez-vous les bonnes personnes ?",
+      "answer": "Nous utilisons une combinaison de ciblages : mots-clés pertinents, zones géographiques précises, données démographiques, centres d'intérêt, comportements d'achat et remarketing. Notre expertise locale à La Réunion nous permet d'affiner ces ciblages pour toucher exactement votre audience.",
+      "keywords": [
+        "ciblage",
+        "mots-clés",
+        "zones géographiques",
+        "démographiques",
+        "centres intérêt",
+        "comportements achat",
+        "remarketing",
+        "audience",
+        "La Réunion"
+      ],
+      "context": "Stratégies de ciblage publicitaire",
+      "intent": "ciblage_audience",
+      "embedding_text": "Comment ciblez-vous les bonnes personnes ? Utilisons combinaison ciblages mots-clés pertinents zones géographiques précises données démographiques centres intérêt comportements achat remarketing expertise locale La Réunion affiner ciblages toucher exactement audience"
+    },
+    {
+      "id": "faq_010",
+      "category": "Community Management",
+      "subcategory": "Réseaux sociaux",
+      "question": "Quels réseaux sociaux gérez-vous ?",
+      "answer": "Nous gérons tous les principaux réseaux sociaux : Facebook, Instagram, LinkedIn, TikTok, Twitter/X, YouTube et Pinterest. Nous adaptons notre stratégie selon votre audience cible et vos objectifs commerciaux.",
+      "keywords": [
+        "réseaux sociaux",
+        "Facebook",
+        "Instagram",
+        "LinkedIn",
+        "TikTok",
+        "Twitter",
+        "YouTube",
+        "Pinterest",
+        "stratégie",
+        "audience"
+      ],
+      "context": "Plateformes sociales gérées par Digiqo",
+      "intent": "reseaux_sociaux_geres",
+      "embedding_text": "Quels réseaux sociaux gérez-vous ? Gérons principaux réseaux sociaux Facebook Instagram LinkedIn TikTok Twitter X YouTube Pinterest adaptons stratégie selon audience cible objectifs commerciaux"
+    },
+    {
+      "id": "faq_011",
+      "category": "Community Management",
+      "subcategory": "Fréquence publication",
+      "question": "À quelle fréquence publiez-vous ?",
+      "answer": "La fréquence de publication dépend du forfait choisi : Starter (3 posts/semaine), Pro (5 posts/semaine), Premium (publication quotidienne). Nous établissons un calendrier éditorial mensuel validé en amont pour garantir cohérence et qualité.",
+      "keywords": [
+        "fréquence publication",
+        "forfait",
+        "Starter",
+        "Pro",
+        "Premium",
+        "posts semaine",
+        "calendrier éditorial",
+        "quotidienne"
+      ],
+      "context": "Rythme de publication sur les réseaux sociaux",
+      "intent": "frequence_publication",
+      "embedding_text": "À quelle fréquence publiez-vous ? Fréquence publication dépend forfait choisi Starter 3 posts semaine Pro 5 posts semaine Premium publication quotidienne établissons calendrier éditorial mensuel validé amont garantir cohérence qualité"
+    },
+    {
+      "id": "faq_012",
+      "category": "Community Management",
+      "subcategory": "Création contenu",
+      "question": "Qui crée le contenu ?",
+      "answer": "Notre équipe créative s'occupe de tout : rédaction des textes, création des visuels, montage vidéo, et même prises de vue si nécessaire. Nous nous adaptons à votre charte graphique et votre ton de marque pour garantir une cohérence parfaite.",
+      "keywords": [
+        "création contenu",
+        "équipe créative",
+        "rédaction",
+        "visuels",
+        "montage vidéo",
+        "prises vue",
+        "charte graphique",
+        "ton marque"
+      ],
+      "context": "Processus de création de contenu",
+      "intent": "creation_contenu",
+      "embedding_text": "Qui crée le contenu ? Équipe créative occupe tout rédaction textes création visuels montage vidéo prises vue nécessaire adaptons charte graphique ton marque garantir cohérence parfaite"
+    },
+    {
+      "id": "faq_013",
+      "category": "Community Management",
+      "subcategory": "Engagement",
+      "question": "Comment gérez-vous l'engagement et les messages ?",
+      "answer": "Nous assurons une modération active : réponse aux commentaires sous 24h (jours ouvrés), gestion des messages privés, animation de la communauté et gestion de crise si nécessaire. Un rapport mensuel détaille toutes les interactions.",
+      "keywords": [
+        "engagement",
+        "messages",
+        "modération",
+        "commentaires",
+        "24h",
+        "messages privés",
+        "communauté",
+        "gestion crise",
+        "rapport"
+      ],
+      "context": "Gestion de l'engagement communautaire",
+      "intent": "gestion_engagement",
+      "embedding_text": "Comment gérez-vous l'engagement et les messages ? Assurons modération active réponse commentaires 24h jours ouvrés gestion messages privés animation communauté gestion crise nécessaire rapport mensuel détaille interactions"
+    },
+    {
+      "id": "faq_014",
+      "category": "Développement Web",
+      "subcategory": "Types de sites",
+      "question": "Quels types de sites web développez-vous ?",
+      "answer": "Nous développons tous types de sites : sites vitrines, e-commerce (WooCommerce, Shopify, PrestaShop), plateformes sur-mesure, applications web, landing pages et sites institutionnels. Chaque projet est adapté à vos besoins spécifiques.",
+      "keywords": [
+        "sites web",
+        "vitrines",
+        "e-commerce",
+        "WooCommerce",
+        "Shopify",
+        "PrestaShop",
+        "plateformes",
+        "applications web",
+        "landing pages"
+      ],
+      "context": "Types de développements web proposés",
+      "intent": "types_sites_web",
+      "embedding_text": "Quels types de sites web développez-vous ? Développons tous types sites vitrines e-commerce WooCommerce Shopify PrestaShop plateformes sur-mesure applications web landing pages sites institutionnels projet adapté besoins spécifiques"
+    },
+    {
+      "id": "faq_015",
+      "category": "Développement Web",
+      "subcategory": "Technologies",
+      "question": "Quelles technologies utilisez-vous ?",
+      "answer": "Nous maîtrisons les dernières technologies : WordPress, React, Next.js, Node.js, PHP/Laravel pour le développement. Pour le design : Figma et Adobe Creative Suite. Nous choisissons la stack technique optimale selon votre projet.",
+      "keywords": [
+        "technologies",
+        "WordPress",
+        "React",
+        "Next.js",
+        "Node.js",
+        "PHP",
+        "Laravel",
+        "Figma",
+        "Adobe Creative Suite",
+        "stack technique"
+      ],
+      "context": "Stack technologique utilisée",
+      "intent": "technologies_web",
+      "embedding_text": "Quelles technologies utilisez-vous ? Maîtrisons dernières technologies WordPress React Next.js Node.js PHP Laravel développement design Figma Adobe Creative Suite choisissons stack technique optimale selon projet"
+    },
+    {
+      "id": "faq_016",
+      "category": "Développement Web",
+      "subcategory": "Responsive",
+      "question": "Mes sites seront-ils responsive ?",
+      "answer": "Absolument ! 100% de nos sites sont responsive design, optimisés pour tous les appareils (mobile, tablette, desktop). Avec plus de 60% du trafic sur mobile à La Réunion, c'est une priorité absolue. Nous testons sur tous les navigateurs et tailles d'écran.",
+      "keywords": [
+        "responsive",
+        "mobile",
+        "tablette",
+        "desktop",
+        "60% trafic",
+        "La Réunion",
+        "navigateurs",
+        "tailles écran"
+      ],
+      "context": "Adaptabilité mobile des sites web",
+      "intent": "sites_responsive",
+      "embedding_text": "Mes sites seront-ils responsive ? Absolument 100% sites responsive design optimisés tous appareils mobile tablette desktop 60% trafic mobile La Réunion priorité absolue testons navigateurs tailles écran"
+    },
+    {
+      "id": "faq_017",
+      "category": "Développement Web",
+      "subcategory": "Maintenance",
+      "question": "Proposez-vous une maintenance ?",
+      "answer": "Oui, nous proposons des contrats de maintenance mensuels incluant : mises à jour de sécurité, sauvegardes quotidiennes, monitoring 24/7, support technique et modifications mineures. Nos forfaits SiteKeeper démarrent à 89€/mois.",
+      "keywords": [
+        "maintenance",
+        "mises à jour sécurité",
+        "sauvegardes",
+        "monitoring 24/7",
+        "support technique",
+        "SiteKeeper",
+        "89€/mois"
+      ],
+      "context": "Services de maintenance web",
+      "intent": "maintenance_web",
+      "embedding_text": "Proposez-vous une maintenance ? Oui proposons contrats maintenance mensuels mises jour sécurité sauvegardes quotidiennes monitoring 24/7 support technique modifications mineures forfaits SiteKeeper démarrent 89€/mois"
+    },
+    {
+      "id": "faq_018",
+      "category": "SEO",
+      "subcategory": "Définition",
+      "question": "Qu'est-ce que le SEO ?",
+      "answer": "Le SEO (Search Engine Optimization) est l'art d'optimiser votre site web pour apparaître dans les premiers résultats Google sans payer de publicité. Cela inclut l'optimisation technique, le contenu, les mots-clés et l'autorité de votre site.",
+      "keywords": [
+        "SEO",
+        "Search Engine Optimization",
+        "optimisation",
+        "résultats Google",
+        "technique",
+        "contenu",
+        "mots-clés",
+        "autorité"
+      ],
+      "context": "Explication du référencement naturel",
+      "intent": "definition_seo",
+      "embedding_text": "Qu'est-ce que le SEO ? SEO Search Engine Optimization art optimiser site web apparaître premiers résultats Google sans payer publicité inclut optimisation technique contenu mots-clés autorité site"
+    },
+    {
+      "id": "faq_019",
+      "category": "SEO",
+      "subcategory": "Délais",
+      "question": "Combien de temps pour voir des résultats SEO ?",
+      "answer": "Le SEO est un investissement long terme. Les premiers résultats apparaissent généralement après 3-4 mois, avec des résultats significatifs après 6-12 mois. Contrairement à la publicité, les résultats SEO sont durables et s'amplifient avec le temps.",
+      "keywords": [
+        "SEO",
+        "long terme",
+        "3-4 mois",
+        "6-12 mois",
+        "résultats durables",
+        "investissement"
+      ],
+      "context": "Délais pour obtenir des résultats SEO",
+      "intent": "delais_seo",
+      "embedding_text": "Combien de temps pour voir des résultats SEO ? SEO investissement long terme premiers résultats apparaissent 3-4 mois résultats significatifs 6-12 mois contrairement publicité résultats durables amplifient temps"
+    },
+    {
+      "id": "faq_020",
+      "category": "SEO",
+      "subcategory": "Local",
+      "question": "Faites-vous du SEO local pour La Réunion ?",
+      "answer": "Oui, nous sommes spécialistes du SEO local à La Réunion. Nous optimisons votre Google My Business, créons des contenus géolocalisés, obtenons des citations locales et développons votre autorité locale. Idéal pour attirer des clients dans votre zone de chalandise.",
+      "keywords": [
+        "SEO local",
+        "La Réunion",
+        "Google My Business",
+        "géolocalisés",
+        "citations locales",
+        "autorité locale",
+        "zone chalandise"
+      ],
+      "context": "Référencement local à La Réunion",
+      "intent": "seo_local_reunion",
+      "embedding_text": "Faites-vous du SEO local pour La Réunion ? Oui spécialistes SEO local La Réunion optimisons Google My Business créons contenus géolocalisés obtenons citations locales développons autorité locale idéal attirer clients zone chalandise"
+    },
+    {
+      "id": "faq_021",
+      "category": "SEO",
+      "subcategory": "Garanties",
+      "question": "Garantissez-vous la première position Google ?",
+      "answer": "Nous ne garantissons jamais la première position car c'est impossible et contraire aux guidelines Google. En revanche, nous garantissons : amélioration du classement, augmentation du trafic organique, reporting transparent et optimisations continues basées sur les données.",
+      "keywords": [
+        "garantie",
+        "première position",
+        "Google",
+        "guidelines",
+        "amélioration classement",
+        "trafic organique",
+        "reporting",
+        "optimisations"
+      ],
+      "context": "Garanties en matière de référencement",
+      "intent": "garanties_seo",
+      "embedding_text": "Garantissez-vous la première position Google ? Ne garantissons jamais première position impossible contraire guidelines Google revanche garantissons amélioration classement augmentation trafic organique reporting transparent optimisations continues basées données"
+    },
+    {
+      "id": "faq_022",
+      "category": "Production Vidéo",
+      "subcategory": "Types",
+      "question": "Quels types de vidéos produisez-vous ?",
+      "answer": "Nous produisons : vidéos publicitaires, contenus réseaux sociaux (Reels, TikTok), vidéos d'entreprise, témoignages clients, tutoriels produits, aftermovies d'événements et animations motion design. Du script au montage final, nous gérons tout.",
+      "keywords": [
+        "vidéos publicitaires",
+        "réseaux sociaux",
+        "Reels",
+        "TikTok",
+        "vidéos entreprise",
+        "témoignages",
+        "tutoriels",
+        "aftermovies",
+        "motion design"
+      ],
+      "context": "Types de productions vidéo",
+      "intent": "types_videos",
+      "embedding_text": "Quels types de vidéos produisez-vous ? Produisons vidéos publicitaires contenus réseaux sociaux Reels TikTok vidéos entreprise témoignages clients tutoriels produits aftermovies événements animations motion design script montage final gérons tout"
+    },
+    {
+      "id": "faq_023",
+      "category": "Production Vidéo",
+      "subcategory": "Équipement",
+      "question": "Quel équipement utilisez-vous ?",
+      "answer": "Nous utilisons du matériel professionnel : caméras 4K/6K, drones homologués, stabilisateurs, éclairage LED, microphones broadcast. Pour le montage : Adobe Premiere Pro, After Effects et DaVinci Resolve. Qualité broadcast garantie.",
+      "keywords": [
+        "équipement",
+        "caméras 4K/6K",
+        "drones",
+        "stabilisateurs",
+        "éclairage LED",
+        "microphones",
+        "Adobe Premiere",
+        "After Effects",
+        "DaVinci Resolve"
+      ],
+      "context": "Matériel de production vidéo",
+      "intent": "equipement_video",
+      "embedding_text": "Quel équipement utilisez-vous ? Utilisons matériel professionnel caméras 4K 6K drones homologués stabilisateurs éclairage LED microphones broadcast montage Adobe Premiere Pro After Effects DaVinci Resolve qualité broadcast garantie"
+    },
+    {
+      "id": "faq_024",
+      "category": "Production Vidéo",
+      "subcategory": "Durée production",
+      "question": "Combien de temps pour produire une vidéo ?",
+      "answer": "Les délais varient selon la complexité : Vidéo réseaux sociaux (3-5 jours), Vidéo publicitaire (1-2 semaines), Vidéo d'entreprise (2-3 semaines), Aftermovie événement (5-7 jours après l'événement). Nous pouvons aussi proposer des délais express.",
+      "keywords": [
+        "délais",
+        "vidéo réseaux sociaux",
+        "3-5 jours",
+        "vidéo publicitaire",
+        "1-2 semaines",
+        "vidéo entreprise",
+        "aftermovie",
+        "délais express"
+      ],
+      "context": "Temps de production vidéo",
+      "intent": "duree_production_video",
+      "embedding_text": "Combien de temps pour produire une vidéo ? Délais varient complexité vidéo réseaux sociaux 3-5 jours vidéo publicitaire 1-2 semaines vidéo entreprise 2-3 semaines aftermovie événement 5-7 jours après événement proposons délais express"
+    },
+    {
+      "id": "faq_025",
+      "category": "Identité Visuelle",
+      "subcategory": "Services",
+      "question": "Que comprend une identité visuelle ?",
+      "answer": "Une identité visuelle complète comprend : création du logo, charte graphique détaillée, palette de couleurs, typographies, déclinaisons (cartes de visite, papeterie), guide d'utilisation et fichiers sources. Option : déclinaison sur supports marketing.",
+      "keywords": [
+        "identité visuelle",
+        "logo",
+        "charte graphique",
+        "palette couleurs",
+        "typographies",
+        "cartes visite",
+        "papeterie",
+        "guide utilisation"
+      ],
+      "context": "Composants d'une identité visuelle",
+      "intent": "contenu_identite_visuelle",
+      "embedding_text": "Que comprend une identité visuelle ? Identité visuelle complète comprend création logo charte graphique détaillée palette couleurs typographies déclinaisons cartes visite papeterie guide utilisation fichiers sources option déclinaison supports marketing"
+    },
+    {
+      "id": "faq_026",
+      "category": "Identité Visuelle",
+      "subcategory": "Processus créatif",
+      "question": "Comment se passe la création d'un logo ?",
+      "answer": "Notre processus créatif : 1) Brief découverte pour comprendre vos valeurs, 2) Recherches et moodboards, 3) 3 propositions initiales, 4) 2 tours de modifications inclus, 5) Finalisation et livraison tous formats. Délai moyen : 2-3 semaines.",
+      "keywords": [
+        "création logo",
+        "processus créatif",
+        "brief",
+        "moodboards",
+        "propositions",
+        "modifications",
+        "finalisation",
+        "2-3 semaines"
+      ],
+      "context": "Processus de création de logo",
+      "intent": "processus_creation_logo",
+      "embedding_text": "Comment se passe la création d'un logo ? Processus créatif brief découverte comprendre valeurs recherches moodboards 3 propositions initiales 2 tours modifications inclus finalisation livraison tous formats délai moyen 2-3 semaines"
+    },
+    {
+      "id": "faq_027",
+      "category": "Identité Visuelle",
+      "subcategory": "Refonte",
+      "question": "Puis-je moderniser mon logo existant ?",
+      "answer": "Oui, nous proposons des refontes respectueuses de votre historique. Nous analysons votre identité actuelle, identifions les éléments à conserver et proposons une évolution moderne qui préserve votre reconnaissance tout en vous projetant vers l'avenir.",
+      "keywords": [
+        "refonte",
+        "moderniser logo",
+        "historique",
+        "identité actuelle",
+        "évolution moderne",
+        "reconnaissance",
+        "avenir"
+      ],
+      "context": "Modernisation de logo existant",
+      "intent": "refonte_logo",
+      "embedding_text": "Puis-je moderniser mon logo existant ? Oui proposons refontes respectueuses historique analysons identité actuelle identifions éléments conserver proposons évolution moderne préserve reconnaissance projetant vers avenir"
+    },
+    {
+      "id": "faq_028",
+      "category": "Audit Digital",
+      "subcategory": "Contenu",
+      "question": "Que contient un audit digital ?",
+      "answer": "Notre audit digital analyse : présence en ligne actuelle, performance site web, positionnement SEO, efficacité réseaux sociaux, analyse concurrentielle, réputation en ligne et recommandations priorisées avec plan d'action chiffré.",
+      "keywords": [
+        "audit digital",
+        "présence en ligne",
+        "performance",
+        "SEO",
+        "réseaux sociaux",
+        "analyse concurrentielle",
+        "réputation",
+        "recommandations"
+      ],
+      "context": "Contenu d'un audit digital",
+      "intent": "contenu_audit_digital",
+      "embedding_text": "Que contient un audit digital ? Audit digital analyse présence ligne actuelle performance site web positionnement SEO efficacité réseaux sociaux analyse concurrentielle réputation ligne recommandations priorisées plan action chiffré"
+    },
+    {
+      "id": "faq_029",
+      "category": "Audit Digital",
+      "subcategory": "Utilité",
+      "question": "Pourquoi faire un audit digital ?",
+      "answer": "Un audit digital permet d'identifier vos forces et faiblesses en ligne, découvrir des opportunités manquées, comprendre votre positionnement vs concurrents et obtenir une feuille de route claire pour améliorer votre performance digitale et votre ROI.",
+      "keywords": [
+        "audit digital",
+        "forces faiblesses",
+        "opportunités",
+        "positionnement",
+        "concurrents",
+        "feuille route",
+        "performance digitale",
+        "ROI"
+      ],
+      "context": "Intérêt d'un audit digital",
+      "intent": "pourquoi_audit_digital",
+      "embedding_text": "Pourquoi faire un audit digital ? Audit digital permet identifier forces faiblesses ligne découvrir opportunités manquées comprendre positionnement vs concurrents obtenir feuille route claire améliorer performance digitale ROI"
+    },
+    {
+      "id": "faq_030",
+      "category": "Audit Digital",
+      "subcategory": "Gratuité",
+      "question": "L'audit est-il vraiment gratuit ?",
+      "answer": "Oui, notre audit de base est 100% gratuit et sans engagement. Il comprend une analyse de votre présence digitale et des recommandations principales. Pour un audit approfondi avec analyse concurrentielle détaillée et plan d'action personnalisé, nous proposons une version premium.",
+      "keywords": [
+        "audit gratuit",
+        "100% gratuit",
+        "sans engagement",
+        "analyse",
+        "recommandations",
+        "audit approfondi",
+        "version premium"
+      ],
+      "context": "Gratuité de l'audit digital",
+      "intent": "audit_gratuit",
+      "embedding_text": "L'audit est-il vraiment gratuit ? Oui audit base 100% gratuit sans engagement comprend analyse présence digitale recommandations principales audit approfondi analyse concurrentielle détaillée plan action personnalisé proposons version premium"
+    },
+    {
+      "id": "faq_031",
+      "category": "Tarifs et Paiement",
+      "subcategory": "Moyens de paiement",
+      "question": "Quels moyens de paiement acceptez-vous ?",
+      "answer": "Nous acceptons : virement bancaire, prélèvement automatique, carte bancaire, PayPal et chèque. Pour les entreprises, nous proposons des facilités de paiement en 3x ou 4x sans frais sur les projets importants.",
+      "keywords": [
+        "paiement",
+        "virement bancaire",
+        "prélèvement",
+        "carte bancaire",
+        "PayPal",
+        "chèque",
+        "facilités paiement",
+        "3x 4x sans frais"
+      ],
+      "context": "Options de paiement disponibles",
+      "intent": "moyens_paiement",
+      "embedding_text": "Quels moyens de paiement acceptez-vous ? Acceptons virement bancaire prélèvement automatique carte bancaire PayPal chèque entreprises proposons facilités paiement 3x 4x sans frais projets importants"
+    },
+    {
+      "id": "faq_032",
+      "category": "Tarifs et Paiement",
+      "subcategory": "Devis",
+      "question": "Les devis sont-ils gratuits ?",
+      "answer": "Oui, tous nos devis sont gratuits et personnalisés. Nous prenons le temps d'analyser vos besoins spécifiques pour vous proposer une solution sur-mesure avec un tarif transparent. Réponse sous 24-48h.",
+      "keywords": [
+        "devis gratuits",
+        "personnalisés",
+        "besoins spécifiques",
+        "sur-mesure",
+        "tarif transparent",
+        "24-48h"
+      ],
+      "context": "Gratuité des devis",
+      "intent": "devis_gratuits",
+      "embedding_text": "Les devis sont-ils gratuits ? Oui devis gratuits personnalisés prenons temps analyser besoins spécifiques proposer solution sur-mesure tarif transparent réponse 24-48h"
+    },
+    {
+      "id": "faq_033",
+      "category": "Tarifs et Paiement",
+      "subcategory": "Engagement",
+      "question": "Y a-t-il un engagement minimum ?",
+      "answer": "Cela dépend du service : Publicité en ligne (sans engagement), Community management (engagement 3 mois minimum), Développement web (paiement projet), SEO (engagement 6 mois recommandé), Maintenance (mensuel sans engagement).",
+      "keywords": [
+        "engagement",
+        "sans engagement",
+        "3 mois",
+        "6 mois",
+        "publicité",
+        "community management",
+        "développement web",
+        "SEO",
+        "maintenance"
+      ],
+      "context": "Durées d'engagement par service",
+      "intent": "engagement_minimum",
+      "embedding_text": "Y a-t-il un engagement minimum ? Dépend service publicité ligne sans engagement community management engagement 3 mois minimum développement web paiement projet SEO engagement 6 mois recommandé maintenance mensuel sans engagement"
+    },
+    {
+      "id": "faq_034",
+      "category": "Tarifs et Paiement",
+      "subcategory": "TVA",
+      "question": "Vos prix incluent-ils la TVA ?",
+      "answer": "Nos prix sont affichés HT (Hors Taxes). La TVA de 8,5% (taux applicable à La Réunion) sera ajoutée sur la facture finale. Pour les clients hors Réunion, le taux de TVA applicable sera celui en vigueur.",
+      "keywords": [
+        "prix HT",
+        "TVA",
+        "8,5%",
+        "La Réunion",
+        "facture",
+        "taux TVA"
+      ],
+      "context": "TVA et tarification",
+      "intent": "prix_tva",
+      "embedding_text": "Vos prix incluent-ils la TVA ? Prix affichés HT hors taxes TVA 8,5% taux applicable La Réunion ajoutée facture finale clients hors Réunion taux TVA applicable vigueur"
+    },
+    {
+      "id": "faq_035",
+      "category": "Support et Suivi",
+      "subcategory": "Communication",
+      "question": "Comment communiquez-vous avec vos clients ?",
+      "answer": "Nous privilégions une communication fluide : un chef de projet dédié, reporting mensuel détaillé, réunions régulières (visio ou présentiel), accès dashboard client en temps réel, support par email/téléphone et WhatsApp Business pour l'urgence.",
+      "keywords": [
+        "communication",
+        "chef projet",
+        "reporting mensuel",
+        "réunions",
+        "dashboard client",
+        "email",
+        "téléphone",
+        "WhatsApp Business"
+      ],
+      "context": "Modes de communication client",
+      "intent": "communication_client",
+      "embedding_text": "Comment communiquez-vous avec vos clients ? Privilégions communication fluide chef projet dédié reporting mensuel détaillé réunions régulières visio présentiel accès dashboard client temps réel support email téléphone WhatsApp Business urgence"
+    },
+    {
+      "id": "faq_036",
+      "category": "Support et Suivi",
+      "subcategory": "Reporting",
+      "question": "À quelle fréquence recevrai-je des rapports ?",
+      "answer": "Vous recevez un rapport mensuel détaillé incluant : performances chiffrées, analyses et insights, recommandations d'optimisation, planning du mois suivant. Pour les campagnes publicitaires, accès en temps réel aux statistiques via dashboard dédié.",
+      "keywords": [
+        "rapports",
+        "mensuel",
+        "performances",
+        "analyses",
+        "insights",
+        "recommandations",
+        "planning",
+        "dashboard",
+        "temps réel"
+      ],
+      "context": "Fréquence des rapports",
+      "intent": "frequence_rapports",
+      "embedding_text": "À quelle fréquence recevrai-je des rapports ? Recevez rapport mensuel détaillé incluant performances chiffrées analyses insights recommandations optimisation planning mois suivant campagnes publicitaires accès temps réel statistiques dashboard dédié"
+    },
+    {
+      "id": "faq_037",
+      "category": "Support et Suivi",
+      "subcategory": "Support technique",
+      "question": "Quel support technique proposez-vous ?",
+      "answer": "Notre support technique inclut : assistance téléphonique 9h-18h (jours ouvrés), support email avec réponse sous 24h, intervention d'urgence pour sites web (option 24/7), formation à l'utilisation de vos outils et documentation personnalisée.",
+      "keywords": [
+        "support technique",
+        "assistance téléphonique",
+        "9h-18h",
+        "email 24h",
+        "intervention urgence",
+        "24/7",
+        "formation",
+        "documentation"
+      ],
+      "context": "Services de support technique",
+      "intent": "support_technique",
+      "embedding_text": "Quel support technique proposez-vous ? Support technique inclut assistance téléphonique 9h-18h jours ouvrés support email réponse 24h intervention urgence sites web option 24/7 formation utilisation outils documentation personnalisée"
+    },
+    {
+      "id": "faq_038",
+      "category": "Support et Suivi",
+      "subcategory": "Modifications",
+      "question": "Puis-je demander des modifications ?",
+      "answer": "Oui, les modifications sont possibles : Pendant le projet (2-3 tours inclus selon le service), Après livraison (forfait maintenance ou devis ponctuel), Community management (ajustements inclus), Publicité (optimisations continues incluses). Nous restons flexibles pour nous adapter à vos besoins.",
+      "keywords": [
+        "modifications",
+        "tours inclus",
+        "maintenance",
+        "ajustements",
+        "optimisations",
+        "flexibles",
+        "adapter besoins"
+      ],
+      "context": "Politique de modifications",
+      "intent": "demander_modifications",
+      "embedding_text": "Puis-je demander des modifications ? Oui modifications possibles pendant projet 2-3 tours inclus selon service après livraison forfait maintenance devis ponctuel community management ajustements inclus publicité optimisations continues incluses restons flexibles adapter besoins"
+    },
+    {
+      "id": "faq_039",
+      "category": "Google Ads",
+      "subcategory": "Campagnes",
+      "question": "Quels types de campagnes Google Ads proposez-vous ?",
+      "answer": "Nous gérons tous les types de campagnes Google Ads : Search (recherche), Display (bannières), Shopping (e-commerce), Video (YouTube), Performance Max, Discovery et App. Chaque type est sélectionné selon vos objectifs spécifiques.",
+      "keywords": [
+        "campagnes Google Ads",
+        "Search",
+        "Display",
+        "Shopping",
+        "Video",
+        "YouTube",
+        "Performance Max",
+        "Discovery",
+        "App"
+      ],
+      "context": "Types de campagnes Google Ads disponibles",
+      "intent": "types_campagnes_google_ads",
+      "embedding_text": "Quels types de campagnes Google Ads proposez-vous ? Gérons tous types campagnes Google Ads Search recherche Display bannières Shopping e-commerce Video YouTube Performance Max Discovery App chaque type sélectionné selon objectifs spécifiques"
+    },
+    {
+      "id": "faq_040",
+      "category": "Google Ads",
+      "subcategory": "Optimisation",
+      "question": "Comment optimisez-vous les campagnes Google Ads ?",
+      "answer": "Notre optimisation est continue : analyse quotidienne des performances, ajustement des enchères, test A/B des annonces, optimisation des mots-clés négatifs, amélioration du Quality Score, ajustement des audiences et utilisation du machine learning Google.",
+      "keywords": [
+        "optimisation",
+        "analyse quotidienne",
+        "enchères",
+        "test A/B",
+        "mots-clés négatifs",
+        "Quality Score",
+        "audiences",
+        "machine learning"
+      ],
+      "context": "Processus d'optimisation Google Ads",
+      "intent": "optimisation_google_ads",
+      "embedding_text": "Comment optimisez-vous les campagnes Google Ads ? Optimisation continue analyse quotidienne performances ajustement enchères test A/B annonces optimisation mots-clés négatifs amélioration Quality Score ajustement audiences utilisation machine learning Google"
+    },
+    {
+      "id": "faq_041",
+      "category": "Google Ads",
+      "subcategory": "Suivi conversions",
+      "question": "Comment suivez-vous les conversions ?",
+      "answer": "Nous mettons en place un tracking complet : installation Google Tag Manager, configuration Google Analytics 4, suivi des conversions (formulaires, appels, achats), attribution multi-touch, et rapport de conversion détaillé mensuel avec ROI calculé.",
+      "keywords": [
+        "conversions",
+        "tracking",
+        "Google Tag Manager",
+        "Google Analytics 4",
+        "formulaires",
+        "appels",
+        "achats",
+        "ROI"
+      ],
+      "context": "Suivi des conversions Google Ads",
+      "intent": "suivi_conversions",
+      "embedding_text": "Comment suivez-vous les conversions ? Mettons place tracking complet installation Google Tag Manager configuration Google Analytics 4 suivi conversions formulaires appels achats attribution multi-touch rapport conversion détaillé mensuel ROI calculé"
+    },
+    {
+      "id": "faq_042",
+      "category": "Google Ads",
+      "subcategory": "Budget quotidien",
+      "question": "Comment est géré mon budget quotidien ?",
+      "answer": "Votre budget est optimisé intelligemment : répartition selon les performances de chaque campagne, ajustements saisonniers, protection contre le surcoût, alertes automatiques et flexibilité jour par jour. Google peut dépenser jusqu'à 2x le budget quotidien mais respecte toujours le budget mensuel.",
+      "keywords": [
+        "budget quotidien",
+        "répartition",
+        "performances",
+        "ajustements saisonniers",
+        "surcoût",
+        "alertes",
+        "flexibilité",
+        "budget mensuel"
+      ],
+      "context": "Gestion du budget Google Ads",
+      "intent": "gestion_budget_quotidien",
+      "embedding_text": "Comment est géré mon budget quotidien ? Budget optimisé intelligemment répartition selon performances chaque campagne ajustements saisonniers protection contre surcoût alertes automatiques flexibilité jour par jour Google peut dépenser 2x budget quotidien respecte toujours budget mensuel"
+    },
+    {
+      "id": "faq_043",
+      "category": "Google Ads",
+      "subcategory": "Concurrence",
+      "question": "Et si mes concurrents cliquent sur mes annonces ?",
+      "answer": "Google dispose de systèmes sophistiqués anti-fraude : détection automatique des clics invalides, non-facturation des clics suspects, remboursement si fraude détectée, possibilité d'exclure des IP spécifiques. Nous monitorons aussi les anomalies dans vos campagnes.",
+      "keywords": [
+        "concurrents",
+        "clics",
+        "anti-fraude",
+        "clics invalides",
+        "remboursement",
+        "exclure IP",
+        "anomalies"
+      ],
+      "context": "Protection contre la fraude aux clics",
+      "intent": "protection_clics_frauduleux",
+      "embedding_text": "Et si mes concurrents cliquent sur mes annonces ? Google dispose systèmes sophistiqués anti-fraude détection automatique clics invalides non-facturation clics suspects remboursement fraude détectée possibilité exclure IP spécifiques monitorons anomalies campagnes"
+    },
+    {
+      "id": "faq_044",
+      "category": "Google Ads",
+      "subcategory": "Extensions",
+      "question": "Utilisez-vous les extensions d'annonces ?",
+      "answer": "Oui, nous utilisons toutes les extensions pertinentes : sitelinks, appel, lieu, prix, promotion, extraits de site, formulaire pour prospects et images. Les extensions améliorent la visibilité et le taux de clic de 10-15% en moyenne.",
+      "keywords": [
+        "extensions annonces",
+        "sitelinks",
+        "appel",
+        "lieu",
+        "prix",
+        "promotion",
+        "extraits",
+        "formulaire",
+        "images",
+        "10-15%"
+      ],
+      "context": "Extensions d'annonces Google Ads",
+      "intent": "extensions_annonces",
+      "embedding_text": "Utilisez-vous les extensions d'annonces ? Oui utilisons toutes extensions pertinentes sitelinks appel lieu prix promotion extraits site formulaire prospects images extensions améliorent visibilité taux clic 10-15% moyenne"
+    },
+    {
+      "id": "faq_045",
+      "category": "Google Ads",
+      "subcategory": "Remarketing",
+      "question": "Proposez-vous du remarketing ?",
+      "answer": "Oui, le remarketing est essentiel : création d'audiences personnalisées, remarketing dynamique pour e-commerce, listes similaires, remarketing vidéo YouTube et cross-device. Le remarketing convertit 2 à 3 fois mieux que l'acquisition classique.",
+      "keywords": [
+        "remarketing",
+        "audiences personnalisées",
+        "dynamique",
+        "e-commerce",
+        "listes similaires",
+        "YouTube",
+        "cross-device",
+        "2-3 fois"
+      ],
+      "context": "Stratégies de remarketing",
+      "intent": "remarketing",
+      "embedding_text": "Proposez-vous du remarketing ? Oui remarketing essentiel création audiences personnalisées remarketing dynamique e-commerce listes similaires remarketing vidéo YouTube cross-device remarketing convertit 2-3 fois mieux acquisition classique"
+    },
+    {
+      "id": "faq_046",
+      "category": "Google Ads",
+      "subcategory": "Landing pages",
+      "question": "Créez-vous des landing pages optimisées ?",
+      "answer": "Oui, nous créons des landing pages haute conversion : design orienté conversion, temps de chargement <3 secondes, A/B testing, formulaires optimisés, tracking complet. Une bonne landing page peut doubler votre taux de conversion.",
+      "keywords": [
+        "landing pages",
+        "haute conversion",
+        "design",
+        "3 secondes",
+        "A/B testing",
+        "formulaires",
+        "tracking",
+        "doubler conversion"
+      ],
+      "context": "Création de landing pages",
+      "intent": "landing_pages",
+      "embedding_text": "Créez-vous des landing pages optimisées ? Oui créons landing pages haute conversion design orienté conversion temps chargement 3 secondes A/B testing formulaires optimisés tracking complet bonne landing page peut doubler taux conversion"
+    },
+    {
+      "id": "faq_047",
+      "category": "Google Ads",
+      "subcategory": "Formation",
+      "question": "Proposez-vous des formations Google Ads ?",
+      "answer": "Oui, nous proposons des formations sur-mesure : initiation Google Ads (1 jour), perfectionnement (2 jours), coaching personnalisé et formation intra-entreprise. Nos formateurs sont certifiés Google Partners avec expertise locale Réunion.",
+      "keywords": [
+        "formations Google Ads",
+        "initiation",
+        "perfectionnement",
+        "coaching",
+        "intra-entreprise",
+        "certifiés Google Partners",
+        "La Réunion"
+      ],
+      "context": "Formations Google Ads",
+      "intent": "formations_google_ads",
+      "embedding_text": "Proposez-vous des formations Google Ads ? Oui proposons formations sur-mesure initiation Google Ads 1 jour perfectionnement 2 jours coaching personnalisé formation intra-entreprise formateurs certifiés Google Partners expertise locale Réunion"
+    },
+    {
+      "id": "faq_048",
+      "category": "Google Ads",
+      "subcategory": "Certification",
+      "question": "Êtes-vous certifiés Google Partners ?",
+      "answer": "Oui, nous sommes Google Partners certifiés. Cette certification garantit : expertise validée par Google, accès aux dernières fonctionnalités bêta, support Google prioritaire, formations continues et respect des best practices Google.",
+      "keywords": [
+        "Google Partners",
+        "certifiés",
+        "expertise",
+        "fonctionnalités bêta",
+        "support prioritaire",
+        "formations",
+        "best practices"
+      ],
+      "context": "Certification Google Partners",
+      "intent": "certification_google",
+      "embedding_text": "Êtes-vous certifiés Google Partners ? Oui Google Partners certifiés certification garantit expertise validée Google accès dernières fonctionnalités bêta support Google prioritaire formations continues respect best practices Google"
+    },
+    {
+      "id": "faq_049",
+      "category": "Community Management",
+      "subcategory": "Calendrier éditorial",
+      "question": "Comment créez-vous le calendrier éditorial ?",
+      "answer": "Nous créons un calendrier stratégique mensuel : analyse de votre secteur et actualités, planification des temps forts commerciaux, équilibre entre contenus promotionnels et engageants, adaptation aux événements locaux Réunion, validation avant publication.",
+      "keywords": [
+        "calendrier éditorial",
+        "stratégique",
+        "mensuel",
+        "temps forts",
+        "contenus",
+        "événements locaux",
+        "Réunion",
+        "validation"
+      ],
+      "context": "Création du calendrier éditorial",
+      "intent": "calendrier_editorial",
+      "embedding_text": "Comment créez-vous le calendrier éditorial ? Créons calendrier stratégique mensuel analyse secteur actualités planification temps forts commerciaux équilibre contenus promotionnels engageants adaptation événements locaux Réunion validation avant publication"
+    },
+    {
+      "id": "faq_050",
+      "category": "Community Management",
+      "subcategory": "Hashtags",
+      "question": "Gérez-vous les hashtags ?",
+      "answer": "Oui, nous optimisons vos hashtags : recherche des hashtags tendance, mix entre hashtags populaires et niche, création hashtags de marque, adaptation par réseau social (Instagram 30, LinkedIn 5, etc.), analyse des performances.",
+      "keywords": [
+        "hashtags",
+        "tendance",
+        "populaires",
+        "niche",
+        "marque",
+        "Instagram",
+        "LinkedIn",
+        "performances"
+      ],
+      "context": "Stratégie de hashtags",
+      "intent": "gestion_hashtags",
+      "embedding_text": "Gérez-vous les hashtags ? Oui optimisons hashtags recherche hashtags tendance mix hashtags populaires niche création hashtags marque adaptation réseau social Instagram 30 LinkedIn 5 analyse performances"
+    },
+    {
+      "id": "faq_051",
+      "category": "Community Management",
+      "subcategory": "Influenceurs",
+      "question": "Travaillez-vous avec des influenceurs ?",
+      "answer": "Oui, nous gérons vos campagnes influenceurs : identification des influenceurs pertinents Réunion/Maurice, négociation des partenariats, brief créatif et suivi, mesure du ROI. Notre réseau local est un vrai atout.",
+      "keywords": [
+        "influenceurs",
+        "campagnes",
+        "identification",
+        "Réunion",
+        "Maurice",
+        "partenariats",
+        "brief créatif",
+        "ROI",
+        "réseau local"
+      ],
+      "context": "Partenariats influenceurs",
+      "intent": "campagnes_influenceurs",
+      "embedding_text": "Travaillez-vous avec des influenceurs ? Oui gérons campagnes influenceurs identification influenceurs pertinents Réunion Maurice négociation partenariats brief créatif suivi mesure ROI réseau local vrai atout"
+    },
+    {
+      "id": "faq_052",
+      "category": "Community Management",
+      "subcategory": "Crise",
+      "question": "Comment gérez-vous les bad buzz ?",
+      "answer": "Nous avons un protocole de crise : veille permanente, réaction rapide (<1h), communication transparente et apaisée, modération des commentaires négatifs, plan de communication de crise, rapport post-crise avec recommandations.",
+      "keywords": [
+        "bad buzz",
+        "crise",
+        "veille",
+        "réaction rapide",
+        "1h",
+        "communication",
+        "modération",
+        "plan crise"
+      ],
+      "context": "Gestion de crise réseaux sociaux",
+      "intent": "gestion_bad_buzz",
+      "embedding_text": "Comment gérez-vous les bad buzz ? Protocole crise veille permanente réaction rapide 1h communication transparente apaisée modération commentaires négatifs plan communication crise rapport post-crise recommandations"
+    },
+    {
+      "id": "faq_053",
+      "category": "Community Management",
+      "subcategory": "Stories",
+      "question": "Créez-vous des stories ?",
+      "answer": "Oui, les stories font partie de notre stratégie : stories quotidiennes sur Instagram/Facebook, formats créatifs (polls, quiz, questions), stories à la une organisées, utilisation des filtres tendance, stories LinkedIn pour B2B.",
+      "keywords": [
+        "stories",
+        "Instagram",
+        "Facebook",
+        "polls",
+        "quiz",
+        "questions",
+        "filtres",
+        "LinkedIn",
+        "B2B"
+      ],
+      "context": "Création de stories",
+      "intent": "creation_stories",
+      "embedding_text": "Créez-vous des stories ? Oui stories partie stratégie stories quotidiennes Instagram Facebook formats créatifs polls quiz questions stories une organisées utilisation filtres tendance stories LinkedIn B2B"
+    },
+    {
+      "id": "faq_054",
+      "category": "Community Management",
+      "subcategory": "Publicité sociale",
+      "question": "Gérez-vous aussi la publicité sur réseaux sociaux ?",
+      "answer": "Oui, nous gérons vos Social Ads : Facebook Ads, Instagram Ads, LinkedIn Ads, TikTok Ads. Création des visuels, ciblage précis, optimisation budget, A/B testing et reporting détaillé. Synergie parfaite avec le community management.",
+      "keywords": [
+        "Social Ads",
+        "Facebook Ads",
+        "Instagram Ads",
+        "LinkedIn Ads",
+        "TikTok Ads",
+        "ciblage",
+        "optimisation",
+        "A/B testing"
+      ],
+      "context": "Publicité sur réseaux sociaux",
+      "intent": "publicite_sociale",
+      "embedding_text": "Gérez-vous aussi la publicité sur réseaux sociaux ? Oui gérons Social Ads Facebook Ads Instagram Ads LinkedIn Ads TikTok Ads création visuels ciblage précis optimisation budget A/B testing reporting détaillé synergie parfaite community management"
+    },
+    {
+      "id": "faq_055",
+      "category": "Community Management",
+      "subcategory": "UGC",
+      "question": "Comment exploitez-vous le contenu généré par les utilisateurs ?",
+      "answer": "Nous maximisons l'UGC : encouragement à la création de contenu, repost avec crédit, concours et challenges, création d'une communauté engagée, obtention des droits d'utilisation. L'UGC augmente l'engagement de 50% en moyenne.",
+      "keywords": [
+        "UGC",
+        "contenu utilisateurs",
+        "repost",
+        "concours",
+        "challenges",
+        "communauté",
+        "droits utilisation",
+        "engagement 50%"
+      ],
+      "context": "User Generated Content",
+      "intent": "exploitation_ugc",
+      "embedding_text": "Comment exploitez-vous le contenu généré par les utilisateurs ? Maximisons UGC encouragement création contenu repost crédit concours challenges création communauté engagée obtention droits utilisation UGC augmente engagement 50% moyenne"
+    },
+    {
+      "id": "faq_056",
+      "category": "Community Management",
+      "subcategory": "Analytics",
+      "question": "Quelles métriques suivez-vous ?",
+      "answer": "Nous suivons les KPIs essentiels : portée et impressions, taux d'engagement, croissance des abonnés, clics vers le site, conversions social commerce, sentiment analysis, share of voice, ROI social media.",
+      "keywords": [
+        "métriques",
+        "KPIs",
+        "portée",
+        "impressions",
+        "engagement",
+        "abonnés",
+        "conversions",
+        "sentiment analysis",
+        "ROI"
+      ],
+      "context": "Métriques réseaux sociaux",
+      "intent": "metriques_suivies",
+      "embedding_text": "Quelles métriques suivez-vous ? Suivons KPIs essentiels portée impressions taux engagement croissance abonnés clics site conversions social commerce sentiment analysis share voice ROI social media"
+    },
+    {
+      "id": "faq_057",
+      "category": "Développement Web",
+      "subcategory": "CMS",
+      "question": "Quel CMS recommandez-vous ?",
+      "answer": "Le choix du CMS dépend de vos besoins : WordPress pour la flexibilité et le SEO, Shopify pour e-commerce clé en main, PrestaShop pour e-commerce avancé, Webflow pour le design, développement sur-mesure pour projets spécifiques.",
+      "keywords": [
+        "CMS",
+        "WordPress",
+        "Shopify",
+        "PrestaShop",
+        "Webflow",
+        "sur-mesure",
+        "besoins"
+      ],
+      "context": "Recommandation de CMS",
+      "intent": "choix_cms",
+      "embedding_text": "Quel CMS recommandez-vous ? Choix CMS dépend besoins WordPress flexibilité SEO Shopify e-commerce clé main PrestaShop e-commerce avancé Webflow design développement sur-mesure projets spécifiques"
+    },
+    {
+      "id": "faq_058",
+      "category": "Développement Web",
+      "subcategory": "Hébergement",
+      "question": "Proposez-vous l'hébergement ?",
+      "answer": "Oui, nous proposons des solutions d'hébergement : serveurs haute performance, certificat SSL gratuit, sauvegardes automatiques, support technique inclus, CDN pour rapidité mondiale. Hébergement local Réunion disponible pour latence minimale.",
+      "keywords": [
+        "hébergement",
+        "serveurs",
+        "SSL",
+        "sauvegardes",
+        "support",
+        "CDN",
+        "Réunion",
+        "latence"
+      ],
+      "context": "Solutions d'hébergement",
+      "intent": "hebergement_web",
+      "embedding_text": "Proposez-vous l'hébergement ? Oui proposons solutions hébergement serveurs haute performance certificat SSL gratuit sauvegardes automatiques support technique inclus CDN rapidité mondiale hébergement local Réunion disponible latence minimale"
+    },
+    {
+      "id": "faq_059",
+      "category": "Développement Web",
+      "subcategory": "E-commerce",
+      "question": "Intégrez-vous les paiements en ligne ?",
+      "answer": "Oui, nous intégrons toutes les solutions de paiement : CB via Stripe/PayPal/Systempay, paiement local Réunion (PayGreen), paiement en plusieurs fois, wallets (Apple Pay, Google Pay), cryptomonnaies sur demande. Sécurité PCI-DSS garantie.",
+      "keywords": [
+        "paiements en ligne",
+        "Stripe",
+        "PayPal",
+        "Systempay",
+        "PayGreen",
+        "Apple Pay",
+        "Google Pay",
+        "PCI-DSS"
+      ],
+      "context": "Intégration paiements",
+      "intent": "integration_paiements",
+      "embedding_text": "Intégrez-vous les paiements en ligne ? Oui intégrons solutions paiement CB Stripe PayPal Systempay paiement local Réunion PayGreen paiement plusieurs fois wallets Apple Pay Google Pay cryptomonnaies demande sécurité PCI-DSS garantie"
+    },
+    {
+      "id": "faq_060",
+      "category": "Développement Web",
+      "subcategory": "Performance",
+      "question": "Comment garantissez-vous la rapidité des sites ?",
+      "answer": "Nous optimisons chaque aspect : code minifié et optimisé, images compressées et lazy loading, cache navigateur et serveur, CDN CloudFlare, hébergement performant, score PageSpeed >90. Un site rapide convertit 2x mieux.",
+      "keywords": [
+        "rapidité",
+        "code minifié",
+        "images compressées",
+        "lazy loading",
+        "cache",
+        "CDN CloudFlare",
+        "PageSpeed 90",
+        "convertit 2x"
+      ],
+      "context": "Optimisation performance web",
+      "intent": "garantie_rapidite",
+      "embedding_text": "Comment garantissez-vous la rapidité des sites ? Optimisons chaque aspect code minifié optimisé images compressées lazy loading cache navigateur serveur CDN CloudFlare hébergement performant score PageSpeed 90 site rapide convertit 2x mieux"
+    },
+    {
+      "id": "faq_061",
+      "category": "Développement Web",
+      "subcategory": "Sécurité",
+      "question": "Comment sécurisez-vous les sites web ?",
+      "answer": "Sécurité multicouche : certificat SSL, firewall applicatif (WAF), protection anti-DDoS, mises à jour automatiques, sauvegardes quotidiennes, scan malware régulier, authentification forte, conformité RGPD. Votre site est un coffre-fort.",
+      "keywords": [
+        "sécurité",
+        "SSL",
+        "firewall WAF",
+        "anti-DDoS",
+        "mises à jour",
+        "sauvegardes",
+        "malware",
+        "RGPD"
+      ],
+      "context": "Sécurisation sites web",
+      "intent": "securite_web",
+      "embedding_text": "Comment sécurisez-vous les sites web ? Sécurité multicouche certificat SSL firewall applicatif WAF protection anti-DDoS mises jour automatiques sauvegardes quotidiennes scan malware régulier authentification forte conformité RGPD site coffre-fort"
+    },
+    {
+      "id": "faq_062",
+      "category": "Développement Web",
+      "subcategory": "Migration",
+      "question": "Pouvez-vous migrer mon site existant ?",
+      "answer": "Oui, nous gérons les migrations complexes : audit technique préalable, sauvegarde complète, migration sans interruption, redirection 301 pour le SEO, tests approfondis, formation nouveau système. Zéro perte de données garantie.",
+      "keywords": [
+        "migration",
+        "audit technique",
+        "sauvegarde",
+        "sans interruption",
+        "redirection 301",
+        "SEO",
+        "tests",
+        "zéro perte"
+      ],
+      "context": "Migration de sites",
+      "intent": "migration_site",
+      "embedding_text": "Pouvez-vous migrer mon site existant ? Oui gérons migrations complexes audit technique préalable sauvegarde complète migration sans interruption redirection 301 SEO tests approfondis formation nouveau système zéro perte données garantie"
+    },
+    {
+      "id": "faq_063",
+      "category": "Développement Web",
+      "subcategory": "API",
+      "question": "Développez-vous des API ?",
+      "answer": "Oui, nous développons des API REST et GraphQL : architecture scalable, documentation Swagger, authentification OAuth2/JWT, rate limiting, versioning, monitoring. Parfait pour applications mobiles ou intégrations tierces.",
+      "keywords": [
+        "API",
+        "REST",
+        "GraphQL",
+        "Swagger",
+        "OAuth2",
+        "JWT",
+        "rate limiting",
+        "applications mobiles"
+      ],
+      "context": "Développement d'API",
+      "intent": "developpement_api",
+      "embedding_text": "Développez-vous des API ? Oui développons API REST GraphQL architecture scalable documentation Swagger authentification OAuth2 JWT rate limiting versioning monitoring parfait applications mobiles intégrations tierces"
+    },
+    {
+      "id": "faq_064",
+      "category": "Développement Web",
+      "subcategory": "PWA",
+      "question": "Créez-vous des Progressive Web Apps ?",
+      "answer": "Oui, nous créons des PWA : fonctionnement offline, installation sur mobile, notifications push, performances natives, coût réduit vs app native, un seul code pour tous les appareils. Idéal pour l'expérience mobile à La Réunion.",
+      "keywords": [
+        "PWA",
+        "Progressive Web Apps",
+        "offline",
+        "mobile",
+        "notifications push",
+        "performances natives",
+        "app native"
+      ],
+      "context": "Progressive Web Apps",
+      "intent": "creation_pwa",
+      "embedding_text": "Créez-vous des Progressive Web Apps ? Oui créons PWA fonctionnement offline installation mobile notifications push performances natives coût réduit vs app native seul code tous appareils idéal expérience mobile La Réunion"
+    },
+    {
+      "id": "faq_065",
+      "category": "SEO",
+      "subcategory": "Audit SEO",
+      "question": "Que comprend votre audit SEO ?",
+      "answer": "Audit SEO complet : analyse technique (vitesse, mobile, crawl), analyse contenu et mots-clés, audit backlinks et autorité, analyse concurrentielle, opportunités quick wins, plan d'action priorisé sur 6 mois.",
+      "keywords": [
+        "audit SEO",
+        "analyse technique",
+        "vitesse",
+        "mobile",
+        "mots-clés",
+        "backlinks",
+        "concurrentielle",
+        "plan action"
+      ],
+      "context": "Contenu audit SEO",
+      "intent": "contenu_audit_seo",
+      "embedding_text": "Que comprend votre audit SEO ? Audit SEO complet analyse technique vitesse mobile crawl analyse contenu mots-clés audit backlinks autorité analyse concurrentielle opportunités quick wins plan action priorisé 6 mois"
+    },
+    {
+      "id": "faq_066",
+      "category": "SEO",
+      "subcategory": "Contenu SEO",
+      "question": "Créez-vous du contenu optimisé SEO ?",
+      "answer": "Oui, nous créons du contenu SEO performant : recherche de mots-clés rentables, rédaction articles 1500+ mots, optimisation sémantique, maillage interne stratégique, rich snippets, contenu local Réunion. 1 article = multiple positions Google.",
+      "keywords": [
+        "contenu SEO",
+        "mots-clés",
+        "1500 mots",
+        "sémantique",
+        "maillage interne",
+        "rich snippets",
+        "Réunion"
+      ],
+      "context": "Création contenu SEO",
+      "intent": "creation_contenu_seo",
+      "embedding_text": "Créez-vous du contenu optimisé SEO ? Oui créons contenu SEO performant recherche mots-clés rentables rédaction articles 1500 mots optimisation sémantique maillage interne stratégique rich snippets contenu local Réunion 1 article multiple positions Google"
+    },
+    {
+      "id": "faq_067",
+      "category": "SEO",
+      "subcategory": "Backlinks",
+      "question": "Comment obtenez-vous des backlinks ?",
+      "answer": "Stratégie white hat uniquement : création de contenu linkable, digital PR et relations presse, guest posting qualitatif, partenariats locaux Réunion, citations et annuaires pertinents. Qualité > quantité, toujours.",
+      "keywords": [
+        "backlinks",
+        "white hat",
+        "linkable",
+        "digital PR",
+        "guest posting",
+        "partenariats",
+        "Réunion",
+        "qualité"
+      ],
+      "context": "Stratégie de backlinks",
+      "intent": "obtention_backlinks",
+      "embedding_text": "Comment obtenez-vous des backlinks ? Stratégie white hat uniquement création contenu linkable digital PR relations presse guest posting qualitatif partenariats locaux Réunion citations annuaires pertinents qualité quantité toujours"
+    },
+    {
+      "id": "faq_068",
+      "category": "SEO",
+      "subcategory": "Pénalités",
+      "question": "Mon site a été pénalisé par Google, pouvez-vous aider ?",
+      "answer": "Oui, nous gérons les pénalités Google : audit pour identifier la cause, nettoyage des problèmes (liens toxiques, contenu dupliqué), demande de réexamen Google, mise en place de bonnes pratiques, monitoring permanent.",
+      "keywords": [
+        "pénalités Google",
+        "audit",
+        "liens toxiques",
+        "contenu dupliqué",
+        "réexamen",
+        "bonnes pratiques",
+        "monitoring"
+      ],
+      "context": "Récupération pénalités Google",
+      "intent": "penalites_google",
+      "embedding_text": "Mon site a été pénalisé par Google pouvez-vous aider ? Oui gérons pénalités Google audit identifier cause nettoyage problèmes liens toxiques contenu dupliqué demande réexamen Google mise place bonnes pratiques monitoring permanent"
+    },
+    {
+      "id": "faq_069",
+      "category": "SEO",
+      "subcategory": "SEO technique",
+      "question": "Gérez-vous le SEO technique ?",
+      "answer": "Expertise SEO technique complète : optimisation Core Web Vitals, structure URL et architecture, schema markup, XML sitemap, robots.txt optimisé, canonical et hreflang, pagination SEO-friendly, JavaScript SEO.",
+      "keywords": [
+        "SEO technique",
+        "Core Web Vitals",
+        "URL",
+        "schema markup",
+        "XML sitemap",
+        "robots.txt",
+        "canonical",
+        "JavaScript SEO"
+      ],
+      "context": "SEO technique",
+      "intent": "seo_technique",
+      "embedding_text": "Gérez-vous le SEO technique ? Expertise SEO technique complète optimisation Core Web Vitals structure URL architecture schema markup XML sitemap robots.txt optimisé canonical hreflang pagination SEO-friendly JavaScript SEO"
+    },
+    {
+      "id": "faq_070",
+      "category": "SEO",
+      "subcategory": "SEO e-commerce",
+      "question": "Faites-vous du SEO pour e-commerce ?",
+      "answer": "SEO e-commerce spécialisé : optimisation fiches produits, catégories et filtres SEO, rich snippets produits, gestion stocks et URLs, optimisation images produits, reviews et ratings SEO, architecture facettes.",
+      "keywords": [
+        "SEO e-commerce",
+        "fiches produits",
+        "catégories",
+        "rich snippets",
+        "stocks",
+        "images",
+        "reviews",
+        "facettes"
+      ],
+      "context": "SEO pour e-commerce",
+      "intent": "seo_ecommerce",
+      "embedding_text": "Faites-vous du SEO pour e-commerce ? SEO e-commerce spécialisé optimisation fiches produits catégories filtres SEO rich snippets produits gestion stocks URLs optimisation images produits reviews ratings SEO architecture facettes"
+    },
+    {
+      "id": "faq_071",
+      "category": "SEO",
+      "subcategory": "Suivi positions",
+      "question": "Comment suivez-vous les positions Google ?",
+      "answer": "Monitoring professionnel quotidien : suivi positions desktop et mobile, tracking local et national, analyse SERP features, évolution vs concurrents, alertes de changements, rapport hebdomadaire personnalisé.",
+      "keywords": [
+        "positions Google",
+        "monitoring",
+        "desktop mobile",
+        "local national",
+        "SERP",
+        "concurrents",
+        "alertes",
+        "rapport"
+      ],
+      "context": "Suivi des positions SEO",
+      "intent": "suivi_positions_seo",
+      "embedding_text": "Comment suivez-vous les positions Google ? Monitoring professionnel quotidien suivi positions desktop mobile tracking local national analyse SERP features évolution vs concurrents alertes changements rapport hebdomadaire personnalisé"
+    },
+    {
+      "id": "faq_072",
+      "category": "Production Vidéo",
+      "subcategory": "Droits",
+      "question": "À qui appartiennent les droits des vidéos ?",
+      "answer": "Vous êtes propriétaire à 100% : cession complète des droits, utilisation illimitée, fichiers sources sur demande, musiques libres de droits, autorisation de modification. Transparence totale sur la propriété intellectuelle.",
+      "keywords": [
+        "droits vidéos",
+        "propriétaire 100%",
+        "cession droits",
+        "utilisation illimitée",
+        "fichiers sources",
+        "musiques libres",
+        "propriété intellectuelle"
+      ],
+      "context": "Droits de propriété vidéo",
+      "intent": "droits_videos",
+      "embedding_text": "À qui appartiennent les droits des vidéos ? Propriétaire 100% cession complète droits utilisation illimitée fichiers sources demande musiques libres droits autorisation modification transparence totale propriété intellectuelle"
+    },
+    {
+      "id": "faq_073",
+      "category": "Production Vidéo",
+      "subcategory": "Formats",
+      "question": "Dans quels formats livrez-vous les vidéos ?",
+      "answer": "Multi-formats selon vos besoins : MP4 haute qualité pour web, formats optimisés réseaux sociaux (carré, vertical, horizontal), version 4K sur demande, exports spécifiques TV, sous-titres séparés, versions courtes pour ads.",
+      "keywords": [
+        "formats vidéos",
+        "MP4",
+        "réseaux sociaux",
+        "carré vertical horizontal",
+        "4K",
+        "TV",
+        "sous-titres",
+        "ads"
+      ],
+      "context": "Formats de livraison vidéo",
+      "intent": "formats_livraison_video",
+      "embedding_text": "Dans quels formats livrez-vous les vidéos ? Multi-formats besoins MP4 haute qualité web formats optimisés réseaux sociaux carré vertical horizontal version 4K demande exports spécifiques TV sous-titres séparés versions courtes ads"
+    },
+    {
+      "id": "faq_074",
+      "category": "Production Vidéo",
+      "subcategory": "Tournage",
+      "question": "Où réalisez-vous les tournages ?",
+      "answer": "Tournages partout à La Réunion : en studio (fond vert disponible), dans vos locaux, en extérieur (drone autorisé), lieux emblématiques île, déplacement Maurice/Mayotte possible. Repérage inclus pour projets importants.",
+      "keywords": [
+        "tournages",
+        "La Réunion",
+        "studio",
+        "fond vert",
+        "locaux",
+        "drone",
+        "Maurice",
+        "Mayotte",
+        "repérage"
+      ],
+      "context": "Lieux de tournage",
+      "intent": "lieux_tournage",
+      "embedding_text": "Où réalisez-vous les tournages ? Tournages partout La Réunion studio fond vert disponible locaux extérieur drone autorisé lieux emblématiques île déplacement Maurice Mayotte possible repérage inclus projets importants"
+    },
+    {
+      "id": "faq_075",
+      "category": "Production Vidéo",
+      "subcategory": "Acteurs",
+      "question": "Fournissez-vous des acteurs/mannequins ?",
+      "answer": "Oui, nous gérons le casting complet : base de données talents locaux, casting sur mesure, gestion contrats et droits image, maquillage et styling inclus, direction d'acteurs professionnelle. Tarifs selon profils.",
+      "keywords": [
+        "acteurs",
+        "mannequins",
+        "casting",
+        "talents locaux",
+        "contrats",
+        "droits image",
+        "maquillage",
+        "direction acteurs"
+      ],
+      "context": "Casting et talents",
+      "intent": "fourniture_acteurs",
+      "embedding_text": "Fournissez-vous des acteurs/mannequins ? Oui gérons casting complet base données talents locaux casting sur mesure gestion contrats droits image maquillage styling inclus direction acteurs professionnelle tarifs selon profils"
+    },
+    {
+      "id": "faq_076",
+      "category": "Production Vidéo",
+      "subcategory": "Animation",
+      "question": "Faites-vous de l'animation ?",
+      "answer": "Oui, nous créons des animations : motion design 2D/3D, animations logo, infographies animées, kinetic typography, animations personnages, transitions créatives. Parfait pour expliquer des concepts complexes simplement.",
+      "keywords": [
+        "animation",
+        "motion design",
+        "2D/3D",
+        "logo",
+        "infographies",
+        "kinetic typography",
+        "personnages",
+        "transitions"
+      ],
+      "context": "Services d'animation",
+      "intent": "animation_video",
+      "embedding_text": "Faites-vous de l'animation ? Oui créons animations motion design 2D 3D animations logo infographies animées kinetic typography animations personnages transitions créatives parfait expliquer concepts complexes simplement"
+    },
+    {
+      "id": "faq_077",
+      "category": "Production Vidéo",
+      "subcategory": "Live streaming",
+      "question": "Proposez-vous du live streaming ?",
+      "answer": "Oui, nous gérons vos directs : streaming multi-caméras, diffusion Facebook/YouTube/LinkedIn simultanée, habillage graphique live, interaction audience, enregistrement HD, replay optimisé. Idéal pour événements et webinaires.",
+      "keywords": [
+        "live streaming",
+        "multi-caméras",
+        "Facebook YouTube LinkedIn",
+        "habillage graphique",
+        "interaction",
+        "HD",
+        "replay",
+        "webinaires"
+      ],
+      "context": "Services de live streaming",
+      "intent": "live_streaming",
+      "embedding_text": "Proposez-vous du live streaming ? Oui gérons directs streaming multi-caméras diffusion Facebook YouTube LinkedIn simultanée habillage graphique live interaction audience enregistrement HD replay optimisé idéal événements webinaires"
+    },
+    {
+      "id": "faq_078",
+      "category": "Production Vidéo",
+      "subcategory": "Sous-titres",
+      "question": "Ajoutez-vous des sous-titres ?",
+      "answer": "Oui, sous-titrage professionnel : transcription précise, sous-titres français/créole/anglais, timing parfait, format SRT/VTT, sous-titres incrustés option, optimisation réseaux sociaux (85% regardent sans son).",
+      "keywords": [
+        "sous-titres",
+        "transcription",
+        "français créole anglais",
+        "timing",
+        "SRT VTT",
+        "incrustés",
+        "réseaux sociaux",
+        "85% sans son"
+      ],
+      "context": "Services de sous-titrage",
+      "intent": "sous_titrage",
+      "embedding_text": "Ajoutez-vous des sous-titres ? Oui sous-titrage professionnel transcription précise sous-titres français créole anglais timing parfait format SRT VTT sous-titres incrustés option optimisation réseaux sociaux 85% regardent sans son"
+    },
+    {
+      "id": "faq_079",
+      "category": "Identité Visuelle",
+      "subcategory": "Propriété",
+      "question": "Le logo m'appartiendra-t-il à 100% ?",
+      "answer": "Oui, propriété totale garantie : cession de droits complète, certificat de cession fourni, utilisation illimitée tous supports, dépôt INPI possible (accompagnement offert), fichiers sources inclus.",
+      "keywords": [
+        "logo propriété",
+        "100%",
+        "cession droits",
+        "certificat",
+        "utilisation illimitée",
+        "INPI",
+        "fichiers sources"
+      ],
+      "context": "Propriété du logo",
+      "intent": "propriete_logo",
+      "embedding_text": "Le logo m'appartiendra-t-il à 100% ? Oui propriété totale garantie cession droits complète certificat cession fourni utilisation illimitée tous supports dépôt INPI possible accompagnement offert fichiers sources inclus"
+    },
+    {
+      "id": "faq_080",
+      "category": "Identité Visuelle",
+      "subcategory": "Formats",
+      "question": "Dans quels formats recevrai-je mon logo ?",
+      "answer": "Tous les formats professionnels : AI/EPS (vectoriel impression), PNG (fond transparent), JPG (web), SVG (web responsive), PDF (présentation), favicon, versions couleur/noir/blanc, guide des tailles.",
+      "keywords": [
+        "formats logo",
+        "AI EPS",
+        "vectoriel",
+        "PNG",
+        "JPG",
+        "SVG",
+        "PDF",
+        "favicon",
+        "couleur noir blanc"
+      ],
+      "context": "Formats de livraison logo",
+      "intent": "formats_logo",
+      "embedding_text": "Dans quels formats recevrai-je mon logo ? Tous formats professionnels AI EPS vectoriel impression PNG fond transparent JPG web SVG web responsive PDF présentation favicon versions couleur noir blanc guide tailles"
+    },
+    {
+      "id": "faq_081",
+      "category": "Identité Visuelle",
+      "subcategory": "Inspiration",
+      "question": "Comment trouvez-vous l'inspiration ?",
+      "answer": "Processus créatif structuré : analyse de votre secteur et valeurs, benchmark concurrentiel, moodboards et tendances, brainstorming équipe créative, recherches culturelles locales, tests utilisateurs. Créativité + stratégie = impact.",
+      "keywords": [
+        "inspiration",
+        "processus créatif",
+        "secteur valeurs",
+        "benchmark",
+        "moodboards",
+        "brainstorming",
+        "culturel local",
+        "tests"
+      ],
+      "context": "Processus créatif",
+      "intent": "inspiration_creative",
+      "embedding_text": "Comment trouvez-vous l'inspiration ? Processus créatif structuré analyse secteur valeurs benchmark concurrentiel moodboards tendances brainstorming équipe créative recherches culturelles locales tests utilisateurs créativité stratégie impact"
+    },
+    {
+      "id": "faq_082",
+      "category": "Identité Visuelle",
+      "subcategory": "Couleurs",
+      "question": "Comment choisissez-vous les couleurs ?",
+      "answer": "Choix stratégique des couleurs : psychologie des couleurs et impact émotionnel, cohérence avec votre secteur, différenciation concurrentielle, adaptation culturelle Réunion, accessibilité et contrastes, déclinaisons et harmonies.",
+      "keywords": [
+        "couleurs",
+        "psychologie",
+        "impact émotionnel",
+        "secteur",
+        "différenciation",
+        "culturel Réunion",
+        "accessibilité",
+        "harmonies"
+      ],
+      "context": "Choix des couleurs",
+      "intent": "choix_couleurs",
+      "embedding_text": "Comment choisissez-vous les couleurs ? Choix stratégique couleurs psychologie couleurs impact émotionnel cohérence secteur différenciation concurrentielle adaptation culturelle Réunion accessibilité contrastes déclinaisons harmonies"
+    },
+    {
+      "id": "faq_083",
+      "category": "Identité Visuelle",
+      "subcategory": "Typographies",
+      "question": "Incluez-vous les typographies ?",
+      "answer": "Oui, système typographique complet : sélection 2-3 typographies complémentaires, hiérarchie typographique définie, licences commerciales incluses, alternatives gratuites Google Fonts, guide d'utilisation détaillé.",
+      "keywords": [
+        "typographies",
+        "2-3 typographies",
+        "hiérarchie",
+        "licences commerciales",
+        "Google Fonts",
+        "guide utilisation"
+      ],
+      "context": "Système typographique",
+      "intent": "typographies_incluses",
+      "embedding_text": "Incluez-vous les typographies ? Oui système typographique complet sélection 2-3 typographies complémentaires hiérarchie typographique définie licences commerciales incluses alternatives gratuites Google Fonts guide utilisation détaillé"
+    },
+    {
+      "id": "faq_084",
+      "category": "Identité Visuelle",
+      "subcategory": "Applications",
+      "question": "Créez-vous aussi les supports de communication ?",
+      "answer": "Oui, déclinaison complète : cartes de visite et papeterie, signatures email, templates réseaux sociaux, supports print (flyers, affiches), signalétique et véhicules, packaging produits. Pack sur-mesure selon besoins.",
+      "keywords": [
+        "supports communication",
+        "cartes visite",
+        "papeterie",
+        "signatures email",
+        "templates",
+        "print",
+        "signalétique",
+        "packaging"
+      ],
+      "context": "Supports de communication",
+      "intent": "creation_supports",
+      "embedding_text": "Créez-vous aussi les supports de communication ? Oui déclinaison complète cartes visite papeterie signatures email templates réseaux sociaux supports print flyers affiches signalétique véhicules packaging produits pack sur-mesure besoins"
+    },
+    {
+      "id": "faq_085",
+      "category": "Audit Digital",
+      "subcategory": "Durée",
+      "question": "Combien de temps dure un audit ?",
+      "answer": "Délais selon la profondeur : audit flash (24-48h) pour vue d'ensemble, audit standard (1 semaine) avec recommandations, audit approfondi (2 semaines) avec plan d'action détaillé et chiffrage.",
+      "keywords": [
+        "durée audit",
+        "audit flash 24-48h",
+        "audit standard 1 semaine",
+        "audit approfondi 2 semaines",
+        "plan action"
+      ],
+      "context": "Durée de l'audit",
+      "intent": "duree_audit",
+      "embedding_text": "Combien de temps dure un audit ? Délais selon profondeur audit flash 24-48h vue ensemble audit standard 1 semaine recommandations audit approfondi 2 semaines plan action détaillé chiffrage"
+    },
+    {
+      "id": "faq_086",
+      "category": "Audit Digital",
+      "subcategory": "Présentation",
+      "question": "Comment présentez-vous les résultats ?",
+      "answer": "Présentation claire et actionnable : rapport PDF détaillé 30-50 pages, présentation vidéo personnalisée, réunion de restitution (1-2h), dashboard interactif en ligne, support post-audit 30 jours.",
+      "keywords": [
+        "présentation résultats",
+        "rapport PDF",
+        "30-50 pages",
+        "vidéo",
+        "réunion restitution",
+        "dashboard",
+        "support 30 jours"
+      ],
+      "context": "Présentation audit",
+      "intent": "presentation_resultats",
+      "embedding_text": "Comment présentez-vous les résultats ? Présentation claire actionnable rapport PDF détaillé 30-50 pages présentation vidéo personnalisée réunion restitution 1-2h dashboard interactif ligne support post-audit 30 jours"
+    },
+    {
+      "id": "faq_087",
+      "category": "Audit Digital",
+      "subcategory": "Fréquence",
+      "question": "À quelle fréquence faire un audit ?",
+      "answer": "Fréquence recommandée : audit complet annuel pour vision stratégique, audit semestriel pour secteurs dynamiques, audit flash trimestriel pour KPIs, audit ponctuel avant refonte ou campagne importante.",
+      "keywords": [
+        "fréquence audit",
+        "annuel",
+        "semestriel",
+        "trimestriel",
+        "KPIs",
+        "ponctuel",
+        "refonte",
+        "campagne"
+      ],
+      "context": "Fréquence des audits",
+      "intent": "frequence_audit",
+      "embedding_text": "À quelle fréquence faire un audit ? Fréquence recommandée audit complet annuel vision stratégique audit semestriel secteurs dynamiques audit flash trimestriel KPIs audit ponctuel avant refonte campagne importante"
+    },
+    {
+      "id": "faq_088",
+      "category": "Audit Digital",
+      "subcategory": "Outils",
+      "question": "Quels outils utilisez-vous pour l'audit ?",
+      "answer": "Stack d'outils professionnels : Google Analytics/Search Console, SEMrush/Ahrefs, Screaming Frog, GTmetrix/PageSpeed, Hotjar, Social Blade, outils propriétaires Digiqo, 20+ outils spécialisés.",
+      "keywords": [
+        "outils audit",
+        "Google Analytics",
+        "Search Console",
+        "SEMrush",
+        "Ahrefs",
+        "Screaming Frog",
+        "GTmetrix",
+        "Hotjar"
+      ],
+      "context": "Outils d'audit",
+      "intent": "outils_audit",
+      "embedding_text": "Quels outils utilisez-vous pour l'audit ? Stack outils professionnels Google Analytics Search Console SEMrush Ahrefs Screaming Frog GTmetrix PageSpeed Hotjar Social Blade outils propriétaires Digiqo 20+ outils spécialisés"
+    },
+    {
+      "id": "faq_089",
+      "category": "Maintenance Web",
+      "subcategory": "SiteKeeper",
+      "question": "Qu'est-ce que SiteKeeper ?",
+      "answer": "SiteKeeper est notre service de maintenance tout-en-un : mises à jour automatiques, sauvegardes quotidiennes, monitoring 24/7, support technique prioritaire, optimisations mensuelles, rapport de santé mensuel, interventions illimitées.",
+      "keywords": [
+        "SiteKeeper",
+        "maintenance",
+        "mises à jour",
+        "sauvegardes",
+        "monitoring 24/7",
+        "support",
+        "optimisations",
+        "interventions illimitées"
+      ],
+      "context": "Service SiteKeeper",
+      "intent": "sitekeeper_service",
+      "embedding_text": "Qu'est-ce que SiteKeeper ? SiteKeeper service maintenance tout-en-un mises jour automatiques sauvegardes quotidiennes monitoring 24/7 support technique prioritaire optimisations mensuelles rapport santé mensuel interventions illimitées"
+    },
+    {
+      "id": "faq_090",
+      "category": "Maintenance Web",
+      "subcategory": "Sauvegardes",
+      "question": "À quelle fréquence sauvegardez-vous ?",
+      "answer": "Sauvegardes multi-niveaux : sauvegarde quotidienne automatique, sauvegarde hebdomadaire sur serveur distant, sauvegarde mensuelle archivée, restauration en 1 clic, historique 30 jours minimum.",
+      "keywords": [
+        "sauvegardes",
+        "quotidienne",
+        "hebdomadaire",
+        "mensuelle",
+        "serveur distant",
+        "restauration 1 clic",
+        "30 jours"
+      ],
+      "context": "Fréquence sauvegardes",
+      "intent": "frequence_sauvegardes",
+      "embedding_text": "À quelle fréquence sauvegardez-vous ? Sauvegardes multi-niveaux sauvegarde quotidienne automatique sauvegarde hebdomadaire serveur distant sauvegarde mensuelle archivée restauration 1 clic historique 30 jours minimum"
+    },
+    {
+      "id": "faq_091",
+      "category": "Maintenance Web",
+      "subcategory": "Urgences",
+      "question": "Gérez-vous les urgences ?",
+      "answer": "Service urgence disponible : hotline dédiée heures ouvrées, option astreinte 24/7, intervention sous 2h garantie, résolution prioritaire, communication transparente, rapport d'incident détaillé.",
+      "keywords": [
+        "urgences",
+        "hotline",
+        "astreinte 24/7",
+        "intervention 2h",
+        "prioritaire",
+        "rapport incident"
+      ],
+      "context": "Gestion urgences",
+      "intent": "gestion_urgences",
+      "embedding_text": "Gérez-vous les urgences ? Service urgence disponible hotline dédiée heures ouvrées option astreinte 24/7 intervention 2h garantie résolution prioritaire communication transparente rapport incident détaillé"
+    },
+    {
+      "id": "faq_092",
+      "category": "Maintenance Web",
+      "subcategory": "Mises à jour",
+      "question": "Quelles mises à jour effectuez-vous ?",
+      "answer": "Mises à jour complètes : CMS et core système, plugins et extensions, thèmes et templates, correctifs sécurité, PHP et composants serveur, optimisation base données. Tests avant application production.",
+      "keywords": [
+        "mises à jour",
+        "CMS",
+        "plugins",
+        "thèmes",
+        "sécurité",
+        "PHP",
+        "base données",
+        "tests"
+      ],
+      "context": "Types de mises à jour",
+      "intent": "types_mises_jour",
+      "embedding_text": "Quelles mises à jour effectuez-vous ? Mises jour complètes CMS core système plugins extensions thèmes templates correctifs sécurité PHP composants serveur optimisation base données tests avant application production"
+    },
+    {
+      "id": "faq_093",
+      "category": "Expertise Locale",
+      "subcategory": "Connaissance marché",
+      "question": "Quelle est votre expertise du marché réunionnais ?",
+      "answer": "15 ans d'expertise locale : connaissance approfondie des consommateurs locaux, maîtrise créole et codes culturels, réseau partenaires établi, compréhension enjeux économiques DOM, adaptation stratégies au contexte insulaire.",
+      "keywords": [
+        "expertise locale",
+        "15 ans",
+        "consommateurs locaux",
+        "créole",
+        "culturel",
+        "partenaires",
+        "DOM",
+        "insulaire"
+      ],
+      "context": "Expertise marché réunionnais",
+      "intent": "expertise_marche_reunionnais",
+      "embedding_text": "Quelle est votre expertise du marché réunionnais ? 15 ans expertise locale connaissance approfondie consommateurs locaux maîtrise créole codes culturels réseau partenaires établi compréhension enjeux économiques DOM adaptation stratégies contexte insulaire"
+    },
+    {
+      "id": "faq_094",
+      "category": "Expertise Locale",
+      "subcategory": "Avantages",
+      "question": "Pourquoi choisir une agence locale ?",
+      "answer": "Avantages agence locale : réactivité et disponibilité immédiate, connaissance terrain et réseaux, adaptation culturelle naturelle, tarifs adaptés pouvoir d'achat local, soutien économie locale, SAV de proximité.",
+      "keywords": [
+        "agence locale",
+        "réactivité",
+        "disponibilité",
+        "terrain",
+        "culturelle",
+        "tarifs adaptés",
+        "économie locale",
+        "proximité"
+      ],
+      "context": "Avantages agence locale",
+      "intent": "avantages_agence_locale",
+      "embedding_text": "Pourquoi choisir une agence locale ? Avantages agence locale réactivité disponibilité immédiate connaissance terrain réseaux adaptation culturelle naturelle tarifs adaptés pouvoir achat local soutien économie locale SAV proximité"
+    },
+    {
+      "id": "faq_095",
+      "category": "Expertise Locale",
+      "subcategory": "Océan Indien",
+      "question": "Travaillez-vous dans tout l'Océan Indien ?",
+      "answer": "Oui, présence régionale : bureaux La Réunion (siège), interventions Maurice et Mayotte, partenaires Madagascar et Comores, expertise zones tropicales, adaptation multi-culturelle, gestion projets à distance.",
+      "keywords": [
+        "Océan Indien",
+        "La Réunion",
+        "Maurice",
+        "Mayotte",
+        "Madagascar",
+        "Comores",
+        "régional",
+        "multi-culturelle"
+      ],
+      "context": "Couverture Océan Indien",
+      "intent": "couverture_ocean_indien",
+      "embedding_text": "Travaillez-vous dans tout l'Océan Indien ? Oui présence régionale bureaux La Réunion siège interventions Maurice Mayotte partenaires Madagascar Comores expertise zones tropicales adaptation multi-culturelle gestion projets distance"
+    },
+    {
+      "id": "faq_096",
+      "category": "Équipe et Valeurs",
+      "subcategory": "Équipe",
+      "question": "Quelle est la taille de votre équipe ?",
+      "answer": "Équipe de 12 experts passionnés : direction et stratégie (2), développeurs web (3), experts marketing digital (3), créatifs et designers (2), community managers (2). Renforts freelances selon projets.",
+      "keywords": [
+        "équipe",
+        "12 experts",
+        "direction",
+        "développeurs",
+        "marketing digital",
+        "créatifs",
+        "community managers",
+        "freelances"
+      ],
+      "context": "Taille de l'équipe",
+      "intent": "taille_equipe",
+      "embedding_text": "Quelle est la taille de votre équipe ? Équipe 12 experts passionnés direction stratégie 2 développeurs web 3 experts marketing digital 3 créatifs designers 2 community managers 2 renforts freelances selon projets"
+    },
+    {
+      "id": "faq_097",
+      "category": "Équipe et Valeurs",
+      "subcategory": "Valeurs",
+      "question": "Quelles sont vos valeurs ?",
+      "answer": "Nos valeurs fondamentales : transparence totale (reporting, tarifs, méthodes), innovation constante (veille, formation, R&D), proximité client (écoute, disponibilité, partenariat), excellence (qualité, résultats, satisfaction), engagement local (emploi, RSE, environnement).",
+      "keywords": [
+        "valeurs",
+        "transparence",
+        "innovation",
+        "proximité client",
+        "excellence",
+        "engagement local",
+        "RSE",
+        "environnement"
+      ],
+      "context": "Valeurs de l'entreprise",
+      "intent": "valeurs_entreprise",
+      "embedding_text": "Quelles sont vos valeurs ? Valeurs fondamentales transparence totale reporting tarifs méthodes innovation constante veille formation R&D proximité client écoute disponibilité partenariat excellence qualité résultats satisfaction engagement local emploi RSE environnement"
+    },
+    {
+      "id": "faq_098",
+      "category": "Équipe et Valeurs",
+      "subcategory": "Certifications",
+      "question": "Avez-vous des certifications ?",
+      "answer": "Multiples certifications : Google Partners (Ads, Analytics), Meta Business Partners, certifications individuelles équipe, formations continues annuelles, membre associations professionnelles, agréé formation Qualiopi.",
+      "keywords": [
+        "certifications",
+        "Google Partners",
+        "Meta Business Partners",
+        "formations",
+        "associations professionnelles",
+        "Qualiopi"
+      ],
+      "context": "Certifications agence",
+      "intent": "certifications_agence",
+      "embedding_text": "Avez-vous des certifications ? Multiples certifications Google Partners Ads Analytics Meta Business Partners certifications individuelles équipe formations continues annuelles membre associations professionnelles agréé formation Qualiopi"
+    },
+    {
+      "id": "faq_099",
+      "category": "Équipe et Valeurs",
+      "subcategory": "RSE",
+      "question": "Quelle est votre politique RSE ?",
+      "answer": "Engagement RSE fort : bureaux éco-responsables, télétravail privilégié, compensation carbone projets, partenariats associations locales, stages et alternances jeunes, achats locaux prioritaires, pro bono 2% CA.",
+      "keywords": [
+        "RSE",
+        "éco-responsable",
+        "télétravail",
+        "compensation carbone",
+        "associations",
+        "stages",
+        "achats locaux",
+        "pro bono"
+      ],
+      "context": "Politique RSE",
+      "intent": "politique_rse",
+      "embedding_text": "Quelle est votre politique RSE ? Engagement RSE fort bureaux éco-responsables télétravail privilégié compensation carbone projets partenariats associations locales stages alternances jeunes achats locaux prioritaires pro bono 2% CA"
+    },
+    {
+      "id": "faq_100",
+      "category": "Contact et Démarrage",
+      "subcategory": "Premier contact",
+      "question": "Comment vous contacter ?",
+      "answer": "Multiples canaux disponibles : téléphone 0692 70 40 62, email contact@digiqo.fr, formulaire site web, chat en ligne, WhatsApp Business, rendez-vous physique Saint-Denis, visio Google Meet/Zoom.",
+      "keywords": [
+        "contact",
+        "téléphone",
+        "0692 70 40 62",
+        "email",
+        "contact@digiqo.fr",
+        "WhatsApp",
+        "Saint-Denis",
+        "visio"
+      ],
+      "context": "Moyens de contact",
+      "intent": "comment_contacter",
+      "embedding_text": "Comment vous contacter ? Multiples canaux disponibles téléphone 0692 70 40 62 email contact@digiqo.fr formulaire site web chat ligne WhatsApp Business rendez-vous physique Saint-Denis visio Google Meet Zoom"
+    },
+    {
+      "id": "faq_101",
+      "category": "Contact et Démarrage",
+      "subcategory": "Localisation",
+      "question": "Où êtes-vous situés ?",
+      "answer": "Bureaux à Saint-Denis : adresse centrale et accessible, parking gratuit disponible, accès PMR, espace réunion climatisé. Déplacements sur toute l'île, rendez-vous chez le client possible.",
+      "keywords": [
+        "localisation",
+        "Saint-Denis",
+        "bureaux",
+        "parking",
+        "PMR",
+        "réunion",
+        "déplacements",
+        "île"
+      ],
+      "context": "Localisation bureaux",
+      "intent": "localisation_bureaux",
+      "embedding_text": "Où êtes-vous situés ? Bureaux Saint-Denis adresse centrale accessible parking gratuit disponible accès PMR espace réunion climatisé déplacements toute île rendez-vous client possible"
+    },
+    {
+      "id": "faq_102",
+      "category": "Contact et Démarrage",
+      "subcategory": "Horaires",
+      "question": "Quels sont vos horaires ?",
+      "answer": "Horaires adaptés Réunion : lundi-vendredi 8h30-17h30, permanence téléphonique non-stop, support email 7j/7, urgences selon contrat, flexibilité rendez-vous client, adaptation décalage horaire métropole.",
+      "keywords": [
+        "horaires",
+        "8h30-17h30",
+        "lundi-vendredi",
+        "permanence",
+        "email 7j/7",
+        "urgences",
+        "flexibilité",
+        "décalage horaire"
+      ],
+      "context": "Horaires ouverture",
+      "intent": "horaires_ouverture",
+      "embedding_text": "Quels sont vos horaires ? Horaires adaptés Réunion lundi-vendredi 8h30-17h30 permanence téléphonique non-stop support email 7j/7 urgences selon contrat flexibilité rendez-vous client adaptation décalage horaire métropole"
+    },
+    {
+      "id": "faq_103",
+      "category": "Contact et Démarrage",
+      "subcategory": "Démarrage",
+      "question": "Comment démarrer un projet ?",
+      "answer": "Processus simple et rapide : 1) Contact initial (téléphone/email), 2) Rendez-vous découverte gratuit, 3) Audit et analyse besoins, 4) Proposition personnalisée, 5) Validation et signature, 6) Kick-off projet. Délai moyen : 1 semaine.",
+      "keywords": [
+        "démarrer projet",
+        "contact",
+        "rendez-vous",
+        "audit",
+        "proposition",
+        "signature",
+        "kick-off",
+        "1 semaine"
+      ],
+      "context": "Démarrage projet",
+      "intent": "demarrer_projet",
+      "embedding_text": "Comment démarrer un projet ? Processus simple rapide contact initial téléphone email rendez-vous découverte gratuit audit analyse besoins proposition personnalisée validation signature kick-off projet délai moyen 1 semaine"
+    },
+    {
+      "id": "faq_104",
+      "category": "Contact et Démarrage",
+      "subcategory": "Secteurs",
+      "question": "Avec quels secteurs travaillez-vous ?",
+      "answer": "Tous secteurs d'activité : commerce et e-commerce, tourisme et hôtellerie, services aux entreprises, santé et bien-être, immobilier et construction, restauration, associations et institutions. Expertise multi-sectorielle.",
+      "keywords": [
+        "secteurs",
+        "commerce",
+        "tourisme",
+        "services",
+        "santé",
+        "immobilier",
+        "restauration",
+        "associations",
+        "multi-sectorielle"
+      ],
+      "context": "Secteurs d'activité",
+      "intent": "secteurs_activite",
+      "embedding_text": "Avec quels secteurs travaillez-vous ? Tous secteurs activité commerce e-commerce tourisme hôtellerie services entreprises santé bien-être immobilier construction restauration associations institutions expertise multi-sectorielle"
+    },
+    {
+      "id": "faq_105",
+      "category": "Contact et Démarrage",
+      "subcategory": "Taille entreprise",
+      "question": "Travaillez-vous avec les petites entreprises ?",
+      "answer": "Oui, toutes tailles d'entreprises : TPE/PME (forfaits adaptés), startups (accompagnement croissance), grandes entreprises (solutions scalables), indépendants (formules flexibles), associations (tarifs préférentiels).",
+      "keywords": [
+        "petites entreprises",
+        "TPE PME",
+        "startups",
+        "grandes entreprises",
+        "indépendants",
+        "associations",
+        "forfaits adaptés"
+      ],
+      "context": "Taille entreprises clientes",
+      "intent": "taille_entreprises",
+      "embedding_text": "Travaillez-vous avec les petites entreprises ? Oui toutes tailles entreprises TPE PME forfaits adaptés startups accompagnement croissance grandes entreprises solutions scalables indépendants formules flexibles associations tarifs préférentiels"
+    },
+    {
+      "id": "faq_106",
+      "category": "Garanties et Engagements",
+      "subcategory": "Satisfaction",
+      "question": "Garantissez-vous la satisfaction ?",
+      "answer": "Engagement satisfaction totale : garantie satisfait ou remboursé 30 jours (conditions), modifications jusqu'à validation, transparence totale process, écoute continue feedback, taux satisfaction client 97%.",
+      "keywords": [
+        "satisfaction",
+        "garantie",
+        "remboursé 30 jours",
+        "modifications",
+        "transparence",
+        "feedback",
+        "97%"
+      ],
+      "context": "Garantie satisfaction",
+      "intent": "garantie_satisfaction",
+      "embedding_text": "Garantissez-vous la satisfaction ? Engagement satisfaction totale garantie satisfait remboursé 30 jours conditions modifications validation transparence totale process écoute continue feedback taux satisfaction client 97%"
+    },
+    {
+      "id": "faq_107",
+      "category": "Garanties et Engagements",
+      "subcategory": "Confidentialité",
+      "question": "Comment protégez-vous nos données ?",
+      "answer": "Protection maximale données : NDA systématique sur demande, serveurs sécurisés certifiés, conformité RGPD totale, accès restreints équipe, sauvegarde cryptée, suppression sur demande, audit sécurité annuel.",
+      "keywords": [
+        "protection données",
+        "NDA",
+        "serveurs sécurisés",
+        "RGPD",
+        "accès restreints",
+        "cryptage",
+        "audit sécurité"
+      ],
+      "context": "Protection données",
+      "intent": "protection_donnees",
+      "embedding_text": "Comment protégez-vous nos données ? Protection maximale données NDA systématique demande serveurs sécurisés certifiés conformité RGPD totale accès restreints équipe sauvegarde cryptée suppression demande audit sécurité annuel"
+    },
+    {
+      "id": "faq_108",
+      "category": "Garanties et Engagements",
+      "subcategory": "Résultats",
+      "question": "Garantissez-vous les résultats ?",
+      "answer": "Engagement sur les moyens et résultats : KPIs définis ensemble, reporting transparent mensuel, optimisations continues incluses, obligation de moyens renforcée, historique 95% objectifs atteints, ajustements stratégie si besoin.",
+      "keywords": [
+        "résultats",
+        "KPIs",
+        "reporting",
+        "optimisations",
+        "moyens",
+        "95% objectifs",
+        "ajustements"
+      ],
+      "context": "Garantie résultats",
+      "intent": "garantie_resultats",
+      "embedding_text": "Garantissez-vous les résultats ? Engagement moyens résultats KPIs définis ensemble reporting transparent mensuel optimisations continues incluses obligation moyens renforcée historique 95% objectifs atteints ajustements stratégie besoin"
+    },
+    {
+      "id": "faq_109",
+      "category": "Garanties et Engagements",
+      "subcategory": "Transparence",
+      "question": "Êtes-vous transparents sur vos méthodes ?",
+      "answer": "Transparence totale garantie : accès dashboards temps réel, explications stratégies détaillées, formation équipes clients, partage best practices, documentation complète, pas de boîte noire.",
+      "keywords": [
+        "transparence",
+        "dashboards",
+        "temps réel",
+        "stratégies",
+        "formation",
+        "best practices",
+        "documentation"
+      ],
+      "context": "Transparence méthodes",
+      "intent": "transparence_methodes",
+      "embedding_text": "Êtes-vous transparents sur vos méthodes ? Transparence totale garantie accès dashboards temps réel explications stratégies détaillées formation équipes clients partage best practices documentation complète pas boîte noire"
+    },
+    {
+      "id": "faq_110",
+      "category": "Partenariats et Références",
+      "subcategory": "Références",
+      "question": "Pouvez-vous partager des références clients ?",
+      "answer": "Portfolio riche et varié : 200+ clients satisfaits Réunion/Maurice, études de cas détaillées disponibles, témoignages vérifiables, contacts références sur demande, tous secteurs représentés, success stories documentées.",
+      "keywords": [
+        "références clients",
+        "200+ clients",
+        "Réunion Maurice",
+        "études cas",
+        "témoignages",
+        "success stories"
+      ],
+      "context": "Références clients",
+      "intent": "references_clients",
+      "embedding_text": "Pouvez-vous partager des références clients ? Portfolio riche varié 200+ clients satisfaits Réunion Maurice études cas détaillées disponibles témoignages vérifiables contacts références demande tous secteurs représentés success stories documentées"
+    },
+    {
+      "id": "faq_111",
+      "category": "Partenariats et Références",
+      "subcategory": "Partenaires",
+      "question": "Avec qui êtes-vous partenaires ?",
+      "answer": "Partenariats stratégiques : Google Partners certifié, Meta Business Partners, partenaires technologiques (WordPress, Shopify), hébergeurs premium, médias locaux Réunion, chambres commerce et syndicats professionnels.",
+      "keywords": [
+        "partenaires",
+        "Google Partners",
+        "Meta Business",
+        "WordPress",
+        "Shopify",
+        "hébergeurs",
+        "médias",
+        "chambres commerce"
+      ],
+      "context": "Partenariats stratégiques",
+      "intent": "partenariats_strategiques",
+      "embedding_text": "Avec qui êtes-vous partenaires ? Partenariats stratégiques Google Partners certifié Meta Business Partners partenaires technologiques WordPress Shopify hébergeurs premium médias locaux Réunion chambres commerce syndicats professionnels"
+    },
+    {
+      "id": "faq_112",
+      "category": "Partenariats et Références",
+      "subcategory": "Récompenses",
+      "question": "Avez-vous reçu des récompenses ?",
+      "answer": "Reconnaissance professionnelle : Top Agence Digitale Réunion 2023, certifications Google excellence, trophées innovation digitale DOM, membre Digital Réunion, notes clients 4.9/5 moyenne, recommandations 98%.",
+      "keywords": [
+        "récompenses",
+        "Top Agence 2023",
+        "certifications",
+        "innovation",
+        "Digital Réunion",
+        "4.9/5",
+        "recommandations 98%"
+      ],
+      "context": "Récompenses et reconnaissance",
+      "intent": "recompenses_reconnaissance",
+      "embedding_text": "Avez-vous reçu des récompenses ? Reconnaissance professionnelle Top Agence Digitale Réunion 2023 certifications Google excellence trophées innovation digitale DOM membre Digital Réunion notes clients 4.9/5 moyenne recommandations 98%"
+    },
+    {
+      "id": "faq_113",
+      "category": "Innovation et Tendances",
+      "subcategory": "Veille",
+      "question": "Comment restez-vous à jour ?",
+      "answer": "Veille permanente active : formations équipe mensuelles, certifications annuelles obligatoires, participation conférences internationales, tests beta nouveautés, R&D 10% temps équipe, blog tendances digitales.",
+      "keywords": [
+        "veille",
+        "formations",
+        "certifications",
+        "conférences",
+        "tests beta",
+        "R&D 10%",
+        "blog tendances"
+      ],
+      "context": "Veille technologique",
+      "intent": "veille_technologique",
+      "embedding_text": "Comment restez-vous à jour ? Veille permanente active formations équipe mensuelles certifications annuelles obligatoires participation conférences internationales tests beta nouveautés R&D 10% temps équipe blog tendances digitales"
+    },
+    {
+      "id": "faq_114",
+      "category": "Innovation et Tendances",
+      "subcategory": "IA",
+      "question": "Utilisez-vous l'intelligence artificielle ?",
+      "answer": "IA intégrée à nos process : ChatGPT pour contenus optimisés, Midjourney création visuels, IA Google Ads optimisation, analyse prédictive données, automatisation workflows, personnalisation à scale.",
+      "keywords": [
+        "intelligence artificielle",
+        "ChatGPT",
+        "Midjourney",
+        "IA Google Ads",
+        "analyse prédictive",
+        "automatisation",
+        "personnalisation"
+      ],
+      "context": "Utilisation IA",
+      "intent": "utilisation_ia",
+      "embedding_text": "Utilisez-vous l'intelligence artificielle ? IA intégrée process ChatGPT contenus optimisés Midjourney création visuels IA Google Ads optimisation analyse prédictive données automatisation workflows personnalisation scale"
+    },
+    {
+      "id": "faq_115",
+      "category": "Innovation et Tendances",
+      "subcategory": "Nouvelles technologies",
+      "question": "Maîtrisez-vous les dernières technologies ?",
+      "answer": "Expertise technologies émergentes : Web3 et NFTs, réalité augmentée commerce, voice search optimization, marketing automation avancé, API et intégrations complexes, solutions no-code/low-code.",
+      "keywords": [
+        "technologies",
+        "Web3",
+        "NFTs",
+        "réalité augmentée",
+        "voice search",
+        "automation",
+        "API",
+        "no-code"
+      ],
+      "context": "Maîtrise technologies",
+      "intent": "maitrise_technologies",
+      "embedding_text": "Maîtrisez-vous les dernières technologies ? Expertise technologies émergentes Web3 NFTs réalité augmentée commerce voice search optimization marketing automation avancé API intégrations complexes solutions no-code low-code"
+    },
+    {
+      "id": "faq_116",
+      "category": "Cas spécifiques",
+      "subcategory": "Urgence",
+      "question": "Pouvez-vous gérer un projet urgent ?",
+      "answer": "Mode urgence disponible : équipe dédiée mobilisable 24h, process accéléré validation, livraison express possible, majoration 20-30% seulement, historique projets 48h réussis, sans compromis qualité.",
+      "keywords": [
+        "projet urgent",
+        "24h",
+        "process accéléré",
+        "express",
+        "majoration 20-30%",
+        "48h",
+        "qualité"
+      ],
+      "context": "Projets urgents",
+      "intent": "projets_urgents",
+      "embedding_text": "Pouvez-vous gérer un projet urgent ? Mode urgence disponible équipe dédiée mobilisable 24h process accéléré validation livraison express possible majoration 20-30% seulement historique projets 48h réussis sans compromis qualité"
+    },
+    {
+      "id": "faq_117",
+      "category": "Cas spécifiques",
+      "subcategory": "International",
+      "question": "Pouvez-vous gérer des projets internationaux ?",
+      "answer": "Capacité internationale confirmée : sites multilingues expertise, campagnes multi-pays, adaptation culturelle fine, gestion fuseaux horaires, paiements multi-devises, conformité légale multi-juridictions.",
+      "keywords": [
+        "international",
+        "multilingue",
+        "multi-pays",
+        "culturel",
+        "fuseaux horaires",
+        "multi-devises",
+        "conformité"
+      ],
+      "context": "Projets internationaux",
+      "intent": "projets_internationaux",
+      "embedding_text": "Pouvez-vous gérer des projets internationaux ? Capacité internationale confirmée sites multilingues expertise campagnes multi-pays adaptation culturelle fine gestion fuseaux horaires paiements multi-devises conformité légale multi-juridictions"
+    },
+    {
+      "id": "faq_118",
+      "category": "Cas spécifiques",
+      "subcategory": "Reprise projet",
+      "question": "Pouvez-vous reprendre un projet en cours ?",
+      "answer": "Reprise projets expertise : audit état des lieux complet, documentation code existant, transition douce garantie, optimisation et correction bugs, pas de jugement prédécesseur, focus sur solutions.",
+      "keywords": [
+        "reprise projet",
+        "audit",
+        "documentation",
+        "transition",
+        "optimisation",
+        "bugs",
+        "solutions"
+      ],
+      "context": "Reprise de projets",
+      "intent": "reprise_projets",
+      "embedding_text": "Pouvez-vous reprendre un projet en cours ? Reprise projets expertise audit état lieux complet documentation code existant transition douce garantie optimisation correction bugs pas jugement prédécesseur focus solutions"
+    },
+    {
+      "id": "faq_119",
+      "category": "Cas spécifiques",
+      "subcategory": "Budget limité",
+      "question": "Avez-vous des solutions pour petits budgets ?",
+      "answer": "Solutions tous budgets : forfaits essentiels dès 149€/mois, paiement échelonné possible, priorisation actions ROI maximum, solutions évolutives progressives, conseils DIY gratuits, devis adapté systématique.",
+      "keywords": [
+        "petits budgets",
+        "149€/mois",
+        "paiement échelonné",
+        "ROI",
+        "évolutif",
+        "DIY",
+        "devis adapté"
+      ],
+      "context": "Solutions petits budgets",
+      "intent": "solutions_petits_budgets",
+      "embedding_text": "Avez-vous des solutions pour petits budgets ? Solutions tous budgets forfaits essentiels 149€/mois paiement échelonné possible priorisation actions ROI maximum solutions évolutives progressives conseils DIY gratuits devis adapté systématique"
+    },
+    {
+      "id": "faq_120",
+      "category": "Formation et Accompagnement",
+      "subcategory": "Formation",
+      "question": "Proposez-vous des formations ?",
+      "answer": "Programme formation complet : formations collectives mensuelles, coaching individuel personnalisé, ateliers pratiques thématiques, e-learning plateforme dédiée, certification finale, support post-formation inclus.",
+      "keywords": [
+        "formations",
+        "collectives",
+        "coaching",
+        "ateliers",
+        "e-learning",
+        "certification",
+        "support post-formation"
+      ],
+      "context": "Programme formation",
+      "intent": "programme_formation",
+      "embedding_text": "Proposez-vous des formations ? Programme formation complet formations collectives mensuelles coaching individuel personnalisé ateliers pratiques thématiques e-learning plateforme dédiée certification finale support post-formation inclus"
+    },
+    {
+      "id": "faq_121",
+      "category": "Formation et Accompagnement",
+      "subcategory": "Autonomie",
+      "question": "Nous rendez-vous autonomes ?",
+      "answer": "Autonomie progressive garantie : formation utilisation outils, documentation personnalisée complète, vidéos tutoriels dédiés, transfert compétences équipe, accompagnement décroissant, support illimité 3 mois.",
+      "keywords": [
+        "autonomie",
+        "formation outils",
+        "documentation",
+        "tutoriels",
+        "transfert compétences",
+        "accompagnement",
+        "support 3 mois"
+      ],
+      "context": "Autonomie clients",
+      "intent": "autonomie_clients",
+      "embedding_text": "Nous rendez-vous autonomes ? Autonomie progressive garantie formation utilisation outils documentation personnalisée complète vidéos tutoriels dédiés transfert compétences équipe accompagnement décroissant support illimité 3 mois"
+    },
+    {
+      "id": "faq_122",
+      "category": "Formation et Accompagnement",
+      "subcategory": "Conseil",
+      "question": "Faites-vous uniquement de l'exécution ou aussi du conseil ?",
+      "answer": "Double expertise conseil-exécution : conseil stratégique pur disponible, recommandations basées data, vision 360° marketing digital, exécution opérationnelle excellence, accompagnement décisionnel continu, rôle partenaire stratégique.",
+      "keywords": [
+        "conseil",
+        "exécution",
+        "stratégie",
+        "recommandations",
+        "vision 360",
+        "décisionnel",
+        "partenaire stratégique"
+      ],
+      "context": "Conseil vs exécution",
+      "intent": "conseil_vs_execution",
+      "embedding_text": "Faites-vous uniquement de l'exécution ou aussi du conseil ? Double expertise conseil-exécution conseil stratégique pur disponible recommandations basées data vision 360 marketing digital exécution opérationnelle excellence accompagnement décisionnel continu rôle partenaire stratégique"
+    }
+  ]
+}

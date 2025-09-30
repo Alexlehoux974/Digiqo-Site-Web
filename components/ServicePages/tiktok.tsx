@@ -11,11 +11,11 @@ import {
   CheckCircle2,
   MessageCircle,
   Music,
-  Hash
+  Hash,
+  Sparkles
   // Shield,
   // Award
   // TrendingUp,
-  // Sparkles,
   // Eye,
   // Gift
 } from 'lucide-react'
@@ -287,6 +287,15 @@ export default function TikTokPage() {
               Des solutions adaptées à chaque étape de votre croissance
             </p>
 
+            {/* Badge Bientôt disponible */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-digiqo-primary/10 to-digiqo-accent/10 backdrop-blur-sm text-digiqo-primary px-6 py-3 rounded-full text-lg font-bold mb-4 border-2 border-digiqo-primary/20"
+            >
+              <Sparkles className="w-5 h-5" />
+              Bientôt disponible
+            </motion.div>
           </motion.div>
 
           {/* Quote-Based Pricing Section */}
