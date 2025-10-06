@@ -149,13 +149,13 @@ export const Header = () => {
         <span className="text-white/60">•</span>
         <span className="text-white/90">+174 entreprises accompagnées</span>
       </div>
-      <h1 className="text-4xl md:text-7xl font-bold">
+      <div className="text-4xl md:text-7xl font-bold" role="presentation" aria-hidden="true">
         <span className="text-white drop-shadow-lg">
           L'Agence Marketing Digital
         </span>
         <br />
         <span className="text-white/95 drop-shadow-lg">Qui Booste Vos Ventes</span>
-      </h1>
+      </div>
       <p className="max-w-2xl text-lg md:text-2xl mt-6 text-white/90 font-medium drop-shadow">
         Transformez vos visiteurs en clients avec des campagnes publicitaires 
         <span className="text-white font-bold"> Facebook, Instagram et Google Ads</span> qui cartonnent.
