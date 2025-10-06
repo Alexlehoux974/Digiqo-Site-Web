@@ -168,8 +168,8 @@ export const Header = () => {
             Je veux booster mes ventes →
           </span>
         </Link>
-        <a href="#case-studies" className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-digiqo-orange transition-all duration-300 inline-block">
-          Voir nos réussites clients
+        <a href="#realisations" className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-digiqo-orange transition-all duration-300 inline-block">
+          Voir nos réalisations
         </a>
       </div>
       <div className="flex flex-wrap gap-6 mt-12 text-sm">

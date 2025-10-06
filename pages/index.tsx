@@ -106,7 +106,7 @@ export default function Home() {
         <div className="py-8" />
 
         {/* Dome Gallery - Publicités clients */}
-        <section className="py-8 md:py-20 bg-digiqo-primary relative overflow-hidden">
+        <section id="realisations" className="py-8 md:py-20 bg-digiqo-primary relative overflow-hidden">
           {/* Background decoration */}
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
