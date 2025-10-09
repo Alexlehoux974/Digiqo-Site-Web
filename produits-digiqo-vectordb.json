@@ -14,93 +14,101 @@
       "price": 549,
       "budget": 2500,
       "features": [
-        "Gestion & diffusion sur Meta (Facebook & Instagram)",
         "Jusqu'à 2 500€ de budget publicitaire géré/mois",
+        "3 visuels publicitaires inclus/mois (non cumulables)",
         "Création & ciblage stratégique des campagnes",
-        "Optimisation hebdomadaire des performances",
-        "Retargeting : reciblage des audiences",
-        "3 visuels publicitaires inclus chaque mois (non cumulables)"
+        "Optimisation des performances",
+        "Reporting mensuel",
+        "Espace collaboratif : Google Chat + Drive"
       ]
     },
     {
       "category": "PUBLICITÉ META",
       "product": "Formule Initiation Annuelle",
       "type": "ANNUEL",
-      "price": 5599.80,
+      "price": 5604.60,
       "budget": 2500,
       "features": [
-        "Gestion & diffusion sur Meta (Facebook & Instagram)",
         "Jusqu'à 2 500€ de budget publicitaire géré/mois",
+        "3 visuels publicitaires inclus/mois (non cumulables)",
         "Création & ciblage stratégique des campagnes",
-        "Optimisation hebdomadaire des performances",
-        "Retargeting : reciblage des audiences",
-        "3 visuels publicitaires inclus chaque mois (non cumulables)",
-        "Économie de 15% (-988,20€/an)"
+        "Optimisation des performances",
+        "Reporting mensuel",
+        "Espace collaboratif : Google Chat + Drive",
+        "Économie de 20% de réduction"
       ]
     },
     {
       "category": "PUBLICITÉ META",
       "product": "Formule Propulsion",
       "type": "MENSUEL",
-      "price": 990,
+      "price": 949,
       "budget": 5000,
       "popular": true,
       "features": [
-        "Gestion & diffusion sur Meta (Facebook & Instagram)",
         "Jusqu'à 5 000€ de budget publicitaire géré/mois",
+        "6 visuels publicitaires inclus/mois (non cumulables)",
         "Création & ciblage stratégique des campagnes",
-        "Optimisation hebdomadaire des performances",
-        "Retargeting : reciblage des audiences",
+        "Optimisation des performances",
+        "Reporting mensuel",
+        "Espace collaboratif : Google Chat + Drive",
         "Exploitation des audiences similaires",
-        "Formule la plus populaire"
+        "Intégration basique des pixels & API"
       ]
     },
     {
       "category": "PUBLICITÉ META",
       "product": "Formule Propulsion Annuelle",
       "type": "ANNUEL",
-      "price": 9679.80,
+      "price": 9690.60,
       "budget": 5000,
       "features": [
-        "Gestion & diffusion sur Meta (Facebook & Instagram)",
         "Jusqu'à 5 000€ de budget publicitaire géré/mois",
+        "6 visuels publicitaires inclus/mois (non cumulables)",
         "Création & ciblage stratégique des campagnes",
-        "Optimisation hebdomadaire des performances",
-        "Retargeting : reciblage des audiences",
+        "Optimisation des performances",
+        "Reporting mensuel",
+        "Espace collaboratif : Google Chat + Drive",
         "Exploitation des audiences similaires",
-        "Économie de 15% (-2200,20€/an)"
+        "Intégration basique des pixels & API",
+        "Économie de 15% de réduction"
       ]
     },
     {
       "category": "PUBLICITÉ META",
       "product": "Formule Expansion",
       "type": "MENSUEL",
-      "price": 1490,
+      "price": 1990,
       "budget": 10000,
       "features": [
-        "Gestion & diffusion sur Meta (Facebook & Instagram)",
         "Jusqu'à 10 000€ de budget publicitaire géré/mois",
+        "+10% du dépassement facturé séparément si budget > 10 000€",
+        "9 visuels publicitaires inclus/mois (non cumulables)",
         "Création & ciblage stratégique des campagnes",
-        "Optimisation QUOTIDIENNE des performances",
-        "Retargeting avancé : reciblage des audiences",
-        "Exploitation des audiences similaires",
-        "+10% du dépassement si budget > 10 000€"
+        "Optimisation des performances",
+        "Reporting mensuel",
+        "Espace collaboratif : Google Chat + Drive",
+        "Exploitation des audiences similaires avancées",
+        "Intégration avancée des pixels & API"
       ]
     },
     {
       "category": "PUBLICITÉ META",
       "product": "Formule Expansion Annuelle",
       "type": "ANNUEL",
-      "price": 20298,
+      "price": 20292.60,
       "budget": 10000,
       "features": [
-        "Gestion & diffusion sur Meta (Facebook & Instagram)",
         "Jusqu'à 10 000€ de budget publicitaire géré/mois",
+        "+10% du dépassement facturé séparément si budget > 10 000€",
+        "9 visuels publicitaires inclus/mois (non cumulables)",
         "Création & ciblage stratégique des campagnes",
-        "Optimisation QUOTIDIENNE des performances",
-        "Retargeting avancé : reciblage des audiences",
-        "Exploitation des audiences similaires",
-        "Économie de 15% (-2582€/an)"
+        "Optimisation des performances",
+        "Reporting mensuel",
+        "Espace collaboratif : Google Chat + Drive",
+        "Exploitation des audiences similaires avancées",
+        "Intégration avancée des pixels & API",
+        "Économie de 15% de réduction"
       ]
     },
     {
