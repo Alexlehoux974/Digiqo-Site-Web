@@ -58,6 +58,7 @@ interface Formula {
   paymentLinkAnnual?: string
   engagement?: string
   bestValue?: boolean
+  mostProfitable?: boolean
   details?: string[]
 }
 
@@ -149,7 +150,7 @@ export default function PublicitePage() {
       paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/CqxfynTqvw?referrer=PAYMENT_LINK',
       paymentLinkAnnual: 'https://app-eu1.hubspot.com/payments/cfbgbDkKrqhPX?referrer=PAYMENT_LINK',
       engagement: '3 mois minimum puis mensuel',
-      bestValue: false
+      bestValue: true
     },
     {
       id: 'formula-propulsion',
@@ -205,7 +206,7 @@ export default function PublicitePage() {
       paymentLinkMonthly: 'https://app-eu1.hubspot.com/payments/CqxfynTqvw?referrer=PAYMENT_LINK',
       paymentLinkAnnual: 'https://app-eu1.hubspot.com/payments/cfbgbDkKrqhPX?referrer=PAYMENT_LINK',
       engagement: '3 mois minimum puis mensuel',
-      bestValue: true
+      mostProfitable: true
     },
     {
       id: 'formula-expansion',
@@ -488,17 +489,22 @@ export default function PublicitePage() {
                   transition: { duration: 0.3 }
                 }}
               >
-                {/* Badge populaire qui suit le mouvement de hover */}
+                {/* Badge populaire ou rentable qui suit le mouvement de hover */}
                 {formula.bestValue && (
                   <div className="absolute -top-3 -right-10 bg-white text-[#8B1431] px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-[#8B1431]">
                     LE PLUS POPULAIRE
+                  </div>
+                )}
+                {formula.mostProfitable && (
+                  <div className="absolute -top-3 -right-10 bg-white text-[#8B1431] px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-[#8B1431]">
+                    LE PLUS RENTABLE
                   </div>
                 )}
 
                 {/* Carte */}
                 <div
                   className={`relative bg-white rounded-2xl shadow-xl h-full flex flex-col transition-all duration-300 hover:shadow-2xl ${
-                    formula.bestValue ? 'ring-4 ring-[#8B1431] shadow-2xl md:scale-105' : ''
+                    (formula.bestValue || formula.mostProfitable) ? 'ring-4 ring-[#8B1431] shadow-2xl md:scale-105' : ''
                   }`}
                 >
                   {/* Header with colored gradient */}

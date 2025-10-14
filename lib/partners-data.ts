@@ -247,9 +247,9 @@ export const partnersData: Partner[] = [
     alt: "LCDA - Les Créateurs d'Avenir, partenaire en innovation digitale Digiqo"
   },
   {
-    name: "Ishiaty Beauty",
+    name: "Lilo Beauty",
     filename: "LILO-BEAUTY-1024x1024.webp",
-    alt: "Ishiaty Beauty - Salon de beauté à La Réunion, marketing digital Digiqo"
+    alt: "Lilo Beauty - Institut de beauté à La Réunion, marketing digital Digiqo"
   },
   {
     name: "Crossfit Mahaveli",
@@ -300,6 +300,176 @@ export const partnersData: Partner[] = [
     name: "Pizza Stella",
     filename: "PIZZA-STELLA-1024x1024.webp",
     alt: "Pizza Stella - Pizzeria à La Réunion, marketing digital et livraison Digiqo"
+  },
+  {
+    name: "3M",
+    filename: "3M-1024x1024.webp",
+    alt: "3M - Partenaire industriel, communication digitale par Digiqo"
+  },
+  {
+    name: "Agence Centrale Or",
+    filename: "AGENCE-CENTRALE-OR-1024x1024.webp",
+    alt: "Agence Centrale Or - Bijouterie à La Réunion, stratégie marketing digital Digiqo"
+  },
+  {
+    name: "Buro",
+    filename: "BURO-1024x1024.webp",
+    alt: "Buro - Espace de coworking à La Réunion, communication digitale par Digiqo"
+  },
+  {
+    name: "Cavavin",
+    filename: "CAVAVIN-1024x1024.webp",
+    alt: "Cavavin - Cave à vin à La Réunion, marketing digital et e-commerce Digiqo"
+  },
+  {
+    name: "Copeaux d'Abord",
+    filename: "COPEAUX-DABORD-1024x1024.webp",
+    alt: "Copeaux d'Abord - Menuiserie artisanale, site web et SEO par Digiqo"
+  },
+  {
+    name: "Dorcel",
+    filename: "DORCEL-1024x1024.webp",
+    alt: "Dorcel - Commerce spécialisé à La Réunion, stratégie digitale Digiqo"
+  },
+  {
+    name: "Eden Randonneur",
+    filename: "EDEN-RANDONNEUR-1024x1024.webp",
+    alt: "Eden Randonneur - Activités de randonnée, marketing digital par Digiqo"
+  },
+  {
+    name: "Emixem",
+    filename: "EMIXEM-1024x1024.webp",
+    alt: "Emixem - Entreprise locale, communication digitale développée par Digiqo"
+  },
+  {
+    name: "En l'Air Pied Bois",
+    filename: "EN-LAIR-PIED-BOIS-1024x1024.webp",
+    alt: "En l'Air Pied Bois - Entreprise réunionnaise, stratégie digitale par Digiqo"
+  },
+  {
+    name: "Global Service",
+    filename: "GLOBAL-SERVICE-1024x1024.webp",
+    alt: "Global Service - Société de services à La Réunion, marketing digital Digiqo"
+  },
+  {
+    name: "HEC",
+    filename: "HEC-1024x1024.webp",
+    alt: "HEC - Partenaire éducatif, communication digitale par Digiqo"
+  },
+  {
+    name: "Héraclès Coaching",
+    filename: "HERACLES-COACHING-1024x1024.webp",
+    alt: "Héraclès Coaching - Coach sportif à La Réunion, réseaux sociaux gérés par Digiqo"
+  },
+  {
+    name: "La Part des Anges",
+    filename: "LA-PART-DES-ANGES-1024x1024.webp",
+    alt: "La Part des Anges - Cave et bar à vin, marketing digital par Digiqo"
+  },
+  {
+    name: "Ladress",
+    filename: "LADRESS-1024x1024.webp",
+    alt: "Ladress - Boutique mode à La Réunion, e-commerce et publicité Digiqo"
+  },
+  {
+    name: "Le Goût du Vin",
+    filename: "LE-GOUT-DU-VIN-1024x1024.webp",
+    alt: "Le Goût du Vin - Cave à vin, stratégie digitale développée par Digiqo"
+  },
+  {
+    name: "Les Cafés d'Italie",
+    filename: "LES-CAFES-DITALIE-1024x1024.webp",
+    alt: "Les Cafés d'Italie - Torréfacteur, marketing digital par Digiqo"
+  },
+  {
+    name: "Liloo Beauty",
+    filename: "LILOO-BEAUTY-1024x1024.webp",
+    alt: "Liloo Beauty - Institut de beauté, publicité Facebook et Instagram Digiqo"
+  },
+  {
+    name: "Little Libellule",
+    filename: "LITTLE-LIBELLULE-1024x1024.webp",
+    alt: "Little Libellule - Boutique enfants, e-commerce et marketing digital Digiqo"
+  },
+  {
+    name: "Pêche Passion",
+    filename: "PECHE-PASSION-1024x1024.webp",
+    alt: "Pêche Passion - Magasin de pêche à La Réunion, stratégie digitale Digiqo"
+  },
+  {
+    name: "Pokawa",
+    filename: "POKAWA-1024x1024.webp",
+    alt: "Pokawa - Restaurant poké bowls, marketing digital et livraison Digiqo"
+  },
+  {
+    name: "Reset Vintage",
+    filename: "RESET-VINTAGE-1024x1024.webp",
+    alt: "Reset Vintage - Boutique vintage à La Réunion, e-commerce par Digiqo"
+  },
+  {
+    name: "Sam Concept Habitat",
+    filename: "SAM-CONCEPT-HABITAT-1024x1024.webp",
+    alt: "Sam Concept Habitat - Aménagement intérieur, site web et SEO Digiqo"
+  },
+  {
+    name: "Scubananas",
+    filename: "SCUBANANAS-1024x1024.webp",
+    alt: "Scubananas - Club de plongée à La Réunion, marketing digital Digiqo"
+  },
+  {
+    name: "Snowkite",
+    filename: "SNOWKITE-1024x1024.webp",
+    alt: "Snowkite - Sports de glisse, communication digitale par Digiqo"
+  },
+  {
+    name: "Success Mom",
+    filename: "SUCCESS-MOM-2-1024x1024.webp",
+    alt: "Success Mom - Accompagnement parental, stratégie digitale Digiqo"
+  },
+  {
+    name: "Svarea",
+    filename: "SVAREA-1024x1024.webp",
+    alt: "Svarea - Entreprise locale, marketing digital développé par Digiqo"
+  },
+  {
+    name: "Trapèze Studio",
+    filename: "TRAPEZE-STUDIO2-1024x1024.webp",
+    alt: "Trapèze Studio - Studio de création, communication digitale Digiqo"
+  },
+  {
+    name: "Twins Design",
+    filename: "TWINS-DESIGN2-1024x1024.webp",
+    alt: "Twins Design - Agence de design à La Réunion, partenaire Digiqo"
+  },
+  {
+    name: "Un Jour ou l'Autre",
+    filename: "UN-JOUR-OU-LAUTRE-1024x1024.webp",
+    alt: "Un Jour ou l'Autre - Commerce local, stratégie digitale par Digiqo"
+  },
+  {
+    name: "Vahyna",
+    filename: "VAHYNA-1024x1024.webp",
+    alt: "Vahyna - Marque réunionnaise, marketing digital développé par Digiqo"
+  },
+  {
+    name: "Vally",
+    filename: "VALLY-1024x1024.webp",
+    alt: "Vally - Entreprise locale, communication digitale assurée par Digiqo"
+  },
+  {
+    name: "Van Ile",
+    filename: "VAN-ILE-1024x1024.webp",
+    alt: "Van Ile - Location de vans à La Réunion, SEO et publicité Digiqo"
+  },
+  {
+    name: "Veille Anou",
+    filename: "VEILLEANOU-1024x1024.webp",
+    alt: "Veille Anou - Service de veille, stratégie digitale par Digiqo"
+  },
+  {
+    name: "Zen Eat Yoga",
+    filename: "ZEN-EAT-YOGA-1024x1024.webp",
+    alt: "Zen Eat Yoga - Centre de bien-être, marketing digital par Digiqo"
   }
 ]
 

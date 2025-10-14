@@ -20,9 +20,10 @@ export const HeroParallax = ({
     thumbnail: any
   }[]
 }) => {
-  const firstRow = products.slice(0, 20)
-  const secondRow = products.slice(20, 40)
-  const thirdRow = products.slice(40, 60)
+  // Distribution des 93 logos sur 3 rangées: 31 + 31 + 31
+  const firstRow = products.slice(0, 31)
+  const secondRow = products.slice(31, 62)
+  const thirdRow = products.slice(62, 93)
   const ref = React.useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -38,7 +39,7 @@ export const HeroParallax = ({
   // Auto-scroll animation with infinite loop
   useAnimationFrame(() => {
     const speed = 0.5
-    const rowWidth = 12 * 20 + 8 * 19 // card width * items + gap * (items-1) in rem converted to px
+    const rowWidth = 12 * 31 + 8 * 30 // card width * items + gap * (items-1) in rem converted to px
     
     setAutoScrollX((prev) => {
       const newVal = prev + speed
