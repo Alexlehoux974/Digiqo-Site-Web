@@ -69,7 +69,7 @@ const eligibleServices = [
 const benefits = [
   {
     title: '100% Local',
-    description: 'Digiqo est née ici et travaille uniquement avec des entreprises locales ou engagées dans les DOM.',
+    description: 'Digiqo est née ici et travaille avec des entreprises locales ou engagées dans les DOM.',
     icon: Globe,
     highlight: false
   },
