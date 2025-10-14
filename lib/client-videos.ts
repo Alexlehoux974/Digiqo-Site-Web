@@ -311,7 +311,9 @@ export function getSampleVideos(count: number = 12): ClientVideo[] {
   return result;
 }
 
-// Fonction pour obtenir toutes les vidéos
+// Fonction pour obtenir toutes les vidéos avec thumbnails uniquement
 export function getAllClientVideos(): ClientVideo[] {
-  return clientVideos;
+  // Filtrer pour ne garder que les vidéos avec thumbnail
+  // Cela évite les cases vides dans l'animation sphere
+  return clientVideos.filter(video => video.thumbnail);
 }
