@@ -305,7 +305,7 @@ export const ProductCard = ({
         className="block group-hover/product:shadow-2xl h-full"
       >
         <div className="h-full w-full bg-white/95 backdrop-blur-sm rounded-xl flex items-center justify-center p-6 shadow-lg">
-          <div className="w-full h-full max-w-[100px] max-h-[100px] flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:object-contain">
+          <div className="w-full h-full max-w-[100px] max-h-[100px] flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:object-contain [&>img]:w-full [&>img]:h-full [&>img]:object-contain">
             {product.thumbnail}
           </div>
         </div>

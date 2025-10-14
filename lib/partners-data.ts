@@ -352,6 +352,11 @@ export const partnersData: Partner[] = [
     alt: "Global Service - Société de services à La Réunion, marketing digital Digiqo"
   },
   {
+    name: "C'Bien Glacé",
+    filename: "CBIENGLACE-1024x1024.webp",
+    alt: "C'Bien Glacé - Glacier artisanal à La Réunion, marketing digital par Digiqo"
+  },
+  {
     name: "HEC",
     filename: "HEC-1024x1024.webp",
     alt: "HEC - Partenaire éducatif, communication digitale par Digiqo"

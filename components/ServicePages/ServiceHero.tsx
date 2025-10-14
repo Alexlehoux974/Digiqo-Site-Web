@@ -78,7 +78,7 @@ export const ServiceHero: React.FC<ServiceHeroProps> = ({
             <h1 className="text-2xl xs:text-3xl sm:text-5xl md:text-7xl font-bold">
               <span className="text-white break-all xs:break-words">{title.line1}</span>
               <br />
-              <span className={`bg-gradient-to-r ${gradientFrom} ${gradientTo} bg-clip-text text-transparent break-all xs:break-words`}>
+              <span className={`bg-gradient-to-r ${gradientFrom} ${gradientTo} bg-clip-text text-transparent break-all xs:break-words pr-1`}>
                 {title.line2}
               </span>
             </h1>
