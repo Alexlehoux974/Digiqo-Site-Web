@@ -982,10 +982,10 @@ export default function DevWebPage() {
               },
               {
                 name: 'LODGES PARADISE',
-                description: 'Plateforme de réservation de lodges premium et hébergements d\'exception',
+                description: 'Site vitrine pour entreprise de construction de lodges et habitations premium',
                 url: 'lodges-paradise.fr',
                 link: 'https://lodges-paradise.fr/',
-                tags: ['Hôtellerie', 'Réservation', 'Next.js', 'Premium'],
+                tags: ['Construction', 'BTP', 'Next.js', 'Premium'],
                 stats: { performance: 97, conversions: '+58%', loading: '1.0s' },
                 gradient: 'from-amber-500 to-orange-600',
                 image: '/services-content/lodges-paradise-hero.png'
