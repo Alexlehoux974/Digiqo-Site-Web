@@ -983,8 +983,8 @@ export default function DevWebPage() {
               {
                 name: 'LODGES PARADISE',
                 description: 'Site vitrine pour entreprise de construction de lodges et habitations premium',
-                url: 'lodges-paradise.fr',
-                link: 'https://lodges-paradise.fr/',
+                url: 'lodgesparadise.com',
+                link: 'https://lodgesparadise.com/',
                 tags: ['Construction', 'BTP', 'Next.js', 'Premium'],
                 stats: { performance: 97, conversions: '+58%', loading: '1.0s' },
                 gradient: 'from-amber-500 to-orange-600',
