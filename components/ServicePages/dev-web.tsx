@@ -961,14 +961,14 @@ export default function DevWebPage() {
                 image: '/services-content/velocit-ai-hero.png'
               },
               {
-                name: 'INVESTIS DOM',
-                description: 'Solution d\'investissement immobilier et défiscalisation dans les DOM-TOM',
-                url: 'investis-dom.com',
-                link: 'https://investis-dom.com/',
-                tags: ['Fintech', 'React', 'Node.js', 'SEO'],
-                stats: { performance: 97, conversions: '+55%', loading: '1.0s' },
-                gradient: 'from-digiqo-secondary to-digiqo-secondary/80',
-                image: '/services-content/investis-dom-hero.png'
+                name: 'PARAPENTE RÉUNION',
+                description: 'Site vitrine pour activités de parapente et vols découverte à La Réunion',
+                url: 'parapente-reunion.fr',
+                link: 'https://parapente-reunion.fr/',
+                tags: ['Tourisme', 'React', 'Réservation', 'SEO'],
+                stats: { performance: 98, conversions: '+62%', loading: '0.9s' },
+                gradient: 'from-sky-500 to-blue-600',
+                image: '/services-content/parapente-reunion-hero.png'
               },
               {
                 name: 'RUNCALL',
@@ -981,14 +981,14 @@ export default function DevWebPage() {
                 image: '/services-content/screenshotruncall.png'
               },
               {
-                name: 'VEYANOU',
-                description: 'Boutique en ligne de produits locaux et artisanaux de La Réunion',
-                url: 'veyanou.fr',
-                link: 'https://veyanou.fr/',
-                tags: ['E-commerce', 'WordPress', 'WooCommerce', 'Local'],
-                stats: { performance: 96, conversions: '+49%', loading: '1.1s' },
-                gradient: 'from-green-500 to-emerald-600',
-                image: '/services-content/veyanou-hero.png'
+                name: 'LODGES PARADISE',
+                description: 'Plateforme de réservation de lodges premium et hébergements d\'exception',
+                url: 'lodges-paradise.fr',
+                link: 'https://lodges-paradise.fr/',
+                tags: ['Hôtellerie', 'Réservation', 'Next.js', 'Premium'],
+                stats: { performance: 97, conversions: '+58%', loading: '1.0s' },
+                gradient: 'from-amber-500 to-orange-600',
+                image: '/services-content/lodges-paradise-hero.png'
               }
             ].map((project, index) => (
               <motion.div
