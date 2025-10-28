@@ -4,10 +4,10 @@ import { Modal } from '../ui/Modal'
 import { OptimizedImage } from '../ui/OptimizedImage'
 
 const clientLogos = [
-  { name: 'Veille A Nou', logo: '/partenaires/VEILLEANOU-1024x1024.webp', videoUrl: 'https://raw.githubusercontent.com/Alexlehoux974/Vid-os-Site-web-Digiqo/main/VEILLE-ANOU.mp4' },
+  { name: 'Lodges Paradise', logo: '/partenaires/lodges-paradise.png', videoUrl: 'https://raw.githubusercontent.com/Alexlehoux974/Vid-os-Site-web-Digiqo/main/VEILLE-ANOU.mp4' },
   { name: 'CbienGlacé', logo: '/partenaires/cbienglace.webp', videoUrl: 'https://raw.githubusercontent.com/Alexlehoux974/Vid-os-Site-web-Digiqo/main/C_BIEN_GLACE%CC%81_.mp4' },
   { name: 'Culinarion', logo: '/partenaires/culinarion.webp', videoUrl: 'https://raw.githubusercontent.com/Alexlehoux974/Vid-os-Site-web-Digiqo/main/CULINARION.mp4' },
-  { name: '3M', logo: '/partenaires/3M-1024x1024.webp', videoUrl: 'https://raw.githubusercontent.com/Alexlehoux974/Vid-os-Site-web-Digiqo/main/VEILLE-ANOU.mp4' },
+  { name: 'Parapente Réunion', logo: '/partenaires/parapente-reunion.png', videoUrl: 'https://raw.githubusercontent.com/Alexlehoux974/Vid-os-Site-web-Digiqo/main/VEILLE-ANOU.mp4' },
   { name: 'Alpha Coaching', logo: '/partenaires/ALPHA-COACHING-1024x1024.webp', videoUrl: 'https://raw.githubusercontent.com/Alexlehoux974/Vid-os-Site-web-Digiqo/main/C_BIEN_GLACE%CC%81_.mp4' },
   { name: 'Chokaae', logo: '/partenaires/CHOKAAE-1024x1024.webp', videoUrl: 'https://raw.githubusercontent.com/Alexlehoux974/Vid-os-Site-web-Digiqo/main/CULINARION.mp4' }
 ]
