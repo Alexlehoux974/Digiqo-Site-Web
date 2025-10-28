@@ -1014,36 +1014,6 @@ export default function DevWebPage() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     
-                    {/* Mock browser window */}
-                    <div className="absolute inset-4 bg-digiqo-primary/10 backdrop-blur-sm rounded-lg overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {/* Browser bar */}
-                      <div className="bg-digiqo-primary/50 backdrop-blur-sm px-4 py-2 flex items-center gap-2">
-                        <div className="flex gap-1.5">
-                          <div className="w-3 h-3 bg-red-500 rounded-full" />
-                          <div className="w-3 h-3 bg-yellow-500 rounded-full" />
-                          <div className="w-3 h-3 bg-digiqo-secondary rounded-full" />
-                        </div>
-                        <div className="flex-1 flex justify-center">
-                          <div className="bg-digiqo-primary/50 rounded px-3 py-1 text-xs text-white/70 font-mono">
-                            {project.url}
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Hover overlay */}
-                      <div className="relative h-full flex items-center justify-center">
-                        <motion.div
-                          initial={{ scale: 0 }}
-                          whileHover={{ scale: 1 }}
-                          transition={ANIMATION.ease.spring}
-                          className="text-center"
-                        >
-                          <Globe className="w-12 h-12 text-white mb-2 mx-auto" />
-                          <span className="text-white font-bold">Voir le projet</span>
-                        </motion.div>
-                      </div>
-                    </div>
-                    
                     {/* Live indicator */}
                     <div className="absolute top-6 right-6 flex items-center gap-2 px-3 py-1 bg-digiqo-secondary text-white text-xs font-bold rounded-full">
                       <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
