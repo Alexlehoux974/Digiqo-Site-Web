@@ -598,7 +598,7 @@ export const HeaderLuxury = () => {
                                     >
                                       <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-white shadow-md mb-4 mx-auto group-hover:scale-110 transition-transform">
                                         <OptimizedImage
-                                          src="/partenaires/snapchat.jpg"
+                                          src="/partenaires/snapchat.png"
                                           alt="Snapchat Ads"
                                           width={48}
                                           height={48}
