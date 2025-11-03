@@ -40,344 +40,447 @@ export interface Formation {
   nextSteps?: string[]
 }
 
-// Formation: Publicité MÉTA (Facebook & Instagram Ads)
-export const formationPubliciteMeta: Formation = {
-  id: 'formation-publicite-meta',
-  slug: 'publicite-meta-facebook-instagram-ads',
-  title: 'Publicité MÉTA (Facebook & Instagram Ads)',
+// Formation: La Publicité Meta (SMA) - Version complète du MD
+export const formationMetaComplete: Formation = {
+  id: 'formation-meta-sma-complete',
+  slug: 'la-publicite-meta-sma',
+  title: 'La Publicité Meta (SMA) - Formation Complète',
   category: 'publicite',
-  description: 'Maîtrisez la publicité sur Facebook et Instagram pour booster votre business',
-  duration: '8 heures',
+  description: 'Formation complète sur la publicité Meta (Facebook & Instagram). De la compréhension de l\'écosystème à l\'optimisation avancée, maîtrisez tous les aspects de Meta Ads.',
+  duration: '12 heures',
   level: 'Débutant',
+  instructor: 'Équipe Digiqo',
   keywords: [
+    'meta',
     'facebook',
     'instagram',
-    'meta',
     'publicité',
     'ads',
+    'SMA',
+    'social media advertising',
     'pixel',
-    'remarketing',
-    'business manager',
-    'campagne',
-    'ciblage'
+    'ciblage',
+    'budget',
+    'optimisation',
+    'ROAS',
+    'remarketing'
   ],
   introduction: {
-    title: 'Bienvenue dans la formation Publicité MÉTA',
+    title: 'La Publicité Meta (SMA) c\'est quoi ?',
     content: [
-      'Cette formation complète vous permettra de maîtriser la publicité sur Facebook et Instagram, deux plateformes incontournables du marketing digital.',
-      'Vous apprendrez à créer, optimiser et analyser vos campagnes publicitaires pour maximiser votre retour sur investissement.',
-      'De la configuration du pixel à l\'optimisation avancée, nous couvrirons tous les aspects essentiels pour faire de vous un expert de la publicité MÉTA.'
+      'Meta Ads est la plateforme publicitaire qui permet de diffuser des annonces sur Facebook et Instagram. Avec plus de 3 milliards d\'utilisateurs dans le monde, c\'est le plus grand réseau publicitaire au monde après Google.',
+      'En France, nous comptons 39 millions d\'utilisateurs Facebook actifs et 28 millions d\'utilisateurs Instagram actifs. 75% de la population française est présente sur au moins une des deux plateformes.',
+      'Les Français passent en moyenne 2h12 par jour sur les réseaux Meta, et 3,7 milliards d\'euros ont été investis en publicité sociale en France.',
+      'Cette formation complète vous permettra de maîtriser tous les aspects de la publicité Meta, de la stratégie à l\'optimisation avancée.'
     ],
     objectives: [
-      'Comprendre l\'écosystème publicitaire de META',
-      'Configurer correctement le Business Manager et le pixel',
-      'Créer des campagnes publicitaires performantes',
-      'Maîtriser les différents formats publicitaires',
-      'Analyser et optimiser vos résultats',
-      'Mettre en place des stratégies de remarketing efficaces'
+      'Comprendre l\'écosystème publicitaire Meta et ses opportunités',
+      'Maîtriser le ciblage précis et la création d\'audiences',
+      'Créer des publicités efficaces et engageantes',
+      'Optimiser vos budgets et enchères',
+      'Mesurer et analyser vos performances',
+      'Éviter les erreurs courantes et appliquer les bonnes pratiques'
     ]
   },
   modules: [
     {
       id: 'module-1',
-      title: 'Module 1 : Écosystème publicitaire de META',
-      description: 'Découvrez l\'environnement publicitaire de Facebook et Instagram',
+      title: 'Introduction à Meta Ads',
+      description: 'Découvrez les fondamentaux de Meta Ads et pourquoi cette plateforme est incontournable',
       content: [
-        'META (anciennement Facebook) représente l\'un des plus grands écosystèmes publicitaires au monde avec plus de 3 milliards d\'utilisateurs actifs mensuels.',
-        'Les plateformes Facebook et Instagram offrent des possibilités de ciblage uniques basées sur les données démographiques, les intérêts, les comportements et les connexions des utilisateurs.',
-        'Le Business Manager est l\'outil central pour gérer toutes vos activités publicitaires. Il permet de centraliser la gestion des pages, des comptes publicitaires, des pixels et des catalogues produits.',
-        'Les différents placements disponibles incluent le fil d\'actualité Facebook, les stories Instagram, Messenger, l\'Audience Network et bien plus encore.',
-        'Comprendre cet écosystème est essentiel pour exploiter pleinement le potentiel publicitaire de ces plateformes.'
+        'Meta Ads combine trois éléments essentiels qui expliquent son efficacité :',
+        '1. Des données utilisateur riches : Meta connaît les goûts, habitudes et comportements de ses utilisateurs',
+        '2. Un algorithme d\'apprentissage : Le système apprend automatiquement qui est le plus susceptible d\'agir',
+        '3. Un environnement natif : Les publicités s\'intègrent naturellement dans le fil d\'actualité',
+        'Facebook cible principalement les 25-55 ans pour l\'information, actualités et groupes. C\'est meilleur pour le B2B, services locaux et audiences matures.',
+        'Instagram cible les 18-44 ans pour l\'inspiration, découverte et divertissement. C\'est idéal pour l\'e-commerce, mode, lifestyle et audiences jeunes.'
       ],
-      video: {
-        placeholder: 'Vidéo : Introduction à l\'écosystème META (15 min)',
-        youtubeId: 'CPi867s13WA',
-        duration: '15:00'
-      },
       keyPoints: [
-        '3 milliards d\'utilisateurs actifs mensuels',
-        'Placements multiples : Facebook, Instagram, Messenger, Audience Network',
-        'Business Manager comme hub central',
-        'Ciblage avancé basé sur les données utilisateurs'
+        '3 milliards d\'utilisateurs dans le monde',
+        '39M utilisateurs Facebook France, 28M Instagram France',
+        'Ciblage basé sur données comportementales précises',
+        'Budget flexible à partir de 5€/jour',
+        'Mesure précise en temps réel'
       ]
     },
     {
       id: 'module-2',
-      title: 'Module 2 : Configuration du Business Manager',
-      description: 'Apprenez à configurer correctement votre Business Manager',
+      title: 'Comprendre l\'Audience Meta',
+      description: 'Portrait détaillé des utilisateurs Facebook et Instagram',
       content: [
-        'La configuration du Business Manager est une étape cruciale pour démarrer vos campagnes publicitaires.',
-        'Créez votre compte Business Manager sur business.facebook.com. Utilisez une adresse email professionnelle et complétez toutes les informations de votre entreprise.',
-        'Ajoutez votre page Facebook et votre compte Instagram professionnel. Assurez-vous d\'avoir les droits d\'administrateur sur ces comptes.',
-        'Configurez votre compte publicitaire en définissant la devise, le fuseau horaire et les moyens de paiement. Ces paramètres ne pourront pas être modifiés par la suite.',
-        'Attribuez les rôles appropriés aux membres de votre équipe : administrateur, annonceur ou analyste selon leurs besoins.',
-        'Vérifiez votre domaine pour améliorer la délivrabilité de vos publicités et accéder à des fonctionnalités avancées.'
+        'Portrait de l\'utilisateur Facebook :',
+        '- Âge : Toutes tranches, concentration 25-54 ans',
+        '- Usage : 1h30 par jour en moyenne, pics matin et soirée',
+        '- Comportements : Découverte passive, interactions sociales, information, shopping',
+        '',
+        'Portrait de l\'utilisateur Instagram :',
+        '- Âge : Majorité 18-44 ans, très actif chez les 18-34 ans',
+        '- Genre : 54% féminin, 46% masculin',
+        '- Comportements : Inspiration, divertissement, discovery, achat impulsif',
+        '',
+        'Moments de connexion optimaux :',
+        'Facebook : 7h-9h (matin), 12h-14h (déjeuner), 19h-22h (soirée)',
+        'Instagram : 8h-10h, 15h-17h, 20h-23h (pics mercredi-jeudi)'
       ],
-      video: {
-        placeholder: 'Vidéo : Configuration pas à pas du Business Manager (20 min)',
-        googleDriveId: '1GFu9I90DrVVLUZgBqGAQNWLnCPMvJQLH',
-        duration: '20:00'
-      },
       keyPoints: [
-        'Création du compte avec email professionnel',
-        'Ajout des pages et comptes Instagram',
-        'Configuration du compte publicitaire',
-        'Attribution des rôles d\'équipe',
-        'Vérification du domaine'
+        'Facebook : audiences matures, messages détaillés',
+        'Instagram : audiences jeunes, contenu visuel impactant',
+        'Adapter le message selon la plateforme',
+        'Timing crucial pour maximiser l\'engagement'
       ]
     },
     {
       id: 'module-3',
-      title: 'Module 3 : Installation et configuration du Pixel',
-      description: 'Maîtrisez l\'installation et la configuration du pixel META',
+      title: 'Les Formats Publicitaires',
+      description: 'Maîtrisez tous les formats disponibles et leurs usages',
       content: [
-        'Le pixel META est un morceau de code JavaScript qui permet de suivre les actions des visiteurs sur votre site web.',
-        'Pour créer votre pixel, accédez à l\'onglet "Sources de données" dans le Business Manager, puis "Pixels". Donnez-lui un nom explicite.',
-        'Installez le code de base du pixel sur toutes les pages de votre site, juste avant la balise </head>. Utilisez Google Tag Manager pour simplifier l\'installation.',
-        'Configurez les événements standards : PageView, ViewContent, AddToCart, InitiateCheckout, Purchase, Lead, CompleteRegistration.',
-        'Testez votre pixel avec l\'extension Chrome "Facebook Pixel Helper" pour vérifier que tous les événements se déclenchent correctement.',
-        'Activez les correspondances avancées pour améliorer le matching des conversions en hashant automatiquement les données clients.',
-        'Configurez l\'API Conversions pour un tracking server-side plus fiable, notamment pour contourner les blocages iOS 14.5+.'
+        'Image Simple : Format le plus facile et polyvalent',
+        '- Ratio : 1:1 (carré) pour Instagram, 1.91:1 pour Facebook',
+        '- Texte sur image : Maximum 20% de la surface',
+        '- Qualité : Minimum 1080x1080 pixels',
+        '- Idéal pour : Tests, message simple, promotion unique',
+        '',
+        'Carrousel : 2 à 10 images ou vidéos défilantes',
+        '- Engagement 30% supérieur aux images simples',
+        '- Idéal pour : Plusieurs produits, storytelling, avant/après',
+        '- Cohérence visuelle entre les cartes essentielle',
+        '',
+        'Vidéo : Format privilégié par l\'algorithme',
+        '- Durée optimale : 15-60 secondes',
+        '- 85% des vidéos regardées sans son : sous-titres obligatoires',
+        '- Première seconde cruciale pour capter l\'attention',
+        '',
+        'Stories et Reels : Format vertical immersif',
+        '- Stories : 15 secondes max, format 9:16',
+        '- Reels : 15-60 secondes, contenu divertissant',
+        '- Portée organique potentielle bonus'
       ],
-      video: {
-        placeholder: 'Vidéo : Installation complète du pixel (25 min)',
-        duration: '25:00'
-      },
       keyPoints: [
-        'Code de base sur toutes les pages',
-        'Événements standards configurés',
-        'Test avec Pixel Helper',
-        'Correspondances avancées activées',
-        'API Conversions pour iOS 14.5+'
+        'Choisir le format selon l\'objectif',
+        'Image simple pour les tests rapides',
+        'Carrousel pour présenter plusieurs options',
+        'Vidéo pour engagement maximal',
+        'Stories/Reels pour audiences jeunes'
       ]
     },
     {
       id: 'module-4',
-      title: 'Module 4 : Structure des campagnes',
-      description: 'Comprenez la structure hiérarchique des campagnes META',
+      title: 'Le Ciblage : Toucher la Bonne Personne',
+      description: 'L\'art du ciblage précis sur Meta Ads',
       content: [
-        'Les campagnes META suivent une structure hiérarchique en trois niveaux : Campagne, Ensemble de publicités et Publicité.',
-        'Au niveau Campagne, vous définissez l\'objectif marketing : Sensibilisation, Considération ou Conversion. Choisissez l\'objectif qui correspond à votre but commercial.',
-        'Le budget peut être défini au niveau campagne (CBO - Campaign Budget Optimization) ou au niveau ensemble de publicités. Le CBO permet à l\'algorithme de distribuer automatiquement le budget.',
-        'Au niveau Ensemble de publicités, définissez votre audience, vos placements, votre budget (si pas de CBO) et votre calendrier de diffusion.',
-        'Les options d\'optimisation déterminent pour quel événement META optimise la diffusion : impressions, portée, clics, conversions, etc.',
-        'Au niveau Publicité, créez vos visuels et vos textes. Testez plusieurs variantes pour identifier les meilleures combinaisons.',
-        'Utilisez la fonction "Test A/B" pour comparer différentes stratégies et identifier les plus performantes.'
+        '3 Types de Ciblage :',
+        '',
+        '1. Ciblage Démographique (Base) :',
+        '- Localisation : Pays, ville, rayon précis (1-80km)',
+        '- Âge : 13 à 65+ ans (minimum 18 pour certains secteurs)',
+        '- Genre : Homme, Femme, Tous',
+        '- Langues : Pour populations multilingues',
+        '',
+        '2. Ciblage par Centres d\'Intérêt (Avancé) :',
+        '- Pages likées, interactions, sites visités',
+        '- Catégories : Mode, Food, Sport, Loisirs',
+        '- Stratégies : Broad (large), Detailed (précis), Stacking (restrictif), Expansion (large)',
+        '',
+        '3. Ciblage Comportemental (Expert) :',
+        '- Comportements d\'achat (acheteurs en ligne fréquents)',
+        '- Comportements technologiques (iOS vs Android)',
+        '- Comportements de voyage',
+        '',
+        'Audiences Personnalisées (Custom) :',
+        '- Site web (Pixel) : Visiteurs, abandons panier',
+        '- Liste clients (CRM) : Emails/téléphones',
+        '- Engagement : Vidéos, page Facebook, Instagram',
+        '',
+        'Audiences Similaires (Lookalike) :',
+        '- 1% : Le plus similaire, très qualifié',
+        '- 2-5% : Équilibre qualité/volume',
+        '- Source minimum : 100 personnes (idéal 1000+)'
       ],
-      video: {
-        placeholder: 'Vidéo : Création d\'une campagne complète (30 min)',
-        duration: '30:00'
-      },
       keyPoints: [
-        '3 niveaux : Campagne > Ensemble > Publicité',
-        'Objectifs alignés sur les buts commerciaux',
-        'CBO pour optimisation automatique',
-        'Tests A/B pour amélioration continue'
+        'Audience entre 100K et 2M personnes',
+        'Combiner démographie + intérêts + comportements',
+        'Utiliser Lookalike pour acquisition',
+        'Exclure clients existants en prospection',
+        'Tester 3-4 audiences différentes'
       ]
     },
     {
       id: 'module-5',
-      title: 'Module 5 : Ciblage et audiences',
-      description: 'Découvrez toutes les options de ciblage disponibles',
+      title: 'Créer des Publicités Efficaces',
+      description: 'Techniques de création publicitaire qui convertissent',
       content: [
-        'Le ciblage est l\'un des points forts de META. Commencez par définir votre audience de base : âge, sexe, localisation et langue.',
-        'Le ciblage détaillé permet de raffiner selon les données démographiques (éducation, situation familiale, travail), les intérêts et les comportements.',
-        'Les audiences personnalisées permettent de cibler vos clients existants. Uploadez votre liste de contacts, utilisez le pixel pour le remarketing ou ciblez les interactions avec votre page.',
-        'Les audiences similaires (Lookalike) permettent de trouver de nouveaux prospects similaires à vos meilleurs clients. Commencez avec 1% de similarité pour la meilleure qualité.',
-        'L\'exclusion d\'audiences est cruciale pour éviter la cannibalisation entre campagnes. Excluez les acheteurs récents des campagnes de prospection.',
-        'La taille d\'audience recommandée varie selon l\'objectif : 1-5 millions pour la conversion, 5-20 millions pour le trafic, plus large pour la notoriété.',
-        'Utilisez l\'Audience Insights pour mieux comprendre votre audience et affiner votre ciblage.'
+        'Formule d\'une publicité performante :',
+        '1. CAPTIVER (Visual + Première ligne)',
+        '2. CONVAINCRE (Bénéfice + Preuve)',
+        '3. CONVERTIR (Call-to-action clair)',
+        '4. CONFIANCE (Éléments de réassurance)',
+        '',
+        'Règle des 3 Secondes :',
+        'L\'utilisateur décide en 3 secondes s\'il s\'arrête ou continue son scroll.',
+        '',
+        'Structure AIDA Adaptée :',
+        'A - Attention : Question directe, statistique choc, bénéfice immédiat',
+        'I - Intérêt : Problème → Solution → Bénéfice',
+        'D - Désir : Témoignages, chiffres précis, garanties',
+        'A - Action : CTA spécifique, urgent, avec bénéfice',
+        '',
+        'Visuels qui fonctionnent :',
+        '- Photos de produits : fond neutre, haute résolution, mise en situation',
+        '- Photos de personnes : regard caméra, émotions positives, authenticité',
+        '- Avant/Après : split screen, transformation visible',
+        '',
+        'À éviter :',
+        '- Images pixellisées',
+        '- Trop de texte (>20%)',
+        '- Stock photos évidentes',
+        '- Visuels trop chargés'
       ],
-      video: {
-        placeholder: 'Vidéo : Stratégies de ciblage avancées (35 min)',
-        duration: '35:00'
-      },
       keyPoints: [
-        'Ciblage démographique de base',
-        'Intérêts et comportements détaillés',
-        'Audiences personnalisées pour remarketing',
-        'Lookalike pour acquisition',
-        'Exclusions pour éviter les doublons'
+        'Capter l\'attention en 3 secondes',
+        'Structure AIDA pour persuasion',
+        'Visuels de haute qualité essentiels',
+        'CTA clair et spécifique',
+        'Tester 2-3 variantes minimum'
       ]
     },
     {
       id: 'module-6',
-      title: 'Module 6 : Formats publicitaires',
-      description: 'Explorez tous les formats publicitaires disponibles',
+      title: 'Budgets et Enchères',
+      description: 'Comprendre et optimiser vos budgets publicitaires',
       content: [
-        'META propose une variété de formats publicitaires adaptés à différents objectifs et types de contenu.',
-        'Image unique : Le format le plus simple et souvent le plus efficace. Utilisez des images de haute qualité (1200x628 pixels minimum) avec peu de texte.',
-        'Vidéo : Captez l\'attention avec des vidéos courtes (15-30 secondes). Optimisez pour le visionnage sans son avec des sous-titres.',
-        'Carrousel : Présentez jusqu\'à 10 images ou vidéos dans une seule publicité. Idéal pour présenter plusieurs produits ou raconter une histoire.',
-        'Collection : Format immersif qui s\'ouvre en plein écran. Parfait pour l\'e-commerce avec une vidéo de couverture et 4 produits.',
-        'Stories : Format vertical plein écran (9:16) pour Facebook et Instagram Stories. Créez du contenu natif et engageant.',
-        'Reels : Le nouveau format star d\'Instagram. Vidéos verticales courtes et divertissantes qui peuvent devenir virales.',
-        'Instant Experience : Expériences mobiles plein écran ultra-rapides qui se chargent instantanément.'
+        'Comment fonctionne l\'enchère Meta :',
+        'Score Total = Enchère × Taux d\'Action Estimé × Pertinence',
+        'Une pub pertinente peut battre une enchère plus élevée !',
+        '',
+        'Types d\'enchères :',
+        '- Automatique : Meta optimise automatiquement (recommandé débutants)',
+        '- Manuelle : Vous fixez le prix maximum (budgets serrés)',
+        '- Coût Cible (Bid Cap) : Équilibre contrôle/performance',
+        '',
+        'Budgets recommandés :',
+        '- Tests d\'audience : 20€/jour minimum par ensemble',
+        '- Campagnes conversion : 10x votre CPA cible',
+        '- Notoriété : 10-50€/jour',
+        '',
+        'Phase d\'Apprentissage :',
+        '- Durée : 7-14 jours ou jusqu\'à 50 conversions',
+        '- Coûts souvent plus élevés pendant cette phase',
+        '- NE PAS modifier les paramètres',
+        '',
+        'Techniques d\'optimisation :',
+        '- Start Low, Scale Fast : 20€/jour → +20-50% tous les 3-5 jours',
+        '- Règle du 20% : Ne jamais augmenter de plus de 20% d\'un coup',
+        '- Test de saturation : Identifier le point où le CPA augmente'
       ],
-      video: {
-        placeholder: 'Vidéo : Exemples de formats publicitaires performants (25 min)',
-        duration: '25:00'
-      },
       keyPoints: [
-        'Images : 1200x628px minimum',
-        'Vidéos : 15-30 secondes avec sous-titres',
-        'Stories : Format 9:16 vertical',
-        'Carrousel : Jusqu\'à 10 médias',
-        'Reels : Format tendance Instagram'
+        'Budget minimum 20€/jour pour tests',
+        'Respecter la phase d\'apprentissage',
+        'Augmenter progressivement (+20% max)',
+        'Surveiller le CPA et le ROAS',
+        'CBO pour répartition automatique'
       ]
     },
     {
       id: 'module-7',
-      title: 'Module 7 : Rédaction publicitaire',
-      description: 'Apprenez à rédiger des textes publicitaires qui convertissent',
+      title: 'Mesurer et Optimiser',
+      description: 'Analytics et optimisation de campagnes',
       content: [
-        'La rédaction publicitaire sur META doit capter l\'attention rapidement et inciter à l\'action.',
-        'Structure AIDA : Attention (accroche forte), Intérêt (bénéfice principal), Désir (avantages détaillés), Action (CTA clair).',
-        'Titre principal : Maximum 40 caractères pour éviter la troncature. Incluez le bénéfice principal ou une question engageante.',
-        'Texte principal : Les 125 premiers caractères sont cruciaux car visibles sans clic "Voir plus". Commencez par le plus important.',
-        'Description : Complément d\'information de 30 caractères. Renforcez votre proposition de valeur ou ajoutez de l\'urgence.',
-        'Call-to-action : Choisissez le bon bouton parmi les options disponibles (Acheter, En savoir plus, S\'inscrire, etc.).',
-        'Personnalisation : Utilisez les insertions dynamiques pour personnaliser avec le prénom, la ville ou d\'autres données.',
-        'Tests de copy : Créez minimum 3 variantes de textes pour identifier les messages les plus performants.'
+        'Métriques Essentielles :',
+        '',
+        'Portée et Visibilité :',
+        '- Impressions : Nombre d\'affichages',
+        '- Portée : Personnes uniques touchées',
+        '- Fréquence : Moyenne de vues par personne (optimal : 3-4)',
+        '',
+        'Engagement :',
+        '- CTR : 1,5-2,5% e-commerce, 2-4% services',
+        '- CPC : 0,80-2€ Meta Ads France',
+        '- CPM : 5-15€ pour mille impressions',
+        '',
+        'Conversion :',
+        '- Taux conversion : 2-5% e-commerce, 5-15% lead gen',
+        '- CPA : Coût par acquisition',
+        '- ROAS : 2x minimum, 3-4x bon, 5x+ excellent',
+        '',
+        'Configuration du Pixel Meta :',
+        '- Installation code base avant </head>',
+        '- Événements standards : PageView, AddToCart, Purchase, Lead',
+        '- Test avec Facebook Pixel Helper',
+        '- API Conversions pour iOS 14.5+',
+        '',
+        'Stratégies d\'optimisation :',
+        'Phase Lancement (J1-7) : Ne rien changer, surveiller',
+        'Phase Optimisation (J8-30) : Améliorer CTR, CPC, conversions',
+        'Phase Scaling (J30+) : Augmenter volumes, nouveaux segments'
       ],
-      video: {
-        placeholder: 'Vidéo : Techniques de copywriting pour META Ads (20 min)',
-        duration: '20:00'
-      },
       keyPoints: [
-        'Structure AIDA pour engagement',
-        '125 premiers caractères cruciaux',
-        'Titre de 40 caractères max',
-        'CTA adapté à l\'objectif',
-        'Tests A/B sur les textes'
+        'Pixel correctement installé et testé',
+        'ROAS comme métrique principale',
+        'Règle des 50 conversions avant optimisation',
+        'Fréquence < 4 pour éviter fatigue',
+        'Tests continus : 20% budget pour innovation'
       ]
     },
     {
       id: 'module-8',
-      title: 'Module 8 : Remarketing et audiences dynamiques',
-      description: 'Mettez en place des stratégies de remarketing efficaces',
+      title: 'Erreurs Courantes à Éviter',
+      description: 'Les pièges à éviter pour réussir vos campagnes',
       content: [
-        'Le remarketing permet de recibler les personnes qui ont déjà interagi avec votre marque.',
-        'Segmentez vos audiences de remarketing par niveau d\'engagement : visiteurs du site, abandonnistes de panier, acheteurs existants.',
-        'Créez un entonnoir de remarketing : Top (tous les visiteurs), Middle (pages produits vues), Bottom (paniers abandonnés).',
-        'Durées de rétention recommandées : 7 jours pour les paniers abandonnés, 14-30 jours pour les visiteurs, 180 jours pour les clients.',
-        'Remarketing dynamique : Affichez automatiquement les produits consultés grâce au catalogue produits et au pixel.',
-        'Cross-sell et upsell : Proposez des produits complémentaires aux acheteurs récents avec des audiences basées sur les achats.',
-        'Réactivation : Ciblez les clients inactifs depuis 60-90 jours avec des offres spéciales ou du nouveau contenu.',
-        'Exclusions importantes : Excluez les acheteurs récents des campagnes de panier abandonné pour éviter la frustration.'
+        'Erreurs de Stratégie :',
+        '1. Objectif inadapté : Choisir "Trafic" quand on veut vendre',
+        '2. Budget insuffisant : Minimum 20€/jour pour tests',
+        '3. Trop de variables : Tester 1 élément à la fois',
+        '',
+        'Erreurs de Ciblage :',
+        '4. Audience trop petite : < 100K personnes',
+        '5. Audience trop large : Pas assez qualifiée',
+        '6. Mauvais Lookalike : Source < 100 personnes ou mauvaise qualité',
+        '',
+        'Erreurs de Création :',
+        '7. Texte trop long ou trop court : 50-125 mots optimal',
+        '8. Visuels de mauvaise qualité : Images pixellisées, trop de texte',
+        '9. Pas de test A/B : Une seule version qui fatigue',
+        '',
+        'Erreurs de Mesure :',
+        '10. Mauvaise attribution : Ignorer les autres canaux',
+        '11. Mauvaises métriques : Focus sur likes au lieu de ROAS',
+        '12. Vision court terme : Juger sur 2-3 jours seulement',
+        '',
+        'Erreurs Techniques :',
+        '13. Pixel mal configuré : Événements qui ne se déclenchent pas',
+        '14. Ignorer les recommandations Meta : Alertes sur chevauchement, budget',
+        '',
+        'Checklist Pré-Lancement :',
+        '- Objectif cohérent avec but business',
+        '- Budget suffisant (20€/jour minimum)',
+        '- Audience 100K-2M personnes',
+        '- 2-3 créations pour tests A/B',
+        '- Pixel installé et testé',
+        '- Page de destination optimisée'
       ],
-      video: {
-        placeholder: 'Vidéo : Configuration du remarketing dynamique (30 min)',
-        duration: '30:00'
-      },
       keyPoints: [
-        'Segmentation par engagement',
-        'Entonnoir de remarketing',
-        'Remarketing dynamique produits',
-        'Cross-sell aux clients',
-        'Exclusions pour éviter la sur-sollicitation'
+        'Respecter phase d\'apprentissage (7-14 jours)',
+        'Budget minimum viable selon objectif',
+        'Tester une variable à la fois',
+        'Pixel correctement configuré',
+        'Vision long terme (2+ semaines)'
       ]
     },
     {
       id: 'module-9',
-      title: 'Module 9 : Analyse et optimisation',
-      description: 'Analysez vos performances et optimisez vos campagnes',
+      title: 'Cas Pratiques par Secteur',
+      description: 'Exemples concrets de campagnes réussies',
       content: [
-        'L\'analyse régulière de vos campagnes est essentielle pour améliorer continuellement vos performances.',
-        'Métriques clés à surveiller : CTR (taux de clic), CPC (coût par clic), CPM (coût pour mille), taux de conversion, ROAS (retour sur investissement publicitaire).',
-        'Utilisez les colonnes personnalisées pour afficher les métriques pertinentes selon vos objectifs. Sauvegardez vos vues pour gagner du temps.',
-        'Analysez les performances par placement pour identifier où vos publicités performent le mieux et ajustez les budgets en conséquence.',
-        'La règle des 50 conversions : Attendez au moins 50 conversions par semaine avant de juger les performances d\'un ensemble de publicités.',
-        'Optimisation du budget : Réallouez le budget des ensembles peu performants vers ceux qui génèrent le meilleur ROAS.',
-        'Tests continus : Testez constamment de nouvelles audiences, créatives et copies. Gardez 20% du budget pour les tests.',
-        'Analyse de la fréquence : Si la fréquence dépasse 3-4 sur 7 jours, rafraîchissez vos créatives pour éviter la fatigue publicitaire.'
+        'Cas 1 : E-commerce - Boutique Mode Féminine',
+        '- Budget : 1,800€/mois',
+        '- ROAS : 3.2x',
+        '- CA généré : 5,760€/mois',
+        '- Audience gagnante : Lookalike clients 1%',
+        '- Format gagnant : Carrousel produits',
+        '- Apprentissage : Lookalikes surperforment les intérêts',
+        '',
+        'Cas 2 : Services Locaux - Garage Automobile',
+        '- Budget : 800€/mois',
+        '- Rendez-vous : 25-30/mois',
+        '- Taux conversion : 40% (12 clients/mois)',
+        '- CA moyen : 180€/client',
+        '- ROAS : 2.7x',
+        '- Zone : 15km rayon principal',
+        '- Format gagnant : Avant/Après réparations',
+        '',
+        'Cas 3 : B2B - Cabinet Conseil RH',
+        '- Budget : 1,200€/mois',
+        '- Leads qualifiés : 8-12/mois',
+        '- Clients signés : 2-3/mois (25% conversion)',
+        '- CA moyen : 8,000€/client',
+        '- ROAS : 4.5x sur 6 mois',
+        '- Ciblage : Dirigeants PME 10-100 salariés',
+        '- Stratégie : Lead nurturing 3 étapes',
+        '',
+        'Points communs des réussites :',
+        '- Tests initiaux d\'audiences structurés',
+        '- Budgets adaptés aux objectifs',
+        '- Créations de qualité professionnelle',
+        '- Optimisation continue basée sur données',
+        '- Patience pendant phase d\'apprentissage'
       ],
-      video: {
-        placeholder: 'Vidéo : Dashboard d\'analyse et techniques d\'optimisation (35 min)',
-        duration: '35:00'
-      },
       keyPoints: [
-        'KPIs selon objectifs',
-        'Colonnes personnalisées',
-        'Règle des 50 conversions',
-        'Budget vers meilleurs ROAS',
-        'Fréquence < 4 sur 7 jours'
+        'Adapter stratégie au secteur',
+        'E-commerce : Focus ROAS et panier moyen',
+        'Local : Géolocalisation précise',
+        'B2B : Cycle long, lead nurturing',
+        'Tests structurés avant scaling'
       ]
     },
     {
       id: 'module-10',
-      title: 'Module 10 : Scaling et croissance',
-      description: 'Scalez vos campagnes pour maximiser vos résultats',
+      title: 'Glossaire et Ressources',
+      description: 'Terminologie et ressources pour aller plus loin',
       content: [
-        'Le scaling consiste à augmenter progressivement vos dépenses publicitaires tout en maintenant ou améliorant votre rentabilité.',
-        'Scaling vertical : Augmentez progressivement le budget d\'un ensemble performant de 20-30% tous les 3-4 jours. Évitez les augmentations brutales.',
-        'Scaling horizontal : Dupliquez les ensembles performants avec de nouvelles audiences similaires ou de nouveaux placements.',
-        'Campagnes CBO : Utilisez l\'optimisation du budget de campagne pour laisser l\'algorithme distribuer automatiquement vers les meilleurs ensembles.',
-        'Audiences larges : À grande échelle, les audiences larges avec un bon historique de pixel peuvent surperformer le ciblage détaillé.',
-        'Advantage+ Shopping : Utilisez les campagnes automatisées de META pour le e-commerce, elles apprennent et s\'optimisent rapidement.',
-        'Budget journalier vs à vie : Préférez le budget journalier pour plus de flexibilité dans le scaling.',
-        'Surveillez le CPA : Si le coût d\'acquisition augmente de plus de 30%, ralentissez le scaling et optimisez avant de continuer.'
+        'Termes Essentiels :',
+        '- CPA : Cost Per Acquisition (coût par acquisition)',
+        '- CPM : Cost Per Mille (coût pour 1000 impressions)',
+        '- CPC : Cost Per Click (coût par clic)',
+        '- CTR : Click-Through Rate (taux de clic)',
+        '- ROAS : Return on Ad Spend (retour sur investissement pub)',
+        '- CBO : Campaign Budget Optimization',
+        '- Lookalike : Audience similaire',
+        '- Pixel : Code de tracking sur votre site',
+        '- Retargeting : Reciblage publicitaire',
+        '',
+        'Ressources Recommandées :',
+        '',
+        'Formation Officielle :',
+        '- Meta Blueprint : Cours gratuits et certification',
+        '- facebook.com/business/learn',
+        '',
+        'Outils :',
+        '- Facebook Ads Library : Voir pubs concurrents',
+        '- Canva : Création visuels',
+        '- Google Analytics 4 : Tracking complémentaire',
+        '- Facebook Pixel Helper : Tester le pixel',
+        '',
+        'Communautés :',
+        '- Groupes Facebook spécialisés Meta Ads',
+        '- Blogs : Hootsuite, HubSpot, Social Media News',
+        '',
+        'Support Meta :',
+        '- Centre d\'aide : business.facebook.com/help',
+        '- Chat support pour comptes actifs'
       ],
-      video: {
-        placeholder: 'Vidéo : Stratégies de scaling avancées (30 min)',
-        duration: '30:00'
-      },
       keyPoints: [
-        'Augmentation progressive 20-30%',
-        'Duplication des gagnants',
-        'CBO pour distribution auto',
-        'Audiences larges à grande échelle',
-        'Surveillance du CPA'
-      ]
-    },
-    {
-      id: 'module-11',
-      title: 'Module 11 : Bonnes pratiques et erreurs à éviter',
-      description: 'Les meilleures pratiques et les pièges courants',
-      content: [
-        'Respectez ces bonnes pratiques pour maximiser vos chances de succès avec META Ads.',
-        'Phase d\'apprentissage : Ne modifiez pas vos ensembles pendant 3-5 jours pour laisser l\'algorithme apprendre. Chaque modification redémarre l\'apprentissage.',
-        'Budget minimum : Allouez au moins 5-10 fois votre CPA cible par jour pour avoir assez de données pour optimiser.',
-        'Creative fatigue : Rafraîchissez vos créatives tous les 14-21 jours pour maintenir l\'engagement.',
-        'Respect des politiques : Vérifiez toujours les politiques publicitaires de META pour éviter les rejets et suspensions de compte.',
-        'Attribution : Utilisez une fenêtre d\'attribution de 7 jours clic + 1 jour vue pour une vision équilibrée.',
-        'Saisonnalité : Anticipez les périodes de forte demande (Black Friday, Noël) en augmentant les budgets progressivement 2-3 semaines avant.',
-        'Documentation : Documentez vos tests, résultats et apprentissages dans un journal de bord pour capitaliser sur vos expériences.'
-      ],
-      video: {
-        placeholder: 'Vidéo : Checklist des bonnes pratiques (25 min)',
-        duration: '25:00'
-      },
-      keyPoints: [
-        'Respecter phase d\'apprentissage',
-        'Budget 5-10x CPA cible',
-        'Refresh créatives régulier',
-        'Conformité aux politiques',
-        'Documentation des tests'
+        'Maîtriser la terminologie Meta Ads',
+        'Meta Blueprint pour formation continue',
+        'Facebook Ads Library pour inspiration',
+        'Google Analytics en complément',
+        'Rejoindre communautés pour échanger'
       ]
     }
   ],
   conclusion: {
-    title: 'Félicitations, vous êtes maintenant prêt à lancer vos campagnes META !',
+    title: 'Conclusion',
     content: [
-      'Vous avez maintenant toutes les clés en main pour créer et optimiser des campagnes publicitaires performantes sur Facebook et Instagram.',
-      'N\'oubliez pas que la réussite en publicité digitale demande de la pratique, des tests constants et une analyse régulière de vos résultats.',
-      'Continuez à vous former sur les nouvelles fonctionnalités que META lance régulièrement pour rester à la pointe.'
+      'Meta Ads représente aujourd\'hui l\'un des leviers marketing les plus puissants pour développer une entreprise, mais sa maîtrise demande de la rigueur, de la patience et une approche méthodique.',
+      'La réussite repose sur 4 piliers : Stratégie claire, Créations performantes, Optimisation continue, Vision long terme.',
+      'Attentes réalistes : Phase d\'apprentissage 2-4 semaines, Optimisation 2-3 mois, ROI 2,5-4x en moyenne.',
+      'N\'oubliez pas que le domaine de la publicité digitale évolue rapidement. Pratiquez régulièrement, testez constamment et analysez vos résultats.',
+      'Continuez votre formation avec Meta Blueprint et restez à jour sur les nouvelles fonctionnalités.'
     ]
   },
   certification: true,
   nextSteps: [
-    'Configurez votre Business Manager et votre pixel',
-    'Lancez votre première campagne avec un petit budget test',
-    'Analysez vos résultats après 1 semaine',
-    'Optimisez et scalez progressivement',
-    'Rejoignez notre communauté pour échanger avec d\'autres annonceurs'
+    'Créer votre Business Manager et configurer votre pixel',
+    'Lancer votre première campagne avec budget test de 20€/jour',
+    'Tester 3 audiences différentes pendant 7 jours',
+    'Analyser les résultats et identifier l\'audience gagnante',
+    'Optimiser et scaler progressivement selon règle du 20%',
+    'Rejoindre la communauté Digiqo pour partager vos expériences'
   ]
 }
 
 // Export all formations as an array
 export const formations: Formation[] = [
-  formationPubliciteMeta
+  formationMetaComplete
 ]
 
 // Helper function to get formation by slug

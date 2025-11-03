@@ -20,7 +20,8 @@ import {
   Award,
   MessageCircle,
   X,
-  ChevronRight
+  ChevronRight,
+  BookOpen
 } from 'lucide-react'
 
 
@@ -173,6 +174,12 @@ const navigation = {
     {
       name: 'BLOG',
       href: '/blog'
+    },
+    {
+      name: 'DIGICADEMY',
+      href: '/digicademy',
+      luxuryIcon: BookOpen,
+      badge: 'Nouveau'
     }
   ],
   cta: {
