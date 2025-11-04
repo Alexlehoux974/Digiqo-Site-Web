@@ -2,10 +2,12 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
-import { ChevronLeft, ChevronDown, ChevronUp, Clock, Award, BookOpen, Target, CheckCircle2 } from 'lucide-react'
+import { ChevronLeft, ChevronDown, ChevronUp, Clock, Award, BookOpen, Target, CheckCircle2, Trophy } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import DigicademyYouTubePlayer from '@/components/DigicademyYouTubePlayer'
 import { getFormationBySlug, formations, type Formation } from '@/lib/digicademy-formations'
+import { QuizModal } from '@/components/QuizModal'
+import { getRandomQuestions, type QuizQuestion } from '@/lib/quiz-questions'
 
 interface FormationPageProps {
   formation: Formation
@@ -13,6 +15,8 @@ interface FormationPageProps {
 
 export default function FormationPage({ formation }: FormationPageProps) {
   const [openModules, setOpenModules] = useState<string[]>([])
+  const [isQuizModalOpen, setIsQuizModalOpen] = useState(false)
+  const [quizQuestions, setQuizQuestions] = useState<QuizQuestion[]>([])
 
   const toggleModule = (moduleId: string) => {
     setOpenModules(prev =>
@@ -197,6 +201,60 @@ export default function FormationPage({ formation }: FormationPageProps) {
                                   // Empty paragraphs for spacing
                                   if (paragraph === '') {
                                     return <div key={pIndex} className="h-4" />
+                                  }
+
+                                  // Check for H3 markdown titles (### Title)
+                                  if (paragraph.startsWith('###')) {
+                                    // Split on actual newlines (not literal \n strings)
+                                    const lines = paragraph.split(/\n\n|\n/);
+                                    const h3Title = lines[0].replace(/^###\s+/, '');
+                                    const restContent = lines.slice(1).filter(l => l.trim()).join(' ');
+
+                                    return (
+                                      <div key={pIndex} className="mt-8 mb-4 first:mt-0">
+                                        <h3 className="text-2xl font-bold text-[#8B1431] mb-6 flex items-start gap-3">
+                                          <div className="w-2 h-8 bg-gradient-to-b from-[#DA6530] to-[#199CB7] rounded-full mt-1 flex-shrink-0"></div>
+                                          <span>{h3Title}</span>
+                                        </h3>
+                                        {restContent && (
+                                          <p className="text-gray-700 leading-relaxed text-[15px] ml-8">
+                                            {restContent.split('**').map((part, i) =>
+                                              i % 2 === 0 ? part : <strong key={i} className="font-semibold text-gray-900">{part}</strong>
+                                            )}
+                                          </p>
+                                        )}
+                                      </div>
+                                    );
+                                  }
+
+                                  // Check for bold markdown headers with bullet lists (**Header:** followed by list items)
+                                  // Render as compact list (small bullets, tight spacing) to balance content
+                                  if (paragraph.startsWith('**') && paragraph.includes(':') && paragraph.includes('- ')) {
+                                    // Match **Header :** - the space and colon are INSIDE the ** markers
+                                    const headerMatch = paragraph.match(/^\*\*(.+?)\s*:\s*\*\*/);
+                                    if (headerMatch) {
+                                      const header = headerMatch[1].trim();
+                                      // Split on actual newlines
+                                      const listItems = paragraph.split(/\n\n|\n/).filter(line => line.trim().startsWith('-'));
+
+                                      return (
+                                        <div key={pIndex} className="my-3">
+                                          <p className="text-gray-900 font-semibold text-[15px] mb-1.5">{header} :</p>
+                                          <ul className="space-y-1 ml-4">
+                                            {listItems.map((item, i) => (
+                                              <li key={i} className="flex items-start gap-2 text-[14px]">
+                                                <span className="text-[#DA6530] mt-0.5 text-xs flex-shrink-0">▪</span>
+                                                <span className="text-gray-700 leading-snug">
+                                                  {item.substring(2).split('**').map((part, j) =>
+                                                    j % 2 === 0 ? part : <strong key={j} className="font-semibold text-gray-900">{part}</strong>
+                                                  )}
+                                                </span>
+                                              </li>
+                                            ))}
+                                          </ul>
+                                        </div>
+                                      );
+                                    }
                                   }
 
                                   // Check different content patterns
@@ -386,10 +444,12 @@ export default function FormationPage({ formation }: FormationPageProps) {
                                     );
                                   }
 
-                                  // Regular paragraphs
+                                  // Regular paragraphs - parse inline bold markdown
                                   return (
                                     <p key={pIndex} className="text-gray-700 leading-relaxed text-[15px]">
-                                      {paragraph}
+                                      {paragraph.split('**').map((part, i) =>
+                                        i % 2 === 0 ? part : <strong key={i} className="font-semibold text-gray-900">{part}</strong>
+                                      )}
                                     </p>
                                   );
                                 })}
@@ -476,8 +536,36 @@ export default function FormationPage({ formation }: FormationPageProps) {
               )}
             </motion.section>
           )}
+
+          {/* Quiz Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="mt-12 text-center"
+          >
+            <button
+              onClick={() => {
+                const questions = getRandomQuestions(formation.slug)
+                setQuizQuestions(questions)
+                setIsQuizModalOpen(true)
+              }}
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#8B1431] to-[#DA6530] text-white rounded-xl font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            >
+              <Trophy className="w-6 h-6" />
+              Tester mes connaissances
+            </button>
+          </motion.div>
         </div>
       </main>
+
+      {/* Quiz Modal */}
+      <QuizModal
+        isOpen={isQuizModalOpen}
+        onClose={() => setIsQuizModalOpen(false)}
+        questions={quizQuestions}
+        formationTitle={formation.title}
+      />
     </>
   )
 }

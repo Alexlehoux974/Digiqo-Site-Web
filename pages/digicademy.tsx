@@ -10,7 +10,7 @@ import { Footer } from '@/components/Footer'
 // Catégories disponibles
 const categories = [
   { id: 'all', name: 'Toutes', icon: BookOpen, color: 'bg-gradient-to-r from-[#8B1431] to-[#DA6530]' },
-  { id: 'publicite', name: 'Publicité en ligne', icon: Megaphone, color: 'bg-gradient-to-r from-[#DA6530] to-[#8B1431]', count: 1 },
+  { id: 'publicite', name: 'Publicité en ligne', icon: Megaphone, color: 'bg-gradient-to-r from-[#DA6530] to-[#8B1431]', count: 0 },
   { id: 'sites-web', name: 'Sites Web', icon: Code, color: 'bg-gradient-to-r from-[#199CB7] to-[#DA6530]', count: 0 },
   { id: 'community', name: 'Community Management', icon: Users, color: 'bg-gradient-to-r from-[#8B1431] to-[#199CB7]', count: 0 },
   { id: 'identite', name: 'Identité de Marque', icon: Palette, color: 'bg-gradient-to-r from-[#DA6530] to-[#199CB7]', count: 0 },

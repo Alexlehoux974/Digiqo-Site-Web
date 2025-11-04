@@ -19,7 +19,7 @@ const staticPages = [
   { path: '/devis-site-web', priority: '0.8', changefreq: 'weekly' },
   { path: '/recrutement', priority: '0.7', changefreq: 'weekly' },
   { path: '/digiqo-recrute', priority: '0.7', changefreq: 'weekly' },
-  { path: '/formations-digicademy', priority: '0.7', changefreq: 'monthly' },
+  { path: '/digicademy', priority: '0.8', changefreq: 'weekly' },
   { path: '/kap-numerik-la-reunion', priority: '0.7', changefreq: 'monthly' },
   { path: '/referencement', priority: '0.7', changefreq: 'monthly' },
   { path: '/mentions-legales', priority: '0.3', changefreq: 'yearly' },

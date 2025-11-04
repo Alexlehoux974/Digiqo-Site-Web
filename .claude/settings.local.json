@@ -142,7 +142,12 @@
       "Read(//var/**)",
       "Bash(do grep -B1 -A1 \"text-4xl\\|text-5xl\\|text-6xl\" \"$file\")",
       "Bash(do echo \"=== $icon ===\")",
-      "Bash(do echo -n \"$icon: \")"
+      "Bash(do echo -n \"$icon: \")",
+      "Bash(wc:*)",
+      "Bash(/tmp/google_ads_modules_fixed.ts)",
+      "Bash(/tmp/modules_only.ts)",
+      "Bash(awk:*)",
+      "Bash(/tmp/part1.ts)"
     ],
     "deny": []
   }
