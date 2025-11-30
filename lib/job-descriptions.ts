@@ -240,6 +240,31 @@ export const jobDescriptions: JobDescription[] = [
     location: 'La Réunion',
     status: 'Indépendant',
     highlights: ['Leads qualifiés fournis', 'CRM optimisé', 'Formation continue']
+  },
+  {
+    id: 'sponsorship-partnership-manager',
+    title: 'Sponsorship & Partnership Manager',
+    shortDescription: 'Développez et pilotez la stratégie de sponsoring et partenariats de Digiqo à La Réunion.',
+    missions: [
+      'Cartographier l\'écosystème local (événements, clubs sportifs, associations, festivals)',
+      'Négocier et sécuriser les partenariats (cash / échanges de services / hybrides)',
+      'Activer et exécuter les campagnes de sponsoring (logos, maillots, stands, signalétique)',
+      'Coordonner avec le Marketing pour les créations et outils de tracking (QR, UTM, LP)',
+      'Mesurer l\'impact et produire les reportings mensuels Sponsorship',
+      'Construire et documenter le pôle Sponsorship from scratch'
+    ],
+    profile: [
+      'Excellent relationnel et capacités de négociation',
+      'Organisation et suivi de projets',
+      'Sens du terrain, autonomie et leadership',
+      'Bonne présentation et capacité à représenter Digiqo en public',
+      'Goût pour les événements, la culture et le sport local',
+      'Permis B et véhicule (déplacements terrain)'
+    ],
+    remuneration: 'Fixe + variable basé sur les activations et leads générés',
+    location: 'La Réunion',
+    status: 'Indépendant',
+    highlights: ['Pôle à créer from scratch', 'Évolution possible vers Head of Brand Partnerships', 'Impact direct sur la notoriété']
   }
 ]
 

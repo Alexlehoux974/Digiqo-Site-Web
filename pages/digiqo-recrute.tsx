@@ -55,7 +55,8 @@ export default function RecrutementFreelances() {
     { id: 'photographe', title: 'Photographe / Créateur de Contenu' },
     { id: 'influenceur-manager', title: 'Influenceur Marketing Manager' },
     { id: 'commercial-outbound', title: 'Commercial Outbound' },
-    { id: 'business-developer', title: 'Business Developer' }
+    { id: 'business-developer', title: 'Business Developer' },
+    { id: 'sponsorship-partnership-manager', title: 'Sponsorship & Partnership Manager' }
   ]
 
   return (

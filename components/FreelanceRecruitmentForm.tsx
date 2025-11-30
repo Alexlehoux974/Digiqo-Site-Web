@@ -71,7 +71,8 @@ export default function FreelanceRecruitmentForm() {
     'Photographe / Créateur de Contenu',
     'Influenceur Marketing Manager',
     'Commercial Outbound',
-    'Business Developer'
+    'Business Developer',
+    'Sponsorship & Partnership Manager'
   ];
 
   // Pre-remplir le formulaire si un poste est passé en paramètre URL
