@@ -4,7 +4,7 @@ import { Check, Camera, Video, ArrowRight, Package, Image, Film, Sparkles, Chevr
 import ServiceLayout from '../../components/ServiceLayout/ServiceLayout'
 import { servicesSEO } from '../../lib/seo-data'
 import { generateContactUrl } from '../../lib/contact-utils'
-import { ServiceHero } from './ServiceHero'
+import { AnimatedMarqueeHero } from '@/components/ui/hero-3'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 
 interface CreativeProduct {
@@ -283,16 +283,42 @@ export default function VideoPage() {
       </Head>
 
       {/* Hero Section */}
-      <ServiceHero
-        icon={Sparkles}
-        title={{
-          line1: "Créatifs",
-          line2: "Publicitaires"
+      <AnimatedMarqueeHero
+        tagline="Créatifs Digiqo"
+        title={
+          <>
+            <span className="bg-gradient-to-r from-digiqo-accent to-orange-500 bg-clip-text text-transparent inline-block px-2">
+              Créatifs
+            </span>
+            {' '}
+            <span className="bg-gradient-to-r from-digiqo-accent to-orange-500 bg-clip-text text-transparent inline-block px-2">
+              Publicitaires
+            </span>
+          </>
+        }
+        description="Production vidéo, création visuelle et design publicitaire pour booster votre communication."
+        ctaText="Découvrir nos offres"
+        images={[
+          '/visuel-client/story-01.png',
+          '/visuel-client/story-02.png',
+          '/visuel-client/story-03.png',
+          '/visuel-client/story-04.png',
+          '/visuel-client/story-05.png',
+          '/visuel-client/story-06.png',
+          '/visuel-client/story-07.png',
+          '/visuel-client/story-08.png',
+          '/visuel-client/visuel-9x16.png',
+          '/visuel-client/piton-fougere-9x16.png',
+          '/visuel-client/sweetjab-crosstraining-9x16.png',
+          '/visuel-client/yoga-lechoka-9x16.png',
+          '/visuel-client/paragraphe-story-01.png'
+        ]}
+        onCtaClick={() => {
+          const element = document.getElementById('abonnements');
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
         }}
-        subtitle="Production vidéo, création visuelle et design publicitaire pour booster votre communication."
-        gradientFrom="from-digiqo-accent"
-        gradientTo="to-orange-500"
-        iconColor="text-digiqo-accent"
       />
 
       {/* MRR Section - Abonnements Créatifs Mensuels */}
