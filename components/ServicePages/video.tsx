@@ -299,19 +299,19 @@ export default function VideoPage() {
         description="Production vidéo, création visuelle et design publicitaire pour booster votre communication."
         ctaText="Découvrir nos offres"
         images={[
-          '/visuel-client/story-01.png',
-          '/visuel-client/story-02.png',
-          '/visuel-client/story-03.png',
-          '/visuel-client/story-04.png',
-          '/visuel-client/story-05.png',
-          '/visuel-client/story-06.png',
-          '/visuel-client/story-07.png',
-          '/visuel-client/story-08.png',
-          '/visuel-client/visuel-9x16.png',
-          '/visuel-client/piton-fougere-9x16.png',
-          '/visuel-client/sweetjab-crosstraining-9x16.png',
-          '/visuel-client/yoga-lechoka-9x16.png',
-          '/visuel-client/paragraphe-story-01.png'
+          '/visuel-client/story-01.webp',
+          '/visuel-client/story-02.webp',
+          '/visuel-client/story-03.webp',
+          '/visuel-client/story-04.webp',
+          '/visuel-client/story-05.webp',
+          '/visuel-client/story-06.webp',
+          '/visuel-client/story-07.webp',
+          '/visuel-client/story-08.webp',
+          '/visuel-client/visuel-9x16.webp',
+          '/visuel-client/piton-fougere-9x16.webp',
+          '/visuel-client/sweetjab-crosstraining-9x16.webp',
+          '/visuel-client/yoga-lechoka-9x16.webp',
+          '/visuel-client/paragraphe-story-01.webp'
         ]}
         onCtaClick={() => {
           const element = document.getElementById('abonnements');
