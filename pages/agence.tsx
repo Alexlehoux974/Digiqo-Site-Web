@@ -245,13 +245,13 @@ export default function Agence() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
                 >
-                  L'agence qui fait
+                  L'Agence
                 </motion.span>
-                <motion.span 
+                <motion.span
                   className="text-transparent bg-clip-text bg-gradient-to-r from-digiqo-primary via-digiqo-accent to-digiqo-primary block md:inline relative"
                   initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ 
-                    opacity: 1, 
+                  animate={{
+                    opacity: 1,
                     scale: 1,
                     backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                   }}
@@ -266,7 +266,7 @@ export default function Agence() {
                   }}
                   style={{ backgroundSize: '200% 100%' }}
                 >
-                  {' vibrer '}
+                  {' préférée '}
                   {/* Glow effect behind the word */}
                   <motion.div
                     className="absolute inset-0 blur-3xl bg-gradient-to-r from-digiqo-primary via-digiqo-accent to-digiqo-primary opacity-50 -z-10"
@@ -286,7 +286,7 @@ export default function Agence() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
                 >
-                  votre digital
+                  des Réunionnais
                 </motion.span>
               </h1>
               <motion.p 
