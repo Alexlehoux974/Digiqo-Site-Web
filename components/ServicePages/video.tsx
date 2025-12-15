@@ -185,6 +185,27 @@ export default function VideoPage() {
   // Produits ONE_SHOT Vidéo & Photo depuis Airtable
   const videoPhotoProducts: CreativeProduct[] = [
     {
+      id: 'montage-ads-ready',
+      name: 'Montage Ads Ready',
+      price: '149,90€',
+      description: 'Transformez vos vidéos existantes en pubs SMA prêtes à diffuser',
+      features: [
+        '🎬 Adaptation au format pub SMA (Meta, Instagram, etc.)',
+        '⏱ Durée optimisée pour la conversion (15 à 30 sec)',
+        '📱 Formats adaptés mobile (vertical / carré selon besoin)',
+        '🧠 Validation par un expert SMA avant lancement',
+        '✨ Habillage simple : titrage, logo, call-to-action',
+        'Cette offre est réservée aux prospects qui disposent déjà de vidéos de bonne qualité.',
+        'Nos experts SMA vérifient d\'abord si vos rushs sont exploitables pour de la publicité (cadrage, définition, stabilité, cohérence de message).',
+        'Si les vidéos ne permettent pas d\'atteindre un niveau de qualité suffisant, nous vous orienterons vers nos offres de tournage + montage (Vidéo Signature ou Pack Lancement Social).',
+        'Tarif de 149,90€ par vidéo montée et validée pour diffusion en campagne.'
+      ],
+      paymentLink: '',
+      icon: Film,
+      gradient: 'from-amber-600 to-orange-700',
+      type: 'ONE_SHOT'
+    },
+    {
       id: 'reclbwrxo9cO4nD5D',
       name: 'Shooting Essentiel 15',
       price: '349,90€',
@@ -550,7 +571,7 @@ export default function VideoPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {videoPhotoProducts.map((product, index) => (
               <motion.div
                 key={product.id}
@@ -577,7 +598,7 @@ export default function VideoPage() {
                   </div>
                 )}
                 
-                <div className={`bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden h-full ${
+                <div className={`bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden h-full flex flex-col ${
                   product.price === 'GRATUIT' ? 'ring-2 ring-green-500' : ''
                 }`}>
                   {/* Header */}
@@ -600,7 +621,7 @@ export default function VideoPage() {
                   </div>
 
                   {/* Features */}
-                  <div className="p-4">
+                  <div className="p-4 flex-grow">
                     <ul className="space-y-2">
                       {product.features.slice(0, 6).map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-2">
@@ -609,7 +630,7 @@ export default function VideoPage() {
                         </li>
                       ))}
                     </ul>
-                    
+
                     {product.features.length > 6 && (
                       <details className="mt-3 group">
                         <summary className="cursor-pointer text-xs text-gray-600 hover:text-gray-800 font-medium">
@@ -628,7 +649,7 @@ export default function VideoPage() {
                   </div>
 
                   {/* CTA */}
-                  <div className="p-4 bg-gray-50">
+                  <div className="p-4 bg-gray-50 mt-auto">
                     {product.paymentLink !== '-' ? (
                       <a
                         href={product.paymentLink || generateContactUrl({ service: 'video', description: `Je souhaite commander : ${product.name}` })}
