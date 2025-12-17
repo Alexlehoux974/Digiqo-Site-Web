@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Head from 'next/head';
 import { HeaderLuxury } from '../components/Header';
 import { Footer } from '../components/Footer';

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Send, AlertCircle, Globe, Briefcase, FileText, Users } from 'lucide-react';
 import { useRouter } from 'next/router';

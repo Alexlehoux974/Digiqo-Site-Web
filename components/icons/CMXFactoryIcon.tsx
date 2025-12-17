@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 export const CMXFactoryIcon = () => (
   <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { motion } from 'framer-motion';
 import { AuditFormData, AuditScore } from '@/src/lib/audit-types';
 import { 

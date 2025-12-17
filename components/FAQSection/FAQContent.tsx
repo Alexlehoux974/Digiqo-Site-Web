@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { FAQSection } from './faqData';
 import { FAQAccordion } from './FAQAccordion';
