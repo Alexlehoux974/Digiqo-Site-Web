@@ -14,7 +14,7 @@
   compress = true
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
   # Next.js optimization flags
   NEXT_TELEMETRY_DISABLED = "1"
 
