@@ -188,7 +188,7 @@ export default function VideoPage() {
       id: 'montage-ads-ready',
       name: 'Montage Ads Ready',
       price: '149,90€',
-      description: 'Transformez vos vidéos existantes en pubs SMA prêtes à diffuser',
+      description: 'Vidéos existantes en pubs SMA prêtes à diffuser',
       features: [
         '🎬 Adaptation au format pub SMA (Meta, Instagram, etc.)',
         '⏱ Durée optimisée pour la conversion (15 à 30 sec)',
@@ -602,10 +602,10 @@ export default function VideoPage() {
                   product.price === 'GRATUIT' ? 'ring-2 ring-green-500' : ''
                 }`}>
                   {/* Header */}
-                  <div className={`p-6 bg-gradient-to-br ${product.gradient} min-h-[140px] flex flex-col`}>
+                  <div className={`p-6 bg-gradient-to-br ${product.gradient} min-h-[160px] flex flex-col`}>
                     <product.icon className="w-10 h-10 text-white mb-3 shrink-0" />
                     <h3 className="text-lg font-bold text-white mb-2">{product.name}</h3>
-                    <p className="text-white/90 text-xs">{product.description}</p>
+                    <p className="text-white/90 text-xs line-clamp-2">{product.description}</p>
                   </div>
 
                   {/* Price */}
