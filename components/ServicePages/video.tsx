@@ -602,10 +602,10 @@ export default function VideoPage() {
                   product.price === 'GRATUIT' ? 'ring-2 ring-green-500' : ''
                 }`}>
                   {/* Header */}
-                  <div className={`p-6 bg-gradient-to-br ${product.gradient} min-h-[160px] flex flex-col`}>
+                  <div className={`p-6 bg-gradient-to-br ${product.gradient} h-[200px] flex flex-col`}>
                     <product.icon className="w-10 h-10 text-white mb-3 shrink-0" />
                     <h3 className="text-lg font-bold text-white mb-2">{product.name}</h3>
-                    <p className="text-white/90 text-xs line-clamp-2">{product.description}</p>
+                    <p className="text-white/90 text-xs line-clamp-3 mt-auto">{product.description}</p>
                   </div>
 
                   {/* Price */}
