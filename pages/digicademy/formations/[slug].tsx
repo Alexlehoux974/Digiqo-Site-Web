@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { ChevronLeft, ChevronDown, ChevronUp, Clock, Award, BookOpen, Target, CheckCircle2, Trophy } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import DigicademyYouTubePlayer from '@/components/DigicademyYouTubePlayer'
-import { getFormationBySlug, formations, type Formation } from '@/lib/digicademy-formations'
+import { getFormationBySlug, formations, type Formation } from '@/lib/formations'
 import { QuizModal } from '@/components/QuizModal'
 import { getRandomQuestions, type QuizQuestion } from '@/lib/quiz-questions'
 

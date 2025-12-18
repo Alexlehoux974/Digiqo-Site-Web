@@ -33,12 +33,12 @@ const team = [
     email: 'alexandre@digiqo.fr'
   },
   {
-    name: 'Raymond Romero',
-    role: 'Responsable des revenus',
-    description: "Fort de 20 ans de management commercial, Raymond transforme les défis en opportunités mesurables. Ancien directeur d'une régie publicitaire multi-supports (journal, radio, magazines, web), il a piloté des équipes jusqu'à 10 personnes et bâti des stratégies gagnantes dans des secteurs en constante mutation. Chez Digiqo, il orchestre l'ensemble des sources de revenus — ventes, marketing, partenariats — avec un seul objectif : croissance et alignement stratégique. Ses forces : Leadership, vision business, adaptabilité hors norme, et une obsession pour la performance concrète.",
-    image: '/partenaires/raymondfinal.webp',
-    linkedin: 'https://www.linkedin.com/in/raymond-romero/',
-    email: 'raymond@digiqo.fr'
+    name: 'Maxime Sin',
+    role: 'Directeur Commercial',
+    description: "Après plus de 10 ans d'expérience en tant que Responsable Commercial BtoB dans des startups parisiennes à forte valeur ajoutée, Maxime a rejoint Digiqo avec une conviction forte : la réussite passe avant tout par l'écoute et la compréhension des besoins clients. Passionné par le développement commercial et les relations humaines, il accompagne les entreprises au quotidien en leur apportant des conseils concrets et des solutions adaptées à leurs enjeux. Son moteur ? Construire des relations de confiance durables et aider chaque client à atteindre ses objectifs de croissance, avec engagement, transparence et proximité.",
+    image: '/partenaires/MAXIME-SIN.JPG',
+    linkedin: 'https://www.linkedin.com/in/maxime-sin/',
+    email: 'maxime@digiqo.fr'
   },
   {
     name: 'Adrien Trudel',

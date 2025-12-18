@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { Search, BookOpen, Code, Palette, Megaphone, Users, Clock, Award, ArrowRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { formations, getFormationsByCategory, searchFormations } from '@/lib/digicademy-formations'
+import { formations, getFormationsByCategory, searchFormations } from '@/lib/formations'
 import { HeaderLuxury } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 
