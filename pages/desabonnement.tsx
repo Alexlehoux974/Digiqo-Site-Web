@@ -7,21 +7,21 @@ export default function Desabonnement() {
     <>
       <SEO
         title="Désabonnement"
-        description="Désabonnez-vous de nos communications marketing. Gérez vos préférences d'emails et newsletters Digiqo."
-        keywords="désabonnement, unsubscribe, newsletter, emails, digiqo"
+        description="Désabonnez-vous des services Digiqo. Formulaire de résiliation d'abonnement pour les prestations et services digitaux."
+        keywords="désabonnement, résiliation, services, abonnement, digiqo"
         url="https://digiqo.com/desabonnement"
       />
 
-      <LegalLayout title="Désabonnement" lastUpdated="23 janvier 2026">
+      <LegalLayout title="Désabonnement aux services" lastUpdated="23 janvier 2026">
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">Gérer vos préférences de communication</h2>
+          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">Résilier votre abonnement</h2>
           <p className="mb-6 text-gray-700">
-            Vous souhaitez vous désabonner de nos communications marketing ? Remplissez le formulaire ci-dessous
-            pour gérer vos préférences d'emails et de newsletters.
+            Vous souhaitez mettre fin à votre abonnement aux services Digiqo ? Remplissez le formulaire ci-dessous
+            pour effectuer votre demande de résiliation.
           </p>
           <p className="mb-8 text-gray-600 text-sm">
-            Conformément au RGPD, vous avez le droit de vous désinscrire à tout moment de nos communications.
-            Votre demande sera traitée dans les plus brefs délais.
+            Conformément à nos Conditions Générales de Vente, votre demande de désabonnement sera traitée
+            dans les plus brefs délais. Un membre de notre équipe vous contactera pour confirmer la résiliation.
           </p>
         </section>
 
@@ -41,9 +41,20 @@ export default function Desabonnement() {
         </section>
 
         <section className="mb-8">
+          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">Informations importantes</h2>
+          <div className="bg-orange-50 border-l-4 border-digiqo-accent rounded p-4 mb-6">
+            <p className="text-gray-700">
+              <strong>Note :</strong> Conformément à nos CGV, les abonnements mensuels ne sont pas remboursables
+              après le début du mois en cours. La résiliation prendra effet à la fin de votre période d'abonnement.
+            </p>
+          </div>
+        </section>
+
+        <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">Besoin d'aide ?</h2>
           <p className="text-gray-700 mb-4">
-            Si vous rencontrez des difficultés pour vous désabonner, vous pouvez également nous contacter directement :
+            Si vous avez des questions concernant votre résiliation ou souhaitez discuter de vos options,
+            notre équipe est à votre disposition :
           </p>
           <ul className="space-y-2 text-gray-700">
             <li>📧 <strong>E-mail :</strong> <a href="mailto:contact@digiqo.fr" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">contact@digiqo.fr</a></li>
