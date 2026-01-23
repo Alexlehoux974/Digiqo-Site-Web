@@ -80,6 +80,12 @@ export const LegalLayout = ({ children, title, lastUpdated }: LegalLayoutProps) 
                 >
                   CGV
                 </Link>
+                <Link
+                  href="/desabonnement"
+                  className="text-digiqo-secondary hover:text-digiqo-secondary-dark transition-colors"
+                >
+                  Désabonnement
+                </Link>
               </div>
             </div>
           </motion.div>
