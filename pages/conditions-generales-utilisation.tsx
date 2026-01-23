@@ -11,12 +11,12 @@ export default function ConditionsGeneralesUtilisation() {
         url="https://digiqo.com/conditions-generales-utilisation"
       />
 
-      <LegalLayout title="Conditions Générales d'Utilisation (CGU)" lastUpdated="1er janvier 2025">
+      <LegalLayout title="Conditions Générales d'Utilisation (CGU)" lastUpdated="23 janvier 2026">
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">1. Préambule</h2>
           <p>
-            Les présentes Conditions Générales d'Utilisation (CGU) définissent les règles d'accès 
-            et d'utilisation du site https://digiqo.fr/, édité par ARA CORP.
+            Les présentes Conditions Générales d'Utilisation (CGU) définissent les règles d'accès
+            et d'utilisation du site https://digiqo.fr/, édité par la SAS DIGIQO.
           </p>
         </section>
 
@@ -31,9 +31,9 @@ export default function ConditionsGeneralesUtilisation() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">3. Informations légales</h2>
           <ul className="space-y-2 text-gray-700">
-            <li>✔ <strong>Éditeur :</strong> ARA CORP., SAS au capital de 1 000 €, immatriculée sous le numéro 941 181 232.</li>
-            <li>✔ <strong>Siège social :</strong> 8 Ruelle Boulot, 97400 Saint-Denis, La Réunion, France.</li>
-            <li>✔ <strong>Directeur de la publication :</strong> Rodolphe Le Houx, Président de ARA CORP.</li>
+            <li>✔ <strong>Éditeur :</strong> SAS DIGIQO, Société par Actions Simplifiée au capital de 1000,00€, immatriculée au greffe de SAINT-DENIS-DE-LA-REUNION sous le numéro 941181232.</li>
+            <li>✔ <strong>Siège social :</strong> 8 ruelle Boulot, 97400 Saint Denis - La Réunion.</li>
+            <li>✔ <strong>Directeur de la publication :</strong> Monsieur Rodolphe Le Houx, Président de la SAS DIGIQO.</li>
             <li>✔ <strong>Hébergeur :</strong> Hostinger International Ltd, 61 Lordou Vironos Street, 6023 Larnaca, Chypre.</li>
           </ul>
         </section>
@@ -42,7 +42,7 @@ export default function ConditionsGeneralesUtilisation() {
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">4. Accès au site</h2>
           <ul className="space-y-2 text-gray-700">
             <li>✔ Le site est accessible gratuitement 24h/24 et 7j/7.</li>
-            <li>✔ ARA CORP. se réserve le droit de suspendre l'accès pour maintenance ou amélioration.</li>
+            <li>✔ La SAS DIGIQO se réserve le droit de suspendre l'accès pour maintenance ou amélioration.</li>
           </ul>
         </section>
 
@@ -58,14 +58,14 @@ export default function ConditionsGeneralesUtilisation() {
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">6. Responsabilité</h2>
           <ul className="space-y-2 text-gray-700">
             <li>✔ Digiqo met tout en œuvre pour assurer la fiabilité des informations présentes sur le site.</li>
-            <li>✔ ARA CORP. ne peut être tenue responsable en cas d'erreur, d'omission ou d'indisponibilité du site.</li>
+            <li>✔ La SAS DIGIQO ne peut être tenue responsable en cas d'erreur, d'omission ou d'indisponibilité du site.</li>
           </ul>
         </section>
 
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">7. Propriété intellectuelle</h2>
           <ul className="space-y-2 text-gray-700">
-            <li>✔ Tous les contenus du site (textes, images, logos, vidéos) sont la propriété de ARA CORP. et de Digiqo.</li>
+            <li>✔ Tous les contenus du site (textes, images, logos, vidéos) sont la propriété de la SAS DIGIQO.</li>
             <li>✔ Toute reproduction non autorisée est strictement interdite.</li>
           </ul>
         </section>
@@ -92,7 +92,7 @@ export default function ConditionsGeneralesUtilisation() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">10. Modifications des CGU</h2>
           <ul className="space-y-2 text-gray-700">
-            <li>✔ ARA CORP. se réserve le droit de modifier les CGU à tout moment.</li>
+            <li>✔ La SAS DIGIQO se réserve le droit de modifier les CGU à tout moment.</li>
             <li>✔ Toute modification entre en vigueur dès sa publication.</li>
           </ul>
         </section>
@@ -108,7 +108,7 @@ export default function ConditionsGeneralesUtilisation() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">12. Contact</h2>
           <ul className="space-y-2 text-gray-700">
-            <li>📍 <strong>Adresse :</strong> ARA CORP. – 8 ruelle Boulot 97400 Saint-Denis</li>
+            <li>📍 <strong>Adresse :</strong> SAS DIGIQO – 8 ruelle Boulot, 97400 Saint Denis - La Réunion</li>
             <li>📧 <strong>E-mail :</strong> <a href="mailto:contact@digiqo.fr" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">contact@digiqo.fr</a></li>
             <li>📞 <strong>Téléphone :</strong> <a href="tel:+262262025102" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">02 62 02 51 02</a></li>
           </ul>

@@ -11,23 +11,24 @@ export default function MentionsLegales() {
         url="https://digiqo.com/mentions-legales"
       />
 
-      <LegalLayout title="Mentions légales" lastUpdated="20 août 2025">
+      <LegalLayout title="Mentions légales" lastUpdated="23 janvier 2026">
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">1. Éditeur du site</h2>
           <p className="mb-4">
-            Le site <strong>https://digiqo.fr/</strong> est édité par Digiqo, une marque exploitée par ARA CORP., 
-            société par actions simplifiée (SAS) au capital de 1 000 €, immatriculée au Registre du Commerce 
-            et des Sociétés de Saint-Denis sous le numéro 941 181 232.
+            Le site <strong>https://digiqo.fr/</strong> est édité par <strong>SAS DIGIQO</strong>, Société par Actions Simplifiée
+            au capital de 1000,00€, dont le siège social est situé à 8 ruelle Boulot, 97400 Saint Denis - La Réunion,
+            immatriculée au greffe de SAINT-DENIS-DE-LA-REUNION sous le numéro 941181232, représentée par
+            Monsieur Rodolphe Le Houx, en sa qualité de Président.
           </p>
           <ul className="space-y-2 text-gray-700">
-            <li>📍 <strong>Siège social :</strong> 8 ruelle Boulot 97400 Saint-Denis</li>
+            <li>📍 <strong>Siège social :</strong> 8 ruelle Boulot, 97400 Saint Denis - La Réunion</li>
             <li>📧 <strong>E-mail :</strong> <a href="mailto:contact@digiqo.fr" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">contact@digiqo.fr</a></li>
             <li>📞 <strong>Téléphone :</strong> <a href="tel:+262262025102" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">02 62 02 51 02</a></li>
-            <li>📜 <strong>Numéro SIREN :</strong> 941 181 232</li>
-            <li>📜 <strong>Numéro de TVA intracommunautaire :</strong> FR 02941181232</li>
+            <li>📜 <strong>Numéro SIREN :</strong> 941181232</li>
+            <li>📜 <strong>Numéro de TVA intracommunautaire :</strong> FR02941181232</li>
           </ul>
           <p className="mt-4">
-            <strong>Directeur de la publication :</strong> Rodolphe Le Houx, Président de ARA CORP.
+            <strong>Directeur de la publication :</strong> Monsieur Rodolphe Le Houx, Président de la SAS DIGIQO.
           </p>
         </section>
 
@@ -46,7 +47,7 @@ export default function MentionsLegales() {
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">3. Propriété intellectuelle</h2>
           <p>
             Tous les éléments présents sur le site https://digiqo.fr/, y compris les textes, images, logos et vidéos, 
-            sont la propriété exclusive de ARA CORP. et de Digiqo, sauf mention contraire. Toute reproduction, 
+            sont la propriété exclusive de la SAS DIGIQO, sauf mention contraire. Toute reproduction, 
             distribution ou modification sans autorisation est interdite.
           </p>
         </section>
@@ -54,7 +55,7 @@ export default function MentionsLegales() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">4. Responsabilité</h2>
           <p>
-            ARA CORP. décline toute responsabilité en cas d'erreurs, d'interruptions ou de dommages directs 
+            La SAS DIGIQO décline toute responsabilité en cas d'erreurs, d'interruptions ou de dommages directs
             ou indirects causés par l'utilisation du site.
           </p>
         </section>
@@ -75,7 +76,7 @@ export default function MentionsLegales() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">6. Conditions générales de vente (CGV)</h2>
           <ul className="space-y-2 text-gray-700">
-            <li>📌 <strong>Facturation :</strong> Toutes les prestations sont facturées par ARA CORP.</li>
+            <li>📌 <strong>Facturation :</strong> Toutes les prestations sont facturées par la SAS DIGIQO.</li>
             <li>📌 <strong>Paiement :</strong> Accepté par virement, CB, Stripe, PayPal.</li>
             <li>📌 <strong>Pénalités :</strong> Retard de paiement = 10% par an + 40 € de frais de recouvrement.</li>
           </ul>
@@ -116,7 +117,7 @@ export default function MentionsLegales() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">10. Contact</h2>
           <ul className="space-y-2 text-gray-700">
-            <li>📍 <strong>Adresse postale :</strong> ARA CORP. – 8 ruelle Boulot 97400 Saint-Denis</li>
+            <li>📍 <strong>Adresse postale :</strong> SAS DIGIQO – 8 ruelle Boulot, 97400 Saint Denis - La Réunion</li>
             <li>📧 <strong>E-mail :</strong> <a href="mailto:contact@digiqo.fr" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">contact@digiqo.fr</a></li>
             <li>📞 <strong>Téléphone :</strong> <a href="tel:+262262025102" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">02 62 02 51 02</a></li>
           </ul>

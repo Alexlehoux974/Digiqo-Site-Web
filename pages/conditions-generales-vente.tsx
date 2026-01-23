@@ -11,12 +11,12 @@ export default function ConditionsGeneralesVente() {
         url="https://digiqo.com/conditions-generales-vente"
       />
 
-      <LegalLayout title="Conditions Générales de Vente (CGV)" lastUpdated="1er janvier 2025">
+      <LegalLayout title="Conditions Générales de Vente (CGV)" lastUpdated="23 janvier 2026">
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">1. Préambule</h2>
           <p className="mb-4">Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre :</p>
           <ul className="space-y-2 text-gray-700">
-            <li>✔ <strong>Le Prestataire :</strong> Digiqo, marque exploitée par ARA CORP. (SAS au capital de 1 000 €), immatriculée sous le numéro 941 181 232, dont le siège social est situé au 8 ruelle Boulot 97400 Saint-Denis</li>
+            <li>✔ <strong>Le Prestataire :</strong> SAS DIGIQO, Société par Actions Simplifiée au capital de 1000,00€, dont le siège social est situé à 8 ruelle Boulot, 97400 Saint Denis - La Réunion, immatriculée au greffe de SAINT-DENIS-DE-LA-REUNION sous le numéro 941181232, représentée par Monsieur Rodolphe Le Houx, en sa qualité de Président.</li>
             <li>✔ <strong>Le Client :</strong> Toute personne physique ou morale achetant une prestation ou un service via le site https://digiqo.fr/.</li>
           </ul>
         </section>
@@ -89,7 +89,7 @@ export default function ConditionsGeneralesVente() {
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">8. Responsabilités</h2>
           <ul className="space-y-2 text-gray-700">
             <li>✔ Digiqo s'engage à fournir ses services avec professionnalisme.</li>
-            <li>✔ ARA CORP. ne pourra être tenue responsable de dommages indirects (perte de CA, préjudice financier).</li>
+            <li>✔ La SAS DIGIQO ne pourra être tenue responsable de dommages indirects (perte de CA, préjudice financier).</li>
             <li>✔ Le Client reste responsable du bon usage des services fournis.</li>
           </ul>
         </section>
@@ -123,7 +123,7 @@ export default function ConditionsGeneralesVente() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">12. Contact</h2>
           <ul className="space-y-2 text-gray-700">
-            <li>📍 <strong>Adresse :</strong> ARA CORP. – 8 ruelle Boulot 97400 Saint-Denis</li>
+            <li>📍 <strong>Adresse :</strong> SAS DIGIQO – 8 ruelle Boulot, 97400 Saint Denis - La Réunion</li>
             <li>📧 <strong>E-mail :</strong> <a href="mailto:contact@digiqo.fr" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">contact@digiqo.fr</a></li>
             <li>📞 <strong>Téléphone :</strong> <a href="tel:+262262025102" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">02 62 02 51 02</a></li>
           </ul>

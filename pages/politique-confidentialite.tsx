@@ -11,14 +11,16 @@ export default function PolitiqueConfidentialite() {
         url="https://digiqo.com/politique-confidentialite"
       />
 
-      <LegalLayout title="Politique de confidentialité" lastUpdated="1er janvier 2025">
+      <LegalLayout title="Politique de confidentialité" lastUpdated="23 janvier 2026">
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">1. Introduction</h2>
           <p>
-            La présente politique de confidentialité explique comment ARA CORP., exploitant la marque Digiqo, 
-            collecte, utilise et protège vos données personnelles lorsque vous visitez le site https://digiqo.fr/. 
-            Nous nous engageons à respecter la confidentialité et la protection de vos informations conformément 
-            au Règlement Général sur la Protection des Données (RGPD).
+            La présente politique de confidentialité explique comment la <strong>SAS DIGIQO</strong>,
+            Société par Actions Simplifiée au capital de 1000,00€, dont le siège social est situé à
+            8 ruelle Boulot, 97400 Saint Denis - La Réunion, immatriculée au greffe de SAINT-DENIS-DE-LA-REUNION
+            sous le numéro 941181232, collecte, utilise et protège vos données personnelles lorsque vous visitez
+            le site https://digiqo.fr/. Nous nous engageons à respecter la confidentialité et la protection de
+            vos informations conformément au Règlement Général sur la Protection des Données (RGPD).
           </p>
         </section>
 
@@ -68,7 +70,7 @@ export default function PolitiqueConfidentialite() {
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">6. Partage et transfert des données</h2>
           <p className="mb-4">Vos données personnelles peuvent être partagées uniquement dans les cas suivants :</p>
           <ul className="space-y-2 text-gray-700">
-            <li>✔ Avec nos partenaires et filiales (ARA CORP., Digiqo, RunCall, etc.) pour optimiser nos services.</li>
+            <li>✔ Avec nos partenaires et filiales (SAS DIGIQO, RunCall, etc.) pour optimiser nos services.</li>
             <li>✔ Avec des prestataires techniques (hébergement, emailing, paiement sécurisé).</li>
             <li>✔ En cas d'obligation légale (demande des autorités).</li>
           </ul>
@@ -128,7 +130,7 @@ export default function PolitiqueConfidentialite() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">11. Contact</h2>
           <ul className="space-y-2 text-gray-700">
-            <li>📍 <strong>Adresse :</strong> ARA CORP. – 8 rue Boulot 97400 Saint Denis</li>
+            <li>📍 <strong>Adresse :</strong> SAS DIGIQO – 8 ruelle Boulot, 97400 Saint Denis - La Réunion</li>
             <li>📧 <strong>E-mail :</strong> <a href="mailto:contact@digiqo.fr" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">contact@digiqo.fr</a></li>
             <li>📞 <strong>Téléphone :</strong> <a href="tel:+262262025102" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">02 62 02 51 02</a></li>
           </ul>

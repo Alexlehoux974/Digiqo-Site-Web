@@ -11,7 +11,7 @@ export default function PolitiqueCookies() {
         url="https://digiqo.com/politique-cookies"
       />
 
-      <LegalLayout title="Politique de cookies" lastUpdated="1er janvier 2025">
+      <LegalLayout title="Politique de cookies" lastUpdated="23 janvier 2026">
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">1. Préambule</h2>
           <p>
@@ -126,7 +126,7 @@ export default function PolitiqueCookies() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">7. Modifications de la politique de cookies</h2>
           <p>
-            ARA CORP. se réserve le droit de modifier cette politique à tout moment. 
+            La SAS DIGIQO se réserve le droit de modifier cette politique à tout moment.
             Toute modification sera publiée sur cette page.
           </p>
         </section>
@@ -134,7 +134,7 @@ export default function PolitiqueCookies() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">8. Contact</h2>
           <ul className="space-y-2 text-gray-700">
-            <li>📍 <strong>Adresse :</strong> ARA CORP. – 8 ruelle Boulot 97400 Saint-Denis</li>
+            <li>📍 <strong>Adresse :</strong> SAS DIGIQO – 8 ruelle Boulot, 97400 Saint Denis - La Réunion</li>
             <li>📧 <strong>E-mail :</strong> <a href="mailto:contact@digiqo.fr" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">contact@digiqo.fr</a></li>
             <li>📞 <strong>Téléphone :</strong> <a href="tel:+262262025102" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">02 62 02 51 02</a></li>
           </ul>
