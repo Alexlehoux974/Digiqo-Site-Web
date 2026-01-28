@@ -22,6 +22,7 @@ const navigation = {
     { name: 'Digicademy', href: '/digicademy' },
     { name: 'FAQ', href: '/?instant=true#faq' },
     { name: 'Digiqo Recrute !', href: '/digiqo-recrute' },
+    { name: 'Désabonnement', href: '/desabonnement' },
   ],
   legal: [
     { name: 'Mentions Légales', href: '/mentions-legales' },
@@ -29,7 +30,6 @@ const navigation = {
     { name: 'CGU', href: '/conditions-generales-utilisation' },
     { name: 'Politique de Confidentialité', href: '/politique-confidentialite' },
     { name: 'Politique de Cookies', href: '/politique-cookies' },
-    { name: 'Désabonnement', href: '/desabonnement' },
   ],
   social: [
     { name: 'TikTok', href: 'https://www.tiktok.com/@digiqo', icon: SiTiktok },

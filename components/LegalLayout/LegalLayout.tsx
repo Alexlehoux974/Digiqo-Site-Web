@@ -14,7 +14,7 @@ export const LegalLayout = ({ children, title, lastUpdated }: LegalLayoutProps) 
   return (
     <>
       <HeaderLuxury />
-      <main className="min-h-screen bg-gray-50 pt-20">
+      <main className="min-h-screen bg-gray-50 pt-28">
         <div className="container mx-auto px-4 py-12 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
