@@ -107,38 +107,44 @@ const navigation = {
                 name: 'Community Management',
                 href: '/services/community-management',
                 description: 'Présence sociale optimisée',
-                icon: Users
+                icon: Users,
+                color: 'bg-pink-500'
               },
               {
                 name: 'Référencement SEO',
                 href: '/services/seo',
                 description: 'Dominez Google',
-                icon: Zap
+                icon: Zap,
+                color: 'bg-green-500'
               },
               {
                 name: 'Identité de Marque',
                 href: '/services/identite-de-marque',
                 description: 'Image de marque unique',
-                icon: Sparkles
+                icon: Sparkles,
+                color: 'bg-purple-500'
               },
               {
                 name: 'Créatifs Publicitaires',
                 href: '/services/creatifs',
                 description: 'Contenus visuels impactants',
-                icon: Palette
+                icon: Palette,
+                color: 'bg-red-500'
               },
               {
                 name: 'Site-web, Ecommerce, Plateforme',
                 href: '/services/sites-web',
                 description: 'Votre vitrine digitale personnalisée',
                 icon: Code,
-                badge: 'Sur Mesure'
+                badge: 'Sur Mesure',
+                color: 'bg-cyan-500'
               },
               {
                 name: 'Maintenance Site-web',
                 href: '/services/sitekeeper',
                 description: 'Sitekeeper/Shopkeeper',
-                icon: Shield
+                icon: Shield,
+                color: 'bg-slate-500'
               },
               {
                 name: 'Audit Digital',
@@ -497,7 +503,7 @@ export const HeaderLuxury = () => {
                                     <motion.div
                                       whileHover={{ scale: 1.02 }}
                                       whileTap={{ scale: 0.98 }}
-                                      className="relative bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 border-2 border-transparent hover:border-blue-400 transition-all cursor-pointer group"
+                                      className="relative bg-gradient-to-br from-blue-800 to-purple-900 rounded-2xl p-6 border-2 border-transparent hover:border-blue-500 transition-all cursor-pointer group"
                                     >
                                       <div className="flex items-center justify-center gap-2 mb-4 mx-auto">
                                         <div className="w-12 h-12 rounded-lg bg-white shadow-md p-2 group-hover:scale-110 transition-transform">
@@ -531,19 +537,19 @@ export const HeaderLuxury = () => {
                                           />
                                         </div>
                                       </div>
-                                      <h3 className="text-xl font-bold text-center mb-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                                      <h3 className="text-xl font-bold text-center mb-2 bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">
                                         Publicité META
                                       </h3>
-                                      <p className="text-gray-700 text-center text-sm mb-3">
+                                      <p className="text-blue-100 text-center text-sm mb-3">
                                         Facebook, Instagram & WhatsApp
                                       </p>
-                                      <ul className="space-y-1 text-xs">
+                                      <ul className="space-y-1 text-xs text-blue-100">
                                         <li className="flex items-start gap-2">
-                                          <span className="text-blue-500 mt-0.5">✓</span>
+                                          <span className="text-blue-300 mt-0.5">✓</span>
                                           <span>Ciblage ultra-précis de votre audience</span>
                                         </li>
                                         <li className="flex items-start gap-2">
-                                          <span className="text-blue-500 mt-0.5">✓</span>
+                                          <span className="text-blue-300 mt-0.5">✓</span>
                                           <span>Formats visuels engageants</span>
                                         </li>
                                       </ul>
@@ -560,7 +566,7 @@ export const HeaderLuxury = () => {
                                     <motion.div
                                       whileHover={{ scale: 1.02 }}
                                       whileTap={{ scale: 0.98 }}
-                                      className="relative bg-gradient-to-br from-green-50 to-yellow-50 rounded-2xl p-6 border-2 border-transparent hover:border-green-400 transition-all cursor-pointer group"
+                                      className="relative bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl p-6 border-2 border-transparent hover:border-blue-500 transition-all cursor-pointer group"
                                     >
                                       <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-white shadow-md mb-4 mx-auto group-hover:scale-110 transition-transform">
                                         <OptimizedImage
@@ -572,19 +578,19 @@ export const HeaderLuxury = () => {
                                           objectFit="contain"
                                         />
                                       </div>
-                                      <h3 className="text-xl font-bold text-center mb-2 bg-gradient-to-r from-green-600 to-yellow-600 bg-clip-text text-transparent">
+                                      <h3 className="text-xl font-bold text-center mb-2 bg-gradient-to-r from-green-300 to-yellow-300 bg-clip-text text-transparent">
                                         Publicité Google
                                       </h3>
-                                      <p className="text-gray-700 text-center text-sm mb-3">
+                                      <p className="text-blue-100 text-center text-sm mb-3">
                                         Search, Display, Shopping & YouTube
                                       </p>
-                                      <ul className="space-y-1 text-xs">
+                                      <ul className="space-y-1 text-xs text-blue-100">
                                         <li className="flex items-start gap-2">
-                                          <span className="text-green-500 mt-0.5">✓</span>
+                                          <span className="text-green-400 mt-0.5">✓</span>
                                           <span>Intention d'achat immédiate</span>
                                         </li>
                                         <li className="flex items-start gap-2">
-                                          <span className="text-green-500 mt-0.5">✓</span>
+                                          <span className="text-green-400 mt-0.5">✓</span>
                                           <span>ROI mesurable et rapide</span>
                                         </li>
                                       </ul>
@@ -601,7 +607,7 @@ export const HeaderLuxury = () => {
                                     <motion.div
                                       whileHover={{ scale: 1.02 }}
                                       whileTap={{ scale: 0.98 }}
-                                      className="relative bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl p-6 border-2 border-transparent hover:border-yellow-400 transition-all cursor-pointer group"
+                                      className="relative bg-gradient-to-br from-yellow-500 to-amber-500 rounded-2xl p-6 border-2 border-transparent hover:border-yellow-300 transition-all cursor-pointer group"
                                     >
                                       <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-white shadow-md mb-4 mx-auto group-hover:scale-110 transition-transform">
                                         <OptimizedImage
@@ -613,19 +619,19 @@ export const HeaderLuxury = () => {
                                           objectFit="contain"
                                         />
                                       </div>
-                                      <h3 className="text-xl font-bold text-center mb-2 bg-gradient-to-r from-yellow-600 to-amber-600 bg-clip-text text-transparent">
+                                      <h3 className="text-xl font-bold text-center mb-2 text-amber-50">
                                         Publicité Snapchat
                                       </h3>
-                                      <p className="text-gray-700 text-center text-sm mb-3">
+                                      <p className="text-amber-50/80 text-center text-sm mb-3">
                                         Touchez la génération Z
                                       </p>
-                                      <ul className="space-y-1 text-xs">
+                                      <ul className="space-y-1 text-xs text-amber-50/80">
                                         <li className="flex items-start gap-2">
-                                          <span className="text-yellow-500 mt-0.5">✓</span>
+                                          <span className="text-amber-50 mt-0.5">✓</span>
                                           <span>Audience jeune et engagée</span>
                                         </li>
                                         <li className="flex items-start gap-2">
-                                          <span className="text-yellow-500 mt-0.5">✓</span>
+                                          <span className="text-amber-50 mt-0.5">✓</span>
                                           <span>Formats immersifs et créatifs</span>
                                         </li>
                                       </ul>
@@ -703,6 +709,8 @@ export const HeaderLuxury = () => {
                                             className={`p-3 rounded-lg ${
                                               'highlight' in service && service.highlight
                                                 ? 'bg-gradient-to-br from-digiqo-primary to-digiqo-accent text-white'
+                                                : 'color' in service && service.color
+                                                ? `${service.color} text-white`
                                                 : 'bg-gray-100 text-gray-600 group-hover:bg-digiqo-primary/10 group-hover:text-digiqo-primary'
                                             } transition-all`}
                                             whileHover={{ scale: 1.1, rotate: 5 }}
