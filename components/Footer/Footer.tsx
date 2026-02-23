@@ -22,6 +22,7 @@ const navigation = {
     { name: 'Digicademy', href: '/digicademy' },
     { name: 'FAQ', href: '/?instant=true#faq' },
     { name: 'Digiqo Recrute !', href: '/digiqo-recrute' },
+    { name: 'Partenariats & Sponsoring', href: '/partenariats' },
     { name: 'Désabonnement', href: '/desabonnement' },
   ],
   legal: [
