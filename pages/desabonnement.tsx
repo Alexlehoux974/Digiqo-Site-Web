@@ -12,16 +12,17 @@ export default function Desabonnement() {
         url="https://digiqo.com/desabonnement"
       />
 
-      <LegalLayout title="Désabonnement aux services SMA" lastUpdated="23 janvier 2026">
+      <LegalLayout title="Gestion de votre abonnement aux services SMA" lastUpdated="23 janvier 2026">
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">Résilier votre abonnement</h2>
+          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">Résilier ou mettre en pause votre abonnement</h2>
           <p className="mb-6 text-gray-700">
-            Vous souhaitez mettre fin à votre abonnement aux services Digiqo ? Remplissez le formulaire ci-dessous
-            pour effectuer votre demande de résiliation.
+            Vous souhaitez résilier ou mettre en pause temporairement votre abonnement aux services Digiqo ?
+            Remplissez le formulaire ci-dessous pour nous transmettre votre demande.
           </p>
           <p className="mb-8 text-gray-600 text-sm">
-            Conformément à nos Conditions Générales de Vente, votre demande de désabonnement sera traitée
-            dans les plus brefs délais. Un membre de notre équipe vous contactera pour confirmer la résiliation.
+            Conformément à nos Conditions Générales de Vente, votre demande sera traitée
+            dans les plus brefs délais. Un membre de notre équipe vous contactera afin de confirmer
+            la prise en compte de votre demande et, le cas échéant, préciser la date d'effet.
           </p>
         </section>
 
