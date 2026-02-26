@@ -1,6 +1,6 @@
 # Robots.txt pour Digiqo.fr
 # Agence Marketing Digital La Réunion
-# https://www.digiqo.fr
+# https://digiqo.fr
 
 # Règles pour tous les robots
 User-agent: *
@@ -61,10 +61,10 @@ User-agent: dotbot
 Disallow: /
 
 # Sitemaps
-Sitemap: https://www.digiqo.fr/sitemap_index.xml
-Sitemap: https://www.digiqo.fr/sitemap.xml
-Sitemap: https://www.digiqo.fr/sitemap-blog.xml
-Sitemap: https://www.digiqo.fr/sitemap-services.xml
+Sitemap: https://digiqo.fr/sitemap_index.xml
+Sitemap: https://digiqo.fr/sitemap.xml
+Sitemap: https://digiqo.fr/sitemap-blog.xml
+Sitemap: https://digiqo.fr/sitemap-services.xml
 
 # Host directive (pour Yandex)
-Host: https://www.digiqo.fr
+Host: https://digiqo.fr

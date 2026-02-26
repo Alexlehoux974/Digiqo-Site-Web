@@ -3,157 +3,157 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.digiqo.fr</loc>
+    <loc>https://digiqo.fr</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/agence</loc>
+    <loc>https://digiqo.fr/agence</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/blog</loc>
+    <loc>https://digiqo.fr/blog</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/contact</loc>
+    <loc>https://digiqo.fr/contact</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/audit</loc>
+    <loc>https://digiqo.fr/audit</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/devis-web</loc>
+    <loc>https://digiqo.fr/devis-web</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/devis-site-web</loc>
+    <loc>https://digiqo.fr/devis-site-web</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/recrutement</loc>
+    <loc>https://digiqo.fr/recrutement</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/digiqo-recrute</loc>
+    <loc>https://digiqo.fr/digiqo-recrute</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/digicademy</loc>
+    <loc>https://digiqo.fr/digicademy</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/kap-numerik-la-reunion</loc>
+    <loc>https://digiqo.fr/kap-numerik-la-reunion</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/referencement</loc>
+    <loc>https://digiqo.fr/referencement</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/mentions-legales</loc>
+    <loc>https://digiqo.fr/mentions-legales</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/politique-confidentialite</loc>
+    <loc>https://digiqo.fr/politique-confidentialite</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/conditions-generales-vente</loc>
+    <loc>https://digiqo.fr/conditions-generales-vente</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/conditions-generales-utilisation</loc>
+    <loc>https://digiqo.fr/conditions-generales-utilisation</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/politique-cookies</loc>
+    <loc>https://digiqo.fr/politique-cookies</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/services/publicite-meta</loc>
+    <loc>https://digiqo.fr/services/publicite-meta</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/services/publicite-google</loc>
+    <loc>https://digiqo.fr/services/publicite-google</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/services/sites-web</loc>
+    <loc>https://digiqo.fr/services/sites-web</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/services/community-management</loc>
+    <loc>https://digiqo.fr/services/community-management</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/services/seo</loc>
+    <loc>https://digiqo.fr/services/seo</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/services/creatifs</loc>
+    <loc>https://digiqo.fr/services/creatifs</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/services/identite-de-marque</loc>
+    <loc>https://digiqo.fr/services/identite-de-marque</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/services/audit</loc>
+    <loc>https://digiqo.fr/services/audit</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.digiqo.fr/services/sitekeeper</loc>
+    <loc>https://digiqo.fr/services/sitekeeper</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

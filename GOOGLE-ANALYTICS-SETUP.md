@@ -24,7 +24,7 @@
 
 ### 1.4 Créer le flux de données
 1. Choisir **Web**
-2. **URL du site web**: https://www.digiqo.fr
+2. **URL du site web**: https://digiqo.fr
 3. **Nom du flux**: Site principal Digiqo
 4. Cliquer sur "Créer un flux"
 

@@ -7,7 +7,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'www.digiqo.fr',
+        hostname: 'digiqo.fr',
       },
     ],
     formats: ['image/avif', 'image/webp'],

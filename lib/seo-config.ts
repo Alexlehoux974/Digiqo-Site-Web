@@ -1,7 +1,7 @@
 export const seoConfig = {
   default: {
     siteName: 'Digiqo',
-    siteUrl: 'https://www.digiqo.fr',
+    siteUrl: 'https://digiqo.fr',
     defaultImage: 'https://digiqo.fr/assets/digiqo-og-image.png',
     locale: 'fr_FR',
     twitterHandle: '@digiqo',
@@ -78,7 +78,7 @@ export const businessStructuredData = {
   "@type": "LocalBusiness",
   "name": "Digiqo",
   "description": "Agence de marketing digital à La Réunion",
-  "url": "https://www.digiqo.fr",
+  "url": "https://digiqo.fr",
   "telephone": "+262 262 02 51 02",
   "email": "contact@digiqo.fr",
   "address": {
@@ -95,7 +95,7 @@ export const businessStructuredData = {
   },
   "openingHours": "Mo-Fr 08:00-17:00",
   "priceRange": "€€",
-  "image": "https://www.digiqo.fr/assets/logo2-digiqo.png",
+  "image": "https://digiqo.fr/assets/logo2-digiqo.png",
   "areaServed": {
     "@type": "Place",
     "name": "La Réunion",

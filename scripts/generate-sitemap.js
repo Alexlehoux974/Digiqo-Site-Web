@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const siteUrl = 'https://www.digiqo.fr';
+const siteUrl = 'https://digiqo.fr';
 const today = new Date().toISOString().split('T')[0];
 
 // Define all routes with priority and changefreq

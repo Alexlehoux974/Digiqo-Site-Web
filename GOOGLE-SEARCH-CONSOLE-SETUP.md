@@ -53,7 +53,7 @@ Attendre 24-48h puis vérifier:
 ### 3.2 Corriger robots.txt
 ```txt
 # Ajouter après la ligne 63
-Sitemap: https://www.digiqo.fr/sitemap_index.xml
+Sitemap: https://digiqo.fr/sitemap_index.xml
 ```
 
 ### 3.3 Optimiser next.config.js
@@ -62,7 +62,7 @@ const nextConfig = {
   reactStrictMode: true,
   trailingSlash: false,
   images: {
-    domains: ['www.digiqo.fr'],
+    domains: ['digiqo.fr'],
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -116,10 +116,10 @@ const nextConfig = {
 https://search.google.com/test/mobile-friendly
 ```
 URLs à tester:
-- https://www.digiqo.fr
-- https://www.digiqo.fr/services/publicite-google
-- https://www.digiqo.fr/services/sites-web
-- https://www.digiqo.fr/contact
+- https://digiqo.fr
+- https://digiqo.fr/services/publicite-google
+- https://digiqo.fr/services/sites-web
+- https://digiqo.fr/contact
 
 ### 2. Test Rich Results
 ```bash
@@ -157,15 +157,15 @@ https://pagespeed.web.dev/
 ## 🔍 URLs Prioritaires à Indexer
 
 ### Pages Critiques (Soumettre manuellement si besoin)
-1. https://www.digiqo.fr
-2. https://www.digiqo.fr/services/publicite-google
-3. https://www.digiqo.fr/services/publicite-meta
-4. https://www.digiqo.fr/services/sites-web
-5. https://www.digiqo.fr/services/community-management
-6. https://www.digiqo.fr/services/seo
-7. https://www.digiqo.fr/contact
-8. https://www.digiqo.fr/devis-web
-9. https://www.digiqo.fr/audit
+1. https://digiqo.fr
+2. https://digiqo.fr/services/publicite-google
+3. https://digiqo.fr/services/publicite-meta
+4. https://digiqo.fr/services/sites-web
+5. https://digiqo.fr/services/community-management
+6. https://digiqo.fr/services/seo
+7. https://digiqo.fr/contact
+8. https://digiqo.fr/devis-web
+9. https://digiqo.fr/audit
 
 ### Utiliser l'Outil d'Inspection d'URL
 Pour chaque URL prioritaire:

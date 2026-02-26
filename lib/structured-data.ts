@@ -3,16 +3,16 @@
 export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.digiqo.fr/#business",
+  "@id": "https://digiqo.fr/#business",
   "name": "Digiqo",
   "alternateName": "Digiqo Agency",
   "description": "Agence de marketing digital à La Réunion spécialisée en publicité en ligne, développement web, SEO et community management",
-  "url": "https://www.digiqo.fr",
+  "url": "https://digiqo.fr",
   "telephone": "+262262025102",
   "email": "contact@digiqo.fr",
   "image": [
-    "https://www.digiqo.fr/assets/logo2-digiqo.png",
-    "https://www.digiqo.fr/assets/digiqo-og-image.png"
+    "https://digiqo.fr/assets/logo2-digiqo.png",
+    "https://digiqo.fr/assets/digiqo-og-image.png"
   ],
   "address": {
     "@type": "PostalAddress",
@@ -103,7 +103,7 @@ export const localBusinessSchema = {
         "areaServed": "La Réunion",
         "availableChannel": {
           "@type": "ServiceChannel",
-          "serviceUrl": "https://www.digiqo.fr/services/publicite-google"
+          "serviceUrl": "https://digiqo.fr/services/publicite-google"
         }
       },
       {
@@ -117,7 +117,7 @@ export const localBusinessSchema = {
         "areaServed": "La Réunion",
         "availableChannel": {
           "@type": "ServiceChannel",
-          "serviceUrl": "https://www.digiqo.fr/services/sites-web"
+          "serviceUrl": "https://digiqo.fr/services/sites-web"
         }
       },
       {
@@ -131,7 +131,7 @@ export const localBusinessSchema = {
         "areaServed": "La Réunion",
         "availableChannel": {
           "@type": "ServiceChannel",
-          "serviceUrl": "https://www.digiqo.fr/services/seo"
+          "serviceUrl": "https://digiqo.fr/services/seo"
         }
       },
       {
@@ -145,7 +145,7 @@ export const localBusinessSchema = {
         "areaServed": "La Réunion",
         "availableChannel": {
           "@type": "ServiceChannel",
-          "serviceUrl": "https://www.digiqo.fr/services/community-management"
+          "serviceUrl": "https://digiqo.fr/services/community-management"
         }
       }
     ]
@@ -212,12 +212,12 @@ export const serviceSchema = (service: {
   "provider": {
     "@type": "LocalBusiness",
     "name": "Digiqo",
-    "@id": "https://www.digiqo.fr/#business"
+    "@id": "https://digiqo.fr/#business"
   },
   "name": service.name,
   "description": service.description,
   "url": service.url,
-  "image": service.image || "https://www.digiqo.fr/assets/digiqo-og-image.png",
+  "image": service.image || "https://digiqo.fr/assets/digiqo-og-image.png",
   "areaServed": {
     "@type": "Place",
     "name": "La Réunion"
@@ -261,14 +261,14 @@ export const articleSchema = (article: {
   "author": {
     "@type": "Organization",
     "name": article.author || "Digiqo",
-    "@id": "https://www.digiqo.fr/#business"
+    "@id": "https://digiqo.fr/#business"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Digiqo",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.digiqo.fr/assets/logo2-digiqo.png"
+      "url": "https://digiqo.fr/assets/logo2-digiqo.png"
     }
   },
   "datePublished": article.datePublished,
@@ -293,7 +293,7 @@ export const productSchema = (product: {
   "@type": "Product",
   "name": product.name,
   "description": product.description,
-  "image": product.image || "https://www.digiqo.fr/assets/digiqo-og-image.png",
+  "image": product.image || "https://digiqo.fr/assets/digiqo-og-image.png",
   "category": product.category,
   "brand": {
     "@type": "Organization",
@@ -307,7 +307,7 @@ export const productSchema = (product: {
     "seller": {
       "@type": "Organization",
       "name": "Digiqo",
-      "@id": "https://www.digiqo.fr/#business"
+      "@id": "https://digiqo.fr/#business"
     }
   }
 });
@@ -337,12 +337,12 @@ export const eventSchema = (event: {
       "addressCountry": "RE"
     }
   },
-  "image": event.image || "https://www.digiqo.fr/assets/digiqo-og-image.png",
+  "image": event.image || "https://digiqo.fr/assets/digiqo-og-image.png",
   "url": event.url,
   "organizer": {
     "@type": "Organization",
     "name": "Digiqo",
-    "@id": "https://www.digiqo.fr/#business"
+    "@id": "https://digiqo.fr/#business"
   },
   "eventStatus": "https://schema.org/EventScheduled",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
@@ -371,7 +371,7 @@ export const videoSchema = (video: {
     "name": "Digiqo",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.digiqo.fr/assets/logo2-digiqo.png"
+      "url": "https://digiqo.fr/assets/logo2-digiqo.png"
     }
   }
 });
@@ -395,7 +395,7 @@ export const personSchema = (person: {
   "worksFor": {
     "@type": "Organization",
     "name": "Digiqo",
-    "@id": "https://www.digiqo.fr/#business"
+    "@id": "https://digiqo.fr/#business"
   }
 });
 

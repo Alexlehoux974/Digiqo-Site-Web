@@ -2,7 +2,7 @@
 ## Pour Indexation Google Search Console
 
 **Date de l'audit:** 21 Septembre 2025
-**Site analysé:** https://www.digiqo.fr
+**Site analysé:** https://digiqo.fr
 **Objectif:** Optimisation complète pour l'indexation Google Search Console
 
 ---
@@ -52,7 +52,7 @@
 
 **Solution Immédiate:**
 1. Se connecter à Google Search Console
-2. Ajouter la propriété https://www.digiqo.fr
+2. Ajouter la propriété https://digiqo.fr
 3. Récupérer le code de vérification
 4. Remplacer "YOUR_GOOGLE_VERIFICATION_CODE" par le vrai code
 5. Faire de même pour Bing Webmaster Tools si nécessaire
@@ -67,7 +67,7 @@ unoptimized: process.env.NODE_ENV === 'development',
 **Solution:**
 ```js
 images: {
-  domains: ['www.digiqo.fr'],
+  domains: ['digiqo.fr'],
   formats: ['image/avif', 'image/webp'],
   deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
   imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -82,7 +82,7 @@ images: {
 **Problème:** Le sitemap_index.xml existe mais n'est pas déclaré
 **Solution:** Ajouter dans robots.txt:
 ```
-Sitemap: https://www.digiqo.fr/sitemap_index.xml
+Sitemap: https://digiqo.fr/sitemap_index.xml
 ```
 
 #### 4. Core Web Vitals Non Monitorés
@@ -140,9 +140,9 @@ async redirects() {
 ```tsx
 // Utiliser lib/structured-data.ts breadcrumbSchema
 const breadcrumb = breadcrumbSchema([
-  { name: 'Accueil', url: 'https://www.digiqo.fr' },
-  { name: 'Services', url: 'https://www.digiqo.fr/services' },
-  { name: 'SEO', url: 'https://www.digiqo.fr/services/seo' }
+  { name: 'Accueil', url: 'https://digiqo.fr' },
+  { name: 'Services', url: 'https://digiqo.fr/services' },
+  { name: 'SEO', url: 'https://digiqo.fr/services/seo' }
 ])
 ```
 

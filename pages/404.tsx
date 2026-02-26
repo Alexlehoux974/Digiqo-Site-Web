@@ -60,11 +60,11 @@ export default function Custom404() {
           "@type": "WebPage",
           "name": "Page 404 - Erreur",
           "description": "Page d'erreur 404 du site Digiqo",
-          "url": "https://www.digiqo.fr/404",
+          "url": "https://digiqo.fr/404",
           "isPartOf": {
             "@type": "WebSite",
             "name": "Digiqo",
-            "url": "https://www.digiqo.fr"
+            "url": "https://digiqo.fr"
           },
           "breadcrumb": {
             "@type": "BreadcrumbList",
@@ -73,7 +73,7 @@ export default function Custom404() {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Accueil",
-                "item": "https://www.digiqo.fr"
+                "item": "https://digiqo.fr"
               },
               {
                 "@type": "ListItem",

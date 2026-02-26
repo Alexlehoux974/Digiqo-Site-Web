@@ -25,7 +25,7 @@ export function SEO({
   title,
   description,
   keywords,
-  image = 'https://www.digiqo.fr/assets/digiqo-og-image.png',
+  image = 'https://digiqo.fr/assets/digiqo-og-image.png',
   url,
   type = 'website',
   locale = 'fr_FR',
@@ -41,7 +41,7 @@ export function SEO({
   nofollow = false
 }: SEOProps) {
   const router = useRouter();
-  const currentUrl = url || `https://www.digiqo.fr${router.asPath}`;
+  const currentUrl = url || `https://digiqo.fr${router.asPath}`;
   const canonicalUrl = canonical || currentUrl;
 
   // Title optimization
@@ -67,10 +67,10 @@ export function SEO({
     "@type": "Organization",
     "name": "Digiqo",
     "alternateName": "Digiqo Agency",
-    "url": "https://www.digiqo.fr",
+    "url": "https://digiqo.fr",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.digiqo.fr/assets/logo2-digiqo.png",
+      "url": "https://digiqo.fr/assets/logo2-digiqo.png",
       "width": 200,
       "height": 60
     },
@@ -97,12 +97,12 @@ export function SEO({
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": siteName,
-    "url": "https://www.digiqo.fr",
+    "url": "https://digiqo.fr",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://www.digiqo.fr/search?q={search_term_string}"
+        "urlTemplate": "https://digiqo.fr/search?q={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     }
