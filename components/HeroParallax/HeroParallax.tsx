@@ -144,11 +144,11 @@ export const HeroParallax = ({
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl relative mx-auto py-6 md:py-24 px-4 w-full left-0 top-0 z-20">
+    <div className="max-w-7xl relative mx-auto pt-16 pb-6 md:py-24 px-4 w-full left-0 top-0 z-20">
       <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full">
         <span className="text-white font-semibold">🏝️ N°1 à La Réunion</span>
         <span className="text-white/60">•</span>
-        <span className="text-white/90">+174 entreprises accompagnées</span>
+        <span className="text-white/90">+230 entreprises accompagnées</span>
       </div>
       <div className="text-4xl md:text-7xl font-bold" role="presentation" aria-hidden="true">
         <span className="text-white drop-shadow-lg">

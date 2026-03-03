@@ -95,7 +95,7 @@ export default function Home() {
       />
 
       <HeaderLuxury />
-      <main className="pt-28 md:pt-32">
+      <main className="pt-32 md:pt-32">
         {/* SEO H1 - Server-side rendered for search engines */}
         <h1 className="sr-only">
           L'Agence Marketing Digital Qui Booste Vos Ventes - Digiqo La Réunion
