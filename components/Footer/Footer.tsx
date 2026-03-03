@@ -23,6 +23,7 @@ const navigation = {
     { name: 'FAQ', href: '/?instant=true#faq' },
     { name: 'Digiqo Recrute !', href: '/digiqo-recrute' },
     { name: 'Partenariats & Sponsoring', href: '/partenariats' },
+    { name: 'Glossaire Digiqo', href: '/glossaire' },
     { name: 'Résilier ou mettre en pause votre abonnement SMA', href: '/desabonnement' },
   ],
   legal: [
