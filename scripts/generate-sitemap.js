@@ -31,7 +31,7 @@ const staticPages = [
 
 // Service pages avec les slugs corrects depuis services.ts
 const servicePages = [
-  { path: '/services/publicite-meta', priority: '0.9', changefreq: 'weekly' },
+  { path: '/services/publicite-reseaux-sociaux', priority: '0.9', changefreq: 'weekly' },
   { path: '/services/publicite-google', priority: '0.9', changefreq: 'weekly' },
   { path: '/services/sites-web', priority: '0.9', changefreq: 'weekly' },
   { path: '/services/community-management', priority: '0.9', changefreq: 'weekly' },

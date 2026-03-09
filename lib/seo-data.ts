@@ -56,19 +56,12 @@ export const servicesSEO = {
     h1: 'SiteKeeper - Maintenance Web',
     urlSlug: 'maintenance-site-web-reunion'
   },
-  'publicite-snapchat': {
-    title: 'Publicité Snapchat La Réunion | Snap Ads & AR Lenses 974 - Digiqo',
-    description: 'Agence Snapchat Ads à La Réunion. Touchez la Gen Z et les Millennials avec des Snap Ads, AR Lenses et Story Ads. Campagnes créatives et engageantes 974.',
-    keywords: 'Snapchat Ads Réunion, publicité Snapchat 974, Snap Ads La Réunion, AR Lenses Réunion, Story Ads 974, marketing Snapchat',
-    h1: 'Publicité Snapchat à La Réunion',
-    urlSlug: 'publicite-snapchat'
-  },
-  'publicite-tiktok': {
-    title: 'Publicité TikTok La Réunion | TikTok Ads & Vidéos Virales 974 - Digiqo',
-    description: 'Agence TikTok Ads à La Réunion. Créez le buzz avec des In-Feed Ads, TopView et Branded Hashtag Challenges. Marketing viral pour toucher 1 milliard d\'utilisateurs.',
-    keywords: 'TikTok Ads Réunion, publicité TikTok 974, In-Feed Ads La Réunion, TopView Réunion, Spark Ads 974, marketing TikTok',
-    h1: 'Publicité TikTok à La Réunion',
-    urlSlug: 'publicite-tiktok'
+  'publicite-reseaux-sociaux': {
+    title: 'Publicité Réseaux Sociaux La Réunion | Facebook, Instagram, TikTok, Snapchat 974 - Digiqo',
+    description: 'Agence publicité réseaux sociaux à La Réunion. Campagnes Facebook Ads, Instagram Ads, TikTok Ads et Snapchat Ads. Ciblage précis et optimisation continue 974.',
+    keywords: 'publicité réseaux sociaux Réunion, facebook ads 974, instagram ads Réunion, tiktok ads 974, snapchat ads Réunion, SMA Réunion',
+    h1: 'Publicité sur les Réseaux Sociaux à La Réunion',
+    urlSlug: 'publicite-reseaux-sociaux'
   }
 }
 

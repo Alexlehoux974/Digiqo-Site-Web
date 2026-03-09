@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const navigation = {
   services: [
-    { name: 'Publicité META', href: '/services/publicite-meta' },
+    { name: 'Publicité en ligne', href: '/services/publicite-reseaux-sociaux' },
     { name: 'Développement Web', href: '/services/sites-web' },
     { name: 'Community Management', href: '/services/community-management' },
     { name: 'Référencement SEO', href: '/services/seo' },

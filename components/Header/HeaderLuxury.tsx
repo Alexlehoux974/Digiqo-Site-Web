@@ -43,7 +43,7 @@ const navigation = {
   },
   main: [
     {
-      name: 'PUBLICITÉ',
+      name: 'PUBLICITÉ EN LIGNE',
       href: '#',
       luxuryIcon: TrendingUp,
       megaMenu: {
@@ -51,35 +51,19 @@ const navigation = {
           {
             items: [
               {
-                name: 'Publicité META',
-                href: '/services/publicite-meta',
-                description: 'Campagnes Facebook & Instagram',
+                name: 'Publicité sur les réseaux sociaux',
+                href: '/services/publicite-reseaux-sociaux',
+                description: 'Facebook, Instagram, WhatsApp, Snapchat, TikTok',
                 icon: TrendingUp,
                 badge: 'Best Seller',
                 certifiedBadge: 'Expert certifié'
               },
               {
-                name: 'Publicité Google',
+                name: 'Publicité sur les moteurs de recherche',
                 href: '/services/publicite-google',
-                description: 'Google Ads & YouTube',
+                description: 'Google Ads',
                 icon: Search,
                 badge: 'ROI Max',
-                certifiedBadge: 'Expert certifié'
-              },
-              {
-                name: 'Publicité Snapchat',
-                href: '/services/publicite-snapchat',
-                description: 'Touchez la génération Z',
-                icon: Sparkles,
-                badge: 'Nouveau',
-                certifiedBadge: 'Expert certifié'
-              },
-              {
-                name: 'Publicité TikTok',
-                href: '/services/publicite-tiktok',
-                description: 'Viralité et engagement maximum',
-                icon: Zap,
-                badge: 'Tendance',
                 certifiedBadge: 'Expert certifié'
               }
             ]
@@ -494,12 +478,12 @@ export const HeaderLuxury = () => {
                             <div className="absolute inset-0 p-[1px] bg-gradient-to-br from-digiqo-primary/20 via-transparent to-digiqo-accent/20 rounded-2xl" />
 
                             <div className="relative bg-white rounded-2xl">
-                              {/* Affichage différent pour Publicité */}
-                              {item.name === 'PUBLICITÉ' ? (
-                                // Cartes de publicité comme dans le modal
+                              {/* Affichage différent pour Publicité en ligne */}
+                              {item.name === 'PUBLICITÉ EN LIGNE' ? (
+                                // Cartes de publicité
                                 <div className="grid grid-cols-2 gap-6 p-6 lg:p-8 max-w-4xl mx-auto">
-                                  {/* Option Meta */}
-                                  <Link href="/services/publicite-meta" onClick={() => setActiveSubmenu(null)}>
+                                  {/* Option Réseaux Sociaux */}
+                                  <Link href="/services/publicite-reseaux-sociaux" onClick={() => setActiveSubmenu(null)}>
                                     <motion.div
                                       whileHover={{ scale: 1.02 }}
                                       whileTap={{ scale: 0.98 }}
@@ -538,10 +522,10 @@ export const HeaderLuxury = () => {
                                         </div>
                                       </div>
                                       <h3 className="text-xl font-bold text-center mb-2 bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">
-                                        Publicité META
+                                        Publicité sur les réseaux sociaux
                                       </h3>
                                       <p className="text-blue-100 text-center text-sm mb-3">
-                                        Facebook, Instagram & WhatsApp
+                                        Facebook, Instagram, WhatsApp, Snapchat, TikTok
                                       </p>
                                       <ul className="space-y-1 text-xs text-blue-100">
                                         <li className="flex items-start gap-2">
@@ -550,7 +534,7 @@ export const HeaderLuxury = () => {
                                         </li>
                                         <li className="flex items-start gap-2">
                                           <span className="text-blue-300 mt-0.5">✓</span>
-                                          <span>Formats visuels engageants</span>
+                                          <span>Notoriété, engagement et conversion</span>
                                         </li>
                                       </ul>
                                       <div className="absolute -top-2 -right-2 transform rotate-12 origin-center">
@@ -579,10 +563,10 @@ export const HeaderLuxury = () => {
                                         />
                                       </div>
                                       <h3 className="text-xl font-bold text-center mb-2 bg-gradient-to-r from-green-300 to-yellow-300 bg-clip-text text-transparent">
-                                        Publicité Google
+                                        Publicité sur les moteurs de recherche
                                       </h3>
                                       <p className="text-blue-100 text-center text-sm mb-3">
-                                        Search, Display, Shopping & YouTube
+                                        Google Ads
                                       </p>
                                       <ul className="space-y-1 text-xs text-blue-100">
                                         <li className="flex items-start gap-2">
@@ -597,83 +581,6 @@ export const HeaderLuxury = () => {
                                       <div className="absolute -top-2 -right-2 transform rotate-12 origin-center">
                                         <span className="inline-block px-2 py-1 text-[9px] font-bold bg-green-500 text-white rounded-md shadow-md border border-green-600 whitespace-nowrap">
                                           Expert certifié
-                                        </span>
-                                      </div>
-                                    </motion.div>
-                                  </Link>
-
-                                  {/* Option Snapchat */}
-                                  <Link href="/services/publicite-snapchat" onClick={() => setActiveSubmenu(null)}>
-                                    <motion.div
-                                      whileHover={{ scale: 1.02 }}
-                                      whileTap={{ scale: 0.98 }}
-                                      className="relative bg-gradient-to-br from-yellow-500 to-amber-500 rounded-2xl p-6 border-2 border-transparent hover:border-yellow-300 transition-all cursor-pointer group"
-                                    >
-                                      <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-white shadow-md mb-4 mx-auto group-hover:scale-110 transition-transform">
-                                        <OptimizedImage
-                                          src="/partenaires/snapchat.png"
-                                          alt="Snapchat Ads"
-                                          width={48}
-                                          height={48}
-                                          className="w-12 h-12 object-contain"
-                                          objectFit="contain"
-                                        />
-                                      </div>
-                                      <h3 className="text-xl font-bold text-center mb-2 text-amber-50">
-                                        Publicité Snapchat
-                                      </h3>
-                                      <p className="text-amber-50/80 text-center text-sm mb-3">
-                                        Touchez la génération Z
-                                      </p>
-                                      <ul className="space-y-1 text-xs text-amber-50/80">
-                                        <li className="flex items-start gap-2">
-                                          <span className="text-amber-50 mt-0.5">✓</span>
-                                          <span>Audience jeune et engagée</span>
-                                        </li>
-                                        <li className="flex items-start gap-2">
-                                          <span className="text-amber-50 mt-0.5">✓</span>
-                                          <span>Formats immersifs et créatifs</span>
-                                        </li>
-                                      </ul>
-                                      <div className="absolute -top-2 -right-2 transform rotate-12 origin-center">
-                                        <span className="inline-block px-2 py-1 text-[9px] font-bold bg-amber-500 text-white rounded-md shadow-md border border-amber-600 whitespace-nowrap">
-                                          Bientôt disponible
-                                        </span>
-                                      </div>
-                                    </motion.div>
-                                  </Link>
-
-                                  {/* Option TikTok */}
-                                  <Link href="/services/publicite-tiktok" onClick={() => setActiveSubmenu(null)}>
-                                    <motion.div
-                                      whileHover={{ scale: 1.02 }}
-                                      whileTap={{ scale: 0.98 }}
-                                      className="relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 border-2 border-transparent hover:border-gray-600 transition-all cursor-pointer group"
-                                    >
-                                      <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-black shadow-md mb-4 mx-auto group-hover:scale-110 transition-transform p-2">
-                                        <svg className="w-10 h-10" viewBox="0 0 24 24" fill="white">
-                                          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                                        </svg>
-                                      </div>
-                                      <h3 className="text-xl font-bold text-center mb-2 bg-gradient-to-r from-pink-400 to-cyan-400 bg-clip-text text-transparent">
-                                        Publicité TikTok
-                                      </h3>
-                                      <p className="text-gray-300 text-center text-sm mb-3">
-                                        Viralité et engagement maximum
-                                      </p>
-                                      <ul className="space-y-1 text-xs text-gray-300">
-                                        <li className="flex items-start gap-2">
-                                          <span className="text-cyan-400 mt-0.5">✓</span>
-                                          <span>Contenu viral et tendance</span>
-                                        </li>
-                                        <li className="flex items-start gap-2">
-                                          <span className="text-cyan-400 mt-0.5">✓</span>
-                                          <span>Engagement exceptionnel</span>
-                                        </li>
-                                      </ul>
-                                      <div className="absolute -top-2 -right-2 transform rotate-12 origin-center">
-                                        <span className="inline-block px-2 py-1 text-[9px] font-bold bg-amber-500 text-white rounded-md shadow-md border border-amber-600 whitespace-nowrap">
-                                          Bientôt disponible
                                         </span>
                                       </div>
                                     </motion.div>

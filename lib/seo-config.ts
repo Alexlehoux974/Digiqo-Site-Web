@@ -13,25 +13,15 @@ export const seoConfig = {
       keywords: 'agence marketing digital réunion, agence web réunion, marketing digital 974, développement web réunion, SEO réunion, publicité en ligne réunion',
     },
     services: {
-      'publicite-meta': {
-        title: 'Publicité META (Facebook & Instagram) à La Réunion',
-        description: 'Maximisez votre ROI avec nos campagnes publicitaires Facebook Ads et Instagram Ads. Ciblage précis et optimisation continue.',
-        keywords: 'facebook ads réunion, instagram ads réunion, publicité meta 974, meta business réunion, social ads réunion',
+      'publicite-reseaux-sociaux': {
+        title: 'Publicité Réseaux Sociaux La Réunion | Facebook, Instagram, TikTok, Snapchat | Digiqo',
+        description: 'Agence publicité réseaux sociaux à La Réunion. Campagnes Facebook Ads, Instagram Ads, TikTok Ads et Snapchat Ads. Ciblage précis, optimisation continue et reporting mensuel.',
+        keywords: 'publicité réseaux sociaux réunion, facebook ads réunion, instagram ads réunion, tiktok ads réunion, snapchat ads réunion, social ads 974, SMA réunion',
       },
       'publicite-google': {
-        title: 'Publicité Google Ads & YouTube à La Réunion',
-        description: 'Dominez Google avec nos campagnes Google Ads et YouTube Ads optimisées. SEA expert et gestion professionnelle de vos campagnes.',
-        keywords: 'google ads réunion, youtube ads réunion, SEA réunion, campagne google 974, adwords réunion',
-      },
-      'publicite-snapchat': {
-        title: 'Publicité Snapchat La Réunion | Snap Ads & AR Lenses 974',
-        description: 'Agence Snapchat Ads à La Réunion. Touchez la Gen Z et les Millennials avec des Snap Ads, AR Lenses et Story Ads. Campagnes créatives et engageantes 974.',
-        keywords: 'Snapchat Ads Réunion, publicité Snapchat 974, Snap Ads La Réunion, AR Lenses Réunion, Story Ads 974, marketing Snapchat',
-      },
-      'publicite-tiktok': {
-        title: 'Publicité TikTok La Réunion | TikTok Ads & Vidéos Virales 974',
-        description: 'Agence TikTok Ads à La Réunion. Créez le buzz avec des In-Feed Ads, TopView et Branded Hashtag Challenges. Marketing viral pour toucher 1 milliard d\'utilisateurs.',
-        keywords: 'TikTok Ads Réunion, publicité TikTok 974, In-Feed Ads La Réunion, TopView Réunion, Spark Ads 974, marketing TikTok',
+        title: 'Publicité Google Ads La Réunion | SEA & Campagnes Search | Digiqo',
+        description: 'Agence Google Ads à La Réunion. Campagnes Search, Display et YouTube Ads optimisées. Gestion experte, suivi détaillé et audit gratuit.',
+        keywords: 'google ads réunion, publicité google 974, SEA réunion, campagne google ads la réunion, adwords réunion, search ads 974',
       },
       'sites-web': {
         title: 'Développement Web & Applications à La Réunion',

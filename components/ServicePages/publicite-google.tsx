@@ -1,12 +1,14 @@
+import { useState } from 'react'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import { TrendingUp, ArrowRight, Check, Target, BarChart3, Users, Zap, Shield, Award, ChevronRight, AlertCircle, Rocket, Gift } from 'lucide-react'
+import { TrendingUp, ArrowRight, Check, Target, BarChart3, Users, Zap, Shield, Award, ChevronRight, AlertCircle, Rocket, Gift, CheckCircle2, ArrowUpRight } from 'lucide-react'
 import ServiceLayout from '../ServiceLayout/ServiceLayout'
 import { generateContactUrl } from '../../lib/contact-utils'
 import { ANIMATION } from '@/lib/animation-constants'
 import { HeroGradientOrbs } from '@/components/ui/animated-gradient-orb'
 
 export default function PubliciteGooglePage() {
+  const [isAnnual, setIsAnnual] = useState(false)
 
 
   // Processus en 4 étapes
@@ -506,6 +508,218 @@ export default function PubliciteGooglePage() {
                 <p className="text-gray-600 pl-9">
                   {faq.answer}
                 </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Formules Section */}
+      <section id="formules" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <motion.div
+            {...ANIMATION.entry.fadeInUp}
+            whileInView={ANIMATION.entry.fadeInUp.animate}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              Prix pour la <span className="bg-gradient-to-r from-digiqo-accent to-amber-400 bg-clip-text text-transparent">publicité en ligne</span>
+            </h2>
+            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto mb-8">
+              Des solutions adaptées à chaque étape de votre croissance
+            </p>
+
+            {/* Toggle Sans engagement/Annuel */}
+            <div className="flex items-center justify-center gap-4">
+              <span className={`text-lg font-semibold transition-colors ${!isAnnual ? 'text-digiqo-primary' : 'text-gray-500'}`}>
+                Sans engagement
+              </span>
+              <button
+                onClick={() => setIsAnnual(!isAnnual)}
+                className="relative w-20 h-10 bg-gray-300 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-digiqo-accent focus:ring-offset-2"
+                style={{ backgroundColor: isAnnual ? '#8B1431' : '#D1D5DB' }}
+              >
+                <motion.div
+                  className="absolute top-1 w-8 h-8 bg-white rounded-full shadow-md"
+                  animate={{ left: isAnnual ? '44px' : '4px' }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                />
+              </button>
+              <div className="flex items-center gap-2">
+                <span className={`text-lg font-semibold transition-colors ${isAnnual ? 'text-digiqo-primary' : 'text-gray-500'}`}>
+                  Annuel
+                </span>
+                {isAnnual && (
+                  <motion.span
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="bg-gradient-to-r from-green-500 to-green-600 text-white px-3 py-1 rounded-full text-sm font-bold"
+                  >
+                    -15%
+                  </motion.span>
+                )}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Formula Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto items-stretch">
+            {/* INITIATION */}
+            {[
+              {
+                id: 'formula-initiation',
+                name: 'INITIATION',
+                subtitle: 'Campagne de Notoriété — Monocanal',
+                priceShort: '550,00 €',
+                priceAnnual: '5 610,00 €',
+                billingLabel: 'MOIS',
+                gradient: 'from-gray-400 to-gray-600',
+                bestValue: true,
+                isMulticanal: false,
+                highlights: [
+                  '🖥 Diffusion sur Google Ads',
+                  '💰 Jusqu\'à 2 500€ de budget publicitaire géré/mois',
+                  '🎨 3 visuels publicitaires (statiques et/ou dynamiques) inclus/mois (non cumulables)',
+                  '🧠 Création & ciblage stratégique des campagnes',
+                  '⚙️ Optimisation des performances',
+                  '📈 Reporting mensuel',
+                  '📂 Espace collaboratif : Google Chat + Drive'
+                ],
+                promoItems: isAnnual
+                  ? ['2 vidéos offertes']
+                  : ['1 vidéo offerte au paiement de la 2ème mensualité'],
+                paymentShort: 'https://app-eu1.hubspot.com/payments/CqxfynTqvw?referrer=PAYMENT_LINK',
+                paymentAnnual: 'https://app-eu1.hubspot.com/payments/cfbgbDkKrqhPX?referrer=PAYMENT_LINK'
+              },
+              {
+                id: 'formula-propulsion',
+                name: 'PROPULSION',
+                subtitle: 'Campagne de Conversion — Monocanal',
+                priceShort: '2 250,00 €',
+                priceAnnual: '7 650,00 €',
+                billingLabel: 'TRIMESTRE',
+                gradient: 'from-[#8B1431] to-red-700',
+                bestValue: false,
+                isMulticanal: false,
+                highlights: [
+                  '🖥 Diffusion sur Google Ads',
+                  '💰 Jusqu\'à 2 500€ de budget publicitaire géré/mois',
+                  '🎨 6 visuels publicitaires (statiques et/ou dynamiques) inclus/mois (non cumulables)',
+                  '🧠 Création & ciblage stratégique des campagnes',
+                  '⚙️ Optimisation des performances',
+                  '📈 Reporting mensuel',
+                  '📂 Espace collaboratif : Google Chat + Drive',
+                  '👥 Exploitation des audiences similaires',
+                  '🔧 Intégration basique des pixels & API'
+                ],
+                promoItems: isAnnual
+                  ? ['2 vidéos offertes']
+                  : ['1 vidéo offerte', 'Budget pub du 3ème mois offert'],
+                paymentShort: 'https://app-eu1.hubspot.com/payments/4gntC6Vznt2d?referrer=PAYMENT_LINK',
+                paymentAnnual: 'https://app-eu1.hubspot.com/payments/bpgDysyjrtZmyhm9?referrer=PAYMENT_LINK'
+              },
+              {
+                id: 'formula-expansion',
+                name: 'EXPANSION',
+                subtitle: 'Campagne de Conversion — Multicanal',
+                priceShort: '3 250,00 €',
+                priceAnnual: '11 050,00 €',
+                billingLabel: 'TRIMESTRE',
+                gradient: 'from-[#199CB7] to-[#0F6980]',
+                bestValue: false,
+                isMulticanal: true,
+                highlights: [
+                  '🖥 2 plateformes : SMA (META ou TikTok) + SEA (Google Ads)',
+                  '💰 Jusqu\'à 2 500€ de budget publicitaire géré/mois',
+                  '🎨 9 visuels publicitaires (statiques et/ou dynamiques) inclus/mois (non cumulables)',
+                  '🧠 Création & ciblage stratégique des campagnes',
+                  '⚙️ Optimisation des performances',
+                  '📈 Reporting mensuel',
+                  '📂 Espace collaboratif : Google Chat + Drive',
+                  '👥 Exploitation des audiences similaires',
+                  '🔧 Intégration avancée des pixels & API'
+                ],
+                promoItems: isAnnual
+                  ? ['2 vidéos offertes', 'Budget pub du 3ème mois offert sur Google']
+                  : ['1 vidéo offerte', 'Budget pub du 3ème mois offert sur Google'],
+                paymentShort: 'https://app-eu1.hubspot.com/payments/WQ6DrgtrDNrt7Dtr?referrer=PAYMENT_LINK',
+                paymentAnnual: 'https://app-eu1.hubspot.com/payments/D7nW622G?referrer=PAYMENT_LINK'
+              }
+            ].map((formula, index) => (
+              <motion.div
+                key={formula.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="relative h-full"
+                whileHover={{ y: -10, transition: { duration: 0.3 } }}
+              >
+                {formula.bestValue && (
+                  <div className="absolute -top-3 -right-10 bg-white text-[#8B1431] px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-[#8B1431]">
+                    LE PLUS POPULAIRE
+                  </div>
+                )}
+                {formula.isMulticanal && (
+                  <div className="absolute -top-3 left-4 bg-gradient-to-r from-[#199CB7] to-[#0F6980] text-white px-4 py-1.5 rounded-full text-xs font-bold z-20 shadow-lg">
+                    SMA + SEA
+                  </div>
+                )}
+                <div className={`relative bg-white rounded-2xl shadow-xl h-full flex flex-col transition-all duration-300 hover:shadow-2xl ${formula.bestValue ? 'ring-4 ring-[#8B1431] shadow-2xl' : ''}`}>
+                  <div className={`p-6 bg-gradient-to-br ${formula.gradient} rounded-t-2xl`}>
+                    <h3 className="text-2xl font-bold text-center text-white">{formula.name}</h3>
+                    <p className="text-sm text-white/80 text-center mt-1">{formula.subtitle}</p>
+                  </div>
+                  <div className="p-8 flex flex-col flex-grow">
+                    <div className="text-center mb-6">
+                      <div className="flex items-baseline justify-center gap-1">
+                        <span className="text-5xl font-bold text-[#8B1431]">
+                          {isAnnual ? formula.priceAnnual.split(',')[0] : formula.priceShort.split(',')[0]}
+                        </span>
+                        <span className="text-3xl font-bold text-[#8B1431]">
+                          {isAnnual ? ',' + (formula.priceAnnual.split(',')[1] || '00') : ',' + (formula.priceShort.split(',')[1] || '00')}
+                        </span>
+                        <span className="text-2xl font-semibold text-gray-600 ml-1">HT</span>
+                      </div>
+                      <p className="text-sm text-gray-600 mt-2 font-medium h-5">
+                        {isAnnual ? 'PAR AN' : `PAR ${formula.billingLabel}`}
+                      </p>
+                      {isAnnual && <p className="text-xs text-green-600 mt-1 font-semibold">-15% de réduction</p>}
+                      {!isAnnual && <p className="text-xs text-gray-500 mt-1">Sans engagement</p>}
+                    </div>
+                    <div className="space-y-3 mb-6">
+                      {formula.highlights.map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-3">
+                          <CheckCircle2 className="w-5 h-5 text-[#8B1431] mt-0.5 flex-shrink-0" />
+                          <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-auto">
+                    <div className="border-t border-gray-200 pt-4 mb-6 min-h-[80px]">
+                      <p className="text-sm font-semibold text-[#8B1431] mb-2">🎁 Offre promotionnelle</p>
+                      {formula.promoItems.map((item, idx) => (
+                        <div key={idx} className="flex items-start gap-2">
+                          <span className="text-[#8B1431] text-xs font-bold">🎁</span>
+                          <span className="text-xs text-gray-600 leading-relaxed">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <motion.a
+                      href={isAnnual ? formula.paymentAnnual : formula.paymentShort}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-2xl shadow-lg`}
+                    >
+                      Choisir cette formule
+                      <ArrowUpRight className="w-5 h-5" />
+                    </motion.a>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

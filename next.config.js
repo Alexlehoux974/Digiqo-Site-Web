@@ -20,7 +20,22 @@ const nextConfig = {
     return [
       {
         source: '/services/publicite-en-ligne',
-        destination: '/services/publicite-meta',
+        destination: '/services/publicite-reseaux-sociaux',
+        permanent: true,
+      },
+      {
+        source: '/services/publicite-meta',
+        destination: '/services/publicite-reseaux-sociaux',
+        permanent: true,
+      },
+      {
+        source: '/services/publicite-snapchat',
+        destination: '/services/publicite-reseaux-sociaux',
+        permanent: true,
+      },
+      {
+        source: '/services/publicite-tiktok',
+        destination: '/services/publicite-reseaux-sociaux',
         permanent: true,
       },
       {
