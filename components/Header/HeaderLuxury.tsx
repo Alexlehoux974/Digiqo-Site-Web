@@ -483,11 +483,11 @@ export const HeaderLuxury = () => {
                                 // Cartes de publicité
                                 <div className="grid grid-cols-2 gap-6 p-6 lg:p-8 max-w-4xl mx-auto">
                                   {/* Option Réseaux Sociaux */}
-                                  <Link href="/services/publicite-reseaux-sociaux" onClick={() => setActiveSubmenu(null)}>
+                                  <Link href="/services/publicite-reseaux-sociaux" onClick={() => setActiveSubmenu(null)} className="h-full">
                                     <motion.div
                                       whileHover={{ scale: 1.02 }}
                                       whileTap={{ scale: 0.98 }}
-                                      className="relative bg-gradient-to-br from-blue-800 to-purple-900 rounded-2xl p-6 border-2 border-transparent hover:border-blue-500 transition-all cursor-pointer group"
+                                      className="relative bg-gradient-to-br from-blue-800 to-purple-900 rounded-2xl p-6 border-2 border-transparent hover:border-blue-500 transition-all cursor-pointer group h-full"
                                     >
                                       <div className="flex items-center justify-center gap-2 mb-4 mx-auto">
                                         <div className="w-12 h-12 rounded-lg bg-white shadow-md p-2 group-hover:scale-110 transition-transform">
@@ -546,11 +546,11 @@ export const HeaderLuxury = () => {
                                   </Link>
 
                                   {/* Option Google */}
-                                  <Link href="/services/publicite-google" onClick={() => setActiveSubmenu(null)}>
+                                  <Link href="/services/publicite-google" onClick={() => setActiveSubmenu(null)} className="h-full">
                                     <motion.div
                                       whileHover={{ scale: 1.02 }}
                                       whileTap={{ scale: 0.98 }}
-                                      className="relative bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl p-6 border-2 border-transparent hover:border-blue-500 transition-all cursor-pointer group"
+                                      className="relative bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl p-6 border-2 border-transparent hover:border-blue-500 transition-all cursor-pointer group h-full"
                                     >
                                       <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-white shadow-md mb-4 mx-auto group-hover:scale-110 transition-transform">
                                         <OptimizedImage
