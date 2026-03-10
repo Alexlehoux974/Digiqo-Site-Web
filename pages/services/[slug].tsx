@@ -4,8 +4,7 @@ import { SEO } from '@/components/SEO';
 import { seoConfig } from '@/lib/seo-config';
 
 // Import service components
-import PubliciteReseauxSociauxPage from '@/components/ServicePages/publicite-reseaux-sociaux';
-import PubliciteGooglePage from '@/components/ServicePages/publicite-google';
+import PubliciteEnLignePage from '@/components/ServicePages/publicite-en-ligne';
 import DevWebPage from '@/components/ServicePages/dev-web';
 import CommunityPage from '@/components/ServicePages/community';
 import SEOPage from '@/components/ServicePages/seo';
@@ -20,8 +19,7 @@ interface ServicePageProps {
 
 // Map slugs to components
 const serviceComponents: Record<ServiceSlug, React.ComponentType> = {
-  'publicite-reseaux-sociaux': PubliciteReseauxSociauxPage,
-  'publicite-google': PubliciteGooglePage,
+  'publicite-en-ligne': PubliciteEnLignePage,
   'sites-web': DevWebPage,
   'community-management': CommunityPage,
   'seo': SEOPage,

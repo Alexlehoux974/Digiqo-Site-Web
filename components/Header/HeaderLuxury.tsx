@@ -10,11 +10,10 @@ import {
   ChevronDown,
   ArrowRight,
   Sparkles,
-  TrendingUp,
+  Megaphone,
   Users,
   Palette,
   Code,
-  Search,
   Shield,
   Zap,
   Award,
@@ -44,40 +43,8 @@ const navigation = {
   main: [
     {
       name: 'PUBLICITÉ EN LIGNE',
-      href: '#',
-      luxuryIcon: TrendingUp,
-      megaMenu: {
-        categories: [
-          {
-            items: [
-              {
-                name: 'Publicité sur les réseaux sociaux',
-                href: '/services/publicite-reseaux-sociaux',
-                description: 'Facebook, Instagram, WhatsApp, Snapchat, TikTok',
-                icon: TrendingUp,
-                badge: 'Best Seller',
-                certifiedBadge: 'Expert certifié'
-              },
-              {
-                name: 'Publicité sur les moteurs de recherche',
-                href: '/services/publicite-google',
-                description: 'Google Ads',
-                icon: Search,
-                badge: 'ROI Max',
-                certifiedBadge: 'Expert certifié'
-              }
-            ]
-          }
-        ],
-        cta: {
-          title: 'Lancez vos campagnes publicitaires',
-          subtitle: 'Consultation gratuite avec nos experts',
-          href: generateContactUrl({
-            description: 'Je souhaite discuter de mes campagnes publicitaires'
-          }),
-          icon: MessageCircle
-        }
-      }
+      href: '/services/publicite-en-ligne',
+      luxuryIcon: Megaphone
     },
     {
       name: 'AUTRES SERVICES',
@@ -428,12 +395,7 @@ export const HeaderLuxury = () => {
                     
                     <span className="relative flex items-center space-x-2">
                       {item.luxuryIcon && (
-                        <motion.div
-                          animate={{ rotate: [0, 360] }}
-                          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                        >
-                          <item.luxuryIcon className="w-3 h-3 text-digiqo-accent" />
-                        </motion.div>
+                        <item.luxuryIcon className="w-3 h-3 text-digiqo-accent" />
                       )}
                       <span className={('highlight' in item && item.highlight) ? 'text-digiqo-accent font-semibold' : ''}>
                         {item.name}
@@ -525,7 +487,7 @@ export const HeaderLuxury = () => {
                                         Publicité sur les réseaux sociaux
                                       </h3>
                                       <p className="text-blue-100 text-center text-sm mb-3">
-                                        Facebook, Instagram, WhatsApp, Snapchat, TikTok
+                                        Facebook, Instagram, WhatsApp, TikTok
                                       </p>
                                       <ul className="space-y-1 text-xs text-blue-100">
                                         <li className="flex items-start gap-2">

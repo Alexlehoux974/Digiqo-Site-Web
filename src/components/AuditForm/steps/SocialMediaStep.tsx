@@ -18,7 +18,6 @@ export default function SocialMediaStep({ data, updateData }: SocialMediaStepPro
     { value: 'tiktok', label: 'TikTok' },
     { value: 'youtube', label: 'YouTube' },
     { value: 'pinterest', label: 'Pinterest' },
-    { value: 'snapchat', label: 'Snapchat' },
   ];
 
   const objectives = [

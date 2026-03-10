@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
 import {
   Megaphone,
   Code,
@@ -10,12 +9,10 @@ import {
   Search,
   Palette,
   Shield,
-  FileSearch,
-  X
+  FileSearch
 } from 'lucide-react'
 import { IconCloud } from '../IconCloud'
 import { generateContactUrl } from '@/lib/contact-utils'
-import { OptimizedImage } from '../ui/OptimizedImage'
 
 interface Service {
   id: string
@@ -38,7 +35,7 @@ const services: Service[] = [
     gradient: 'from-digiqo-orange via-amber-400 to-yellow-300',
     gridClass: 'col-span-2 md:col-span-4 row-span-3 md:col-start-3 md:row-start-1',
     size: 'large',
-    link: '/services/publicite-reseaux-sociaux',
+    link: '/services/publicite-en-ligne',
     keywords: ['Google Ads Réunion', 'Facebook Ads 974', 'publicité digitale']
   },
   {
@@ -121,7 +118,7 @@ const services: Service[] = [
 ]
 
 
-function ServiceCard({ service, index, onPubliciteClick }: { service: Service; index: number; onPubliciteClick?: () => void }) {
+function ServiceCard({ service, index }: { service: Service; index: number }) {
   const [isMobile, setIsMobile] = useState(false);
   const [isHovered, setIsHovered] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
@@ -183,10 +180,7 @@ function ServiceCard({ service, index, onPubliciteClick }: { service: Service; i
         }}
       >
         {service.id === 'publicite' ? (
-          <div
-            onClick={onPubliciteClick}
-            className="block w-full h-full cursor-pointer"
-          >
+          <Link href={service.link} className="block w-full h-full">
             <div className={`
               relative w-full h-full rounded-2xl overflow-hidden
               bg-white/95 backdrop-blur-sm border border-white/30
@@ -240,7 +234,7 @@ function ServiceCard({ service, index, onPubliciteClick }: { service: Service; i
                 transition={{ duration: 0.8, ease: "easeOut" }}
               />
             </div>
-          </div>
+          </Link>
         ) : (
           <Link href={service.link || '#'} className="block w-full h-full">
             <div className={`
@@ -325,8 +319,6 @@ function ServiceCard({ service, index, onPubliciteClick }: { service: Service; i
 }
 
 export const ServicesSection = () => {
-  const [showAdvertisingModal, setShowAdvertisingModal] = useState(false)
-
   return (
     <>
       <section id="services" className="relative py-12 overflow-hidden">
@@ -424,7 +416,7 @@ export const ServicesSection = () => {
           >
             {services.map((service, index) => (
               <div key={service.id} className="flex-shrink-0 w-80 h-96 snap-center">
-                <ServiceCard service={service} index={index} onPubliciteClick={() => setShowAdvertisingModal(true)} />
+                <ServiceCard service={service} index={index}  />
               </div>
             ))}
           </div>
@@ -434,7 +426,7 @@ export const ServicesSection = () => {
         <div className="hidden md:block relative">
           <div className="grid grid-cols-8 gap-4 auto-rows-[160px]">
             {services.map((service, index) => (
-              <ServiceCard key={service.id} service={service} index={index} onPubliciteClick={() => setShowAdvertisingModal(true)} />
+              <ServiceCard key={service.id} service={service} index={index}  />
             ))}
           </div>
         </div>
@@ -481,179 +473,6 @@ export const ServicesSection = () => {
 
     {/* Modal de choix Publicité */}
     <AnimatePresence>
-      {showAdvertisingModal && (
-        <>
-          {/* Overlay */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setShowAdvertisingModal(false)}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[110]"
-          />
-
-          {/* Modal Content */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            className="fixed inset-0 flex items-center justify-center z-[120] p-4"
-            onClick={() => setShowAdvertisingModal(false)}
-          >
-            <div
-              className="relative bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Header avec gradient digiqo - fixe */}
-              <div className="relative bg-gradient-to-r from-digiqo-primary to-digiqo-primary/90 p-8 text-white flex-shrink-0">
-                <button
-                  onClick={() => setShowAdvertisingModal(false)}
-                  className="absolute top-4 right-4 p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-                <h2 className="text-3xl md:text-4xl font-bold mb-2">Choisissez votre plateforme publicitaire</h2>
-                <p className="text-white/80">Sélectionnez la solution qui correspond à vos objectifs</p>
-              </div>
-
-              {/* Body avec les deux options */}
-              <div className="flex-1 overflow-y-auto overscroll-contain">
-                <div className="p-8 grid md:grid-cols-2 gap-6">
-                {/* Option Réseaux Sociaux */}
-                <Link href="/services/publicite-reseaux-sociaux" onClick={() => setShowAdvertisingModal(false)}>
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 border-2 border-transparent hover:border-blue-400 transition-all cursor-pointer group"
-                  >
-                    <div className="flex items-center justify-center gap-2 mb-4 mx-auto">
-                      <div className="w-12 h-12 rounded-lg bg-white shadow-md p-2 group-hover:scale-110 transition-transform">
-                        <Image
-                          src="/instagram.jpg"
-                          alt="Instagram"
-                          width={40}
-                          height={40}
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                      <div className="w-12 h-12 rounded-lg bg-white shadow-md p-2 group-hover:scale-110 transition-transform">
-                        <Image
-                          src="/facebook.jpg"
-                          alt="Facebook"
-                          width={40}
-                          height={40}
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                      <div className="w-12 h-12 rounded-lg bg-white shadow-md p-2 group-hover:scale-110 transition-transform">
-                        <Image
-                          src="/whatsapp.png"
-                          alt="WhatsApp"
-                          width={40}
-                          height={40}
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                    </div>
-                    <h3 className="text-2xl font-bold text-center mb-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                      Publicité sur les réseaux sociaux
-                    </h3>
-                    <p className="text-gray-700 text-center mb-4">
-                      Facebook, Instagram, WhatsApp, Snapchat, TikTok
-                    </p>
-                    <ul className="space-y-2 text-sm">
-                      <li className="flex items-start gap-2">
-                        <span className="text-blue-500 mt-1">✓</span>
-                        <span>Ciblage ultra-précis de votre audience</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-blue-500 mt-1">✓</span>
-                        <span>Formats visuels engageants</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-blue-500 mt-1">✓</span>
-                        <span>Notoriété, engagement et conversion</span>
-                      </li>
-                    </ul>
-                    <div className="mt-6 text-center">
-                      <span className="inline-flex items-center gap-2 font-semibold text-blue-600 group-hover:gap-3 transition-all">
-                        Découvrir nos offres
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </span>
-                    </div>
-                  </motion.div>
-                </Link>
-
-                {/* Option Google */}
-                <Link href="/services/publicite-google" onClick={() => setShowAdvertisingModal(false)}>
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="bg-gradient-to-br from-green-50 to-yellow-50 rounded-2xl p-6 border-2 border-transparent hover:border-green-400 transition-all cursor-pointer group"
-                  >
-                    <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-white shadow-md mb-4 mx-auto group-hover:scale-110 transition-transform">
-                      <OptimizedImage
-                        src="/Google_Ads_logo.svg.png"
-                        alt="Google Ads"
-                        width={48}
-                        height={48}
-                        className="w-12 h-12 object-contain"
-                        objectFit="contain"
-                      />
-                    </div>
-                    <h3 className="text-2xl font-bold text-center mb-3 bg-gradient-to-r from-green-600 to-yellow-600 bg-clip-text text-transparent">
-                      Publicité sur les moteurs de recherche
-                    </h3>
-                    <p className="text-gray-700 text-center mb-4">
-                      Google Ads
-                    </p>
-                    <ul className="space-y-2 text-sm">
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-500 mt-1">✓</span>
-                        <span>Intention d'achat immédiate</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-500 mt-1">✓</span>
-                        <span>ROI mesurable et rapide</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-500 mt-1">✓</span>
-                        <span>Idéal pour la conversion directe</span>
-                      </li>
-                    </ul>
-                    <div className="mt-6 text-center">
-                      <span className="inline-flex items-center gap-2 font-semibold text-green-600 group-hover:gap-3 transition-all">
-                        Découvrir Google Ads
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </span>
-                    </div>
-                  </motion.div>
-                </Link>
-                </div>
-              </div>
-
-              {/* Footer - fixe */}
-              <div className="bg-gray-50 p-6 text-center flex-shrink-0">
-                <p className="text-gray-600 mb-4">Besoin d'aide pour choisir ?</p>
-                <Link href={generateContactUrl({ description: "J'ai besoin de conseils pour choisir la meilleure plateforme publicitaire" })}>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setShowAdvertisingModal(false)}
-                    className="px-6 py-3 bg-gradient-to-r from-digiqo-primary to-digiqo-accent text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all"
-                  >
-                    Contactez nos experts
-                  </motion.button>
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        </>
-      )}
     </AnimatePresence>
     </>
   )

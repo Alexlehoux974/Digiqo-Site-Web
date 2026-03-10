@@ -56,12 +56,12 @@ export const servicesSEO = {
     h1: 'SiteKeeper - Maintenance Web',
     urlSlug: 'maintenance-site-web-reunion'
   },
-  'publicite-reseaux-sociaux': {
-    title: 'Publicité Réseaux Sociaux La Réunion | Facebook, Instagram, TikTok, Snapchat 974 - Digiqo',
-    description: 'Agence publicité réseaux sociaux à La Réunion. Campagnes Facebook Ads, Instagram Ads, TikTok Ads et Snapchat Ads. Ciblage précis et optimisation continue 974.',
-    keywords: 'publicité réseaux sociaux Réunion, facebook ads 974, instagram ads Réunion, tiktok ads 974, snapchat ads Réunion, SMA Réunion',
-    h1: 'Publicité sur les Réseaux Sociaux à La Réunion',
-    urlSlug: 'publicite-reseaux-sociaux'
+  'publicite-en-ligne': {
+    title: 'Publicité en Ligne La Réunion | Google Ads, Facebook, Instagram, TikTok 974 - Digiqo',
+    description: 'Agence publicité en ligne à La Réunion (974). Campagnes Google Ads, Facebook Ads, Instagram Ads, TikTok Ads. Ciblage local, optimisation continue.',
+    keywords: 'publicité en ligne Réunion, google ads 974, facebook ads Réunion, instagram ads 974, tiktok ads Réunion, SMA Réunion, SEA Réunion',
+    h1: 'Publicité en Ligne à La Réunion',
+    urlSlug: 'publicite-en-ligne'
   }
 }
 

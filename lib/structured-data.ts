@@ -103,7 +103,7 @@ export const localBusinessSchema = {
         "areaServed": "La Réunion",
         "availableChannel": {
           "@type": "ServiceChannel",
-          "serviceUrl": "https://digiqo.fr/services/publicite-google"
+          "serviceUrl": "https://digiqo.fr/services/publicite-en-ligne"
         }
       },
       {

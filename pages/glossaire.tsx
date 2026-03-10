@@ -86,7 +86,7 @@ const glossaryData: Category[] = [
       {
         term: 'SMA',
         acronym: 'Social Media Advertising',
-        definition: "La publicité payante diffusée sur les réseaux sociaux : Facebook, Instagram, TikTok, Snapchat, LinkedIn, etc.",
+        definition: "La publicité payante diffusée sur les réseaux sociaux : Facebook, Instagram, TikTok, LinkedIn, etc.",
         practice: "C'est la spécialité principale de Digiqo. Nos offres Initiation, Propulsion et Expansion sont toutes structurées autour du SMA.",
       },
       {

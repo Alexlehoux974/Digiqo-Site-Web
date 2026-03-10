@@ -13,15 +13,10 @@ export const seoConfig = {
       keywords: 'agence marketing digital réunion, agence web réunion, marketing digital 974, développement web réunion, SEO réunion, publicité en ligne réunion',
     },
     services: {
-      'publicite-reseaux-sociaux': {
-        title: 'Publicité Réseaux Sociaux La Réunion | Facebook, Instagram, TikTok, Snapchat | Digiqo',
-        description: 'Agence publicité réseaux sociaux à La Réunion. Campagnes Facebook Ads, Instagram Ads, TikTok Ads et Snapchat Ads. Ciblage précis, optimisation continue et reporting mensuel.',
-        keywords: 'publicité réseaux sociaux réunion, facebook ads réunion, instagram ads réunion, tiktok ads réunion, snapchat ads réunion, social ads 974, SMA réunion',
-      },
-      'publicite-google': {
-        title: 'Publicité Google Ads La Réunion | SEA & Campagnes Search | Digiqo',
-        description: 'Agence Google Ads à La Réunion. Campagnes Search, Display et YouTube Ads optimisées. Gestion experte, suivi détaillé et audit gratuit.',
-        keywords: 'google ads réunion, publicité google 974, SEA réunion, campagne google ads la réunion, adwords réunion, search ads 974',
+      'publicite-en-ligne': {
+        title: 'Publicité en Ligne La Réunion | Google Ads, Facebook, Instagram, TikTok 974 | Digiqo',
+        description: 'Agence publicité en ligne à La Réunion (974). Campagnes Google Ads, Facebook Ads, Instagram Ads, TikTok Ads. Ciblage local, optimisation continue, reporting mensuel.',
+        keywords: 'publicité en ligne réunion, google ads 974, facebook ads réunion, instagram ads 974, tiktok ads réunion, SMA réunion, SEA réunion, agence publicité digitale 974',
       },
       'sites-web': {
         title: 'Développement Web & Applications à La Réunion',

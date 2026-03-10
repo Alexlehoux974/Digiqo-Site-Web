@@ -42,7 +42,6 @@ const hubspotProducts = [
   {"id":"16874266096","properties":{"hs_sku":"CONSEIL-STRATEGIE","description":"Conseil en stratégie digitale (demi-journée)","name":"Conseil Stratégie Digitale","hs_price_eur":"590"}},
   {"id":"16874266097","properties":{"hs_sku":"ACCOMPAGNEMENT-MENSUEL","description":"Accompagnement stratégique mensuel personnalisé","name":"Accompagnement Mensuel","hs_price_eur":"990"}},
   {"id":"16874266098","properties":{"hs_sku":"TIKTOK-ADS-STARTER","description":"Gestion campagnes TikTok Ads - Pack découverte","name":"TikTok Ads Starter","hs_price_eur":"699"}},
-  {"id":"16874266099","properties":{"hs_sku":"SNAPCHAT-ADS-STARTER","description":"Gestion campagnes Snapchat Ads - Pack découverte","name":"Snapchat Ads Starter","hs_price_eur":"699"}}
 ];
 
 // Function to normalize product name for matching
@@ -189,7 +188,7 @@ function mergeProducts() {
 function determineCategoryFromName(name, description) {
   const text = (name + ' ' + description).toLowerCase();
 
-  if (text.includes('meta') || text.includes('facebook') || text.includes('google ads') || text.includes('tiktok') || text.includes('snapchat')) {
+  if (text.includes('meta') || text.includes('facebook') || text.includes('google ads') || text.includes('tiktok')) {
     return 'PUBLICITÉ EN LIGNE';
   }
   if (text.includes('community') || text.includes('cm ')) {

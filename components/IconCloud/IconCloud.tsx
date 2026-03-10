@@ -9,7 +9,6 @@ import {
   FaInstagram, 
   FaPinterestP,
   FaTiktok,
-  FaSnapchatGhost
 } from 'react-icons/fa'
 import { SiGoogleads, SiMeta } from 'react-icons/si'
 
@@ -30,8 +29,7 @@ const icons: Icon[] = [
   { id: 'linkedin', component: <FaLinkedinIn />, color: '#0A66C2', size: 28 },
   { id: 'instagram', component: <FaInstagram />, color: '#E4405F', size: 32 },
   { id: 'pinterest', component: <FaPinterestP />, color: '#BD081C', size: 28 },
-  { id: 'tiktok', component: <FaTiktok />, color: '#000000', size: 30 },
-  { id: 'snapchat', component: <FaSnapchatGhost />, color: '#FFFC00', size: 30 }
+  { id: 'tiktok', component: <FaTiktok />, color: '#000000', size: 30 }
 ]
 
 interface IconCloudProps {

@@ -250,8 +250,7 @@ export default function ArticlePage({ article }: ArticlePageProps) {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl font-bold mb-4">
-                {article.category === 'Social Media' || article.slug.includes('tiktok') || article.slug.includes('snapchat')
-                  ? 'Prêt à booster votre présence sur les réseaux sociaux ?'
+                {article.category === 'Social Media' || article.slug.includes('tiktok')                  ? 'Prêt à booster votre présence sur les réseaux sociaux ?'
                   : article.category === 'SEO'
                   ? 'Prêt à améliorer votre référencement naturel ?'
                   : article.category === 'Développement Web'
@@ -259,8 +258,7 @@ export default function ArticlePage({ article }: ArticlePageProps) {
                   : 'Prêt à optimiser vos campagnes Google Ads ?'}
               </h2>
               <p className="text-xl mb-8 text-white/90">
-                {article.category === 'Social Media' || article.slug.includes('tiktok') || article.slug.includes('snapchat')
-                  ? 'Contactez nos experts pour une stratégie social media sur mesure'
+                {article.category === 'Social Media' || article.slug.includes('tiktok')                  ? 'Contactez nos experts pour une stratégie social media sur mesure'
                   : article.category === 'SEO'
                   ? 'Contactez nos experts pour un audit SEO complet'
                   : article.category === 'Développement Web'
@@ -273,8 +271,7 @@ export default function ArticlePage({ article }: ArticlePageProps) {
                 whileTap={{ scale: 0.95 }}
                 className="inline-block bg-white text-[#8B1431] px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 hover:shadow-xl transition-all cursor-pointer"
               >
-                {article.category === 'Social Media' || article.slug.includes('tiktok') || article.slug.includes('snapchat')
-                  ? 'Découvrir nos offres social media'
+                {article.category === 'Social Media' || article.slug.includes('tiktok')                  ? 'Découvrir nos offres social media'
                   : article.category === 'SEO'
                   ? 'Demander un audit SEO'
                   : article.category === 'Développement Web'
