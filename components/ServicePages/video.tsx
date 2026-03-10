@@ -42,7 +42,7 @@ export default function VideoPage() {
       ],
       paymentLink: 'https://app-eu1.hubspot.com/payments/QQWTrKWr?referrer=PAYMENT_LINK',
       icon: Camera,
-      gradient: 'from-pink-600 to-rose-700'
+      gradient: 'from-emerald-500 to-teal-600'
     },
     {
       id: 'recuPCFUNllSLXNdT',
@@ -61,7 +61,7 @@ export default function VideoPage() {
       ],
       paymentLink: '',
       icon: Drone,
-      gradient: 'from-blue-600 to-cyan-700'
+      gradient: 'from-blue-500 to-indigo-600'
     },
     {
       id: 'recd5un6ZP7QrnG13',
@@ -80,7 +80,7 @@ export default function VideoPage() {
       ],
       paymentLink: 'https://app-eu1.hubspot.com/payments/ThjGnSsb9J4JKy7?referrer=PAYMENT_LINK',
       icon: Video,
-      gradient: 'from-purple-600 to-indigo-700',
+      gradient: 'from-purple-500 to-pink-600',
       bestValue: true
     },
     {
@@ -100,7 +100,7 @@ export default function VideoPage() {
       ],
       paymentLink: 'https://app-eu1.hubspot.com/payments/nX9dsyCXPnVRw?referrer=PAYMENT_LINK',
       icon: Sparkles,
-      gradient: 'from-orange-600 to-red-700'
+      gradient: 'from-amber-300 to-orange-400'
     }
   ]
 
@@ -122,7 +122,7 @@ export default function VideoPage() {
       ],
       paymentLink: 'https://app-eu1.hubspot.com/payments/XkHTtXxqwdhTKq?referrer=PAYMENT_LINK',
       icon: Image,
-      gradient: 'from-violet-600 to-purple-700',
+      gradient: 'from-emerald-500 to-teal-600',
       type: 'ONE_SHOT'
     },
     {
@@ -140,7 +140,7 @@ export default function VideoPage() {
       ],
       paymentLink: 'https://app-eu1.hubspot.com/payments/9NQsT7dQJQPxmYb?referrer=PAYMENT_LINK',
       icon: Package,
-      gradient: 'from-emerald-600 to-teal-700',
+      gradient: 'from-blue-500 to-indigo-600',
       type: 'ONE_SHOT'
     },
     {
@@ -158,7 +158,7 @@ export default function VideoPage() {
       ],
       paymentLink: 'https://app-eu1.hubspot.com/payments/tRYRM4GvxbsNdf?referrer=PAYMENT_LINK',
       icon: Palette,
-      gradient: 'from-indigo-600 to-blue-700',
+      gradient: 'from-purple-500 to-pink-600',
       bestValue: true,
       type: 'ONE_SHOT'
     },
@@ -177,7 +177,7 @@ export default function VideoPage() {
       ],
       paymentLink: 'https://app-eu1.hubspot.com/payments/9JdDMShWzwp?referrer=PAYMENT_LINK',
       icon: Star,
-      gradient: 'from-yellow-600 to-orange-700',
+      gradient: 'from-amber-300 to-orange-400',
       type: 'ONE_SHOT'
     }
   ]
@@ -202,7 +202,7 @@ export default function VideoPage() {
       ],
       paymentLink: '',
       icon: Film,
-      gradient: 'from-amber-600 to-orange-700',
+      gradient: 'from-emerald-500 to-teal-600',
       type: 'ONE_SHOT'
     },
     {
@@ -222,7 +222,7 @@ export default function VideoPage() {
       ],
       paymentLink: 'https://app-eu1.hubspot.com/payments/PWc9PydMfP?referrer=PAYMENT_LINK',
       icon: Camera,
-      gradient: 'from-cyan-600 to-blue-700',
+      gradient: 'from-blue-500 to-indigo-600',
       type: 'ONE_SHOT'
     },
     {
@@ -242,7 +242,7 @@ export default function VideoPage() {
       ],
       paymentLink: 'https://app-eu1.hubspot.com/payments/MMSQQJtDzx?referrer=PAYMENT_LINK',
       icon: Film,
-      gradient: 'from-red-600 to-pink-700',
+      gradient: 'from-purple-500 to-pink-600',
       type: 'ONE_SHOT'
     },
     {
@@ -262,7 +262,7 @@ export default function VideoPage() {
       ],
       paymentLink: 'https://app-eu1.hubspot.com/payments/dNkrhYhrDg22rc?referrer=PAYMENT_LINK',
       icon: Rocket,
-      gradient: 'from-purple-800 to-purple-900',
+      gradient: 'from-amber-300 to-orange-400',
       type: 'ONE_SHOT'
     }
   ]
@@ -370,24 +370,13 @@ export default function VideoPage() {
                 className="relative"
               >
                 {product.bestValue && (
-                  <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 z-10">
-                    <div className="relative group">
-                      <div className="absolute inset-0 bg-gradient-to-r from-digiqo-accent via-orange-500 to-amber-500 rounded-full blur-sm opacity-75 group-hover:blur-md transition-all duration-300 animate-pulse"></div>
-                      <span className="relative flex items-center gap-2 bg-gradient-to-r from-digiqo-accent to-orange-500 text-white px-5 py-2 rounded-full text-sm font-bold shadow-xl border-2 border-white/20 backdrop-blur-sm">
-                        <svg className="w-4 h-4 animate-spin-slow" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                        Le plus populaire
-                        <svg className="w-4 h-4 animate-spin-slow" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                      </span>
-                    </div>
+                  <div className="absolute -top-3 -right-10 bg-white text-purple-600 px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-purple-500">
+                    LE PLUS POPULAIRE
                   </div>
                 )}
                 
                 <div className={`bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden h-full ${
-                  product.bestValue ? 'ring-2 ring-digiqo-accent' : ''
+                  product.bestValue ? 'ring-2 ring-purple-500' : ''
                 }`}>
                   {/* Header */}
                   <div className={`p-6 bg-gradient-to-br ${product.gradient}`}>
@@ -484,24 +473,13 @@ export default function VideoPage() {
                 className="relative"
               >
                 {product.bestValue && (
-                  <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 z-10">
-                    <div className="relative group">
-                      <div className="absolute inset-0 bg-gradient-to-r from-digiqo-accent via-orange-500 to-amber-500 rounded-full blur-sm opacity-75 group-hover:blur-md transition-all duration-300 animate-pulse"></div>
-                      <span className="relative flex items-center gap-2 bg-gradient-to-r from-digiqo-accent to-orange-500 text-white px-5 py-2 rounded-full text-sm font-bold shadow-xl border-2 border-white/20 backdrop-blur-sm">
-                        <svg className="w-4 h-4 animate-spin-slow" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                        Meilleur rapport qualité/prix
-                        <svg className="w-4 h-4 animate-spin-slow" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                      </span>
-                    </div>
+                  <div className="absolute -top-3 -right-10 bg-white text-purple-600 px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-purple-500">
+                    LE PLUS POPULAIRE
                   </div>
                 )}
                 
                 <div className={`bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden h-full ${
-                  product.bestValue ? 'ring-2 ring-digiqo-accent' : ''
+                  product.bestValue ? 'ring-2 ring-purple-500' : ''
                 }`}>
                   {/* Header */}
                   <div className={`p-6 bg-gradient-to-br ${product.gradient}`}>

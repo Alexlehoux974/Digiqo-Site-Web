@@ -62,8 +62,8 @@ export default function SiteKeeperPage() {
         'Sauvegardes hebdomadaires',
         '2 retouches annuelles'
       ],
-      gradient: 'from-purple-500 to-indigo-600',
-      accentColor: 'purple',
+      gradient: 'from-emerald-500 to-teal-600',
+      accentColor: 'emerald',
       icon: Shield,
       features: [
         'Mises à jour mensuelles du CMS + passerelle de paiement',
@@ -85,8 +85,8 @@ export default function SiteKeeperPage() {
         '4 retouches annuelles',
         'Support prioritaire 48h'
       ],
-      gradient: 'from-orange-500 to-red-600',
-      accentColor: 'orange',
+      gradient: 'from-blue-500 to-indigo-600',
+      accentColor: 'blue',
       icon: Rocket,
       features: [
         'Mises à jour hebdomadaires CMS, plugins, passerelle de paiement',
@@ -110,8 +110,8 @@ export default function SiteKeeperPage() {
         '6 retouches annuelles',
         'Support premium < 24h'
       ],
-      gradient: 'from-indigo-600 to-purple-700',
-      accentColor: 'indigo',
+      gradient: 'from-purple-500 to-pink-600',
+      accentColor: 'purple',
       icon: Gem,
       features: [
         'Mises à jour hebdomadaires CMS, plugins, passerelle de paiement et catalogue produits',
@@ -137,8 +137,8 @@ export default function SiteKeeperPage() {
         'Sauvegardes hebdomadaires',
         'Support 72h'
       ],
-      gradient: 'from-gray-500 to-gray-600',
-      accentColor: 'gray',
+      gradient: 'from-emerald-500 to-teal-600',
+      accentColor: 'emerald',
       icon: Shield,
       features: [
         'Mises à jour mensuelles du CMS (WordPress) et des plugins',
@@ -161,8 +161,8 @@ export default function SiteKeeperPage() {
         '4 révisions par an',
         'Support prioritaire 48h'
       ],
-      gradient: 'from-emerald-500 to-teal-600',
-      accentColor: 'emerald',
+      gradient: 'from-blue-500 to-indigo-600',
+      accentColor: 'blue',
       icon: Zap,
       features: [
         'Mises à jour hebdomadaires du CMS (WordPress), plugins et thèmes',
@@ -185,8 +185,8 @@ export default function SiteKeeperPage() {
         '6 révisions par an',
         'Support premium 24h'
       ],
-      gradient: 'from-blue-500 to-indigo-600',
-      accentColor: 'blue',
+      gradient: 'from-purple-500 to-pink-600',
+      accentColor: 'purple',
       icon: Star,
       features: [
         'Mises à jour hebdomadaires du CMS, plugins, thèmes et PHP, avec tests de compatibilité et rollback possible',
@@ -261,24 +261,13 @@ export default function SiteKeeperPage() {
                   className="relative"
                 >
                   {formula.bestValue && (
-                    <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 z-10">
-                      <div className="relative group">
-                        <div className="absolute inset-0 bg-gradient-to-r from-digiqo-accent via-orange-500 to-amber-500 rounded-full blur-sm opacity-75 group-hover:blur-md transition-all duration-300 animate-pulse"></div>
-                        <span className="relative flex items-center gap-2 bg-gradient-to-r from-digiqo-accent to-orange-500 text-white px-5 py-2 rounded-full text-sm font-bold shadow-xl border-2 border-white/20 backdrop-blur-sm">
-                          <svg className="w-4 h-4 animate-spin-slow" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                          Meilleur rapport qualité/prix
-                          <svg className="w-4 h-4 animate-spin-slow" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                        </span>
-                      </div>
+                    <div className="absolute -top-3 -right-10 bg-white text-blue-600 px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-blue-500">
+                      LE PLUS POPULAIRE
                     </div>
                   )}
-                  
+
                   <div className={`bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden h-full ${
-                    formula.bestValue ? 'ring-2 ring-digiqo-accent' : ''
+                    formula.bestValue ? 'ring-2 ring-blue-500' : ''
                   }`}>
                     {/* Header */}
                     <div className={`p-8 bg-gradient-to-br ${formula.gradient}`}>

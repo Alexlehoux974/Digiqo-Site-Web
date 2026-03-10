@@ -118,8 +118,8 @@ export default function PublicitePage() {
         '📈 Reporting mensuel',
         '📂 Espace collaboratif : Google Chat + Drive'
       ],
-      gradient: 'from-gray-400 to-gray-600',
-      accentColor: 'gray',
+      gradient: 'from-emerald-500 to-teal-600',
+      accentColor: 'emerald',
       icon: Target,
       sections: {
         services: {
@@ -176,8 +176,8 @@ export default function PublicitePage() {
         '👥 Exploitation des audiences similaires',
         '🔧 Intégration basique des pixels & API'
       ],
-      gradient: 'from-[#8B1431] to-red-700',
-      accentColor: 'red',
+      gradient: 'from-blue-500 to-indigo-600',
+      accentColor: 'blue',
       icon: Zap,
       sections: {
         services: {
@@ -234,8 +234,8 @@ export default function PublicitePage() {
         '👥 Exploitation des audiences similaires avancées',
         '🔧 Intégration avancée des pixels & API'
       ],
-      gradient: 'from-[#199CB7] to-[#0F6980]',
-      accentColor: 'blue',
+      gradient: 'from-purple-500 to-pink-600',
+      accentColor: 'purple',
       icon: Rocket,
       sections: {
         services: {
@@ -467,7 +467,7 @@ export default function PublicitePage() {
               <button
                 onClick={() => setIsAnnual(!isAnnual)}
                 className="relative w-20 h-10 bg-gray-300 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-digiqo-accent focus:ring-offset-2"
-                style={{ backgroundColor: isAnnual ? '#8B1431' : '#D1D5DB' }}
+                style={{ backgroundColor: isAnnual ? '#3B82F6' : '#D1D5DB' }}
               >
                 <motion.div
                   className="absolute top-1 w-8 h-8 bg-white rounded-full shadow-md"
@@ -509,7 +509,7 @@ export default function PublicitePage() {
               >
                 {/* Badge populaire qui suit le mouvement de hover */}
                 {formula.bestValue && (
-                  <div className="absolute -top-3 -right-10 bg-white text-[#8B1431] px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-[#8B1431]">
+                  <div className="absolute -top-3 -right-10 bg-white text-blue-600 px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-blue-500">
                     LE PLUS POPULAIRE
                   </div>
                 )}
@@ -517,7 +517,7 @@ export default function PublicitePage() {
                 {/* Carte */}
                 <div
                   className={`relative bg-white rounded-2xl shadow-xl h-full flex flex-col transition-all duration-300 hover:shadow-2xl ${
-                    formula.bestValue ? 'ring-4 ring-[#8B1431] shadow-2xl md:scale-105' : ''
+                    formula.bestValue ? 'ring-4 ring-blue-500 shadow-2xl md:scale-105' : ''
                   }`}
                 >
                   {/* Header with colored gradient */}
@@ -529,10 +529,10 @@ export default function PublicitePage() {
                     {/* Prix */}
                     <div className="text-center mb-6">
                       <div className="flex items-baseline justify-center gap-1">
-                        <span className="text-5xl font-bold text-[#8B1431]">
+                        <span className="text-5xl font-bold text-blue-600">
                           {formula.price.threeMonths.split(',')[0]}
                         </span>
-                        <span className="text-3xl font-bold text-[#8B1431]">
+                        <span className="text-3xl font-bold text-blue-600">
                           {',' + (formula.price.threeMonths.split(',')[1] || '00')}
                         </span>
                         <span className="text-2xl font-semibold text-gray-600 ml-1">
@@ -553,7 +553,7 @@ export default function PublicitePage() {
                     <div className="space-y-3 mb-6 flex-grow">
                       {formula.highlights.map((feature, idx) => (
                         <div key={idx} className="flex items-start gap-3">
-                          <CheckCircle2 className="w-5 h-5 text-[#8B1431] mt-0.5 flex-shrink-0" />
+                          <CheckCircle2 className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
                           <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
                         </div>
                       ))}
@@ -565,7 +565,7 @@ export default function PublicitePage() {
                         <div className="space-y-2">
                           {formula.details.map((detail, idx) => (
                             <div key={idx} className="flex items-start gap-2">
-                              <span className="text-[#8B1431] text-xs font-bold">✓</span>
+                              <span className="text-blue-600 text-xs font-bold">✓</span>
                               <span className="text-xs text-gray-600 leading-relaxed">{detail}</span>
                             </div>
                           ))}

@@ -123,10 +123,10 @@ const packages: WebPackage[] = devProducts.filter(p =>
   p.name.includes('Landing Page')
 ).slice(0, 4).map((product, index) => {
   const gradients = [
-    'from-digiqo-secondary to-digiqo-secondary/80',
-    'from-digiqo-primary to-digiqo-accent',
-    'from-digiqo-accent to-orange-500',
-    'from-digiqo-primary to-digiqo-primary/80'
+    'from-emerald-500 to-teal-600',
+    'from-blue-500 to-indigo-600',
+    'from-purple-500 to-pink-600',
+    'from-amber-300 to-orange-400'
   ]
   
   // Parse notes into sections
@@ -309,7 +309,7 @@ export default function DevWebPage() {
             >
               <div className="relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col overflow-hidden">
                 {/* Header */}
-                <div className="p-8 bg-gradient-to-br from-digiqo-secondary to-digiqo-secondary-dark">
+                <div className="p-8 bg-gradient-to-br from-emerald-500 to-teal-600">
                   <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center">
                     <Globe className="w-8 h-8 text-white" />
                   </div>
@@ -403,24 +403,13 @@ export default function DevWebPage() {
               className="group relative"
             >
               {/* Badge Populaire */}
-              <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 z-10">
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-digiqo-accent via-orange-500 to-amber-500 rounded-full blur-sm opacity-75 group-hover:blur-md transition-all duration-300 animate-pulse"></div>
-                  <span className="relative flex items-center gap-2 bg-gradient-to-r from-digiqo-accent to-orange-500 text-white px-5 py-2 rounded-full text-sm font-bold shadow-xl border-2 border-white/20 backdrop-blur-sm">
-                    <svg className="w-4 h-4 animate-spin-slow" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    Le plus populaire
-                    <svg className="w-4 h-4 animate-spin-slow" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  </span>
-                </div>
+              <div className="absolute -top-3 -right-10 bg-white text-blue-600 px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-blue-500">
+                LE PLUS POPULAIRE
               </div>
               
-              <div className="relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col overflow-hidden ring-2 ring-digiqo-accent">
+              <div className="relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col overflow-hidden ring-2 ring-blue-500">
                 {/* Header */}
-                <div className="p-8 bg-gradient-to-br from-digiqo-accent to-orange-500">
+                <div className="p-8 bg-gradient-to-br from-blue-500 to-indigo-600">
                   <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center">
                     <FileText className="w-8 h-8 text-white" />
                   </div>
@@ -488,7 +477,7 @@ export default function DevWebPage() {
                     href="https://app-eu1.hubspot.com/payments/sg9GhNqGRxhm?referrer=PAYMENT_LINK"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full py-4 px-6 text-center font-semibold rounded-full transition-all bg-gradient-to-r from-digiqo-accent to-orange-500 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                    className="block w-full py-4 px-6 text-center font-semibold rounded-full transition-all bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                   >
                     Choisir cette formule
                   </a>
@@ -515,7 +504,7 @@ export default function DevWebPage() {
             >
               <div className="relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col overflow-hidden">
                 {/* Header */}
-                <div className="p-8 bg-gradient-to-br from-digiqo-primary to-digiqo-primary-dark">
+                <div className="p-8 bg-gradient-to-br from-purple-500 to-pink-600">
                   <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center">
                     <Coffee className="w-8 h-8 text-white" />
                   </div>

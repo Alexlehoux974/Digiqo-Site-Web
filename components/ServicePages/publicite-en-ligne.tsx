@@ -87,8 +87,8 @@ export default function PubliciteEnLignePage() {
         { icon: BarChart3, text: 'Reporting mensuel' },
         { icon: FolderOpen, text: 'Espace collaboratif : Google Chat + Drive' }
       ],
-      gradient: 'from-[#4A90D9] to-[#3B7DD8]',
-      accentColor: '#4A90D9',
+      gradient: 'from-emerald-500 to-teal-600',
+      accentColor: '#10B981',
       icon: Target,
       bonus: {
         title: 'Offre promotionnelle',
@@ -116,8 +116,8 @@ export default function PubliciteEnLignePage() {
         { icon: Users, text: 'Exploitation des audiences similaires' },
         { icon: Wrench, text: 'Intégration basique des pixels & API' }
       ],
-      gradient: 'from-[#E8614D] to-[#D94F3B]',
-      accentColor: '#E8614D',
+      gradient: 'from-blue-500 to-indigo-600',
+      accentColor: '#3B82F6',
       icon: Zap,
       bonus: {
         title: 'Offre promotionnelle',
@@ -146,8 +146,8 @@ export default function PubliciteEnLignePage() {
         { icon: Palette, text: '9 visuels publicitaires inclus/mois (au lieu de 6)' },
         { icon: Wrench, text: 'Intégration avancée des pixels & API' }
       ],
-      gradient: 'from-[#0D7C5F] to-[#0A6B51]',
-      accentColor: '#0D7C5F',
+      gradient: 'from-purple-500 to-pink-600',
+      accentColor: '#A855F7',
       icon: Rocket,
       bonus: {
         title: 'Offre promotionnelle',

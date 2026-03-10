@@ -306,7 +306,7 @@ export default function TikTokPage() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden"
           >
-            <div className="bg-gradient-to-br from-[#8B1431] to-[#DA6530] p-8">
+            <div className="bg-gradient-to-br from-emerald-500 to-teal-600 p-8">
               <h3 className="text-3xl font-bold text-white text-center">
                 {pricingApproach.title}
               </h3>
@@ -320,7 +320,7 @@ export default function TikTokPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
                 {pricingApproach.features.map((feature, idx) => (
                   <div key={idx} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-6 h-6 text-[#8B1431] mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-6 h-6 text-emerald-600 mt-0.5 flex-shrink-0" />
                     <span className="text-gray-700">{feature}</span>
                   </div>
                 ))}
@@ -332,19 +332,19 @@ export default function TikTokPage() {
                 </h4>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <span className="text-[#8B1431]">✓</span>
+                    <span className="text-emerald-600">✓</span>
                     <span className="text-gray-700">Gestion complète de vos campagnes TikTok</span>
                   </div>
                   <div className="flex items-start gap-3">
-                    <span className="text-[#8B1431]">✓</span>
+                    <span className="text-emerald-600">✓</span>
                     <span className="text-gray-700">Création des vidéos publicitaires adaptées</span>
                   </div>
                   <div className="flex items-start gap-3">
-                    <span className="text-[#8B1431]">✓</span>
+                    <span className="text-emerald-600">✓</span>
                     <span className="text-gray-700">Optimisation continue des performances</span>
                   </div>
                   <div className="flex items-start gap-3">
-                    <span className="text-[#8B1431]">✓</span>
+                    <span className="text-emerald-600">✓</span>
                     <span className="text-gray-700">Reporting détaillé et suivi personnalisé</span>
                   </div>
                 </div>
@@ -355,7 +355,7 @@ export default function TikTokPage() {
                   href={generateContactUrl({ service: 'tiktok' })}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#8B1431] to-[#DA6530] text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all"
                 >
                   Demander votre devis personnalisé
                   <ArrowRight className="w-5 h-5" />
