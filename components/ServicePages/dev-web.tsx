@@ -5,20 +5,15 @@ import { motion, useInView } from 'framer-motion'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 import { SectionGradientOrbs } from '@/components/ui/animated-gradient-orb'
 import { ServiceHero } from './ServiceHero'
-import { 
-  Code, 
-  Shield, 
+import {
+  Code,
   Rocket,
   CheckCircle2,
-  Globe,
   Sparkles,
   Star,
-  Coffee,
-  FileText,
-  CreditCard,
-  Headphones,
-  RefreshCw,
-  MessageCircle
+  MessageCircle,
+  Calendar,
+  ExternalLink
 } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
@@ -30,7 +25,6 @@ import {
   MongoDBIcon, 
   TailwindCSSIcon 
 } from '@/components/icons'
-import { getProductsForService } from '../../lib/airtable-products'
 
 // Code particles are now handled by CodeParticleSystem component
 
@@ -82,116 +76,25 @@ const AnimatedMetric = ({ value, label, suffix = '', delay = 0 }: AnimatedMetric
   )
 }
 
-interface WebPackage {
-  id: string
-  name: string
-  price: string
-  description: string
-  deliveryTime: string
-  note?: string
-  gradient: string
-  popular?: boolean
-  highlights: string[]
-  sections: {
-    bonus: {
-      title: string
-      items: string[]
-    }
-    features: {
-      title: string
-      items: string[]
-    }
-    technical: {
-      title: string
-      items: string[]
-    }
-    included?: {
-      title: string
-      items: string[]
-    }
-  }
-  paymentLink?: string
-}
+const CALENDAR_LINK = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0zEg3G6P0cJY2oe7Tyi3KrmTAXRyYCu5chnHfDzECSr45IxTuiVQX9MYpfMUZT9MbL3VgQl9JW'
 
-// Get real products from Airtable data
-const devProducts = getProductsForService('dev-web')
-
-// Transform products to match the WebPackage interface  
-const packages: WebPackage[] = devProducts.filter(p => 
-  p.name.includes('Site Vitrine') || 
-  p.name.includes('E-commerce') || 
-  p.name.includes('Landing Page')
-).slice(0, 4).map((product, index) => {
-  const gradients = [
-    'from-emerald-500 to-teal-600',
-    'from-blue-500 to-indigo-600',
-    'from-purple-500 to-pink-600',
-    'from-amber-300 to-orange-400'
-  ]
-  
-  // Parse notes into sections
-  const noteLines = product.notes?.split('\n').filter(line => line.trim()) || []
-  const includedItems = noteLines.filter(line => line.startsWith('•')).map(line => line.substring(1).trim())
-  
-  // Separate items by category
-  const bonusItems = includedItems.filter(item => 
-    item.includes('Hébergement') || item.includes('Formation') || item.includes('offert')
-  )
-  const featureItems = includedItems.filter(item => 
-    !bonusItems.includes(item) && !item.includes('SEO') && !item.includes('SSL')
-  )
-  const technicalItems = includedItems.filter(item => 
-    item.includes('SEO') || item.includes('SSL') || item.includes('Analytics') || item.includes('Performance')
-  )
-  
-  return {
-    id: product.id,
-    name: product.name,
-    price: product.priceFormatted === 'Sur devis' ? product.priceFormatted : `${product.priceFormatted} HT`,
-    description: product.description,
-    deliveryTime: product.duration || '2-4 semaines',
-    gradient: gradients[index % gradients.length],
-    popular: product.name.includes('Premium'),
-    highlights: includedItems.slice(0, 3),
-    paymentLink: product.paymentLink,
-    sections: {
-      bonus: {
-        title: 'Bonus inclus',
-        items: bonusItems.length > 0 ? bonusItems : [
-          'Hébergement 1 an offert',
-          'Maintenance incluse',
-          'Support technique'
-        ]
-      },
-      features: {
-        title: 'Fonctionnalités',
-        items: featureItems.length > 0 ? featureItems.slice(0, 5) : [
-          'Design responsive',
-          'Formulaire de contact',
-          'Intégration réseaux sociaux',
-          'Optimisation mobile'
-        ]
-      },
-      technical: {
-        title: 'Technique',
-        items: technicalItems.length > 0 ? technicalItems : [
-          'Certificat SSL',
-          'SEO optimisé',
-          'Analytics intégré'
-        ]
-      }
-    }
-  }
-})
-
-// Portfolio data is now handled differently in the portfolio section
-// const portfolio = [
-//   { name: 'CMX FACTORY', description: 'Vos pièces Cross & Supermot.', image: '/portfolio/cmx-factory.jpg' },
-//   { name: 'CBD RUN', description: 'CBD Bio à la Réunion !', image: '/portfolio/cbd-run.jpg' },
-//   { name: 'SNOWKITE SENTATION', description: 'Passez du Kitesurf au Snowkite', image: '/portfolio/snowkite.jpg' },
-//   { name: 'CLICKNVAN', description: 'L\'aventure commence !', image: '/portfolio/clicknvan.jpg' },
-//   { name: 'SOGITE', description: 'Solutions informatiques professionnelles', image: '/portfolio/sogite.jpg' }
-// ]
+const references = [
+  { name: 'Mystik Sauna', url: 'https://mystiksauna.re', gradient: 'from-amber-500 to-red-600', screenshot: '/references/mystiksauna-re.webp' },
+  { name: 'Sogitec Énergie', url: 'https://sogitec-energie.fr', gradient: 'from-blue-500 to-cyan-600', screenshot: '/references/sogitec-energie-fr.webp' },
+  // { name: 'EMPC', url: 'https://empc.re', gradient: 'from-emerald-500 to-teal-600', screenshot: '/references/empc-re.webp' },
+  // { name: 'Sabaguina', url: 'https://sabaguina.com', gradient: 'from-yellow-500 to-orange-600', screenshot: '/references/sabaguina-com.webp' },
+  { name: 'La Boussole du Manager', url: 'https://laboussoledumanager.re', gradient: 'from-indigo-500 to-purple-600', screenshot: '/references/laboussoledumanager-re.webp' },
+  // { name: 'Bernard Contrain', url: 'https://bernardcontrain.com', gradient: 'from-slate-500 to-gray-700', screenshot: '/references/bernardcontrain-com.webp' },
+  { name: 'Pascal Destercke', url: 'https://pascal-destercke.com', gradient: 'from-digiqo-secondary to-cyan-600', screenshot: '/references/pascal-destercke-com.webp' },
+  { name: 'Velocit AI', url: 'https://velocit-ai.fr', gradient: 'from-blue-500 to-purple-600', screenshot: '/references/velocit-ai-fr.webp' },
+  // { name: 'CBD Run', url: 'https://cbd-run.com', gradient: 'from-green-500 to-emerald-600', screenshot: '/references/cbd-run-com.webp' },
+  { name: 'Monsterphone', url: 'https://monster-phone.re', gradient: 'from-red-500 to-pink-600', screenshot: '/references/monster-phone-re.webp' },
+  { name: 'Parapente Réunion', url: 'https://parapente-reunion.fr', gradient: 'from-sky-500 to-blue-600', screenshot: '/references/parapente-reunion-fr.webp' },
+  { name: "Click'n Van", url: 'https://clicknvan.com', gradient: 'from-orange-500 to-amber-600', screenshot: '/references/clicknvan-com.webp' },
+  { name: 'Zen Eat Yoga', url: 'https://zeneatyoga.com', gradient: 'from-teal-500 to-green-600', screenshot: '/references/zeneatyoga-com.webp' },
+  { name: 'Investis DOM', url: 'https://investis-dom.com', gradient: 'from-digiqo-primary to-digiqo-primary-dark', screenshot: '/references/investis-dom-com.webp' },
+  { name: 'CMX Factory', url: 'https://cmxfactory.com', gradient: 'from-digiqo-accent to-orange-500', screenshot: '/references/cmxfactory-com.webp' },
+]
 
 export default function DevWebPage() {
   const seoData = servicesSEO['developpement-web-reunion']
@@ -199,7 +102,7 @@ export default function DevWebPage() {
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Développement Web La Réunion',
+    name: 'Développement Web Sur Mesure La Réunion',
     provider: {
       '@type': 'Organization',
       name: 'Digiqo',
@@ -209,14 +112,7 @@ export default function DevWebPage() {
       '@type': 'Place',
       name: 'La Réunion'
     },
-    description: seoData.description,
-    offers: packages.map(pkg => ({
-      '@type': 'Offer',
-      name: pkg.name,
-      price: pkg.price.replace(' HT', '').replace('€', '').replace(/\s/g, ''),
-      priceCurrency: 'EUR',
-      deliveryLeadTime: pkg.deliveryTime
-    }))
+    description: seoData.description
   }
 
   return (
@@ -249,397 +145,21 @@ export default function DevWebPage() {
           line1: "Votre site web",
           line2: "à la carte"
         }}
-        subtitle="Sites web haute performance, sur-mesure et optimisés SEO. Technologie de pointe, design premium, résultats garantis."
+        subtitle="Développement web 100% sur mesure, sur devis. Technologie de pointe, design premium, résultats garantis."
         ctaButtons={{
           primary: {
-            text: "Demander un devis",
-            href: "/devis-site-web"
+            text: "Prendre rendez-vous",
+            href: CALENDAR_LINK
           },
           secondary: {
-            text: "Voir nos réalisations",
-            href: "#portfolio"
+            text: "Voir nos références",
+            href: "#references"
           }
         }}
         gradientFrom="from-digiqo-secondary"
         gradientTo="to-digiqo-secondary/80"
         iconColor="text-digiqo-secondary"
       />
-
-      {/* Features Section Premium */}
-      <section id="sites-abonnement" className="py-24 bg-gradient-to-br from-white to-digiqo-accent/5 relative overflow-hidden">
-        {/* Background decoration */}
-        <SectionGradientOrbs />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <motion.span
-              {...ANIMATION.entry.scaleIn}
-              whileInView={ANIMATION.entry.scaleIn.animate}
-              viewport={{ once: true }}
-              className="inline-block px-4 py-2 bg-gradient-to-r from-digiqo-accent to-orange-500 text-white text-sm font-bold rounded-full mb-6"
-            >
-              NOUVEAU - SITES WEB EN ABONNEMENT
-            </motion.span>
-            
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Sites Web <span className="bg-gradient-to-r from-digiqo-accent to-orange-500 bg-clip-text text-transparent">sur mesure ou en abonnement</span>
-            </h2>
-            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto mb-4">
-              Votre présence en ligne professionnelle dès 99€/mois
-            </p>
-            <p className="text-lg text-digiqo-primary/60 max-w-2xl mx-auto">
-              Sans frais de création • Hébergement inclus • Support technique inclus
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8 items-stretch">
-            {/* Site One Page Essentiel */}
-            <motion.div
-              {...ANIMATION.entry.fadeInUpLarge}
-              whileInView={ANIMATION.entry.fadeInUpLarge.animate}
-              viewport={{ once: true }}
-              transition={{ delay: ANIMATION.delay.stagger }}
-              whileHover={ANIMATION.hover.liftLarge}
-              className="group relative"
-            >
-              <div className="relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col overflow-hidden">
-                {/* Header */}
-                <div className="p-8 bg-gradient-to-br from-emerald-500 to-teal-600">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center">
-                    <Globe className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white text-center mb-2">Site vitrine + formulaire de contact</h3>
-                  <p className="text-white/90 text-sm text-center">Affichez votre entreprise et votre activité</p>
-                </div>
-                
-                {/* Prix */}
-                <div className="p-6 bg-gray-50 border-b border-gray-100">
-                  <div className="text-center">
-                    <p className="text-5xl font-bold text-digiqo-primary">
-                      99€
-                    </p>
-                    <p className="text-gray-600 mt-2">/mois</p>
-                    <p className="text-xs text-digiqo-primary/60 mt-2">Engagement minimum 3 mois</p>
-                  </div>
-                </div>
-                
-                {/* Features */}
-                <div className="p-6 flex-grow">
-                  <h4 className="font-semibold text-gray-800 mb-4">Inclus :</h4>
-                  <ul className="space-y-3 text-sm">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Présentation complète de votre entreprise et services</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Formulaire de contact professionnel intégré</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Formulaire intelligent – recevez vos demandes directement</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Galerie responsive – valorisez vos réalisations</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">SEO + Analytics – soyez visible et mesurez vos résultats</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Design mobile-first – parfait sur tous les écrans</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Personnalisation complète – votre image, vos couleurs</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Hébergement sécurisé + support technique – nous gérons tout</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Témoignages intégrés – rassurez vos prospects</span>
-                    </li>
-                  </ul>
-                </div>
-                
-                {/* CTA */}
-                <div className="p-6 bg-gray-50 border-t border-gray-100">
-                  <a
-                    href="https://app-eu1.hubspot.com/payments/tNtmnNDDGMvXRXR?referrer=PAYMENT_LINK"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full py-4 px-6 text-center font-semibold rounded-full transition-all bg-white border-2 border-digiqo-secondary text-digiqo-secondary hover:bg-digiqo-secondary hover:text-white"
-                  >
-                    Choisir cette formule
-                  </a>
-                  <a
-                    href="https://demo-digiqo.netlify.app/club-plongee-saint-leu/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full py-3 px-6 mt-3 text-center font-semibold rounded-full transition-all bg-digiqo-secondary/10 text-digiqo-secondary hover:bg-digiqo-secondary/20"
-                  >
-                    Voir une démo
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Site One Page + Devis */}
-            <motion.div
-              {...ANIMATION.entry.fadeInUpLarge}
-              whileInView={ANIMATION.entry.fadeInUpLarge.animate}
-              viewport={{ once: true }}
-              transition={{ delay: ANIMATION.delay.stagger * 2 }}
-              whileHover={ANIMATION.hover.liftLarge}
-              className="group relative"
-            >
-              {/* Badge Populaire */}
-              <div className="absolute -top-3 -right-10 bg-white text-blue-600 px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-blue-500">
-                LE PLUS POPULAIRE
-              </div>
-              
-              <div className="relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col overflow-hidden ring-2 ring-blue-500">
-                {/* Header */}
-                <div className="p-8 bg-gradient-to-br from-blue-500 to-indigo-600">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center">
-                    <FileText className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white text-center mb-2">Site vitrine + formulaire devis</h3>
-                  <p className="text-white/90 text-sm text-center">Collectez efficacement des demandes de devis</p>
-                </div>
-                
-                {/* Prix */}
-                <div className="p-6 bg-gray-50 border-b border-gray-100">
-                  <div className="text-center">
-                    <p className="text-5xl font-bold text-digiqo-accent">
-                      199€
-                    </p>
-                    <p className="text-gray-600 mt-2">/mois</p>
-                    <p className="text-xs text-digiqo-primary/60 mt-2">Engagement minimum 3 mois</p>
-                  </div>
-                </div>
-                
-                {/* Features */}
-                <div className="p-6 flex-grow">
-                  <h4 className="font-semibold text-gray-800 mb-4">Inclus :</h4>
-                  <ul className="space-y-3 text-sm">
-                    <li className="flex items-start gap-2">
-                      <Star className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
-                      <span className="text-gray-700 font-semibold">Formulaire de devis détaillé et personnalisable</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Star className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
-                      <span className="text-gray-700 font-semibold">Système de collecte de demandes de devis automatisé</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Formulaire intelligent – centralisez toutes les demandes</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Galerie responsive – valorisez vos réalisations</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
-                      <span className="text-gray-700">SEO optimisé + Analytics – soyez visible et mesurez vos résultats</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Design mobile-first – parfait sur tous les écrans</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Personnalisation complète – couleurs, logo, textes adaptés</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Hébergement sécurisé + support technique inclus</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Témoignages intégrés – rassurez vos prospects</span>
-                    </li>
-                  </ul>
-                </div>
-                
-                {/* CTA */}
-                <div className="p-6 bg-gray-50 border-t border-gray-100">
-                  <a
-                    href="https://app-eu1.hubspot.com/payments/sg9GhNqGRxhm?referrer=PAYMENT_LINK"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full py-4 px-6 text-center font-semibold rounded-full transition-all bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                  >
-                    Choisir cette formule
-                  </a>
-                  <a
-                    href="https://demo-digiqo.netlify.app/carreleur-devis/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full py-3 px-6 mt-3 text-center font-semibold rounded-full transition-all bg-digiqo-accent/10 text-digiqo-accent hover:bg-digiqo-accent/20"
-                  >
-                    Voir une démo
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Site One Page Restaurant */}
-            <motion.div
-              {...ANIMATION.entry.fadeInUpLarge}
-              whileInView={ANIMATION.entry.fadeInUpLarge.animate}
-              viewport={{ once: true }}
-              transition={{ delay: ANIMATION.delay.stagger * 3 }}
-              whileHover={ANIMATION.hover.liftLarge}
-              className="group relative"
-            >
-              <div className="relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col overflow-hidden">
-                {/* Header */}
-                <div className="p-8 bg-gradient-to-br from-purple-500 to-pink-600">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center">
-                    <Coffee className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white text-center mb-2">Site vitrine + commande en ligne</h3>
-                  <p className="text-white/90 text-sm text-center">Adaptés au Snack, Pizzerias. Affichez le menu et recevez les commandes</p>
-                </div>
-                
-                {/* Prix */}
-                <div className="p-6 bg-gray-50 border-b border-gray-100">
-                  <div className="text-center">
-                    <p className="text-5xl font-bold text-digiqo-primary">
-                      299€
-                    </p>
-                    <p className="text-gray-600 mt-2">/mois</p>
-                    <p className="text-xs text-digiqo-primary/60 mt-2">Engagement minimum 3 mois</p>
-                  </div>
-                </div>
-                
-                {/* Features */}
-                <div className="p-6 flex-grow">
-                  <h4 className="font-semibold text-gray-800 mb-4">Inclus :</h4>
-                  <ul className="space-y-3 text-sm">
-                    <li className="flex items-start gap-2">
-                      <Star className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700 font-semibold">Menu interactif avec photos et descriptions</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Star className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700 font-semibold">Système de commande en ligne intégré</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Formulaire intelligent – centralisez toutes les demandes</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Galerie responsive – valorisez vos réalisations</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">SEO optimisé + Analytics – soyez visible et mesurez vos résultats</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Design mobile-first – parfait sur tous les écrans</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Personnalisation complète – couleurs, logo, textes adaptés</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Hébergement sécurisé + support technique inclus</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Témoignages intégrés – rassurez vos prospects</span>
-                    </li>
-                  </ul>
-                </div>
-                
-                {/* CTA */}
-                <div className="p-6 bg-gray-50 border-t border-gray-100">
-                  <a
-                    href="https://app-eu1.hubspot.com/payments/9z9ymxfC?referrer=PAYMENT_LINK"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full py-4 px-6 text-center font-semibold rounded-full transition-all bg-white border-2 border-digiqo-primary text-digiqo-primary hover:bg-digiqo-primary hover:text-white"
-                  >
-                    Choisir cette formule
-                  </a>
-                  <a
-                    href="https://demo-digiqo.netlify.app/snack-vente/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full py-3 px-6 mt-3 text-center font-semibold rounded-full transition-all bg-digiqo-primary/10 text-digiqo-primary hover:bg-digiqo-primary/20"
-                  >
-                    Voir une démo
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Avantages Section */}
-          <motion.div
-            {...ANIMATION.entry.fadeInUp}
-            whileInView={ANIMATION.entry.fadeInUp.animate}
-            viewport={{ once: true }}
-            className="mt-16 grid md:grid-cols-4 gap-6"
-          >
-            {[
-              { icon: CreditCard, title: "Sans frais de création", desc: "0€ d'investissement initial" },
-              { icon: Shield, title: "Sans engagement", desc: "Résiliable après 3 mois" },
-              { icon: Headphones, title: "Support inclus", desc: "Assistance technique comprise" },
-              { icon: RefreshCw, title: "Mises à jour incluses", desc: "Site toujours à jour" }
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                {...ANIMATION.entry.fadeInUp}
-                whileInView={ANIMATION.entry.fadeInUp.animate}
-                viewport={{ once: true }}
-                transition={{ delay: getStaggerDelay(index) }}
-                className="text-center"
-              >
-                <div className="w-14 h-14 mx-auto mb-3 bg-gradient-to-br from-digiqo-accent/10 to-orange-500/10 rounded-xl flex items-center justify-center">
-                  <feature.icon className="w-7 h-7 text-digiqo-accent" />
-                </div>
-                <h4 className="font-semibold text-sm mb-1">{feature.title}</h4>
-                <p className="text-xs text-gray-600">{feature.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* CTA Sur-mesure */}
-          <motion.div
-            {...ANIMATION.entry.fadeInUp}
-            whileInView={ANIMATION.entry.fadeInUp.animate}
-            viewport={{ once: true }}
-            className="mt-12 text-center"
-          >
-            <a
-              href="/devis-site-web"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-digiqo-primary to-digiqo-primary-dark text-white font-bold rounded-full hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-            >
-              <Sparkles className="w-5 h-5" />
-              Je préfère un site web sur-mesure
-              <Sparkles className="w-5 h-5" />
-            </a>
-            <p className="mt-4 text-sm text-gray-600">
-              Projet complexe ? Besoins spécifiques ? Optez pour du développement sur-mesure
-            </p>
-          </motion.div>
-        </div>
-      </section>
 
       {/* Process & Technologies Section */}
       <section className="py-24 bg-gradient-to-br from-digiqo-primary via-digiqo-primary/80 to-digiqo-primary relative overflow-hidden">
@@ -833,9 +353,9 @@ export default function DevWebPage() {
         </div>
       </section>
 
-      {/* CTA Section - Remplace les formules */}
+      {/* Sur Mesure Section */}
       <section id="formules" className="py-24 bg-gradient-to-br from-white to-digiqo-secondary/5">
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-5xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -848,67 +368,82 @@ export default function DevWebPage() {
               viewport={{ once: true }}
               className="inline-block px-4 py-2 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 text-white text-sm font-bold rounded-full mb-6"
             >
-              SITE WEB SUR MESURE
+              DÉVELOPPEMENT SUR MESURE
             </motion.span>
-            
+
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
               Chaque projet est <span className="bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 bg-clip-text text-transparent">unique</span>
             </h2>
-            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto mb-10">
-              Nous créons des sites web entièrement personnalisés selon vos besoins spécifiques. 
-              Du design à la fonctionnalité, chaque détail est pensé pour votre succès.
+            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto mb-4">
+              Chez Digiqo, nous concevons des sites web 100% sur mesure, adaptés à vos objectifs.
             </p>
-            
-            <div className="bg-white rounded-3xl p-8 shadow-xl max-w-2xl mx-auto">
-              <h3 className="text-2xl font-bold mb-6">Pourquoi du sur-mesure ?</h3>
-              <div className="space-y-4 text-left mb-8">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-digiqo-secondary flex-shrink-0 mt-0.5" />
-                  <p className="text-digiqo-primary/80">
-                    <span className="font-semibold">Solution adaptée</span> : Votre site web répond exactement à vos objectifs business
-                  </p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-digiqo-secondary flex-shrink-0 mt-0.5" />
-                  <p className="text-digiqo-primary/80">
-                    <span className="font-semibold">Évolutivité garantie</span> : Votre site grandit avec votre entreprise
-                  </p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-digiqo-secondary flex-shrink-0 mt-0.5" />
-                  <p className="text-digiqo-primary/80">
-                    <span className="font-semibold">Performance optimale</span> : Code optimisé sans compromis
-                  </p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-digiqo-secondary flex-shrink-0 mt-0.5" />
-                  <p className="text-digiqo-primary/80">
-                    <span className="font-semibold">Design unique</span> : Votre identité visuelle respectée à 100%
-                  </p>
+            <p className="text-lg text-digiqo-accent font-semibold max-w-2xl mx-auto mb-12">
+              Un expert analyse vos besoins et vous envoie un devis sur mesure sous 24h.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              <div className="bg-white rounded-3xl p-8 shadow-xl text-left">
+                <h3 className="text-2xl font-bold mb-6">Pourquoi du sur-mesure ?</h3>
+                <div className="space-y-4">
+                  {[
+                    { title: 'Solution adaptée', desc: 'Votre site web répond exactement à vos objectifs business' },
+                    { title: 'Évolutivité garantie', desc: 'Votre site grandit avec votre entreprise' },
+                    { title: 'Performance optimale', desc: 'Code optimisé sans compromis' },
+                    { title: 'Design unique', desc: 'Votre identité visuelle respectée à 100%' },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-6 h-6 text-digiqo-secondary flex-shrink-0 mt-0.5" />
+                      <p className="text-digiqo-primary/80">
+                        <span className="font-semibold">{item.title}</span> : {item.desc}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <motion.a
-                href="/devis-site-web"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl hover:from-digiqo-secondary/90 hover:to-digiqo-secondary/70 transition-all duration-300"
-              >
-                Demander un devis
-                <CheckCircle2 className="w-5 h-5" />
-              </motion.a>
-
-              <p className="text-sm text-digiqo-primary/60 mt-4">
-                Consultation gratuite • Devis personnalisé
-              </p>
+              <div className="bg-white rounded-3xl p-8 shadow-xl text-left">
+                <h3 className="text-2xl font-bold mb-6">Comment ça marche ?</h3>
+                <div className="space-y-4">
+                  {[
+                    { step: '1', title: 'Prise de rendez-vous', desc: 'Réservez un créneau avec un expert Digiqo' },
+                    { step: '2', title: 'Analyse de vos besoins', desc: 'Nous étudions votre projet en détail lors du RDV' },
+                    { step: '3', title: 'Devis sur mesure', desc: 'Vous recevez un devis personnalisé sous 24h' },
+                    { step: '4', title: 'Développement', desc: 'Votre site est conçu et livré selon le cahier des charges' },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <div className="w-8 h-8 bg-gradient-to-br from-digiqo-secondary to-digiqo-secondary/80 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-white text-sm font-bold">{item.step}</span>
+                      </div>
+                      <p className="text-digiqo-primary/80">
+                        <span className="font-semibold">{item.title}</span> : {item.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
+
+            <motion.a
+              href={CALENDAR_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:from-digiqo-secondary/90 hover:to-digiqo-secondary/70 transition-all duration-300"
+            >
+              <Calendar className="w-6 h-6" />
+              Prendre rendez-vous avec un expert
+            </motion.a>
+
+            <p className="text-sm text-digiqo-primary/60 mt-4">
+              Consultation gratuite • Devis personnalisé sous 24h
+            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Portfolio Section Premium */}
-      <section id="portfolio" className="py-24 bg-gradient-to-br from-white via-digiqo-accent/5 to-white relative overflow-hidden">
-        {/* Background decoration */}
+      {/* Nos Références Section */}
+      <section id="references" className="py-24 bg-gradient-to-br from-white via-digiqo-accent/5 to-white relative overflow-hidden">
         <SectionGradientOrbs />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4">
@@ -916,7 +451,7 @@ export default function DevWebPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-16"
           >
             <motion.span
               {...ANIMATION.entry.scaleIn}
@@ -925,140 +460,72 @@ export default function DevWebPage() {
               className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 text-white text-sm font-bold rounded-full mb-6"
             >
               <Star className="w-4 h-4" />
-              PORTFOLIO PREMIUM
+              NOS RÉFÉRENCES
               <Star className="w-4 h-4" />
             </motion.span>
-            
+
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Nos <span className="bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 bg-clip-text text-transparent">Réalisations</span> d'Exception
+              Ils nous font <span className="bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 bg-clip-text text-transparent">confiance</span>
             </h2>
             <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
-              Des projets qui combinent innovation technique et design premium pour des résultats remarquables
+              Découvrez les sites web que nous avons conçus pour nos clients
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-8 items-stretch">
-            {[
-              {
-                name: 'VELOCIT AI',
-                description: 'Plateforme d\'intelligence artificielle pour l\'optimisation des processus métiers',
-                url: 'velocit-ai.fr',
-                link: 'https://velocit-ai.fr/',
-                tags: ['AI Platform', 'Next.js', 'Machine Learning', 'API'],
-                stats: { performance: 99, conversions: '+68%', loading: '0.8s' },
-                gradient: 'from-blue-500 to-purple-600',
-                image: '/services-content/velocit-ai-hero.png'
-              },
-              {
-                name: 'PARAPENTE RÉUNION',
-                description: 'Site vitrine pour activités de parapente et vols découverte à La Réunion',
-                url: 'parapente-reunion.fr',
-                link: 'https://parapente-reunion.fr/',
-                tags: ['Tourisme', 'React', 'Réservation', 'SEO'],
-                stats: { performance: 98, conversions: '+62%', loading: '0.9s' },
-                gradient: 'from-sky-500 to-blue-600',
-                image: '/services-content/parapente-reunion-hero.png'
-              },
-              {
-                name: 'RUNCALL',
-                description: 'Centre d\'appels spécialisé avec closers créolophones pour La Réunion',
-                url: 'runcall.re',
-                link: 'https://runcall.re/',
-                tags: ['Services', 'Landing Page', 'Conversion', 'Analytics'],
-                stats: { performance: 98, conversions: '+72%', loading: '0.9s' },
-                gradient: 'from-digiqo-accent to-orange-500',
-                image: '/services-content/screenshotruncall.png'
-              },
-              {
-                name: 'LODGES PARADISE',
-                description: 'Site vitrine pour entreprise de construction de lodges et habitations premium',
-                url: 'lodgesparadise.com',
-                link: 'https://lodgesparadise.com/',
-                tags: ['Construction', 'BTP', 'Next.js', 'Premium'],
-                stats: { performance: 97, conversions: '+58%', loading: '1.0s' },
-                gradient: 'from-amber-500 to-orange-600',
-                image: '/services-content/lodges-paradise-hero.png'
-              }
-            ].map((project, index) => (
-              <motion.div
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {references.map((ref, index) => (
+              <motion.a
                 key={index}
-                initial={{ opacity: 0, y: 50 }}
+                href={ref.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: getStaggerDelay(index) }}
-                className="group relative h-full"
+                transition={{ delay: index * 0.05 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
               >
-                <motion.div
-                  whileHover={ANIMATION.hover.liftLarge}
-                  className="relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 h-full flex flex-col"
-                >
-                  {/* Project preview with actual image */}
-                  <div className="relative aspect-video overflow-hidden">
-                    {/* Project image */}
-                    <Image
-                      src={project.image}
-                      alt={project.name}
-                      fill
-                      className="object-cover object-top"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                    
-                    {/* Live indicator */}
-                    <div className="absolute top-6 right-6 flex items-center gap-2 px-3 py-1 bg-digiqo-secondary text-white text-xs font-bold rounded-full">
-                      <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
-                      LIVE
-                    </div>
-                  </div>
-                  
-                  {/* Project info */}
-                  <div className="p-8 flex-1 flex flex-col">
-                    <h3 className="text-2xl font-bold mb-3">{project.name}</h3>
-                    <p className="text-digiqo-primary/70 mb-6 flex-1">{project.description}</p>
-                    
-                    {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tags.map((tag, tagIndex) => (
-                        <span
-                          key={tagIndex}
-                          className="px-3 py-1 bg-digiqo-secondary/10 text-digiqo-secondary text-xs font-medium rounded-full"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    
-                    {/* Performance metrics */}
-                    <div className="grid grid-cols-3 gap-4 mb-6 p-4 bg-digiqo-accent/5 rounded-xl">
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-digiqo-secondary">{project.stats.performance}</div>
-                        <div className="text-xs text-digiqo-primary/70">Performance</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-digiqo-accent">{project.stats.conversions}</div>
-                        <div className="text-xs text-digiqo-primary/70">Conversions</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-digiqo-primary">{project.stats.loading}</div>
-                        <div className="text-xs text-digiqo-primary/70">Chargement</div>
+                <div className="relative aspect-[4/3]">
+                  {/* Screenshot always visible */}
+                  <Image
+                    src={ref.screenshot}
+                    alt={`Aperçu ${ref.name}`}
+                    fill
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    loading="lazy"
+                  />
+
+                  {/* Overlay gradient on bottom for text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+
+                  {/* Content */}
+                  <div className="absolute inset-0 flex flex-col justify-between p-5">
+                    {/* Live badge */}
+                    <div className="flex justify-end">
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
+                        EN LIGNE
                       </div>
                     </div>
 
-                    {/* CTA Button */}
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 text-white font-semibold rounded-full hover:from-digiqo-secondary/90 hover:to-digiqo-secondary/70 transition-all duration-300 shadow-md hover:shadow-lg"
-                    >
-                      Voir le site
-                      <Globe className="w-4 h-4" />
-                    </a>
+                    {/* Bottom info */}
+                    <div>
+                      <h3 className="text-white font-bold text-lg mb-1 drop-shadow-lg">{ref.name}</h3>
+                      <div className="flex items-center gap-1.5 text-white/80 text-xs">
+                        <ExternalLink className="w-3 h-3" />
+                        <span>{ref.url.replace('https://', '')}</span>
+                      </div>
+                    </div>
                   </div>
-                </motion.div>
-              </motion.div>
+
+                  {/* Hover border effect */}
+                  <div className="absolute inset-0 rounded-2xl ring-2 ring-white/0 group-hover:ring-digiqo-secondary/50 transition-all duration-300" />
+                </div>
+              </motion.a>
             ))}
           </div>
-
         </div>
       </section>
 
@@ -1074,20 +541,36 @@ export default function DevWebPage() {
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
               Prêt à créer votre site web ?
             </h2>
-            <p className="text-xl text-white/90 mb-8">
-              Discutons de votre projet et trouvons ensemble la solution parfaite pour votre entreprise.
+            <p className="text-xl text-white/90 mb-4">
+              Réservez un rendez-vous avec un expert Digiqo.
             </p>
-            <motion.a
-              href={generateWhatsAppLink({ service: 'dev-web' })}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl"
-            >
-              Contactez-nous sur WhatsApp
-              <MessageCircle className="w-5 h-5" />
-            </motion.a>
+            <p className="text-lg text-white/70 mb-8">
+              Un expert analyse vos besoins et vous envoie un devis sur mesure sous 24h.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <motion.a
+                href={CALENDAR_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-digiqo-secondary font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                <Calendar className="w-5 h-5" />
+                Prendre rendez-vous
+              </motion.a>
+              <motion.a
+                href={generateWhatsAppLink({ service: 'dev-web' })}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-green-500 text-white font-bold rounded-full hover:bg-green-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                <MessageCircle className="w-5 h-5" />
+                WhatsApp
+              </motion.a>
+            </div>
           </motion.div>
         </div>
       </section>

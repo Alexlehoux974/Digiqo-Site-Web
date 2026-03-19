@@ -59,36 +59,9 @@ export default function TimelinePaymentStep({ data, updateData }: TimelinePaymen
       />
 
       <div>
-        <FormField
-          label="Formule de paiement préférée"
-          name="paymentMode"
-          type="radio"
-          required
-          value={data.timeline?.paymentMode || ''}
-          onChange={(e) => updateData('timeline.paymentMode', e.target.value)}
-          options={[
-            {
-              value: 'monthly',
-              label: 'Abonnement mensuel (maintenance et hébergement inclus)'
-            },
-            {
-              value: 'onetime',
-              label: 'Paiement unique (sans maintenance ni hébergement)'
-            }
-          ]}
-        />
-
-        {data.timeline?.paymentMode === 'monthly' && (
-          <p className="mt-2 text-sm text-gray-600 bg-blue-50 p-3 rounded-lg">
-            ℹ️ L'abonnement mensuel inclut l'hébergement, la maintenance, les mises à jour de sécurité et le support technique.
-          </p>
-        )}
-
-        {data.timeline?.paymentMode === 'onetime' && (
-          <p className="mt-2 text-sm text-gray-600 bg-yellow-50 p-3 rounded-lg">
-            ⚠️ Le paiement unique ne comprend pas l'hébergement ni la maintenance. Vous devrez gérer ces aspects vous-même, ou souscrire à une de nos offres SiteKeeper ou ShopKeeper.
-          </p>
-        )}
+        <p className="mt-2 text-sm text-gray-600 bg-blue-50 p-3 rounded-lg">
+          Tous nos projets sont réalisés sur devis personnalisé. L'hébergement et la maintenance peuvent être ajoutés via nos offres SiteKeeper ou ShopKeeper.
+        </p>
       </div>
 
       <FormField
