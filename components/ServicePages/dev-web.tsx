@@ -94,6 +94,7 @@ const references = [
   { name: 'Zen Eat Yoga', url: 'https://zeneatyoga.com', gradient: 'from-teal-500 to-green-600', screenshot: '/references/zeneatyoga-com.webp' },
   { name: 'Investis DOM', url: 'https://investis-dom.com', gradient: 'from-digiqo-primary to-digiqo-primary-dark', screenshot: '/references/investis-dom-com.webp' },
   { name: 'CMX Factory', url: 'https://cmxfactory.com', gradient: 'from-digiqo-accent to-orange-500', screenshot: '/references/cmxfactory-com.webp' },
+  { name: 'Sattwika', url: 'https://sattwika.com', gradient: 'from-amber-500 to-yellow-600', screenshot: '/references/sattwika-com.webp' },
 ]
 
 export default function DevWebPage() {
