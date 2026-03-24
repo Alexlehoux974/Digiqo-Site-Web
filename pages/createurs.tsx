@@ -137,12 +137,12 @@ const InfluencerCard = ({ influencer, index }: { influencer: Influencer; index: 
       className="group relative"
     >
       {/* Card */}
-      <div className="relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-gray-200">
+      <div className="relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-gray-200">
 
         {/* Top gradient accent bar */}
         <div className="h-1.5 bg-gradient-to-r from-pink-500 via-fuchsia-500 to-amber-400" />
 
-        <div className="p-5 sm:p-8">
+        <div className="p-4 sm:p-8">
           {/* Profile Header */}
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 mb-6">
             {/* Instagram-style gradient ring photo */}
@@ -234,16 +234,16 @@ const InfluencerCard = ({ influencer, index }: { influencer: Influencer; index: 
           </div>
 
           {/* Stats Row */}
-          <div className="grid grid-cols-2 gap-4 mb-6">
-            <div className="bg-gray-50 rounded-xl p-3 text-center">
+          <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-6">
+            <div className="bg-gray-50 rounded-xl p-2 sm:p-3 text-center">
               <Heart className="w-4 h-4 text-pink-500 mx-auto mb-1" />
-              <div className="text-xs text-gray-500">Engagement</div>
-              <div className="text-sm font-semibold text-gray-800">{influencer.engagement}</div>
+              <div className="text-[10px] sm:text-xs text-gray-500">Engagement</div>
+              <div className="text-xs sm:text-sm font-semibold text-gray-800">{influencer.engagement}</div>
             </div>
-            <div className="bg-gray-50 rounded-xl p-3 text-center">
+            <div className="bg-gray-50 rounded-xl p-2 sm:p-3 text-center">
               <Star className="w-4 h-4 text-amber-500 mx-auto mb-1" />
-              <div className="text-xs text-gray-500">Tarifs</div>
-              <div className="text-sm font-semibold text-gray-800">Sur demande</div>
+              <div className="text-[10px] sm:text-xs text-gray-500">Tarifs</div>
+              <div className="text-xs sm:text-sm font-semibold text-gray-800">Sur demande</div>
             </div>
           </div>
 
@@ -253,7 +253,7 @@ const InfluencerCard = ({ influencer, index }: { influencer: Influencer; index: 
               href={influencer.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-pink-500/25 transition-all duration-300"
+              className="flex-1 inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-3 bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white text-xs sm:text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-pink-500/25 transition-all duration-300"
             >
               <Instagram className="w-4 h-4" />
               Voir le profil
@@ -263,7 +263,7 @@ const InfluencerCard = ({ influencer, index }: { influencer: Influencer; index: 
               href={generateContactUrl({
                 description: `Je souhaite collaborer avec ${influencer.name} (${influencer.handle}) pour une campagne de contenu`,
               })}
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-3 bg-gray-900 text-white text-sm font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-3 bg-gray-900 text-white text-xs sm:text-sm font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300"
             >
               <MessageCircle className="w-4 h-4" />
               Engager
@@ -331,7 +331,7 @@ export default function CreateursPage() {
           <div className="absolute top-0 right-0 w-96 h-96 bg-pink-50 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-50 rounded-full blur-3xl opacity-50 translate-y-1/2 -translate-x-1/2" />
 
-          <div className="relative max-w-6xl mx-auto px-6">
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
             <motion.div
               {...ANIMATION.entry.fadeInUp}
               transition={{ duration: ANIMATION.duration.normal }}
@@ -391,11 +391,11 @@ export default function CreateursPage() {
             <div className="absolute bottom-20 right-10 w-72 h-72 bg-purple-100 rounded-full blur-3xl opacity-30" />
           </div>
 
-          <div className="relative max-w-6xl mx-auto px-6">
+          <div className="relative max-w-6xl mx-auto px-3 sm:px-6">
             <motion.div
               {...ANIMATION.entry.fadeInUp}
               transition={{ duration: ANIMATION.duration.normal }}
-              className="text-center mb-16"
+              className="text-center mb-16 px-3 sm:px-0"
             >
               <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-purple-50 text-purple-600 rounded-full text-sm font-semibold mb-4">
                 <Users className="w-4 h-4" />
@@ -439,7 +439,7 @@ export default function CreateursPage() {
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-3xl" />
 
-          <div className="relative max-w-4xl mx-auto px-6">
+          <div className="relative max-w-4xl mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-12 items-center">
               {/* Creator CTA */}
               <motion.div
