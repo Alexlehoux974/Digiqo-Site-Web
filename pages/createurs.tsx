@@ -142,12 +142,12 @@ const InfluencerCard = ({ influencer, index }: { influencer: Influencer; index: 
         {/* Top gradient accent bar */}
         <div className="h-1.5 bg-gradient-to-r from-pink-500 via-fuchsia-500 to-amber-400" />
 
-        <div className="p-8">
+        <div className="p-5 sm:p-8">
           {/* Profile Header */}
-          <div className="flex items-start gap-6 mb-6">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 mb-6">
             {/* Instagram-style gradient ring photo */}
             <div className="relative flex-shrink-0">
-              <div className="w-24 h-24 rounded-full p-[3px] bg-gradient-to-br from-amber-400 via-pink-500 to-purple-600">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-[3px] bg-gradient-to-br from-amber-400 via-pink-500 to-purple-600">
                 <div className="w-full h-full rounded-full p-[2px] bg-white">
                   {!imageError ? (
                     <img
@@ -167,21 +167,28 @@ const InfluencerCard = ({ influencer, index }: { influencer: Influencer; index: 
               <div className="absolute -bottom-0.5 -right-0.5 w-6 h-6 bg-emerald-400 rounded-full border-[3px] border-white" />
             </div>
 
-            {/* Name & Meta */}
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 mb-1">
-                <h3 className="text-xl font-bold text-gray-900 truncate">{influencer.name}</h3>
+            {/* Name & Meta + Follower badge */}
+            <div className="flex-1 min-w-0 text-center sm:text-left">
+              <div className="flex items-center justify-center sm:justify-start gap-2 mb-1">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900">{influencer.name}</h3>
                 <CheckCircle2 className="w-5 h-5 text-blue-500 flex-shrink-0" />
               </div>
               <p className="text-sm text-gray-500 mb-2">{influencer.handle}</p>
-              <div className="flex items-center gap-1.5 text-sm text-gray-500">
+              <div className="flex items-center justify-center sm:justify-start gap-1.5 text-sm text-gray-500 mb-3 sm:mb-0">
                 <MapPin className="w-3.5 h-3.5" />
                 <span>{influencer.location}</span>
               </div>
+              {/* Follower badge — inline on mobile */}
+              <div className="inline-flex sm:hidden mt-2">
+                <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white px-4 py-2 rounded-2xl text-center">
+                  <div className="text-lg font-bold leading-tight">{influencer.followers}</div>
+                  <div className="text-[10px] uppercase tracking-wider text-gray-400">followers</div>
+                </div>
+              </div>
             </div>
 
-            {/* Follower badge */}
-            <div className="flex-shrink-0">
+            {/* Follower badge — desktop only */}
+            <div className="flex-shrink-0 hidden sm:block">
               <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white px-4 py-2 rounded-2xl text-center">
                 <div className="text-lg font-bold leading-tight">{influencer.followers}</div>
                 <div className="text-[10px] uppercase tracking-wider text-gray-400">followers</div>
@@ -207,9 +214,9 @@ const InfluencerCard = ({ influencer, index }: { influencer: Influencer; index: 
           </div>
 
           {/* Content Types */}
-          <div className="flex items-center gap-3 mb-6 pb-6 border-b border-gray-100">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-6 pb-6 border-b border-gray-100">
             <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">Formats</span>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               {influencer.contentTypes.map((type) => {
                 const IconComponent = contentTypeIcons[type] || Camera
                 return (
@@ -241,7 +248,7 @@ const InfluencerCard = ({ influencer, index }: { influencer: Influencer; index: 
           </div>
 
           {/* Actions */}
-          <div className="flex gap-3">
+          <div className="flex flex-col sm:flex-row gap-3">
             <a
               href={influencer.instagram}
               target="_blank"
@@ -256,7 +263,7 @@ const InfluencerCard = ({ influencer, index }: { influencer: Influencer; index: 
               href={generateContactUrl({
                 description: `Je souhaite collaborer avec ${influencer.name} (${influencer.handle}) pour une campagne de contenu`,
               })}
-              className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-gray-900 text-white text-sm font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-3 bg-gray-900 text-white text-sm font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300"
             >
               <MessageCircle className="w-4 h-4" />
               Engager
@@ -342,7 +349,7 @@ export default function CreateursPage() {
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {processSteps.map((step, index) => (
                 <motion.div
                   key={step.number}
@@ -403,7 +410,7 @@ export default function CreateursPage() {
             </motion.div>
 
             {/* Influencer Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
               {influencers.map((influencer, index) => (
                 <InfluencerCard key={influencer.handle} influencer={influencer} index={index} />
               ))}
@@ -433,7 +440,7 @@ export default function CreateursPage() {
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-3xl" />
 
           <div className="relative max-w-4xl mx-auto px-6">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-12 items-center">
               {/* Creator CTA */}
               <motion.div
                 {...ANIMATION.entry.fadeInUp}
