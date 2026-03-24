@@ -89,6 +89,7 @@ const references = [
   { name: 'Investis DOM', url: 'https://investis-dom.com', screenshot: '/references/fullpage/investis-dom-com.webp' },
   { name: 'CMX Factory', url: 'https://cmxfactory.com', screenshot: '/references/fullpage/cmxfactory-com.webp' },
   { name: 'Sattwika', url: 'https://sattwika.com', screenshot: '/references/fullpage/sattwika-com.webp' },
+  { name: 'Mystik Sauna', url: 'https://mystiksauna.re', screenshot: '/references/fullpage/mystiksauna-re.webp' },
 ]
 
 // iMac Mockup component with auto-scrolling screenshot
