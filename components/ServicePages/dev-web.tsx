@@ -90,6 +90,8 @@ const references = [
   { name: 'CMX Factory', url: 'https://cmxfactory.com', screenshot: '/references/fullpage/cmxfactory-com.webp' },
   { name: 'Sattwika', url: 'https://sattwika.com', screenshot: '/references/fullpage/sattwika-com.webp' },
   { name: 'Mystik Sauna', url: 'https://mystiksauna.re', screenshot: '/references/fullpage/mystiksauna-re.webp' },
+  { name: 'Sabaguina (refonte en cours)', url: 'https://sabaguina.com', screenshot: '/references/fullpage/sabaguina-com.webp' },
+  { name: 'EMPC', url: 'https://empc.re', screenshot: '/references/fullpage/empc-re.webp' },
 ]
 
 // iMac Mockup component with auto-scrolling screenshot

@@ -24,6 +24,8 @@ const sites = [
   { name: 'investis-dom-com', url: 'https://investis-dom.com' },
   { name: 'cmxfactory-com', url: 'https://cmxfactory.com' },
   { name: 'sattwika-com', url: 'https://sattwika.com' },
+  { name: 'sabaguina-com', url: 'https://sabaguina.com' },
+  { name: 'empc-re', url: 'https://empc.re' },
 ];
 
 async function capture() {
