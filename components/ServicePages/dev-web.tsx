@@ -88,7 +88,6 @@ const references = [
   { name: 'Zen Eat Yoga', url: 'https://zeneatyoga.com', screenshot: '/references/fullpage/zeneatyoga-com.webp' },
   { name: 'Investis DOM', url: 'https://investis-dom.com', screenshot: '/references/fullpage/investis-dom-com.webp' },
   { name: 'CMX Factory', url: 'https://cmxfactory.com', screenshot: '/references/fullpage/cmxfactory-com.webp' },
-  { name: 'Mystik Sauna', url: 'https://mystiksauna.re', screenshot: '/references/fullpage/mystiksauna-re.webp' },
   { name: 'Sattwika', url: 'https://sattwika.com', screenshot: '/references/fullpage/sattwika-com.webp' },
 ]
 
