@@ -12,6 +12,7 @@ const navigation = {
     { name: 'Créatifs Publicitaires', href: '/services/creatifs' },
     { name: 'Identité de Marque', href: '/services/identite-de-marque' },
     { name: 'Maintenance Web', href: '/services/sitekeeper' },
+    { name: 'Créateurs de Contenu', href: '/createurs' },
     { name: 'Audit Digital Gratuit', href: '/audit' },
   ],
   company: [
@@ -202,8 +203,8 @@ export const Footer = () => {
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               {/* Copyright */}
               <div className="text-gray-400 text-xs text-center md:text-left">
-                © {currentYear} Digiqo. Tous droits réservés. Made with 
-                <span className="text-cyan-500 mx-1">♥</span> 
+                © {currentYear} Digiqo. Tous droits réservés. Made with
+                <span className="text-cyan-500 mx-1">♥</span>
                 in La Réunion 🇷🇪
               </div>
 

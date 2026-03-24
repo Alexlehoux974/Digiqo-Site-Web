@@ -98,6 +98,14 @@ const navigation = {
                 color: 'bg-slate-500'
               },
               {
+                name: 'Créateurs de Contenu',
+                href: '/createurs',
+                description: 'Influenceurs & UGC',
+                icon: Users,
+                color: 'bg-pink-500',
+                badge: 'Nouveau'
+              },
+              {
                 name: 'Audit Digital',
                 href: '/services/audit',
                 description: 'Analyse gratuite',
