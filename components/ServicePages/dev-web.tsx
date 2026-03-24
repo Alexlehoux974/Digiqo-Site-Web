@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 import Head from 'next/head'
-import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 import { SectionGradientOrbs } from '@/components/ui/animated-gradient-orb'
@@ -79,23 +78,129 @@ const AnimatedMetric = ({ value, label, suffix = '', delay = 0 }: AnimatedMetric
 const CALENDAR_LINK = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0zEg3G6P0cJY2oe7Tyi3KrmTAXRyYCu5chnHfDzECSr45IxTuiVQX9MYpfMUZT9MbL3VgQl9JW'
 
 const references = [
-  { name: 'Mystik Sauna', url: 'https://mystiksauna.re', gradient: 'from-amber-500 to-red-600', screenshot: '/references/mystiksauna-re.webp' },
-  { name: 'Sogitec Énergie', url: 'https://sogitec-energie.fr', gradient: 'from-blue-500 to-cyan-600', screenshot: '/references/sogitec-energie-fr.webp' },
-  // { name: 'EMPC', url: 'https://empc.re', gradient: 'from-emerald-500 to-teal-600', screenshot: '/references/empc-re.webp' },
-  // { name: 'Sabaguina', url: 'https://sabaguina.com', gradient: 'from-yellow-500 to-orange-600', screenshot: '/references/sabaguina-com.webp' },
-  { name: 'La Boussole du Manager', url: 'https://laboussoledumanager.re', gradient: 'from-indigo-500 to-purple-600', screenshot: '/references/laboussoledumanager-re.webp' },
-  // { name: 'Bernard Contrain', url: 'https://bernardcontrain.com', gradient: 'from-slate-500 to-gray-700', screenshot: '/references/bernardcontrain-com.webp' },
-  { name: 'Pascal Destercke', url: 'https://pascal-destercke.com', gradient: 'from-digiqo-secondary to-cyan-600', screenshot: '/references/pascal-destercke-com.webp' },
-  { name: 'Velocit AI', url: 'https://velocit-ai.fr', gradient: 'from-blue-500 to-purple-600', screenshot: '/references/velocit-ai-fr.webp' },
-  // { name: 'CBD Run', url: 'https://cbd-run.com', gradient: 'from-green-500 to-emerald-600', screenshot: '/references/cbd-run-com.webp' },
-  { name: 'Monsterphone', url: 'https://monster-phone.re', gradient: 'from-red-500 to-pink-600', screenshot: '/references/monster-phone-re.webp' },
-  { name: 'Parapente Réunion', url: 'https://parapente-reunion.fr', gradient: 'from-sky-500 to-blue-600', screenshot: '/references/parapente-reunion-fr.webp' },
-  { name: "Click'n Van", url: 'https://clicknvan.com', gradient: 'from-orange-500 to-amber-600', screenshot: '/references/clicknvan-com.webp' },
-  { name: 'Zen Eat Yoga', url: 'https://zeneatyoga.com', gradient: 'from-teal-500 to-green-600', screenshot: '/references/zeneatyoga-com.webp' },
-  { name: 'Investis DOM', url: 'https://investis-dom.com', gradient: 'from-digiqo-primary to-digiqo-primary-dark', screenshot: '/references/investis-dom-com.webp' },
-  { name: 'CMX Factory', url: 'https://cmxfactory.com', gradient: 'from-digiqo-accent to-orange-500', screenshot: '/references/cmxfactory-com.webp' },
-  { name: 'Sattwika', url: 'https://sattwika.com', gradient: 'from-amber-500 to-yellow-600', screenshot: '/references/sattwika-com.webp' },
+  { name: 'Mystik Sauna', url: 'https://mystiksauna.re', screenshot: '/references/fullpage/mystiksauna-re.webp' },
+  { name: 'Sogitec Énergie', url: 'https://sogitec-energie.fr', screenshot: '/references/fullpage/sogitec-energie-fr.webp' },
+  { name: 'La Boussole du Manager', url: 'https://laboussoledumanager.re', screenshot: '/references/fullpage/laboussoledumanager-re.webp' },
+  { name: 'Pascal Destercke', url: 'https://pascal-destercke.com', screenshot: '/references/fullpage/pascal-destercke-com.webp' },
+  { name: 'Velocit AI', url: 'https://velocit-ai.fr', screenshot: '/references/fullpage/velocit-ai-fr.webp' },
+  { name: 'Monsterphone', url: 'https://monster-phone.re', screenshot: '/references/fullpage/monster-phone-re.webp' },
+  { name: 'Parapente Réunion', url: 'https://parapente-reunion.fr', screenshot: '/references/fullpage/parapente-reunion-fr.webp' },
+  { name: "Click'n Van", url: 'https://clicknvan.com', screenshot: '/references/fullpage/clicknvan-com.webp' },
+  { name: 'Zen Eat Yoga', url: 'https://zeneatyoga.com', screenshot: '/references/fullpage/zeneatyoga-com.webp' },
+  { name: 'Investis DOM', url: 'https://investis-dom.com', screenshot: '/references/fullpage/investis-dom-com.webp' },
+  { name: 'CMX Factory', url: 'https://cmxfactory.com', screenshot: '/references/fullpage/cmxfactory-com.webp' },
+  { name: 'Sattwika', url: 'https://sattwika.com', screenshot: '/references/fullpage/sattwika-com.webp' },
 ]
+
+// iMac Mockup component with auto-scrolling screenshot
+const IMacMockup = ({ name, url, screenshot, index }: { name: string; url: string; screenshot: string; index: number }) => {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [isHovered, setIsHovered] = useState(false)
+  const imgRef = useRef<HTMLImageElement>(null)
+
+  useEffect(() => {
+    if (!isHovered || !containerRef.current) return
+    const container = containerRef.current
+    const scrollHeight = container.scrollHeight - container.clientHeight
+    if (scrollHeight <= 0) return
+
+    let animationId: number
+    let start: number | null = null
+    const duration = Math.max(scrollHeight * 8, 4000) // speed relative to content length
+
+    const animate = (timestamp: number) => {
+      if (!start) start = timestamp
+      const elapsed = timestamp - start
+      const progress = Math.min(elapsed / duration, 1)
+      // Ease in-out
+      const eased = progress < 0.5
+        ? 2 * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 2) / 2
+      container.scrollTop = eased * scrollHeight
+      if (progress < 1) {
+        animationId = requestAnimationFrame(animate)
+      }
+    }
+
+    animationId = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(animationId)
+  }, [isHovered])
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.08, duration: 0.6 }}
+      className="group"
+    >
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => {
+          setIsHovered(false)
+          if (containerRef.current) containerRef.current.scrollTop = 0
+        }}
+      >
+        {/* iMac Frame */}
+        <div className="relative">
+          {/* Top bar (macOS style) */}
+          <div className="bg-[#2a2a2e] rounded-t-2xl px-4 py-2.5 flex items-center gap-2">
+            <div className="flex gap-1.5">
+              <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+              <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+              <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+            </div>
+            <div className="flex-1 flex justify-center">
+              <div className="bg-[#1a1a1e] rounded-md px-4 py-1 flex items-center gap-2 max-w-[70%]">
+                <svg className="w-3 h-3 text-gray-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <span className="text-[10px] text-gray-400 truncate">{url.replace('https://', '')}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Screen - scrollable area */}
+          <div
+            ref={containerRef}
+            className="relative overflow-hidden bg-white aspect-[16/10] rounded-b-lg transition-all duration-300"
+            style={{ scrollBehavior: 'auto' }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              ref={imgRef}
+              src={screenshot}
+              alt={`Site web ${name}`}
+              className="w-full h-auto block"
+              loading="lazy"
+            />
+          </div>
+
+          {/* iMac Stand */}
+          <div className="flex justify-center">
+            <div className="w-[30%] h-4 bg-gradient-to-b from-[#c0c0c4] to-[#a8a8ac] rounded-b-lg" />
+          </div>
+          <div className="flex justify-center -mt-[1px]">
+            <div className="w-[40%] h-1.5 bg-gradient-to-b from-[#a8a8ac] to-[#909094] rounded-b-lg" />
+          </div>
+        </div>
+
+        {/* Info below */}
+        <div className="mt-5 text-center">
+          <h3 className="text-lg font-bold text-digiqo-primary group-hover:text-digiqo-secondary transition-colors duration-300">{name}</h3>
+          <div className="flex items-center justify-center gap-1.5 mt-1 text-digiqo-primary/50 text-sm group-hover:text-digiqo-secondary/70 transition-colors duration-300">
+            <ExternalLink className="w-3.5 h-3.5" />
+            <span>{url.replace('https://', '')}</span>
+          </div>
+        </div>
+      </a>
+    </motion.div>
+  )
+}
 
 export default function DevWebPage() {
   const seoData = servicesSEO['developpement-web-reunion']
@@ -444,7 +549,7 @@ export default function DevWebPage() {
       </section>
 
       {/* Nos Références Section */}
-      <section id="references" className="py-24 bg-gradient-to-br from-white via-digiqo-accent/5 to-white relative overflow-hidden">
+      <section id="references" className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
         <SectionGradientOrbs />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4">
@@ -452,7 +557,7 @@ export default function DevWebPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
             <motion.span
               {...ANIMATION.entry.scaleIn}
@@ -469,62 +574,13 @@ export default function DevWebPage() {
               Ils nous font <span className="bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 bg-clip-text text-transparent">confiance</span>
             </h2>
             <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
-              Découvrez les sites web que nous avons conçus pour nos clients
+              Survolez pour explorer les sites que nous avons conçus
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12">
             {references.map((ref, index) => (
-              <motion.a
-                key={index}
-                href={ref.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
-              >
-                <div className="relative aspect-[4/3]">
-                  {/* Screenshot always visible */}
-                  <Image
-                    src={ref.screenshot}
-                    alt={`Aperçu ${ref.name}`}
-                    fill
-                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    loading="lazy"
-                  />
-
-                  {/* Overlay gradient on bottom for text readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-
-                  {/* Content */}
-                  <div className="absolute inset-0 flex flex-col justify-between p-5">
-                    {/* Live badge */}
-                    <div className="flex justify-end">
-                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
-                        EN LIGNE
-                      </div>
-                    </div>
-
-                    {/* Bottom info */}
-                    <div>
-                      <h3 className="text-white font-bold text-lg mb-1 drop-shadow-lg">{ref.name}</h3>
-                      <div className="flex items-center gap-1.5 text-white/80 text-xs">
-                        <ExternalLink className="w-3 h-3" />
-                        <span>{ref.url.replace('https://', '')}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Hover border effect */}
-                  <div className="absolute inset-0 rounded-2xl ring-2 ring-white/0 group-hover:ring-digiqo-secondary/50 transition-all duration-300" />
-                </div>
-              </motion.a>
+              <IMacMockup key={index} name={ref.name} url={ref.url} screenshot={ref.screenshot} index={index} />
             ))}
           </div>
         </div>
