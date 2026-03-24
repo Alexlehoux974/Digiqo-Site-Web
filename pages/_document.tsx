@@ -1,27 +1,9 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
-  const GA_MEASUREMENT_ID = 'G-NFN3PN0GLY'
-
   return (
     <Html lang="fr">
       <Head>
-        {/* Google Analytics 4 - Doit être placé en premier après l'ouverture de <head> */}
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${GA_MEASUREMENT_ID}');
-            `,
-          }}
-        />
-
         {/* Viewport avec support des safe areas pour appareils avec encoche */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
         
@@ -57,25 +39,6 @@ export default function Document() {
         <meta name="geo.position" content="-20.8823;55.4504" />
         <meta name="ICBM" content="-20.8823, 55.4504" />
 
-        {/* Metricool Analytics */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              function loadScript(a){
-                var b=document.getElementsByTagName("head")[0],
-                c=document.createElement("script");
-                c.type="text/javascript",
-                c.src="https://tracker.metricool.com/resources/be.js",
-                c.onreadystatechange=a,
-                c.onload=a,
-                b.appendChild(c)
-              }
-              loadScript(function(){
-                beTracker.t({hash:"1a6eeac69b58a63cb160a61c39160d25"})
-              });
-            `,
-          }}
-        />
       </Head>
       <body>
         <Main />

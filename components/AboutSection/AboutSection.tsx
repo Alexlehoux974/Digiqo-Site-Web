@@ -90,7 +90,7 @@ const timelineData = [
           <div className="relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 flex flex-col justify-center text-white overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-digiqo-primary/20 to-digiqo-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
             <div className="relative z-10">
-              <div className="text-6xl font-bold mb-4 text-digiqo-accent">3</div>
+              <div className="text-4xl md:text-6xl font-bold mb-4 text-digiqo-accent">3</div>
               <p className="text-xl font-bold mb-2">Fondateurs</p>
               <p className="text-sm text-gray-300 leading-relaxed">
                 Une vision commune pour transformer le paysage digital de l'océan Indien
@@ -136,7 +136,7 @@ const timelineData = [
           {/* Growth Metrics - Top Right */}
           <div className="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 p-8">
             <div className="relative z-10">
-              <div className="text-5xl font-bold bg-gradient-to-r from-digiqo-secondary to-digiqo-accent bg-clip-text text-transparent mb-2">
+              <div className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-digiqo-secondary to-digiqo-accent bg-clip-text text-transparent mb-2">
                 +150%
               </div>
               <p className="text-xl font-bold text-gray-800 mb-2">Croissance</p>
@@ -287,7 +287,7 @@ const timelineData = [
           {/* Client Stats - Bottom Left */}
           <div className="relative bg-gradient-to-br from-digiqo-primary/10 to-transparent rounded-2xl p-8 overflow-hidden group">
             <div className="relative z-10 text-center">
-              <div className="text-6xl font-bold bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent mb-2">
+              <div className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent mb-2">
                 100+
               </div>
               <p className="text-xl font-bold text-gray-800 mb-2">Clients actifs</p>

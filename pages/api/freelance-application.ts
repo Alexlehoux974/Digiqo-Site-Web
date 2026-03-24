@@ -1,4 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { checkRateLimit } from '../../lib/rate-limit';
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const AIRTABLE_PAT = process.env.AIRTABLE_PAT || '';
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID || 'appH46IBnNdYNrwZ9'; // Base "Site Web Digiqo"
@@ -13,8 +16,17 @@ export default async function handler(
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  // Rate limiting
+  if (!checkRateLimit(req, res)) return;
+
   try {
     const fields = req.body;
+
+    // Input validation
+    if (!fields.Email || !EMAIL_REGEX.test(fields.Email)) {
+      return res.status(400).json({ error: 'Un email valide est requis.' });
+    }
+
     const errors = [];
     let airtableRecordId = null;
 

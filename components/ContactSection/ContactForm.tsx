@@ -373,7 +373,7 @@ export function ContactForm({ formData, setFormData }: ContactFormProps) {
               <FileText className="inline-block w-5 h-5 mr-2 mb-1" />
               Services souhaités *
             </label>
-            <div className="grid grid-cols-2 gap-1.5 max-h-60 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-digiqo-gray scrollbar-track-transparent">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 max-h-60 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-digiqo-gray scrollbar-track-transparent">
               {services.map((service) => (
                 <motion.button
                   key={service.id}

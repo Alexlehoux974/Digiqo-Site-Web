@@ -168,6 +168,12 @@ export const Footer = () => {
                   >
                     S'abonner
                   </button>
+                  <p className="text-xs text-gray-500">
+                    En vous inscrivant, vous acceptez que vos données soient traitées conformément à notre{' '}
+                    <Link href="/politique-confidentialite" className="underline hover:text-gray-400">
+                      politique de confidentialité
+                    </Link>.
+                  </p>
                 </form>
               </div>
 
@@ -185,7 +191,7 @@ export const Footer = () => {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
-                        className="w-9 h-9 bg-white/5 hover:bg-cyan-500/20 border border-gray-700 hover:border-cyan-500 rounded-lg flex items-center justify-center transition-all duration-300 group"
+                        className="w-11 h-11 bg-white/5 hover:bg-cyan-500/20 border border-gray-700 hover:border-cyan-500 rounded-lg flex items-center justify-center transition-all duration-300 group"
                       >
                         <Icon className="w-4 h-4 text-gray-400 group-hover:text-cyan-400 transition-colors" />
                       </motion.a>

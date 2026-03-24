@@ -1,4 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import { checkRateLimit } from '../../lib/rate-limit'
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export default async function handler(
   req: NextApiRequest,
@@ -9,9 +12,20 @@ export default async function handler(
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
+  // Rate limiting
+  if (!checkRateLimit(req, res)) return;
+
   try {
     // Récupérer les données du formulaire
     const formData = req.body
+
+    // Input validation
+    if (!formData.email || !EMAIL_REGEX.test(formData.email)) {
+      return res.status(400).json({ error: 'Un email valide est requis.' })
+    }
+    if (!formData.firstName && !formData.lastName) {
+      return res.status(400).json({ error: 'Au moins le prénom ou le nom est requis.' })
+    }
 
     // Préparer les données pour n8n ou HubSpot
     const webhookData = {

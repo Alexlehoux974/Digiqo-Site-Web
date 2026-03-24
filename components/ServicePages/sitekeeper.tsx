@@ -228,7 +228,7 @@ export default function SiteKeeperPage() {
       />
 
       {/* Formules Section */}
-      <section id="formules" className="py-24 bg-gradient-to-br from-white to-gray-50">
+      <section id="formules" className="py-24 bg-gradient-to-br from-white to-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             {...ANIMATION.entry.fadeInUp}
@@ -261,7 +261,7 @@ export default function SiteKeeperPage() {
                   className="relative"
                 >
                   {formula.bestValue && (
-                    <div className="absolute -top-3 -right-10 bg-white text-blue-600 px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-blue-500">
+                    <div className="absolute -top-3 -right-2 sm:-right-6 bg-white text-blue-600 px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-blue-500">
                       LE PLUS POPULAIRE
                     </div>
                   )}

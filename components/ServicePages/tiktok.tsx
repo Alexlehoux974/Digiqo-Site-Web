@@ -244,8 +244,8 @@ export default function TikTokPage() {
                   transition={{ delay: index * 0.15 }}
                   className="relative"
                 >
-                  <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all text-center">
-                    <div className="text-6xl font-bold text-digiqo-accent/20 mb-4">
+                  <div className="bg-white rounded-2xl p-4 sm:p-8 shadow-lg hover:shadow-xl transition-all text-center">
+                    <div className="text-4xl md:text-6xl font-bold text-digiqo-accent/20 mb-4">
                       {step.number}
                     </div>
 
@@ -306,7 +306,7 @@ export default function TikTokPage() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden"
           >
-            <div className="bg-gradient-to-br from-emerald-500 to-teal-600 p-8">
+            <div className="bg-gradient-to-br from-emerald-500 to-teal-600 p-4 sm:p-8">
               <h3 className="text-3xl font-bold text-white text-center">
                 {pricingApproach.title}
               </h3>

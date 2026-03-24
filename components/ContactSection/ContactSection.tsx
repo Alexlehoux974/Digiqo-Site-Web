@@ -151,7 +151,7 @@ export function ContactSection() {
               <div className="absolute -inset-1 bg-gradient-to-r from-digiqo-accent via-digiqo-primary to-digiqo-accent rounded-2xl blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
               
               {/* Form container */}
-              <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-8 md:p-10 border border-white/50">
+              <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-4 sm:p-8 md:p-10 border border-white/50">
                 <ContactForm
                   formData={formData}
                   setFormData={setFormData}

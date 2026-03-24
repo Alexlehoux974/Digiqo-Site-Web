@@ -1,5 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { AIRTABLE_CONFIG, transformFormDataToAirtable } from '../../lib/airtable-config';
+import { checkRateLimit } from '../../lib/rate-limit';
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Configuration HubSpot
 const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN || '';
@@ -133,8 +136,18 @@ export default async function handler(
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  // Rate limiting
+  if (!checkRateLimit(req, res)) return;
+
   try {
     const formData = req.body;
+
+    // Input validation
+    const contactEmail = formData.contact?.email;
+    if (!contactEmail || !EMAIL_REGEX.test(contactEmail)) {
+      return res.status(400).json({ error: 'Un email de contact valide est requis.' });
+    }
+
     const errors = [];
     let airtableRecordId = null;
     let hubspotContactId = null;

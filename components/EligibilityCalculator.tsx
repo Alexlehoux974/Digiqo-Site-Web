@@ -414,7 +414,7 @@ export default function EligibilityCalculator() {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.4, type: "spring", stiffness: 150 }}
-                    className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600"
+                    className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600"
                   >
                     {subsidyAmount.toLocaleString('fr-FR')}€
                   </motion.div>

@@ -128,7 +128,7 @@ const AuditPage = ({ audit, error }: AuditPageProps) => {
               transition={{ duration: 0.6 }}
               className="text-center"
             >
-              <h1 className="text-6xl font-bold mb-6 text-white drop-shadow-2xl">Audit Digital Complet</h1>
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-6 text-white drop-shadow-2xl">Audit Digital Complet</h1>
               <p className="text-4xl text-white font-light mb-4">{audit.nomEntreprise}</p>
               {audit.siteWeb && (
                 <p className="text-xl text-white/90 mb-4">{audit.siteWeb}</p>
@@ -172,7 +172,7 @@ const AuditPage = ({ audit, error }: AuditPageProps) => {
           >
             <h2 className="text-3xl font-bold mb-6 text-center text-[#8B1431]">Score Global de Votre Présence Digitale</h2>
             <div className="text-center">
-              <div className="text-7xl font-bold text-[#8B1431]">{audit.scoreGlobal}/100</div>
+              <div className="text-3xl sm:text-5xl md:text-7xl font-bold text-[#8B1431]">{audit.scoreGlobal}/100</div>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-8">
                 <div className="text-center">
                   <div className="flex justify-center mb-2 text-[#8B1431]">

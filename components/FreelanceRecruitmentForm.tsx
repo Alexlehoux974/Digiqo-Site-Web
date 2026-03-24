@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Send, AlertCircle, Globe, Briefcase, FileText, Users } from 'lucide-react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 interface FormData {
   nomPrenom: string;
@@ -766,6 +767,14 @@ export default function FreelanceRecruitmentForm() {
             </motion.div>
           )}
 
+          {/* Mention RGPD */}
+          <p className="text-xs text-gray-500 text-center">
+            En soumettant ce formulaire, vous acceptez que vos données soient traitées conformément à notre{' '}
+            <Link href="/politique-confidentialite" className="underline hover:text-gray-700">
+              politique de confidentialité
+            </Link>.
+          </p>
+
           {/* Bouton de soumission */}
           <div className="flex justify-center pt-6">
             <button
@@ -802,7 +811,10 @@ export default function FreelanceRecruitmentForm() {
           <div className="text-center text-sm text-gray-600">
             <p>
               En soumettant ce formulaire, vous acceptez que vos données soient traitées
-              conformément à notre politique de confidentialité.
+              conformément à notre{' '}
+              <Link href="/politique-confidentialite" className="underline hover:text-gray-700">
+                politique de confidentialité
+              </Link>.
             </p>
           </div>
         </div>

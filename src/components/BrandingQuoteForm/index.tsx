@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import ServiceStep from './steps/ServiceStep'
 import CompanyStep from './steps/CompanyStep'
 import StyleStep from './steps/StyleStep'
@@ -166,26 +167,36 @@ export default function BrandingQuoteForm({ preSelectedService, onClose }: Brand
           {currentStep === 1 ? 'Annuler' : 'Précédent'}
         </button>
 
-        {currentStep < STEPS.length ? (
-          <button
-            onClick={handleNext}
-            className="px-8 py-3 bg-[#8B1431] text-white rounded-full hover:bg-[#6B0F25] transition-colors"
-          >
-            Suivant
-          </button>
-        ) : (
-          <button
-            onClick={handleSubmit}
-            disabled={isSubmitting}
-            className={`px-8 py-3 rounded-full transition-colors ${
-              isSubmitting
-                ? 'bg-gray-400 text-white cursor-not-allowed'
-                : 'bg-[#8B1431] text-white hover:bg-[#6B0F25]'
-            }`}
-          >
-            {isSubmitting ? 'Envoi...' : 'Envoyer la demande'}
-          </button>
-        )}
+        <div className="flex flex-col items-end gap-2">
+          {currentStep === STEPS.length && (
+            <p className="text-xs text-gray-500">
+              En soumettant ce formulaire, vous acceptez que vos données soient traitées conformément à notre{' '}
+              <Link href="/politique-confidentialite" className="underline hover:text-gray-700">
+                politique de confidentialité
+              </Link>.
+            </p>
+          )}
+          {currentStep < STEPS.length ? (
+            <button
+              onClick={handleNext}
+              className="px-8 py-3 bg-[#8B1431] text-white rounded-full hover:bg-[#6B0F25] transition-colors"
+            >
+              Suivant
+            </button>
+          ) : (
+            <button
+              onClick={handleSubmit}
+              disabled={isSubmitting}
+              className={`px-8 py-3 rounded-full transition-colors ${
+                isSubmitting
+                  ? 'bg-gray-400 text-white cursor-not-allowed'
+                  : 'bg-[#8B1431] text-white hover:bg-[#6B0F25]'
+              }`}
+            >
+              {isSubmitting ? 'Envoi...' : 'Envoyer la demande'}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   )

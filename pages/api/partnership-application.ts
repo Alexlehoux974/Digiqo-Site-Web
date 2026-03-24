@@ -1,5 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { computePartnershipScore } from '../../lib/partnership-scoring'
+import { checkRateLimit } from '../../lib/rate-limit'
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export const config = {
   api: {
@@ -19,8 +22,16 @@ export default async function handler(
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
+  // Rate limiting
+  if (!checkRateLimit(req, res)) return
+
   try {
     const formData = req.body
+
+    // Input validation
+    if (!formData.email || !EMAIL_REGEX.test(formData.email)) {
+      return res.status(400).json({ error: 'Un email valide est requis.' })
+    }
 
     // Honeypot check — silently accept but do nothing
     if (formData.honeypot) {

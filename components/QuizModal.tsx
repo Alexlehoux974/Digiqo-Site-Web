@@ -169,7 +169,7 @@ export function QuizModal({ isOpen, onClose, questions, formationTitle }: QuizMo
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative"
+            className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-4 sm:p-8 relative"
           >
             <button
               onClick={onClose}
@@ -251,7 +251,7 @@ export function QuizModal({ isOpen, onClose, questions, formationTitle }: QuizMo
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-8 relative"
+            className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-4 sm:p-8 relative"
           >
             <button
               onClick={onClose}
@@ -320,7 +320,7 @@ export function QuizModal({ isOpen, onClose, questions, formationTitle }: QuizMo
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
-            className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full p-8"
+            className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full p-4 sm:p-8"
           >
             {/* Progress Bar */}
             <div className="mb-6">
@@ -402,7 +402,7 @@ export function QuizModal({ isOpen, onClose, questions, formationTitle }: QuizMo
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full p-8 relative max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full p-4 sm:p-8 relative max-h-[90vh] overflow-y-auto"
           >
             <button
               onClick={onClose}

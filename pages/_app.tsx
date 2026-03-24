@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Script from 'next/script'
 import { CookieConsent } from '@/components/CookieConsent'
 import { ScrollToTop } from '@/components/ScrollToTop'
 import { ChatWidget } from '@/components/ChatWidget'
@@ -8,25 +9,73 @@ import '../styles/globals.css'
 import '../styles/enhanced-colors.css'
 import '@n8n/chat/style.css'
 
+const GA_MEASUREMENT_ID = 'G-NFN3PN0GLY'
+
 // Déclaration globale pour gtag
 declare global {
   interface Window {
     gtag: (...args: any[]) => void
+    dataLayer: any[]
   }
 }
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
+  const [analyticsConsent, setAnalyticsConsent] = useState(false)
+  const [marketingConsent, setMarketingConsent] = useState(false)
 
+  // Check consent from localStorage on mount and listen for changes
   useEffect(() => {
-    // Tracking des changements de page pour GA4
+    const checkConsent = () => {
+      try {
+        const consent = localStorage.getItem('cookieConsent')
+        if (consent) {
+          const parsed = JSON.parse(consent)
+          setAnalyticsConsent(parsed.analytics === true)
+          setMarketingConsent(parsed.marketing === true)
+
+          // Update gtag consent state if gtag is loaded
+          if (typeof window.gtag === 'function') {
+            window.gtag('consent', 'update', {
+              analytics_storage: parsed.analytics ? 'granted' : 'denied',
+              ad_storage: parsed.marketing ? 'granted' : 'denied',
+              ad_user_data: parsed.marketing ? 'granted' : 'denied',
+              ad_personalization: parsed.marketing ? 'granted' : 'denied',
+            })
+          }
+        }
+      } catch (e) {
+        // Invalid JSON in localStorage, ignore
+      }
+    }
+
+    checkConsent()
+
+    // Listen for storage changes (when CookieConsent component saves preferences)
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === 'cookieConsent') {
+        checkConsent()
+      }
+    }
+    window.addEventListener('storage', handleStorage)
+
+    // Also listen for custom event dispatched by CookieConsent component
+    const handleConsentUpdate = () => checkConsent()
+    window.addEventListener('cookieConsentUpdate', handleConsentUpdate)
+
+    return () => {
+      window.removeEventListener('storage', handleStorage)
+      window.removeEventListener('cookieConsentUpdate', handleConsentUpdate)
+    }
+  }, [])
+
+  // Track route changes for GA4 (only if consent given)
+  useEffect(() => {
     const handleRouteChange = (url: string) => {
-      // Scroll to top
       window.scrollTo(0, 0)
 
-      // Track page view dans GA4
-      if (typeof window.gtag !== 'undefined') {
-        window.gtag('config', 'G-NFN3PN0GLY', {
+      if (analyticsConsent && typeof window.gtag === 'function') {
+        window.gtag('config', GA_MEASUREMENT_ID, {
           page_path: url,
         })
       }
@@ -36,10 +85,79 @@ export default function App({ Component, pageProps }: AppProps) {
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange)
     }
-  }, [router.events])
+  }, [router.events, analyticsConsent])
+
+  // Build the gtag consent default script content
+  const consentDefaultScript = `
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500
+    });
+  `
+
+  const gtagInitScript = `
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('consent', 'update', {
+      analytics_storage: 'granted'
+    });
+    gtag('config', '${GA_MEASUREMENT_ID}');
+  `
+
+  const metricoolScript = `
+    function loadScript(a){
+      var b=document.getElementsByTagName("head")[0],
+      c=document.createElement("script");
+      c.type="text/javascript",
+      c.src="https://tracker.metricool.com/resources/be.js",
+      c.onreadystatechange=a,
+      c.onload=a,
+      b.appendChild(c)
+    }
+    loadScript(function(){
+      beTracker.t({hash:"1a6eeac69b58a63cb160a61c39160d25"})
+    });
+  `
 
   return (
     <>
+      {/* Initialize dataLayer and gtag with consent defaults (always, before any script loads) */}
+      <Script
+        id="gtag-consent-default"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: consentDefaultScript }}
+      />
+
+      {/* Load GA4 scripts only after analytics consent */}
+      {analyticsConsent && (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+            strategy="afterInteractive"
+          />
+          <Script
+            id="gtag-init"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{ __html: gtagInitScript }}
+          />
+        </>
+      )}
+
+      {/* Load Metricool only after marketing consent */}
+      {marketingConsent && (
+        <Script
+          id="metricool-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{ __html: metricoolScript }}
+        />
+      )}
+
       <Component {...pageProps} />
       <CookieConsent />
       <ScrollToTop />

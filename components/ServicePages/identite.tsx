@@ -193,7 +193,7 @@ export default function IdentitePage() {
       />
 
       {/* Products Section */}
-      <section id="produits" className="py-24 bg-gradient-to-br from-gray-50 to-white">
+      <section id="produits" className="py-24 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
               <motion.div
                 {...ANIMATION.entry.fadeInUp}
@@ -220,7 +220,7 @@ export default function IdentitePage() {
                 className="relative flex"
               >
                 {product.bestValue && (
-                  <div className="absolute -top-3 -right-10 bg-white text-purple-600 px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-purple-500">
+                  <div className="absolute -top-3 -right-2 sm:-right-6 bg-white text-purple-600 px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-purple-500">
                     LE PLUS POPULAIRE
                   </div>
                 )}

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Image from 'next/image';
 import { Mail, MessageSquare, TrendingUp, Clock, CheckCircle, Sparkles, Target, BarChart3 } from 'lucide-react';
+import Link from 'next/link';
 import { HeaderLuxury } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { SEO } from '@/components/SEO';
@@ -603,6 +604,13 @@ export default function OffreAgentsIA() {
                   </motion.div>
                 )}
 
+                <p className="text-xs text-gray-500 text-center">
+                  En soumettant ce formulaire, vous acceptez que vos données soient traitées conformément à notre{' '}
+                  <Link href="/politique-confidentialite" className="underline hover:text-gray-700">
+                    politique de confidentialité
+                  </Link>.
+                </p>
+
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
@@ -616,10 +624,6 @@ export default function OffreAgentsIA() {
                 >
                   {isSubmitting ? 'Envoi en cours...' : 'Oui, je veux mes Agents IA !'}
                 </motion.button>
-
-                <p className="text-sm text-gray-600 text-center">
-                  En soumettant ce formulaire, vous acceptez d'être contacté par notre équipe
-                </p>
               </div>
             </motion.form>
           </div>

@@ -417,8 +417,8 @@ export default function PublicitePage() {
                   transition={{ delay: index * 0.15 }}
                   className="relative"
                 >
-                  <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all text-center">
-                    <div className="text-6xl font-bold text-digiqo-primary/10 mb-4">
+                  <div className="bg-white rounded-2xl p-4 sm:p-8 shadow-lg hover:shadow-xl transition-all text-center">
+                    <div className="text-4xl md:text-6xl font-bold text-digiqo-primary/10 mb-4">
                       {step.number}
                     </div>
 
@@ -444,7 +444,7 @@ export default function PublicitePage() {
       </section>
 
       {/* Formules Section avec design moderne */}
-      <section id="formules" className="py-24 bg-white">
+      <section id="formules" className="py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             {...ANIMATION.entry.fadeInUp}
@@ -501,7 +501,7 @@ export default function PublicitePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="relative"
+                className="relative overflow-hidden"
                 whileHover={{
                   y: -10,
                   transition: { duration: 0.3 }
@@ -509,7 +509,7 @@ export default function PublicitePage() {
               >
                 {/* Badge populaire qui suit le mouvement de hover */}
                 {formula.bestValue && (
-                  <div className="absolute -top-3 -right-10 bg-white text-blue-600 px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-blue-500">
+                  <div className="absolute -top-3 -right-2 sm:-right-6 bg-white text-blue-600 px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-blue-500">
                     LE PLUS POPULAIRE
                   </div>
                 )}
@@ -525,11 +525,11 @@ export default function PublicitePage() {
                     <h3 className={`text-2xl font-bold text-center text-white`}>{formula.name}</h3>
                   </div>
 
-                  <div className="p-8 flex flex-col flex-grow">
+                  <div className="p-4 sm:p-8 flex flex-col flex-grow">
                     {/* Prix */}
                     <div className="text-center mb-6">
                       <div className="flex items-baseline justify-center gap-1">
-                        <span className="text-5xl font-bold text-blue-600">
+                        <span className="text-3xl sm:text-5xl font-bold text-blue-600">
                           {formula.price.threeMonths.split(',')[0]}
                         </span>
                         <span className="text-3xl font-bold text-blue-600">

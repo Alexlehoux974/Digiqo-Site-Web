@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowLeft, ArrowRight, Send, CheckCircle, AlertCircle } from 'lucide-react'
+import Link from 'next/link'
 import { initialFormData, type PartnershipFormData } from '@/lib/partnership-types'
 import { validateStep } from '@/lib/partnership-validation'
 import FormProgressBar from './FormProgressBar'
@@ -251,6 +252,13 @@ export default function PartnershipForm() {
         )}
 
         {isLastStep ? (
+          <div className="flex flex-col items-end gap-2">
+            <p className="text-xs text-gray-500">
+              En soumettant ce formulaire, vous acceptez que vos données soient traitées conformément à notre{' '}
+              <Link href="/politique-confidentialite" className="underline hover:text-gray-700">
+                politique de confidentialité
+              </Link>.
+            </p>
           <button
             type="button"
             onClick={handleSubmit}
@@ -270,6 +278,7 @@ export default function PartnershipForm() {
               </>
             )}
           </button>
+          </div>
         ) : (
           <button
             type="button"

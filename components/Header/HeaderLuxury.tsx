@@ -256,10 +256,10 @@ export const HeaderLuxury = () => {
           <div className="flex items-center justify-between h-full text-white/90 text-xs">
             <div className="flex items-center space-x-6">
               {navigation.topBar.left.map((item, index) => (
-                <Link 
+                <Link
                   key={index}
                   href={item.href}
-                  className="flex items-center space-x-1.5 hover:text-white transition-all group"
+                  className={`flex items-center space-x-1.5 hover:text-white transition-all group ${index > 0 ? 'hidden sm:inline-flex' : ''}`}
                 >
                   <motion.div whileHover={{ scale: 1.1, rotate: 5 }}>
                     <item.icon className="w-3 h-3" />

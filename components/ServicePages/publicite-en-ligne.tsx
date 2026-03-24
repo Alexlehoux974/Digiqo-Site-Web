@@ -522,7 +522,7 @@ export default function PubliciteEnLignePage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-blue-800 to-purple-900 rounded-3xl p-8 text-white"
+              className="bg-gradient-to-br from-blue-800 to-purple-900 rounded-3xl p-4 sm:p-8 text-white"
             >
               <div className="flex items-center gap-2 mb-6">
                 <Monitor className="w-6 h-6 text-blue-300" />
@@ -567,7 +567,7 @@ export default function PubliciteEnLignePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-3xl p-8 text-white"
+              className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-3xl p-4 sm:p-8 text-white"
             >
               <div className="flex items-center gap-2 mb-6">
                 <Search className="w-6 h-6 text-green-300" />
@@ -690,12 +690,12 @@ export default function PubliciteEnLignePage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:bg-white/20 transition-all duration-300"
+                className="bg-white/10 backdrop-blur-md rounded-3xl p-4 sm:p-8 border border-white/20 hover:bg-white/20 transition-all duration-300"
               >
                 <div className="text-sm font-semibold text-digiqo-accent mb-2">
                   {result.client}
                 </div>
-                <div className="text-5xl font-bold text-white mb-2">
+                <div className="text-3xl sm:text-5xl font-bold text-white mb-2">
                   {result.metric}
                 </div>
                 <div className="text-lg text-white/90 mb-1">
@@ -716,7 +716,7 @@ export default function PubliciteEnLignePage() {
       </section>
 
       {/* Formules Section */}
-      <section id="formules" className="py-24 bg-white">
+      <section id="formules" className="py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             {...ANIMATION.entry.fadeInUp}
@@ -783,7 +783,7 @@ export default function PubliciteEnLignePage() {
                 {/* Badge populaire */}
                 {formula.bestValue && (
                   <div
-                    className="absolute -top-3 -right-10 bg-white px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2"
+                    className="absolute -top-3 -right-2 sm:-right-6 bg-white px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2"
                     style={{ color: formula.accentColor, borderColor: formula.accentColor }}
                   >
                     LE PLUS POPULAIRE
@@ -807,7 +807,7 @@ export default function PubliciteEnLignePage() {
                     <p className="text-sm text-white/80 text-center mt-1">{formula.subtitle}</p>
                   </div>
 
-                  <div className="p-8 flex flex-col flex-grow">
+                  <div className="p-4 sm:p-8 flex flex-col flex-grow">
                     {/* Prix */}
                     <div className="text-center mb-6">
                       {isAnnual && (
@@ -816,7 +816,7 @@ export default function PubliciteEnLignePage() {
                         </p>
                       )}
                       <div className="flex items-baseline justify-center gap-1">
-                        <span className="text-5xl font-bold" style={{ color: formula.accentColor }}>
+                        <span className="text-3xl sm:text-5xl font-bold" style={{ color: formula.accentColor }}>
                           {isAnnual
                             ? formula.price.annual.split(',')[0]
                             : formula.price.shortTerm.split(',')[0]
@@ -933,7 +933,7 @@ export default function PubliciteEnLignePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+                className="bg-white rounded-3xl p-4 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
               >
                 <h3 className="text-xl font-bold mb-4 text-digiqo-primary flex items-start gap-3">
                   <TrendingUp className="w-6 h-6 text-digiqo-accent shrink-0 mt-0.5" />
