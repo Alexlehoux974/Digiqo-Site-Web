@@ -68,7 +68,7 @@ export default async function handler(
       },
       email: {
         to: 'partenariats@digiqo.fr',
-        cc: 'contact@digiqo.fr',
+        cc: 'devis@digiqo.fr',
         subject: emailSubject,
       },
       score: {
