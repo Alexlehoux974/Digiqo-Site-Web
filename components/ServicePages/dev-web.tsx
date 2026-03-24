@@ -95,6 +95,7 @@ const references = [
   { name: 'Investis DOM', url: 'https://investis-dom.com', gradient: 'from-digiqo-primary to-digiqo-primary-dark', screenshot: '/references/investis-dom-com.webp' },
   { name: 'CMX Factory', url: 'https://cmxfactory.com', gradient: 'from-digiqo-accent to-orange-500', screenshot: '/references/cmxfactory-com.webp' },
   { name: 'Sattwika', url: 'https://sattwika.com', gradient: 'from-amber-500 to-yellow-600', screenshot: '/references/sattwika-com.webp' },
+  { name: 'Rodolphe Le Houx Consultant', url: 'https://rodolphelehoux.com', gradient: 'from-slate-500 to-blue-600', screenshot: '/references/rodolphelehoux-com.webp' },
 ]
 
 export default function DevWebPage() {
