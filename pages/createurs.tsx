@@ -447,15 +447,16 @@ export default function CreateursPage() {
                   Vous êtes créateur de contenu ?
                 </h2>
                 <p className="text-white/70 text-lg mb-8 leading-relaxed">
-                  Rejoignez notre réseau et accédez à des collaborations rémunérées avec des marques locales et nationales. Digiqo gère les contrats, briefs et paiements.
+                  On attend votre DM.
                 </p>
                 <a
-                  href={generateContactUrl({
-                    description: "Je suis créateur de contenu et je souhaite rejoindre le réseau Digiqo",
-                  })}
+                  href="https://www.instagram.com/digiqo_/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold rounded-2xl hover:shadow-lg hover:shadow-pink-500/25 transition-all duration-300"
                 >
-                  Rejoindre le réseau
+                  <Instagram className="w-5 h-5" />
+                  Nous envoyer un DM
                   <ArrowRight className="w-5 h-5" />
                 </a>
               </motion.div>
