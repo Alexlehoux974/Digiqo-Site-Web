@@ -1,12 +1,22 @@
+import { useState } from 'react'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { Palette, ArrowRight, Sparkles, Check, ChevronRight, Clock, PaintBucket, CheckSquare, Handshake, Brush, Layers, Package, RefreshCw } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import ServiceLayout from '../../components/ServiceLayout/ServiceLayout'
-import { generateContactUrl } from '../../lib/contact-utils'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 import { ServiceHero } from './ServiceHero'
 import { getProductsForService } from '../../lib/airtable-products'
+import { Modal } from '../../components/ui/Modal'
+import BrandingQuoteForm from '../../src/components/BrandingQuoteForm'
+import { BrandingService } from '../../src/lib/branding-quote-types'
+
+const PRODUCT_SERVICE_MAP: Record<string, BrandingService> = {
+  'Création Logo': 'creation-logo',
+  'Refonte Logo': 'refonte-logo',
+  'Charte Graphique Complète': 'charte-graphique',
+  'Branding Complet Startup': 'branding-complet',
+}
 
 interface BrandProduct {
   id: string
@@ -14,7 +24,6 @@ interface BrandProduct {
   price: string
   description: string
   features: string[]
-  paymentLink?: string
   icon?: any
   gradient?: string
   bestValue?: boolean
@@ -22,6 +31,14 @@ interface BrandProduct {
 
 
 export default function IdentitePage() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedService, setSelectedService] = useState<BrandingService>('creation-logo')
+
+  const openModal = (service: BrandingService) => {
+    setSelectedService(service)
+    setIsModalOpen(true)
+  }
+
   const seoData = servicesSEO['identite-marque-reunion']
 
   // Get real products from Airtable - IDENTITÉ DE MARQUE (4 main products)
@@ -44,10 +61,6 @@ export default function IdentitePage() {
         '📐 Versions noir et blanc incluses',
         '💾 Fichiers sources AI, EPS, PNG, JPG, PDF'
       ],
-      paymentLink: generateContactUrl({ 
-        service: 'identite',
-        description: 'Je souhaite un devis pour une création de logo professionnel' 
-      }),
       icon: Brush,
       gradient: 'from-emerald-500 to-teal-600'
     },
@@ -65,10 +78,6 @@ export default function IdentitePage() {
         '🔄 Migration progressive',
         '📁 Tous les formats inclus'
       ],
-      paymentLink: generateContactUrl({ 
-        service: 'identite',
-        description: 'Je souhaite un devis pour une refonte de mon logo existant' 
-      }),
       icon: RefreshCw,
       gradient: 'from-blue-500 to-indigo-600'
     },
@@ -87,10 +96,6 @@ export default function IdentitePage() {
         '📑 Templates pour documents',
         '🖼️ Exemples d\'applications concrètes'
       ],
-      paymentLink: generateContactUrl({ 
-        service: 'identite',
-        description: 'Je souhaite un devis pour une charte graphique complète' 
-      }),
       icon: Layers,
       gradient: 'from-purple-500 to-pink-600',
       bestValue: true
@@ -111,10 +116,6 @@ export default function IdentitePage() {
         '📚 Guide de communication',
         '🤝 3 mois d\'accompagnement inclus'
       ],
-      paymentLink: generateContactUrl({ 
-        service: 'identite',
-        description: 'Je souhaite un devis pour un branding complet startup' 
-      }),
       icon: Package,
       gradient: 'from-amber-300 to-orange-400'
     }
@@ -183,10 +184,7 @@ export default function IdentitePage() {
         ctaButtons={{
           primary: {
             text: "Démarrer mon projet",
-            href: generateContactUrl({ 
-              service: 'identite',
-              description: 'Je souhaite créer mon identité de marque' 
-            })
+            href: "#produits"
           }
         }}
         gradientFrom="from-white"
@@ -277,16 +275,16 @@ export default function IdentitePage() {
 
                   {/* CTA - Always at bottom */}
                   <div className="p-4 bg-gray-50 mt-auto">
-                    <a
-                      href={product.paymentLink}
-                      className={`block w-full py-3 px-4 text-center font-semibold rounded-full transition-all text-sm
-                        ${product.bestValue 
-                          ? 'bg-gradient-to-r from-digiqo-accent to-orange-500 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1' 
+                    <button
+                      onClick={() => openModal(PRODUCT_SERVICE_MAP[product.name] || 'creation-logo')}
+                      className={`block w-full py-3 px-4 text-center font-semibold rounded-full transition-all text-sm cursor-pointer
+                        ${product.bestValue
+                          ? 'bg-gradient-to-r from-digiqo-accent to-orange-500 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1'
                           : 'bg-white border-2 border-gray-300 text-gray-700 hover:border-digiqo-accent hover:text-digiqo-accent'
                         }`}
                     >
                       Demander un devis
-                    </a>
+                    </button>
                   </div>
                 </div>
               </motion.div>
@@ -468,26 +466,23 @@ export default function IdentitePage() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                  <motion.a
-                    href={generateContactUrl({ 
-                      service: 'identite',
-                      description: 'Je souhaite une consultation gratuite pour mon identité de marque' 
-                    })}
+                  <motion.button
+                    onClick={() => openModal('creation-logo')}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="group relative inline-flex items-center gap-3 px-8 py-4 overflow-hidden rounded-2xl font-bold transition-all duration-300"
+                    className="group relative inline-flex items-center gap-3 px-8 py-4 overflow-hidden rounded-2xl font-bold transition-all duration-300 cursor-pointer"
                   >
                     {/* Animated gradient background */}
                     <div className="absolute inset-0 bg-gradient-to-r from-digiqo-primary to-digiqo-accent opacity-90" />
                     <div className="absolute inset-0 bg-gradient-to-r from-digiqo-accent to-digiqo-accent opacity-0 group-hover:opacity-90 transition-opacity duration-300" />
-                    
+
                     {/* Glassmorphism overlay */}
                     <div className="absolute inset-0 bg-white/20 backdrop-blur-sm" />
-                    
+
                     {/* Content */}
                     <span className="relative z-10 text-white">Consultation Gratuite</span>
                     <ArrowRight className="relative z-10 w-5 h-5 text-white group-hover:translate-x-1 transition-transform" />
-                  </motion.a>
+                  </motion.button>
                   
                   <motion.a
                     href="tel:0692731111"
@@ -509,6 +504,13 @@ export default function IdentitePage() {
           </motion.div>
         </div>
       </section>
+      {/* Modal Devis Branding */}
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <BrandingQuoteForm
+          preSelectedService={selectedService}
+          onClose={() => setIsModalOpen(false)}
+        />
+      </Modal>
     </ServiceLayout>
   )
 }
