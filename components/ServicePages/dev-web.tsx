@@ -78,7 +78,6 @@ const AnimatedMetric = ({ value, label, suffix = '', delay = 0 }: AnimatedMetric
 const CALENDAR_LINK = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0zEg3G6P0cJY2oe7Tyi3KrmTAXRyYCu5chnHfDzECSr45IxTuiVQX9MYpfMUZT9MbL3VgQl9JW'
 
 const references = [
-  { name: 'Mystik Sauna', url: 'https://mystiksauna.re', screenshot: '/references/fullpage/mystiksauna-re.webp' },
   { name: 'Sogitec Énergie', url: 'https://sogitec-energie.fr', screenshot: '/references/fullpage/sogitec-energie-fr.webp' },
   { name: 'La Boussole du Manager', url: 'https://laboussoledumanager.re', screenshot: '/references/fullpage/laboussoledumanager-re.webp' },
   { name: 'Pascal Destercke', url: 'https://pascal-destercke.com', screenshot: '/references/fullpage/pascal-destercke-com.webp' },
@@ -89,6 +88,7 @@ const references = [
   { name: 'Zen Eat Yoga', url: 'https://zeneatyoga.com', screenshot: '/references/fullpage/zeneatyoga-com.webp' },
   { name: 'Investis DOM', url: 'https://investis-dom.com', screenshot: '/references/fullpage/investis-dom-com.webp' },
   { name: 'CMX Factory', url: 'https://cmxfactory.com', screenshot: '/references/fullpage/cmxfactory-com.webp' },
+  { name: 'Mystik Sauna', url: 'https://mystiksauna.re', screenshot: '/references/fullpage/mystiksauna-re.webp' },
   { name: 'Sattwika', url: 'https://sattwika.com', screenshot: '/references/fullpage/sattwika-com.webp' },
 ]
 
