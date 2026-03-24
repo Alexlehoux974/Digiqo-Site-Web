@@ -47,7 +47,7 @@ const influencers: Influencer[] = [
   {
     name: 'Ophélie Le Houx',
     handle: '@op_lehoux',
-    photo: '/assets/createurs/ophelie-lehoux.webp',
+    photo: '/assets/createurs/ophelie-lehoux.jpg',
     location: 'La Réunion — Paris',
     followers: '15K',
     niches: ['Mode', 'Beauté', 'Hygiène', 'Cheveux bouclés', 'Sport'],
