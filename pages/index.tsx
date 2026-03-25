@@ -14,6 +14,7 @@ import { ContactSection } from '../components/ContactSection'
 import { Footer } from '../components/Footer'
 import { useInstantScroll } from '@/hooks/useInstantScroll'
 import { BlogCarousel } from '@/components/BlogCarousel'
+import { YoutubeShortsSection } from '@/components/YoutubeShortsSection/YoutubeShortsSection'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import DomeGallery from '@/components/ui/dome-gallery'
@@ -182,6 +183,8 @@ export default function Home() {
         </div>
         <div className="py-8" />
         <TestimonialsSection />
+        <div className="py-8" />
+        <YoutubeShortsSection />
         <div className="py-8" />
         <ServicesSection />
         <div className="py-8" />

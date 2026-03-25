@@ -323,6 +323,7 @@ async function sendContactToN8N(contactData: any): Promise<void> {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'X-Webhook-Secret': process.env.N8N_WEBHOOK_SECRET || '',
       },
       body: JSON.stringify({
         event: 'existing_contact_audit_submission',

@@ -82,7 +82,8 @@ async function createOrUpdateHubSpotLead(formData: any) {
         const webhookResponse = await fetch(N8N_WEBHOOK_URL, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-Webhook-Secret': process.env.N8N_WEBHOOK_SECRET || '',
           },
           body: JSON.stringify({
             source: 'web-quote-form',

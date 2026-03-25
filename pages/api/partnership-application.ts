@@ -111,7 +111,10 @@ export default async function handler(
 
     const webhookResponse = await fetch(N8N_WEBHOOK_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Webhook-Secret': process.env.N8N_WEBHOOK_SECRET || '',
+      },
       body: JSON.stringify(payload),
     })
 
