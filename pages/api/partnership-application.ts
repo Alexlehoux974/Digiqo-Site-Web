@@ -12,7 +12,7 @@ export const config = {
   },
 }
 
-const N8N_WEBHOOK_URL = 'https://n8n.srv763918.hstgr.cloud/webhook/3dff5295-b10f-400e-b3e1-e25ae2a5d8ae'
+const N8N_WEBHOOK_URL = 'https://digiqo.app.n8n.cloud/webhook/3dff5295-b10f-400e-b3e1-e25ae2a5d8ae'
 
 export default async function handler(
   req: NextApiRequest,

@@ -34,7 +34,7 @@ export default async function handler(
       }
     }
 
-    const webhookUrl = process.env.N8N_BRANDING_WEBHOOK_URL || 'https://n8n.srv763918.hstgr.cloud/webhook/branding-quote-placeholder'
+    const webhookUrl = process.env.N8N_BRANDING_WEBHOOK_URL || 'https://digiqo.app.n8n.cloud/webhook/branding-quote-placeholder'
 
     const webhookResponse = await fetch(webhookUrl, {
       method: 'POST',
