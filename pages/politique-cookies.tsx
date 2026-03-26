@@ -59,7 +59,71 @@ export default function PolitiqueCookies() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">4. Gestion des cookies</h2>
+          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">4. Liste détaillée des cookies utilisés</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm text-gray-700 border-collapse">
+              <thead>
+                <tr className="bg-gray-50">
+                  <th className="border border-gray-200 px-4 py-2 text-left font-semibold">Cookie</th>
+                  <th className="border border-gray-200 px-4 py-2 text-left font-semibold">Fournisseur</th>
+                  <th className="border border-gray-200 px-4 py-2 text-left font-semibold">Finalité</th>
+                  <th className="border border-gray-200 px-4 py-2 text-left font-semibold">Durée</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td colSpan={4} className="border border-gray-200 px-4 py-2 bg-gray-50 font-semibold text-digiqo-primary">Cookies essentiels</td></tr>
+                <tr>
+                  <td className="border border-gray-200 px-4 py-2">cookieConsent</td>
+                  <td className="border border-gray-200 px-4 py-2">Digiqo</td>
+                  <td className="border border-gray-200 px-4 py-2">Mémorisation du choix de consentement cookies</td>
+                  <td className="border border-gray-200 px-4 py-2">13 mois</td>
+                </tr>
+                <tr><td colSpan={4} className="border border-gray-200 px-4 py-2 bg-gray-50 font-semibold text-digiqo-primary">Cookies analytiques</td></tr>
+                <tr>
+                  <td className="border border-gray-200 px-4 py-2">_ga</td>
+                  <td className="border border-gray-200 px-4 py-2">Google Analytics</td>
+                  <td className="border border-gray-200 px-4 py-2">Distinction des visiteurs uniques</td>
+                  <td className="border border-gray-200 px-4 py-2">13 mois</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-200 px-4 py-2">_ga_*</td>
+                  <td className="border border-gray-200 px-4 py-2">Google Analytics</td>
+                  <td className="border border-gray-200 px-4 py-2">Mesure d'audience et performances</td>
+                  <td className="border border-gray-200 px-4 py-2">13 mois</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-200 px-4 py-2">__hs*, hubspotutk</td>
+                  <td className="border border-gray-200 px-4 py-2">HubSpot</td>
+                  <td className="border border-gray-200 px-4 py-2">Tracking visiteurs et formulaires</td>
+                  <td className="border border-gray-200 px-4 py-2">13 mois</td>
+                </tr>
+                <tr><td colSpan={4} className="border border-gray-200 px-4 py-2 bg-gray-50 font-semibold text-digiqo-primary">Cookies marketing</td></tr>
+                <tr>
+                  <td className="border border-gray-200 px-4 py-2">_fbp, _fbc</td>
+                  <td className="border border-gray-200 px-4 py-2">Meta (Facebook)</td>
+                  <td className="border border-gray-200 px-4 py-2">Suivi des conversions publicitaires, audiences similaires</td>
+                  <td className="border border-gray-200 px-4 py-2">90 jours</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-200 px-4 py-2">_gcl_*</td>
+                  <td className="border border-gray-200 px-4 py-2">Google Ads</td>
+                  <td className="border border-gray-200 px-4 py-2">Suivi des conversions Google Ads</td>
+                  <td className="border border-gray-200 px-4 py-2">90 jours</td>
+                </tr>
+                <tr><td colSpan={4} className="border border-gray-200 px-4 py-2 bg-gray-50 font-semibold text-digiqo-primary">Cookies tiers</td></tr>
+                <tr>
+                  <td className="border border-gray-200 px-4 py-2">__stripe_mid, __stripe_sid</td>
+                  <td className="border border-gray-200 px-4 py-2">Stripe</td>
+                  <td className="border border-gray-200 px-4 py-2">Sécurisation des paiements</td>
+                  <td className="border border-gray-200 px-4 py-2">Session à 1 an</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">5. Gestion des cookies</h2>
           <ul className="space-y-2 text-gray-700">
             <li>✔ Vous pouvez accepter ou refuser l'utilisation des cookies via le bandeau de consentement affiché lors de votre première visite.</li>
             <li>✔ Vous pouvez également modifier vos préférences à tout moment via les paramètres de votre navigateur.</li>
@@ -67,7 +131,7 @@ export default function PolitiqueCookies() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">5. Désactiver les cookies</h2>
+          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">6. Désactiver les cookies</h2>
           <p className="mb-4">
             Vous pouvez configurer votre navigateur pour bloquer ou supprimer les cookies :
           </p>
@@ -116,7 +180,7 @@ export default function PolitiqueCookies() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">6. Durée de conservation des cookies</h2>
+          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">7. Durée de conservation des cookies</h2>
           <ul className="space-y-2 text-gray-700">
             <li>✔ Les cookies sont conservés pour une durée maximale de 13 mois après leur enregistrement.</li>
             <li>✔ À l'expiration de cette période, un nouveau consentement vous sera demandé.</li>
@@ -124,7 +188,7 @@ export default function PolitiqueCookies() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">7. Modifications de la politique de cookies</h2>
+          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">8. Modifications de la politique de cookies</h2>
           <p>
             La SAS DIGIQO se réserve le droit de modifier cette politique à tout moment.
             Toute modification sera publiée sur cette page.
@@ -132,7 +196,7 @@ export default function PolitiqueCookies() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">8. Contact</h2>
+          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">9. Contact</h2>
           <ul className="space-y-2 text-gray-700">
             <li>📍 <strong>Adresse :</strong> SAS DIGIQO – 8 ruelle Boulot, 97400 Saint Denis - La Réunion</li>
             <li>📧 <strong>E-mail :</strong> <a href="mailto:contact@digiqo.fr" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">contact@digiqo.fr</a></li>

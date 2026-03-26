@@ -216,7 +216,7 @@ export const Footer = () => {
 
               {/* Legal links */}
               <div className="flex flex-wrap justify-center gap-1 text-xs">
-                {navigation.legal.map((item, index) => (
+                {navigation.legal.map((item) => (
                   <div key={item.name} className="flex items-center">
                     <Link
                       href={item.href}
@@ -224,11 +224,19 @@ export const Footer = () => {
                     >
                       {item.name}
                     </Link>
-                    {index < navigation.legal.length - 1 && (
-                      <span className="text-gray-700">•</span>
-                    )}
+                    <span className="text-gray-700">•</span>
                   </div>
                 ))}
+                <button
+                  onClick={() => {
+                    localStorage.removeItem('cookieConsent')
+                    window.dispatchEvent(new Event('cookieConsentUpdate'))
+                    window.location.reload()
+                  }}
+                  className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 px-2 cursor-pointer"
+                >
+                  Gérer mes cookies
+                </button>
               </div>
             </div>
           </div>

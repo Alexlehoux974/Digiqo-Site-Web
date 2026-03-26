@@ -17,14 +17,15 @@ export default function MentionsLegales() {
           <p className="mb-4">
             Le site <strong>https://digiqo.fr/</strong> est édité par <strong>SAS DIGIQO</strong>, Société par Actions Simplifiée
             au capital de 1000,00€, dont le siège social est situé à 8 ruelle Boulot, 97400 Saint Denis - La Réunion,
-            immatriculée au greffe de SAINT-DENIS-DE-LA-REUNION sous le numéro 941181232, représentée par
+            immatriculée au greffe de SAINT-DENIS-DE-LA-REUNION sous le numéro 941 181 232 (SIRET 94118123200021), représentée par
             Monsieur Rodolphe Le Houx, en sa qualité de Président.
           </p>
           <ul className="space-y-2 text-gray-700">
             <li>📍 <strong>Siège social :</strong> 8 ruelle Boulot, 97400 Saint Denis - La Réunion</li>
             <li>📧 <strong>E-mail :</strong> <a href="mailto:contact@digiqo.fr" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">contact@digiqo.fr</a></li>
             <li>📞 <strong>Téléphone :</strong> <a href="tel:+262262025102" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">02 62 02 51 02</a></li>
-            <li>📜 <strong>Numéro SIREN :</strong> 941181232</li>
+            <li>📜 <strong>Numéro SIREN :</strong> 941 181 232</li>
+            <li>📜 <strong>Numéro SIRET :</strong> 94118123200021</li>
             <li>📜 <strong>Numéro de TVA intracommunautaire :</strong> FR02941181232</li>
           </ul>
           <p className="mt-4">

@@ -18,7 +18,7 @@ export default function PolitiqueConfidentialite() {
             La présente politique de confidentialité explique comment la <strong>SAS DIGIQO</strong>,
             Société par Actions Simplifiée au capital de 1000,00€, dont le siège social est situé à
             8 ruelle Boulot, 97400 Saint Denis - La Réunion, immatriculée au greffe de SAINT-DENIS-DE-LA-REUNION
-            sous le numéro 941181232, collecte, utilise et protège vos données personnelles lorsque vous visitez
+            sous le numéro 941 181 232 (SIRET 94118123200021), collecte, utilise et protège vos données personnelles lorsque vous visitez
             le site https://digiqo.fr/. Nous nous engageons à respecter la confidentialité et la protection de
             vos informations conformément au Règlement Général sur la Protection des Données (RGPD).
           </p>
@@ -120,8 +120,13 @@ export default function PolitiqueConfidentialite() {
                   <td className="border border-gray-200 px-4 py-2">Chypre / Lituanie</td>
                 </tr>
                 <tr>
-                  <td className="border border-gray-200 px-4 py-2">Vercel</td>
-                  <td className="border border-gray-200 px-4 py-2">Hébergement CDN et déploiement</td>
+                  <td className="border border-gray-200 px-4 py-2">Stripe, Inc.</td>
+                  <td className="border border-gray-200 px-4 py-2">Traitement des paiements par carte bancaire</td>
+                  <td className="border border-gray-200 px-4 py-2">USA</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-200 px-4 py-2">Meta Platforms, Inc.</td>
+                  <td className="border border-gray-200 px-4 py-2">Suivi des conversions publicitaires et audiences (Meta Pixel / Conversions API)</td>
                   <td className="border border-gray-200 px-4 py-2">USA</td>
                 </tr>
                 <tr>
@@ -145,7 +150,8 @@ export default function PolitiqueConfidentialite() {
             <li>📌 <strong>Airtable (USA) :</strong> Transfert encadré par des Clauses Contractuelles Types (CCT) approuvées par la Commission européenne.</li>
             <li>📌 <strong>Metricool (Espagne / USA) :</strong> Société espagnole soumise au RGPD, avec transferts vers les USA encadrés par des garanties appropriées.</li>
             <li>📌 <strong>Hostinger (Chypre / Lituanie) :</strong> Hébergement au sein de l'Union européenne, soumis au RGPD.</li>
-            <li>📌 <strong>Vercel (USA) :</strong> Transfert encadré par le Data Privacy Framework (DPF) UE-USA et des Clauses Contractuelles Types.</li>
+            <li>📌 <strong>Stripe (USA) :</strong> Transfert encadré par le Data Privacy Framework (DPF) UE-USA et des Clauses Contractuelles Types (CCT).</li>
+            <li>📌 <strong>Meta Platforms (USA) :</strong> Transfert encadré par le Data Privacy Framework (DPF) UE-USA.</li>
           </ul>
         </section>
 
@@ -186,9 +192,10 @@ export default function PolitiqueConfidentialite() {
             <li>✔ Améliorer la navigation et la performance du site.</li>
             <li>✔ Personnaliser les contenus et publicités.</li>
             <li>✔ Analyser le trafic via Google Analytics.</li>
+            <li>✔ Suivre les conversions publicitaires via Meta Pixel / Conversions API.</li>
           </ul>
           <p className="mt-4">
-            📌 <strong>Gérer les cookies :</strong> Vous pouvez modifier vos préférences via le bandeau de consentement affiché sur le site.
+            📌 <strong>Gérer les cookies :</strong> Vous pouvez modifier vos préférences via le bandeau de consentement affiché sur le site ou en consultant notre <a href="/politique-cookies" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">politique de cookies</a>.
           </p>
         </section>
 
@@ -201,7 +208,14 @@ export default function PolitiqueConfidentialite() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">13. Contact</h2>
+          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">13. Référent données personnelles</h2>
+          <p>
+            Pour toute question relative à la protection de vos données personnelles, vous pouvez contacter notre référent données personnelles à l'adresse : <a href="mailto:contact@digiqo.fr" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">contact@digiqo.fr</a>.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">14. Contact</h2>
           <ul className="space-y-2 text-gray-700">
             <li>📍 <strong>Adresse :</strong> SAS DIGIQO – 8 ruelle Boulot, 97400 Saint Denis - La Réunion</li>
             <li>📧 <strong>E-mail :</strong> <a href="mailto:contact@digiqo.fr" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">contact@digiqo.fr</a></li>

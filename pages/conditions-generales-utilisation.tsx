@@ -31,7 +31,7 @@ export default function ConditionsGeneralesUtilisation() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">3. Informations légales</h2>
           <ul className="space-y-2 text-gray-700">
-            <li>✔ <strong>Éditeur :</strong> SAS DIGIQO, Société par Actions Simplifiée au capital de 1000,00€, immatriculée au greffe de SAINT-DENIS-DE-LA-REUNION sous le numéro 941181232.</li>
+            <li>✔ <strong>Éditeur :</strong> SAS DIGIQO, Société par Actions Simplifiée au capital de 1000,00€, immatriculée au greffe de SAINT-DENIS-DE-LA-REUNION sous le numéro 941 181 232 (SIRET 94118123200021).</li>
             <li>✔ <strong>Siège social :</strong> 8 ruelle Boulot, 97400 Saint Denis - La Réunion.</li>
             <li>✔ <strong>Directeur de la publication :</strong> Monsieur Rodolphe Le Houx, Président de la SAS DIGIQO.</li>
             <li>✔ <strong>Hébergeur :</strong> Hostinger International Ltd, 61 Lordou Vironos Street, 6023 Larnaca, Chypre.</li>

@@ -56,11 +56,19 @@ export default function ConditionsGeneralesVente() {
 
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">Article 7 – Renouvellement, durée et résiliation</h2>
+          <h3 className="text-lg font-semibold text-digiqo-primary mt-4 mb-2">Offres mensuelles (sans engagement)</h3>
           <p className="mb-4">
-            Les offres mensuelles sont conclues sans engagement de durée et se renouvellent automatiquement par périodes successives d'un (1) mois, sauf résiliation. La résiliation par le client est possible à tout moment avec un préavis d'une (1) semaine avant la date d'échéance mensuelle. La demande de résiliation doit être effectuée exclusivement via le formulaire de désabonnement accessible à l'adresse <a href="https://digiqo.fr/desabonnement" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">https://digiqo.fr/desabonnement</a>. À défaut de respect du préavis d'une semaine, la résiliation prend effet à l'échéance mensuelle suivante.
+            Le contrat est conclu pour une durée indéterminée et se renouvelle mensuellement. Le Client peut résilier à tout moment avec un préavis de quarante-huit (48) heures avant la date d'échéance mensuelle, exclusivement via le formulaire <a href="https://digiqo.fr/desabonnement" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">https://digiqo.fr/desabonnement</a>. À défaut de respect du préavis, la résiliation prend effet à l'échéance suivante. Aucun remboursement n'est effectué pour une période entamée ou une prestation commencée, sauf manquement imputable à DIGIQO.
           </p>
+
+          <h3 className="text-lg font-semibold text-digiqo-primary mt-4 mb-2">Offres trimestrielles (sans engagement)</h3>
+          <p className="mb-4">
+            Le contrat est conclu pour une durée indéterminée et se renouvelle par trimestre. Le Client peut résilier à tout moment avec un préavis de deux (2) semaines avant la date d'échéance trimestrielle, exclusivement via le formulaire <a href="https://digiqo.fr/desabonnement" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">https://digiqo.fr/desabonnement</a>. À défaut de respect du préavis, la résiliation prend effet à l'échéance suivante. Aucun remboursement n'est effectué pour une période entamée ou une prestation commencée, sauf manquement imputable à DIGIQO.
+          </p>
+
+          <h3 className="text-lg font-semibold text-digiqo-primary mt-4 mb-2">Offres annuelles (engagement 12 mois)</h3>
           <p>
-            Les offres annuelles, lorsqu'elles existent, correspondent à un paiement unique couvrant douze (12) mois d'exécution, généralement consenti à un tarif réduit. Le client peut demander l'arrêt des prestations à tout moment, mais ce paiement annuel demeure dû et n'est pas remboursable, sauf manquement imputable à DIGIQO. En l'absence d'indication contraire sur l'offre, l'offre annuelle ne se renouvelle pas automatiquement à son terme.
+            Le contrat est conclu pour une durée ferme de douze (12) mois à compter de son acceptation. Le paiement annuel est effectué en une seule fois, à un tarif réduit. Le Client peut demander l'arrêt des prestations à tout moment avec un préavis d'un (1) mois avant la date d'échéance annuelle, exclusivement via le formulaire <a href="https://digiqo.fr/desabonnement" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">https://digiqo.fr/desabonnement</a>. À défaut de respect du préavis, le contrat se renouvelle pour une nouvelle période annuelle. Le paiement annuel demeure dû dans son intégralité et n'est pas remboursable pour une période entamée ou une prestation commencée, sauf manquement imputable à DIGIQO.
           </p>
         </section>
 
