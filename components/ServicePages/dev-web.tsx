@@ -19,7 +19,6 @@ import {
 } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
-import { generateWhatsAppLink } from '../../lib/whatsapp-utils'
 import { 
   ReactIcon, 
   NodejsIcon, 
@@ -871,15 +870,13 @@ export default function DevWebPage() {
                 Prendre rendez-vous
               </motion.a>
               <motion.a
-                href={generateWhatsAppLink({ service: 'dev-web' })}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="tel:+262262025102"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-green-500 text-white font-bold rounded-full hover:bg-green-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-digiqo-primary text-white font-bold rounded-full hover:bg-digiqo-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 <MessageCircle className="w-5 h-5" />
-                WhatsApp
+                02 62 02 51 02
               </motion.a>
             </div>
           </motion.div>

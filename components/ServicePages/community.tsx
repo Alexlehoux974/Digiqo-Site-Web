@@ -18,7 +18,6 @@ import {
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
 import { generateContactUrl } from '../../lib/contact-utils'
-import { generateWhatsAppLink } from '../../lib/whatsapp-utils'
 import { ServiceHero } from './ServiceHero'
 
 interface Formula {
@@ -260,8 +259,8 @@ export default function CommunityPage() {
         subtitle="Développez votre communauté et votre engagement sur les réseaux sociaux"
         ctaButtons={{
           primary: {
-            text: "Contactez-nous sur WhatsApp",
-            href: generateWhatsAppLink({ service: 'community' })
+            text: "Appelez-nous",
+            href: "tel:+262262025102"
           }
         }}
         gradientFrom="from-digiqo-secondary"

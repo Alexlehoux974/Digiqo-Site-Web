@@ -12,7 +12,6 @@ import {
 } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
-import { generateWhatsAppLink } from '../../lib/whatsapp-utils'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 import { ServiceHero } from './ServiceHero'
 
@@ -116,7 +115,7 @@ export default function SEOPage() {
         ctaButtons={{
           primary: {
             text: "Audit SEO Gratuit",
-            href: generateWhatsAppLink({ service: 'seo', context: 'audit' })
+            href: "tel:+262262025102"
           },
           secondary: {
             text: "Voir nos résultats",
@@ -498,7 +497,7 @@ export default function SEOPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href={generateWhatsAppLink({ service: 'seo', context: 'audit' })}
+                href="tel:+262262025102"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white text-digiqo-primary font-bold rounded-full hover:bg-white/90 hover:shadow-2xl transition-all duration-300 shadow-xl transform hover:scale-105"

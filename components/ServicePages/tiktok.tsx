@@ -9,20 +9,14 @@ import {
   Users,
   LineChart,
   CheckCircle2,
-  MessageCircle,
   Music,
   Hash,
-  Sparkles
-  // Shield,
-  // Award
-  // TrendingUp,
-  // Eye,
-  // Gift
+  Sparkles,
+  Phone
 } from 'lucide-react'
 import { ServiceLayout } from '../../components/ServiceLayout'
 import { ServiceHero } from '@/components/ServicePages/ServiceHero'
 import { generateContactUrl } from '../../lib/contact-utils'
-import { generateWhatsAppLink } from '../../lib/whatsapp-utils'
 import { UnderConstructionModal } from '@/components/UnderConstructionModal'
 // Import Airtable supprimé - approche sur devis uniquement
 
@@ -168,7 +162,7 @@ export default function TikTokPage() {
           },
           secondary: {
             text: "Parler à un expert",
-            href: generateWhatsAppLink({ context: 'tiktok' })
+            href: "tel:+262262025102"
           }
         }}
         gradientFrom="from-digiqo-primary"
@@ -362,15 +356,13 @@ export default function TikTokPage() {
                 </motion.a>
 
                 <motion.a
-                  href={generateWhatsAppLink({ service: 'tiktok' })}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="tel:+262262025102"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-digiqo-primary text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all"
                 >
-                  <MessageCircle className="w-5 h-5" />
-                  Discuter sur WhatsApp
+                  <Phone className="w-5 h-5" />
+                  02 62 02 51 02
                 </motion.a>
               </div>
 
@@ -423,15 +415,13 @@ export default function TikTokPage() {
             </motion.a>
 
             <motion.a
-              href={generateWhatsAppLink({ service: 'tiktok' })}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="tel:+262262025102"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-digiqo-primary text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all"
             >
-              <MessageCircle className="w-5 h-5" />
-              Discuter sur WhatsApp
+              <Phone className="w-5 h-5" />
+              02 62 02 51 02
             </motion.a>
           </motion.div>
         </div>

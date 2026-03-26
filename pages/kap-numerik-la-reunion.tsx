@@ -1126,7 +1126,7 @@ export default function KapNumerik() {
                 
                 {/* Secondary CTA */}
                 <motion.a
-                  href="tel:+262693737297"
+                  href="tel:+262262025102"
                   className="group relative inline-flex items-center gap-3 px-12 py-6 bg-transparent text-white font-bold text-lg rounded-2xl border-2 border-white/50 backdrop-blur-sm hover:bg-white/10 hover:border-white transition-all duration-300 overflow-hidden"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

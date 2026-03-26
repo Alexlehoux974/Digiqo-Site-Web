@@ -4,7 +4,6 @@ import FormField from '../../../components/WebQuoteForm/FormField'
 const CONTACT_METHODS = [
   { value: 'email', label: 'Email' },
   { value: 'telephone', label: 'Téléphone' },
-  { value: 'whatsapp', label: 'WhatsApp' },
 ]
 
 interface ContactStepProps {

@@ -18,13 +18,11 @@ import {
   ArrowUpRight,
   X,
   Crown,
-  Rocket,
-  MessageCircle
+  Rocket
 } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
 import { generateContactUrl } from '../../lib/contact-utils'
-import { generateWhatsAppLink } from '../../lib/whatsapp-utils'
 import { 
   getProductsForService
 } from '../../lib/airtable-products'
@@ -1063,7 +1061,7 @@ export default function PublicitePage() {
             </motion.div>
           )}
 
-          {/* WhatsApp CTA */}
+          {/* Phone CTA */}
           <motion.div
             {...ANIMATION.entry.fadeInUp}
             whileInView={ANIMATION.entry.fadeInUp.animate}
@@ -1071,13 +1069,10 @@ export default function PublicitePage() {
             className="mt-16 text-center"
           >
             <a
-              href={generateWhatsAppLink({ service: 'publicite' })}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+              href="tel:+262262025102"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-digiqo-primary text-white font-bold rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
-              <MessageCircle className="w-6 h-6" />
-              Contactez-nous sur WhatsApp
+              Appelez-nous : 02 62 02 51 02
               <ArrowRight className="w-5 h-5" />
             </a>
           </motion.div>

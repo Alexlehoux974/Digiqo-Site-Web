@@ -417,10 +417,10 @@ export default function Referencement() {
                   <ArrowRight className="w-5 h-5" />
                 </Link>
                 <a
-                  href="tel:+262693737297"
+                  href="tel:+262262025102"
                   className="inline-flex items-center gap-2 px-8 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-digiqo-secondary transition-all duration-300"
                 >
-                  📞 0693 73 72 97
+                  📞 02 62 02 51 02
                 </a>
               </div>
             </motion.div>

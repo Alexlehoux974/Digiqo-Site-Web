@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Check, X, AlertCircle, Calculator, Euro, Users, MapPin, Briefcase, ChevronRight, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 import { generateContactUrl } from '@/lib/contact-utils'
-import { generateWhatsAppLink } from '@/lib/whatsapp-utils'
 
 export default function EligibilityCalculator() {
   const [step, setStep] = useState(1)
@@ -440,9 +439,7 @@ export default function EligibilityCalculator() {
                 
                 <div className="space-y-3">
                   <a
-                    href={generateWhatsAppLink({ context: 'eligibilite' })}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="tel:+262262025102"
                     className="block w-full px-6 py-4 bg-gradient-to-r from-digiqo-secondary to-digiqo-primary text-white font-bold rounded-xl hover:shadow-lg transition-all"
                   >
                     Je démarre mon projet avec Digiqo

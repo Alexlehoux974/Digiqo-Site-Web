@@ -13,7 +13,6 @@ import {
   LineChart,
   ArrowUpRight,
   Rocket,
-  MessageCircle,
   Video,
   Shield,
   Award,
@@ -28,13 +27,13 @@ import {
   Lightbulb,
   Gift,
   Megaphone,
-  Crosshair
+  Crosshair,
+  Phone
 } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
 import { ServiceHero } from '@/components/ServicePages/ServiceHero'
 import { generateContactUrl } from '../../lib/contact-utils'
-import { generateWhatsAppLink } from '../../lib/whatsapp-utils'
 import { OptimizedImage } from '@/components/ui/OptimizedImage'
 
 interface Formula {
@@ -362,7 +361,7 @@ export default function PubliciteEnLignePage() {
           },
           secondary: {
             text: "Parler à un expert",
-            href: generateWhatsAppLink({ context: 'publicite' })
+            href: "tel:+262262025102"
           }
         }}
         gradientFrom="from-digiqo-accent"
@@ -989,15 +988,13 @@ export default function PubliciteEnLignePage() {
             </motion.a>
 
             <motion.a
-              href={generateWhatsAppLink({ service: 'publicite' })}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="tel:+262262025102"
               whileHover={ANIMATION.hover.scale}
               whileTap={ANIMATION.tap.scale}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-digiqo-primary text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all"
             >
-              <MessageCircle className="w-5 h-5" />
-              Discuter sur WhatsApp
+              <Phone className="w-5 h-5" />
+              02 62 02 51 02
             </motion.a>
           </motion.div>
         </div>
