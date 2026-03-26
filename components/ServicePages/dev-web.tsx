@@ -12,7 +12,10 @@ import {
   Star,
   MessageCircle,
   Calendar,
-  ExternalLink
+  ExternalLink,
+  Globe,
+  FileText,
+  Coffee
 } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
 import { ServiceLayout } from '../../components/ServiceLayout'
@@ -588,6 +591,255 @@ export default function DevWebPage() {
         </div>
       </section>
 
+
+      {/* Sites Web Low Cost - Abonnement */}
+      <section id="sites-abonnement" className="py-24 bg-gradient-to-br from-white to-digiqo-accent/5 relative overflow-hidden">
+        <SectionGradientOrbs />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <motion.span
+              {...ANIMATION.entry.scaleIn}
+              whileInView={ANIMATION.entry.scaleIn.animate}
+              viewport={{ once: true }}
+              className="inline-block px-4 py-2 bg-gradient-to-r from-digiqo-accent to-orange-500 text-white text-sm font-bold rounded-full mb-6"
+            >
+              SITES WEB EN ABONNEMENT
+            </motion.span>
+
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              Votre site web dès <span className="bg-gradient-to-r from-digiqo-accent to-orange-500 bg-clip-text text-transparent">99€/mois</span>
+            </h2>
+            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto mb-4">
+              L'option low cost pour lancer votre présence en ligne rapidement
+            </p>
+            <p className="text-lg text-digiqo-primary/60 max-w-2xl mx-auto">
+              Sans frais de création • Hébergement inclus • Support technique inclus
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8 items-stretch">
+            {/* Site Vitrine + Contact */}
+            <motion.div
+              {...ANIMATION.entry.fadeInUpLarge}
+              whileInView={ANIMATION.entry.fadeInUpLarge.animate}
+              viewport={{ once: true }}
+              transition={{ delay: ANIMATION.delay.stagger }}
+              whileHover={ANIMATION.hover.liftLarge}
+              className="group relative"
+            >
+              <div className="relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col overflow-hidden">
+                <div className="p-8 bg-gradient-to-br from-emerald-500 to-teal-600">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center">
+                    <Globe className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white text-center mb-2">Site vitrine + formulaire de contact</h3>
+                  <p className="text-white/90 text-sm text-center">Affichez votre entreprise et votre activité</p>
+                </div>
+
+                <div className="p-6 bg-gray-50 border-b border-gray-100">
+                  <div className="text-center">
+                    <p className="text-5xl font-bold text-digiqo-primary">99€</p>
+                    <p className="text-gray-600 mt-2">/mois</p>
+                    <p className="text-xs text-digiqo-primary/60 mt-2">Engagement minimum 3 mois</p>
+                  </div>
+                </div>
+
+                <div className="p-6 flex-grow">
+                  <h4 className="font-semibold text-gray-800 mb-4">Inclus :</h4>
+                  <ul className="space-y-3 text-sm">
+                    {[
+                      'Présentation complète de votre entreprise et services',
+                      'Formulaire de contact professionnel intégré',
+                      'Galerie responsive – valorisez vos réalisations',
+                      'SEO + Analytics – soyez visible et mesurez vos résultats',
+                      'Design mobile-first – parfait sur tous les écrans',
+                      'Personnalisation complète – votre image, vos couleurs',
+                      'Hébergement sécurisé + support technique inclus',
+                      'Témoignages intégrés – rassurez vos prospects',
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-digiqo-secondary shrink-0 mt-0.5" />
+                        <span className="text-gray-700">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="p-6 bg-gray-50 border-t border-gray-100">
+                  <a
+                    href="https://app-eu1.hubspot.com/payments/tNtmnNDDGMvXRXR?referrer=PAYMENT_LINK"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full py-4 px-6 text-center font-semibold rounded-full transition-all bg-white border-2 border-digiqo-secondary text-digiqo-secondary hover:bg-digiqo-secondary hover:text-white"
+                  >
+                    Choisir cette formule
+                  </a>
+                  <a
+                    href="https://demo-digiqo.netlify.app/club-plongee-saint-leu/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full py-3 px-6 mt-3 text-center font-semibold rounded-full transition-all bg-digiqo-secondary/10 text-digiqo-secondary hover:bg-digiqo-secondary/20"
+                  >
+                    Voir une démo
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Site Vitrine + Devis */}
+            <motion.div
+              {...ANIMATION.entry.fadeInUpLarge}
+              whileInView={ANIMATION.entry.fadeInUpLarge.animate}
+              viewport={{ once: true }}
+              transition={{ delay: ANIMATION.delay.stagger * 2 }}
+              whileHover={ANIMATION.hover.liftLarge}
+              className="group relative"
+            >
+              <div className="absolute -top-3 -right-10 bg-white text-blue-600 px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg transform rotate-12 border-2 border-blue-500">
+                LE PLUS POPULAIRE
+              </div>
+
+              <div className="relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col overflow-hidden ring-2 ring-blue-500">
+                <div className="p-8 bg-gradient-to-br from-blue-500 to-indigo-600">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center">
+                    <FileText className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white text-center mb-2">Site vitrine + formulaire devis</h3>
+                  <p className="text-white/90 text-sm text-center">Collectez efficacement des demandes de devis</p>
+                </div>
+
+                <div className="p-6 bg-gray-50 border-b border-gray-100">
+                  <div className="text-center">
+                    <p className="text-5xl font-bold text-digiqo-accent">199€</p>
+                    <p className="text-gray-600 mt-2">/mois</p>
+                    <p className="text-xs text-digiqo-primary/60 mt-2">Engagement minimum 3 mois</p>
+                  </div>
+                </div>
+
+                <div className="p-6 flex-grow">
+                  <h4 className="font-semibold text-gray-800 mb-4">Inclus :</h4>
+                  <ul className="space-y-3 text-sm">
+                    <li className="flex items-start gap-2">
+                      <Star className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
+                      <span className="text-gray-700 font-semibold">Formulaire de devis détaillé et personnalisable</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Star className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
+                      <span className="text-gray-700 font-semibold">Système de collecte de demandes de devis automatisé</span>
+                    </li>
+                    {[
+                      'Formulaire intelligent – centralisez toutes les demandes',
+                      'Galerie responsive – valorisez vos réalisations',
+                      'SEO optimisé + Analytics – soyez visible et mesurez vos résultats',
+                      'Design mobile-first – parfait sur tous les écrans',
+                      'Personnalisation complète – couleurs, logo, textes adaptés',
+                      'Hébergement sécurisé + support technique inclus',
+                      'Témoignages intégrés – rassurez vos prospects',
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-digiqo-accent shrink-0 mt-0.5" />
+                        <span className="text-gray-700">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="p-6 bg-gray-50 border-t border-gray-100">
+                  <a
+                    href="https://app-eu1.hubspot.com/payments/sg9GhNqGRxhm?referrer=PAYMENT_LINK"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full py-4 px-6 text-center font-semibold rounded-full transition-all bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  >
+                    Choisir cette formule
+                  </a>
+                  <a
+                    href="https://demo-digiqo.netlify.app/carreleur-devis/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full py-3 px-6 mt-3 text-center font-semibold rounded-full transition-all bg-digiqo-accent/10 text-digiqo-accent hover:bg-digiqo-accent/20"
+                  >
+                    Voir une démo
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Site Restaurant + Commande */}
+            <motion.div
+              {...ANIMATION.entry.fadeInUpLarge}
+              whileInView={ANIMATION.entry.fadeInUpLarge.animate}
+              viewport={{ once: true }}
+              transition={{ delay: ANIMATION.delay.stagger * 3 }}
+              whileHover={ANIMATION.hover.liftLarge}
+              className="group relative"
+            >
+              <div className="relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col overflow-hidden">
+                <div className="p-8 bg-gradient-to-br from-purple-500 to-pink-600">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center">
+                    <Coffee className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white text-center mb-2">Site vitrine + commande en ligne</h3>
+                  <p className="text-white/90 text-sm text-center">Snack, Pizzerias — Affichez le menu et recevez les commandes</p>
+                </div>
+
+                <div className="p-6 bg-gray-50 border-b border-gray-100">
+                  <div className="text-center">
+                    <p className="text-5xl font-bold text-digiqo-primary">299€</p>
+                    <p className="text-gray-600 mt-2">/mois</p>
+                    <p className="text-xs text-digiqo-primary/60 mt-2">Engagement minimum 3 mois</p>
+                  </div>
+                </div>
+
+                <div className="p-6 flex-grow">
+                  <h4 className="font-semibold text-gray-800 mb-4">Inclus :</h4>
+                  <ul className="space-y-3 text-sm">
+                    <li className="flex items-start gap-2">
+                      <Star className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
+                      <span className="text-gray-700 font-semibold">Menu interactif avec photos et descriptions</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Star className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
+                      <span className="text-gray-700 font-semibold">Système de commande en ligne intégré</span>
+                    </li>
+                    {[
+                      'Formulaire intelligent – centralisez toutes les demandes',
+                      'Galerie responsive – valorisez vos réalisations',
+                      'SEO optimisé + Analytics – soyez visible et mesurez vos résultats',
+                      'Design mobile-first – parfait sur tous les écrans',
+                      'Personnalisation complète – couleurs, logo, textes adaptés',
+                      'Hébergement sécurisé + support technique inclus',
+                      'Témoignages intégrés – rassurez vos prospects',
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-digiqo-primary shrink-0 mt-0.5" />
+                        <span className="text-gray-700">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="p-6 bg-gray-50 border-t border-gray-100">
+                  <a
+                    href={CALENDAR_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full py-4 px-6 text-center font-semibold rounded-full transition-all bg-white border-2 border-digiqo-primary text-digiqo-primary hover:bg-digiqo-primary hover:text-white"
+                  >
+                    Choisir cette formule
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="py-24 bg-gradient-to-br from-digiqo-secondary to-digiqo-secondary/80">
