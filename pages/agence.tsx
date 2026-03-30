@@ -50,7 +50,7 @@ const team = [
   },
   {
     name: 'Adrien Trudel',
-    role: 'Expert Marketing certifié Meta',
+    role: 'Expert Marketing certifié Meta & TikTok',
     description: "Adrien est notre sniper des campagnes publicitaires. Certifié et formé par Meta, il maîtrise toutes les subtilités de l'écosystème Facebook & Instagram Ads. Sa spécialité ? Créer des campagnes puissantes, rentables et ultra ciblées, avec un suivi pointu des performances.",
     image: '/partenaires/Adrien.webp',
     linkedin: 'https://www.linkedin.com/in/adrien-trudel/',
