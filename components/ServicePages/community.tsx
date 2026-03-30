@@ -63,7 +63,7 @@ export default function CommunityPage() {
       accentColor: 'emerald',
       icon: Sparkles,
       features: engagementType === 'mensuel' ? [
-        '📝 5 posts, 5 stories, 0 reels / mois',
+        '📝 5 posts, 5 stories, 1 reel / mois',
         '🚗 1 déplacement sur site (1h)',
         '⏱️ Réponses aux commentaires et messages en 48h ouvrées',
         '🕘 Gestion des interactions pendant les heures de bureau (lundi-vendredi, 9h-18h)',
@@ -71,7 +71,7 @@ export default function CommunityPage() {
         '📊 Abonnement de 3 mois minimum',
         '♻️ Renouvellement automatique mensuel après 3 mois'
       ] : [
-        '📝 5 posts, 5 stories, 0 reels / mois',
+        '📝 5 posts, 5 stories, 1 reel / mois',
         '🚗 1 déplacement sur site (1h)',
         '⏱️ Réponses aux commentaires et messages en 48h ouvrées',
         '🕘 Gestion des interactions pendant les heures de bureau (lundi-vendredi, 9h-18h)',
