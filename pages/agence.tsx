@@ -10,7 +10,7 @@ import { useRef } from 'react'
 const team = [
   {
     name: 'Angelo Rapazzini',
-    role: 'Directeur Général & Fondateur',
+    role: 'Fondateur & Associé',
     description: "Angelo est notre expert incontournable en publicité en ligne. Ancien marketer chez Meta (anciennement Facebook), il maîtrise parfaitement les codes du digital et les dynamiques de vente. Chez Digiqo, il joue un rôle clé en traduisant les besoins de nos clients en stratégies performantes, tout en entretenant des relations solides et durables avec nos partenaires.",
     image: '/partenaires/Angelo.webp',
     linkedin: 'https://www.linkedin.com/in/angelo-rapazzini/',
@@ -18,7 +18,7 @@ const team = [
   },
   {
     name: 'Rodolphe Le Houx',
-    role: 'CEO & Fondateur',
+    role: 'Fondateur & CEO',
     description: "Rodolphe est le cœur battant de Digiqo. En tant que CEO, il fait preuve d'une vision stratégique claire et d'une passion inébranlable pour le numérique. Il guide l'entreprise avec dynamisme, cherchant constamment à innover et à anticiper les tendances du marché. Son objectif : offrir à nos clients des solutions digitales sur-mesure, en forgeant des partenariats durables.",
     image: '/partenaires/Rodolphe.webp',
     linkedin: 'https://www.linkedin.com/in/rodolphe-le-houx/',
@@ -26,7 +26,7 @@ const team = [
   },
   {
     name: 'Alexandre Le Houx',
-    role: 'Directeur de la Communication & Fondateur',
+    role: 'Fondateur & CMO',
     description: "Alexandre est la voix de Digiqo. Il donne le ton de notre communication, crée des contenus percutants et tisse chaque jour des liens authentiques avec notre communauté en ligne. Son énergie contagieuse, sa créativité débordante et son sens de l'écoute font de lui un pilier dans la construction de l'image positive de Digiqo.",
     image: '/partenaires/Alexandre.webp',
     linkedin: 'https://www.linkedin.com/in/alexandre-le-houx/',
@@ -34,7 +34,7 @@ const team = [
   },
   {
     name: 'Maxime Sin',
-    role: 'Directeur Commercial',
+    role: 'Head of Sales',
     description: "Après plus de 10 ans d'expérience en tant que Responsable Commercial BtoB dans des startups parisiennes à forte valeur ajoutée, Maxime a rejoint Digiqo avec une conviction forte : la réussite passe avant tout par l'écoute et la compréhension des besoins clients. Passionné par le développement commercial et les relations humaines, il accompagne les entreprises au quotidien en leur apportant des conseils concrets et des solutions adaptées à leurs enjeux. Son moteur ? Construire des relations de confiance durables et aider chaque client à atteindre ses objectifs de croissance, avec engagement, transparence et proximité.",
     image: '/partenaires/MAXIME-SIN.JPG',
     linkedin: 'https://www.linkedin.com/in/maxime-sin/',
@@ -50,7 +50,7 @@ const team = [
   },
   {
     name: 'Romain Cano',
-    role: 'Expert IA et Automatisation',
+    role: 'CTO (Directeur Technique)',
     description: "Romain est notre spécialiste en intelligence artificielle et automatisation. Il conçoit et implémente des solutions innovantes pour optimiser les processus métiers de nos clients. Son expertise en IA permet de transformer les données en insights actionnables et d'automatiser les tâches répétitives pour maximiser l'efficacité.",
     image: '/partenaires/Romain.webp',
     linkedin: 'https://www.linkedin.com/in/romain-cano/',
@@ -58,7 +58,7 @@ const team = [
   },
   {
     name: 'Jaemeson Dieu',
-    role: 'Expert Google Ads & Publicité en ligne',
+    role: 'Head of Products',
     description: "Jaemeson est notre maître d'orchestre de la publicité sur Google. Grâce à sa parfaite maîtrise des outils et langages de l'écosystème Google (Ads, Analytics, Tag Manager, etc.), il conçoit des campagnes précises et redoutablement efficaces. Sa force ? Transformer chaque clic en opportunité, en alliant stratégie, optimisation et analyse poussée des résultats pour générer un maximum de valeur pour nos clients. Toujours en veille sur les dernières tendances et nouveautés de Google, il sait adapter les stratégies pour garder une longueur d'avance sur la concurrence.",
     image: '/partenaires/jaemeson.webp',
     linkedin: 'https://www.linkedin.com/in/jaemeson-dieu/',
@@ -66,7 +66,7 @@ const team = [
   },
   {
     name: 'Lilian Apithy',
-    role: 'Expert Meta Ads & Relation Clients',
+    role: 'Expert Marketing certifié Meta',
     description: "Lilian est notre véritable couteau suisse : il veille à ce que chaque client Digiqo soit écouté, accompagné et satisfait. Toujours réactif, il s'assure que les demandes trouvent une réponse rapide et efficace, tout en récoltant témoignages et fichiers essentiels pour enrichir nos projets. En parallèle, il met sa créativité au service des visuels et contenus photo, apportant une touche soignée et percutante à nos campagnes. Spécialiste des publicités Meta (Facebook & Instagram Ads), Lilian combine expertise technique et sens du relationnel pour offrir des résultats concrets et une expérience client irréprochable.",
     image: '/partenaires/lilian.webp',
     linkedin: 'https://www.linkedin.com/in/lilian-apithy/',
