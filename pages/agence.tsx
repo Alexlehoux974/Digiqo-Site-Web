@@ -9,14 +9,6 @@ import { useRef } from 'react'
 
 const team = [
   {
-    name: 'Angelo Rapazzini',
-    role: 'Fondateur & Associé',
-    description: "Angelo est notre expert incontournable en publicité en ligne. Ancien marketer chez Meta (anciennement Facebook), il maîtrise parfaitement les codes du digital et les dynamiques de vente. Chez Digiqo, il joue un rôle clé en traduisant les besoins de nos clients en stratégies performantes, tout en entretenant des relations solides et durables avec nos partenaires.",
-    image: '/partenaires/Angelo.webp',
-    linkedin: 'https://www.linkedin.com/in/angelo-rapazzini/',
-    email: 'angelo@digiqo.fr'
-  },
-  {
     name: 'Rodolphe Le Houx',
     role: 'Fondateur & CEO',
     description: "Rodolphe est le cœur battant de Digiqo. En tant que CEO, il fait preuve d'une vision stratégique claire et d'une passion inébranlable pour le numérique. Il guide l'entreprise avec dynamisme, cherchant constamment à innover et à anticiper les tendances du marché. Son objectif : offrir à nos clients des solutions digitales sur-mesure, en forgeant des partenariats durables.",
@@ -33,28 +25,20 @@ const team = [
     email: 'alexandre@digiqo.fr'
   },
   {
+    name: 'Angelo Rapazzini',
+    role: 'Fondateur & Associé',
+    description: "Angelo est notre expert incontournable en publicité en ligne. Ancien marketer chez Meta (anciennement Facebook), il maîtrise parfaitement les codes du digital et les dynamiques de vente. Chez Digiqo, il joue un rôle clé en traduisant les besoins de nos clients en stratégies performantes, tout en entretenant des relations solides et durables avec nos partenaires.",
+    image: '/partenaires/Angelo.webp',
+    linkedin: 'https://www.linkedin.com/in/angelo-rapazzini/',
+    email: 'angelo@digiqo.fr'
+  },
+  {
     name: 'Maxime Sin',
     role: 'Head of Sales',
     description: "Après plus de 10 ans d'expérience en tant que Responsable Commercial BtoB dans des startups parisiennes à forte valeur ajoutée, Maxime a rejoint Digiqo avec une conviction forte : la réussite passe avant tout par l'écoute et la compréhension des besoins clients. Passionné par le développement commercial et les relations humaines, il accompagne les entreprises au quotidien en leur apportant des conseils concrets et des solutions adaptées à leurs enjeux. Son moteur ? Construire des relations de confiance durables et aider chaque client à atteindre ses objectifs de croissance, avec engagement, transparence et proximité.",
     image: '/partenaires/MAXIME-SIN.JPG',
     linkedin: 'https://www.linkedin.com/in/maxime-sin/',
     email: 'maxime@digiqo.fr'
-  },
-  {
-    name: 'Adrien Trudel',
-    role: 'Expert Marketing certifié Meta',
-    description: "Adrien est notre sniper des campagnes publicitaires. Certifié et formé par Meta, il maîtrise toutes les subtilités de l'écosystème Facebook & Instagram Ads. Sa spécialité ? Créer des campagnes puissantes, rentables et ultra ciblées, avec un suivi pointu des performances.",
-    image: '/partenaires/Adrien.webp',
-    linkedin: 'https://www.linkedin.com/in/adrien-trudel/',
-    email: 'adrien@digiqo.fr'
-  },
-  {
-    name: 'Romain Cano',
-    role: 'CTO (Directeur Technique)',
-    description: "Romain est notre spécialiste en intelligence artificielle et automatisation. Il conçoit et implémente des solutions innovantes pour optimiser les processus métiers de nos clients. Son expertise en IA permet de transformer les données en insights actionnables et d'automatiser les tâches répétitives pour maximiser l'efficacité.",
-    image: '/partenaires/Romain.webp',
-    linkedin: 'https://www.linkedin.com/in/romain-cano/',
-    email: 'romain@digiqo.fr'
   },
   {
     name: 'Jaemeson Dieu',
@@ -65,12 +49,28 @@ const team = [
     email: 'jaemeson@digiqo.fr'
   },
   {
+    name: 'Adrien Trudel',
+    role: 'Expert Marketing certifié Meta',
+    description: "Adrien est notre sniper des campagnes publicitaires. Certifié et formé par Meta, il maîtrise toutes les subtilités de l'écosystème Facebook & Instagram Ads. Sa spécialité ? Créer des campagnes puissantes, rentables et ultra ciblées, avec un suivi pointu des performances.",
+    image: '/partenaires/Adrien.webp',
+    linkedin: 'https://www.linkedin.com/in/adrien-trudel/',
+    email: 'adrien@digiqo.fr'
+  },
+  {
     name: 'Lilian Apithy',
     role: 'Expert Marketing certifié Meta',
     description: "Lilian est notre véritable couteau suisse : il veille à ce que chaque client Digiqo soit écouté, accompagné et satisfait. Toujours réactif, il s'assure que les demandes trouvent une réponse rapide et efficace, tout en récoltant témoignages et fichiers essentiels pour enrichir nos projets. En parallèle, il met sa créativité au service des visuels et contenus photo, apportant une touche soignée et percutante à nos campagnes. Spécialiste des publicités Meta (Facebook & Instagram Ads), Lilian combine expertise technique et sens du relationnel pour offrir des résultats concrets et une expérience client irréprochable.",
     image: '/partenaires/lilian.webp',
     linkedin: 'https://www.linkedin.com/in/lilian-apithy/',
     email: 'lilian@digiqo.fr'
+  },
+  {
+    name: 'Romain Cano',
+    role: 'CTO (Directeur Technique)',
+    description: "Romain est notre spécialiste en intelligence artificielle et automatisation. Il conçoit et implémente des solutions innovantes pour optimiser les processus métiers de nos clients. Son expertise en IA permet de transformer les données en insights actionnables et d'automatiser les tâches répétitives pour maximiser l'efficacité.",
+    image: '/partenaires/Romain.webp',
+    linkedin: 'https://www.linkedin.com/in/romain-cano/',
+    email: 'romain@digiqo.fr'
   }
 ]
 
