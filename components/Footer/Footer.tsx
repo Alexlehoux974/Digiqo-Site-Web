@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { Instagram, Facebook, Linkedin, Youtube, Mail, Phone, MapPin } from 'lucide-react'
 import { SiTiktok, SiX } from 'react-icons/si'
@@ -46,6 +48,25 @@ const navigation = {
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear()
+  const router = useRouter()
+  const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email || loading) return
+    setLoading(true)
+    try {
+      await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      })
+      router.push('/merci')
+    } catch {
+      router.push('/merci')
+    }
+  }
 
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
@@ -156,17 +177,21 @@ export const Footer = () => {
               {/* Newsletter */}
               <div className="mb-6">
                 <p className="text-gray-300 text-sm mb-3">Recevez nos dernières actualités</p>
-                <form className="flex flex-col gap-2">
+                <form className="flex flex-col gap-2" onSubmit={handleNewsletterSubmit}>
                   <input
                     type="email"
                     placeholder="Votre email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
                     className="px-4 py-2.5 bg-white/5 border border-gray-700 rounded-lg text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-cyan-500 focus:bg-white/10 transition-all"
                   />
                   <button
                     type="submit"
-                    className="px-4 py-2.5 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white text-sm font-medium rounded-lg hover:from-cyan-600 hover:to-cyan-700 transition-all duration-300 transform hover:scale-[1.02]"
+                    disabled={loading}
+                    className="px-4 py-2.5 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white text-sm font-medium rounded-lg hover:from-cyan-600 hover:to-cyan-700 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50"
                   >
-                    S'abonner
+                    {loading ? 'Envoi...' : "S'abonner"}
                   </button>
                   <p className="text-xs text-gray-500">
                     En vous inscrivant, vous acceptez que vos données soient traitées conformément à notre{' '}
