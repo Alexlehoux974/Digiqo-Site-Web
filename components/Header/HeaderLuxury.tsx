@@ -707,18 +707,20 @@ export const HeaderLuxury = () => {
 
             {/* Luxury CTA Buttons */}
             <div className="hidden lg:flex items-center space-x-4">
-              {/* Kap Numérik Button */}
-              <Link
-                href="/kap-numerik-la-reunion"
+              {/* Mon Compte Button */}
+              <a
+                href="https://app-digiqo.fr"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <motion.button
                   className="px-5 py-3 text-sm font-bold text-white bg-gradient-to-r from-digiqo-secondary to-cyan-500 border-2 border-transparent rounded-full hover:shadow-lg hover:shadow-digiqo-secondary/40 hover:scale-110 active:scale-105 transition-all duration-300 whitespace-nowrap"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Kap Numérik
+                  Mon compte
                 </motion.button>
-              </Link>
+              </a>
 
               {/* Contact Button */}
               <Link 

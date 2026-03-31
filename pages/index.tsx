@@ -189,6 +189,54 @@ export default function Home() {
         <ServicesSection />
         <div className="py-8" />
 
+        {/* Kap Numérik Section */}
+        <section className="py-20 bg-gradient-to-br from-digiqo-primary via-digiqo-primary to-[#1a1a3e] relative overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-digiqo-accent/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-digiqo-secondary/10 rounded-full blur-3xl" />
+          </div>
+
+          <div className="relative z-10 max-w-6xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-2 bg-gradient-to-r from-digiqo-accent to-orange-400 text-white text-sm font-bold rounded-full mb-6">
+                KAP NUMÉRIK — RÉGION RÉUNION
+              </span>
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Jusqu'à <span className="bg-gradient-to-r from-digiqo-accent to-yellow-400 bg-clip-text text-transparent">3 200€</span> d'aide pour votre digital
+              </h2>
+              <p className="text-xl text-white/80 max-w-3xl mx-auto">
+                La Région Réunion finance jusqu'à 80% de votre transformation digitale. Digiqo est agence agréée Kap Numérik.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              {[
+                { title: 'Création de site web', desc: 'Site vitrine, e-commerce ou landing page professionnelle' },
+                { title: 'Publicité en ligne', desc: 'Campagnes Meta Ads, Google Ads, TikTok Ads' },
+                { title: 'Communication digitale', desc: 'Community management, stratégie réseaux sociaux' },
+              ].map((item, i) => (
+                <div key={i} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-digiqo-accent/50 transition-all duration-300">
+                  <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-white/70 text-sm">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center">
+              <Link
+                href="/kap-numerik-la-reunion"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-digiqo-accent to-orange-400 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+              >
+                Vérifier mon éligibilité
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+              <p className="text-white/60 text-sm mt-4">
+                Gratuit • Réponse immédiate • Agence agréée
+              </p>
+            </div>
+          </div>
+        </section>
+
         <div className="py-8" />
         <AboutSection />
         <div className="py-8" />
