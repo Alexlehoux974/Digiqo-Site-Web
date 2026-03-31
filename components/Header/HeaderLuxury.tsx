@@ -714,11 +714,24 @@ export const HeaderLuxury = () => {
                 rel="noopener noreferrer"
               >
                 <motion.button
-                  className="px-5 py-3 text-sm font-bold text-white bg-gradient-to-r from-digiqo-secondary to-cyan-500 border-2 border-transparent rounded-full hover:shadow-lg hover:shadow-digiqo-secondary/40 hover:scale-110 active:scale-105 transition-all duration-300 whitespace-nowrap"
+                  className="relative px-8 py-3 text-sm font-medium text-white rounded-full overflow-hidden group"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Mon compte
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-digiqo-secondary via-cyan-500 to-digiqo-secondary"
+                    animate={{
+                      backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+                    }}
+                    transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+                    style={{ backgroundSize: '200% 100%' }}
+                  />
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                    animate={{ x: [-200, 200] }}
+                    transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
+                  />
+                  <span className="relative">Mon compte</span>
                 </motion.button>
               </a>
 
