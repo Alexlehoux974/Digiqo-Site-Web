@@ -964,8 +964,17 @@ export const HeaderLuxury = () => {
                   </div>
                 ))}
                 
-                {/* Contact CTA */}
-                <div className="pt-6 border-t border-gray-100">
+                {/* CTA Buttons */}
+                <div className="pt-6 border-t border-gray-100 space-y-3">
+                  <a
+                    href="https://app-digiqo.fr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block w-full px-6 py-3 bg-gradient-to-r from-digiqo-secondary to-cyan-500 text-white font-bold rounded-2xl text-center"
+                  >
+                    Mon compte
+                  </a>
                   <Link
                     href={navigation.cta.contact.href}
                     onClick={(e) => {
