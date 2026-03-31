@@ -29,7 +29,7 @@ export default async function handler(
 
     // Envoi vers le webhook N8N
     const webhookResponse = await fetch(
-      'https://digiqo.app.n8n.cloud/webhook/8666dba8-9485-4c71-8a4c-b9293cf073ab',
+      process.env.N8N_AGENTS_WEBHOOK_URL || '',
       {
         method: 'POST',
         headers: {

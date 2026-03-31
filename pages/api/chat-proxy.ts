@@ -1,8 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { checkRateLimit } from '../../lib/rate-limit'
 
-const N8N_CHAT_WEBHOOK_URL =
-  'https://n8n.srv763918.hstgr.cloud/webhook/9cc113e7-d987-45a2-8e91-a4a664624d05/chat'
+const N8N_CHAT_WEBHOOK_URL = process.env.N8N_CHAT_WEBHOOK_URL || ''
 
 export default async function handler(
   req: NextApiRequest,

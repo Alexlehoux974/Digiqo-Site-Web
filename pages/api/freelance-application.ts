@@ -6,7 +6,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const AIRTABLE_PAT = process.env.AIRTABLE_PAT || '';
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID || 'appH46IBnNdYNrwZ9'; // Base "Site Web Digiqo"
 const AIRTABLE_TABLE_ID = 'tblhesc2ozbch8t1o'; // Table "Candidatures Freelances"
-const N8N_WEBHOOK_URL = 'https://digiqo.app.n8n.cloud/webhook/85917acc-fcad-4d69-b9cd-3efb3f469056';
+const N8N_WEBHOOK_URL = process.env.N8N_FREELANCE_WEBHOOK_URL || '';
 
 export default async function handler(
   req: NextApiRequest,

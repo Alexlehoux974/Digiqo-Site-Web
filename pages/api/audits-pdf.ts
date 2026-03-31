@@ -240,6 +240,12 @@ export default async function handler(
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
+  // Authentification par clé API
+  const apiKey = req.headers['x-api-key'] || req.query.key
+  if (apiKey !== process.env.AUDIT_API_KEY) {
+    return res.status(401).json({ error: 'Unauthorized' })
+  }
+
   // Vérifier les variables d'environnement
   const AIRTABLE_PAT = process.env.AIRTABLE_PAT
   const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID || 'appH46IBnNdYNrwZ9'

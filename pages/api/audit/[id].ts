@@ -14,6 +14,12 @@ export default async function handler(
     return res.status(400).json({ error: 'Invalid audit ID' });
   }
 
+  // Authentification par clé API
+  const apiKey = req.headers['x-api-key'] || req.query.key;
+  if (apiKey !== process.env.AUDIT_API_KEY) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
   // Variables d'environnement
   const AIRTABLE_PAT = process.env.AIRTABLE_PAT;
   const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID || 'appH46IBnNdYNrwZ9';

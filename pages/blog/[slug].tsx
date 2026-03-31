@@ -311,6 +311,12 @@ function formatContent(content: string): string {
     }
   )
 
+  // Sanitize: strip script tags, event handlers, and dangerous attributes
+  formattedContent = formattedContent
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    .replace(/\son\w+\s*=\s*["'][^"']*["']/gi, '')
+    .replace(/javascript:/gi, '')
+
   return formattedContent
 }
 

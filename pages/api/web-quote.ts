@@ -8,7 +8,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN || '';
 const HUBSPOT_API_URL = 'https://api.hubapi.com';
 const ROMAIN_OWNER_ID = '30244580'; // Romain Cano
-const N8N_WEBHOOK_URL = 'https://digiqo.app.n8n.cloud/webhook/9848ecf9-764d-4ccd-90c4-6d91c16eeba9';
+const N8N_WEBHOOK_URL = process.env.N8N_WEBQUOTE_WEBHOOK_URL || '';
 
 async function createOrUpdateHubSpotLead(formData: any) {
   const email = formData.contact?.email;

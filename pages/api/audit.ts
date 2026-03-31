@@ -316,7 +316,7 @@ async function sendToAirtable(formData: Partial<AuditFormData>, reference: strin
 
 // Fonction pour envoyer au webhook n8n quand le contact existe déjà
 async function sendContactToN8N(contactData: any): Promise<void> {
-  const N8N_WEBHOOK_URL = 'https://digiqo.app.n8n.cloud/webhook/be081ee9-cb98-4f3b-b014-6cf893b4fc28';
+  const N8N_WEBHOOK_URL = process.env.N8N_AUDIT_WEBHOOK_URL || '';
 
   try {
     await fetch(N8N_WEBHOOK_URL, {
