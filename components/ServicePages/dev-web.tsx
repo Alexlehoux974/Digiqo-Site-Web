@@ -464,6 +464,44 @@ export default function DevWebPage() {
         </div>
       </section>
 
+      {/* Nos Références Section */}
+      <section id="references" className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+        <SectionGradientOrbs />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <motion.span
+              {...ANIMATION.entry.scaleIn}
+              whileInView={ANIMATION.entry.scaleIn.animate}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 text-white text-sm font-bold rounded-full mb-6"
+            >
+              <Star className="w-4 h-4" />
+              NOS RÉFÉRENCES
+              <Star className="w-4 h-4" />
+            </motion.span>
+
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              Ils nous font <span className="bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 bg-clip-text text-transparent">confiance</span>
+            </h2>
+            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
+              Survolez pour explorer les sites que nous avons conçus
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12">
+            {references.map((ref, index) => (
+              <IMacMockup key={index} name={ref.name} url={ref.url} screenshot={ref.screenshot} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Sur Mesure Section */}
       <section id="formules" className="py-24 bg-gradient-to-br from-white to-digiqo-secondary/5">
         <div className="max-w-5xl mx-auto px-4">
@@ -552,45 +590,6 @@ export default function DevWebPage() {
           </motion.div>
         </div>
       </section>
-
-      {/* Nos Références Section */}
-      <section id="references" className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
-        <SectionGradientOrbs />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <motion.span
-              {...ANIMATION.entry.scaleIn}
-              whileInView={ANIMATION.entry.scaleIn.animate}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 text-white text-sm font-bold rounded-full mb-6"
-            >
-              <Star className="w-4 h-4" />
-              NOS RÉFÉRENCES
-              <Star className="w-4 h-4" />
-            </motion.span>
-
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Ils nous font <span className="bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary/80 bg-clip-text text-transparent">confiance</span>
-            </h2>
-            <p className="text-xl text-digiqo-primary/70 max-w-3xl mx-auto">
-              Survolez pour explorer les sites que nous avons conçus
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12">
-            {references.map((ref, index) => (
-              <IMacMockup key={index} name={ref.name} url={ref.url} screenshot={ref.screenshot} index={index} />
-            ))}
-          </div>
-        </div>
-      </section>
-
 
       {/* Sites Web Low Cost - Abonnement */}
       <section id="sites-abonnement" className="py-24 bg-gradient-to-br from-white to-digiqo-accent/5 relative overflow-hidden">
