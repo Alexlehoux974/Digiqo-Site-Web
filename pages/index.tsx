@@ -106,89 +106,6 @@ export default function Home() {
         <ResultsSection />
         <div className="py-8" />
 
-        {/* Dome Gallery - Publicités clients */}
-        <section id="realisations" className="py-8 md:py-20 bg-digiqo-primary relative overflow-hidden">
-          {/* Background decoration */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-10 right-10 w-96 h-96 bg-digiqo-accent/20 rounded-full blur-3xl"></div>
-          </div>
-
-          <div className="relative z-10 max-w-7xl mx-auto px-4 text-center mb-6 md:mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
-              <span className="text-white">Nos productions</span>{' '}
-              <span className="bg-gradient-to-r from-digiqo-accent to-yellow-400 bg-clip-text text-transparent">
-                vidéos publicitaires
-              </span>
-            </h2>
-            <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              Découvrez nos réalisations créatives pour nos clients
-            </p>
-          </div>
-          <div className="h-[600px] md:h-[900px] w-full">
-            <DomeGallery
-              images={getAllClientVideos()}
-              fit={0.8}
-              minRadius={400}
-              maxRadius={800}
-              padFactor={0.2}
-              overlayBlurColor="#060010"
-              maxVerticalRotationDeg={15}
-              dragSensitivity={15}
-              enlargeTransitionMs={400}
-              segments={30}
-              dragDampening={3}
-              openedImageWidth="600px"
-              openedImageHeight="600px"
-              imageBorderRadius="20px"
-              openedImageBorderRadius="20px"
-              grayscale={false}
-            />
-          </div>
-        </section>
-        <div className="py-4 md:py-8" />
-
-        {/* <CaseStudiesSection /> */}
-        {/* <div className="py-8" /> */}
-
-        {/* Blog Carousel Section */}
-        <section className="py-20 bg-gradient-to-b from-white to-gray-50">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold text-digiqo-primary mb-4">
-                Blog & Actualités
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Découvrez nos conseils d'experts et les dernières tendances du marketing digital à La Réunion
-              </p>
-            </div>
-
-            <BlogCarousel />
-
-            <div className="text-center mt-12">
-              <Link
-                href="/blog"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-digiqo-primary text-white font-semibold rounded-xl hover:bg-digiqo-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-              >
-                Voir tous les articles
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        <div className="py-8" />
-        <div className="relative py-20">
-          <VideoSection />
-        </div>
-        <div className="py-8" />
-        <TestimonialsSection />
-        <div className="py-8" />
-        <YoutubeShortsSection />
-        <div className="py-8" />
-        <ServicesSection />
-        <div className="py-8" />
-
         {/* Kap Numérik Section */}
         <section className="py-20 bg-gradient-to-br from-digiqo-primary via-digiqo-primary to-[#1a1a3e] relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
@@ -236,11 +153,97 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <div className="py-8" />
+
+        {/* Dome Gallery - Publicités clients */}
+        <section id="realisations" className="py-8 md:py-20 bg-digiqo-primary relative overflow-hidden">
+          {/* Background decoration */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-digiqo-accent/20 rounded-full blur-3xl"></div>
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 text-center mb-6 md:mb-12">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
+              <span className="text-white">Nos productions</span>{' '}
+              <span className="bg-gradient-to-r from-digiqo-accent to-yellow-400 bg-clip-text text-transparent">
+                vidéos publicitaires
+              </span>
+            </h2>
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              Découvrez nos réalisations créatives pour nos clients
+            </p>
+          </div>
+          <div className="h-[600px] md:h-[900px] w-full">
+            <DomeGallery
+              images={getAllClientVideos()}
+              fit={0.8}
+              minRadius={400}
+              maxRadius={800}
+              padFactor={0.2}
+              overlayBlurColor="#060010"
+              maxVerticalRotationDeg={15}
+              dragSensitivity={15}
+              enlargeTransitionMs={400}
+              segments={30}
+              dragDampening={3}
+              openedImageWidth="600px"
+              openedImageHeight="600px"
+              imageBorderRadius="20px"
+              openedImageBorderRadius="20px"
+              grayscale={false}
+            />
+          </div>
+        </section>
+        <div className="py-4 md:py-8" />
+
+        {/* <CaseStudiesSection /> */}
+        {/* <div className="py-8" /> */}
+
+        <div className="py-8" />
+        <div className="relative py-20">
+          <VideoSection />
+        </div>
+        <div className="py-8" />
+        <TestimonialsSection />
+        <div className="py-8" />
+        <YoutubeShortsSection />
+        <div className="py-8" />
+        <ServicesSection />
+        <div className="py-8" />
 
         <div className="py-8" />
         <AboutSection />
         <div className="py-8" />
         <FAQSection />
+        <div className="py-8" />
+
+        {/* Blog Carousel Section */}
+        <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold text-digiqo-primary mb-4">
+                Blog & Actualités
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Découvrez nos conseils d'experts et les dernières tendances du marketing digital à La Réunion
+              </p>
+            </div>
+
+            <BlogCarousel />
+
+            <div className="text-center mt-12">
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-digiqo-primary text-white font-semibold rounded-xl hover:bg-digiqo-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              >
+                Voir tous les articles
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <div className="py-8" />
         <ContactSection />
       </main>
