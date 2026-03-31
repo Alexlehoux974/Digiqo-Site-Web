@@ -1,10 +1,31 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { createChat } from '@n8n/chat'
 
+// Génère ou récupère un sessionId stable pour toute la session de navigation
+function getOrCreateSessionId(): string {
+  const key = 'digiqo-chat-session-id'
+  let sessionId = sessionStorage.getItem(key)
+  if (!sessionId) {
+    sessionId = 'session-' + Math.random().toString(36).substring(2) + '-' + Date.now()
+    sessionStorage.setItem(key, sessionId)
+  }
+  return sessionId
+}
+
 export const ChatWidget = () => {
+  const chatInitialized = useRef(false)
+
   useEffect(() => {
+    // Éviter la double initialisation (React StrictMode ou re-renders)
+    if (chatInitialized.current || document.getElementById('n8n-chat')) {
+      return
+    }
+    chatInitialized.current = true
+
+    const sessionId = getOrCreateSessionId()
+
     // Créer un style personnalisé pour le branding Digiqo
     const style = document.createElement('style')
     style.textContent = `
@@ -137,7 +158,8 @@ export const ChatWidget = () => {
       chatSessionKey: 'chatSessionId',
       metadata: {
         source: 'website',
-        brand: 'Digiqo'
+        brand: 'Digiqo',
+        chatSessionId: sessionId
       },
       initialMessages: [
         'Bonjour ! 👋',
@@ -191,15 +213,7 @@ export const ChatWidget = () => {
       }
     })
 
-    // Cleanup function
-    return () => {
-      // Nettoyer le style ajouté
-      if (style.parentNode) {
-        style.parentNode.removeChild(style)
-      }
-      // Note: n8n chat ne fournit pas de méthode destroy, 
-      // mais le composant sera nettoyé automatiquement
-    }
+    // Pas de cleanup : on veut que le chat persiste entre les navigations
   }, [])
 
   return null // Le chat s'injecte lui-même dans le DOM
