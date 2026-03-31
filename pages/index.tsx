@@ -212,7 +212,7 @@ function VideoCarousel() {
           onClick={() => setActiveVideo(null)}
         >
           <div
-            className="relative w-auto h-[85vh] aspect-[9/16] rounded-[2.5rem] overflow-hidden shadow-2xl bg-black"
+            className="relative w-[90vw] h-[85vh] md:w-[70vw] md:h-[90vh] rounded-2xl overflow-hidden shadow-2xl bg-black"
             onClick={(e) => e.stopPropagation()}
           >
             <iframe
