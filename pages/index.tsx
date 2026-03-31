@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { SEO } from '@/components/SEO'
 import { seoConfig, businessStructuredData } from '@/lib/seo-config'
@@ -6,24 +6,20 @@ import { PartnerImage } from '@/components/ui/PartnerImage'
 import { partnersData } from '@/lib/partners-data'
 import { HeaderLuxury } from '../components/Header'
 import { ResultsSection } from '../components/ResultsSection'
-import { VideoSection } from '../components/VideoSection'
 import { TestimonialsSection } from '../components/TestimonialsSection'
-// import { CaseStudiesSection } from '../components/CaseStudiesSection'
 import { FAQSection } from '../components/FAQSection'
 import { ContactSection } from '../components/ContactSection'
 import { Footer } from '../components/Footer'
 import { useInstantScroll } from '@/hooks/useInstantScroll'
 import { BlogCarousel } from '@/components/BlogCarousel'
-import { YoutubeShortsSection } from '@/components/YoutubeShortsSection/YoutubeShortsSection'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Play, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import Link from 'next/link'
-import DomeGallery from '@/components/ui/dome-gallery'
-import { getAllClientVideos } from '@/lib/client-videos'
+import { clientVideos } from '@/lib/client-videos'
 
 // Code splitting pour les composants lourds
 const HeroParallax = dynamic(
   () => import('../components/HeroParallax/HeroParallax').then((mod) => mod.HeroParallax),
-  { 
+  {
     ssr: false,
     loading: () => <div className="min-h-[600px] bg-gradient-to-b from-white to-gray-50" />
   }
@@ -31,14 +27,14 @@ const HeroParallax = dynamic(
 
 const ServicesSection = dynamic(
   () => import('../components/ServicesSection').then((mod) => mod.ServicesSection),
-  { 
+  {
     loading: () => <div className="min-h-[400px]" />
   }
 )
 
 const AboutSection = dynamic(
   () => import('../components/AboutSection').then((mod) => mod.AboutSection),
-  { 
+  {
     loading: () => <div className="min-h-[400px]" />
   }
 )
@@ -52,23 +48,200 @@ const products = partnersData.map((partner, index) => ({
       src={`/partenaires/${partner.filename}`}
       alt={partner.alt}
       className="w-full h-full object-contain"
-      priority={index < 8} // Les 8 premiers avec priority pour performance initiale
+      priority={index < 8}
       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
     />
   ),
 }))
 
-export default function Home() {
-  // Handle instant scroll to sections
-  useInstantScroll()
-  
+// Video thumbnails mapping
+const videoThumbs: Record<string, string> = {
+  "CÔTE SEINE": "/references/video-thumbs/cote-seine.webp",
+  "NOMAD": "/references/video-thumbs/nomad.webp",
+  "TWINS DESIGN": "/references/video-thumbs/twins-design.webp",
+  "VEILLE À NÔU": "/references/video-thumbs/veille-a-nou.webp",
+  "C BIEN GLACÉ": "/references/video-thumbs/c-bien-glace.webp",
+  "DERMA JOLIE": "/references/video-thumbs/derma-jolie.webp",
+  "CULINARION": "/references/video-thumbs/culinarion.webp",
+  "AGENCE CENTRALE DE L'OR": "/references/video-thumbs/agence-centrale-or.webp",
+  "ASI TECHNOLOGIE": "/references/video-thumbs/asi-technologie.webp",
+  "BURO": "/references/video-thumbs/buro.webp",
+  "EDEN DU RANDONNEUR": "/references/video-thumbs/eden-randonneur.webp",
+  "GARAGE FCSA": "/references/video-thumbs/garage-fcsa.webp",
+  "GLOBAL SERVICE": "/references/video-thumbs/global-service.webp",
+  "INTÉRIEURS PRIVÉS": "/references/video-thumbs/interieurs-prives.webp",
+  "LA PART DES ANGES": "/references/video-thumbs/la-part-des-anges.webp",
+  "LADRESS": "/references/video-thumbs/ladress.webp",
+  "LE GOÛT DU VIN": "/references/video-thumbs/le-gout-du-vin.webp",
+  "LELINGE.RE": "/references/video-thumbs/lelinge.webp",
+  "LES CAFÉS D'ITALIE": "/references/video-thumbs/les-cafes-ditalie.webp",
+  "LITTLE LIBELULLE": "/references/video-thumbs/little-libellule.webp",
+  "ONE-MARKET": "/references/video-thumbs/one-market.webp",
+  "PASS-XP": "/references/video-thumbs/pass-xp.webp",
+  "PÊCHE PASSION": "/references/video-thumbs/peche-passion.webp",
+  "POKAWA": "/references/video-thumbs/pokawa.webp",
+  "SAM CONCEPT HABITAT": "/references/video-thumbs/sam-concept-habitat.webp",
+  "CAVAVIN": "/references/video-thumbs/cavavin.webp",
+  "COPEAUX D'ABORD": "/references/video-thumbs/copeaux-dabord.webp",
+  "DORCEL": "/references/video-thumbs/dorcel.webp",
+  "ÉMULSION 2": "/references/video-thumbs/emulsion.webp",
+  "EN L'AIR PIED BOIS": "/references/video-thumbs/en-lair-pied-bois.webp",
+  "HÉRACLES COACHING": "/references/video-thumbs/heracles-coaching.webp",
+  "INSTITUT DESBEANCE": "/references/video-thumbs/institut-desbeance.webp",
+  "LILOO BEAUTY": "/references/video-thumbs/liloo-beauty.webp",
+  "PAPANG": "/references/video-thumbs/papang.webp",
+  "ULM": "/references/video-thumbs/ulm.webp",
+  "VANILLE JEU-CONCOURS": "/references/video-thumbs/vanille-jeu-concours.webp",
+}
+
+function VideoCarousel() {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [activeVideo, setActiveVideo] = useState<string | null>(null)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(true)
+
+  const checkScroll = () => {
+    const el = scrollRef.current
+    if (!el) return
+    setCanScrollLeft(el.scrollLeft > 10)
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10)
+  }
+
   useEffect(() => {
-    // Vérifier si on doit ouvrir la section services
+    const el = scrollRef.current
+    if (!el) return
+    el.addEventListener('scroll', checkScroll, { passive: true })
+    checkScroll()
+    return () => el.removeEventListener('scroll', checkScroll)
+  }, [])
+
+  const scroll = (dir: 'left' | 'right') => {
+    const el = scrollRef.current
+    if (!el) return
+    const amount = el.clientWidth * 0.8
+    el.scrollBy({ left: dir === 'left' ? -amount : amount, behavior: 'smooth' })
+  }
+
+  const getPreviewUrl = (src: string) => {
+    const match = src.match(/id=([^&]+)/) || src.match(/\/d\/([^/]+)/)
+    return match ? `https://drive.google.com/file/d/${match[1]}/preview` : src
+  }
+
+  return (
+    <>
+      <div className="relative group">
+        {/* Left arrow */}
+        {canScrollLeft && (
+          <button
+            onClick={() => scroll('left')}
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+        )}
+
+        {/* Right arrow */}
+        {canScrollRight && (
+          <button
+            onClick={() => scroll('right')}
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        )}
+
+        {/* Scroll container */}
+        <div
+          ref={scrollRef}
+          className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-4 md:px-8 pb-4"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {clientVideos.map((video, i) => {
+            const thumb = videoThumbs[video.clientName]
+            if (!thumb) return null
+            return (
+              <button
+                key={i}
+                onClick={() => setActiveVideo(video.src)}
+                className="flex-shrink-0 snap-start group/card cursor-pointer text-center"
+              >
+                {/* iPhone mockup */}
+                <div className="relative w-[180px] md:w-[220px] mx-auto">
+                  {/* Phone frame */}
+                  <div className="relative bg-[#1a1a1a] rounded-[2.5rem] p-[3px] shadow-2xl shadow-black/50 group-hover/card:-translate-y-2 group-hover/card:shadow-digiqo-accent/20 transition-all duration-500">
+                    {/* Inner bezel */}
+                    <div className="relative bg-black rounded-[2.3rem] overflow-hidden">
+                      {/* Notch / Dynamic Island */}
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 w-[90px] h-[28px] bg-black rounded-b-2xl" />
+
+                      {/* Screen content */}
+                      <div className="relative aspect-[9/19.5]">
+                        <img
+                          src={thumb}
+                          alt={video.alt}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-105"
+                          loading="lazy"
+                        />
+                        {/* Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                        {/* Play button */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover/card:bg-white/30 group-hover/card:scale-110 transition-all duration-300 ring-2 ring-white/30">
+                            <Play className="w-5 h-5 text-white ml-0.5" fill="white" />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Home indicator */}
+                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[100px] h-[4px] bg-white/30 rounded-full" />
+                    </div>
+                  </div>
+                </div>
+                {/* Client name below phone */}
+                <p className="text-white/90 font-semibold text-sm mt-4 drop-shadow-lg">{video.clientName}</p>
+              </button>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* Video Modal */}
+      {activeVideo && (
+        <div
+          className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setActiveVideo(null)}
+        >
+          <div
+            className="relative w-full max-w-sm aspect-[9/16] rounded-[2.5rem] overflow-hidden shadow-2xl bg-black"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <iframe
+              src={getPreviewUrl(activeVideo)}
+              className="w-full h-full"
+              allow="autoplay; fullscreen"
+              allowFullScreen
+            />
+            <button
+              onClick={() => setActiveVideo(null)}
+              className="absolute top-3 right-3 z-10 w-10 h-10 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/80 transition-all"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  )
+}
+
+export default function Home() {
+  useInstantScroll()
+
+  useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search)
     const shouldOpenServices = urlParams.get('openServices') === 'true'
-    
+
     if (shouldOpenServices) {
-      // Attendre que le DOM soit prêt puis scroller vers services
       setTimeout(() => {
         const servicesSection = document.getElementById('services')
         if (servicesSection) {
@@ -76,11 +249,10 @@ export default function Home() {
         }
       }, 500)
     } else if (!window.location.hash) {
-      // Forcer le scroll au top après le montage complet du DOM, sauf s'il y a un hash
       const timer = setTimeout(() => {
         window.scrollTo(0, 0)
       }, 100)
-      
+
       return () => clearTimeout(timer)
     }
   }, [])
@@ -97,16 +269,16 @@ export default function Home() {
 
       <HeaderLuxury />
       <main className="pt-28 md:pt-32">
-        {/* SEO H1 - Server-side rendered for search engines */}
         <h1 className="sr-only">
           L'Agence Marketing Digital Qui Booste Vos Ventes - Digiqo La Réunion
         </h1>
 
+        {/* 1. Hero + Logos */}
         <HeroParallax products={products} />
         <ResultsSection />
         <div className="py-8" />
 
-        {/* Kap Numérik Section */}
+        {/* 2. Kap Numérik */}
         <section className="py-20 bg-gradient-to-br from-digiqo-primary via-digiqo-primary to-[#1a1a3e] relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-digiqo-accent/10 rounded-full blur-3xl" />
@@ -155,70 +327,49 @@ export default function Home() {
         </section>
         <div className="py-8" />
 
-        {/* Dome Gallery - Publicités clients */}
-        <section id="realisations" className="py-8 md:py-20 bg-digiqo-primary relative overflow-hidden">
-          {/* Background decoration */}
+        {/* 3. Réalisations vidéo — Carrousel */}
+        <section id="realisations" className="py-16 md:py-24 bg-gradient-to-b from-[#0a0a1a] to-digiqo-primary relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-10 right-10 w-96 h-96 bg-digiqo-accent/20 rounded-full blur-3xl"></div>
+            <div className="absolute top-10 left-10 w-64 h-64 bg-digiqo-accent/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-digiqo-secondary/5 rounded-full blur-3xl" />
           </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 text-center mb-6 md:mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
-              <span className="text-white">Nos productions</span>{' '}
+          <div className="relative z-10 max-w-7xl mx-auto px-4 text-center mb-12">
+            <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm text-white text-sm font-bold rounded-full mb-6 ring-1 ring-white/20">
+              + DE 40 VIDÉOS PRODUITES
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              <span className="text-white">Nos réalisations</span>{' '}
               <span className="bg-gradient-to-r from-digiqo-accent to-yellow-400 bg-clip-text text-transparent">
-                vidéos publicitaires
+                vidéo
               </span>
             </h2>
-            <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              Découvrez nos réalisations créatives pour nos clients
+            <p className="text-lg text-white/60 max-w-2xl mx-auto">
+              Des publicités vidéo qui captent l'attention et convertissent
             </p>
           </div>
-          <div className="h-[600px] md:h-[900px] w-full">
-            <DomeGallery
-              images={getAllClientVideos()}
-              fit={0.8}
-              minRadius={400}
-              maxRadius={800}
-              padFactor={0.2}
-              overlayBlurColor="#060010"
-              maxVerticalRotationDeg={15}
-              dragSensitivity={15}
-              enlargeTransitionMs={400}
-              segments={30}
-              dragDampening={3}
-              openedImageWidth="600px"
-              openedImageHeight="600px"
-              imageBorderRadius="20px"
-              openedImageBorderRadius="20px"
-              grayscale={false}
-            />
-          </div>
+
+          <VideoCarousel />
         </section>
-        <div className="py-4 md:py-8" />
-
-        {/* <CaseStudiesSection /> */}
-        {/* <div className="py-8" /> */}
-
         <div className="py-8" />
-        <div className="relative py-20">
-          <VideoSection />
-        </div>
-        <div className="py-8" />
+
+        {/* 4. Témoignages */}
         <TestimonialsSection />
         <div className="py-8" />
-        <YoutubeShortsSection />
-        <div className="py-8" />
+
+        {/* 5. Services */}
         <ServicesSection />
         <div className="py-8" />
 
-        <div className="py-8" />
+        {/* 6. À propos */}
         <AboutSection />
         <div className="py-8" />
+
+        {/* 7. FAQ */}
         <FAQSection />
         <div className="py-8" />
 
-        {/* Blog Carousel Section */}
+        {/* 8. Blog */}
         <section className="py-20 bg-gradient-to-b from-white to-gray-50">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
@@ -243,8 +394,9 @@ export default function Home() {
             </div>
           </div>
         </section>
-
         <div className="py-8" />
+
+        {/* 9. Contact */}
         <ContactSection />
       </main>
       <Footer />
