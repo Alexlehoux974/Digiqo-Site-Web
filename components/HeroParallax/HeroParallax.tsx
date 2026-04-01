@@ -37,27 +37,25 @@ export const HeroParallax = ({
       <div className="absolute top-1/4 right-1/3 w-32 h-32 md:w-64 md:h-64 bg-white/5 rounded-full blur-3xl hero-orb-1" />
       <div className="absolute bottom-1/3 right-1/4 w-24 h-24 md:w-48 md:h-48 bg-digiqo-accent/10 rounded-full blur-2xl hero-orb-2" />
 
-      <Header />
-
-      <div className="relative pb-16 mt-16 z-0">
-        {/* Row 1 — scroll right */}
-        <div className="logo-scroll-container mb-8">
+      {/* Logo rows behind hero text */}
+      <div className="absolute inset-0 z-0 flex flex-col justify-center gap-6 opacity-[0.07] pointer-events-none overflow-hidden">
+        <div className="logo-scroll-container">
           <div className="logo-scroll-track logo-scroll-right">
             {[...firstRow, ...firstRow].map((product, idx) => (
-              <LogoCard key={`first-${idx}`} product={product} />
+              <LogoCard key={`bg-first-${idx}`} product={product} />
             ))}
           </div>
         </div>
-
-        {/* Row 2 — scroll left */}
         <div className="logo-scroll-container">
           <div className="logo-scroll-track logo-scroll-left">
             {[...secondRow, ...secondRow].map((product, idx) => (
-              <LogoCard key={`second-${idx}`} product={product} />
+              <LogoCard key={`bg-second-${idx}`} product={product} />
             ))}
           </div>
         </div>
       </div>
+
+      <Header />
 
       <style jsx global>{`
         .logo-scroll-container {
