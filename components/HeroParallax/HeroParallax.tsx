@@ -101,9 +101,9 @@ export const HeroParallax = ({
 
 const LogoCard = ({ product }: { product: { title: string; thumbnail: any } }) => {
   return (
-    <div className="h-36 w-[12rem] flex-shrink-0 group/product relative">
-      <div className="h-full w-full bg-white/95 rounded-xl flex items-center justify-center p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300">
-        <div className="w-full h-full max-w-[100px] max-h-[100px] flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:object-contain [&>img]:w-full [&>img]:h-full [&>img]:object-contain">
+    <div className="h-24 w-[8rem] flex-shrink-0 group/product relative">
+      <div className="h-full w-full bg-white/95 rounded-lg flex items-center justify-center p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
+        <div className="w-full h-full max-w-[70px] max-h-[70px] flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:object-contain [&>img]:w-full [&>img]:h-full [&>img]:object-contain">
           {product.thumbnail}
         </div>
       </div>

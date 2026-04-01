@@ -211,12 +211,12 @@ export function ResultsSection() {
           className="text-center mb-16"
         >
           <h3 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="text-digiqo-primary">Des Résultats</span>{' '}
+            <span className="text-white">Des Résultats</span>{' '}
             <span className="bg-gradient-to-r from-digiqo-accent to-digiqo-secondary bg-clip-text text-transparent">
               Qui Parlent
             </span>
           </h3>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-white/70 max-w-3xl mx-auto">
             Nous ne promettons pas la lune, nous la décrochons pour nos clients.<br />
             <span className="text-digiqo-accent font-semibold">Voici les chiffres</span> qui font notre fierté depuis 2020.
           </p>
