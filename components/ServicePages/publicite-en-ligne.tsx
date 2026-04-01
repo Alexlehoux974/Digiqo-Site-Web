@@ -108,7 +108,8 @@ export default function PubliciteEnLignePage() {
         { icon: Crosshair, text: 'Campagne de Conversion — Monocanal' },
         { icon: Palette, text: '6 visuels publicitaires inclus/mois (au lieu de 3)' },
         { icon: Users, text: 'Exploitation des audiences similaires' },
-        { icon: Wrench, text: 'Intégration basique des pixels & API' }
+        { icon: Wrench, text: 'Intégration basique des pixels & API' },
+        { icon: BarChart3, text: 'Dashboard personnalisé app-digiqo.fr' }
       ],
       gradient: 'from-blue-500 to-indigo-600',
       accentColor: '#3B82F6',
@@ -138,7 +139,8 @@ export default function PubliciteEnLignePage() {
         { icon: Crosshair, text: 'Campagne de Conversion — Multicanal' },
         { icon: Monitor, text: '2 plateformes de diffusion : SMA (META ou TikTok) + SEA (Google Ads)' },
         { icon: Palette, text: '9 visuels publicitaires inclus/mois (au lieu de 6)' },
-        { icon: Wrench, text: 'Intégration avancée des pixels & API' }
+        { icon: Wrench, text: 'Intégration avancée des pixels & API' },
+        { icon: BarChart3, text: 'Dashboard personnalisé app-digiqo.fr' }
       ],
       gradient: 'from-purple-500 to-pink-600',
       accentColor: '#A855F7',
