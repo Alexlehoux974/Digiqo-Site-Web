@@ -21,10 +21,7 @@ export const HeroParallax = ({
       className="h-auto pt-28 md:pt-20 overflow-hidden antialiased relative flex flex-col self-auto z-10"
     >
       {/* Background #8B1431 */}
-      <div className="absolute inset-0 -z-10 bg-[#8B1431]">
-        {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-transparent to-black/30" />
-      </div>
+      <div className="absolute inset-0 -z-10 bg-[#8B1431]" />
 
       {/* Animated logo bottom-right */}
       <div className="absolute bottom-32 right-8 md:bottom-40 md:right-16 z-0 opacity-[0.08]">
