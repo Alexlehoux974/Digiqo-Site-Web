@@ -6,13 +6,8 @@ import Image from 'next/image'
 import { PartnerImage } from '@/components/ui/PartnerImage'
 import { partnersData } from '@/lib/partners-data'
 import { HeaderLuxury } from '../components/Header'
-import { ResultsSection } from '../components/ResultsSection'
-import { TestimonialsSection } from '../components/TestimonialsSection'
-import { FAQSection } from '../components/FAQSection'
-import { ContactSection } from '../components/ContactSection'
 import { Footer } from '../components/Footer'
 import { useInstantScroll } from '@/hooks/useInstantScroll'
-import { BlogCarousel } from '@/components/BlogCarousel'
 import { ArrowRight, Play, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import Link from 'next/link'
 import { clientVideos } from '@/lib/client-videos'
@@ -33,6 +28,30 @@ const ServicesSection = dynamic(
   }
 )
 
+const ResultsSection = dynamic(
+  () => import('../components/ResultsSection').then((mod) => mod.ResultsSection),
+  { loading: () => <div className="min-h-[200px]" /> }
+)
+
+const TestimonialsSection = dynamic(
+  () => import('../components/TestimonialsSection').then((mod) => mod.TestimonialsSection),
+  { loading: () => <div className="min-h-[400px]" /> }
+)
+
+const FAQSection = dynamic(
+  () => import('../components/FAQSection').then((mod) => mod.FAQSection),
+  { loading: () => <div className="min-h-[400px]" /> }
+)
+
+const ContactSection = dynamic(
+  () => import('../components/ContactSection').then((mod) => mod.ContactSection),
+  { loading: () => <div className="min-h-[400px]" /> }
+)
+
+const BlogCarousel = dynamic(
+  () => import('@/components/BlogCarousel').then((mod) => mod.BlogCarousel),
+  { loading: () => <div className="min-h-[300px]" /> }
+)
 
 // Générer les products à partir des données centralisées
 const products = partnersData.map((partner, index) => ({
