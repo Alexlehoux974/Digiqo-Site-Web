@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { SEO } from '@/components/SEO'
 import { seoConfig, businessStructuredData } from '@/lib/seo-config'
+import Image from 'next/image'
 import { PartnerImage } from '@/components/ui/PartnerImage'
 import { partnersData } from '@/lib/partners-data'
 import { HeaderLuxury } from '../components/Header'
@@ -176,11 +177,13 @@ function VideoCarousel() {
 
                       {/* Screen content */}
                       <div className="relative aspect-[9/19.5]">
-                        <img
+                        <Image
                           src={thumb}
                           alt={video.alt}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-105"
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover/card:scale-105"
                           loading="lazy"
+                          sizes="220px"
                         />
                         {/* Overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { generateContactUrl } from '@/lib/contact-utils'
 import { OptimizedImage } from '@/components/ui/OptimizedImage'
@@ -44,10 +45,12 @@ export const HeroParallax = ({
     >
       {/* Background — poster image, YouTube loads after 3s for perf */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <img
+        <Image
           src="/hero-bg.webp"
           alt=""
-          className="absolute inset-0 w-full h-full object-cover"
+          fill
+          priority
+          className="object-cover"
           style={{ transform: 'scale(1.1)', transformOrigin: 'center center' }}
         />
         <div id="hero-video-container" className="absolute inset-0" />

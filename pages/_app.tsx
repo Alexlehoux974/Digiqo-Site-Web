@@ -128,6 +128,18 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      {/* Google Fonts — loaded async to avoid render-blocking */}
+      <Script
+        id="google-fonts"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: `
+          var link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@600;700;800&display=swap';
+          document.head.appendChild(link);
+        `}}
+      />
+
       {/* Initialize dataLayer and gtag with consent defaults (always, before any script loads) */}
       <Script
         id="gtag-consent-default"
