@@ -268,7 +268,7 @@ export default function Home() {
       />
 
       <HeaderLuxury />
-      <main className="pt-28 md:pt-32">
+      <main className="pt-28 md:pt-32 bg-[#8B1431]">
         <h1 className="sr-only">
           L'Agence Marketing Digital Qui Booste Vos Ventes - Digiqo La Réunion
         </h1>
@@ -276,10 +276,12 @@ export default function Home() {
         {/* 1. Hero + Logos */}
         <HeroParallax products={products} />
         <ResultsSection />
-        <div className="py-8" />
+
+        {/* Transition noir → bordeaux */}
+        <div className="h-24 bg-gradient-to-b from-black/50 to-transparent" />
 
         {/* 2. Réalisations vidéo — Carrousel */}
-        <section id="realisations" className="py-16 md:py-24 bg-gradient-to-b from-[#0a0a1a] to-digiqo-primary relative overflow-hidden">
+        <section id="realisations" className="py-16 md:py-24 relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-10 left-10 w-64 h-64 bg-digiqo-accent/5 rounded-full blur-3xl" />
             <div className="absolute bottom-10 right-10 w-96 h-96 bg-digiqo-secondary/5 rounded-full blur-3xl" />
@@ -302,18 +304,15 @@ export default function Home() {
 
           <VideoCarousel />
         </section>
-        <div className="py-8" />
 
         {/* 4. Témoignages */}
         <TestimonialsSection />
-        <div className="py-8" />
 
         {/* 5. Services */}
         <ServicesSection />
-        <div className="py-8" />
 
         {/* 6. Kap Numérik */}
-        <section className="py-20 bg-gradient-to-br from-digiqo-primary via-digiqo-primary to-[#1a1a3e] relative overflow-hidden">
+        <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-digiqo-accent/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-digiqo-secondary/10 rounded-full blur-3xl" />
@@ -359,24 +358,21 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <div className="py-8" />
 
         {/* 7. À propos */}
         <AboutSection />
-        <div className="py-8" />
 
-        {/* 7. FAQ */}
+        {/* 8. FAQ */}
         <FAQSection />
-        <div className="py-8" />
 
-        {/* 8. Blog */}
-        <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+        {/* 9. Blog */}
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold text-digiqo-primary mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
                 Blog & Actualités
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              <p className="text-lg text-white/70 max-w-2xl mx-auto">
                 Découvrez nos conseils d'experts et les dernières tendances du marketing digital à La Réunion
               </p>
             </div>
@@ -386,7 +382,7 @@ export default function Home() {
             <div className="text-center mt-12">
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-digiqo-primary text-white font-semibold rounded-xl hover:bg-digiqo-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#8B1431] font-semibold rounded-xl hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 Voir tous les articles
                 <ArrowRight className="w-5 h-5" />
@@ -394,10 +390,12 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <div className="py-8" />
 
-        {/* 9. Contact */}
+        {/* 10. Contact */}
         <ContactSection />
+
+        {/* Transition bordeaux → noir vers le footer */}
+        <div className="h-24 bg-gradient-to-b from-transparent to-black/80" />
       </main>
       <Footer />
     </>
