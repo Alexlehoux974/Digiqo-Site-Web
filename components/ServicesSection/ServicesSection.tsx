@@ -179,7 +179,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           transformStyle: "preserve-3d"
         }}
       >
-        {service.id === 'publicite' ? (
+        {service.id === 'publicite' && !isMobile ? (
           <Link href={service.link} className="block w-full h-full">
             <div className={`
               relative w-full h-full rounded-2xl overflow-hidden
@@ -190,28 +190,26 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
               {/* Gradient Background */}
               <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-5 hover:opacity-15 transition-opacity duration-500`} />
 
-              <div className={`relative z-10 h-full flex flex-col ${isMobile ? 'p-6' : 'p-4'}`}>
+              <div className="relative z-10 h-full flex flex-col p-4">
                 {/* Zone Contenu en premier - titre et description */}
-                <div className={`${isMobile ? 'mb-6' : 'mb-4'} text-center`}>
-                  <h2 className={`font-bold mb-2 bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent ${isMobile ? 'text-2xl' : 'text-xl'}`}>
+                <div className="mb-4 text-center">
+                  <h2 className="font-bold mb-2 bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent text-xl">
                     {service.title}
                   </h2>
-                  <p className={`text-gray-700 leading-relaxed px-2 ${isMobile ? 'text-base' : 'text-sm'}`}>
+                  <p className="text-gray-700 leading-relaxed px-2 text-sm">
                     {service.description}
                   </p>
                 </div>
 
-                {/* Animation grande en dessous du texte - masquée sur mobile */}
-                {!isMobile && (
-                  <div className="flex-1 flex items-center justify-center overflow-hidden py-4">
-                    <div className="w-full h-full mx-auto max-w-[280px] max-h-[220px]">
-                      <IconCloud className="w-full h-full" />
-                    </div>
+                {/* Animation grande en dessous du texte */}
+                <div className="flex-1 flex items-center justify-center overflow-hidden py-4">
+                  <div className="w-full h-full mx-auto max-w-[280px] max-h-[220px]">
+                    <IconCloud className="w-full h-full" />
                   </div>
-                )}
+                </div>
 
                 {/* Zone CTA */}
-                <div className={`flex items-center justify-center mt-4 ${isMobile ? 'h-12' : 'h-14'}`}>
+                <div className="flex items-center justify-center mt-4 h-14">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
