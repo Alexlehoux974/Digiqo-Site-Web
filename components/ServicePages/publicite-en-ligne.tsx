@@ -89,7 +89,10 @@ export default function PubliciteEnLignePage() {
       gradient: 'from-emerald-500 to-teal-600',
       accentColor: '#10B981',
       icon: Target,
-      bonus: null,
+      bonus: isAnnual ? {
+        title: 'Offre promotionnelle',
+        items: ['1 vidéo offerte']
+      } : null,
       paymentLinkShortTerm: 'https://payments-eu1.hubspot.com/payments/9QqvwjS4d?referrer=PAYMENT_LINK',
       paymentLinkAnnual: 'https://payments-eu1.hubspot.com/payments/FXp6sywrCqpx?referrer=PAYMENT_LINK'
     },
