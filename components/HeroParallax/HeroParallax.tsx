@@ -12,24 +12,30 @@ export const HeroParallax = ({
     thumbnail: any
   }[]
 }) => {
-  const firstRow = products.slice(0, 31)
-  const secondRow = products.slice(31, 62)
-  const thirdRow = products.slice(62, 93)
+  const firstRow = products.slice(0, 15)
+  const secondRow = products.slice(15, 30)
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const container = document.getElementById('hero-video-container')
-      if (!container) return
-      const iframe = document.createElement('iframe')
-      iframe.src = 'https://www.youtube.com/embed/I2itB7yvNk0?autoplay=1&mute=1&loop=1&playlist=I2itB7yvNk0&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3'
-      iframe.className = 'absolute inset-0 w-full h-full pointer-events-none'
-      iframe.style.transform = 'scale(1.2)'
-      iframe.style.transformOrigin = 'center center'
-      iframe.allow = 'autoplay; encrypted-media'
-      iframe.title = 'Digiqo background video'
-      container.appendChild(iframe)
-    }, 3000)
-    return () => clearTimeout(timer)
+    const container = document.getElementById('hero-video-container')
+    if (!container) return
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        // Wait 1s after visible before loading YouTube
+        setTimeout(() => {
+          const iframe = document.createElement('iframe')
+          iframe.src = 'https://www.youtube.com/embed/I2itB7yvNk0?autoplay=1&mute=1&loop=1&playlist=I2itB7yvNk0&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3'
+          iframe.className = 'absolute inset-0 w-full h-full pointer-events-none'
+          iframe.style.transform = 'scale(1.2)'
+          iframe.style.transformOrigin = 'center center'
+          iframe.allow = 'autoplay; encrypted-media'
+          iframe.title = 'Digiqo background video'
+          container.appendChild(iframe)
+        }, 1000)
+        observer.disconnect()
+      }
+    }, { threshold: 0.1 })
+    observer.observe(container)
+    return () => observer.disconnect()
   }, [])
 
   return (
@@ -61,19 +67,10 @@ export const HeroParallax = ({
         </div>
 
         {/* Row 2 — scroll left */}
-        <div className="logo-scroll-container mb-8">
+        <div className="logo-scroll-container">
           <div className="logo-scroll-track logo-scroll-left">
             {[...secondRow, ...secondRow].map((product, idx) => (
               <LogoCard key={`second-${idx}`} product={product} />
-            ))}
-          </div>
-        </div>
-
-        {/* Row 3 — scroll right */}
-        <div className="logo-scroll-container">
-          <div className="logo-scroll-track logo-scroll-right">
-            {[...thirdRow, ...thirdRow].map((product, idx) => (
-              <LogoCard key={`third-${idx}`} product={product} />
             ))}
           </div>
         </div>
