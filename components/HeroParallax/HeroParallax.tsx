@@ -131,7 +131,7 @@ export const Header = () => {
         <br />
         <span className="text-white/95 drop-shadow-lg">Qui Booste Vos Ventes</span>
       </div>
-      <p className="max-w-2xl text-lg md:text-2xl mt-6 text-white/90 font-medium drop-shadow">
+      <p className="hidden md:block max-w-2xl text-lg md:text-2xl mt-6 text-white/90 font-medium drop-shadow">
         Transformez vos visiteurs en clients avec des campagnes publicitaires
         <span className="text-white font-bold"> Facebook, Instagram et Google Ads</span> qui cartonnent.
       </p>
