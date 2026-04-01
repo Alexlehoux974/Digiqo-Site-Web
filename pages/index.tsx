@@ -278,7 +278,41 @@ export default function Home() {
         <ResultsSection />
         <div className="py-8" />
 
-        {/* 2. Kap Numérik */}
+        {/* 2. Réalisations vidéo — Carrousel */}
+        <section id="realisations" className="py-16 md:py-24 bg-gradient-to-b from-[#0a0a1a] to-digiqo-primary relative overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-10 left-10 w-64 h-64 bg-digiqo-accent/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-digiqo-secondary/5 rounded-full blur-3xl" />
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 text-center mb-12">
+            <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm text-white text-sm font-bold rounded-full mb-6 ring-1 ring-white/20">
+              + DE 40 VIDÉOS PRODUITES
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              <span className="text-white">Nos réalisations</span>{' '}
+              <span className="bg-gradient-to-r from-digiqo-accent to-yellow-400 bg-clip-text text-transparent">
+                vidéo
+              </span>
+            </h2>
+            <p className="text-lg text-white/60 max-w-2xl mx-auto">
+              Des publicités vidéo qui captent l'attention et convertissent
+            </p>
+          </div>
+
+          <VideoCarousel />
+        </section>
+        <div className="py-8" />
+
+        {/* 4. Témoignages */}
+        <TestimonialsSection />
+        <div className="py-8" />
+
+        {/* 5. Services */}
+        <ServicesSection />
+        <div className="py-8" />
+
+        {/* 6. Kap Numérik */}
         <section className="py-20 bg-gradient-to-br from-digiqo-primary via-digiqo-primary to-[#1a1a3e] relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-digiqo-accent/10 rounded-full blur-3xl" />
@@ -327,41 +361,7 @@ export default function Home() {
         </section>
         <div className="py-8" />
 
-        {/* 3. Réalisations vidéo — Carrousel */}
-        <section id="realisations" className="py-16 md:py-24 bg-gradient-to-b from-[#0a0a1a] to-digiqo-primary relative overflow-hidden">
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-10 left-10 w-64 h-64 bg-digiqo-accent/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-10 right-10 w-96 h-96 bg-digiqo-secondary/5 rounded-full blur-3xl" />
-          </div>
-
-          <div className="relative z-10 max-w-7xl mx-auto px-4 text-center mb-12">
-            <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm text-white text-sm font-bold rounded-full mb-6 ring-1 ring-white/20">
-              + DE 40 VIDÉOS PRODUITES
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              <span className="text-white">Nos réalisations</span>{' '}
-              <span className="bg-gradient-to-r from-digiqo-accent to-yellow-400 bg-clip-text text-transparent">
-                vidéo
-              </span>
-            </h2>
-            <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              Des publicités vidéo qui captent l'attention et convertissent
-            </p>
-          </div>
-
-          <VideoCarousel />
-        </section>
-        <div className="py-8" />
-
-        {/* 4. Témoignages */}
-        <TestimonialsSection />
-        <div className="py-8" />
-
-        {/* 5. Services */}
-        <ServicesSection />
-        <div className="py-8" />
-
-        {/* 6. À propos */}
+        {/* 7. À propos */}
         <AboutSection />
         <div className="py-8" />
 
