@@ -28,13 +28,21 @@ export default function Document() {
         {/* Google Search Console Verification */}
         <meta name="google-site-verification" content="-mBAAsZ3X_8gyG-3MAN7Ww86tsF452BbvWmgz3SLiBY" />
 
-        {/* Fonts */}
+        {/* Fonts — non-blocking with fallback */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
+          id="google-fonts"
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@600;700;800&display=swap"
           rel="stylesheet"
+          media="print"
         />
+        <noscript>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@600;700;800&display=swap"
+            rel="stylesheet"
+          />
+        </noscript>
         {/* Métadonnées géographiques pour le SEO local */}
         <meta name="geo.region" content="RE" />
         <meta name="geo.placename" content="Saint-Denis, La Réunion" />

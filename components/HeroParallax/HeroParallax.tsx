@@ -12,9 +12,8 @@ export const HeroParallax = ({
     thumbnail: any
   }[]
 }) => {
-  const half = Math.ceil(products.length / 2)
-  const firstRow = products.slice(0, half)
-  const secondRow = products.slice(half)
+  const firstRow = products.slice(0, 20)
+  const secondRow = products.slice(20, 40)
 
   return (
     <div

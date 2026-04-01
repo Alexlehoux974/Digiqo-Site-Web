@@ -52,6 +52,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
     checkConsent()
 
+    // Activate Google Fonts (loaded as media=print to avoid render-blocking)
+    const fontsLink = document.getElementById('google-fonts') as HTMLLinkElement
+    if (fontsLink) fontsLink.media = 'all'
+
     // Listen for storage changes (when CookieConsent component saves preferences)
     const handleStorage = (e: StorageEvent) => {
       if (e.key === 'cookieConsent') {
