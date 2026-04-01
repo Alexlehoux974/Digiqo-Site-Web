@@ -54,7 +54,7 @@ interface Formula {
   bonus: {
     title: string
     items: string[]
-  }
+  } | null
   paymentLinkShortTerm: string
   paymentLinkAnnual: string
   bestValue?: boolean
@@ -89,12 +89,7 @@ export default function PubliciteEnLignePage() {
       gradient: 'from-emerald-500 to-teal-600',
       accentColor: '#10B981',
       icon: Target,
-      bonus: {
-        title: 'Offre promotionnelle',
-        items: isAnnual
-          ? ['2 vidéos offertes']
-          : ['1 vidéo offerte au paiement de la 2ème mensualité']
-      },
+      bonus: null,
       paymentLinkShortTerm: 'https://payments-eu1.hubspot.com/payments/9QqvwjS4d?referrer=PAYMENT_LINK',
       paymentLinkAnnual: 'https://payments-eu1.hubspot.com/payments/FXp6sywrCqpx?referrer=PAYMENT_LINK'
     },
@@ -873,16 +868,20 @@ export default function PubliciteEnLignePage() {
                     {/* Bonus promo + CTA toujours alignés en bas */}
                     <div className="mt-auto">
                       <div className="border-t border-gray-200 pt-4 mb-6 min-h-[80px]">
-                        <p className="text-sm font-semibold mb-2 flex items-center gap-1.5" style={{ color: formula.accentColor }}>
-                          <Gift className="w-4 h-4" />
-                          {formula.bonus.title}
-                        </p>
-                        {formula.bonus.items.map((item, idx) => (
-                          <div key={idx} className="flex items-start gap-2">
-                            <Gift className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: formula.accentColor }} />
-                            <span className="text-xs text-gray-600 leading-relaxed">{item}</span>
-                          </div>
-                        ))}
+                        {formula.bonus && (
+                          <>
+                            <p className="text-sm font-semibold mb-2 flex items-center gap-1.5" style={{ color: formula.accentColor }}>
+                              <Gift className="w-4 h-4" />
+                              {formula.bonus.title}
+                            </p>
+                            {formula.bonus.items.map((item, idx) => (
+                              <div key={idx} className="flex items-start gap-2">
+                                <Gift className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: formula.accentColor }} />
+                                <span className="text-xs text-gray-600 leading-relaxed">{item}</span>
+                              </div>
+                            ))}
+                          </>
+                        )}
                       </div>
 
                       {/* CTA */}
