@@ -13,8 +13,9 @@ export const HeroParallax = ({
     thumbnail: any
   }[]
 }) => {
-  const firstRow = products.slice(0, 15)
-  const secondRow = products.slice(15, 30)
+  const half = Math.ceil(products.length / 2)
+  const firstRow = products.slice(0, half)
+  const secondRow = products.slice(half)
 
   useEffect(() => {
     const container = document.getElementById('hero-video-container')
@@ -91,10 +92,10 @@ export const HeroParallax = ({
           will-change: transform;
         }
         .logo-scroll-right {
-          animation: scrollRight 60s linear infinite;
+          animation: scrollRight 120s linear infinite;
         }
         .logo-scroll-left {
-          animation: scrollLeft 60s linear infinite;
+          animation: scrollLeft 120s linear infinite;
         }
         @keyframes scrollRight {
           0% { transform: translateX(0); }
