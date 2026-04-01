@@ -17,11 +17,12 @@
   html {
     scroll-behavior: smooth;
     font-family: 'Montserrat', sans-serif;
-    background-color: #000000;
+    background-color: #8B1431;
   }
 
   body {
-    @apply bg-black text-gray-900 overflow-x-hidden;
+    @apply text-gray-900 overflow-x-hidden;
+    background-color: #8B1431;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     letter-spacing: -0.01em;
