@@ -23,13 +23,13 @@ export const HeroParallax = ({
       <div className="absolute inset-0 -z-10 bg-[#8B1431]" />
 
       {/* Beach logo mascot — desktop only (mobile version is in Header flow) */}
-      <div className="absolute bottom-8 right-12 z-0 hero-logo-float hidden md:block">
+      <div className="absolute bottom-8 right-12 z-0 hidden md:block hero-logo-float">
         <Image
-          src="/digiqo-beach.webp"
+          src="/digiqo-hero-mascot.webp"
           alt="Digiqo mascotte"
-          width={500}
-          height={500}
-          className="w-[180px] h-[180px] md:w-[350px] md:h-[350px] drop-shadow-2xl"
+          width={350}
+          height={350}
+          className="w-[350px] h-[350px] object-contain drop-shadow-2xl"
         />
       </div>
       {/* Static orbs for depth — no animation to save GPU */}
@@ -139,11 +139,11 @@ export const Header = () => {
       {/* Mascotte mobile — visible uniquement sur smartphone */}
       <div className="flex md:hidden justify-center my-6">
         <Image
-          src="/digiqo-beach.webp"
+          src="/digiqo-hero-mascot.webp"
           alt="Digiqo mascotte"
-          width={200}
-          height={200}
-          className="w-[180px] h-[180px] hero-logo-float"
+          width={180}
+          height={180}
+          className="w-[180px] h-[180px] object-contain"
         />
       </div>
 
