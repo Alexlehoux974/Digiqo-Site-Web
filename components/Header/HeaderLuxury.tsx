@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { OptimizedImage } from '../ui/OptimizedImage'
@@ -155,7 +155,6 @@ const navigation = {
 export const HeaderLuxury = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
-  const [isScrolled, setIsScrolled] = useState(false) // Désactivé pour garder le header fixe
   const [hoveredService, setHoveredService] = useState<string | null>(null)
   const [isNavigating, setIsNavigating] = useState(false)
   const [menuPosition, setMenuPosition] = useState<'left' | 'center' | 'right'>('center')
@@ -171,16 +170,6 @@ export const HeaderLuxury = () => {
   // const headerScaleSpring = 1
   // const logoScaleSpring = 1
   
-  // Désactivation du comportement de scroll
-  useEffect(() => {
-    // const handleScroll = () => {
-    //   setIsScrolled(window.scrollY > 50)
-    // }
-    // window.addEventListener('scroll', handleScroll)
-    // return () => window.removeEventListener('scroll', handleScroll)
-    // Toujours garder isScrolled à false pour conserver le header complet
-    setIsScrolled(false)
-  }, [])
 
 
   // Smooth scroll to section
@@ -228,73 +217,6 @@ export const HeaderLuxury = () => {
         />
       </div>
       
-      {/* Premium Top Bar */}
-      <motion.div 
-        className={`relative transition-all duration-500 ${
-          isScrolled ? 'h-0 opacity-0' : 'h-10 opacity-100'
-        } overflow-hidden`}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-digiqo-primary via-digiqo-primary-dark to-digiqo-primary">
-          {/* Animated luxury pattern */}
-          <motion.div 
-            className="absolute inset-0 opacity-10"
-            animate={{ backgroundPosition: ['0% 0%', '100% 100%'] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            style={{
-              backgroundImage: `repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 10px,
-                rgba(255,255,255,0.1) 10px,
-                rgba(255,255,255,0.1) 20px
-              )`
-            }}
-          />
-        </div>
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-          <div className="flex items-center justify-between h-full text-white/90 text-xs">
-            <div className="flex items-center space-x-6">
-              {navigation.topBar.left.map((item, index) => (
-                <Link
-                  key={index}
-                  href={item.href}
-                  className={`flex items-center space-x-1.5 hover:text-white transition-all group ${index > 0 ? 'hidden sm:inline-flex' : ''}`}
-                >
-                  <motion.div whileHover={{ scale: 1.1, rotate: 5 }}>
-                    <item.icon className="w-3 h-3" />
-                  </motion.div>
-                  <span>{item.text}</span>
-                </Link>
-              ))}
-            </div>
-            
-            <div className="hidden md:flex items-center space-x-6">
-              {navigation.topBar.right.map((item, index) => (
-                <div key={index} className="flex items-center space-x-1.5 text-white/80">
-                  <item.icon className="w-3 h-3" />
-                  <span>{item.text}</span>
-                </div>
-              ))}
-              
-              <div className="flex items-center space-x-3 pl-6 border-l border-white/20">
-                {navigation.topBar.social.map((social) => (
-                  <Link
-                    key={social.name}
-                    href={social.href}
-                    className="hover:text-white transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {social.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-
       {/* Main Luxury Navigation */}
       <nav className="relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

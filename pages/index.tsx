@@ -268,7 +268,7 @@ export default function Home() {
       />
 
       <HeaderLuxury />
-      <main className="pt-28 md:pt-32 bg-[#8B1431]">
+      <main className="pt-28 md:pt-32 bg-[#8B1431]" style={{ backgroundColor: '#8B1431' }}>
         <h1 className="sr-only">
           L'Agence Marketing Digital Qui Booste Vos Ventes - Digiqo La Réunion
         </h1>
@@ -276,9 +276,6 @@ export default function Home() {
         {/* 1. Hero + Logos */}
         <HeroParallax products={products} />
         <ResultsSection />
-
-        {/* Transition noir → bordeaux */}
-        <div className="h-24 bg-gradient-to-b from-black/50 to-transparent" />
 
         {/* 2. Réalisations vidéo — Carrousel */}
         <section id="realisations" className="py-16 md:py-24 relative overflow-hidden">
