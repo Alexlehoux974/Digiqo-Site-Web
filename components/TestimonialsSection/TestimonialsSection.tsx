@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Heart, MessageCircle, Bookmark, Send } from 'lucide-react'
 import Image from 'next/image'
@@ -79,6 +79,19 @@ export const TestimonialsSection = () => {
       return () => clearInterval(timer)
     }
   }, [testimonialData.length])
+
+  // Swipe support for mobile
+  const touchStartX = useRef(0)
+  const touchEndX = useRef(0)
+  const handleTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.touches[0].clientX }
+  const handleTouchMove = (e: React.TouchEvent) => { touchEndX.current = e.touches[0].clientX }
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) handleNext()
+      else handlePrev()
+    }
+  }
 
   // Ne pas afficher la section s'il n'y a pas de témoignages
   if (!isLoading && testimonialData.length === 0) {
@@ -197,7 +210,7 @@ export const TestimonialsSection = () => {
             {testimonialData.length > 1 && (
               <motion.button
                 onClick={handlePrev}
-                className="hidden md:flex w-12 h-12 rounded-full bg-white shadow-lg items-center justify-center hover:shadow-xl hover:shadow-digiqo-primary/20 border border-digiqo-primary/10 hover:border-digiqo-primary/20 transition-all duration-300"
+                className="flex w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg items-center justify-center hover:shadow-xl hover:shadow-digiqo-primary/20 border border-digiqo-primary/10 hover:border-digiqo-primary/20 transition-all duration-300"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
@@ -208,7 +221,12 @@ export const TestimonialsSection = () => {
             )}
 
             {/* Cartes de témoignages */}
-            <div className="flex gap-6 overflow-hidden justify-center">
+            <div
+              className="flex gap-6 overflow-hidden justify-center"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
               <AnimatePresence mode="wait">
                 {visibleCards.map((testimonial, index) => (
                   <motion.div
@@ -336,7 +354,7 @@ export const TestimonialsSection = () => {
             {testimonialData.length > 1 && (
               <motion.button
                 onClick={handleNext}
-                className="hidden md:flex w-12 h-12 rounded-full bg-white shadow-lg items-center justify-center hover:shadow-xl hover:shadow-digiqo-primary/20 border border-digiqo-primary/10 hover:border-digiqo-primary/20 transition-all duration-300"
+                className="flex w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg items-center justify-center hover:shadow-xl hover:shadow-digiqo-primary/20 border border-digiqo-primary/10 hover:border-digiqo-primary/20 transition-all duration-300"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
