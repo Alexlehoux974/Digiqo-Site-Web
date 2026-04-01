@@ -207,8 +207,8 @@ export const HeaderLuxury = () => {
       >
       {/* Ultra-luxury glass effect - Bordeaux on mobile */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-digiqo-primary/95 lg:bg-white/80 backdrop-blur-2xl" />
-        <div className="absolute inset-0 bg-gradient-to-b from-digiqo-primary/85 lg:from-white/50 to-digiqo-primary/75 lg:to-white/30" />
+        <div className="absolute inset-0 bg-[#8B1431]/95 backdrop-blur-2xl" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#8B1431]/85 to-[#8B1431]/75" />
         <div className="absolute inset-0" 
           style={{
             backgroundImage: `radial-gradient(circle at 20% 50%, rgba(139, 20, 49, 0.05) 0%, transparent 50%),
@@ -314,7 +314,7 @@ export const HeaderLuxury = () => {
                         window.location.href = item.href
                       }
                     }}
-                    className="px-3 py-3 text-xs font-medium text-gray-700 hover:text-digiqo-primary transition-all relative group"
+                    className="px-3 py-3 text-xs font-medium text-white/90 hover:text-white transition-all relative group"
                     whileHover={{ y: -2 }}
                   >
                     {/* Luxury hover effect */}
