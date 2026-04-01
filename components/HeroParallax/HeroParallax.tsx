@@ -24,7 +24,7 @@ export const HeroParallax = ({
         // Wait 1s after visible before loading YouTube
         setTimeout(() => {
           const iframe = document.createElement('iframe')
-          iframe.src = 'https://www.youtube.com/embed/I2itB7yvNk0?autoplay=1&mute=1&loop=1&playlist=I2itB7yvNk0&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3'
+          iframe.src = 'https://www.youtube.com/embed/9AGf5uotVqc?autoplay=1&mute=1&loop=1&playlist=9AGf5uotVqc&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3'
           iframe.className = 'absolute inset-0 w-full h-full pointer-events-none'
           iframe.style.transform = 'scale(1.2)'
           iframe.style.transformOrigin = 'center center'
