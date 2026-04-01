@@ -23,16 +23,19 @@ export const HeroParallax = ({
       {/* Background #8B1431 */}
       <div className="absolute inset-0 -z-10 bg-[#8B1431]" />
 
-      {/* Animated logo bottom-right */}
-      <div className="absolute bottom-32 right-8 md:bottom-40 md:right-16 z-0 opacity-[0.08]">
+      {/* Animated logo right */}
+      <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-16 z-0 opacity-[0.15] hero-logo-float">
         <Image
           src="/android-chrome-512x512.png"
           alt=""
-          width={300}
-          height={300}
-          className="w-[200px] h-[200px] md:w-[300px] md:h-[300px] hero-logo-float"
+          width={500}
+          height={500}
+          className="w-[250px] h-[250px] md:w-[400px] md:h-[400px] drop-shadow-2xl"
         />
       </div>
+      {/* Floating orbs for depth */}
+      <div className="absolute top-1/4 right-1/3 w-32 h-32 md:w-64 md:h-64 bg-white/5 rounded-full blur-3xl hero-orb-1" />
+      <div className="absolute bottom-1/3 right-1/4 w-24 h-24 md:w-48 md:h-48 bg-digiqo-accent/10 rounded-full blur-2xl hero-orb-2" />
 
       <Header />
 
@@ -84,9 +87,23 @@ export const HeroParallax = ({
         .hero-logo-float {
           animation: heroFloat 6s ease-in-out infinite;
         }
+        .hero-orb-1 {
+          animation: orbFloat1 8s ease-in-out infinite;
+        }
+        .hero-orb-2 {
+          animation: orbFloat2 10s ease-in-out infinite;
+        }
         @keyframes heroFloat {
           0%, 100% { transform: translateY(0) rotate(0deg); }
-          50% { transform: translateY(-15px) rotate(3deg); }
+          50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        @keyframes orbFloat1 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(30px, -20px) scale(1.1); }
+        }
+        @keyframes orbFloat2 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(-20px, 15px) scale(1.15); }
         }
         @media (prefers-reduced-motion: reduce) {
           .logo-scroll-right,
