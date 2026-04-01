@@ -81,8 +81,9 @@ function formatTestimonial(record: AirtableTestimonial, index: number): Formatte
   // Extraire l'URL de l'image depuis le tableau d'attachments
   let thumbnailUrl: string | undefined = undefined
   if (fields["Url Image"] && Array.isArray(fields["Url Image"]) && fields["Url Image"].length > 0) {
-    // Utiliser l'URL de la première pièce jointe
-    thumbnailUrl = fields["Url Image"][0].url
+    const attachment = fields["Url Image"][0]
+    // Préférer le thumbnail large (max ~500px) au lieu de l'image pleine taille (900KB+)
+    thumbnailUrl = attachment.thumbnails?.large?.url || attachment.url
   }
   
   return {

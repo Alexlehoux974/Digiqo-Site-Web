@@ -9,6 +9,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'digiqo.fr',
       },
+      {
+        protocol: 'https',
+        hostname: '*.airtableusercontent.com',
+      },
     ],
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],

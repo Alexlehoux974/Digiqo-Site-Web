@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Heart, MessageCircle, Bookmark, Send } from 'lucide-react'
-import { OptimizedImage } from '../ui/OptimizedImage'
+import Image from 'next/image'
 import type { FormattedTestimonial } from '../../pages/api/testimonials'
 
 // Pas de fallback - on affiche uniquement les témoignages d'Airtable
@@ -248,22 +248,14 @@ export const TestimonialsSection = () => {
                         {/* Image de fond avec thumbnail */}
                         {testimonial.thumbnail && (
                           <div className="absolute inset-0">
-                            {/* Utilise img pour les URLs externes (Airtable) */}
-                            {(typeof testimonial.thumbnail === 'string' && testimonial.thumbnail.startsWith('http')) ? (
-                              <img
-                                src={testimonial.thumbnail}
-                                alt={testimonial.username}
-                                className="w-full h-full object-cover"
-                              />
-                            ) : (
-                              <OptimizedImage
-                                src={testimonial.thumbnail}
-                                alt={testimonial.username}
-                                fill
-                                className="object-cover"
-                                objectFit="cover"
-                              />
-                            )}
+                            <Image
+                              src={testimonial.thumbnail}
+                              alt={testimonial.username}
+                              fill
+                              className="object-cover"
+                              sizes="320px"
+                              loading="lazy"
+                            />
                           </div>
                         )}
 
