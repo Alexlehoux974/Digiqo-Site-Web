@@ -24,13 +24,13 @@ export const HeroParallax = ({
       <div className="absolute inset-0 -z-10 bg-[#8B1431]" />
 
       {/* Animated logo right */}
-      <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-16 z-0 opacity-[0.15] hero-logo-float">
+      <div className="absolute top-1/3 -translate-y-1/4 right-4 md:right-20 z-0 opacity-30 hero-logo-float">
         <Image
           src="/android-chrome-512x512.png"
           alt=""
           width={500}
           height={500}
-          className="w-[250px] h-[250px] md:w-[400px] md:h-[400px] drop-shadow-2xl"
+          className="w-[200px] h-[200px] md:w-[350px] md:h-[350px] drop-shadow-2xl"
         />
       </div>
       {/* Floating orbs for depth */}
