@@ -2,7 +2,6 @@ import type { AppProps } from 'next/app'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
-import { Inter, Montserrat } from 'next/font/google'
 import { CookieConsent } from '@/components/CookieConsent'
 import { ScrollToTop } from '@/components/ScrollToTop'
 import dynamic from 'next/dynamic'
@@ -10,20 +9,6 @@ const ChatWidget = dynamic(() => import('@/components/ChatWidget').then(m => m.C
 import '../styles/globals.css'
 import '../styles/enhanced-colors.css'
 import '@n8n/chat/style.css'
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  display: 'swap',
-  variable: '--font-inter',
-})
-
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  weight: ['600', '700', '800'],
-  display: 'swap',
-  variable: '--font-montserrat',
-})
 
 const GA_MEASUREMENT_ID = 'G-NFN3PN0GLY'
 
@@ -142,7 +127,7 @@ export default function App({ Component, pageProps }: AppProps) {
   `
 
   return (
-    <div className={`${inter.variable} ${montserrat.variable}`}>
+    <>
       {/* Initialize dataLayer and gtag with consent defaults (always, before any script loads) */}
       <Script
         id="gtag-consent-default"
@@ -193,6 +178,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <CookieConsent />
       <ScrollToTop />
       <ChatWidget />
-    </div>
+    </>
   )
 }
