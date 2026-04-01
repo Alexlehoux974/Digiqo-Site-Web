@@ -17,7 +17,7 @@ const HeroParallax = dynamic(
   () => import('../components/HeroParallax/HeroParallax').then((mod) => mod.HeroParallax),
   {
     ssr: false,
-    loading: () => <div className="min-h-[600px] bg-gradient-to-b from-white to-gray-50" />
+    loading: () => <div className="min-h-[600px] md:min-h-[800px] bg-[#8B1431]" />
   }
 )
 
@@ -30,27 +30,27 @@ const ServicesSection = dynamic(
 
 const ResultsSection = dynamic(
   () => import('../components/ResultsSection').then((mod) => mod.ResultsSection),
-  { loading: () => <div className="min-h-[200px]" /> }
+  { loading: () => <div className="min-h-[400px] bg-[#8B1431]" /> }
 )
 
 const TestimonialsSection = dynamic(
   () => import('../components/TestimonialsSection').then((mod) => mod.TestimonialsSection),
-  { loading: () => <div className="min-h-[400px]" /> }
+  { loading: () => <div className="min-h-[500px] bg-[#8B1431]" /> }
 )
 
 const FAQSection = dynamic(
   () => import('../components/FAQSection').then((mod) => mod.FAQSection),
-  { loading: () => <div className="min-h-[400px]" /> }
+  { loading: () => <div className="min-h-[400px] bg-[#8B1431]" /> }
 )
 
 const ContactSection = dynamic(
   () => import('../components/ContactSection').then((mod) => mod.ContactSection),
-  { loading: () => <div className="min-h-[400px]" /> }
+  { loading: () => <div className="min-h-[500px] bg-[#8B1431]" /> }
 )
 
 const BlogCarousel = dynamic(
   () => import('@/components/BlogCarousel').then((mod) => mod.BlogCarousel),
-  { loading: () => <div className="min-h-[300px]" /> }
+  { loading: () => <div className="min-h-[300px] bg-[#8B1431]" /> }
 )
 
 // Générer les products à partir des données centralisées
