@@ -23,14 +23,14 @@ export const HeroParallax = ({
       {/* Background #8B1431 */}
       <div className="absolute inset-0 -z-10 bg-[#8B1431]" />
 
-      {/* Animated logo right */}
-      <div className="absolute top-1/3 -translate-y-1/4 right-4 md:right-20 z-0 hero-logo-float">
+      {/* Beach logo mascot */}
+      <div className="absolute bottom-24 right-2 md:bottom-32 md:right-12 z-0 hero-logo-float">
         <Image
-          src="/android-chrome-512x512.png"
-          alt=""
+          src="/digiqo-beach.webp"
+          alt="Digiqo mascotte"
           width={500}
           height={500}
-          className="w-[200px] h-[200px] md:w-[350px] md:h-[350px] drop-shadow-2xl"
+          className="w-[180px] h-[180px] md:w-[350px] md:h-[350px] drop-shadow-2xl"
         />
       </div>
       {/* Floating orbs for depth */}
