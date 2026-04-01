@@ -24,7 +24,7 @@ export const HeroParallax = ({
       <div className="absolute inset-0 -z-10 bg-[#8B1431]" />
 
       {/* Beach logo mascot — desktop only (mobile version is in Header flow) */}
-      <div className="absolute bottom-48 right-12 z-0 hero-logo-float hidden md:block">
+      <div className="absolute bottom-8 right-12 z-0 hero-logo-float hidden md:block">
         <Image
           src="/digiqo-beach.webp"
           alt="Digiqo mascotte"
