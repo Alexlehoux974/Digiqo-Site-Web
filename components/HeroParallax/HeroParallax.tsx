@@ -147,7 +147,7 @@ export const Header = () => {
         />
       </div>
 
-      <div className="flex flex-wrap gap-4 mt-2 md:mt-8 items-center relative z-30">
+      <div className="hidden md:flex flex-wrap gap-4 mt-2 md:mt-8 items-center relative z-30">
         <Link href={generateContactUrl({
           description: 'Je veux booster mes ventes avec des campagnes publicitaires'
         })}>
