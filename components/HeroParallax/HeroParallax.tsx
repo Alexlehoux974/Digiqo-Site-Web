@@ -18,7 +18,7 @@ export const HeroParallax = ({
 
   return (
     <div
-      className="h-auto pt-28 md:pt-20 overflow-hidden antialiased relative flex flex-col self-auto z-10"
+      className="h-auto pt-16 md:pt-20 overflow-hidden antialiased relative flex flex-col self-auto z-10"
     >
       {/* Background #8B1431 */}
       <div className="absolute inset-0 -z-10 bg-[#8B1431]" />
