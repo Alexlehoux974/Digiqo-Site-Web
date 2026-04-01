@@ -37,7 +37,7 @@ export const HeroParallax = ({
       <div className="absolute bottom-1/3 right-1/4 w-24 h-24 md:w-48 md:h-48 bg-digiqo-accent/10 rounded-full blur-2xl" />
 
       {/* Logo rows behind hero text */}
-      <div className="absolute inset-0 z-0 flex flex-col justify-end pb-8 md:pb-16 gap-6 opacity-[0.07] pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 z-0 flex flex-col justify-end pb-[30%] md:pb-16 gap-6 opacity-[0.07] pointer-events-none overflow-hidden">
         <div className="logo-scroll-container">
           <div className="logo-scroll-track logo-scroll-right">
             {[...firstRow, ...firstRow].map((product, idx) => (
