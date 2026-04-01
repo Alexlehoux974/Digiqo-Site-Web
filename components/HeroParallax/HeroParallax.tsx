@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { generateContactUrl } from '@/lib/contact-utils'
@@ -17,45 +16,25 @@ export const HeroParallax = ({
   const firstRow = products.slice(0, half)
   const secondRow = products.slice(half)
 
-  useEffect(() => {
-    const container = document.getElementById('hero-video-container')
-    if (!container) return
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        // Wait 1s after visible before loading YouTube
-        setTimeout(() => {
-          const iframe = document.createElement('iframe')
-          iframe.src = 'https://www.youtube.com/embed/9AGf5uotVqc?autoplay=1&mute=1&loop=1&playlist=9AGf5uotVqc&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3'
-          iframe.className = 'absolute inset-0 w-full h-full pointer-events-none'
-          iframe.style.transform = 'scale(1.2)'
-          iframe.style.transformOrigin = 'center center'
-          iframe.allow = 'autoplay; encrypted-media'
-          iframe.title = 'Digiqo background video'
-          container.appendChild(iframe)
-        }, 1000)
-        observer.disconnect()
-      }
-    }, { threshold: 0.1 })
-    observer.observe(container)
-    return () => observer.disconnect()
-  }, [])
-
   return (
     <div
       className="h-auto pt-28 md:pt-20 overflow-hidden antialiased relative flex flex-col self-auto z-10"
     >
-      {/* Background — poster image, YouTube loads after 3s for perf */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
+      {/* Background #8B1431 */}
+      <div className="absolute inset-0 -z-10 bg-[#8B1431]">
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-transparent to-black/30" />
+      </div>
+
+      {/* Animated logo bottom-right */}
+      <div className="absolute bottom-32 right-8 md:bottom-40 md:right-16 z-0 opacity-[0.08]">
         <Image
-          src="/hero-bg.webp"
+          src="/android-chrome-512x512.png"
           alt=""
-          fill
-          priority
-          className="object-cover"
-          style={{ transform: 'scale(1.1)', transformOrigin: 'center center' }}
+          width={300}
+          height={300}
+          className="w-[200px] h-[200px] md:w-[300px] md:h-[300px] hero-logo-float"
         />
-        <div id="hero-video-container" className="absolute inset-0" />
-        <div className="absolute inset-0 bg-black/50" />
       </div>
 
       <Header />
@@ -105,9 +84,17 @@ export const HeroParallax = ({
           0% { transform: translateX(-50%); }
           100% { transform: translateX(0); }
         }
+        .hero-logo-float {
+          animation: heroFloat 6s ease-in-out infinite;
+        }
+        @keyframes heroFloat {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-15px) rotate(3deg); }
+        }
         @media (prefers-reduced-motion: reduce) {
           .logo-scroll-right,
-          .logo-scroll-left {
+          .logo-scroll-left,
+          .hero-logo-float {
             animation: none;
           }
         }

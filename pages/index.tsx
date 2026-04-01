@@ -33,12 +33,6 @@ const ServicesSection = dynamic(
   }
 )
 
-const AboutSection = dynamic(
-  () => import('../components/AboutSection').then((mod) => mod.AboutSection),
-  {
-    loading: () => <div className="min-h-[400px]" />
-  }
-)
 
 // Générer les products à partir des données centralisées
 const products = partnersData.map((partner, index) => ({
@@ -359,8 +353,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 7. À propos */}
-        <AboutSection />
+        {/* 7. Contact */}
+        <ContactSection />
 
         {/* 8. FAQ */}
         <FAQSection />
@@ -390,9 +384,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* 10. Contact */}
-        <ContactSection />
 
         {/* Transition bordeaux → noir vers le footer */}
         <div className="h-24 bg-gradient-to-b from-transparent to-black/80" />

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { OptimizedImage } from '../ui/OptimizedImage'
@@ -158,13 +158,6 @@ export const HeaderLuxury = () => {
   const [hoveredService, setHoveredService] = useState<string | null>(null)
   const [isNavigating, setIsNavigating] = useState(false)
   const [menuPosition, setMenuPosition] = useState<'left' | 'center' | 'right'>('center')
-  const [isScrolled, setIsScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
   
 
 
@@ -203,8 +196,8 @@ export const HeaderLuxury = () => {
       >
       {/* Ultra-luxury glass effect - Bordeaux on mobile */}
       <div className="absolute inset-0">
-        <div className={`absolute inset-0 transition-all duration-500 ${isScrolled ? 'bg-[#8B1431]/95 backdrop-blur-2xl' : 'bg-transparent'}`} />
-        <div className={`absolute inset-0 transition-all duration-500 ${isScrolled ? 'bg-gradient-to-b from-[#8B1431]/85 to-[#8B1431]/75' : 'bg-transparent'}`} />
+        <div className="absolute inset-0 bg-[#8B1431]/95 backdrop-blur-2xl" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#8B1431]/85 to-[#8B1431]/75" />
         <div className="absolute inset-0" 
           style={{
             backgroundImage: `radial-gradient(circle at 20% 50%, rgba(139, 20, 49, 0.05) 0%, transparent 50%),
