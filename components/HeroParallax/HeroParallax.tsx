@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Link from 'next/link'
 import { generateContactUrl } from '@/lib/contact-utils'
 import { OptimizedImage } from '@/components/ui/OptimizedImage'
@@ -15,21 +16,36 @@ export const HeroParallax = ({
   const secondRow = products.slice(31, 62)
   const thirdRow = products.slice(62, 93)
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const container = document.getElementById('hero-video-container')
+      if (!container) return
+      const iframe = document.createElement('iframe')
+      iframe.src = 'https://www.youtube.com/embed/I2itB7yvNk0?autoplay=1&mute=1&loop=1&playlist=I2itB7yvNk0&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3'
+      iframe.className = 'absolute inset-0 w-full h-full pointer-events-none'
+      iframe.style.transform = 'scale(1.2)'
+      iframe.style.transformOrigin = 'center center'
+      iframe.allow = 'autoplay; encrypted-media'
+      iframe.title = 'Digiqo background video'
+      container.appendChild(iframe)
+    }, 3000)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <div
       className="h-auto pt-28 md:pt-20 overflow-hidden antialiased relative flex flex-col self-auto z-10"
     >
-      {/* Background Video */}
+      {/* Background — poster image, YouTube loads after 3s for perf */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <iframe
-          src="https://www.youtube.com/embed/I2itB7yvNk0?autoplay=1&mute=1&loop=1&playlist=I2itB7yvNk0&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3"
-          className="absolute inset-0 w-full h-full pointer-events-none"
-          style={{ transform: 'scale(1.2)', transformOrigin: 'center center' }}
-          allow="autoplay; encrypted-media"
-          title="Digiqo background video"
+        <img
+          src="/hero-bg.webp"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ transform: 'scale(1.1)', transformOrigin: 'center center' }}
         />
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/70" />
+        <div id="hero-video-container" className="absolute inset-0" />
+        <div className="absolute inset-0 bg-black/50" />
       </div>
 
       <Header />

@@ -10,7 +10,7 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { value: 167, suffix: '+', label: 'Clients Satisfaits', duration: 2 },
+  { value: 99.9, suffix: '%', label: 'Clients Satisfaits', duration: 2 },
   { value: 6.5, suffix: 'M€', prefix: '+', label: 'Budget Géré', duration: 2.5 },
   { value: 97, suffix: '%', label: 'Campagnes Rentables', duration: 3 },
   { value: 4.8, suffix: '/5', label: 'Note Globale', duration: 2 }

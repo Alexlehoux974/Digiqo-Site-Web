@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
-import { X, Cookie } from 'lucide-react'
+import { Cookie } from 'lucide-react'
 
 export function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false)
@@ -59,53 +59,37 @@ export function CookieConsent() {
 
   return (
     <>
-      <div className="fixed inset-0 bg-black/50 z-[9998] backdrop-blur-sm" onClick={() => {}} />
-
-      <div className="fixed bottom-0 left-0 right-0 z-[9999] p-4 md:p-6 animate-slide-up">
-        <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-2xl border border-gray-200">
-          <div className="p-6 md:p-8">
-            <div className="flex items-start justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <Cookie className="w-8 h-8 text-digiqo-primary" />
-                <h2 className="text-xl md:text-2xl font-bold text-gray-900">
-                  Nous utilisons des cookies
-                </h2>
+      <div className="fixed bottom-0 left-0 right-0 z-[9999] animate-slide-up">
+        <div className="bg-white shadow-2xl border-t border-gray-200">
+          <div className="max-w-6xl mx-auto px-4 py-3 md:py-4">
+            <div className="flex flex-col md:flex-row md:items-center gap-3">
+              <div className="flex-1 flex items-center gap-2 min-w-0">
+                <Cookie className="w-5 h-5 text-digiqo-primary flex-shrink-0" />
+                <p className="text-sm text-gray-600 truncate md:whitespace-normal">
+                  Ce site utilise des cookies pour améliorer votre expérience.
+                </p>
               </div>
-              <button
-                onClick={refuseAll}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
-                aria-label="Refuser tous les cookies"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-
-            <p className="text-gray-600 mb-6">
-              Nous utilisons des cookies pour améliorer votre expérience sur notre site, analyser notre trafic et personnaliser nos offres marketing.
-              En cliquant sur &quot;Accepter tout&quot;, vous consentez à l&apos;utilisation de tous les cookies.
-              Vous pouvez également personnaliser vos préférences.
-            </p>
 
             {!showDetails ? (
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex items-center gap-2 flex-shrink-0">
                 <Button
                   onClick={acceptAll}
-                  className="bg-digiqo-primary hover:bg-digiqo-primary-dark text-white px-6 py-2"
+                  className="bg-digiqo-primary hover:bg-digiqo-primary-dark text-white px-4 py-2 text-sm"
                 >
-                  Accepter tout
+                  Accepter
                 </Button>
                 <Button
                   onClick={refuseAll}
-                  className="bg-gray-800 hover:bg-gray-900 text-white px-6 py-2"
+                  className="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 text-sm"
                 >
-                  Refuser tout
+                  Refuser
                 </Button>
                 <Button
                   onClick={() => setShowDetails(true)}
                   variant="ghost"
-                  className="text-digiqo-secondary hover:text-digiqo-secondary-dark"
+                  className="text-digiqo-secondary hover:text-digiqo-secondary-dark text-sm px-2"
                 >
-                  Personnaliser
+                  Options
                 </Button>
               </div>
             ) : (
@@ -174,16 +158,7 @@ export function CookieConsent() {
               </div>
             )}
 
-            <p className="text-xs text-gray-500 mt-4">
-              Pour plus d&apos;informations, consultez notre{' '}
-              <a href="/politique-cookies" className="text-digiqo-secondary hover:underline">
-                politique de cookies
-              </a>{' '}
-              et notre{' '}
-              <a href="/politique-confidentialite" className="text-digiqo-secondary hover:underline">
-                politique de confidentialité
-              </a>.
-            </p>
+            </div>
           </div>
         </div>
       </div>
