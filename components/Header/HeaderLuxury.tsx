@@ -313,14 +313,11 @@ export const HeaderLuxury = () => {
                     />
                     
                     <span className="relative flex items-center space-x-2">
-                      {item.luxuryIcon && (
-                        <item.luxuryIcon className="w-3 h-3 text-digiqo-accent" />
-                      )}
                       <span className={('highlight' in item && item.highlight) ? 'text-digiqo-accent font-semibold' : ''}>
                         {item.name}
                       </span>
                       {'badge' in item && (item as any).badge && (
-                        <span className="px-2 py-0.5 text-[10px] font-bold bg-digiqo-secondary text-white rounded-full">
+                        <span className="px-2 py-0.5 text-[10px] font-bold bg-emerald-500 text-white rounded-full">
                           {(item as any).badge}
                         </span>
                       )}
