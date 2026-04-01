@@ -23,8 +23,8 @@ export const HeroParallax = ({
       {/* Background #8B1431 */}
       <div className="absolute inset-0 -z-10 bg-[#8B1431]" />
 
-      {/* Beach logo mascot */}
-      <div className="absolute bottom-32 right-2 md:bottom-48 md:right-12 z-0 hero-logo-float">
+      {/* Beach logo mascot — desktop only (mobile version is in Header flow) */}
+      <div className="absolute bottom-48 right-12 z-0 hero-logo-float hidden md:block">
         <Image
           src="/digiqo-beach.webp"
           alt="Digiqo mascotte"
@@ -150,7 +150,19 @@ export const Header = () => {
         Transformez vos visiteurs en clients avec des campagnes publicitaires
         <span className="text-white font-bold"> Facebook, Instagram et Google Ads</span> qui cartonnent.
       </p>
-      <div className="flex flex-wrap gap-4 mt-8 items-center relative z-30">
+
+      {/* Mascotte mobile — visible uniquement sur smartphone */}
+      <div className="flex md:hidden justify-center my-6">
+        <Image
+          src="/digiqo-beach.webp"
+          alt="Digiqo mascotte"
+          width={200}
+          height={200}
+          className="w-[180px] h-[180px] hero-logo-float"
+        />
+      </div>
+
+      <div className="flex flex-wrap gap-4 mt-2 md:mt-8 items-center relative z-30">
         <Link href={generateContactUrl({
           description: 'Je veux booster mes ventes avec des campagnes publicitaires'
         })}>
