@@ -17,7 +17,7 @@ export const HeroParallax = ({
 
   return (
     <div
-      className="h-auto py-0 md:py-20 overflow-hidden antialiased relative flex flex-col self-auto z-10"
+      className="h-auto pt-28 md:pt-20 overflow-hidden antialiased relative flex flex-col self-auto z-10"
     >
       {/* Background Video */}
       <div className="absolute inset-0 -z-10 overflow-hidden">

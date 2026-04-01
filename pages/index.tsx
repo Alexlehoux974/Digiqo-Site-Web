@@ -268,7 +268,7 @@ export default function Home() {
       />
 
       <HeaderLuxury />
-      <main className="pt-28 md:pt-32 bg-[#8B1431]" style={{ backgroundColor: '#8B1431' }}>
+      <main className="bg-[#8B1431]">
         <h1 className="sr-only">
           L'Agence Marketing Digital Qui Booste Vos Ventes - Digiqo La Réunion
         </h1>
