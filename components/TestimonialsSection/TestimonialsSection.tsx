@@ -125,7 +125,7 @@ export const TestimonialsSection = () => {
   const visibleCards = getVisibleCards()
 
   return (
-    <section className="relative py-20 bg-gradient-to-b from-white to-digiqo-gray/30 overflow-hidden">
+    <section className="relative py-20 overflow-hidden">
       {/* Effet de fond animé */}
       <div className="absolute inset-0">
         <motion.div

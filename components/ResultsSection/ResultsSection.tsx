@@ -194,7 +194,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
 
 export function ResultsSection() {
   return (
-    <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <section className="py-20 md:py-32 relative overflow-hidden">
       {/* Background decoration avec mesh gradient */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 right-0 w-96 h-96 bg-digiqo-primary/5 rounded-full blur-3xl"></div>

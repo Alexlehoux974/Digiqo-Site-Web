@@ -76,7 +76,7 @@ export function ContactSection() {
   return (
     <section id="contact" ref={sectionRef} className="relative py-24 overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-digiqo-gray-light via-white to-digiqo-gray-light" />
+      <div className="absolute inset-0 bg-black/20" />
       
       {/* Animated gradient orbs */}
       <motion.div
