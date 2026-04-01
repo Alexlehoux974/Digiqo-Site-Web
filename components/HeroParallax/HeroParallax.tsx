@@ -22,8 +22,9 @@ export const HeroParallax = ({
       {/* Background Video */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <iframe
-          src="https://www.youtube.com/embed/I2itB7yvNk0?autoplay=1&mute=1&loop=1&playlist=I2itB7yvNk0&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] md:w-[200%] md:h-[200%] pointer-events-none"
+          src="https://www.youtube.com/embed/I2itB7yvNk0?autoplay=1&mute=1&loop=1&playlist=I2itB7yvNk0&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3"
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          style={{ transform: 'scale(1.2)', transformOrigin: 'center center' }}
           allow="autoplay; encrypted-media"
           title="Digiqo background video"
         />
