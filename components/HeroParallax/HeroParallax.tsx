@@ -29,7 +29,7 @@ export const HeroParallax = ({
           alt="Digiqo mascotte"
           width={350}
           height={350}
-          className="w-[350px] h-[350px] object-contain drop-shadow-2xl"
+          className="w-[250px] h-[250px] object-contain drop-shadow-2xl"
         />
       </div>
       {/* Static orbs for depth — no animation to save GPU */}
