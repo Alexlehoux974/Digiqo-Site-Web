@@ -59,14 +59,14 @@ export const ChatWidget = () => {
       }
       
       /* Style du bouton du chat */
-      .n8n-chat-button {
+      .chat-window-toggle {
         background: linear-gradient(135deg, #8B1431 0%, #DA6530 100%) !important;
         border: none !important;
         box-shadow: 0 4px 20px rgba(139, 20, 49, 0.3) !important;
         transition: all 0.3s ease !important;
       }
-      
-      .n8n-chat-button:hover {
+
+      .chat-window-toggle:hover {
         transform: scale(1.05) !important;
         box-shadow: 0 6px 30px rgba(139, 20, 49, 0.4) !important;
       }
