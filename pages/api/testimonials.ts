@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import { checkRateLimit } from '../../lib/rate-limit'
 
 // Types pour les données Airtable
 export interface AirtableAttachment {
@@ -107,6 +108,9 @@ export default async function handler(
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
+
+  // Rate limiting
+  if (!checkRateLimit(req, res)) return
 
   // Vérifier les variables d'environnement
   const AIRTABLE_PAT = process.env.AIRTABLE_PAT
