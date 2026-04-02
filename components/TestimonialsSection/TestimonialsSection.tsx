@@ -190,7 +190,7 @@ export const TestimonialsSection = () => {
         >
           <h3 className="text-4xl md:text-6xl font-bold mb-4">
             <span className="text-white">Rejoignez des centaines d'entreprises </span>
-            <span className="bg-gradient-to-r from-digiqo-accent to-digiqo-secondary bg-clip-text text-transparent">Réunionnais</span>
+            <span className="bg-gradient-to-r from-digiqo-accent to-digiqo-secondary bg-clip-text text-transparent">Réunionnaises</span>
           </h3>
           <p className="text-xl text-white/70 max-w-2xl mx-auto">
             Découvrez leurs témoignages sur 
