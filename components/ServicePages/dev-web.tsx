@@ -105,31 +105,44 @@ const IMacMockup = ({ name, url, screenshot, index }: { name: string; url: strin
   const imgRef = useRef<HTMLImageElement>(null)
 
   useEffect(() => {
-    if (!isHovered || !containerRef.current) return
+    if (!isHovered || !containerRef.current || !imgRef.current) return
+    const img = imgRef.current
     const container = containerRef.current
-    const scrollHeight = container.scrollHeight - container.clientHeight
-    if (scrollHeight <= 0) return
 
-    let animationId: number
-    let start: number | null = null
-    const duration = Math.max(scrollHeight * 8, 4000) // speed relative to content length
+    const startScroll = () => {
+      const scrollHeight = container.scrollHeight - container.clientHeight
+      if (scrollHeight <= 0) return
 
-    const animate = (timestamp: number) => {
-      if (!start) start = timestamp
-      const elapsed = timestamp - start
-      const progress = Math.min(elapsed / duration, 1)
-      // Ease in-out
-      const eased = progress < 0.5
-        ? 2 * progress * progress
-        : 1 - Math.pow(-2 * progress + 2, 2) / 2
-      container.scrollTop = eased * scrollHeight
-      if (progress < 1) {
-        animationId = requestAnimationFrame(animate)
+      let animationId: number
+      let start: number | null = null
+      const duration = Math.max(scrollHeight * 8, 4000)
+
+      const animate = (timestamp: number) => {
+        if (!start) start = timestamp
+        const elapsed = timestamp - start
+        const progress = Math.min(elapsed / duration, 1)
+        const eased = progress < 0.5
+          ? 2 * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 2) / 2
+        container.scrollTop = eased * scrollHeight
+        if (progress < 1) {
+          animationId = requestAnimationFrame(animate)
+        }
       }
+
+      animationId = requestAnimationFrame(animate)
+      return () => cancelAnimationFrame(animationId)
     }
 
-    animationId = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(animationId)
+    // Wait for image to be fully loaded before scrolling
+    if (img.complete && img.naturalHeight > 0) {
+      const cleanup = startScroll()
+      return cleanup
+    } else {
+      const onLoad = () => { startScroll() }
+      img.addEventListener('load', onLoad)
+      return () => img.removeEventListener('load', onLoad)
+    }
   }, [isHovered])
 
   return (
@@ -495,7 +508,7 @@ export default function DevWebPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 justify-items-center">
             {references.map((ref, index) => (
               <IMacMockup key={index} name={ref.name} url={ref.url} screenshot={ref.screenshot} index={index} />
             ))}
