@@ -92,6 +92,7 @@ const references = [
   { name: 'CMX Factory', url: 'https://cmxfactory.com', screenshot: '/references/fullpage/cmxfactory-com.webp' },
   { name: 'Sattwika', url: 'https://sattwika.com', screenshot: '/references/fullpage/sattwika-com.webp' },
   { name: 'Incana Notaires', url: 'https://incana.notaires.fr', screenshot: '/references/fullpage/incana-notaires-fr.webp' },
+  { name: 'Les Maisons Jupiter', url: 'https://lesmaisonsjupiter.re', screenshot: '/references/fullpage/lesmaisonsjupiter-re.webp' },
   { name: 'Mystik Sauna', url: 'https://mystiksauna.re', screenshot: '/references/fullpage/mystiksauna-re.webp' },
   { name: 'Sabaguina (refonte en cours)', url: 'https://sabaguina.com', screenshot: '/references/fullpage/sabaguina-com.webp' },
   { name: 'EMPC', url: 'https://empc.re', screenshot: '/references/fullpage/empc-re.webp' },
