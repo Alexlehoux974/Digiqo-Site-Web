@@ -222,7 +222,7 @@ export const TestimonialsSection = () => {
 
             {/* Cartes de témoignages */}
             <div
-              className="flex gap-6 overflow-hidden justify-center"
+              className="flex gap-6 justify-center"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
@@ -242,7 +242,7 @@ export const TestimonialsSection = () => {
                     className={`relative ${visibleCards.length === 1 || (visibleCards.length > 1 && index === Math.floor(visibleCards.length / 2)) ? 'z-20' : 'z-10'} ${visibleCards.length > 1 && index !== Math.floor(visibleCards.length / 2) ? 'hidden lg:block' : ''}`}
                   >
                     {/* Carte Instagram */}
-                    <div className="w-80 bg-white rounded-2xl shadow-xl overflow-hidden border border-digiqo-primary/10 hover:border-digiqo-primary/20 transition-all duration-300">
+                    <div className="w-full max-w-[320px] bg-white rounded-2xl shadow-xl overflow-hidden border border-digiqo-primary/10 hover:border-digiqo-primary/20 transition-all duration-300">
                       {/* Header Instagram */}
                       <div className="flex items-center justify-between p-4 border-b">
                         <div className="flex items-center gap-3">
