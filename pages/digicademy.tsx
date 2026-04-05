@@ -100,7 +100,7 @@ export default function Digicademy() {
               <div className={`relative transition-all duration-300 ${isSearchFocused ? 'scale-105' : ''}`}>
                 <div className="absolute inset-0 bg-white/20 backdrop-blur-xl rounded-2xl" />
                 <div className="relative flex items-center">
-                  <Search className={`absolute left-6 w-6 h-6 transition-colors duration-300 ${isSearchFocused ? 'text-[#8B1431]' : 'text-gray-400'}`} />
+                  <Search className={`absolute left-4 md:left-6 w-5 h-5 md:w-6 md:h-6 transition-colors duration-300 ${isSearchFocused ? 'text-[#8B1431]' : 'text-gray-400'}`} />
                   <input
                     type="text"
                     placeholder="Que voulez-vous apprendre aujourd'hui ?"
@@ -108,7 +108,7 @@ export default function Digicademy() {
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onFocus={() => setIsSearchFocused(true)}
                     onBlur={() => setIsSearchFocused(false)}
-                    className="w-full pl-12 md:pl-16 pr-6 py-4 md:py-6 bg-white/90 backdrop-blur-sm rounded-2xl text-sm md:text-lg placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-white/30 transition-all duration-300"
+                    className="w-full pl-10 md:pl-16 pr-4 md:pr-6 py-4 md:py-6 bg-white/90 backdrop-blur-sm rounded-2xl text-sm md:text-lg placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-white/30 transition-all duration-300"
                   />
                 </div>
 
