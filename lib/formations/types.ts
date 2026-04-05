@@ -19,7 +19,7 @@ export interface Formation {
   id: string
   slug: string
   title: string
-  category: 'publicite' | 'sites-web' | 'community' | 'identite'
+  category: 'publicite' | 'sites-web' | 'community' | 'identite' | 'ia'
   description: string
   duration: string
   level: 'Débutant' | 'Intermédiaire' | 'Avancé'

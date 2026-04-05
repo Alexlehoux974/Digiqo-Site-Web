@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { Search, BookOpen, Code, Palette, Megaphone, Users, Clock, Award, ArrowRight } from 'lucide-react'
+import { Search, BookOpen, Code, Palette, Megaphone, Users, Clock, Award, ArrowRight, Sparkles } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { formations, getFormationsByCategory, searchFormations } from '@/lib/formations'
 import { HeaderLuxury } from '@/components/Header'
@@ -14,6 +14,7 @@ const categories = [
   { id: 'sites-web', name: 'Sites Web', icon: Code, color: 'bg-gradient-to-r from-[#199CB7] to-[#DA6530]', count: 0 },
   { id: 'community', name: 'Community Management', icon: Users, color: 'bg-gradient-to-r from-[#8B1431] to-[#199CB7]', count: 0 },
   { id: 'identite', name: 'Identité de Marque', icon: Palette, color: 'bg-gradient-to-r from-[#DA6530] to-[#199CB7]', count: 0 },
+  { id: 'ia', name: 'Intelligence Artificielle', icon: Sparkles, color: 'bg-gradient-to-r from-[#8B1431] to-[#DA6530]', count: 0 },
 ]
 
 export default function Digicademy() {

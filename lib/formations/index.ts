@@ -19,12 +19,16 @@ export {
 // Facebook 2025 formation - the active formation with quiz
 export { formationFacebook2025 } from './facebook-2025'
 
+// Claude IA formation
+export { formationClaudeIA } from './claude-ia'
+
 // Combined formations array - all active formations
 import { formationGoogleAds } from './google-ads'
 import { formationFacebook2025 } from './facebook-2025'
+import { formationClaudeIA } from './claude-ia'
 import type { Formation } from './types'
 
-export const formations: Formation[] = [formationFacebook2025, formationGoogleAds]
+export const formations: Formation[] = [formationFacebook2025, formationGoogleAds, formationClaudeIA]
 
 // Helper function to get a formation by its slug
 export function getFormationBySlug(slug: string): Formation | undefined {

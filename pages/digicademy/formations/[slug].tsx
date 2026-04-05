@@ -37,6 +37,8 @@ export default function FormationPage({ formation }: FormationPageProps) {
         return 'from-[#8B1431] to-[#199CB7]'
       case 'identite':
         return 'from-[#DA6530] to-[#199CB7]'
+      case 'ia':
+        return 'from-[#8B1431] to-[#DA6530]'
       default:
         return 'from-[#8B1431] to-[#DA6530]'
     }
