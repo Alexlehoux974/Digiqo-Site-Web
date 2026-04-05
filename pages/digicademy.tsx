@@ -108,7 +108,7 @@ export default function Digicademy() {
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onFocus={() => setIsSearchFocused(true)}
                     onBlur={() => setIsSearchFocused(false)}
-                    className="w-full pl-10 md:pl-16 pr-4 md:pr-6 py-4 md:py-6 bg-white/90 backdrop-blur-sm rounded-2xl text-sm md:text-lg placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-white/30 transition-all duration-300"
+                    className="w-full pl-10 md:pl-16 pr-4 md:pr-6 py-4 md:py-6 bg-white/90 backdrop-blur-sm rounded-2xl text-sm md:text-lg text-center md:text-center placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-white/30 transition-all duration-300 focus:text-left"
                   />
                 </div>
 
