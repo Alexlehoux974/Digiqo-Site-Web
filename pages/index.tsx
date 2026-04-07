@@ -294,7 +294,7 @@ export default function Home() {
         <ResultsSection />
 
         {/* 2. Réalisations vidéo — Carrousel */}
-        <section id="realisations" className="py-16 md:py-24 relative overflow-hidden">
+        <section id="realisations" className="py-8 md:py-24 relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-10 left-10 w-64 h-64 bg-digiqo-accent/5 rounded-full blur-3xl" />
             <div className="absolute bottom-10 right-10 w-96 h-96 bg-digiqo-secondary/5 rounded-full blur-3xl" />
