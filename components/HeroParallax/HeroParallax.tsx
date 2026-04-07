@@ -119,10 +119,12 @@ const LogoCard = ({ product }: { product: { title: string; thumbnail: any } }) =
 export const Header = () => {
   return (
     <div className="max-w-7xl relative mx-auto py-6 md:py-24 px-4 w-full left-0 top-0 z-20">
-      <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 rounded-full">
+      <div className="flex justify-center md:justify-start mb-4">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 rounded-full text-center">
         <span className="text-white font-semibold">N°1 à La Réunion</span>
         <span className="text-white/60">•</span>
         <span className="text-white/90">+230 entreprises accompagnées</span>
+        </div>
       </div>
       <div className="text-4xl md:text-7xl font-bold mt-4" role="presentation" aria-hidden="true">
         <span className="text-white drop-shadow-lg">
