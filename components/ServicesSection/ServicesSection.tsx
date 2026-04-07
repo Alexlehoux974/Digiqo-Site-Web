@@ -12,7 +12,6 @@ import {
   FileSearch
 } from 'lucide-react'
 import { IconCloud } from '../IconCloud'
-import { generateContactUrl } from '@/lib/contact-utils'
 
 interface Service {
   id: string
