@@ -8,7 +8,7 @@ export default function ConditionsGeneralesVente() {
         title="Conditions Générales de Vente"
         description="Conditions Générales de Vente (CGV) de Digiqo - Agence de marketing digital à La Réunion. Découvrez nos modalités de vente et de prestation de services."
         keywords="cgv, conditions générales vente, digiqo, contrat, services"
-        url="https://digiqo.com/conditions-generales-vente"
+        url="https://digiqo.fr/conditions-generales-vente"
       />
 
       <LegalLayout title="Conditions Générales de Vente (CGV) – SAS DIGIQO" lastUpdated="23 janvier 2026">

@@ -44,6 +44,10 @@ export default function Digicademy() {
         <meta name="description" content="Développez vos compétences digitales avec Digicademy. Formations en développement web, marketing digital, design et plus encore à La Réunion." />
         <meta property="og:title" content="Digicademy - Centre de Formation Digital | Digiqo" />
         <meta property="og:description" content="Développez vos compétences digitales avec Digicademy. Formations professionnelles à La Réunion." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://digiqo.fr/digicademy" />
+        <meta property="og:image" content="https://digiqo.fr/assets/digiqo-og-image.png" />
+        <link rel="canonical" href="https://digiqo.fr/digicademy" />
       </Head>
 
       <HeaderLuxury />

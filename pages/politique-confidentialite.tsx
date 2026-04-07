@@ -8,7 +8,7 @@ export default function PolitiqueConfidentialite() {
         title="Politique de confidentialité"
         description="Politique de confidentialité de Digiqo - Comment nous collectons, utilisons et protégeons vos données personnelles conformément au RGPD."
         keywords="politique confidentialité, rgpd, protection données, digiqo"
-        url="https://digiqo.com/politique-confidentialite"
+        url="https://digiqo.fr/politique-confidentialite"
       />
 
       <LegalLayout title="Politique de confidentialité" lastUpdated="24 mars 2026">

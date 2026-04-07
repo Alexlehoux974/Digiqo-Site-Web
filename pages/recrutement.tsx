@@ -36,7 +36,7 @@ export default function Recrutement() {
         title="On Recrute ! - Digiqo"
         description="Digiqo recrute ! Rejoignez notre équipe de marketing digital à La Réunion. Postes ouverts : stagiaires, alternants et commerciaux."
         keywords="recrutement digiqo, stage marketing digital réunion, alternance marketing réunion, emploi commercial réunion"
-        url="https://digiqo.com/recrutement"
+        url="https://digiqo.fr/recrutement"
       />
 
       <HeaderLuxury />

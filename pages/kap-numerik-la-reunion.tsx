@@ -114,7 +114,7 @@ export default function KapNumerik() {
         title="Kap Numérik La Réunion - Jusqu'à 3200€ pour votre présence digitale | Digiqo"
         description="Le Kap Numérik est une aide régionale pouvant aller jusqu'à 3200€ pour développer votre présence en ligne. Digiqo vous accompagne de A à Z pour bénéficier de cette opportunité."
         keywords="kap numerik reunion, aide digitale reunion, subvention site web, financement digital, 3200 euros aide"
-        url="https://digiqo.com/kap-numerik-la-reunion"
+        url="https://digiqo.fr/kap-numerik-la-reunion"
       />
 
       <HeaderLuxury />

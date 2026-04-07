@@ -23,7 +23,7 @@ export function SEO({
   siteName = 'Digiqo',
   structuredData
 }: SEOProps) {
-  const fullTitle = `${title} | ${siteName}`;
+  const fullTitle = title.toLowerCase().includes(siteName.toLowerCase()) ? title : `${title} | ${siteName}`;
 
   return (
     <Head>

@@ -9,7 +9,7 @@ export default function Desabonnement() {
         title="Désabonnement"
         description="Désabonnez-vous des services Digiqo. Formulaire de résiliation d'abonnement pour les prestations et services digitaux."
         keywords="désabonnement, résiliation, services, abonnement, digiqo"
-        url="https://digiqo.com/desabonnement"
+        url="https://digiqo.fr/desabonnement"
       />
 
       <LegalLayout title="Gestion de votre abonnement aux services SMA" lastUpdated="23 janvier 2026">

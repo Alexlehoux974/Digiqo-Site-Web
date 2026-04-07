@@ -119,7 +119,7 @@ export default function Agence() {
         title="L'Agence - Digiqo"
         description="Découvrez Digiqo, votre agence digitale à La Réunion. Une équipe d'experts passionnés pour booster votre présence en ligne depuis 2020."
         keywords="agence digitale la réunion, digiqo team, marketing digital, publicité en ligne"
-        url="https://digiqo.com/agence"
+        url="https://digiqo.fr/agence"
       />
 
       <HeaderLuxury />

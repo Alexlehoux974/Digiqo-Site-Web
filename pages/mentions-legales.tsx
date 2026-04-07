@@ -8,7 +8,7 @@ export default function MentionsLegales() {
         title="Mentions légales"
         description="Mentions légales du site Digiqo - Agence de marketing digital à La Réunion. Informations sur l'éditeur, l'hébergeur et les conditions d'utilisation."
         keywords="mentions légales, digiqo, conditions utilisation, rgpd"
-        url="https://digiqo.com/mentions-legales"
+        url="https://digiqo.fr/mentions-legales"
       />
 
       <LegalLayout title="Mentions légales" lastUpdated="23 janvier 2026">

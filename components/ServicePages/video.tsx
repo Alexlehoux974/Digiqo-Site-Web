@@ -533,7 +533,7 @@ export default function VideoPage() {
       </section>
 
       {/* ONE_SHOT Vidéo & Photo Section */}
-      <section className="py-24 bg-gradient-to-br from-white to-gray-50">
+      <section id="prod" className="py-24 bg-gradient-to-br from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             {...ANIMATION.entry.fadeInUp}

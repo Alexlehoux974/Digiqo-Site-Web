@@ -13,7 +13,9 @@ const staticPages = [
   { path: '', priority: '1.0', changefreq: 'daily' },  // home page
   { path: '/agence', priority: '0.9', changefreq: 'weekly' },
   { path: '/blog', priority: '0.8', changefreq: 'daily' },
-  { path: '/contact', priority: '0.8', changefreq: 'monthly' },
+  { path: '/createurs', priority: '0.7', changefreq: 'weekly' },
+  { path: '/glossaire', priority: '0.6', changefreq: 'monthly' },
+  { path: '/partenariats', priority: '0.6', changefreq: 'monthly' },
   { path: '/audit', priority: '0.8', changefreq: 'weekly' },
   { path: '/devis-web', priority: '0.8', changefreq: 'weekly' },
   { path: '/devis-site-web', priority: '0.8', changefreq: 'weekly' },

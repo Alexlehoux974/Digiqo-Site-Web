@@ -8,7 +8,7 @@ export default function ConditionsGeneralesUtilisation() {
         title="Conditions Générales d'Utilisation"
         description="Conditions Générales d'Utilisation (CGU) du site Digiqo.fr - Règles d'accès et d'utilisation de notre plateforme de marketing digital."
         keywords="cgu, conditions générales utilisation, digiqo, règles, utilisation"
-        url="https://digiqo.com/conditions-generales-utilisation"
+        url="https://digiqo.fr/conditions-generales-utilisation"
       />
 
       <LegalLayout title="Conditions Générales d'Utilisation (CGU)" lastUpdated="23 janvier 2026">

@@ -8,7 +8,7 @@ export default function PolitiqueCookies() {
         title="Politique de cookies"
         description="Politique de cookies de Digiqo - Découvrez comment nous utilisons les cookies pour améliorer votre expérience sur notre site."
         keywords="politique cookies, cookies, digiqo, rgpd, consentement"
-        url="https://digiqo.com/politique-cookies"
+        url="https://digiqo.fr/politique-cookies"
       />
 
       <LegalLayout title="Politique de cookies" lastUpdated="23 janvier 2026">

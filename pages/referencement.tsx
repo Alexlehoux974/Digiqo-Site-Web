@@ -94,7 +94,7 @@ export default function Referencement() {
         title="Référencement SEO La Réunion - Agence Digiqo"
         description="Agence de référencement naturel SEO à La Réunion. Améliorez votre visibilité sur Google et augmentez votre trafic qualifié avec nos experts SEO."
         keywords="référencement seo réunion, agence seo 974, référencement naturel, consultant seo réunion"
-        url="https://digiqo.com/referencement"
+        url="https://digiqo.fr/referencement"
       />
 
       <HeaderLuxury />
