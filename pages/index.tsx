@@ -167,7 +167,7 @@ function VideoCarousel() {
         {/* Scroll container */}
         <div
           ref={scrollRef}
-          className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-4 md:px-8 pb-4"
+          className="flex gap-6 md:gap-8 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-[calc(50%-75px)] md:px-8 pb-4"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {clientVideos.map((video, i) => {
@@ -177,16 +177,16 @@ function VideoCarousel() {
               <button
                 key={i}
                 onClick={() => setActiveVideo(video.src)}
-                className="flex-shrink-0 snap-start group/card cursor-pointer text-center"
+                className="flex-shrink-0 snap-center group/card cursor-pointer text-center"
               >
                 {/* iPhone mockup */}
-                <div className="relative w-[180px] md:w-[220px] mx-auto">
+                <div className="relative w-[150px] md:w-[200px] mx-auto">
                   {/* Phone frame */}
-                  <div className="relative bg-[#1a1a1a] rounded-[2.5rem] p-[3px] shadow-2xl shadow-black/50 group-hover/card:-translate-y-2 group-hover/card:shadow-digiqo-accent/20 transition-all duration-500">
+                  <div className="relative bg-[#1a1a1a] rounded-[2rem] md:rounded-[2.5rem] p-[2px] md:p-[3px] shadow-2xl shadow-black/50 group-hover/card:-translate-y-2 group-hover/card:shadow-digiqo-accent/20 transition-all duration-500">
                     {/* Inner bezel */}
-                    <div className="relative bg-black rounded-[2.3rem] overflow-hidden">
+                    <div className="relative bg-black rounded-[1.8rem] md:rounded-[2.3rem] overflow-hidden">
                       {/* Notch / Dynamic Island */}
-                      <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 w-[90px] h-[28px] bg-black rounded-b-2xl" />
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 w-[60px] md:w-[80px] h-[20px] md:h-[26px] bg-black rounded-b-xl md:rounded-b-2xl" />
 
                       {/* Screen content */}
                       <div className="relative aspect-[9/19.5]">
@@ -196,25 +196,25 @@ function VideoCarousel() {
                           fill
                           className="object-cover transition-transform duration-500 group-hover/card:scale-105"
                           loading="lazy"
-                          sizes="220px"
+                          sizes="(max-width: 768px) 150px, 200px"
                         />
                         {/* Overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                         {/* Play button */}
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover/card:bg-white/30 group-hover/card:scale-110 transition-all duration-300 ring-2 ring-white/30">
-                            <Play className="w-5 h-5 text-white ml-0.5" fill="white" />
+                          <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover/card:bg-white/30 group-hover/card:scale-110 transition-all duration-300 ring-2 ring-white/30">
+                            <Play className="w-4 h-4 md:w-5 md:h-5 text-white ml-0.5" fill="white" />
                           </div>
                         </div>
                       </div>
 
                       {/* Home indicator */}
-                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[100px] h-[4px] bg-white/30 rounded-full" />
+                      <div className="absolute bottom-1.5 md:bottom-2 left-1/2 -translate-x-1/2 w-[70px] md:w-[90px] h-[3px] md:h-[4px] bg-white/30 rounded-full" />
                     </div>
                   </div>
                 </div>
                 {/* Client name below phone */}
-                <p className="text-white/90 font-semibold text-sm mt-4 drop-shadow-lg">{video.clientName}</p>
+                <p className="text-white/90 font-semibold text-xs md:text-sm mt-3 drop-shadow-lg">{video.clientName}</p>
               </button>
             )
           })}
