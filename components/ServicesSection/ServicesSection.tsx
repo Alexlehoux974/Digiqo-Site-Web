@@ -429,43 +429,6 @@ export const ServicesSection = () => {
           </div>
         </div>
 
-        {/* CTA Section */}
-        <motion.div 
-          className="text-center mt-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <p className="text-2xl font-bold text-white mb-3">
-            Prêt à digitaliser votre entreprise ?
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={generateContactUrl({
-              description: 'Je souhaite obtenir un devis gratuit pour digitaliser mon entreprise'
-            })}>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-accent text-white font-bold rounded-full hover:shadow-accent-lg hover:scale-105 transition-all duration-300 cursor-pointer"
-              >
-                Demander un devis gratuit
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </motion.div>
-            </Link>
-            <Link href="/services/audit">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-digiqo-primary hover:shadow-lg transition-all duration-300 cursor-pointer"
-              >
-                Audit gratuit
-              </motion.div>
-            </Link>
-          </div>
-        </motion.div>
       </div>
     </section>
 
