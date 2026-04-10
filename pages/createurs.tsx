@@ -57,6 +57,19 @@ const influencers: Influencer[] = [
     engagement: 'À définir',
     featured: true,
   },
+  {
+    name: 'Maé Jeanne-Rose',
+    handle: '@mae.jr974',
+    photo: '/assets/createurs/mae-jeanne-rose.jpg',
+    location: 'La Réunion',
+    followers: '40,2K',
+    niches: ['Lifestyle', 'Voyage', 'Île', 'Podcast'],
+    bio: 'Fille des îles — Podcast « Entre 2 Mondes ». Une voix authentique qui partage sa vie entre La Réunion et Lyon avec une communauté engagée de plus de 40 000 abonnés.',
+    instagram: 'https://www.instagram.com/mae.jr974/',
+    contentTypes: ['Reels', 'Posts', 'Stories', 'UGC'],
+    engagement: 'À définir',
+    featured: true,
+  },
 ]
 
 // ──────────────────────────────────────────────
@@ -78,6 +91,8 @@ const nicheColors: Record<string, string> = {
   'Fitness': 'from-lime-400 to-emerald-500',
   'Gaming': 'from-violet-500 to-purple-600',
   'Humour': 'from-yellow-500 to-orange-500',
+  'Podcast': 'from-rose-400 to-red-500',
+  'Île': 'from-sky-400 to-blue-500',
 }
 
 const getNicheColor = (niche: string) => nicheColors[niche] || 'from-gray-400 to-gray-500'
