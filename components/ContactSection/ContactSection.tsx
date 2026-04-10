@@ -74,7 +74,7 @@ export function ContactSection() {
   }, [])
 
   return (
-    <section id="contact" ref={sectionRef} className="relative py-24 overflow-hidden">
+    <section id="contact" ref={sectionRef} className="relative py-24 overflow-hidden bg-[#6B0F26]">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-black/20" />
       

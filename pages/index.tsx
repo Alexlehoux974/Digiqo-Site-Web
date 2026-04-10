@@ -30,12 +30,12 @@ const ServicesSection = dynamic(
 
 const ResultsSection = dynamic(
   () => import('../components/ResultsSection').then((mod) => mod.ResultsSection),
-  { loading: () => <div className="min-h-[400px] bg-[#8B1431]" /> }
+  { loading: () => <div className="min-h-[400px] bg-white" /> }
 )
 
 const TestimonialsSection = dynamic(
   () => import('../components/TestimonialsSection').then((mod) => mod.TestimonialsSection),
-  { loading: () => <div className="min-h-[500px] bg-[#8B1431]" /> }
+  { loading: () => <div className="min-h-[500px] bg-[#F8F9FA]" /> }
 )
 
 const FAQSection = dynamic(
@@ -45,12 +45,12 @@ const FAQSection = dynamic(
 
 const ContactSection = dynamic(
   () => import('../components/ContactSection').then((mod) => mod.ContactSection),
-  { loading: () => <div className="min-h-[500px] bg-[#8B1431]" /> }
+  { loading: () => <div className="min-h-[500px] bg-[#6B0F26]" /> }
 )
 
 const BlogCarousel = dynamic(
   () => import('@/components/BlogCarousel').then((mod) => mod.BlogCarousel),
-  { loading: () => <div className="min-h-[300px] bg-[#8B1431]" /> }
+  { loading: () => <div className="min-h-[300px] bg-[#F8F9FA]" /> }
 )
 
 // Générer les products à partir des données centralisées
@@ -284,7 +284,7 @@ export default function Home() {
       />
 
       <HeaderLuxury />
-      <main className="bg-[#8B1431]">
+      <main>
         <h1 className="sr-only">
           L'Agence Marketing Digital Qui Booste Vos Ventes - Digiqo La Réunion
         </h1>
@@ -294,7 +294,7 @@ export default function Home() {
         <ResultsSection />
 
         {/* 2. Réalisations vidéo — Carrousel */}
-        <section id="realisations" className="py-8 md:py-24 relative overflow-hidden">
+        <section id="realisations" className="py-8 md:py-24 relative overflow-hidden bg-[#8B1431]">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-10 left-10 w-64 h-64 bg-digiqo-accent/5 rounded-full blur-3xl" />
             <div className="absolute bottom-10 right-10 w-96 h-96 bg-digiqo-secondary/5 rounded-full blur-3xl" />
@@ -325,10 +325,10 @@ export default function Home() {
         <ServicesSection />
 
         {/* 6. Kap Numérik */}
-        <section className="py-20 relative overflow-hidden">
+        <section className="py-20 relative overflow-hidden bg-white">
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-digiqo-accent/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-digiqo-secondary/10 rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-digiqo-accent/15 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-digiqo-secondary/15 rounded-full blur-3xl" />
           </div>
 
           <div className="relative z-10 max-w-6xl mx-auto px-4">
@@ -336,10 +336,10 @@ export default function Home() {
               <span className="inline-block px-4 py-2 bg-gradient-to-r from-digiqo-accent to-orange-400 text-white text-sm font-bold rounded-full mb-6">
                 KAP NUMÉRIK — RÉGION RÉUNION
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 Jusqu'à <span className="bg-gradient-to-r from-digiqo-accent to-yellow-400 bg-clip-text text-transparent">3 200€</span> d'aide pour votre digital
               </h2>
-              <p className="text-xl text-white/80 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 La Région Réunion finance jusqu'à 80% de votre transformation digitale. Digiqo est agence agréée Kap Numérik.
               </p>
             </div>
@@ -350,9 +350,9 @@ export default function Home() {
                 { title: 'Publicité en ligne', desc: 'Campagnes Meta Ads, Google Ads, TikTok Ads' },
                 { title: 'Communication digitale', desc: 'Community management, stratégie réseaux sociaux' },
               ].map((item, i) => (
-                <div key={i} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-digiqo-accent/50 transition-all duration-300">
-                  <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-white/70 text-sm">{item.desc}</p>
+                <div key={i} className="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:border-digiqo-accent/50 transition-all duration-300">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-gray-500 text-sm">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -365,7 +365,7 @@ export default function Home() {
                 Vérifier mon éligibilité
                 <ArrowRight className="w-5 h-5" />
               </Link>
-              <p className="text-white/60 text-sm mt-4">
+              <p className="text-gray-500 text-sm mt-4">
                 Gratuit • Réponse immédiate • Agence agréée
               </p>
             </div>
@@ -379,13 +379,13 @@ export default function Home() {
         <FAQSection />
 
         {/* 9. Blog */}
-        <section className="py-20">
+        <section className="py-20 bg-[#F8F9FA]">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                 Blog & Actualités
               </h2>
-              <p className="text-lg text-white/70 max-w-2xl mx-auto">
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Découvrez nos conseils d'experts et les dernières tendances du marketing digital à La Réunion
               </p>
             </div>
@@ -395,7 +395,7 @@ export default function Home() {
             <div className="text-center mt-12">
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#8B1431] font-semibold rounded-xl hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-digiqo-primary text-white font-semibold rounded-xl hover:bg-digiqo-primary-light transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 Voir tous les articles
                 <ArrowRight className="w-5 h-5" />
@@ -404,8 +404,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Transition bordeaux → noir vers le footer */}
-        <div className="h-24 bg-gradient-to-b from-transparent to-black/80" />
+        {/* Transition gris clair → noir vers le footer */}
+        <div className="h-24 bg-gradient-to-b from-[#F8F9FA] to-gray-900" />
       </main>
       <Footer />
     </>

@@ -138,11 +138,11 @@ export const TestimonialsSection = () => {
   const visibleCards = getVisibleCards()
 
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section className="relative py-20 overflow-hidden bg-[#F8F9FA]">
       {/* Effet de fond animé */}
       <div className="absolute inset-0">
         <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-digiqo-primary/5 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-digiqo-primary/10 rounded-full blur-3xl"
           animate={{
             x: [0, 100, 0],
             y: [0, -50, 0],
@@ -154,7 +154,7 @@ export const TestimonialsSection = () => {
           }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-digiqo-accent/5 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-digiqo-accent/10 rounded-full blur-3xl"
           animate={{
             x: [0, -100, 0],
             y: [0, 50, 0],
@@ -166,7 +166,7 @@ export const TestimonialsSection = () => {
           }}
         />
         <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-digiqo-secondary/3 rounded-full blur-3xl"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-digiqo-secondary/5 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -189,10 +189,10 @@ export const TestimonialsSection = () => {
           transition={{ duration: 0.6 }}
         >
           <h3 className="text-4xl md:text-6xl font-bold mb-4">
-            <span className="text-white">Rejoignez des centaines d'entreprises </span>
+            <span className="text-gray-900">Rejoignez des centaines d'entreprises </span>
             <span className="bg-gradient-to-r from-digiqo-accent to-digiqo-secondary bg-clip-text text-transparent">Réunionnaises</span>
           </h3>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Découvrez leurs témoignages sur 
             <span className="bg-gradient-to-r from-[#E1306C] via-[#C13584] to-[#F77737] bg-clip-text text-transparent font-semibold ml-1">
               Instagram

@@ -11,7 +11,7 @@ export const FAQSection: React.FC = () => {
   const activeSection = faqSections[activeIndex];
 
   return (
-    <section id="faq" className="relative py-12 overflow-hidden">
+    <section id="faq" className="relative py-12 overflow-hidden bg-[#8B1431]">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Animated gradient orbs */}
