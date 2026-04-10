@@ -325,7 +325,7 @@ export default function Home() {
         <ServicesSection />
 
         {/* 6. Kap Numérik */}
-        <section className="py-20 relative overflow-hidden bg-white">
+        <section className="py-20 relative overflow-hidden bg-[#E8F4F8]">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-digiqo-accent/15 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-digiqo-secondary/15 rounded-full blur-3xl" />
