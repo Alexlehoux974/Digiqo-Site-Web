@@ -321,7 +321,7 @@ export default function Home() {
       />
 
       <HeaderLuxury />
-      <main>
+      <main className="bg-[#8B1431]">
         <h1 className="sr-only">
           L'Agence Marketing Digital Qui Booste Vos Ventes - Digiqo La Réunion
         </h1>
@@ -331,14 +331,13 @@ export default function Home() {
         <ResultsSection />
 
         {/* NEWS — Dashboard SMA */}
-        <section className="py-12 md:py-20 relative overflow-hidden bg-[#8B1431]">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/10 pointer-events-none" />
+        <section className="py-12 md:py-20 relative overflow-hidden bg-[#E9E9E9]">
 
           <div className="relative z-10 max-w-6xl mx-auto px-4">
             {/* Badge NEWS */}
             <div className="flex justify-center mb-6">
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-white text-[#8B1431] text-sm font-bold rounded-full shadow-lg">
-                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#8B1431] text-white text-sm font-bold rounded-full shadow-lg">
+                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
                 NOUVEAU — LANCEMENT LE 1ER MAI
               </span>
             </div>
@@ -346,18 +345,18 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               {/* Texte + Countdown */}
               <div className="text-center md:text-left">
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                  Votre <span className="bg-gradient-to-r from-digiqo-accent to-yellow-400 bg-clip-text text-transparent">Dashboard</span> est arrivé
+                <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
+                  Votre <span className="bg-gradient-to-r from-[#8B1431] to-digiqo-accent bg-clip-text text-transparent">Dashboard</span> est arrivé
                 </h2>
-                <p className="text-lg text-white/80 mb-2">
+                <p className="text-lg text-gray-600 mb-2">
                   La première agence française à offrir un tableau de bord en temps réel à ses clients.
                 </p>
-                <ul className="text-white/70 text-sm space-y-2 mb-8 md:text-left text-left max-w-md mx-auto md:mx-0">
-                  <li className="flex items-center gap-2"><span className="text-digiqo-accent">✦</span> Suivez vos campagnes publicitaires en direct</li>
-                  <li className="flex items-center gap-2"><span className="text-digiqo-accent">✦</span> Gérez votre budget pub en toute transparence</li>
-                  <li className="flex items-center gap-2"><span className="text-digiqo-accent">✦</span> Visualisez vos leads générés</li>
-                  <li className="flex items-center gap-2"><span className="text-digiqo-accent">✦</span> Accédez à vos documents importants</li>
-                  <li className="flex items-center gap-2"><span className="text-digiqo-accent">✦</span> Reporting automatique et personnalisé</li>
+                <ul className="text-gray-500 text-sm space-y-2 mb-8 md:text-left text-left max-w-md mx-auto md:mx-0">
+                  <li className="flex items-center gap-2"><span className="text-[#8B1431]">✦</span> Suivez vos campagnes publicitaires en direct</li>
+                  <li className="flex items-center gap-2"><span className="text-[#8B1431]">✦</span> Gérez votre budget pub en toute transparence</li>
+                  <li className="flex items-center gap-2"><span className="text-[#8B1431]">✦</span> Visualisez vos leads générés</li>
+                  <li className="flex items-center gap-2"><span className="text-[#8B1431]">✦</span> Accédez à vos documents importants</li>
+                  <li className="flex items-center gap-2"><span className="text-[#8B1431]">✦</span> Reporting automatique et personnalisé</li>
                 </ul>
 
                 {/* Countdown */}
@@ -367,7 +366,7 @@ export default function Home() {
                   href="https://app-digiqo.fr/demo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-6 px-8 py-4 bg-white text-[#8B1431] font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                  className="inline-flex items-center gap-2 mt-6 px-8 py-4 bg-[#8B1431] text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
                 >
                   Découvrir Mon Dashboard
                   <ArrowRight className="w-5 h-5" />
@@ -443,7 +442,7 @@ export default function Home() {
         <ServicesSection />
 
         {/* 6. Kap Numérik */}
-        <section className="py-20 relative overflow-hidden bg-[#E8F4F8]">
+        <section className="py-20 relative overflow-hidden bg-[#E9E9E9]">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-digiqo-accent/15 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-digiqo-secondary/15 rounded-full blur-3xl" />
@@ -497,13 +496,13 @@ export default function Home() {
         <FAQSection />
 
         {/* 9. Blog */}
-        <section className="py-20 bg-[#F8F9FA]">
+        <section className="py-20 bg-[#8B1431]">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
                 Blog & Actualités
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              <p className="text-lg text-white/70 max-w-2xl mx-auto">
                 Découvrez nos conseils d'experts et les dernières tendances du marketing digital à La Réunion
               </p>
             </div>
@@ -513,7 +512,7 @@ export default function Home() {
             <div className="text-center mt-12">
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-digiqo-primary text-white font-semibold rounded-xl hover:bg-digiqo-primary-light transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#8B1431] font-semibold rounded-xl hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 Voir tous les articles
                 <ArrowRight className="w-5 h-5" />
@@ -522,8 +521,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Transition gris clair → noir vers le footer */}
-        <div className="h-24 bg-gradient-to-b from-[#F8F9FA] to-gray-900" />
+        {/* Transition bordeaux → footer */}
+        <div className="h-16 bg-gradient-to-b from-[#8B1431] to-gray-900" />
       </main>
       <Footer />
     </>

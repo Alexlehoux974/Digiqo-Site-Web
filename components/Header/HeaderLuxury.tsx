@@ -117,8 +117,8 @@ const navigation = {
           }
         ],
         cta: {
-          title: 'Parlons de votre projet',
-          subtitle: 'Consultation gratuite avec nos experts',
+          title: 'Un doute ?',
+          subtitle: 'Contactez nos experts qualifiés pour être conseillés',
           href: generateContactUrl({
             description: 'Je souhaite discuter de mon projet digital'
           }),
@@ -560,7 +560,7 @@ export const HeaderLuxury = () => {
                                       whileHover={{ scale: 1.05 }}
                                       whileTap={{ scale: 0.95 }}
                                     >
-                                      Commencer
+                                      Nous contacter
                                     </motion.div>
                                   </Link>
                                 </div>

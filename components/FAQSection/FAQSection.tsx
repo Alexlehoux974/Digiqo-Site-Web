@@ -11,7 +11,7 @@ export const FAQSection: React.FC = () => {
   const activeSection = faqSections[activeIndex];
 
   return (
-    <section id="faq" className="relative py-12 overflow-hidden bg-[#8B1431]">
+    <section id="faq" className="relative py-12 overflow-hidden bg-[#E9E9E9]">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Animated gradient orbs */}
@@ -59,12 +59,12 @@ export const FAQSection: React.FC = () => {
           className="text-center mb-6"
         >
           <h3 className="text-4xl md:text-5xl font-bold mb-3">
-            <span className="text-white">
+            <span className="text-gray-900">
               Questions Fréquentes
             </span>
           </h3>
-          <div className="w-24 h-1 bg-digiqo-secondary mx-auto mb-3 rounded-full" />
-          <p className="text-white/80 text-lg max-w-2xl mx-auto">
+          <div className="w-24 h-1 bg-[#8B1431] mx-auto mb-3 rounded-full" />
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Trouvez rapidement les réponses à vos questions sur nos services et notre fonctionnement
           </p>
         </motion.div>
@@ -84,7 +84,7 @@ export const FAQSection: React.FC = () => {
                 const newIndex = activeIndex > 0 ? activeIndex - 1 : faqSections.length - 1;
                 setActiveIndex(newIndex);
               }}
-              className="p-3 rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 transition-all duration-300"
+              className="p-3 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-all duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               style={{
@@ -119,7 +119,7 @@ export const FAQSection: React.FC = () => {
                 const newIndex = activeIndex < faqSections.length - 1 ? activeIndex + 1 : 0;
                 setActiveIndex(newIndex);
               }}
-              className="p-3 rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 transition-all duration-300"
+              className="p-3 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-all duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               style={{
