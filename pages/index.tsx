@@ -396,11 +396,13 @@ export default function Home() {
                     <div className="absolute top-3 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#2a2a2e] rounded-full z-10" />
                     {/* Screen */}
                     <div className="relative bg-white rounded-[1.2rem] md:rounded-[1.7rem] overflow-hidden aspect-[4/3]">
-                      <iframe
-                        src="https://app-digiqo.fr/demo"
-                        className="w-full h-full border-0 pointer-events-none"
-                        title="Aperçu Mon Dashboard"
+                      <Image
+                        src="/dashboard-demo.webp"
+                        alt="Aperçu Mon Dashboard Digiqo"
+                        fill
+                        className="object-cover object-top"
                         loading="lazy"
+                        sizes="500px"
                       />
                     </div>
                     {/* Home indicator */}
