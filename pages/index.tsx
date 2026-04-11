@@ -364,7 +364,7 @@ export default function Home() {
                 <DashboardCountdown />
 
                 <a
-                  href="https://app-digiqo.fr"
+                  href="https://app-digiqo.fr/demo"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 mt-6 px-8 py-4 bg-white text-[#8B1431] font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
