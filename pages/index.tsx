@@ -108,6 +108,43 @@ const videoThumbs: Record<string, string> = {
   "VANILLE JEU-CONCOURS": "/references/video-thumbs/vanille-jeu-concours.webp",
 }
 
+function DashboardCountdown() {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+
+  useEffect(() => {
+    const target = new Date('2026-05-01T00:00:00+04:00').getTime() // Réunion timezone
+    const tick = () => {
+      const now = Date.now()
+      const diff = Math.max(0, target - now)
+      setTimeLeft({
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((diff / (1000 * 60)) % 60),
+        seconds: Math.floor((diff / 1000) % 60),
+      })
+    }
+    tick()
+    const interval = setInterval(tick, 1000)
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <div className="flex gap-3 justify-center md:justify-start">
+      {[
+        { val: timeLeft.days, label: 'jours' },
+        { val: timeLeft.hours, label: 'heures' },
+        { val: timeLeft.minutes, label: 'min' },
+        { val: timeLeft.seconds, label: 'sec' },
+      ].map((item, i) => (
+        <div key={i} className="bg-white/10 backdrop-blur-sm rounded-xl px-3 py-2 md:px-4 md:py-3 text-center min-w-[60px] ring-1 ring-white/20">
+          <p className="text-2xl md:text-3xl font-bold text-white tabular-nums">{String(item.val).padStart(2, '0')}</p>
+          <p className="text-[10px] md:text-xs text-white/60 uppercase tracking-wider">{item.label}</p>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 function VideoCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [activeVideo, setActiveVideo] = useState<string | null>(null)
@@ -292,6 +329,87 @@ export default function Home() {
         {/* 1. Hero + Logos */}
         <HeroParallax products={products} />
         <ResultsSection />
+
+        {/* NEWS — Dashboard SMA */}
+        <section className="py-12 md:py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/20 pointer-events-none" />
+
+          <div className="relative z-10 max-w-6xl mx-auto px-4">
+            {/* Badge NEWS */}
+            <div className="flex justify-center mb-6">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-white text-[#8B1431] text-sm font-bold rounded-full shadow-lg">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                NOUVEAU — LANCEMENT LE 1ER MAI
+              </span>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+              {/* Texte + Countdown */}
+              <div className="text-center md:text-left">
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                  Votre <span className="bg-gradient-to-r from-digiqo-accent to-yellow-400 bg-clip-text text-transparent">Dashboard</span> est arrivé
+                </h2>
+                <p className="text-lg text-white/80 mb-2">
+                  La première agence française à offrir un tableau de bord en temps réel à ses clients.
+                </p>
+                <ul className="text-white/70 text-sm space-y-2 mb-8 md:text-left text-left max-w-md mx-auto md:mx-0">
+                  <li className="flex items-center gap-2"><span className="text-digiqo-accent">✦</span> Suivez vos campagnes publicitaires en direct</li>
+                  <li className="flex items-center gap-2"><span className="text-digiqo-accent">✦</span> Gérez votre budget pub en toute transparence</li>
+                  <li className="flex items-center gap-2"><span className="text-digiqo-accent">✦</span> Visualisez vos leads générés</li>
+                  <li className="flex items-center gap-2"><span className="text-digiqo-accent">✦</span> Accédez à vos documents importants</li>
+                  <li className="flex items-center gap-2"><span className="text-digiqo-accent">✦</span> Reporting automatique et personnalisé</li>
+                </ul>
+
+                {/* Countdown */}
+                <DashboardCountdown />
+
+                <a
+                  href="https://app-digiqo.fr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 mt-6 px-8 py-4 bg-white text-[#8B1431] font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                >
+                  Découvrir Mon Dashboard
+                  <ArrowRight className="w-5 h-5" />
+                </a>
+              </div>
+
+              {/* iPad Mockup */}
+              <div className="flex justify-center">
+                <div className="relative w-full max-w-[500px]">
+                  {/* iPad frame */}
+                  <div className="relative bg-[#1a1a1a] rounded-[1.5rem] md:rounded-[2rem] p-[6px] shadow-2xl shadow-black/60">
+                    {/* Camera */}
+                    <div className="absolute top-3 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#2a2a2e] rounded-full z-10" />
+                    {/* Screen */}
+                    <div className="relative bg-[#0a0a1a] rounded-[1.2rem] md:rounded-[1.7rem] overflow-hidden aspect-[4/3] flex items-center justify-center">
+                      <div className="text-center px-6">
+                        <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-digiqo-accent to-[#8B1431] rounded-2xl flex items-center justify-center">
+                          <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                          </svg>
+                        </div>
+                        <p className="text-white font-bold text-lg mb-1">Mon Dashboard</p>
+                        <p className="text-white/50 text-sm">Bientôt disponible</p>
+                        <div className="mt-4 flex justify-center gap-2">
+                          <div className="w-20 h-2 bg-white/10 rounded-full" />
+                          <div className="w-14 h-2 bg-white/10 rounded-full" />
+                          <div className="w-16 h-2 bg-white/10 rounded-full" />
+                        </div>
+                        <div className="mt-3 flex justify-center gap-2">
+                          <div className="w-12 h-2 bg-white/10 rounded-full" />
+                          <div className="w-18 h-2 bg-white/10 rounded-full" />
+                        </div>
+                      </div>
+                    </div>
+                    {/* Home indicator */}
+                    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[80px] h-[4px] bg-white/20 rounded-full" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* 2. Réalisations vidéo — Carrousel */}
         <section id="realisations" className="py-8 md:py-24 relative overflow-hidden bg-[#8B1431]">
