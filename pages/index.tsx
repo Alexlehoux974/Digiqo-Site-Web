@@ -331,8 +331,8 @@ export default function Home() {
         <ResultsSection />
 
         {/* NEWS — Dashboard SMA */}
-        <section className="py-12 md:py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/20 pointer-events-none" />
+        <section className="py-12 md:py-20 relative overflow-hidden bg-[#8B1431]">
+          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/10 pointer-events-none" />
 
           <div className="relative z-10 max-w-6xl mx-auto px-4">
             {/* Badge NEWS */}
