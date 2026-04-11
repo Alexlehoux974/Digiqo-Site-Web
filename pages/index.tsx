@@ -395,16 +395,13 @@ export default function Home() {
                     {/* Camera */}
                     <div className="absolute top-3 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#2a2a2e] rounded-full z-10" />
                     {/* Screen */}
-                    <div className="relative bg-[#0a0a1a] rounded-[1.2rem] md:rounded-[1.7rem] overflow-hidden aspect-[4/3] flex items-center justify-center">
-                      <div className="text-center px-6">
-                        <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-digiqo-accent to-[#8B1431] rounded-2xl flex items-center justify-center">
-                          <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                          </svg>
-                        </div>
-                        <p className="text-white font-bold text-lg mb-1">Mon Dashboard</p>
-                        <p className="text-white/50 text-sm">Bientôt disponible</p>
-                      </div>
+                    <div className="relative bg-white rounded-[1.2rem] md:rounded-[1.7rem] overflow-hidden aspect-[4/3]">
+                      <iframe
+                        src="https://app-digiqo.fr/demo"
+                        className="w-full h-full border-0 pointer-events-none"
+                        title="Aperçu Mon Dashboard"
+                        loading="lazy"
+                      />
                     </div>
                     {/* Home indicator */}
                     <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[80px] h-[4px] bg-white/20 rounded-full" />
