@@ -154,14 +154,6 @@ function DashboardCountdown() {
         background-size: 200% 200%;
         animation: gradient-shift 3s ease infinite;
       }
-      .ipad-scroll-anim {
-        animation: ipadScroll 8s ease-in-out infinite;
-      }
-      @keyframes ipadScroll {
-        0%, 15% { transform: translateY(0); }
-        45%, 55% { transform: translateY(-38%); }
-        85%, 100% { transform: translateY(0); }
-      }
     `}</style>
     </>
   )
@@ -404,7 +396,7 @@ export default function Home() {
                     <div className="absolute top-3 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#2a2a2e] rounded-full z-10" />
                     {/* Screen */}
                     <div className="relative bg-white rounded-[1.2rem] md:rounded-[1.7rem] overflow-hidden aspect-[4/3]">
-                      <div className="absolute inset-0 ipad-scroll-anim">
+                      <div className="absolute inset-0" style={{ animation: 'ipadScroll 8s ease-in-out infinite' }}>
                         <Image
                           src="/dashboard-demo.webp"
                           alt="Aperçu Mon Dashboard Digiqo"
