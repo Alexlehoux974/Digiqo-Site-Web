@@ -129,6 +129,7 @@ function DashboardCountdown() {
   }, [])
 
   return (
+    <>
     <div className="flex gap-3 justify-center md:justify-start">
       {[
         { val: timeLeft.days, label: 'jours' },
@@ -136,12 +137,25 @@ function DashboardCountdown() {
         { val: timeLeft.minutes, label: 'min' },
         { val: timeLeft.seconds, label: 'sec' },
       ].map((item, i) => (
-        <div key={i} className="bg-white/10 backdrop-blur-sm rounded-xl px-3 py-2 md:px-4 md:py-3 text-center min-w-[60px] ring-1 ring-white/20">
-          <p className="text-2xl md:text-3xl font-bold text-white tabular-nums">{String(item.val).padStart(2, '0')}</p>
-          <p className="text-[10px] md:text-xs text-white/60 uppercase tracking-wider">{item.label}</p>
+        <div key={i} className="relative rounded-xl px-3 py-2 md:px-4 md:py-3 text-center min-w-[60px] overflow-hidden shadow-lg shadow-[#8B1431]/30">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#8B1431] via-[#DA6530] to-[#8B1431] animate-gradient-shift" />
+          <div className="absolute inset-[1px] bg-gradient-to-br from-[#1a0a10] to-[#2a0f18] rounded-[10px]" />
+          <p className="relative text-2xl md:text-3xl font-bold bg-gradient-to-r from-yellow-300 via-orange-400 to-yellow-300 bg-clip-text text-transparent tabular-nums">{String(item.val).padStart(2, '0')}</p>
+          <p className="relative text-[10px] md:text-xs text-white/60 uppercase tracking-wider">{item.label}</p>
         </div>
       ))}
     </div>
+    <style jsx>{`
+      @keyframes gradient-shift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+      }
+      .animate-gradient-shift {
+        background-size: 200% 200%;
+        animation: gradient-shift 3s ease infinite;
+      }
+    `}</style>
+    </>
   )
 }
 
@@ -390,15 +404,6 @@ export default function Home() {
                         </div>
                         <p className="text-white font-bold text-lg mb-1">Mon Dashboard</p>
                         <p className="text-white/50 text-sm">Bientôt disponible</p>
-                        <div className="mt-4 flex justify-center gap-2">
-                          <div className="w-20 h-2 bg-white/10 rounded-full" />
-                          <div className="w-14 h-2 bg-white/10 rounded-full" />
-                          <div className="w-16 h-2 bg-white/10 rounded-full" />
-                        </div>
-                        <div className="mt-3 flex justify-center gap-2">
-                          <div className="w-12 h-2 bg-white/10 rounded-full" />
-                          <div className="w-18 h-2 bg-white/10 rounded-full" />
-                        </div>
                       </div>
                     </div>
                     {/* Home indicator */}
