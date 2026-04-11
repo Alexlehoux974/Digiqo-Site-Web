@@ -426,7 +426,7 @@ export default function Home() {
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 text-center mb-12">
             <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm text-white text-sm font-bold rounded-full mb-6 ring-1 ring-white/20">
-              + DE 40 VIDÉOS PRODUITES
+              + DE 100 VIDÉOS PRODUITES
             </span>
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
               <span className="text-white">Nos réalisations</span>{' '}
