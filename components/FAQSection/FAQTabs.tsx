@@ -49,7 +49,7 @@ export const FAQTabs: React.FC<FAQTabsProps> = ({ sections, activeIndex, onTabCh
                 className={`
                   relative z-20 flex items-center justify-center p-3 rounded-xl
                   transition-all duration-300 group
-                  text-white
+                  text-gray-700
                 `}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}

@@ -100,13 +100,10 @@ export const FAQSection: React.FC = () => {
             <h4 
               className="text-3xl font-bold relative inline-block px-8"
               style={{ 
-                color: '#FFFFFF',
-                filter: 'brightness(1.2)',
+                color: activeSection.color,
+                filter: 'brightness(1)',
                 textShadow: `
-                  0 0 20px ${activeSection.color},
-                  0 0 40px ${activeSection.color},
-                  0 0 60px ${activeSection.glowColor},
-                  0 2px 4px rgba(0,0,0,0.5)
+                  0 2px 4px rgba(0,0,0,0.1)
                 `,
               }}
             >

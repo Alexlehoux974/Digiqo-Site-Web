@@ -216,9 +216,9 @@ export function ResultsSection() {
               Qui Parlent
             </span>
           </h3>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-white/80 max-w-3xl mx-auto">
             Nous ne promettons pas la lune, nous la décrochons pour nos clients.<br />
-            <span className="text-digiqo-accent font-semibold">Voici les chiffres</span> qui font notre fierté depuis 2020.
+            <span className="text-white font-semibold">Voici les chiffres</span> qui font notre fierté depuis 2020.
           </p>
         </motion.div>
 
@@ -244,7 +244,7 @@ export function ResultsSection() {
                     prefix={stat.prefix}
                     duration={stat.duration} 
                   />
-                  <p className="text-gray-700 mt-2 sm:mt-3 md:mt-4 font-semibold text-sm sm:text-base">{stat.label}</p>
+                  <p className="text-white/80 mt-2 sm:mt-3 md:mt-4 font-semibold text-sm sm:text-base">{stat.label}</p>
                 </div>
               </GlowCard>
             </motion.div>

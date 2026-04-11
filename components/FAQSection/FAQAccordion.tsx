@@ -26,7 +26,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
       return parts.map((part, i) => {
         // Odd indices are the bold parts
         if (i % 2 === 1) {
-          return <strong key={i} className="font-bold text-white">{part}</strong>;
+          return <strong key={i} className="font-bold text-gray-900">{part}</strong>;
         }
         return part;
       });
@@ -62,9 +62,9 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
       className={`
-        border border-white/10 rounded-lg overflow-hidden
+        border border-gray-200 rounded-lg overflow-hidden
         transition-all duration-300
-        ${isOpen ? 'bg-black/40 backdrop-blur-sm' : 'bg-black/20'}
+        ${isOpen ? 'bg-white shadow-lg' : 'bg-white/80'}
       `}
       style={{
         borderColor: isOpen ? color : 'transparent',
@@ -73,11 +73,11 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-800/30 transition-colors duration-200"
+        className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors duration-200"
         aria-expanded={isOpen}
         aria-controls={`faq-answer-${index}`}
       >
-        <h4 className="text-lg font-semibold text-white pr-4">
+        <h4 className="text-lg font-semibold text-gray-900 pr-4">
           {question}
         </h4>
         <motion.div
@@ -123,7 +123,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
                   boxShadow: `0 0 10px ${glowColor}`,
                 }}
               />
-              <div className="text-white/90 leading-relaxed">
+              <div className="text-gray-700 leading-relaxed">
                 {formatAnswer(answer)}
               </div>
             </div>
