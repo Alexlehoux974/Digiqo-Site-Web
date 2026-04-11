@@ -639,7 +639,7 @@ export const HeaderLuxury = () => {
                     animate={{ x: [-200, 200] }}
                     transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
                   />
-                  <span className="relative">Dashboard</span>
+                  <span className="relative">Mon Dashboard</span>
                 </motion.button>
               </a>
 
@@ -881,7 +881,7 @@ export const HeaderLuxury = () => {
                     onClick={() => setIsMenuOpen(false)}
                     className="block w-full px-6 py-3 bg-gradient-to-r from-digiqo-secondary to-cyan-500 text-white font-bold rounded-2xl text-center"
                   >
-                    Dashboard
+                    Mon Dashboard
                   </a>
                   <Link
                     href={navigation.cta.contact.href}
