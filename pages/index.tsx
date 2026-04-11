@@ -363,7 +363,7 @@ export default function Home() {
                   Votre <span className="bg-gradient-to-r from-[#8B1431] to-digiqo-accent bg-clip-text text-transparent">Dashboard</span> est arrivé
                 </h2>
                 <p className="text-lg text-gray-600 mb-2">
-                  La première agence réunionnaise à offrir un Tableau de Bord Marketing à ses clients.
+                  La première agence Réunionnaise à offrir un Tableau de Bord Marketing à ses clients.
                 </p>
                 <ul className="text-gray-500 text-sm space-y-2 mb-8 md:text-left text-left max-w-md mx-auto md:mx-0">
                   <li className="flex items-center gap-2"><span className="text-[#8B1431]">✦</span> Suivez vos campagnes publicitaires en direct</li>
