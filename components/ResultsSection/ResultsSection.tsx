@@ -211,7 +211,7 @@ export function ResultsSection() {
           className="text-center mb-16"
         >
           <h3 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="text-gray-900">Des Résultats</span>{' '}
+            <span className="text-white">Des Résultats</span>{' '}
             <span className="bg-gradient-to-r from-digiqo-accent to-digiqo-secondary bg-clip-text text-transparent">
               Qui Parlent
             </span>
