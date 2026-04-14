@@ -194,33 +194,21 @@ const InfluencerCard = ({ influencer, index }: { influencer: Influencer; index: 
                 <MapPin className="w-3.5 h-3.5" />
                 <span>{influencer.location}</span>
               </div>
-              {/* Follower + Engagement badges — inline on mobile */}
-              <div className="inline-flex sm:hidden mt-2 gap-2">
+              {/* Follower badge — inline on mobile */}
+              <div className="inline-flex sm:hidden mt-2">
                 <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white px-4 py-2 rounded-2xl text-center">
                   <div className="text-lg font-bold leading-tight">{influencer.followers}</div>
                   <div className="text-[10px] uppercase tracking-wider text-gray-400">followers</div>
                 </div>
-                {influencer.engagement.includes('%') && (
-                  <div className="bg-gradient-to-br from-pink-500 to-fuchsia-600 text-white px-4 py-2 rounded-2xl text-center">
-                    <div className="text-lg font-bold leading-tight">{influencer.engagement}</div>
-                    <div className="text-[10px] uppercase tracking-wider text-pink-100">engagement</div>
-                  </div>
-                )}
               </div>
             </div>
 
-            {/* Follower + Engagement badges — desktop only, stacked */}
-            <div className="flex-shrink-0 hidden sm:flex flex-col gap-2">
+            {/* Follower badge — desktop only */}
+            <div className="flex-shrink-0 hidden sm:block">
               <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white px-4 py-2 rounded-2xl text-center">
                 <div className="text-lg font-bold leading-tight">{influencer.followers}</div>
                 <div className="text-[10px] uppercase tracking-wider text-gray-400">followers</div>
               </div>
-              {influencer.engagement.includes('%') && (
-                <div className="bg-gradient-to-br from-pink-500 to-fuchsia-600 text-white px-4 py-2 rounded-2xl text-center">
-                  <div className="text-lg font-bold leading-tight">{influencer.engagement}</div>
-                  <div className="text-[10px] uppercase tracking-wider text-pink-100">engagement</div>
-                </div>
-              )}
             </div>
           </div>
 
