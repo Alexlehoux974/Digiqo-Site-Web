@@ -63,11 +63,11 @@ const influencers: Influencer[] = [
     photo: '/assets/createurs/mae-jeanne-rose.jpg',
     location: 'La Réunion',
     followers: '40,2K',
-    niches: ['Lifestyle', 'Voyage', 'Île', 'Podcast'],
-    bio: 'Fille des îles — Podcast « Entre 2 Mondes ». Une voix authentique qui partage sa vie entre La Réunion et Lyon avec une communauté engagée de plus de 40 000 abonnés.',
+    niches: ['Lifestyle', 'Voyage', 'Mode', 'Beauté', 'Sport', 'Activités touristiques', 'Podcast'],
+    bio: 'Créatrice de contenu spécialisée dans la valorisation de la culture réunionnaise, qui a su fédérer une communauté de plus de 113 000 abonnés (TikTok + Instagram) depuis janvier 2024 à travers des contenus immersifs autour des traditions, de la gastronomie, des paysages et du mode de vie sur l\u2019île de la Réunion.',
     instagram: 'https://www.instagram.com/mae.jr974/',
     contentTypes: ['Reels', 'Posts', 'Stories', 'UGC'],
-    engagement: 'À définir',
+    engagement: '7%',
     featured: true,
   },
 ]
@@ -93,6 +93,7 @@ const nicheColors: Record<string, string> = {
   'Humour': 'from-yellow-500 to-orange-500',
   'Podcast': 'from-rose-400 to-red-500',
   'Île': 'from-sky-400 to-blue-500',
+  'Activités touristiques': 'from-teal-500 to-emerald-500',
 }
 
 const getNicheColor = (niche: string) => nicheColors[niche] || 'from-gray-400 to-gray-500'
@@ -193,21 +194,33 @@ const InfluencerCard = ({ influencer, index }: { influencer: Influencer; index: 
                 <MapPin className="w-3.5 h-3.5" />
                 <span>{influencer.location}</span>
               </div>
-              {/* Follower badge — inline on mobile */}
-              <div className="inline-flex sm:hidden mt-2">
+              {/* Follower + Engagement badges — inline on mobile */}
+              <div className="inline-flex sm:hidden mt-2 gap-2">
                 <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white px-4 py-2 rounded-2xl text-center">
                   <div className="text-lg font-bold leading-tight">{influencer.followers}</div>
                   <div className="text-[10px] uppercase tracking-wider text-gray-400">followers</div>
                 </div>
+                {influencer.engagement.includes('%') && (
+                  <div className="bg-gradient-to-br from-pink-500 to-fuchsia-600 text-white px-4 py-2 rounded-2xl text-center">
+                    <div className="text-lg font-bold leading-tight">{influencer.engagement}</div>
+                    <div className="text-[10px] uppercase tracking-wider text-pink-100">engagement</div>
+                  </div>
+                )}
               </div>
             </div>
 
-            {/* Follower badge — desktop only */}
-            <div className="flex-shrink-0 hidden sm:block">
+            {/* Follower + Engagement badges — desktop only */}
+            <div className="flex-shrink-0 hidden sm:flex gap-2">
               <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white px-4 py-2 rounded-2xl text-center">
                 <div className="text-lg font-bold leading-tight">{influencer.followers}</div>
                 <div className="text-[10px] uppercase tracking-wider text-gray-400">followers</div>
               </div>
+              {influencer.engagement.includes('%') && (
+                <div className="bg-gradient-to-br from-pink-500 to-fuchsia-600 text-white px-4 py-2 rounded-2xl text-center">
+                  <div className="text-lg font-bold leading-tight">{influencer.engagement}</div>
+                  <div className="text-[10px] uppercase tracking-wider text-pink-100">engagement</div>
+                </div>
+              )}
             </div>
           </div>
 
