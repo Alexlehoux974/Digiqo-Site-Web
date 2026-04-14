@@ -209,8 +209,8 @@ const InfluencerCard = ({ influencer, index }: { influencer: Influencer; index: 
               </div>
             </div>
 
-            {/* Follower + Engagement badges — desktop only */}
-            <div className="flex-shrink-0 hidden sm:flex gap-2">
+            {/* Follower + Engagement badges — desktop only, stacked */}
+            <div className="flex-shrink-0 hidden sm:flex flex-col gap-2">
               <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white px-4 py-2 rounded-2xl text-center">
                 <div className="text-lg font-bold leading-tight">{influencer.followers}</div>
                 <div className="text-[10px] uppercase tracking-wider text-gray-400">followers</div>
