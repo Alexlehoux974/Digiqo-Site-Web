@@ -222,10 +222,10 @@ export const HeaderLuxury = () => {
                 {/* Desktop logo */}
                 <div className="hidden lg:block">
                   <OptimizedImage
-                    src="/apple-touch-icon.png"
+                    src="/digiqo-logo.png"
                     alt="Digiqo - Excellence Digitale"
-                    width={120}
-                    height={40}
+                    width={1045}
+                    height={376}
                     priority
                     className="h-12 w-auto relative z-10"
                     objectFit="contain"
@@ -234,10 +234,10 @@ export const HeaderLuxury = () => {
                 {/* Mobile logo - Using same as desktop */}
                 <div className="block lg:hidden">
                   <OptimizedImage
-                    src="/apple-touch-icon.png"
+                    src="/digiqo-logo.png"
                     alt="Digiqo - Excellence Digitale"
-                    width={160}
-                    height={48}
+                    width={1045}
+                    height={376}
                     priority
                     className="h-12 w-auto relative z-10"
                     objectFit="contain"
