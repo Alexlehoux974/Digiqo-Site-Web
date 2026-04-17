@@ -79,7 +79,6 @@ export default async function handler(
       },
       email: {
         to: 'partenariats@digiqo.fr',
-        cc: 'devis@digiqo.fr',
         subject: emailSubject,
       },
       score: {

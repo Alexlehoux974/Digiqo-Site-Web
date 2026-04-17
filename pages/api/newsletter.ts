@@ -4,6 +4,33 @@ import { checkRateLimit } from '../../lib/rate-limit'
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN || ''
 const HUBSPOT_API_URL = 'https://api.hubapi.com'
+const N8N_NEWSLETTER_WEBHOOK_URL = process.env.N8N_NEWSLETTER_WEBHOOK_URL || ''
+
+async function notifyNewsletterSubscription(email: string, isNew: boolean) {
+  if (!N8N_NEWSLETTER_WEBHOOK_URL) return
+  try {
+    await fetch(N8N_NEWSLETTER_WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Webhook-Secret': process.env.N8N_WEBHOOK_SECRET || '',
+      },
+      body: JSON.stringify({
+        source: 'newsletter-subscription',
+        email: {
+          to: 'newsletter@digiqo.fr',
+        },
+        subscriber: {
+          email,
+          isNew,
+        },
+        timestamp: new Date().toISOString(),
+      }),
+    })
+  } catch (error) {
+    console.error('Erreur webhook n8n newsletter:', error)
+  }
+}
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -46,6 +73,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (searchData.total > 0) {
       // Contact existe déjà — on ne modifie pas son lifecycle stage
+      await notifyNewsletterSubscription(email.toLowerCase().trim(), false)
       return res.status(200).json({ success: true })
     }
 
@@ -69,6 +97,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       console.error('Erreur création contact HubSpot newsletter:', createResponse.status, errorText)
     }
 
+    await notifyNewsletterSubscription(email.toLowerCase().trim(), true)
     return res.status(200).json({ success: true })
   } catch (error) {
     console.error('Erreur newsletter:', error)

@@ -26,6 +26,9 @@ export default async function handler(
     const webhookData = {
       timestamp: new Date().toISOString(),
       source: 'branding-quote-form',
+      email: {
+        to: 'devis@digiqo.fr',
+      },
       data: formData,
       metadata: {
         ip: req.headers['x-forwarded-for'] || req.socket.remoteAddress,

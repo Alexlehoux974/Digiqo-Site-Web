@@ -76,6 +76,9 @@ export default async function handler(
         },
         body: JSON.stringify({
           source: 'freelance-application',
+          email: {
+            to: 'recrutement@digiqo.fr',
+          },
           airtable_record_id: airtableRecordId,
           form_data: fields,
           timestamp: new Date().toISOString()

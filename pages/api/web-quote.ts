@@ -87,6 +87,9 @@ async function createOrUpdateHubSpotLead(formData: any) {
           },
           body: JSON.stringify({
             source: 'web-quote-form',
+            email: {
+              to: 'devis@digiqo.fr',
+            },
             hubspot_contact_id: contactId,
             form_data: formData,
             timestamp: new Date().toISOString(),

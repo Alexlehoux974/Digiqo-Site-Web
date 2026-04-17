@@ -31,6 +31,9 @@ export default async function handler(
     const webhookData = {
       timestamp: new Date().toISOString(),
       source: 'website-contact-form',
+      email: {
+        to: 'contact@digiqo.fr',
+      },
       data: {
         firstName: formData.firstName,
         lastName: formData.lastName,

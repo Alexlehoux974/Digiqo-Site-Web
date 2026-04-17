@@ -327,6 +327,9 @@ async function sendContactToN8N(contactData: any): Promise<void> {
       },
       body: JSON.stringify({
         event: 'existing_contact_audit_submission',
+        email: {
+          to: 'audit@digiqo.fr',
+        },
         contact: contactData,
         timestamp: new Date().toISOString(),
         source: 'digiqo-audit-form'
