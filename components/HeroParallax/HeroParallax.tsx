@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { generateContactUrl } from '@/lib/contact-utils'
 
 export const HeroParallax = ({
   products,
@@ -54,11 +53,9 @@ export const HeroParallax = ({
 
           {/* Single CTA */}
           <div className="mt-8 md:mt-10">
-            <Link href={generateContactUrl({
-              description: 'Je veux booster mes ventes avec des campagnes publicitaires'
-            })}>
+            <Link href="/services/publicite-en-ligne#formules">
               <span className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#8B1431] font-bold text-lg rounded-full shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer">
-                Demander un audit gratuit
+                Découvrir nos formules
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
