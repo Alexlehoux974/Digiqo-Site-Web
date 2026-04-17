@@ -12,7 +12,85 @@ export const config = {
   },
 }
 
+// Configuration HubSpot
+const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN || ''
+const HUBSPOT_API_URL = 'https://api.hubapi.com'
+const MAXIME_SIN_OWNER_ID = '30783659'
 const N8N_WEBHOOK_URL = process.env.N8N_PARTNERSHIP_WEBHOOK_URL || ''
+
+async function createOrUpdateHubSpotContact(formData: any) {
+  const email = formData.email
+  if (!email) return null
+
+  try {
+    const searchResponse = await fetch(`${HUBSPOT_API_URL}/crm/v3/objects/contacts/search`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        filterGroups: [{
+          filters: [{ propertyName: 'email', operator: 'EQ', value: email.toLowerCase().trim() }]
+        }]
+      })
+    })
+
+    if (!searchResponse.ok) return null
+    const searchData = await searchResponse.json()
+
+    const contactProperties: any = {
+      email: email.toLowerCase().trim(),
+      firstname: formData.prenom || '',
+      lastname: formData.nom || '',
+      phone: formData.telephone || '',
+      city: formData.villeZone || '',
+      hubspot_owner_id: MAXIME_SIN_OWNER_ID,
+      digiqo_form_source: 'partenariats',
+      hs_lead_status: 'NEW'
+    }
+
+    if (searchData.total > 0) {
+      const contactId = searchData.results[0].id
+      const existingOwner = searchData.results[0].properties?.hubspot_owner_id
+      const updateProperties: any = { ...contactProperties }
+      if (existingOwner) delete updateProperties.hubspot_owner_id
+
+      await fetch(`${HUBSPOT_API_URL}/crm/v3/objects/contacts/${contactId}`, {
+        method: 'PATCH',
+        headers: {
+          'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ properties: updateProperties })
+      })
+      console.log('Partnership — HubSpot contact updated:', contactId)
+      return contactId
+    } else {
+      const createResponse = await fetch(`${HUBSPOT_API_URL}/crm/v3/objects/contacts`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ properties: contactProperties })
+      })
+
+      if (!createResponse.ok) {
+        const errorText = await createResponse.text()
+        console.error('Erreur création contact HubSpot partnership:', createResponse.status, errorText)
+        return null
+      }
+
+      const createData = await createResponse.json()
+      console.log('Partnership — HubSpot contact created:', createData.id)
+      return createData.id
+    }
+  } catch (error) {
+    console.error('Erreur HubSpot partnership:', error)
+    return null
+  }
+}
 
 export default async function handler(
   req: NextApiRequest,
@@ -22,26 +100,20 @@ export default async function handler(
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  // Rate limiting
   if (!checkRateLimit(req, res)) return
 
   try {
     const formData = req.body
 
-    // Input validation
     if (!formData.email || !EMAIL_REGEX.test(formData.email)) {
       return res.status(400).json({ error: 'Un email valide est requis.' })
     }
 
-    // Honeypot check — silently accept but do nothing
     if (formData.honeypot) {
       return res.status(200).json({ success: true })
     }
 
-    // Compute scoring
     const score = computePartnershipScore(formData)
-
-    // Build email metadata
     const isAthlete = formData.profileType === 'athlete'
     const profileLabel = isAthlete ? 'ATHLETE' : 'SPEAKER'
     const specialite = isAthlete ? formData.athDiscipline : formData.spkType
@@ -53,7 +125,6 @@ export default async function handler(
 
     const emailSubject = `[CANDIDATURE][${profileLabel}] ${formData.prenom} ${formData.nom} – ${specialite} – ${budget}`
 
-    // Extract file attachment summaries (names only, base64 forwarded in full payload)
     const allFiles: { field: string; name: string; size: number }[] = []
     const fileFields = [
       'capturesInsights', 'athMediaKit', 'athPhotosHD',
@@ -68,10 +139,21 @@ export default async function handler(
       }
     }
 
-    // Build N8N payload
+    // 1. HubSpot contact
+    let hubspotContactId = null
+    if (HUBSPOT_ACCESS_TOKEN) {
+      try {
+        hubspotContactId = await createOrUpdateHubSpotContact(formData)
+      } catch (error) {
+        console.error('HubSpot partnership error:', error)
+      }
+    }
+
+    // 2. POST webhook n8n (silent fail si URL vide)
     const payload = {
       source: 'partnership-application',
       timestamp: new Date().toISOString(),
+      hubspot_contact_id: hubspotContactId,
       metadata: {
         ip: req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown',
         userAgent: req.headers['user-agent'] || 'unknown',
@@ -105,26 +187,22 @@ export default async function handler(
       formData,
     }
 
-    // Send to N8N webhook
-    console.log(`[Partnership] Sending to N8N: ${formData.prenom} ${formData.nom} (${profileLabel}) - Score: ${score.total}/100`)
-
-    const webhookResponse = await fetch(N8N_WEBHOOK_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Webhook-Secret': process.env.N8N_WEBHOOK_SECRET || '',
-      },
-      body: JSON.stringify(payload),
-    })
-
-    if (!webhookResponse.ok) {
-      console.error(`[Partnership] N8N webhook error: ${webhookResponse.status}`)
-      return res.status(500).json({ error: 'Erreur lors de l\'envoi', details: `Webhook: ${webhookResponse.status}` })
+    if (N8N_WEBHOOK_URL) {
+      try {
+        await fetch(N8N_WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Webhook-Secret': process.env.N8N_WEBHOOK_SECRET || '',
+          },
+          body: JSON.stringify(payload),
+        })
+      } catch (e) {
+        // silent fail
+      }
     }
 
-    console.log('[Partnership] Webhook N8N sent successfully')
-
-    return res.status(200).json({ success: true })
+    return res.status(200).json({ success: true, hubspotContactId })
   } catch (error) {
     console.error('[Partnership] Error:', error)
     return res.status(500).json({

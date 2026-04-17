@@ -87,7 +87,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       body: JSON.stringify({
         properties: {
           email: email.toLowerCase().trim(),
-          lifecyclestage: 'subscriber'
+          lifecyclestage: 'subscriber',
+          digiqo_form_source: 'newsletter'
         }
       })
     })

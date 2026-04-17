@@ -93,6 +93,7 @@ function mapFormDataToHubSpot(formData: Partial<AuditFormData>) {
     website: formData.digitalAssets?.website,
     city: formData.general?.location,
     hubspot_owner_id: RODOLPHE_OWNER_ID, // Attribuer à Rodolphe
+    digiqo_form_source: 'audit',
   };
 
   // Nettoyer les propriétés undefined

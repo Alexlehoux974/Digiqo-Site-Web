@@ -60,7 +60,8 @@ async function createOrUpdateHubSpotLead(formData: any) {
       lastname: formData.contact?.lastName || '',
       phone: formData.contact?.phone || '',
       company: formData.project?.companyName || '',
-      hubspot_owner_id: ROMAIN_OWNER_ID
+      hubspot_owner_id: ROMAIN_OWNER_ID,
+      digiqo_form_source: 'devis-web',
     };
 
     if (searchData.total > 0) {
