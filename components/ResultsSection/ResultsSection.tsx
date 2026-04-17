@@ -19,7 +19,8 @@ const stats: Stat[] = [
 function Counter({ value, suffix, prefix, duration }: { value: number; suffix: string; prefix?: string; duration: number }) {
   const [count, setCount] = useState(0)
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
+  const isInView = useInView(ref, { once: true, margin: '-50px' })
+  const isInteger = Number.isInteger(value)
 
   useEffect(() => {
     if (isInView) {
@@ -33,17 +34,19 @@ function Counter({ value, suffix, prefix, duration }: { value: number; suffix: s
           setCount(end)
           clearInterval(timer)
         } else {
-          setCount(Number(start.toFixed(1)))
+          setCount(isInteger ? Math.floor(start) : Number(start.toFixed(1)))
         }
       }, 1000 / 60)
 
       return () => clearInterval(timer)
     }
-  }, [isInView, value, duration])
+  }, [isInView, value, duration, isInteger])
+
+  const display = isInteger ? count : count.toFixed(1)
 
   return (
     <span ref={ref} className="text-3xl sm:text-4xl md:text-6xl font-bold bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent inline-block pr-1">
-      {prefix}{count}{suffix}
+      {prefix}{display}{suffix}
     </span>
   )
 }
@@ -244,7 +247,7 @@ export function ResultsSection() {
                     prefix={stat.prefix}
                     duration={stat.duration} 
                   />
-                  <p className="text-white/80 mt-2 sm:mt-3 md:mt-4 font-semibold text-sm sm:text-base">{stat.label}</p>
+                  <p className="text-digiqo-primary/80 mt-2 sm:mt-3 md:mt-4 font-semibold text-sm sm:text-base">{stat.label}</p>
                 </div>
               </GlowCard>
             </motion.div>
