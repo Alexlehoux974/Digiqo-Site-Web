@@ -224,8 +224,8 @@ export const HeaderLuxury = () => {
                   <OptimizedImage
                     src="/digiqo-logo.png"
                     alt="Digiqo - Excellence Digitale"
-                    width={1045}
-                    height={376}
+                    width={1600}
+                    height={554}
                     priority
                     className="h-12 w-auto relative z-10"
                     objectFit="contain"
@@ -236,8 +236,8 @@ export const HeaderLuxury = () => {
                   <OptimizedImage
                     src="/digiqo-logo.png"
                     alt="Digiqo - Excellence Digitale"
-                    width={1045}
-                    height={376}
+                    width={1600}
+                    height={554}
                     priority
                     className="h-12 w-auto relative z-10"
                     objectFit="contain"
