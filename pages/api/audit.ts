@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { AuditFormData } from '@/src/lib/audit-types';
 import { validateFormData } from '@/src/lib/audit-utils';
 import { formatPhoneForDisplay } from '../../lib/phone-formatter';
+import { formeJuridiqueToHubSpot } from '../../lib/hubspot-forme-juridique-map';
 
 // Configuration HubSpot
 const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN || '';
@@ -95,10 +96,14 @@ function mapFormDataToHubSpot(formData: Partial<AuditFormData>) {
     city: formData.general?.location,
     hubspot_owner_id: RODOLPHE_OWNER_ID, // Attribuer à Rodolphe
     digiqo_form_source: 'audit',
-    forme_juridique_de_l_entreprise: (formData as any).companyType || (formData as any).project?.companyType || '',
     digiqo_services_souhaites: 'Audit',
     digiqo_consent_marketing: (formData as any).consent === true ? 'true' : 'false',
   };
+
+  const formeJuridique = formeJuridiqueToHubSpot((formData as any).companyType || (formData as any).project?.companyType)
+  if (formeJuridique) {
+    contactProperties.forme_juridique_de_l_entreprise = formeJuridique
+  }
 
   // Nettoyer les propriétés undefined
   Object.keys(contactProperties).forEach(key => {

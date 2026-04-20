@@ -3,6 +3,7 @@ import { AIRTABLE_CONFIG, transformFormDataToAirtable } from '../../lib/airtable
 import { checkRateLimit } from '../../lib/rate-limit';
 import { formatPhoneForDisplay } from '../../lib/phone-formatter';
 import { servicesToHubSpot } from '../../lib/hubspot-services-map';
+import { formeJuridiqueToHubSpot } from '../../lib/hubspot-forme-juridique-map';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -56,7 +57,7 @@ async function createOrUpdateHubSpotLead(formData: any) {
     let contactId = null;
 
     // Préparer les propriétés du contact (propriétés standard HubSpot uniquement)
-    const contactProperties = {
+    const contactProperties: any = {
       email: email,
       firstname: formData.contact?.firstName || '',
       lastname: formData.contact?.lastName || '',
@@ -64,10 +65,14 @@ async function createOrUpdateHubSpotLead(formData: any) {
       company: formData.project?.companyName || '',
       hubspot_owner_id: ROMAIN_OWNER_ID,
       digiqo_form_source: 'devis-web',
-      forme_juridique_de_l_entreprise: formData.companyType || formData.project?.companyType || '',
       digiqo_services_souhaites: servicesToHubSpot(formData.project?.services),
       digiqo_consent_marketing: formData.consent === true ? 'true' : 'false',
     };
+
+    const formeJuridique = formeJuridiqueToHubSpot(formData.companyType || formData.project?.companyType)
+    if (formeJuridique) {
+      contactProperties.forme_juridique_de_l_entreprise = formeJuridique
+    }
 
     if (searchData.total > 0) {
       // Le contact existe, on le met à jour
