@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { AIRTABLE_CONFIG, transformFormDataToAirtable } from '../../lib/airtable-config';
 import { checkRateLimit } from '../../lib/rate-limit';
+import { formatPhoneForDisplay } from '../../lib/phone-formatter';
+import { servicesToHubSpot } from '../../lib/hubspot-services-map';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -58,10 +60,13 @@ async function createOrUpdateHubSpotLead(formData: any) {
       email: email,
       firstname: formData.contact?.firstName || '',
       lastname: formData.contact?.lastName || '',
-      phone: formData.contact?.phone || '',
+      phone: formatPhoneForDisplay(formData.contact?.phone),
       company: formData.project?.companyName || '',
       hubspot_owner_id: ROMAIN_OWNER_ID,
       digiqo_form_source: 'devis-web',
+      forme_juridique_de_l_entreprise: formData.companyType || formData.project?.companyType || '',
+      digiqo_services_souhaites: servicesToHubSpot(formData.project?.services),
+      digiqo_consent_marketing: formData.consent === true ? 'true' : 'false',
     };
 
     if (searchData.total > 0) {

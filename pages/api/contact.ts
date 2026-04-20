@@ -1,5 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { checkRateLimit } from '../../lib/rate-limit'
+import { formatPhoneForDisplay } from '../../lib/phone-formatter'
+import { servicesToHubSpot } from '../../lib/hubspot-services-map'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -38,11 +40,14 @@ async function createOrUpdateHubSpotContact(formData: any) {
       email: email.toLowerCase().trim(),
       firstname: formData.firstName || '',
       lastname: formData.lastName || '',
-      phone: formData.phone || '',
+      phone: formatPhoneForDisplay(formData.phone),
       company: formData.companyName || '',
       hubspot_owner_id: MAXIME_SIN_OWNER_ID,
       digiqo_form_source: 'contact',
-      hs_lead_status: 'NEW'
+      hs_lead_status: 'NEW',
+      forme_juridique_de_l_entreprise: formData.companyType || formData.project?.companyType || '',
+      digiqo_services_souhaites: servicesToHubSpot(formData.services),
+      digiqo_consent_marketing: formData.consent === true ? 'true' : 'false'
     }
 
     // Ajout description = message du formulaire

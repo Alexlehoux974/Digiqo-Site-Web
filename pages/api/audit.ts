@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { AuditFormData } from '@/src/lib/audit-types';
 import { validateFormData } from '@/src/lib/audit-utils';
+import { formatPhoneForDisplay } from '../../lib/phone-formatter';
 
 // Configuration HubSpot
 const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN || '';
@@ -88,12 +89,15 @@ function mapFormDataToHubSpot(formData: Partial<AuditFormData>) {
     firstname: formData.contact?.firstName || '',
     lastname: formData.contact?.lastName || '',
     email: formData.contact?.email || '',
-    phone: formData.contact?.phone || '',
+    phone: formatPhoneForDisplay(formData.contact?.phone),
     company: formData.general?.companyName,
     website: formData.digitalAssets?.website,
     city: formData.general?.location,
     hubspot_owner_id: RODOLPHE_OWNER_ID, // Attribuer à Rodolphe
     digiqo_form_source: 'audit',
+    forme_juridique_de_l_entreprise: (formData as any).companyType || (formData as any).project?.companyType || '',
+    digiqo_services_souhaites: 'Audit',
+    digiqo_consent_marketing: (formData as any).consent === true ? 'true' : 'false',
   };
 
   // Nettoyer les propriétés undefined
