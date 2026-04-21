@@ -151,8 +151,8 @@ export default function PubliciteEnLignePage() {
       bonus: {
         title: 'Offre promotionnelle',
         items: isAnnual
-          ? ['2 vidéos offertes', 'Budget pub du 3ème mois offert sur Google']
-          : ['1 vidéo offerte à la souscription', 'Budget pub du 3ème mois offert sur Google']
+          ? ['2 vidéos offertes']
+          : ['1 vidéo offerte à la souscription']
       },
       paymentLinkShortTerm: 'https://payments-eu1.hubspot.com/payments/qgwyN9Hj4W7hK?referrer=PAYMENT_LINK',
       paymentLinkAnnual: 'https://payments-eu1.hubspot.com/payments/KwTYqpVjwVK26?referrer=PAYMENT_LINK',
