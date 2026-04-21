@@ -1,7 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { computePartnershipScore } from '../../lib/partnership-scoring'
 import { checkRateLimit } from '../../lib/rate-limit'
-import { submitDigiqoForm } from '../../lib/hubspot-forms-api'
+import { formatPhoneForDisplay } from '../../lib/phone-formatter'
+import { formeJuridiqueToHubSpot } from '../../lib/hubspot-forme-juridique-map'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -13,7 +14,91 @@ export const config = {
   },
 }
 
+// Configuration HubSpot
+const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN || ''
+const HUBSPOT_API_URL = 'https://api.hubapi.com'
+const MAXIME_SIN_OWNER_ID = '30783659'
 const N8N_WEBHOOK_URL = process.env.N8N_PARTNERSHIP_WEBHOOK_URL || ''
+
+async function createOrUpdateHubSpotContact(formData: any) {
+  const email = formData.email
+  if (!email) return null
+
+  try {
+    const searchResponse = await fetch(`${HUBSPOT_API_URL}/crm/v3/objects/contacts/search`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        filterGroups: [{
+          filters: [{ propertyName: 'email', operator: 'EQ', value: email.toLowerCase().trim() }]
+        }]
+      })
+    })
+
+    if (!searchResponse.ok) return null
+    const searchData = await searchResponse.json()
+
+    const contactProperties: any = {
+      email: email.toLowerCase().trim(),
+      firstname: formData.prenom || '',
+      lastname: formData.nom || '',
+      phone: formatPhoneForDisplay(formData.telephone),
+      city: formData.villeZone || '',
+      hubspot_owner_id: MAXIME_SIN_OWNER_ID,
+      digiqo_form_source: 'partenariats',
+      hs_lead_status: 'NEW',
+      digiqo_consent_marketing: formData.consent === true ? 'true' : 'false'
+    }
+
+    const formeJuridique = formeJuridiqueToHubSpot(formData.companyType || formData.project?.companyType)
+    if (formeJuridique) {
+      contactProperties.forme_juridique_de_l_entreprise = formeJuridique
+    }
+
+    if (searchData.total > 0) {
+      const contactId = searchData.results[0].id
+      const existingOwner = searchData.results[0].properties?.hubspot_owner_id
+      const updateProperties: any = { ...contactProperties }
+      if (existingOwner) delete updateProperties.hubspot_owner_id
+
+      await fetch(`${HUBSPOT_API_URL}/crm/v3/objects/contacts/${contactId}`, {
+        method: 'PATCH',
+        headers: {
+          'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ properties: updateProperties })
+      })
+      console.log('Partnership — HubSpot contact updated:', contactId)
+      return contactId
+    } else {
+      const createResponse = await fetch(`${HUBSPOT_API_URL}/crm/v3/objects/contacts`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ properties: contactProperties })
+      })
+
+      if (!createResponse.ok) {
+        const errorText = await createResponse.text()
+        console.error('Erreur création contact HubSpot partnership:', createResponse.status, errorText)
+        return null
+      }
+
+      const createData = await createResponse.json()
+      console.log('Partnership — HubSpot contact created:', createData.id)
+      return createData.id
+    }
+  } catch (error) {
+    console.error('Erreur HubSpot partnership:', error)
+    return null
+  }
+}
 
 export default async function handler(
   req: NextApiRequest,
@@ -62,27 +147,21 @@ export default async function handler(
       }
     }
 
-    // 1. Soumettre à HubSpot Forms API
-    const extraFields: Array<{ name: string; value: string }> = []
-    if (formData.villeZone) extraFields.push({ name: 'city', value: formData.villeZone })
-
-    await submitDigiqoForm({
-      source: 'partenariats',
-      email: formData.email,
-      firstName: formData.prenom,
-      lastName: formData.nom,
-      phone: formData.telephone,
-      companyType: formData.companyType || formData.project?.companyType,
-      consent: formData.consent === true,
-      pageUri: 'https://digiqo.fr/partenariats',
-      pageName: 'Digiqo - Partenariats',
-      extraFields,
-    })
+    // 1. HubSpot contact
+    let hubspotContactId = null
+    if (HUBSPOT_ACCESS_TOKEN) {
+      try {
+        hubspotContactId = await createOrUpdateHubSpotContact(formData)
+      } catch (error) {
+        console.error('HubSpot partnership error:', error)
+      }
+    }
 
     // 2. POST webhook n8n (silent fail si URL vide)
     const payload = {
       source: 'partnership-application',
       timestamp: new Date().toISOString(),
+      hubspot_contact_id: hubspotContactId,
       metadata: {
         ip: req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown',
         userAgent: req.headers['user-agent'] || 'unknown',
@@ -131,7 +210,7 @@ export default async function handler(
       }
     }
 
-    return res.status(200).json({ success: true })
+    return res.status(200).json({ success: true, hubspotContactId })
   } catch (error) {
     console.error('[Partnership] Error:', error)
     return res.status(500).json({

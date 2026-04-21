@@ -1,11 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { checkRateLimit } from '../../lib/rate-limit'
-import { submitDigiqoForm } from '../../lib/hubspot-forms-api'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN || ''
+const HUBSPOT_API_URL = 'https://api.hubapi.com'
 const N8N_NEWSLETTER_WEBHOOK_URL = process.env.N8N_NEWSLETTER_WEBHOOK_URL || ''
 
-async function notifyNewsletterSubscription(email: string) {
+async function notifyNewsletterSubscription(email: string, isNew: boolean) {
   if (!N8N_NEWSLETTER_WEBHOOK_URL) return
   try {
     await fetch(N8N_NEWSLETTER_WEBHOOK_URL, {
@@ -21,6 +22,7 @@ async function notifyNewsletterSubscription(email: string) {
         },
         subscriber: {
           email,
+          isNew,
         },
         timestamp: new Date().toISOString(),
       }),
@@ -44,14 +46,59 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    await submitDigiqoForm({
-      source: 'newsletter',
-      email,
-      pageUri: 'https://digiqo.fr/',
-      pageName: 'Digiqo - Newsletter',
+    // Rechercher si le contact existe déjà
+    const searchResponse = await fetch(`${HUBSPOT_API_URL}/crm/v3/objects/contacts/search`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        filterGroups: [{
+          filters: [{
+            propertyName: 'email',
+            operator: 'EQ',
+            value: email.toLowerCase().trim()
+          }]
+        }]
+      })
     })
 
-    await notifyNewsletterSubscription(email.toLowerCase().trim())
+    if (!searchResponse.ok) {
+      console.error('Erreur recherche HubSpot newsletter:', searchResponse.status)
+      return res.status(200).json({ success: true })
+    }
+
+    const searchData = await searchResponse.json()
+
+    if (searchData.total > 0) {
+      // Contact existe déjà — on ne modifie pas son lifecycle stage
+      await notifyNewsletterSubscription(email.toLowerCase().trim(), false)
+      return res.status(200).json({ success: true })
+    }
+
+    // Nouveau contact — créer avec lifecycle stage "subscriber"
+    const createResponse = await fetch(`${HUBSPOT_API_URL}/crm/v3/objects/contacts`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        properties: {
+          email: email.toLowerCase().trim(),
+          lifecyclestage: 'subscriber',
+          digiqo_form_source: 'newsletter'
+        }
+      })
+    })
+
+    if (!createResponse.ok) {
+      const errorText = await createResponse.text()
+      console.error('Erreur création contact HubSpot newsletter:', createResponse.status, errorText)
+    }
+
+    await notifyNewsletterSubscription(email.toLowerCase().trim(), true)
     return res.status(200).json({ success: true })
   } catch (error) {
     console.error('Erreur newsletter:', error)
