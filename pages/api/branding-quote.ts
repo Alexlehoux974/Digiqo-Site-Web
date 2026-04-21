@@ -3,6 +3,7 @@ import { checkRateLimit } from '../../lib/rate-limit'
 import { formatPhoneForDisplay } from '../../lib/phone-formatter'
 import { servicesToHubSpot } from '../../lib/hubspot-services-map'
 import { formeJuridiqueToHubSpot } from '../../lib/hubspot-forme-juridique-map'
+import { createContactNote } from '../../lib/hubspot-notes'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -118,6 +119,21 @@ export default async function handler(
       } catch (error) {
         console.error('HubSpot branding error:', error)
       }
+    }
+
+    if (hubspotContactId) {
+      await createContactNote(hubspotContactId, {
+        source: 'Devis Branding',
+        firstName: formData.contact?.firstName,
+        lastName: formData.contact?.lastName,
+        email: formData.contact?.email,
+        phone: formData.contact?.phone,
+        company: formData.brand?.name || formData.project?.companyName,
+        companyType: formData.project?.companyType,
+        services: ['branding'],
+        description: formData.project?.description || formData.brand?.vision,
+        consent: formData.contact?.consent === true,
+      })
     }
 
     // 2. POST webhook n8n (silent fail si URL vide)

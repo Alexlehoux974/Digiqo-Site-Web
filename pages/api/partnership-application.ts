@@ -3,6 +3,7 @@ import { computePartnershipScore } from '../../lib/partnership-scoring'
 import { checkRateLimit } from '../../lib/rate-limit'
 import { formatPhoneForDisplay } from '../../lib/phone-formatter'
 import { formeJuridiqueToHubSpot } from '../../lib/hubspot-forme-juridique-map'
+import { createContactNote } from '../../lib/hubspot-notes'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -155,6 +156,31 @@ export default async function handler(
       } catch (error) {
         console.error('HubSpot partnership error:', error)
       }
+    }
+
+    if (hubspotContactId) {
+      await createContactNote(hubspotContactId, {
+        source: 'Candidature Partenariat',
+        firstName: formData.prenom,
+        lastName: formData.nom,
+        email: formData.email,
+        phone: formData.telephone,
+        description: formData.presentation || formData.pitch,
+        extra: {
+          '🎭 <b>Type de profil :</b>': formData.profileType === 'athlete' ? 'Athlète' : 'Speaker',
+          '🏁 <b>Spécialité :</b>': formData.athDiscipline || formData.spkType,
+          '📍 <b>Ville / Zone :</b>': formData.villeZone,
+          '💰 <b>Budget :</b>':
+            [
+              formData.budgetParMois && `${formData.budgetParMois}€/mois`,
+              formData.budgetParEvenement && `${formData.budgetParEvenement}€/event`,
+              formData.budgetParSaison && `${formData.budgetParSaison}€/saison`,
+            ]
+              .filter(Boolean)
+              .join(' + ') || undefined,
+          '⏱️ <b>Durée souhaitée :</b>': formData.dureeSouhaitee ? `${formData.dureeSouhaitee} mois` : undefined,
+        },
+      })
     }
 
     // 2. POST webhook n8n (silent fail si URL vide)

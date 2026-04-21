@@ -3,6 +3,7 @@ import { checkRateLimit } from '../../lib/rate-limit'
 import { formatPhoneForDisplay } from '../../lib/phone-formatter'
 import { servicesToHubSpot } from '../../lib/hubspot-services-map'
 import { formeJuridiqueToHubSpot } from '../../lib/hubspot-forme-juridique-map'
+import { createContactNote } from '../../lib/hubspot-notes'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -133,6 +134,21 @@ export default async function handler(
       } catch (error) {
         console.error('HubSpot error:', error)
       }
+    }
+
+    if (hubspotContactId) {
+      await createContactNote(hubspotContactId, {
+        source: 'Formulaire Contact',
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.companyName,
+        companyType: formData.companyType,
+        services: formData.services,
+        description: formData.description,
+        consent: formData.consent === true,
+      })
     }
 
     // 2. Conserver le POST webhook n8n (fail-safe silencieux si URL vide)

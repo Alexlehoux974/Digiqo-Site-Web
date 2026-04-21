@@ -3,6 +3,7 @@ import { AuditFormData } from '@/src/lib/audit-types';
 import { validateFormData } from '@/src/lib/audit-utils';
 import { formatPhoneForDisplay } from '../../lib/phone-formatter';
 import { formeJuridiqueToHubSpot } from '../../lib/hubspot-forme-juridique-map';
+import { createContactNote } from '../../lib/hubspot-notes';
 
 // Configuration HubSpot
 const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN || '';
@@ -701,6 +702,21 @@ export default async function handler(
       });
     } else {
       console.error('Failed to send to HubSpot:', hubspotResult.error);
+    }
+
+    const hubspotContactId = hubspotResult.contactId;
+    if (hubspotContactId) {
+      await createContactNote(hubspotContactId, {
+        source: 'Formulaire Audit Digital',
+        firstName: formData.contact?.firstName,
+        lastName: formData.contact?.lastName,
+        email: formData.contact?.email || '',
+        phone: formData.contact?.phone,
+        company: formData.general?.companyName,
+        companyType: formData.general?.sector,
+        services: ['audit'],
+        description: formData.objectives?.challenges || formData.objectives?.goals?.join(', '),
+      });
     }
 
     // Envoyer à Airtable (toutes les données du formulaire)

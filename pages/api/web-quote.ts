@@ -4,6 +4,7 @@ import { checkRateLimit } from '../../lib/rate-limit';
 import { formatPhoneForDisplay } from '../../lib/phone-formatter';
 import { servicesToHubSpot } from '../../lib/hubspot-services-map';
 import { formeJuridiqueToHubSpot } from '../../lib/hubspot-forme-juridique-map';
+import { createContactNote } from '../../lib/hubspot-notes';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -209,6 +210,21 @@ export default async function handler(
       }
     } else {
       console.log('Pas de token HubSpot configuré, intégration HubSpot ignorée');
+    }
+
+    if (hubspotContactId) {
+      await createContactNote(hubspotContactId, {
+        source: 'Devis Web',
+        firstName: formData.contact?.firstName,
+        lastName: formData.contact?.lastName,
+        email: formData.contact?.email,
+        phone: formData.contact?.phone,
+        company: formData.project?.companyName,
+        companyType: formData.project?.companyType,
+        services: formData.project?.services,
+        description: formData.project?.description,
+        consent: formData.contact?.consent === true,
+      });
     }
 
     // Retourner le succès si au moins un service a fonctionné
