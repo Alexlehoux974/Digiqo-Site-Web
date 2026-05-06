@@ -273,9 +273,6 @@ export function ResultsSection() {
             >
               <div className="text-center w-full">
                 <TrustpilotWidget variant="score" theme="light" />
-                <p className="text-digiqo-primary/80 mt-2 sm:mt-3 md:mt-4 font-semibold text-sm sm:text-base">
-                  Note Trustpilot
-                </p>
               </div>
             </GlowCard>
           </motion.div>
