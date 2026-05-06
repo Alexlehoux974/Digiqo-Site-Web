@@ -27,6 +27,13 @@ function countWords(text: string): number {
   return text.split(/\s+/).filter(Boolean).length
 }
 
+function formatModifiedDate(iso: string): string {
+  const date = new Date(iso)
+  return date.toLocaleDateString('fr-FR', {
+    day: '2-digit', month: '2-digit', year: 'numeric',
+  })
+}
+
 function buildBlogPostingSchema(article: BlogArticle) {
   const datePublished = parseFrenchDateToIso(article.date)
   const dateModified = article.dateModified ?? datePublished
@@ -152,6 +159,21 @@ export default function ArticlePage({ article }: ArticlePageProps) {
             </div>
           </div>
         </div>
+
+        {/* Last-updated banner — signals freshness to LLMs and users */}
+        {article.dateModified && (
+          <div className="container mx-auto px-4 mt-6">
+            <div className="max-w-4xl mx-auto">
+              <p className="text-sm text-slate-500">
+                <Clock className="w-4 h-4 inline-block mr-1.5 -mt-0.5" />
+                Article mis à jour le{' '}
+                <time dateTime={article.dateModified} className="font-medium text-slate-700">
+                  {formatModifiedDate(article.dateModified)}
+                </time>
+              </p>
+            </div>
+          </div>
+        )}
 
         {/* Article Content */}
         <article className="container mx-auto px-4 py-12">
