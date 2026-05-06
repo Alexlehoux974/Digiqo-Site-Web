@@ -34,6 +34,67 @@ function formatModifiedDate(iso: string): string {
   })
 }
 
+// Authoritative external references per article category. Princeton CITP found
+// inline citations to authoritative sources lift LLM citation rate +30-40%.
+// All anchors render with rel="nofollow" so we don't leak link equity.
+type SourceRef = { label: string; url: string; description: string }
+
+const EXTERNAL_SOURCES_BY_CATEGORY: Record<string, SourceRef[]> = {
+  'SEO': [
+    { label: 'Google Search Central — SEO Starter Guide', url: 'https://developers.google.com/search/docs/fundamentals/seo-starter-guide', description: 'Documentation officielle Google.' },
+    { label: 'Search Engine Land', url: 'https://searchengineland.com/', description: 'Actualité quotidienne SEO et SEM.' },
+    { label: 'Moz — Beginner\'s Guide to SEO', url: 'https://moz.com/beginners-guide-to-seo', description: 'Guide pédagogique référence.' },
+    { label: 'Ahrefs Blog', url: 'https://ahrefs.com/blog/', description: 'Études de cas et data backlinks.' },
+  ],
+  'Social Media': [
+    { label: 'TikTok For Business', url: 'https://www.tiktok.com/business/fr', description: 'Plateforme officielle annonceurs.' },
+    { label: 'Hootsuite — Social Trends', url: 'https://www.hootsuite.com/research/social-trends', description: 'Rapport annuel des tendances social.' },
+    { label: 'Statista — TikTok Statistics', url: 'https://www.statista.com/topics/6077/tiktok/', description: 'Données chiffrées d\'usage et audiences.' },
+    { label: 'Sprout Social Insights', url: 'https://sproutsocial.com/insights/', description: 'Analyses et benchmarks social media.' },
+  ],
+  'Community Management': [
+    { label: 'Hootsuite Blog', url: 'https://blog.hootsuite.com/', description: 'Stratégies social media multi-plateformes.' },
+    { label: 'Buffer Library', url: 'https://buffer.com/library', description: 'Guides et études social media.' },
+    { label: 'Sprout Social Insights', url: 'https://sproutsocial.com/insights/', description: 'Analyses et benchmarks engagement.' },
+    { label: 'Social Media Examiner', url: 'https://www.socialmediaexaminer.com/', description: 'Conseils pratiques community management.' },
+  ],
+  'Google Ads': [
+    { label: 'Google Ads Help', url: 'https://support.google.com/google-ads', description: 'Documentation officielle Google Ads.' },
+    { label: 'Think with Google', url: 'https://www.thinkwithgoogle.com/', description: 'Insights publicitaires Google.' },
+    { label: 'WordStream Blog', url: 'https://www.wordstream.com/blog', description: 'Tutoriels et benchmarks PPC.' },
+    { label: 'Search Engine Land — PPC', url: 'https://searchengineland.com/library/channel/ppc', description: 'Actualité Google Ads et SEA.' },
+  ],
+  'Développement Web': [
+    { label: 'web.dev — Google', url: 'https://web.dev/', description: 'Performance web et Core Web Vitals.' },
+    { label: 'MDN Web Docs', url: 'https://developer.mozilla.org/', description: 'Référence technique HTML/CSS/JS.' },
+    { label: 'Next.js Documentation', url: 'https://nextjs.org/docs', description: 'Framework React de référence.' },
+    { label: 'W3C — Web Accessibility (WAI)', url: 'https://www.w3.org/WAI/', description: 'Standards d\'accessibilité.' },
+  ],
+  'Identité Visuelle': [
+    { label: 'Brand New (UnderConsideration)', url: 'https://www.underconsideration.com/brandnew/', description: 'Critiques de redesigns identité.' },
+    { label: 'AIGA — The professional association for design', url: 'https://www.aiga.org/', description: 'Association professionnelle design.' },
+    { label: 'Adobe — Branding & Identity', url: 'https://www.adobe.com/express/learn/blog/brand-identity', description: 'Guide branding Adobe.' },
+    { label: '99designs — Logo & Branding Blog', url: 'https://99designs.com/blog/logo-branding/', description: 'Articles pratiques branding.' },
+  ],
+  'Production Vidéo': [
+    { label: 'Wistia Learning Center', url: 'https://wistia.com/learn', description: 'Guides production vidéo marketing.' },
+    { label: 'Vimeo Blog', url: 'https://vimeo.com/blog', description: 'Conseils technique et créatif.' },
+    { label: 'Think with Google — Video', url: 'https://www.thinkwithgoogle.com/marketing-strategies/video/', description: 'Insights audience YouTube.' },
+    { label: 'Search Engine Journal — Video Marketing', url: 'https://www.searchenginejournal.com/category/digital-marketing/video-marketing/', description: 'Stratégies vidéo SEO.' },
+  ],
+}
+
+const FALLBACK_SOURCES: SourceRef[] = [
+  { label: 'HubSpot Marketing Blog', url: 'https://blog.hubspot.com/marketing', description: 'Référence marketing inbound.' },
+  { label: 'Search Engine Journal', url: 'https://www.searchenginejournal.com/', description: 'Actualité SEO et marketing digital.' },
+  { label: 'Statista — Digital Markets', url: 'https://www.statista.com/markets/424/topic/538/digital-advertising/', description: 'Données chiffrées marché digital.' },
+  { label: 'Hootsuite Blog', url: 'https://blog.hootsuite.com/', description: 'Stratégies social media.' },
+]
+
+function getSourcesForCategory(category: string): SourceRef[] {
+  return EXTERNAL_SOURCES_BY_CATEGORY[category] ?? FALLBACK_SOURCES
+}
+
 function buildBlogPostingSchema(article: BlogArticle) {
   const datePublished = parseFrenchDateToIso(article.date)
   const dateModified = article.dateModified ?? datePublished
@@ -315,6 +376,32 @@ export default function ArticlePage({ article }: ArticlePageProps) {
           `}</style>
         </article>
 
+        {/* External authoritative sources — rel=nofollow keeps PageRank in */}
+        <section className="container mx-auto px-4 pb-12">
+          <div className="max-w-4xl mx-auto">
+            <div className="border-t pt-8">
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">
+                Sources et références
+              </h2>
+              <ul className="space-y-3">
+                {getSourcesForCategory(article.category).map((source) => (
+                  <li key={source.url} className="text-slate-700">
+                    <a
+                      href={source.url}
+                      target="_blank"
+                      rel="nofollow noopener noreferrer"
+                      className="font-medium text-[#8B1431] hover:text-[#DA6530] underline underline-offset-2"
+                    >
+                      {source.label}
+                    </a>
+                    <span className="text-slate-500"> — {source.description}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
         {/* Tags */}
         {article.tags && article.tags.length > 0 && (
           <div className="container mx-auto px-4 pb-12">
@@ -391,12 +478,15 @@ function formatContent(content: string): string {
     .replace(/\n\n/g, '</p><p>')
     .replace(/^([^<].*)$/gim, '<p>$1</p>')
 
-  // Handle links separately - use a span with onClick for internal links
+  // External links (http/https) get rel="nofollow noopener noreferrer" + target=_blank
+  // so we don't leak link equity and they open in a new tab. Internal links stay plain.
   formattedContent = formattedContent.replace(
     /\[([^\]]+)\]\(([^)]+)\)/g,
     (_match, text, href) => {
-      // For internal links, we'll just use a regular anchor tag
-      // Next.js will handle client-side navigation automatically
+      const isExternal = /^https?:\/\//i.test(href)
+      if (isExternal) {
+        return `<a href="${href}" rel="nofollow noopener noreferrer" target="_blank">${text}</a>`
+      }
       return `<a href="${href}">${text}</a>`
     }
   )
