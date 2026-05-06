@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { TrustpilotWidget } from '@/components/Trustpilot'
 
 interface Stat {
   value: number
@@ -9,21 +10,26 @@ interface Stat {
   duration: number
 }
 
+// "Note Globale" intentionally removed: replaced visually by the Trustpilot
+// score widget below the loop, which carries a real, verifiable rating.
 const stats: Stat[] = [
   { value: 98, suffix: '%', label: 'Clients Satisfaits', duration: 2 },
   { value: 6.5, suffix: 'M€', prefix: '+', label: 'Budget Géré', duration: 2.5 },
   { value: 97, suffix: '%', label: 'Campagnes Rentables', duration: 3 },
-  { value: 4.8, suffix: '/5', label: 'Note Globale', duration: 2 }
 ]
 
 function Counter({ value, suffix, prefix, duration }: { value: number; suffix: string; prefix?: string; duration: number }) {
-  const [count, setCount] = useState(0)
+  // Initial state = target value so SSR HTML carries the real number for
+  // bots/LLMs. The effect resets to 0 once the section enters the viewport
+  // so the user still sees the animation roll up.
+  const [count, setCount] = useState(value)
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-50px' })
   const isInteger = Number.isInteger(value)
 
   useEffect(() => {
     if (isInView) {
+      setCount(0)
       let start = 0
       const end = value
       const increment = end / (duration * 60) // 60fps
@@ -236,22 +242,43 @@ export function ResultsSection() {
               viewport={{ once: true }}
               className="text-center"
             >
-              <GlowCard 
+              <GlowCard
                 className="p-4 sm:p-6 md:p-8 bg-white shadow-lg hover:shadow-2xl hover:shadow-digiqo-primary/20 transition-all duration-300 border border-gray-100 flex flex-col items-center justify-center h-full"
                 glowColor={index === 0 || index === 2 ? 'bordeaux' : index === 1 ? 'orange' : 'blue'}
               >
                 <div className="text-center">
-                  <Counter 
-                    value={stat.value} 
-                    suffix={stat.suffix} 
+                  <Counter
+                    value={stat.value}
+                    suffix={stat.suffix}
                     prefix={stat.prefix}
-                    duration={stat.duration} 
+                    duration={stat.duration}
                   />
                   <p className="text-digiqo-primary/80 mt-2 sm:mt-3 md:mt-4 font-semibold text-sm sm:text-base">{stat.label}</p>
                 </div>
               </GlowCard>
             </motion.div>
           ))}
+
+          {/* Trustpilot replaces the old "Note Globale" custom counter */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <GlowCard
+              className="p-4 sm:p-6 md:p-8 bg-white shadow-lg hover:shadow-2xl hover:shadow-digiqo-primary/20 transition-all duration-300 border border-gray-100 flex flex-col items-center justify-center h-full"
+              glowColor="bordeaux"
+            >
+              <div className="text-center w-full">
+                <TrustpilotWidget variant="score" theme="light" />
+                <p className="text-digiqo-primary/80 mt-2 sm:mt-3 md:mt-4 font-semibold text-sm sm:text-base">
+                  Note Trustpilot
+                </p>
+              </div>
+            </GlowCard>
+          </motion.div>
         </div>
       </div>
     </section>
