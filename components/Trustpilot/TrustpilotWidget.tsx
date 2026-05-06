@@ -1,32 +1,23 @@
-// Trustpilot TrustBox widget. The bootstrap script in pages/_app.tsx scans
-// for .trustpilot-widget elements after load and replaces their content
-// with the live widget. Until then (and for crawlers / JS-disabled users),
-// the static fallback link inside the div is what shows.
+// Static link to the public Trustpilot profile (digiqo.tech).
+// The Digiqo Trustpilot account is currently inaccessible (domain change),
+// so we cannot embed the official live widget. This component renders a
+// styled link that points at the public review page instead — Googlebot
+// and LLM crawlers still get a clear, attributable rating signal.
 //
-// Update the fallback rating when the JSON-LD aggregateRating in
-// lib/seo-config.ts is updated, so SSR fallback and structured data agree.
+// When the Trustpilot account is recovered:
+//   1. Fetch the Business Unit ID from business.trustpilot.com.
+//   2. Restore the official .trustpilot-widget div + bootstrap script
+//      (see git history for [P0-SEO][4]).
+//
+// Update RATING / REVIEW_COUNT here and in lib/seo-config.ts when the
+// public profile rating changes.
 
 type Variant = 'mini' | 'score' | 'carousel' | 'microcombo'
 
-const TEMPLATE_IDS: Record<Variant, string> = {
-  mini: '53aa8807dec7e10d38f59f32',
-  score: '5419b637fa0340045cd0c936',
-  carousel: '53aa8912dec7e10d38f59f36',
-  microcombo: '5419b6ffb0d04a076446a9af',
-}
-
-const HEIGHTS: Record<Variant, string> = {
-  mini: '24px',
-  score: '130px',
-  carousel: '240px',
-  microcombo: '40px',
-}
-
-const BUSINESS_UNIT_ID =
-  process.env.NEXT_PUBLIC_TRUSTPILOT_BUSINESS_UNIT_ID ?? ''
-
 const TRUSTPILOT_REVIEW_URL = 'https://fr.trustpilot.com/review/digiqo.tech'
-const FALLBACK_LABEL = 'Note Trustpilot : 4,7/5 sur 30 avis ★★★★★'
+const RATING = '4,7'
+const REVIEW_COUNT = 30
+const STARS = '★★★★★'
 
 interface TrustpilotWidgetProps {
   variant: Variant
@@ -39,24 +30,76 @@ export function TrustpilotWidget({
   theme = 'light',
   className,
 }: TrustpilotWidgetProps) {
-  return (
-    <div
-      className={`trustpilot-widget${className ? ` ${className}` : ''}`}
-      data-locale="fr-FR"
-      data-template-id={TEMPLATE_IDS[variant]}
-      data-businessunit-id={BUSINESS_UNIT_ID}
-      data-style-height={HEIGHTS[variant]}
-      data-style-width="100%"
-      data-theme={theme}
-    >
+  const isDark = theme === 'dark'
+  const baseClasses =
+    'transition-colors duration-200 ' +
+    (isDark
+      ? 'text-gray-200 hover:text-white'
+      : 'text-gray-700 hover:text-digiqo-primary')
+
+  const wrapperClass = `${baseClasses}${className ? ` ${className}` : ''}`
+
+  if (variant === 'score') {
+    return (
       <a
         href={TRUSTPILOT_REVIEW_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-sm underline"
+        className={`${wrapperClass} flex flex-col items-center gap-1`}
+        aria-label={`Note Trustpilot ${RATING} sur 5 — ${REVIEW_COUNT} avis`}
       >
-        {FALLBACK_LABEL}
+        <span className="text-3xl sm:text-4xl md:text-5xl font-bold tabular-nums bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">
+          {RATING}
+          <span className="text-2xl md:text-3xl">/5</span>
+        </span>
+        <span className="text-yellow-500 text-lg md:text-xl tracking-wider">
+          {STARS}
+        </span>
+        <span className="text-xs uppercase tracking-wider opacity-70">
+          {REVIEW_COUNT} avis Trustpilot
+        </span>
       </a>
-    </div>
+    )
+  }
+
+  if (variant === 'carousel') {
+    return (
+      <a
+        href={TRUSTPILOT_REVIEW_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${wrapperClass} block text-center`}
+        aria-label={`Voir les ${REVIEW_COUNT} avis Trustpilot Digiqo`}
+      >
+        <div className="flex items-center justify-center gap-3">
+          <span className="text-yellow-500 text-2xl tracking-wider">{STARS}</span>
+          <span className="text-2xl font-bold">
+            {RATING}<span className="opacity-70">/5</span>
+          </span>
+        </div>
+        <p className="mt-2 text-sm">
+          {REVIEW_COUNT} avis vérifiés sur Trustpilot
+        </p>
+        <p className="mt-3 text-sm underline">
+          Voir tous les avis sur Trustpilot
+        </p>
+      </a>
+    )
+  }
+
+  // mini / microcombo: compact inline format for tight spots like the footer
+  return (
+    <a
+      href={TRUSTPILOT_REVIEW_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${wrapperClass} inline-flex items-center gap-2 text-sm`}
+      aria-label={`Note Trustpilot ${RATING} sur 5 — ${REVIEW_COUNT} avis`}
+    >
+      <span className="text-yellow-500 tracking-wider">{STARS}</span>
+      <span>
+        Trustpilot {RATING}/5 — {REVIEW_COUNT} avis
+      </span>
+    </a>
   )
 }
