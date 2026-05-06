@@ -339,9 +339,12 @@ export default function Home() {
 
       <HeaderLuxury />
       <main className="bg-[#8B1431]">
-        <h1 className="sr-only">
+        {/* The visible page h1 lives in HeroParallax. Keep this as a screen-
+            reader h2 so the "Agence Marketing Digital La Réunion" keyword
+            stays in the document outline without competing for h1 priority. */}
+        <h2 className="sr-only">
           L'Agence Marketing Digital Qui Booste Vos Ventes - Digiqo La Réunion
-        </h1>
+        </h2>
 
         {/* 1. Hero + Logos */}
         <HeroParallax products={products} />
