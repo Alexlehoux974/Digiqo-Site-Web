@@ -319,6 +319,10 @@ function formatContent(content: string): string {
     .replace(/\son\w+\s*=\s*["'][^"']*["']/gi, '')
     .replace(/javascript:/gi, '')
 
+  // The page header already renders the article title as <h1>. Strip any
+  // <h1> the markdown produced so we end up with a single h1 per page.
+  formattedContent = formattedContent.replace(/<h1>[\s\S]*?<\/h1>/gi, '')
+
   return formattedContent
 }
 
