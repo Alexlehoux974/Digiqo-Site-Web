@@ -7,6 +7,10 @@ export interface BlogArticle {
   content: string;
   category: string;
   date: string;
+  // ISO date of the most recent meaningful content edit. Falls back to date
+  // when absent. Update this whenever the article's content is refreshed so
+  // BlogPosting JSON-LD signals freshness to LLMs and search engines.
+  dateModified?: string;
   readTime: string;
   author: string;
   featuredImage: string;

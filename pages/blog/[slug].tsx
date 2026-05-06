@@ -1,32 +1,98 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
-import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, Clock, Calendar, User } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { getArticleBySlug, getAllArticles, type BlogArticle } from '@/lib/blog-articles'
+import { SEO } from '@/components/SEO'
+
+const SITE_URL = 'https://digiqo.fr'
+
+const FRENCH_MONTHS: Record<string, string> = {
+  Janvier: '01', Février: '02', Mars: '03', Avril: '04',
+  Mai: '05', Juin: '06', Juillet: '07', Août: '08',
+  Septembre: '09', Octobre: '10', Novembre: '11', Décembre: '12',
+}
+
+// "25 Septembre 2025" -> "2025-09-25T08:00:00+04:00" (Réunion timezone)
+function parseFrenchDateToIso(date: string): string {
+  const match = date.match(/(\d{1,2})\s+(\S+)\s+(\d{4})/)
+  if (!match) return date
+  const [, day, month, year] = match
+  const monthNum = FRENCH_MONTHS[month] ?? '01'
+  return `${year}-${monthNum}-${day.padStart(2, '0')}T08:00:00+04:00`
+}
+
+function countWords(text: string): number {
+  return text.split(/\s+/).filter(Boolean).length
+}
+
+function buildBlogPostingSchema(article: BlogArticle) {
+  const datePublished = parseFrenchDateToIso(article.date)
+  const dateModified = article.dateModified ?? datePublished
+  const articleUrl = `${SITE_URL}/blog/${article.slug}`
+  const articleImage = article.featuredImage.startsWith('http')
+    ? article.featuredImage
+    : `${SITE_URL}${article.featuredImage}`
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: article.title,
+    description: article.metaDescription || article.excerpt,
+    image: articleImage,
+    datePublished,
+    dateModified,
+    author: {
+      '@type': 'Person',
+      name: 'Alexandre Lehoux',
+      jobTitle: 'CMO Dirigeant Associé Digiqo',
+      url: `${SITE_URL}/agence`,
+      sameAs: ['https://www.linkedin.com/in/alexandre-le-houx/'],
+    },
+    publisher: {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: 'Digiqo',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/assets/logo2-digiqo.png`,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': articleUrl,
+    },
+    url: articleUrl,
+    articleSection: article.category,
+    wordCount: countWords(article.content),
+    inLanguage: 'fr-FR',
+    keywords: article.tags?.join(', '),
+  }
+}
 
 interface ArticlePageProps {
   article: BlogArticle
 }
 
 export default function ArticlePage({ article }: ArticlePageProps) {
-  const pageTitle = `${article.title} | Digiqo Blog`
   const pageDescription = article.metaDescription || article.excerpt
+  const articleUrl = `${SITE_URL}/blog/${article.slug}`
+  const articleImage = article.featuredImage.startsWith('http')
+    ? article.featuredImage
+    : `${SITE_URL}${article.featuredImage}`
+  const blogPostingSchema = buildBlogPostingSchema(article)
   return (
     <>
-      <Head>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-        <meta property="og:title" content={article.title} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={article.featuredImage} />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={article.title} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content={article.featuredImage} />
-      </Head>
+      <SEO
+        title={article.title}
+        description={pageDescription}
+        image={articleImage}
+        url={articleUrl}
+        type="article"
+        siteName="Digiqo Blog"
+        structuredData={blogPostingSchema}
+      />
 
       <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
         {/* Header */}
