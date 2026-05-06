@@ -203,7 +203,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
 
 export function ResultsSection() {
   return (
-    <section className="py-8 md:py-32 relative overflow-hidden">
+    <section className="py-8 md:py-32 relative overflow-hidden bg-white">
       {/* Background decoration avec mesh gradient */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 right-0 w-96 h-96 bg-digiqo-primary/10 rounded-full blur-3xl"></div>
@@ -212,7 +212,7 @@ export function ResultsSection() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -220,14 +220,14 @@ export function ResultsSection() {
           className="text-center mb-16"
         >
           <h3 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="text-white">Des Résultats</span>{' '}
+            <span className="text-gray-900">Des Résultats</span>{' '}
             <span className="bg-gradient-to-r from-digiqo-accent to-digiqo-secondary bg-clip-text text-transparent">
               Qui Parlent
             </span>
           </h3>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Nous ne promettons pas la lune, nous la décrochons pour nos clients.<br />
-            <span className="text-white font-semibold">Voici les chiffres</span> qui font notre fierté depuis 2020.
+            <span className="text-gray-900 font-semibold">Voici les chiffres</span> qui font notre fierté depuis 2020.
           </p>
         </motion.div>
 
