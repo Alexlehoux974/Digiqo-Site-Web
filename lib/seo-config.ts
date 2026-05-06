@@ -57,12 +57,161 @@ export const seoConfig = {
   },
 };
 
-// Structured data for LocalBusiness.
-// Coordinates -20.8789, 55.4481 are approximate for the 8 ruelle Boulot block;
-// refine with exact Google Maps lookup before prod merge.
-// aggregateRating mirrors the public Trustpilot profile (digiqo.tech) — re-check
-// at deploy time and update both this object and the static fallback in
-// components/Trustpilot/TrustpilotWidget.tsx.
+// Stacked schema for the home page. Exposes one graph with four cross-linked
+// entities so Google and LLMs can resolve "Digiqo" as a single brand:
+//   - Organization (#organization) — the legal/brand entity
+//   - LocalBusiness (#localbusiness) — the physical/local fiche, parented by
+//     the Organization above
+//   - WebSite (#website) — the digital property, published by Organization
+//   - BreadcrumbList (#breadcrumb) — minimal Home entry for the root URL
+//
+// Coordinates -20.8789, 55.4481 are approximate for the 8 ruelle Boulot
+// block; refine with an exact Google Maps lookup if needed.
+// aggregateRating mirrors the public Trustpilot profile (digiqo.tech) — keep
+// this number in sync with components/Trustpilot/TrustpilotWidget.tsx.
+const SAME_AS = [
+  "https://www.facebook.com/digiqo/",
+  "https://www.instagram.com/digiqo_",
+  "https://www.tiktok.com/@digiqo",
+  "https://fr.linkedin.com/company/digiqo",
+  "https://fr.trustpilot.com/review/digiqo.tech"
+];
+
+export const homeStructuredDataGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://digiqo.fr/#organization",
+      "name": "Digiqo",
+      "alternateName": "Digiqo - Agence Marketing Digital La Réunion",
+      "url": "https://digiqo.fr",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://digiqo.fr/#logo",
+        "url": "https://digiqo.fr/assets/logo2-digiqo.png",
+        "contentUrl": "https://digiqo.fr/assets/logo2-digiqo.png",
+        "caption": "Digiqo"
+      },
+      "image": { "@id": "https://digiqo.fr/#logo" },
+      "telephone": "+262 262 02 51 02",
+      "email": "contact@digiqo.fr",
+      "foundingDate": "2020",
+      "founder": {
+        "@type": "Person",
+        "name": "Rodolphe Le Houx"
+      },
+      "sameAs": SAME_AS
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://digiqo.fr/#localbusiness",
+      "name": "Digiqo",
+      "alternateName": "Digiqo - Agence Marketing Digital La Réunion",
+      "description": "Première agence de l'océan Indien certifiée Meta Business Partner. Experts en marketing digital, publicité Meta Ads et Google Ads, développement web, SEO et community management à La Réunion.",
+      "url": "https://digiqo.fr",
+      "telephone": "+262 262 02 51 02",
+      "email": "contact@digiqo.fr",
+      "image": { "@id": "https://digiqo.fr/#logo" },
+      "logo": { "@id": "https://digiqo.fr/#logo" },
+      "priceRange": "€€",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8 ruelle Boulot",
+        "addressLocality": "Saint-Denis",
+        "postalCode": "97400",
+        "addressRegion": "La Réunion",
+        "addressCountry": "RE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -20.8789,
+        "longitude": 55.4481
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "17:00"
+        }
+      ],
+      "areaServed": {
+        "@type": "Place",
+        "name": "La Réunion",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -21.115141,
+          "longitude": 55.536384
+        }
+      },
+      "sameAs": SAME_AS,
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.7",
+        "reviewCount": "30",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "parentOrganization": { "@id": "https://digiqo.fr/#organization" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services de Marketing Digital",
+        "itemListElement": [
+          {
+            "@type": "Service",
+            "name": "Publicité en ligne",
+            "description": "Campagnes Google Ads et Meta optimisées pour le marché réunionnais"
+          },
+          {
+            "@type": "Service",
+            "name": "Développement Web",
+            "description": "Sites web sur-mesure, responsive, optimisés"
+          },
+          {
+            "@type": "Service",
+            "name": "Community Management",
+            "description": "Gestion professionnelle des réseaux sociaux"
+          },
+          {
+            "@type": "Service",
+            "name": "Référencement SEO",
+            "description": "Stratégie SEO locale pour le marché réunionnais"
+          },
+          {
+            "@type": "Service",
+            "name": "Identité de marque",
+            "description": "Logo, branding et identité visuelle"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://digiqo.fr/#website",
+      "url": "https://digiqo.fr",
+      "name": "Digiqo",
+      "description": "Agence Marketing Digital La Réunion",
+      "publisher": { "@id": "https://digiqo.fr/#organization" },
+      "inLanguage": "fr-FR"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://digiqo.fr/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://digiqo.fr/"
+        }
+      ]
+    }
+  ]
+};
+
+// Backward-compatible alias retained for any non-home page that may import
+// the old name. Prefer homeStructuredDataGraph for new code.
 export const businessStructuredData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",

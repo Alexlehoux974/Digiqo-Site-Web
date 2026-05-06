@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { SEO } from '@/components/SEO'
-import { seoConfig, businessStructuredData } from '@/lib/seo-config'
+import { seoConfig, homeStructuredDataGraph } from '@/lib/seo-config'
 import Image from 'next/image'
 import { PartnerImage } from '@/components/ui/PartnerImage'
 import { partnersData } from '@/lib/partners-data'
@@ -334,7 +334,7 @@ export default function Home() {
         description={seoConfig.pages.home.description}
         keywords={seoConfig.pages.home.keywords}
         url={seoConfig.default.siteUrl}
-        structuredData={businessStructuredData}
+        structuredData={homeStructuredDataGraph}
       />
 
       <HeaderLuxury />
