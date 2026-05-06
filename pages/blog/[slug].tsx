@@ -11,18 +11,20 @@ interface ArticlePageProps {
 }
 
 export default function ArticlePage({ article }: ArticlePageProps) {
+  const pageTitle = `${article.title} | Digiqo Blog`
+  const pageDescription = article.metaDescription || article.excerpt
   return (
     <>
       <Head>
-        <title>{article.title} | Digiqo Blog</title>
-        <meta name="description" content={article.metaDescription || article.excerpt} />
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
         <meta property="og:title" content={article.title} />
-        <meta property="og:description" content={article.metaDescription || article.excerpt} />
+        <meta property="og:description" content={pageDescription} />
         <meta property="og:image" content={article.featuredImage} />
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={article.title} />
-        <meta name="twitter:description" content={article.metaDescription || article.excerpt} />
+        <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={article.featuredImage} />
       </Head>
 
