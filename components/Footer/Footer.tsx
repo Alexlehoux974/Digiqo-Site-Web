@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Instagram, Facebook, Linkedin, Youtube, Mail, Phone, MapPin } from 'lucide-react'
 import { SiTiktok, SiX } from 'react-icons/si'
 import Link from 'next/link'
+import { TrustpilotWidget } from '@/components/Trustpilot'
 
 const navigation = {
   services: [
@@ -225,6 +226,13 @@ export const Footer = () => {
                 </div>
               </div>
             </motion.div>
+          </div>
+        </div>
+
+        {/* Trustpilot strip */}
+        <div className="border-t border-gray-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-center">
+            <TrustpilotWidget variant="microcombo" theme="dark" />
           </div>
         </div>
 

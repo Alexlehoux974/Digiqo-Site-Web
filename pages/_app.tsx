@@ -128,6 +128,13 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      {/* Trustpilot bootstrap — cookieless, loaded for everyone (no PII) */}
+      <Script
+        id="trustpilot-bootstrap"
+        src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
+        strategy="afterInteractive"
+      />
+
       {/* Initialize dataLayer and gtag with consent defaults (always, before any script loads) */}
       <Script
         id="gtag-consent-default"

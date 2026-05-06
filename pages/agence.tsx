@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { SEO } from '@/components/SEO'
 import { HeaderLuxury } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { TrustpilotWidget } from '@/components/Trustpilot'
 import { Linkedin, Mail, Users, Rocket, Heart, Target, Calendar, Award, Sparkles, Clock } from 'lucide-react'
 import { OptimizedImage } from '@/components/ui/OptimizedImage'
 import Link from 'next/link'
@@ -844,8 +845,18 @@ export default function Agence() {
           </div>
         </motion.section>
 
+        {/* Trustpilot reviews */}
+        <section className="bg-white py-12 md:py-16">
+          <div className="max-w-5xl mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-gray-900">
+              Ils nous font confiance
+            </h2>
+            <TrustpilotWidget variant="carousel" theme="light" />
+          </div>
+        </section>
+
         {/* Animated section divider */}
-        <motion.div 
+        <motion.div
           className="relative h-16 overflow-hidden"
           style={{ opacity: ctaFade }}
         >
