@@ -57,30 +57,46 @@ export const seoConfig = {
   },
 };
 
-// Structured data for LocalBusiness
+// Structured data for LocalBusiness.
+// Coordinates -20.8789, 55.4481 are approximate for the 8 ruelle Boulot block;
+// refine with exact Google Maps lookup before prod merge.
+// aggregateRating mirrors the public Trustpilot profile (digiqo.tech) — re-check
+// at deploy time and update both this object and the static fallback in
+// components/Trustpilot/TrustpilotWidget.tsx.
 export const businessStructuredData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
+  "@id": "https://digiqo.fr/#organization",
   "name": "Digiqo",
-  "description": "Agence de marketing digital à La Réunion",
+  "alternateName": "Digiqo - Agence Marketing Digital La Réunion",
+  "description": "Première agence de l'océan Indien certifiée Meta Business Partner. Experts en marketing digital, publicité Meta Ads et Google Ads, développement web, SEO et community management à La Réunion.",
   "url": "https://digiqo.fr",
   "telephone": "+262 262 02 51 02",
   "email": "contact@digiqo.fr",
+  "logo": "https://digiqo.fr/assets/logo2-digiqo.png",
+  "image": "https://digiqo.fr/assets/logo2-digiqo.png",
+  "priceRange": "€€",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "123 Rue de l'Innovation",
+    "streetAddress": "8 ruelle Boulot",
     "addressLocality": "Saint-Denis",
     "postalCode": "97400",
+    "addressRegion": "La Réunion",
     "addressCountry": "RE"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": -20.8823,
-    "longitude": 55.4504
+    "latitude": -20.8789,
+    "longitude": 55.4481
   },
-  "openingHours": "Mo-Fr 08:00-17:00",
-  "priceRange": "€€",
-  "image": "https://digiqo.fr/assets/logo2-digiqo.png",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "17:00"
+    }
+  ],
   "areaServed": {
     "@type": "Place",
     "name": "La Réunion",
@@ -90,10 +106,16 @@ export const businessStructuredData = {
       "longitude": 55.536384
     }
   },
+  "sameAs": [
+    "https://www.facebook.com/digiqo/",
+    "https://www.instagram.com/digiqo_",
+    "https://www.tiktok.com/@digiqo",
+    "https://fr.linkedin.com/company/digiqo"
+  ],
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "124",
+    "ratingValue": "4.7",
+    "reviewCount": "30",
     "bestRating": "5",
     "worstRating": "1"
   },
@@ -104,31 +126,28 @@ export const businessStructuredData = {
       {
         "@type": "Service",
         "name": "Publicité en ligne",
-        "description": "Campagnes Google Ads et Meta optimisées pour La Réunion"
+        "description": "Campagnes Google Ads et Meta optimisées pour le marché réunionnais"
       },
       {
         "@type": "Service",
         "name": "Développement Web",
-        "description": "Sites web sur-mesure et applications mobiles"
-      },
-      {
-        "@type": "Service",
-        "name": "SEO",
-        "description": "Référencement naturel local et national"
+        "description": "Sites web sur-mesure, responsive, optimisés"
       },
       {
         "@type": "Service",
         "name": "Community Management",
-        "description": "Gestion professionnelle de vos réseaux sociaux"
+        "description": "Gestion professionnelle des réseaux sociaux"
+      },
+      {
+        "@type": "Service",
+        "name": "Référencement SEO",
+        "description": "Stratégie SEO locale pour le marché réunionnais"
+      },
+      {
+        "@type": "Service",
+        "name": "Identité de marque",
+        "description": "Logo, branding et identité visuelle"
       }
     ]
-  },
-  "sameAs": [
-    "https://www.facebook.com/digiqo",
-    "https://www.instagram.com/digiqo_",
-    "https://www.linkedin.com/company/digiqo",
-    "https://www.youtube.com/@digiqo_",
-    "https://twitter.com/digiqo",
-    "https://www.tiktok.com/@digiqo"
-  ]
+  }
 };

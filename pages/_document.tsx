@@ -38,8 +38,8 @@ export default function Document() {
         {/* Métadonnées géographiques pour le SEO local */}
         <meta name="geo.region" content="RE" />
         <meta name="geo.placename" content="Saint-Denis, La Réunion" />
-        <meta name="geo.position" content="-20.8823;55.4504" />
-        <meta name="ICBM" content="-20.8823, 55.4504" />
+        <meta name="geo.position" content="-20.8789;55.4481" />
+        <meta name="ICBM" content="-20.8789, 55.4481" />
 
       </Head>
       <body>
