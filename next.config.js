@@ -47,6 +47,14 @@ const nextConfig = {
         destination: '/devis-web',
         permanent: true,
       },
+      {
+        // Stale legacy URL still indexed by Google as a 404. Redirect to the
+        // service it used to live under; the #faq fragment is cosmetic and
+        // is preserved to the browser by Next.js.
+        source: '/accueil-digiqo/faq',
+        destination: '/services/publicite-en-ligne#faq',
+        permanent: true,
+      },
     ]
   },
   poweredByHeader: false,
