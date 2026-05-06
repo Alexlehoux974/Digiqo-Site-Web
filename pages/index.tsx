@@ -108,11 +108,14 @@ const videoThumbs: Record<string, string> = {
   "VANILLE JEU-CONCOURS": "/references/video-thumbs/vanille-jeu-concours.webp",
 }
 
+// Réunion timezone (UTC+4). Past dates short-circuit the countdown section below.
+const DASHBOARD_LAUNCH = new Date('2026-05-01T00:00:00+04:00')
+
 function DashboardCountdown() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
 
   useEffect(() => {
-    const target = new Date('2026-05-01T00:00:00+04:00').getTime() // Réunion timezone
+    const target = DASHBOARD_LAUNCH.getTime()
     const tick = () => {
       const now = Date.now()
       const diff = Math.max(0, target - now)
@@ -345,6 +348,7 @@ export default function Home() {
         <ResultsSection />
 
         {/* NEWS — Dashboard SMA */}
+        {Date.now() < DASHBOARD_LAUNCH.getTime() && (
         <section className="py-12 md:py-20 relative overflow-hidden bg-[#E9E9E9]">
 
           <div className="relative z-10 max-w-6xl mx-auto px-4">
@@ -416,6 +420,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+        )}
 
         {/* 2. Réalisations vidéo — Carrousel */}
         <section id="realisations" className="py-8 md:py-24 relative overflow-hidden bg-[#8B1431]">
