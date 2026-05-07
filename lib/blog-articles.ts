@@ -37,7 +37,7 @@ export const blogArticles: BlogArticle[] = [
       "/blog-images/tiktok-analytics.jpeg"
     ],
     tags: ["TikTok", "Marketing Digital", "Réseaux Sociaux", "La Réunion", "Vidéo Marketing", "Génération Z", "Influence Marketing"],
-    metaDescription: "Guide complet du marketing TikTok à La Réunion fin 2025. Stratégies de contenu viral, algorithme, publicité TikTok Ads et monétisation pour entreprises locales.",
+    metaDescription: "Guide complet du marketing TikTok à La Réunion fin 2026. Stratégies de contenu viral, algorithme, publicité TikTok Ads et monétisation pour entreprises locales.",
     content: `
 # TikTok Marketing à La Réunion : La stratégie incontournable pour les entreprises en 2025
 
@@ -164,7 +164,7 @@ Chez Digiqo, nous accompagnons les entreprises réunionnaises dans leur transfor
       "/blog-images/seo-hero.jpeg"
     ],
     tags: ["SEO", "Référencement", "La Réunion", "Google", "Marketing Digital", "Visibilité", "Trafic Organique"],
-    metaDescription: "Guide complet du SEO à La Réunion en 2025. Stratégies de référencement local, optimisation technique, recherche de mots-clés et techniques pour dominer les résultats Google.",
+    metaDescription: "Guide complet du SEO à La Réunion en 2026. Stratégies de référencement local, optimisation technique, recherche de mots-clés et techniques pour dominer les résultats Google.",
     content: `
 # SEO à La Réunion : Guide complet du référencement naturel local pour dominer Google en 2025
 
@@ -323,7 +323,7 @@ Notre accompagnement SEO sur-mesure transforme votre site en machine à génére
       "/blog-images/crisis-management.jpeg"
     ],
     tags: ["Community Management", "Réseaux Sociaux", "La Réunion", "Engagement", "Marketing Digital", "Facebook", "Instagram"],
-    metaDescription: "Guide complet du community management à La Réunion en 2025. Stratégies locales, gestion de communauté, création de contenu viral et techniques d'engagement pour les réseaux sociaux.",
+    metaDescription: "Guide complet du community management à La Réunion en 2026. Stratégies locales, gestion de communauté, création de contenu viral et techniques d'engagement pour les réseaux sociaux.",
     content: `
 # Community Management à La Réunion : Stratégies gagnantes pour engager votre audience en 2025
 
@@ -469,7 +469,7 @@ Chez Digiqo, nous accompagnons les marques dans cette transformation digitale en
       "/blog-images/roi-growth-chart.jpeg"
     ],
     tags: ["Google Ads", "Marketing Digital", "La Réunion", "ROI", "Publicité en ligne"],
-    metaDescription: "Guide complet pour optimiser vos campagnes Google Ads à La Réunion en 2025. Stratégies locales, ciblage géographique, et conseils d'experts pour maximiser votre ROI.",
+    metaDescription: "Guide complet pour optimiser vos campagnes Google Ads à La Réunion en 2026. Stratégies locales, ciblage géographique, et conseils d'experts pour maximiser votre ROI.",
     content: `
 # Comment optimiser vos campagnes Google Ads à La Réunion en 2025
 
@@ -634,7 +634,7 @@ Prêt à transformer vos campagnes Google Ads ? Contactez-nous pour un audit gra
       "/blog-images/dev-web-deployment.jpeg"
     ],
     tags: ["Développement Web", "La Réunion", "React", "Next.js", "Performance", "SEO", "E-commerce", "PWA"],
-    metaDescription: "Guide complet du développement web à La Réunion en 2025. Technologies modernes, optimisation performance, sécurité et stratégies de développement adaptées au marché local.",
+    metaDescription: "Guide complet du développement web à La Réunion en 2026. Technologies modernes, optimisation performance, sécurité et stratégies de développement adaptées au marché local.",
     content: `
 # Développement Web à La Réunion : Guide complet pour créer des sites performants en 2025
 
@@ -825,7 +825,7 @@ Prêt à transformer votre présence digitale ? Contactez-nous pour une consulta
       "/blog-images/identity-brand-guide.jpeg"
     ],
     tags: ["Identité Visuelle", "Branding", "La Réunion", "Logo", "Charte Graphique", "Design", "Marketing"],
-    metaDescription: "Guide complet pour créer une identité visuelle percutante à La Réunion en 2025. Logo, charte graphique, branding culturel et stratégies de différenciation sur le marché local.",
+    metaDescription: "Guide complet pour créer une identité visuelle percutante à La Réunion en 2026. Logo, charte graphique, branding culturel et stratégies de différenciation sur le marché local.",
     content: `
 # Identité Visuelle à La Réunion : Créer une marque mémorable qui reflète l'âme créole
 
@@ -960,7 +960,7 @@ L'identité visuelle ne doit pas être vue comme un élément statique mais comm
       "/blog-images/video-mobile.jpeg"
     ],
     tags: ["Production Vidéo", "Marketing Digital", "La Réunion", "Storytelling", "Contenu Visuel", "YouTube", "Réseaux Sociaux"],
-    metaDescription: "Guide complet de la production vidéo à La Réunion en 2025. Techniques de tournage, storytelling local, montage professionnel et stratégies de diffusion multi-canal.",
+    metaDescription: "Guide complet de la production vidéo à La Réunion en 2026. Techniques de tournage, storytelling local, montage professionnel et stratégies de diffusion multi-canal.",
     content: `
 # Production Vidéo à La Réunion : Captiver votre audience avec des contenus visuels puissants
 

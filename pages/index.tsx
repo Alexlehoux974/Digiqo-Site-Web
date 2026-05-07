@@ -339,12 +339,13 @@ export default function Home() {
 
       <HeaderLuxury />
       <main className="bg-[#8B1431]">
-        {/* The visible page h1 lives in HeroParallax. Keep this as a screen-
-            reader h2 so the "Agence Marketing Digital La Réunion" keyword
-            stays in the document outline without competing for h1 priority. */}
-        <h2 className="sr-only">
-          L'Agence Marketing Digital Qui Booste Vos Ventes - Digiqo La Réunion
-        </h2>
+        {/* HeroParallax loads with ssr: false, so its visible headline is not
+            in the SSR HTML. This sr-only h1 carries the SEO/GEO keywords and
+            is THE single h1 of the page in the rendered document — see the
+            HeroParallax headline which is now a semantic h2. */}
+        <h1 className="sr-only">
+          Agence Marketing Digital à La Réunion — Publicité Meta Ads, Google Ads, SEO
+        </h1>
 
         {/* 1. Hero + Logos */}
         <HeroParallax products={products} />

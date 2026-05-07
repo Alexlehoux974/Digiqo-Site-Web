@@ -38,13 +38,13 @@ export const HeroParallax = ({
         {/* Centered layout */}
         <div className="text-center">
           {/* Headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight">
             Publicité en ligne.
             <br />
             <span className="bg-gradient-to-r from-digiqo-accent to-yellow-400 bg-clip-text text-transparent">
               Résultats concrets.
             </span>
-          </h1>
+          </h2>
 
           {/* Subtitle */}
           <p className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
