@@ -15,6 +15,11 @@ import {
   CallOut,
   InlineQA,
   DefinitionBox,
+  StatHero,
+  BarChart,
+  PullQuote,
+  NumberedSteps,
+  ComparisonTable,
   DIGIQO_AUTHOR,
 } from '@/components/blog'
 import type { BreadcrumbItem, TocItem } from '@/components/blog'
@@ -39,16 +44,6 @@ const TOC: TocItem[] = [
       </>
     ),
   },
-]
-
-// Temporary placeholder sections so the scrollspy has something to track
-// while commits 5-7 build the real prose blocks.
-const PLACEHOLDER_SECTIONS = [
-  { id: 'section-1', num: '01', title: 'Le CPM réel à La Réunion en 2026' },
-  { id: 'section-2', num: '02', title: 'Budget minimum pour un test sérieux' },
-  { id: 'section-3', num: '03', title: 'TikTok Ads vs Meta Ads : qui gagne en 2026 ?' },
-  { id: 'section-4', num: '04', title: '5 étapes pour ne pas brûler son budget' },
-  { id: 'section-5', num: '05', title: 'Quand ne pas faire de TikTok Ads' },
 ]
 
 export default function BlogPreviewPage() {
@@ -155,21 +150,42 @@ export default function BlogPreviewPage() {
                 pour les définitions complètes (CPC, CPA, ROAS, etc.).
               </DefinitionBox>
 
-              <CallOut variant="stat" label="Le chiffre qui compte" statValue="+60 %">
-                <p>
-                  de portée organique supplémentaire pour une vidéo qui combine hashtag local
-                  (#974, #LaReunion) <em>et</em> hashtag tendance global, comparé à une vidéo
-                  sans hashtag local.
-                </p>
-                <p style={{ fontSize: '12.5px', color: '#64748B', marginTop: '8px' }}>
-                  Source : analyse Digiqo · 2 400 vidéos clients · Q1 2026
-                </p>
-              </CallOut>
+              <StatHero
+                value="8-15 €"
+                sourceLabel="analyse Digiqo · 50 comptes clients · janv-mars 2026 · benchmark TikTok Ads Manager"
+                sourceUrl="https://www.tiktok.com/business/fr"
+              >
+                C'est la fourchette du <strong>CPM TikTok Ads à La Réunion en 2026</strong>, contre
+                18-32 € en France métropolitaine. Un avantage de 40-50 % qui ne durera pas.
+              </StatHero>
+
+              <h3 className="font-display font-bold text-[22px] text-digiqo-black mt-9 mb-2 leading-[1.3] tracking-[-0.015em]">
+                Variations par secteur d'activité
+              </h3>
+              <p className="text-[17.5px] leading-[1.78] text-slate-700">
+                La fourchette 8-15 € masque de fortes variations. Certaines verticales locales sont
+                encore quasi-vierges (artisanat, services pros B2B), d'autres saturées (e-commerce
+                mode, restauration Saint-Gilles).
+              </p>
+
+              <BarChart
+                title="CPM TikTok Ads par secteur · La Réunion 2026 (€)"
+                rows={[
+                  { label: 'Artisanat / déco', widthPct: 38, valueLabel: '7,80 €' },
+                  { label: 'B2B services', widthPct: 42, valueLabel: '8,40 €' },
+                  { label: 'Beauté / bien-être', widthPct: 55, valueLabel: '11,20 €' },
+                  { label: 'E-commerce mode', widthPct: 68, valueLabel: '13,80 €' },
+                  { label: 'Restauration St-Gilles', widthPct: 74, valueLabel: '14,90 €' },
+                  { label: 'Immobilier', widthPct: 82, valueLabel: '16,50 €' },
+                ]}
+              />
 
               <InlineQA question="Pourquoi le CPM artisanat est si bas à La Réunion ?">
                 Parce que personne ou presque n'enchérit sur ces audiences. Sur les 30 dernières
                 campagnes Digiqo en artisanat 974, l'enchère est gagnée 78 % du temps au prix
-                plancher.
+                plancher. Cette fenêtre se refermera quand{' '}
+                <a href="/services/community-management">notre offre community management</a>{' '}
+                aura convaincu plus d'artisans de se lancer.
               </InlineQA>
 
               <CallOut variant="anecdote" label="Anecdote 974">
@@ -183,27 +199,209 @@ export default function BlogPreviewPage() {
               </CallOut>
             </section>
 
-            {/* ─── Sections 2-5 placeholders (replaced in commits 6-7) ─── */}
-            {PLACEHOLDER_SECTIONS.slice(1).map((s) => (
-              <section key={s.id} className="mt-16">
-                <h2
-                  id={s.id}
-                  className="font-display font-bold text-[30px] text-digiqo-black tracking-[-0.025em] leading-[1.18] scroll-mt-[96px]"
-                >
-                  <span className="inline-block text-[13px] font-bold text-digiqo-primary bg-digiqo-primary/[0.08] px-2.5 py-1 rounded-md mr-2.5 align-middle -translate-y-[3px] tracking-[0.04em] font-display">
-                    {s.num}
-                  </span>
-                  {s.title}
-                </h2>
-                <p className="mt-3 text-slate-500 italic text-[15px]">
-                  🚧 Bloc de contenu à venir au commit suivant.
+            {/* ─── Section 2 ─── */}
+            <section className="mt-16">
+              <h2
+                id="section-2"
+                className="font-display font-bold text-[30px] text-digiqo-black tracking-[-0.025em] leading-[1.18] scroll-mt-[96px]"
+              >
+                <span className="inline-block text-[13px] font-bold text-digiqo-primary bg-digiqo-primary/[0.08] px-2.5 py-1 rounded-md mr-2.5 align-middle -translate-y-[3px] tracking-[0.04em] font-display">
+                  02
+                </span>
+                Budget minimum pour un test sérieux
+              </h2>
+
+              <p className="mt-4 text-[17.5px] leading-[1.78] text-slate-700">
+                En dessous d'un certain seuil, l'algorithme TikTok n'a pas assez de signaux pour
+                optimiser. Tu brûles ton budget en phase d'apprentissage perpétuelle. Le seuil
+                critique observé sur le marché local : <strong>1 500 €</strong>.
+              </p>
+
+              <CallOut variant="warning" label="Erreur classique">
+                <p>
+                  Tester avec 300 €/mois pendant 1 mois. L'algorithme n'a pas le temps de sortir de
+                  la phase d'apprentissage (~50 conversions requises). Conclusion fausse :
+                  « TikTok Ads ne marche pas pour mon business. » Réalité : tu n'as pas testé, tu
+                  as donné de l'argent à TikTok.
                 </p>
-              </section>
-            ))}
+              </CallOut>
+
+              <ComparisonTable
+                title="Budget test 1 500 € sur 90 jours · répartition recommandée"
+                subtitle="Méthodologie Digiqo · validée sur 50+ campagnes locales"
+                headers={['Phase', 'Durée', 'Budget', 'Objectif']}
+                rows={[
+                  [
+                    { kind: 'text', value: 'Exploration' },
+                    { kind: 'text', value: '30 jours' },
+                    { kind: 'text', value: '500 €' },
+                    { kind: 'text', value: 'Tester 5-7 créatives, identifier le hook gagnant' },
+                  ],
+                  [
+                    { kind: 'text', value: 'Optimisation' },
+                    { kind: 'text', value: '30 jours' },
+                    { kind: 'text', value: '500 €' },
+                    { kind: 'text', value: 'Concentrer le budget sur les top 2 ad sets, optimiser CPA' },
+                  ],
+                  [
+                    { kind: 'text', value: 'Scaling + retargeting' },
+                    { kind: 'text', value: '30 jours' },
+                    { kind: 'text', value: '500 €' },
+                    { kind: 'text', value: 'Monter le budget journalier, activer audiences chaudes' },
+                  ],
+                ]}
+              />
+            </section>
+
+            {/* ─── Section 3 ─── */}
+            <section className="mt-16">
+              <h2
+                id="section-3"
+                className="font-display font-bold text-[30px] text-digiqo-black tracking-[-0.025em] leading-[1.18] scroll-mt-[96px]"
+              >
+                <span className="inline-block text-[13px] font-bold text-digiqo-primary bg-digiqo-primary/[0.08] px-2.5 py-1 rounded-md mr-2.5 align-middle -translate-y-[3px] tracking-[0.04em] font-display">
+                  03
+                </span>
+                TikTok Ads vs Meta Ads : qui gagne en 2026 ?
+              </h2>
+
+              <p className="mt-4 text-[17.5px] leading-[1.78] text-slate-700">
+                Comparaison frontale sur les indicateurs qui comptent réellement pour un annonceur
+                réunionnais en 2026, sur la base de campagnes appariées (même budget, même audience
+                cible, même offre).
+              </p>
+
+              <ComparisonTable
+                title="TikTok Ads vs Meta Ads · benchmark Réunion 2026"
+                subtitle="Sur 24 comptes appariés Digiqo · janv-mars 2026 · panier moyen 85 €"
+                headers={['Indicateur', 'TikTok Ads', 'Meta Ads', 'Avantage']}
+                rows={[
+                  [
+                    { kind: 'text', value: 'CPM moyen' },
+                    { kind: 'text', value: '11,20 €' },
+                    { kind: 'text', value: '22,40 €' },
+                    { kind: 'verdict', value: 'TikTok ÷2', winner: 'left' },
+                  ],
+                  [
+                    { kind: 'text', value: 'CTR moyen' },
+                    { kind: 'text', value: '2,8 %' },
+                    { kind: 'text', value: '1,1 %' },
+                    { kind: 'verdict', value: 'TikTok ×2,5', winner: 'left' },
+                  ],
+                  [
+                    { kind: 'text', value: 'CPA moyen' },
+                    { kind: 'text', value: '9,40 €' },
+                    { kind: 'text', value: '28,10 €' },
+                    { kind: 'verdict', value: 'TikTok ÷3', winner: 'left' },
+                  ],
+                  [
+                    { kind: 'text', value: 'Taux de conversion' },
+                    { kind: 'text', value: '1,9 %' },
+                    { kind: 'text', value: '2,4 %' },
+                    { kind: 'verdict', value: 'Meta +25 %', winner: 'right' },
+                  ],
+                  [
+                    { kind: 'text', value: 'Audience B2B' },
+                    { kind: 'text', value: 'Limitée 974' },
+                    { kind: 'text', value: 'Forte' },
+                    { kind: 'verdict', value: 'Meta net', winner: 'right' },
+                  ],
+                  [
+                    { kind: 'text', value: 'ROAS 30 jours' },
+                    { kind: 'text', value: '4,2×' },
+                    { kind: 'text', value: '2,8×' },
+                    { kind: 'verdict', value: 'TikTok +50 %', winner: 'left' },
+                  ],
+                ]}
+              />
+
+              <PullQuote attribution="retour d'expérience Digiqo · 50 comptes 2026">
+                {`TikTok gagne sur l'acquisition. Meta gagne sur la fidélisation.\nLes deux ensemble battent l'un ou l'autre.`}
+              </PullQuote>
+            </section>
+
+            {/* ─── Section 4 ─── */}
+            <section className="mt-16">
+              <h2
+                id="section-4"
+                className="font-display font-bold text-[30px] text-digiqo-black tracking-[-0.025em] leading-[1.18] scroll-mt-[96px]"
+              >
+                <span className="inline-block text-[13px] font-bold text-digiqo-primary bg-digiqo-primary/[0.08] px-2.5 py-1 rounded-md mr-2.5 align-middle -translate-y-[3px] tracking-[0.04em] font-display">
+                  04
+                </span>
+                5 étapes pour ne pas brûler son budget
+              </h2>
+
+              <p className="mt-4 text-[17.5px] leading-[1.78] text-slate-700">
+                La méthode Digiqo en 5 étapes, validée sur 50+ comptes, pour qu'une campagne TikTok
+                Ads à 1 500 € sur 90 jours sorte rentable plutôt que ruinée.
+              </p>
+
+              <NumberedSteps
+                steps={[
+                  {
+                    title: 'Installer pixel TikTok + API Conversions',
+                    body: (
+                      <>
+                        Sans tracking serveur en 2026, tu tires à l'aveugle. iOS 17+ a tué le pixel
+                        client-side. On installe systématiquement les deux. Voir notre{' '}
+                        <a href="/services/publicite-en-ligne">offre tracking publicitaire</a>.
+                      </>
+                    ),
+                  },
+                  {
+                    title: 'Tourner 5-7 créatives en interne',
+                    body: 'Smartphone + lumière naturelle. Les vidéos studio polies sous-performent les vidéos UGC de 60 % en moyenne.',
+                  },
+                  {
+                    title: 'Lancer en CBO avec audiences larges',
+                    body: 'Campaign Budget Optimization > Ad Set BO sur petit budget local. Audiences ouvertes > 500k personnes — l\'algorithme trouve seul ton acheteur.',
+                  },
+                  {
+                    title: 'Tuer impitoyablement à J+7',
+                    body: 'Toute créative sous 1 % CTR ou CPA > 2× cible est coupée. Pas de débat, pas d\'attendrissement. La discipline = la rentabilité.',
+                  },
+                  {
+                    title: 'Activer retargeting J+30',
+                    body: (
+                      <>
+                        Audiences custom : visiteurs site 30 jours, viewers vidéo 75 %, ATC abandonnés.
+                        C'est là que le ROAS double. Voir notre{' '}
+                        <a href="/services/community-management">guide complet du retargeting TikTok</a>.
+                      </>
+                    ),
+                  },
+                ]}
+              />
+
+              <CallOut variant="opinion" label="Mon avis (Alexandre)">
+                <p>
+                  Je vois encore beaucoup d'agences locales qui externalisent la création vidéo et
+                  facturent 800 € la créative. Sur TikTok, c'est suicidaire.{' '}
+                  <strong>La vidéo doit venir de toi ou de ton équipe.</strong> Une agence comme la
+                  nôtre intervient sur la stratégie, le ciblage et l'analyse — pas sur la production.
+                </p>
+              </CallOut>
+            </section>
+
+            {/* ─── Section 5 placeholder ─── */}
+            <section className="mt-16">
+              <h2
+                id="section-5"
+                className="font-display font-bold text-[30px] text-digiqo-black tracking-[-0.025em] leading-[1.18] scroll-mt-[96px]"
+              >
+                <span className="inline-block text-[13px] font-bold text-digiqo-primary bg-digiqo-primary/[0.08] px-2.5 py-1 rounded-md mr-2.5 align-middle -translate-y-[3px] tracking-[0.04em] font-display">
+                  05
+                </span>
+                Quand <em>ne pas</em> faire de TikTok Ads
+              </h2>
+              <p className="mt-3 text-slate-500 italic text-[15px]">
+                🚧 Liste + FAQ + Sources + Author bio + Related + CTA arrivent au commit 7.
+              </p>
+            </section>
 
             <div className="my-16 py-8 text-center border-t border-dashed border-slate-300 text-slate-500 text-sm">
-              🚧 Composants suivants : StatHero · BarChart · ComparisonTable · NumberedSteps ·
-              PullQuote · FAQ · Sources · Author bio · Related · BlogCTA
+              🚧 Reste : FAQ · Sources · Author bio · Related · BlogCTA
             </div>
           </article>
 

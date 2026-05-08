@@ -14,14 +14,18 @@ export type ArticleBlock =
   | { type: 'barChart'; title: string; bars: { label: string; widthPct: number; valueLabel: string }[] }
   | { type: 'inlineQA'; question: string; answerHtml: string }
   | { type: 'callout'; variant: CalloutVariant; label: string; bodyHtml: string }
-  | { type: 'comparisonTable'; title: string; subtitle?: string; headers: string[]; rows: ComparisonCell[][] }
+  | { type: 'comparisonTable'; title: string; subtitle?: string; headers: string[]; rows: ComparisonCellData[][] }
   | { type: 'numberedSteps'; steps: { title: string; bodyHtml: string }[] }
   | { type: 'pullQuote'; text: string; attribution?: string }
   | { type: 'blockquote'; text: string }
   | { type: 'image'; src: string; alt: string; caption?: string }
 
-export type ComparisonCell =
-  | { kind: 'text'; value: string; bold?: boolean }
+// Data-side cell type used in /lib/blog-articles (serializable: string only).
+// The runtime/component type ComparisonCell (with React.ReactNode) lives in
+// ./ComparisonTable.tsx. A mapper in commit 8 promotes ComparisonCellData
+// to ComparisonCell for rendering.
+export type ComparisonCellData =
+  | { kind: 'text'; value: string }
   | { kind: 'badge'; value: string; tone: 'good' | 'mid' | 'bad' }
   | { kind: 'verdict'; value: string; winner: 'left' | 'right' | 'tie' }
 

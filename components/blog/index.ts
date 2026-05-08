@@ -15,6 +15,14 @@ export type { TocItem } from './TableOfContents'
 export { CallOut } from './CallOut'
 export { InlineQA } from './InlineQA'
 export { DefinitionBox } from './DefinitionBox'
+export { StatHero } from './StatHero'
+export { BarChart } from './BarChart'
+export type { BarChartRow } from './BarChart'
+export { PullQuote } from './PullQuote'
+export { NumberedSteps } from './NumberedSteps'
+export type { NumberedStep } from './NumberedSteps'
+export { ComparisonTable } from './ComparisonTable'
+export type { ComparisonCell } from './ComparisonTable'
 
 export type {
   ArticleBlock,
@@ -22,7 +30,7 @@ export type {
   BlogArticleV2,
   BlogCTAConfig,
   CalloutVariant,
-  ComparisonCell,
+  ComparisonCellData,
   FAQItem,
   RelatedArticleRef,
   SourceRef,
