@@ -227,6 +227,7 @@ export const HeaderLuxury = () => {
                     width={1600}
                     height={554}
                     priority
+                    sizes="180px"
                     className="h-12 w-auto relative z-10"
                     objectFit="contain"
                   />
@@ -239,6 +240,7 @@ export const HeaderLuxury = () => {
                     width={1600}
                     height={554}
                     priority
+                    sizes="140px"
                     className="h-12 w-auto relative z-10"
                     objectFit="contain"
                   />
