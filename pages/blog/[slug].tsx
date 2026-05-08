@@ -1,23 +1,40 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
+import dynamic from 'next/dynamic'
 import Script from 'next/script'
 import { HeaderLuxury } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { SEO } from '@/components/SEO'
 import {
   ArticleHero,
-  AuthorCardExtended,
   BlockRenderer,
-  BlogCTA,
   buildArticleSchemas,
   FAQ,
   QuickAnswer,
-  RelatedArticles,
   RichText,
   SourcesBlock,
   TableOfContents,
   TldrBox,
 } from '@/components/blog'
 import type { BreadcrumbItem, TocItem } from '@/components/blog'
+
+// Below-the-fold + non-critical for SEO: defer JS load until client-side
+// hydration. The HTML for these blocks is not in the initial SSR payload —
+// AuthorCardExtended bio, RelatedArticles cards, BlogCTA banner come in
+// after first paint. ComparisonTable / BarChart / NumberedSteps / FAQ /
+// SourcesBlock stay SSR (their data is critical for non-JS-rendering bots
+// like Bing/Perplexity).
+const AuthorCardExtended = dynamic(
+  () => import('@/components/blog/AuthorCard').then((m) => m.AuthorCardExtended),
+  { ssr: false },
+)
+const RelatedArticles = dynamic(
+  () => import('@/components/blog/RelatedArticles').then((m) => m.RelatedArticles),
+  { ssr: false },
+)
+const BlogCTA = dynamic(
+  () => import('@/components/blog/BlogCTA').then((m) => m.BlogCTA),
+  { ssr: false },
+)
 import {
   getArticleContent,
   getArticleData,
