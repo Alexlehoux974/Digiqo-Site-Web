@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { m as motion, useInView } from 'framer-motion'
+import { useInView } from 'framer-motion'
 import { TrustpilotWidget } from '@/components/Trustpilot'
 
 interface Stat {
@@ -212,13 +212,8 @@ export function ResultsSection() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        {/* Above-the-fold (right after HeroParallax) — static, no whileInView (TBT) */}
+        <div className="text-center mb-16">
           <h3 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="text-gray-900">Des Résultats</span>{' '}
             <span className="bg-gradient-to-r from-digiqo-accent to-digiqo-secondary bg-clip-text text-transparent">
@@ -229,19 +224,12 @@ export function ResultsSection() {
             Nous ne promettons pas la lune, nous la décrochons pour nos clients.<br />
             <span className="text-gray-900 font-semibold">Voici les chiffres</span> qui font notre fierté depuis 2020.
           </p>
-        </motion.div>
+        </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mb-6 md:mb-20">
           {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
+            <div key={stat.label} className="text-center">
               <GlowCard
                 className="p-4 sm:p-6 md:p-8 bg-white shadow-lg hover:shadow-2xl hover:shadow-digiqo-primary/20 transition-all duration-300 border border-gray-100 flex flex-col items-center justify-center h-full"
                 glowColor={index === 0 || index === 2 ? 'bordeaux' : index === 1 ? 'orange' : 'blue'}
@@ -256,17 +244,11 @@ export function ResultsSection() {
                   <p className="text-digiqo-primary/80 mt-2 sm:mt-3 md:mt-4 font-semibold text-sm sm:text-base">{stat.label}</p>
                 </div>
               </GlowCard>
-            </motion.div>
+            </div>
           ))}
 
           {/* Trustpilot replaces the old "Note Globale" custom counter */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
+          <div className="text-center">
             <GlowCard
               className="p-4 sm:p-6 md:p-8 bg-white shadow-lg hover:shadow-2xl hover:shadow-digiqo-primary/20 transition-all duration-300 border border-gray-100 flex flex-col items-center justify-center h-full"
               glowColor="bordeaux"
@@ -275,7 +257,7 @@ export function ResultsSection() {
                 <TrustpilotWidget variant="score" theme="light" />
               </div>
             </GlowCard>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

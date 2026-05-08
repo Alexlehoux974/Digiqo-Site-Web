@@ -368,19 +368,14 @@ export default function PubliciteEnLignePage() {
         gradientTo="to-amber-400"
       />
 
-      {/* Quick Wins Section */}
+      {/* Quick Wins Section — above-the-fold static (was motion.div whileInView, stripped for TBT) */}
       <section className="relative py-16 -mt-20">
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {quickWins.map((item, index) => (
-              <motion.div
+              <div
                 key={index}
-                {...ANIMATION.entry.scaleIn}
-                whileInView={ANIMATION.entry.scaleIn.animate}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-                className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all flex flex-col h-full"
+                className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col h-full"
               >
                 <div className="w-12 h-12 bg-gradient-to-br from-digiqo-accent to-amber-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <item.icon className="w-6 h-6 text-white" />
@@ -398,7 +393,7 @@ export default function PubliciteEnLignePage() {
                     </span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
