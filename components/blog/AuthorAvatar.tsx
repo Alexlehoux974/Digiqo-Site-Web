@@ -12,7 +12,7 @@ interface AuthorAvatarProps {
 const sizeMap = {
   sm: { box: 'w-10 h-10', text: 'text-sm' },          // 40px — used in author-compact
   md: { box: 'w-11 h-11', text: 'text-base' },        // 44px
-  lg: { box: 'w-30 h-30 text-[42px]', text: 'text-[42px]' }, // 120px — author-bio
+  lg: { box: 'w-[120px] h-[120px]', text: 'text-[42px]' }, // 120px — author-bio
 } as const
 
 // Renders the photo when imageSrc is set, otherwise falls back to initials
