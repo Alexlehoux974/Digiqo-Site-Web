@@ -114,7 +114,6 @@ export const HeroParallax = ({
                 height={200}
                 sizes="(max-width: 768px) 140px, 180px"
                 className="w-[140px] h-[140px] md:w-[180px] md:h-[180px] object-contain drop-shadow-2xl"
-                priority
               />
             </div>
           </div>
