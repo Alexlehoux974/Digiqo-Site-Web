@@ -127,7 +127,7 @@ export default function BlogPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                     <div className="absolute bottom-4 left-4">
-                      <span className="inline-block px-3 py-1 bg-digiqo-accent text-white text-xs font-semibold rounded-full">
+                      <span className="inline-block px-3 py-1 bg-digiqo-primary text-white text-xs font-semibold rounded-full">
                         {article.category}
                       </span>
                     </div>

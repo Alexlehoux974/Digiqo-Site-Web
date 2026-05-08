@@ -94,9 +94,9 @@ export function TrustpilotWidget({
       target="_blank"
       rel="noopener noreferrer"
       className={`${wrapperClass} inline-flex items-center gap-2 text-sm`}
-      aria-label={`Note Trustpilot ${RATING} sur 5 — ${REVIEW_COUNT} avis`}
+      aria-label={`Trustpilot ${RATING}/5 — ${REVIEW_COUNT} avis`}
     >
-      <span className="text-yellow-500 tracking-wider">{STARS}</span>
+      <span className="text-yellow-500 tracking-wider" aria-hidden="true">{STARS}</span>
       <span>
         Trustpilot {RATING}/5 — {REVIEW_COUNT} avis
       </span>

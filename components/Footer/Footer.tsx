@@ -215,11 +215,12 @@ export const Footer = () => {
                         href={item.href}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={`Digiqo sur ${item.name}`}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         className="w-11 h-11 bg-white/5 hover:bg-cyan-500/20 border border-gray-700 hover:border-cyan-500 rounded-lg flex items-center justify-center transition-all duration-300 group"
                       >
-                        <Icon className="w-4 h-4 text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                        <Icon className="w-4 h-4 text-gray-400 group-hover:text-cyan-400 transition-colors" aria-hidden="true" />
                       </motion.a>
                     )
                   })}
@@ -253,7 +254,7 @@ export const Footer = () => {
                   <div key={item.name} className="flex items-center">
                     <Link
                       href={item.href}
-                      className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 px-2"
+                      className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 px-3 py-2 inline-block min-h-[24px] min-w-[24px]"
                     >
                       {item.name}
                     </Link>
@@ -266,7 +267,7 @@ export const Footer = () => {
                     window.dispatchEvent(new Event('cookieConsentUpdate'))
                     window.location.reload()
                   }}
-                  className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 px-2 cursor-pointer"
+                  className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 px-3 py-2 inline-block min-h-[24px] cursor-pointer"
                 >
                   Gérer mes cookies
                 </button>

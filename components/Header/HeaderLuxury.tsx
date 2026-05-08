@@ -681,6 +681,8 @@ export const HeaderLuxury = () => {
             {/* Mobile Luxury Menu - White bars on bordeaux background */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-expanded={isMenuOpen}
               className="lg:hidden relative w-12 h-12 flex items-center justify-center z-50 bg-digiqo-primary/20 backdrop-blur-sm rounded-lg"
             >
               <motion.div
