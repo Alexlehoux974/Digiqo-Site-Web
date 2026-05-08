@@ -12,14 +12,13 @@ import { ArrowRight, Play, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import Link from 'next/link'
 import { clientVideos } from '@/lib/client-videos'
 
-// Code splitting pour les composants lourds
-const HeroParallax = dynamic(
-  () => import('../components/HeroParallax/HeroParallax').then((mod) => mod.HeroParallax),
-  {
-    ssr: false,
-    loading: () => <div className="min-h-[600px] md:min-h-[800px] bg-[#8B1431]" />
-  }
-)
+// HeroParallax is now a pure-JSX component (no state/effects since S2-#13/14
+// cleanups). SSR'd so the actual hero is in the HTML — was ssr:false with a
+// `min-h-[600px] md:min-h-[800px]` placeholder that didn't match the real
+// hero height (~900px+ on mobile with badges + platform logos + mascot),
+// causing a 0.09+ CLS on /. The visible <h2> being in SSR HTML also helps
+// LCP/TTI on mobile.
+import { HeroParallax } from '../components/HeroParallax/HeroParallax'
 
 const ServicesSection = dynamic(
   () => import('../components/ServicesSection').then((mod) => mod.ServicesSection),
@@ -339,10 +338,8 @@ export default function Home() {
 
       <HeaderLuxury />
       <main className="bg-[#8B1431]">
-        {/* HeroParallax loads with ssr: false, so its visible headline is not
-            in the SSR HTML. This sr-only h1 carries the SEO/GEO keywords and
-            is THE single h1 of the page in the rendered document — see the
-            HeroParallax headline which is now a semantic h2. */}
+        {/* The single <h1> of the page — carries SEO/GEO keywords. The visible
+            HeroParallax headline is a semantic <h2> for visual hierarchy. */}
         <h1 className="sr-only">
           Agence Marketing Digital à La Réunion — Publicité Meta Ads, Google Ads, SEO
         </h1>
