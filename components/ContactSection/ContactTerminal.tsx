@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Terminal, TypingAnimation, AnimatedSpan } from '../magicui/terminal'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 
 interface FormData {
   firstName: string

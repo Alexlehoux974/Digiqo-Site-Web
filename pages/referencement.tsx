@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { SEO } from '@/components/SEO'
 import { HeaderLuxury } from '@/components/Header'
 import { Footer } from '@/components/Footer'

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m as motion, AnimatePresence } from 'framer-motion'
 import { Heart, MessageCircle, Bookmark, Send } from 'lucide-react'
 import Image from 'next/image'
 import type { FormattedTestimonial } from '../../pages/api/testimonials'

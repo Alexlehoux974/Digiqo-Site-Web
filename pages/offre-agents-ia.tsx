@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { useState } from 'react';
 import Image from 'next/image';
 import { Mail, MessageSquare, TrendingUp, Clock, CheckCircle, Sparkles, Target, BarChart3 } from 'lucide-react';

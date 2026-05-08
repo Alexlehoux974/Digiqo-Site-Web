@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { Modal } from '../ui/Modal'
 import { OptimizedImage } from '../ui/OptimizedImage'
 

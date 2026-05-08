@@ -1,5 +1,5 @@
 import { Calendar, Clock, RefreshCw } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { ClusterPill } from './ClusterPill'
 import { MetaPill, MetaDot } from './MetaPill'

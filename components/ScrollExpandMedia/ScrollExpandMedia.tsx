@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, ReactNode, TouchEvent, WheelEvent } from 'react'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 
 interface ScrollExpandMediaProps {
   mediaType?: 'video' | 'image'

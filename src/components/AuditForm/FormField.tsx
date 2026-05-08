@@ -1,7 +1,7 @@
 'use client';
 
 
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { Info } from 'lucide-react';
 
 interface FormFieldProps {

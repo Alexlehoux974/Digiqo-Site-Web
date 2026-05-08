@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import Head from 'next/head'
-import { motion, useInView } from 'framer-motion'
+import { m as motion, useInView } from 'framer-motion'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 import { SectionGradientOrbs } from '@/components/ui/animated-gradient-orb'
 import { ServiceHero } from './ServiceHero'

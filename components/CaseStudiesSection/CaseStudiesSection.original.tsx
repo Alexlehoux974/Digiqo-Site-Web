@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { AnimatedBeam } from '../magicui/animated-beam'
 import { Modal } from '../ui/Modal'
 import { TrendingUp, Users, Target } from 'lucide-react'

@@ -1,5 +1,5 @@
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { FAQSection } from './faqData';
 import { FAQAccordion } from './FAQAccordion';
 

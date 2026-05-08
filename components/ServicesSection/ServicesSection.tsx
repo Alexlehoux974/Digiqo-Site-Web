@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion'
+import { m as motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import {
   Megaphone,

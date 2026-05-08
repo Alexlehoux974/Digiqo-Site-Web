@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m as motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { OptimizedImage } from '../ui/OptimizedImage'
 import { generateContactUrl } from '../../lib/contact-utils'

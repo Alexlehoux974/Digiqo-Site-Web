@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { Home, ArrowLeft, Phone } from 'lucide-react'
 import { Button } from '../components/Button'

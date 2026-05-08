@@ -1,5 +1,5 @@
 
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import FormField from '../FormField';
 import { AuditFormData } from '@/src/lib/audit-types';
 import { Monitor, Search, Zap, Palette, Smartphone, BarChart } from 'lucide-react';

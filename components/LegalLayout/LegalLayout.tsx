@@ -1,6 +1,6 @@
 import { HeaderLuxury } from '../Header'
 import { Footer } from '../Footer'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
 

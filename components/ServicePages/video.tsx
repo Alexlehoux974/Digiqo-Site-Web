@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { Check, Camera, Video, ArrowRight, Package, Image, Film, Sparkles, ChevronRight, Palette, Drone, Rocket, Star } from 'lucide-react'
 import ServiceLayout from '../../components/ServiceLayout/ServiceLayout'
 import { servicesSEO } from '../../lib/seo-data'

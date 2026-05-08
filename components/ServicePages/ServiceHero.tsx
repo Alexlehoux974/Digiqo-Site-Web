@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { LucideIcon } from 'lucide-react'
 import { HeroGradientOrbs } from '@/components/ui/animated-gradient-orb'
 import { ANIMATION } from '@/lib/animation-constants'

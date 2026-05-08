@@ -1,6 +1,6 @@
 import { forwardRef, ButtonHTMLAttributes } from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { motion, HTMLMotionProps } from 'framer-motion'
+import { m as motion, HTMLMotionProps } from 'framer-motion'
 
 const buttonVariants = cva(
   'inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-300 transform active:scale-95 focus:outline-none focus:ring-4 focus:ring-offset-2',

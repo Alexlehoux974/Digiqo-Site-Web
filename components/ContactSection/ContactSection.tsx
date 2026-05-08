@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { Sparkles } from 'lucide-react'
 import { ContactForm, type FormData } from './ContactForm'
 import { ContactTerminal } from './ContactTerminal'

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { Check, Mail, Phone, User, FileText, MessageSquare, Send, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'

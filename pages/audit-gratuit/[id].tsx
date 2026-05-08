@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { CheckCircle, AlertTriangle, XCircle, TrendingUp, Shield, Globe, Users, Zap, FileText } from 'lucide-react';
 import { HeaderLuxury } from '../../components/Header/HeaderLuxury';
 import { Footer } from '../../components/Footer/Footer';

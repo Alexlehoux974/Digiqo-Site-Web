@@ -4,7 +4,7 @@ import { HeaderLuxury } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { Search, MessageSquare, BookOpen, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 

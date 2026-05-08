@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import FormField from '../../../components/WebQuoteForm/FormField'
 
 const STYLE_DIRECTIONS = [

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { Users, Briefcase, ArrowRight, CheckCircle, Send, Heart, Rocket, Target } from 'lucide-react'
 import ServiceLayout from '../components/ServiceLayout/ServiceLayout'
 import { ANIMATION } from '@/lib/animation-constants'

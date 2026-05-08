@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m as motion, AnimatePresence } from 'framer-motion'
 import { Check, X, AlertCircle, Calculator, Euro, Users, MapPin, Briefcase, ChevronRight, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 import { generateContactUrl } from '@/lib/contact-utils'

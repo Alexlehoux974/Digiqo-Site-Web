@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Head from 'next/head'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { Check, Globe, Share2, Megaphone, Sparkles, Search, ArrowRight } from 'lucide-react'
 import ServiceLayout from '../../components/ServiceLayout/ServiceLayout'
 import { servicesSEO } from '../../lib/seo-data'

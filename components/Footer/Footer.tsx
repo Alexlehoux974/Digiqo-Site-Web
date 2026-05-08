@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { Instagram, Facebook, Linkedin, Youtube, Mail, Phone, MapPin } from 'lucide-react'
 import { SiTiktok, SiX } from 'react-icons/si'
 import Link from 'next/link'

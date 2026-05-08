@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { Calendar, Clock, ArrowRight, Search } from 'lucide-react'
 import { HeaderLuxury } from '@/components/Header'
 import { Footer } from '@/components/Footer'

@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion'
+import { m as motion, AnimatePresence } from 'framer-motion'
 import { X, Briefcase, MapPin, Euro, CheckCircle, Send } from 'lucide-react'
 import { JobDescription } from '@/lib/job-descriptions'
 import Link from 'next/link'

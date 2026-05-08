@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m as motion, AnimatePresence } from 'framer-motion'
 import { ArrowLeft, ArrowRight, Send, CheckCircle, AlertCircle } from 'lucide-react'
 import Link from 'next/link'
 import { initialFormData, type PartnershipFormData } from '@/lib/partnership-types'

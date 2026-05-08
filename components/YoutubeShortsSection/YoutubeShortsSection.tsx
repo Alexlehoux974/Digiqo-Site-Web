@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { Play, ChevronLeft, ChevronRight, ExternalLink, Youtube, Eye } from 'lucide-react'
 import { ANIMATION } from '@/lib/animation-constants'
 

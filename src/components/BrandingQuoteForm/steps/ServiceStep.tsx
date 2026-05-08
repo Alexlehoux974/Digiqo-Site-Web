@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { Pencil, RefreshCw, BookOpen, Rocket } from 'lucide-react'
 import { BrandingService } from '../../../lib/branding-quote-types'
 

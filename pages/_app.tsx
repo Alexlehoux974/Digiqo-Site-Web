@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
+import { LazyMotion, domAnimation } from 'framer-motion'
 import { CookieConsent } from '@/components/CookieConsent'
 import { ScrollToTop } from '@/components/ScrollToTop'
 import dynamic from 'next/dynamic'
@@ -174,10 +175,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
       )}
 
-      <Component {...pageProps} />
-      <CookieConsent />
-      <ScrollToTop />
-      <ChatWidget />
+      <LazyMotion features={domAnimation} strict={false}>
+        <Component {...pageProps} />
+        <CookieConsent />
+        <ScrollToTop />
+        <ChatWidget />
+      </LazyMotion>
     </>
   )
 }
