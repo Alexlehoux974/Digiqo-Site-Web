@@ -2,6 +2,12 @@ import { useState } from 'react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import { Plus } from 'lucide-react';
 
+// Below-the-fold component on home (scrolled-into-view), but FAQSection
+// hydrates SSR markup on mount — so entry motion (initial→animate) fired
+// during the initial page load even though it was off-screen, inflating
+// TBT. The wrapper is now a static <div>; only the click-to-expand
+// AnimatePresence stays animated.
+
 interface FAQAccordionProps {
   question: string;
   answer: string;
@@ -57,10 +63,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1 }}
+    <div
       className={`
         border border-gray-200 rounded-lg overflow-hidden
         transition-all duration-300
@@ -130,6 +133,6 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 };

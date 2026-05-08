@@ -246,14 +246,9 @@ export const HeaderLuxury = () => {
                   />
                 </div>
                 
-                {/* Logo glow effect */}
-                <motion.div
-                  className="absolute inset-0 blur-2xl"
-                  animate={{
-                    opacity: [0.3, 0.6, 0.3],
-                    scale: [1, 1.2, 1]
-                  }}
-                  transition={{ duration: 3, repeat: Infinity }}
+                {/* Logo glow — CSS pulse on compositor thread (was framer-motion infinite, TBT) */}
+                <div
+                  className="absolute inset-0 blur-2xl header-logo-glow"
                   style={{
                     background: 'radial-gradient(circle, rgba(139, 20, 49, 0.3) 0%, transparent 70%)'
                   }}
@@ -623,26 +618,17 @@ export const HeaderLuxury = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <motion.button
-                  className="relative px-8 py-3 text-sm font-medium text-white rounded-full overflow-hidden group"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <button
+                  className="relative px-8 py-3 text-sm font-medium text-white rounded-full overflow-hidden group hover:scale-105 active:scale-95 transition-transform"
                 >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-digiqo-secondary via-cyan-500 to-digiqo-secondary"
-                    animate={{
-                      backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
-                    }}
-                    transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+                  {/* Gradient shift + shine — CSS animations on compositor thread (was framer-motion infinite, TBT) */}
+                  <div
+                    className="absolute inset-0 bg-gradient-to-r from-digiqo-secondary via-cyan-500 to-digiqo-secondary header-dashboard-gradient"
                     style={{ backgroundSize: '200% 100%' }}
                   />
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                    animate={{ x: [-200, 200] }}
-                    transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent header-dashboard-shine" />
                   <span className="relative">Mon Dashboard</span>
-                </motion.button>
+                </button>
               </a>
 
               {/* Contact Button */}

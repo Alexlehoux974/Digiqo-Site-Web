@@ -133,3 +133,36 @@
   85%, 100% { transform: translateY(0); }
 }
 
+/* Header — were framer-motion infinite loops, moved to CSS for compositor-thread perf (TBT) */
+@keyframes header-logo-glow-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50%      { opacity: 0.6; transform: scale(1.2); }
+}
+.header-logo-glow {
+  animation: header-logo-glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes header-dashboard-gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+.header-dashboard-gradient {
+  animation: header-dashboard-gradient-shift 5s linear infinite;
+}
+
+@keyframes header-dashboard-shine-sweep {
+  0%, 70% { transform: translateX(-200px); }
+  85%     { transform: translateX(200px); }
+  100%    { transform: translateX(200px); }
+}
+.header-dashboard-shine {
+  animation: header-dashboard-shine-sweep 3.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-logo-glow,
+  .header-dashboard-gradient,
+  .header-dashboard-shine {
+    animation: none;
+  }
+}
