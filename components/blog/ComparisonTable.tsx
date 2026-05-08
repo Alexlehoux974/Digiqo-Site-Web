@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 export type ComparisonCell =
@@ -35,11 +34,7 @@ export function ComparisonTable({
   className,
 }: ComparisonTableProps) {
   return (
-    <motion.figure
-      initial={{ opacity: 0, y: 14 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+    <figure
       className={cn('my-8 rounded-2xl overflow-hidden border border-slate-200 shadow-sm', className)}
     >
       <figcaption className="bg-gradient-to-br from-digiqo-primary to-digiqo-primary-dark text-white px-6 py-4">
@@ -82,7 +77,7 @@ export function ComparisonTable({
           </tbody>
         </table>
       </div>
-    </motion.figure>
+    </figure>
   )
 }
 

@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { MessageSquare, BarChart3, AlertTriangle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { CalloutVariant } from './types'
@@ -50,11 +49,7 @@ const variantConfig: Record<
 export function CallOut({ variant, label, children, statValue, className }: CallOutProps) {
   const cfg = variantConfig[variant]
   return (
-    <motion.aside
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.45, ease: 'easeOut' }}
+    <aside
       className={cn(
         'grid grid-cols-[56px_1fr] gap-[18px] px-6 py-[22px] rounded-2xl shadow-sm my-7',
         cfg.container,
@@ -87,6 +82,6 @@ export function CallOut({ variant, label, children, statValue, className }: Call
           {children}
         </div>
       </div>
-    </motion.aside>
+    </aside>
   )
 }

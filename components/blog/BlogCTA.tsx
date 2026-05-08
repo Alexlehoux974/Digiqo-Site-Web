@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import type { BlogCTAConfig } from './types'
 
@@ -13,11 +12,7 @@ interface BlogCTAProps extends BlogCTAConfig {
 // home /agence pages so the article feels native to the site.
 export function BlogCTA({ eyebrow, heading, body, primary, secondary, className }: BlogCTAProps) {
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
+    <section
       className={cn(
         'mt-20 px-6 py-14 text-white text-center relative overflow-hidden',
         'bg-gradient-to-br from-digiqo-primary to-digiqo-primary-dark',
@@ -55,6 +50,6 @@ export function BlogCTA({ eyebrow, heading, body, primary, secondary, className 
           )}
         </div>
       </div>
-    </motion.section>
+    </section>
   )
 }

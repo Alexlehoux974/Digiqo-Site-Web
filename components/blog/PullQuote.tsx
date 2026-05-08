@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 interface PullQuoteProps {
@@ -8,17 +7,11 @@ interface PullQuoteProps {
 }
 
 // Center-aligned typographic quote, used to surface the standalone insight
-// of a section ("TikTok wins on acquisition. Meta wins on retention.").
-// Reads as a visual breath between two prose blocks.
+// of a section. Static (no scroll-into-view animation) since Sprint 2
+// commit S2-#13 — keeps mobile TBT low.
 export function PullQuote({ children, attribution, className }: PullQuoteProps) {
   return (
-    <motion.figure
-      initial={{ opacity: 0, y: 14 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      className={cn('my-9 text-center', className)}
-    >
+    <figure className={cn('my-9 text-center', className)}>
       <span
         aria-hidden="true"
         className="block font-display text-[100px] leading-[1] -mb-5 text-digiqo-primary/15"
@@ -33,6 +26,6 @@ export function PullQuote({ children, attribution, className }: PullQuoteProps) 
           — {attribution}
         </figcaption>
       )}
-    </motion.figure>
+    </figure>
   )
 }

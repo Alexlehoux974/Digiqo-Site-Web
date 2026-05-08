@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 export interface NumberedStep {
@@ -15,16 +14,15 @@ interface NumberedStepsProps {
 // nicely with HowTo JSON-LD: the page generator can map each step.title /
 // step.body to a HowToStep schema entry, surfacing the article in Google's
 // step-by-step rich result.
+//
+// Static layout (Sprint 2 commit S2-#13) — the per-step stagger animation
+// was removed for mobile CWV.
 export function NumberedSteps({ steps, className }: NumberedStepsProps) {
   return (
     <div className={cn('my-7 grid gap-3.5', className)}>
       {steps.map((step, idx) => (
-        <motion.div
+        <div
           key={idx}
-          initial={{ opacity: 0, x: -8 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.4, ease: 'easeOut', delay: idx * 0.06 }}
           className="grid grid-cols-[56px_1fr] gap-4 px-5 py-4 bg-white rounded-xl border border-slate-200 hover:border-digiqo-primary hover:translate-x-0.5 transition-all"
         >
           <div className="w-10 h-10 rounded-full bg-gradient-to-br from-digiqo-primary to-digiqo-primary-dark text-white flex items-center justify-center font-display font-extrabold text-base flex-shrink-0">
@@ -38,7 +36,7 @@ export function NumberedSteps({ steps, className }: NumberedStepsProps) {
               {step.body}
             </div>
           </div>
-        </motion.div>
+        </div>
       ))}
     </div>
   )

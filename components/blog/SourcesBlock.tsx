@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { FileText } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { SourceRef } from './types'
@@ -13,11 +12,7 @@ interface SourcesBlockProps {
 // without a link (own data), distinguished by `primary: true`.
 export function SourcesBlock({ sources, className }: SourcesBlockProps) {
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 14 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+    <section
       className={cn('mt-14 px-7 py-7 bg-slate-50 border border-slate-200 rounded-2xl', className)}
     >
       <h3 className="font-display font-bold text-lg m-0 mb-4 flex items-center gap-2.5">
@@ -53,6 +48,6 @@ export function SourcesBlock({ sources, className }: SourcesBlockProps) {
           </li>
         ))}
       </ul>
-    </motion.section>
+    </section>
   )
 }

@@ -1,5 +1,4 @@
 import { ChevronDown } from 'lucide-react'
-import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { RichText } from './RichText'
 import type { FAQItem } from './types'
@@ -26,13 +25,7 @@ export function FAQ({
   className,
 }: FAQProps) {
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 14 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      className={cn('mt-16', className)}
-    >
+    <section className={cn('mt-16', className)}>
       <h2 className="font-display font-bold text-[28px] text-digiqo-black m-0 mb-1.5 tracking-[-0.025em]">
         {title}
       </h2>
@@ -60,6 +53,6 @@ export function FAQ({
           </details>
         ))}
       </div>
-    </motion.section>
+    </section>
   )
 }

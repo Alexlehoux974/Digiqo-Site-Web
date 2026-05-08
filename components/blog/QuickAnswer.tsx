@@ -1,5 +1,4 @@
 import { Lightbulb } from 'lucide-react'
-import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { RichText } from './RichText'
 
@@ -14,11 +13,7 @@ interface QuickAnswerProps {
 
 export function QuickAnswer({ question, answer, wordCount, targetQuery, className }: QuickAnswerProps) {
   return (
-    <motion.aside
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+    <aside
       className={cn(
         'relative px-7 py-6 rounded-2xl border-l-4 border-l-digiqo-primary border border-digiqo-primary/[0.16]',
         'bg-gradient-to-br from-digiqo-primary/[0.04] to-digiqo-accent/[0.05]',
@@ -44,6 +39,6 @@ export function QuickAnswer({ question, answer, wordCount, targetQuery, classNam
       <div className="mt-3 text-[12px] text-slate-500">
         Réponse extractible · {wordCount} mots · cible « {targetQuery} »
       </div>
-    </motion.aside>
+    </aside>
   )
 }

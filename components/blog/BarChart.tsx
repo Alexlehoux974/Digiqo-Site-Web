@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 export interface BarChartRow {
@@ -15,16 +14,13 @@ interface BarChartProps {
   className?: string
 }
 
-// Lightweight dependency-free horizontal bar chart. Bars animate from 0 to
-// widthPct on first scroll into view. CSS-only, no chart library — keeps the
-// blog bundle small.
+// Lightweight dependency-free horizontal bar chart. Bars are static (no
+// scroll-into-view animation) — the framer-motion path was removed for
+// mobile CWV in Sprint 2 commit S2-#13. The fill is set via inline width
+// style.
 export function BarChart({ title, rows, className }: BarChartProps) {
   return (
-    <motion.figure
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+    <figure
       className={cn(
         'my-7 px-6 py-5 bg-slate-50 rounded-xl border border-slate-200',
         className,
@@ -35,14 +31,14 @@ export function BarChart({ title, rows, className }: BarChartProps) {
       </figcaption>
       <div role="list" aria-label={title} className="space-y-2">
         {rows.map((row, idx) => (
-          <Bar key={idx} {...row} delayMs={idx * 80} />
+          <Bar key={idx} {...row} />
         ))}
       </div>
-    </motion.figure>
+    </figure>
   )
 }
 
-function Bar({ label, widthPct, valueLabel, delayMs }: BarChartRow & { delayMs: number }) {
+function Bar({ label, widthPct, valueLabel }: BarChartRow) {
   const clamped = Math.max(0, Math.min(100, widthPct))
   return (
     <div role="listitem" className="grid grid-cols-[110px_1fr_80px] gap-3 items-center text-[13.5px]">
@@ -51,12 +47,9 @@ function Bar({ label, widthPct, valueLabel, delayMs }: BarChartRow & { delayMs: 
         className="bg-slate-200 rounded-full h-3 overflow-hidden"
         aria-label={`${label} : ${valueLabel}`}
       >
-        <motion.span
+        <span
           className="block h-full rounded-full bg-gradient-to-r from-digiqo-primary to-digiqo-accent"
-          initial={{ width: 0 }}
-          whileInView={{ width: `${clamped}%` }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.9, ease: 'easeOut', delay: delayMs / 1000 }}
+          style={{ width: `${clamped}%` }}
         />
       </span>
       <span className="font-display font-bold text-digiqo-black text-right">{valueLabel}</span>

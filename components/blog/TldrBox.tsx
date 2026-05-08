@@ -1,5 +1,4 @@
 import { CheckSquare } from 'lucide-react'
-import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { RichText } from './RichText'
 
@@ -12,11 +11,7 @@ interface TldrBoxProps {
 
 export function TldrBox({ forWhom, whatYouLearn, className }: TldrBoxProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+    <div
       className={cn(
         'rounded-2xl border border-slate-200 overflow-hidden shadow-sm',
         className,
@@ -35,7 +30,7 @@ export function TldrBox({ forWhom, whatYouLearn, className }: TldrBoxProps) {
         />
         <TldrColumn title="Ce que tu vas apprendre" items={whatYouLearn} />
       </div>
-    </motion.div>
+    </div>
   )
 }
 

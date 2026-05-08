@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 interface StatHeroProps {
@@ -16,11 +15,7 @@ interface StatHeroProps {
 // them, so always pass sourceLabel and (when available) sourceUrl.
 export function StatHero({ value, children, sourceLabel, sourceUrl, className }: StatHeroProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 14 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+    <div
       className={cn(
         'my-7 px-7 py-7 rounded-2xl grid sm:grid-cols-[auto_1fr] grid-cols-1 gap-7 items-center',
         'bg-gradient-to-br from-digiqo-primary/[0.06] to-digiqo-accent/[0.04]',
@@ -49,6 +44,6 @@ export function StatHero({ value, children, sourceLabel, sourceUrl, className }:
           )}
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }

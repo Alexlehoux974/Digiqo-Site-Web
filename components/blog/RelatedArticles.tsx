@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import type { RelatedArticleRef } from './types'
 
@@ -57,13 +56,7 @@ function RelatedCard({ article, idx }: { article: RelatedArticleRef; idx: number
   const gradient = gradients[idx % gradients.length]
 
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.45, ease: 'easeOut', delay: idx * 0.06 }}
-      className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:-translate-y-1 hover:shadow-digiqo-lg hover:border-digiqo-primary/30 transition-all"
-    >
+    <article className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:-translate-y-1 hover:shadow-digiqo-lg hover:border-digiqo-primary/30 transition-all">
       <Link href={`/blog/${article.slug}`} className="block">
         <div className={cn('h-[170px] relative bg-gradient-to-br', gradient)}>
           {article.featuredImage && (
@@ -90,6 +83,6 @@ function RelatedCard({ article, idx }: { article: RelatedArticleRef; idx: number
           </div>
         </div>
       </Link>
-    </motion.article>
+    </article>
   )
 }

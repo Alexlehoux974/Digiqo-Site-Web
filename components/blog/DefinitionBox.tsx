@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { BookOpen } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -12,11 +11,7 @@ interface DefinitionBoxProps {
 // Visually distinct (cyan) so it doesn't compete with bordeaux callouts.
 export function DefinitionBox({ term, children, className }: DefinitionBoxProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.4, ease: 'easeOut' }}
+    <div
       className={cn(
         'my-6 px-5 py-4 grid grid-cols-[36px_1fr] gap-3.5 rounded-xl',
         'bg-gradient-to-br from-digiqo-secondary/[0.06] to-digiqo-secondary/[0.02]',
@@ -35,6 +30,6 @@ export function DefinitionBox({ term, children, className }: DefinitionBoxProps)
           {children}
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
