@@ -10,6 +10,8 @@ export { AuthorCardCompact, AuthorCardExtended, buildPersonSchema } from './Auth
 export { ArticleHero } from './ArticleHero'
 export { TldrBox } from './TldrBox'
 export { QuickAnswer } from './QuickAnswer'
+export { TableOfContents } from './TableOfContents'
+export type { TocItem } from './TableOfContents'
 
 export type {
   ArticleBlock,
