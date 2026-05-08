@@ -6,11 +6,13 @@ import { SEO } from '@/components/SEO'
 import {
   ArticleHero,
   AuthorCardExtended,
+  BlockRenderer,
   BlogCTA,
   buildArticleSchemas,
   FAQ,
   QuickAnswer,
   RelatedArticles,
+  RichText,
   SourcesBlock,
   TableOfContents,
   TldrBox,
@@ -74,7 +76,7 @@ export default function ArticlePage({ data }: ArticlePageProps) {
 
   const toc: TocItem[] = content.sections.map((s) => ({
     id: s.id,
-    label: s.title,
+    label: <RichText source={s.title} />,
   }))
 
   return (
@@ -140,9 +142,13 @@ export default function ArticlePage({ data }: ArticlePageProps) {
                   <span className="inline-block text-[13px] font-bold text-digiqo-primary bg-digiqo-primary/[0.08] px-2.5 py-1 rounded-md mr-2.5 align-middle -translate-y-[3px] tracking-[0.04em] font-display">
                     {section.number}
                   </span>
-                  {section.title}
+                  <RichText source={section.title} />
                 </h2>
-                <div className="mt-4">{section.children}</div>
+                <div className="mt-2">
+                  {section.blocks.map((block, idx) => (
+                    <BlockRenderer key={idx} block={block} />
+                  ))}
+                </div>
               </section>
             ))}
 

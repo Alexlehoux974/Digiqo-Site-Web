@@ -1,10 +1,12 @@
 import { CheckSquare } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { RichText } from './RichText'
 
 interface TldrBoxProps {
-  forWhom: React.ReactNode[]
-  whatYouLearn: React.ReactNode[]
+  /** Each item is a light-markdown string parsed by RichText. */
+  forWhom: string[]
+  whatYouLearn: string[]
   className?: string
 }
 
@@ -43,7 +45,7 @@ function TldrColumn({
   className,
 }: {
   title: string
-  items: React.ReactNode[]
+  items: string[]
   className?: string
 }) {
   return (
@@ -63,7 +65,7 @@ function TldrColumn({
             >
               <span className="block w-[7px] h-[4px] border-l-[1.5px] border-b-[1.5px] border-digiqo-primary -rotate-45 -translate-y-[1px]" />
             </span>
-            {item}
+            <RichText source={item} />
           </li>
         ))}
       </ul>

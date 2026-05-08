@@ -1,22 +1,22 @@
 // JSON-LD stack for the new article template.
 //
 // Emits a graph of schemas instead of a single BlogPosting — Google and LLMs
-// pick up FAQPage / BreadcrumbList / Person / HowTo independently when each
-// is exposed at the document level.
+// pick up FAQPage / BreadcrumbList / Person independently when each is
+// exposed at the document level.
+//
+// FAQ answers are stored as light-markdown strings (with **bold**, *italic*,
+// [text](url), ^sup^). For schema.org FAQPage.acceptedAnswer.text we must
+// emit plain text — no markdown delimiters. stripMarkdown() handles that.
 
-import { renderToStaticMarkup } from 'react-dom/server'
-import type { BlogArticleData, BlogArticleContent, ArticleAuthor } from './types'
+import { stripMarkdown } from './RichText'
+import type {
+  ArticleAuthor,
+  BlogArticleContent,
+  BlogArticleData,
+} from './types'
 import type { BreadcrumbItem } from './Breadcrumb'
 
 const SITE_URL = 'https://digiqo.fr'
-
-// Strips JSX answers down to plain text for FAQPage.acceptedAnswer.text.
-function flattenNode(node: React.ReactNode): string {
-  if (typeof node === 'string') return node
-  if (typeof node === 'number') return String(node)
-  const html = renderToStaticMarkup(node as React.ReactElement)
-  return html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()
-}
 
 interface BuildSchemasInput {
   data: BlogArticleData
@@ -47,9 +47,9 @@ export function buildArticleSchemas({ data, content, author, breadcrumb }: Build
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: data.title,
-    description: data.metaDescription || data.excerpt,
+    description: stripMarkdown(data.metaDescription || data.excerpt),
     image,
-    datePublished: data.dateModified, // best ISO we have on hand
+    datePublished: data.dateModified,
     dateModified: data.dateModified,
     author: personSchema,
     publisher: {
@@ -93,7 +93,10 @@ export function buildArticleSchemas({ data, content, author, breadcrumb }: Build
           name: item.question,
           acceptedAnswer: {
             '@type': 'Answer',
-            text: flattenNode(item.answer),
+            // stripMarkdown removes **, *, [...](url), ^...^ so the schema
+            // contains plain readable text. URLs are dropped from the
+            // schema; the link still renders in the visible FAQ accordion.
+            text: stripMarkdown(item.answer),
           },
         })),
       }

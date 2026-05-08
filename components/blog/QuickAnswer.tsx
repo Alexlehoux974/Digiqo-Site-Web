@@ -1,11 +1,12 @@
 import { Lightbulb } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { RichText } from './RichText'
 
 interface QuickAnswerProps {
   question: string
-  /** Pass JSX with <strong> highlights as needed, e.g. <>Compte <strong>8 à 15 € de CPM</strong>…</> */
-  answer: React.ReactNode
+  /** Light-markdown string parsed by RichText (supports **bold**, [links](/path), ^sup^). */
+  answer: string
   wordCount: number
   targetQuery: string
   className?: string
@@ -33,7 +34,12 @@ export function QuickAnswer({ question, answer, wordCount, targetQuery, classNam
         {question}
       </h2>
 
-      <p className="m-0 text-[16px] text-slate-700 leading-[1.6]">{answer}</p>
+      <RichText
+        source={answer}
+        as="p"
+        className="m-0 text-[16px] text-slate-700 leading-[1.6]"
+      />
+
 
       <div className="mt-3 text-[12px] text-slate-500">
         Réponse extractible · {wordCount} mots · cible « {targetQuery} »

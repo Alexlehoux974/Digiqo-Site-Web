@@ -1,7 +1,7 @@
 import { ChevronDown } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { renderToStaticMarkup } from 'react-dom/server'
 import { cn } from '@/lib/utils'
+import { RichText } from './RichText'
 import type { FAQItem } from './types'
 
 export type { FAQItem } from './types'
@@ -15,6 +15,9 @@ interface FAQProps {
   className?: string
 }
 
+// FAQ accordion. Answers are light-markdown strings rendered via RichText so
+// inline backlinks and **bold** work without dangerous HTML interpretation.
+// JSON-LD FAQPage emission is centralized in buildArticleSchemas.ts.
 export function FAQ({
   title = 'Questions fréquentes',
   subtitle,
@@ -51,40 +54,12 @@ export function FAQ({
                 <ChevronDown className="w-3.5 h-3.5 text-slate-600 group-open:text-digiqo-primary" />
               </span>
             </summary>
-            <div className="px-1 pb-5 -mt-1 text-[16px] leading-[1.7] text-slate-700 [&_a]:text-digiqo-primary [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-digiqo-accent">
-              {item.answer}
+            <div className="px-1 pb-5 -mt-1 text-[16px] leading-[1.7] text-slate-700">
+              <RichText source={item.answer} as="p" />
             </div>
           </details>
         ))}
       </div>
     </motion.section>
   )
-}
-
-// Strip rendered JSX answer down to plain text for FAQPage schema.
-// Schema.org requires acceptedAnswer.text to be a string. We render the JSX
-// to static HTML, then strip tags. Used by buildFAQPageSchema below.
-function flattenAnswer(answer: React.ReactNode): string {
-  if (typeof answer === 'string') return answer
-  if (typeof answer === 'number') return String(answer)
-  const html = renderToStaticMarkup(<>{answer}</>)
-  return html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()
-}
-
-// Generates FAQPage JSON-LD ready to inject in next/head. Inline links in
-// answers are preserved as visible text (the URLs themselves are dropped to
-// keep the schema clean).
-export function buildFAQPageSchema(items: FAQItem[]) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: items.map((item) => ({
-      '@type': 'Question',
-      name: item.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: flattenAnswer(item.answer),
-      },
-    })),
-  }
 }

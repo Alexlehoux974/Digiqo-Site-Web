@@ -1,25 +1,70 @@
 // Type definitions for the Sprint 2 blog article system.
 //
-// We split each article in two pieces:
-// - BlogArticleData (serializable, returned by getStaticProps and used by
-//   the /blog list) — only primitive metadata.
-// - BlogArticleContent (rich, contains React.ReactNode for sections/answers/
-//   FAQ) — loaded directly at render time, not sent through getStaticProps.
+// Both `BlogArticleData` and `BlogArticleContent` are now 100% serializable
+// (string-based, no React.ReactNode anywhere). This is the prerequisite for
+// future Airtable / Supabase integration: the shape produced by an external
+// CMS will match exactly what we render today.
+//
+// Rich text inside strings uses a tiny markdown subset parsed by RichText:
+//   **bold**, *italic*, [text](url), ^sup^
+
+import type { BarChartRow } from './BarChart'
 
 export type CalloutVariant = 'anecdote' | 'opinion' | 'stat' | 'warning'
 
+// ─── Comparison table cell (data-side) ────────────────────────────────────
+// Mirrors the runtime ComparisonCell from ./ComparisonTable.tsx but with
+// `value: string` instead of ReactNode. The renderer adapts at render time.
+
+export type ComparisonCellData =
+  | { kind: 'text'; value: string }
+  | { kind: 'badge'; value: string; tone: 'good' | 'mid' | 'bad' }
+  | { kind: 'verdict'; value: string; winner: 'left' | 'right' | 'tie' }
+
+// ─── Block model ──────────────────────────────────────────────────────────
+// Each section's body is a list of typed blocks. The BlockRenderer maps
+// each variant to the matching React component.
+
+export type ArticleBlock =
+  | { type: 'paragraph'; text: string }
+  | { type: 'h3'; text: string; id?: string }
+  | { type: 'list'; items: string[] }
+  | { type: 'definition'; term: string; body: string }
+  | { type: 'statHero'; value: string; body: string; sourceLabel: string; sourceUrl?: string }
+  | { type: 'barChart'; title: string; rows: BarChartRow[] }
+  | { type: 'inlineQA'; question: string; answer: string }
+  | { type: 'callout'; variant: CalloutVariant; label: string; body: string; statValue?: string }
+  | {
+      type: 'comparisonTable'
+      title: string
+      subtitle?: string
+      headers: string[]
+      rows: ComparisonCellData[][]
+    }
+  | { type: 'numberedSteps'; steps: { title: string; body: string }[] }
+  | { type: 'pullQuote'; text: string; attribution?: string }
+
+export interface ArticleSection {
+  id: string                  // anchor id, e.g. 'section-1'
+  number: string              // display number, e.g. '01'
+  title: string               // H2 text — accepts inline <em>X</em> for emphasis
+  blocks: ArticleBlock[]
+}
+
+// ─── FAQ / Sources / Related / Author / CTA ──────────────────────────────
+
 export interface FAQItem {
   question: string
-  /** Inline ReactNode so backlinks and <strong> stay readable. The schema
-   *  serializer flattens this to plain text for FAQPage JSON-LD. */
-  answer: React.ReactNode
+  /** Light-markdown string. The accordion body parses it via RichText; the
+   *  schema serializer flattens it via stripMarkdown for FAQPage JSON-LD. */
+  answer: string
 }
 
 export interface SourceRef {
   label: string
-  url?: string           // omit for primary Digiqo data
+  url?: string                // omit for primary Digiqo data
   description: string
-  primary?: boolean      // true for "Données primaires Digiqo"
+  primary?: boolean
 }
 
 export interface RelatedArticleRef {
@@ -28,7 +73,6 @@ export interface RelatedArticleRef {
   excerpt: string
   pillLabel: string
   readTime: string
-  /** Optional cover image. When omitted, RelatedArticles renders a bordeaux→accent gradient backdrop. */
   featuredImage?: string
 }
 
@@ -39,11 +83,11 @@ export interface ArticleAuthor {
   bio: string
   expertise: string[]
   linkedinUrl?: string
-  authorPath?: string    // /agence/alexandre-lehoux
+  authorPath?: string
 }
 
 export interface BlogCTAConfig {
-  eyebrow: string        // 'Audit gratuit · 30 minutes'
+  eyebrow: string
   heading: string
   body: string
   primary: { label: string; href: string }
@@ -58,52 +102,45 @@ export interface BlogArticleData {
   id: string
   slug: string
   title: string
-  /** One-paragraph hero lede — also used as the listing card excerpt. */
   excerpt: string
   metaDescription: string
-  /** Headline accent — last word(s) of the H1, picks up the bordeaux→orange
-   *  gradient. Optional. Must be a suffix of `title` to render correctly. */
+  /** Headline accent — last word(s) of the H1 picks up the bordeaux→orange
+   *  gradient. Must be a suffix of `title`. */
   titleAccent?: string
-  category: string                  // top-level cluster (Social Media, SEO, ...)
-  cluster: string                   // sub-cluster shown in pill (TikTok Ads, ...)
+  category: string
+  cluster: string
   clusterHref?: string
-  date: string                      // human-readable French ("12 mars 2026")
-  dateModified: string              // ISO 8601 with timezone
-  /** Human-readable label shown in the hero ("06 mai 2026") */
+  date: string
+  dateModified: string
   dateModifiedLabel?: string
-  readTime: string                  // '9 min de lecture'
+  readTime: string
   featuredImage?: string
   tags: string[]
-  authorKey: string                 // resolves to an ArticleAuthor in lib
-  /** Slugs of related articles — resolved to full RelatedArticleRef in lib. */
+  authorKey: string
   relatedSlugs: string[]
-}
-
-export interface ArticleSectionContent {
-  id: string                        // anchor id, e.g. 'section-1'
-  number: string                    // display number, e.g. '01'
-  title: React.ReactNode            // H2 text — ReactNode allows <em> in titles
-  /** Whole section body assembled with components/blog blocks. */
-  children: React.ReactNode
 }
 
 export interface ArticleQuickAnswer {
   question: string
-  answer: React.ReactNode
+  /** Light-markdown string. */
+  answer: string
   wordCount: number
   targetQuery: string
 }
 
 export interface ArticleTldr {
-  forWhom: React.ReactNode[]
-  whatYouLearn: React.ReactNode[]
+  /** Each item is a light-markdown string. */
+  forWhom: string[]
+  whatYouLearn: string[]
 }
 
-/** Rich content side — loaded at render time, never sent through props. */
+/** Rich content side — fully serializable. Loaded from a static module
+ *  registry today; will come from Airtable/Supabase later with no shape
+ *  change. */
 export interface BlogArticleContent {
   tldr: ArticleTldr
   quickAnswer: ArticleQuickAnswer
-  sections: ArticleSectionContent[]
+  sections: ArticleSection[]
   faq: FAQItem[]
   sources: SourceRef[]
   cta: BlogCTAConfig
@@ -115,7 +152,7 @@ export const DIGIQO_AUTHOR: ArticleAuthor = {
   name: 'Alexandre Lehoux',
   initials: 'AL',
   role: 'CMO Dirigeant Associé · Digiqo',
-  bio: 'Stratège marketing digital à La Réunion depuis 2018, Alexandre dirige la stratégie acquisition de Digiqo qu\'il a co-fondée. Il a piloté plus de 4 M€ d\'investissement publicitaire pour des PME locales et publie régulièrement sur le blog Digiqo.',
+  bio: "Stratège marketing digital à La Réunion depuis 2018, Alexandre dirige la stratégie acquisition de Digiqo qu'il a co-fondée. Il a piloté plus de 4 M€ d'investissement publicitaire pour des PME locales et publie régulièrement sur le blog Digiqo.",
   expertise: ['TikTok Ads', 'Meta Ads', 'Stratégie acquisition 974', 'Tracking publicitaire'],
   linkedinUrl: 'https://www.linkedin.com/in/alexandre-le-houx/',
 }

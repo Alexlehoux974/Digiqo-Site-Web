@@ -1,5 +1,4 @@
 // Barrel export for the blog component system.
-// Components are added incrementally — see Sprint 2 plan.
 
 export { ClusterPill } from './ClusterPill'
 export { MetaPill, MetaDot } from './MetaPill'
@@ -23,20 +22,26 @@ export { NumberedSteps } from './NumberedSteps'
 export type { NumberedStep } from './NumberedSteps'
 export { ComparisonTable } from './ComparisonTable'
 export type { ComparisonCell } from './ComparisonTable'
-export { FAQ, buildFAQPageSchema } from './FAQ'
+export { FAQ } from './FAQ'
 export { SourcesBlock } from './SourcesBlock'
 export { RelatedArticles } from './RelatedArticles'
 export { BlogCTA } from './BlogCTA'
 export { buildArticleSchemas } from './buildArticleSchemas'
 
+// JSON-driven content layer (Sprint 2 commit #10)
+export { RichText, parseInline, stripMarkdown } from './RichText'
+export { BlockRenderer } from './BlockRenderer'
+
 export type {
+  ArticleBlock,
+  ArticleSection,
   BlogArticleData,
   BlogArticleContent,
-  ArticleSectionContent,
   ArticleQuickAnswer,
   ArticleTldr,
   BlogCTAConfig,
   CalloutVariant,
+  ComparisonCellData,
   FAQItem,
   RelatedArticleRef,
   SourceRef,
