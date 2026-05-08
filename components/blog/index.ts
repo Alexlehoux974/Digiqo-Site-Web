@@ -12,6 +12,9 @@ export { TldrBox } from './TldrBox'
 export { QuickAnswer } from './QuickAnswer'
 export { TableOfContents } from './TableOfContents'
 export type { TocItem } from './TableOfContents'
+export { CallOut } from './CallOut'
+export { InlineQA } from './InlineQA'
+export { DefinitionBox } from './DefinitionBox'
 
 export type {
   ArticleBlock,

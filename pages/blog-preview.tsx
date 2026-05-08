@@ -12,6 +12,9 @@ import {
   TldrBox,
   QuickAnswer,
   TableOfContents,
+  CallOut,
+  InlineQA,
+  DefinitionBox,
   DIGIQO_AUTHOR,
 } from '@/components/blog'
 import type { BreadcrumbItem, TocItem } from '@/components/blog'
@@ -120,9 +123,68 @@ export default function BlogPreviewPage() {
               />
             </div>
 
-            {/* Placeholder H2 anchors so the TOC scrollspy has something to
-                track. Real prose blocks will replace these in commits 5-7. */}
-            {PLACEHOLDER_SECTIONS.map((s) => (
+            {/* ─── Section 1 ─── */}
+            <section className="mt-16">
+              <h2
+                id="section-1"
+                className="font-display font-bold text-[30px] text-digiqo-black tracking-[-0.025em] leading-[1.18] scroll-mt-[96px]"
+              >
+                <span className="inline-block text-[13px] font-bold text-digiqo-primary bg-digiqo-primary/[0.08] px-2.5 py-1 rounded-md mr-2.5 align-middle -translate-y-[3px] tracking-[0.04em] font-display">
+                  01
+                </span>
+                Le CPM réel à La Réunion en 2026
+              </h2>
+
+              <p className="mt-4 text-[17.5px] leading-[1.78] text-slate-700">
+                Le marché publicitaire TikTok local est en avance sur l'algorithme et en retard sur
+                les annonceurs — c'est ça l'opportunité. Concrètement, les enchères sont moins
+                compétitives que sur{' '}
+                <a href="#" className="text-digiqo-primary font-medium underline decoration-digiqo-primary underline-offset-2 hover:text-digiqo-accent hover:decoration-digiqo-accent">
+                  Meta Ads
+                </a>{' '}
+                ou{' '}
+                <a href="#" className="text-digiqo-primary font-medium underline decoration-digiqo-primary underline-offset-2 hover:text-digiqo-accent hover:decoration-digiqo-accent">
+                  Google Ads
+                </a>{' '}
+                car la majorité des budgets locaux n'ont pas encore migré.
+              </p>
+
+              <DefinitionBox term="CPM (Coût Pour Mille)">
+                Coût pour 1 000 impressions de votre publicité. Plus le CPM est bas, moins cher vous
+                payez pour être vu. Voir notre <a href="/glossaire">glossaire publicité digitale</a>{' '}
+                pour les définitions complètes (CPC, CPA, ROAS, etc.).
+              </DefinitionBox>
+
+              <CallOut variant="stat" label="Le chiffre qui compte" statValue="+60 %">
+                <p>
+                  de portée organique supplémentaire pour une vidéo qui combine hashtag local
+                  (#974, #LaReunion) <em>et</em> hashtag tendance global, comparé à une vidéo
+                  sans hashtag local.
+                </p>
+                <p style={{ fontSize: '12.5px', color: '#64748B', marginTop: '8px' }}>
+                  Source : analyse Digiqo · 2 400 vidéos clients · Q1 2026
+                </p>
+              </CallOut>
+
+              <InlineQA question="Pourquoi le CPM artisanat est si bas à La Réunion ?">
+                Parce que personne ou presque n'enchérit sur ces audiences. Sur les 30 dernières
+                campagnes Digiqo en artisanat 974, l'enchère est gagnée 78 % du temps au prix
+                plancher.
+              </InlineQA>
+
+              <CallOut variant="anecdote" label="Anecdote 974">
+                <p>
+                  <strong>Pendant le Grand Raid 2025</strong>, on a accompagné une marque de
+                  chaussures de trail basée à Saint-Paul. Une vidéo de 19 secondes filmée à Mafate,
+                  avec une voix-off en créole et zéro production, a fait{' '}
+                  <strong>2,1 M de vues organiques</strong> en 4 jours. Coût : 0 €. Trois mois de
+                  stock écoulés sur la première semaine post-publication.
+                </p>
+              </CallOut>
+            </section>
+
+            {/* ─── Sections 2-5 placeholders (replaced in commits 6-7) ─── */}
+            {PLACEHOLDER_SECTIONS.slice(1).map((s) => (
               <section key={s.id} className="mt-16">
                 <h2
                   id={s.id}
@@ -134,15 +196,14 @@ export default function BlogPreviewPage() {
                   {s.title}
                 </h2>
                 <p className="mt-3 text-slate-500 italic text-[15px]">
-                  🚧 Bloc de contenu à venir au commit suivant — placeholder pour le scrollspy du
-                  sommaire.
+                  🚧 Bloc de contenu à venir au commit suivant.
                 </p>
               </section>
             ))}
 
             <div className="my-16 py-8 text-center border-t border-dashed border-slate-300 text-slate-500 text-sm">
-              🚧 Composants suivants : CallOut · InlineQA · Definition · StatHero · ComparisonTable
-              · NumberedSteps · FAQ · Sources · Author bio · Related · BlogCTA
+              🚧 Composants suivants : StatHero · BarChart · ComparisonTable · NumberedSteps ·
+              PullQuote · FAQ · Sources · Author bio · Related · BlogCTA
             </div>
           </article>
 
