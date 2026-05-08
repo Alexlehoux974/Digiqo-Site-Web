@@ -44,7 +44,6 @@ export function buildArticleSchemas({ data, content, author, breadcrumb }: Build
   }
 
   const blogPostingSchema = {
-    '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: data.title,
     description: stripMarkdown(data.metaDescription || data.excerpt),
@@ -72,7 +71,6 @@ export function buildArticleSchemas({ data, content, author, breadcrumb }: Build
   }
 
   const breadcrumbSchema = {
-    '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: breadcrumb.map((item, idx) => ({
       '@type': 'ListItem',
@@ -86,7 +84,6 @@ export function buildArticleSchemas({ data, content, author, breadcrumb }: Build
 
   const faqPageSchema = content.faq.length
     ? {
-        '@context': 'https://schema.org',
         '@type': 'FAQPage',
         mainEntity: content.faq.map((item) => ({
           '@type': 'Question',
@@ -102,9 +99,19 @@ export function buildArticleSchemas({ data, content, author, breadcrumb }: Build
       }
     : null
 
+  // Single @graph payload — schema.org pattern that bundles multiple
+  // schemas in one <script type="application/ld+json"> tag. Lets us emit
+  // BlogPosting + BreadcrumbList + FAQPage via a single SSR injection
+  // through SEO.structuredData (which handles the Head/script wiring).
+  const combinedSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [blogPostingSchema, breadcrumbSchema, ...(faqPageSchema ? [faqPageSchema] : [])],
+  }
+
   return {
     blogPostingSchema,
     breadcrumbSchema,
     faqPageSchema,
+    combinedSchema,
   }
 }

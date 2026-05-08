@@ -1,6 +1,5 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import dynamic from 'next/dynamic'
-import Script from 'next/script'
 import { HeaderLuxury } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { SEO } from '@/components/SEO'
@@ -50,12 +49,6 @@ interface ArticlePageProps {
   data: BlogArticleData
 }
 
-// Escape `<` for safe inline JSON-LD per OWASP guidance — JSON.stringify can
-// emit `<` inside URLs and would otherwise risk breaking the </script> tag.
-function safeJsonLd(value: unknown): string {
-  return JSON.stringify(value).replace(/</g, '\\u003c')
-}
-
 export default function ArticlePage({ data }: ArticlePageProps) {
   // Content holds React.ReactNode (sections, FAQ answers) so it cannot be
   // serialized through getStaticProps. We resolve it from the static module
@@ -83,8 +76,10 @@ export default function ArticlePage({ data }: ArticlePageProps) {
     { label: data.title },
   ]
 
-  // Multi-schema JSON-LD stack: BlogPosting + BreadcrumbList + FAQPage.
-  const { blogPostingSchema, breadcrumbSchema, faqPageSchema } = buildArticleSchemas({
+  // Multi-schema JSON-LD via single @graph payload. The schema.org @graph
+  // pattern bundles BlogPosting + BreadcrumbList + FAQPage in one
+  // <script type="application/ld+json"> emitted in SSR HTML by <SEO>.
+  const { combinedSchema } = buildArticleSchemas({
     data,
     content,
     author,
@@ -105,17 +100,8 @@ export default function ArticlePage({ data }: ArticlePageProps) {
         url={articleUrl}
         type="article"
         siteName="Digiqo Blog"
-        structuredData={blogPostingSchema}
+        structuredData={combinedSchema}
       />
-
-      <Script id="schema-breadcrumb" type="application/ld+json">
-        {safeJsonLd(breadcrumbSchema)}
-      </Script>
-      {faqPageSchema && (
-        <Script id="schema-faqpage" type="application/ld+json">
-          {safeJsonLd(faqPageSchema)}
-        </Script>
-      )}
 
       <HeaderLuxury />
 
