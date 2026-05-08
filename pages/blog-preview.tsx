@@ -20,6 +20,11 @@ import {
   PullQuote,
   NumberedSteps,
   ComparisonTable,
+  FAQ,
+  SourcesBlock,
+  AuthorCardExtended,
+  RelatedArticles,
+  BlogCTA,
   DIGIQO_AUTHOR,
 } from '@/components/blog'
 import type { BreadcrumbItem, TocItem } from '@/components/blog'
@@ -384,7 +389,7 @@ export default function BlogPreviewPage() {
               </CallOut>
             </section>
 
-            {/* ─── Section 5 placeholder ─── */}
+            {/* ─── Section 5 ─── */}
             <section className="mt-16">
               <h2
                 id="section-5"
@@ -395,20 +400,182 @@ export default function BlogPreviewPage() {
                 </span>
                 Quand <em>ne pas</em> faire de TikTok Ads
               </h2>
-              <p className="mt-3 text-slate-500 italic text-[15px]">
-                🚧 Liste + FAQ + Sources + Author bio + Related + CTA arrivent au commit 7.
+
+              <p className="mt-4 text-[17.5px] leading-[1.78] text-slate-700">
+                Tout le monde te vendra TikTok comme la solution miracle. Voici les 4 cas où on
+                déconseille TikTok Ads à un client réunionnais en 2026.
               </p>
+
+              <ul className="mt-4 space-y-2.5 text-[17.5px] leading-[1.7] text-slate-700">
+                {[
+                  <>
+                    <strong>Cible &gt; 55 ans exclusive</strong> — l'audience reste dominée par
+                    16-44 ans malgré l'élargissement. Privilégier{' '}
+                    <a href="/services/publicite-en-ligne" className="text-digiqo-primary underline decoration-digiqo-primary underline-offset-2 hover:text-digiqo-accent">
+                      Facebook Ads
+                    </a>{' '}
+                    ou Google Search Ads.
+                  </>,
+                  <>
+                    <strong>Vente B2B grands comptes</strong> — TikTok n'est pas un canal lead gen
+                    B2B sur 974. LinkedIn Ads reste la référence.
+                  </>,
+                  <>
+                    <strong>Budget &lt; 1 500 € sur 90 jours</strong> — comme expliqué section 02,
+                    l'algo a besoin de signaux. Mieux vaut{' '}
+                    <a href="/services/community-management" className="text-digiqo-primary underline decoration-digiqo-primary underline-offset-2 hover:text-digiqo-accent">
+                      démarrer en organique
+                    </a>
+                    .
+                  </>,
+                  <>
+                    <strong>Aucune ressource vidéo interne</strong> — si personne dans ton équipe
+                    ne peut filmer 5 vidéos par semaine, TikTok Ads ne tiendra pas. Construis
+                    l'organique d'abord.
+                  </>,
+                ].map((node, idx) => (
+                  <li key={idx} className="relative pl-7 before:content-[''] before:absolute before:left-1 before:top-[0.7em] before:w-2 before:h-2 before:bg-digiqo-primary before:rounded-full">
+                    {node}
+                  </li>
+                ))}
+              </ul>
             </section>
 
-            <div className="my-16 py-8 text-center border-t border-dashed border-slate-300 text-slate-500 text-sm">
-              🚧 Reste : FAQ · Sources · Author bio · Related · BlogCTA
-            </div>
+            <FAQ
+              title="Questions fréquentes sur les TikTok Ads à La Réunion"
+              subtitle="Les questions qu'on nous pose le plus en consultation."
+              items={[
+                {
+                  question:
+                    'Combien coûte une campagne TikTok Ads pour démarrer à La Réunion en 2026 ?',
+                  answer: (
+                    <p>
+                      Le budget minimum recommandé pour un test sérieux est de{' '}
+                      <strong>1 500 € sur 90 jours</strong> (≈ 500 € par mois). En dessous,
+                      l'algorithme TikTok n'a pas assez de signaux pour optimiser. Voir notre{' '}
+                      <a href="/services/publicite-en-ligne">offre publicité TikTok Ads</a>.
+                    </p>
+                  ),
+                },
+                {
+                  question: 'TikTok Ads est-il moins cher que Meta Ads à La Réunion ?',
+                  answer: (
+                    <p>
+                      Oui, le CPM TikTok à La Réunion est en moyenne 50 % moins cher (11 € vs 22 €)
+                      et le CPA 3× plus bas (9,40 € vs 28 €). Le taux de conversion final reste
+                      légèrement supérieur sur Meta (+25 %), donc la stratégie optimale combine les
+                      deux.
+                    </p>
+                  ),
+                },
+                {
+                  question: 'Faut-il un compte business TikTok pour faire de la publicité ?',
+                  answer: (
+                    <p>
+                      Oui, il faut basculer en compte TikTok Business (gratuit) puis créer un
+                      compte TikTok Ads Manager. La bascule se fait en 2 minutes.
+                    </p>
+                  ),
+                },
+                {
+                  question: 'Combien de temps avant de voir des résultats sur TikTok Ads ?',
+                  answer: (
+                    <p>
+                      Premiers signaux dès J+7. Phase d'apprentissage stabilisée à J+14 (après ~50
+                      conversions). Performance optimale à partir de J+30 si vous tournez
+                      régulièrement vos créatives.
+                    </p>
+                  ),
+                },
+                {
+                  question: 'Peut-on faire de la publicité TikTok sans compte TikTok actif ?',
+                  answer: (
+                    <p>
+                      Techniquement oui, mais on déconseille fortement : sans compte actif, les
+                      publicités n'ont pas de crédibilité algorithmique, et vous perdez la
+                      possibilité de faire du Spark Ads. On recommande{' '}
+                      <a href="/services/community-management">notre offre community management</a>{' '}
+                      pour bâtir la base organique en parallèle.
+                    </p>
+                  ),
+                },
+              ]}
+            />
+
+            <SourcesBlock
+              sources={[
+                {
+                  label: 'TikTok For Business — Documentation officielle',
+                  url: 'https://www.tiktok.com/business/fr',
+                  description:
+                    'Plateforme officielle annonceurs · données plateforme et formats publicitaires 2026',
+                },
+                {
+                  label: 'Statista — TikTok Statistics 2026',
+                  url: 'https://www.statista.com/topics/6077/tiktok/',
+                  description: "Données chiffrées globales d'usage et audience démographique",
+                },
+                {
+                  label: 'Think with Google — Video Marketing',
+                  url: 'https://www.thinkwithgoogle.com/marketing-strategies/video/',
+                  description: 'Insights audience vidéo et benchmarks publicitaires',
+                },
+                {
+                  label: 'Hootsuite Blog — Social Trends 2026',
+                  url: 'https://blog.hootsuite.com/',
+                  description: 'Analyses comparatives plateformes et benchmarks engagement',
+                },
+                {
+                  label: 'Données primaires Digiqo',
+                  primary: true,
+                  description:
+                    'Analyse interne de 50 comptes clients réunionnais · janvier-mars 2026 · panier moyen 85 €',
+                },
+              ]}
+            />
+
+            <AuthorCardExtended author={DIGIQO_AUTHOR} />
           </article>
 
           <aside>
             <TableOfContents items={TOC} />
           </aside>
         </div>
+
+        <RelatedArticles
+          clusterLink={{ label: 'Voir tout le cluster Social Media →', href: '/blog?cat=social-media' }}
+          articles={[
+            {
+              slug: 'tiktok-strategie-organique-reunion',
+              title: 'TikTok à La Réunion : la stratégie organique en 2026',
+              excerpt: 'Avant de payer, sache scaler ton organique. Le guide complet.',
+              pillLabel: 'TikTok organique',
+              readTime: '12 min de lecture',
+            },
+            {
+              slug: 'pixel-tiktok-installation-974',
+              title: 'Pixel TikTok + API Conversions : guide d\'installation 974',
+              excerpt: 'Le tracking étape par étape pour ne pas rater de conversion en 2026.',
+              pillLabel: 'Tracking',
+              readTime: '8 min de lecture',
+            },
+            {
+              slug: 'tiktok-vs-meta-vs-google-ads-reunion',
+              title: 'TikTok vs Meta vs Google Ads : quel canal en 2026 à La Réunion ?',
+              excerpt: 'Comparatif data-driven sur 100 campagnes. Le guide définitif.',
+              pillLabel: 'Stratégie',
+              readTime: '11 min de lecture',
+            },
+          ]}
+        />
+
+        <BlogCTA
+          eyebrow="Audit gratuit · 30 minutes"
+          heading="Prêt à lancer ton premier test TikTok Ads à La Réunion ?"
+          body="On audite ton compte, on dimensionne ton budget, on te remet un plan d'action écrit. Sans engagement."
+          primary={{ label: 'Demander mon audit gratuit', href: '/audit' }}
+          secondary={{ label: "Voir l'offre TikTok Ads", href: '/services/publicite-en-ligne' }}
+        />
       </main>
 
       <Footer />

@@ -54,9 +54,8 @@ export interface RelatedArticleRef {
   excerpt: string
   pillLabel: string
   readTime: string
-  // Inline gradient when no featured image is set, keeps cards visually distinct.
-  gradientFrom?: string
-  gradientTo?: string
+  /** Optional cover image. When omitted, RelatedArticles renders a bordeaux→accent gradient backdrop. */
+  featuredImage?: string
 }
 
 export interface ArticleAuthor {
