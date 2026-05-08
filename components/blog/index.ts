@@ -8,6 +8,8 @@ export type { BreadcrumbItem } from './Breadcrumb'
 export { AuthorAvatar } from './AuthorAvatar'
 export { AuthorCardCompact, AuthorCardExtended, buildPersonSchema } from './AuthorCard'
 export { ArticleHero } from './ArticleHero'
+export { TldrBox } from './TldrBox'
+export { QuickAnswer } from './QuickAnswer'
 
 export type {
   ArticleBlock,
