@@ -110,12 +110,19 @@ export default function BlogPage() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
                 >
-                  {/* Article Image */}
+                  {/* Article Image — first card is the LCP candidate on /blog
+                      mobile (3-column desktop becomes 1-column mobile). priority
+                      preloads it; lazy-load others. sizes hint Next.js to ship
+                      the smallest variant per viewport. Fixed h-48 prevents
+                      layout shift while loading. */}
                   <div className="relative h-48 overflow-hidden">
                     <Image
                       src={article.featuredImage ?? '/blog-images/community-hero.jpeg'}
                       alt={article.title}
                       fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                      priority={index === 0}
+                      loading={index === 0 ? undefined : 'lazy'}
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
