@@ -55,6 +55,46 @@ const nextConfig = {
         destination: '/services/publicite-en-ligne#faq',
         permanent: true,
       },
+      // ─── Sprint 2 (mai 2026) — 6 anciens articles blog supprimés ─────────
+      // Le contenu blog a été refait sur le nouveau template (branche
+      // seo-geo-rattrapage-s2). Ces 6 slugs n'existent plus dans
+      // lib/blog-articles.ts. Le 301 vers /blog signale à Google « article
+      // supprimé, voir la liste blog » plutôt que de servir un 404 brut.
+      {
+        source: '/blog/tiktok-marketing-reunion-strategie-entreprise-2025',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/seo-referencement-naturel-reunion-guide-complet',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/community-management-reunion-strategies-2025',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/optimiser-google-ads-reunion-2025',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/developpement-web-reunion-guide-2025',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/identite-visuelle-reunion-guide-complet-2025',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/production-video-reunion-impact-2025',
+        destination: '/blog',
+        permanent: true,
+      },
     ]
   },
   poweredByHeader: false,
