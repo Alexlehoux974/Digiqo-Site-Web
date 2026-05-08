@@ -1,44 +1,18 @@
-// Block-based content model for the new article template.
-// Each section is a list of typed blocks rather than a single markdown blob —
-// this lets us render with React components, validate with TypeScript, and
-// generate precise JSON-LD (HowTo from NumberedSteps, FAQPage from FAQ, etc.).
+// Type definitions for the Sprint 2 blog article system.
+//
+// We split each article in two pieces:
+// - BlogArticleData (serializable, returned by getStaticProps and used by
+//   the /blog list) — only primitive metadata.
+// - BlogArticleContent (rich, contains React.ReactNode for sections/answers/
+//   FAQ) — loaded directly at render time, not sent through getStaticProps.
 
 export type CalloutVariant = 'anecdote' | 'opinion' | 'stat' | 'warning'
 
-export type ArticleBlock =
-  | { type: 'paragraph'; html: string }
-  | { type: 'h3'; text: string; id?: string }
-  | { type: 'list'; items: string[] }
-  | { type: 'definition'; term: string; bodyHtml: string }
-  | { type: 'statHero'; big: string; bodyHtml: string; sourceLabel: string; sourceUrl?: string }
-  | { type: 'barChart'; title: string; bars: { label: string; widthPct: number; valueLabel: string }[] }
-  | { type: 'inlineQA'; question: string; answerHtml: string }
-  | { type: 'callout'; variant: CalloutVariant; label: string; bodyHtml: string }
-  | { type: 'comparisonTable'; title: string; subtitle?: string; headers: string[]; rows: ComparisonCellData[][] }
-  | { type: 'numberedSteps'; steps: { title: string; bodyHtml: string }[] }
-  | { type: 'pullQuote'; text: string; attribution?: string }
-  | { type: 'blockquote'; text: string }
-  | { type: 'image'; src: string; alt: string; caption?: string }
-
-// Data-side cell type used in /lib/blog-articles (serializable: string only).
-// The runtime/component type ComparisonCell (with React.ReactNode) lives in
-// ./ComparisonTable.tsx. A mapper in commit 8 promotes ComparisonCellData
-// to ComparisonCell for rendering.
-export type ComparisonCellData =
-  | { kind: 'text'; value: string }
-  | { kind: 'badge'; value: string; tone: 'good' | 'mid' | 'bad' }
-  | { kind: 'verdict'; value: string; winner: 'left' | 'right' | 'tie' }
-
-export interface ArticleSection {
-  id: string             // anchor id, e.g. 'section-1'
-  number: string         // display number, e.g. '01'
-  title: string          // H2 text
-  blocks: ArticleBlock[]
-}
-
 export interface FAQItem {
   question: string
-  answerHtml: string
+  /** Inline ReactNode so backlinks and <strong> stay readable. The schema
+   *  serializer flattens this to plain text for FAQPage JSON-LD. */
+  answer: React.ReactNode
 }
 
 export interface SourceRef {
@@ -60,7 +34,7 @@ export interface RelatedArticleRef {
 
 export interface ArticleAuthor {
   name: string
-  initials: string       // fallback for avatar
+  initials: string
   role: string
   bio: string
   expertise: string[]
@@ -76,51 +50,67 @@ export interface BlogCTAConfig {
   secondary?: { label: string; href: string }
 }
 
-// Extended article shape for the new template.
-// Backward-compatible field `content` is dropped — sections[] replaces it.
-export interface BlogArticleV2 {
+// ─── Article shape ─────────────────────────────────────────────────────────
+
+/** Serializable subset — safe to pass through getStaticProps and to render
+ *  on the /blog list. Contains no React nodes. */
+export interface BlogArticleData {
   id: string
   slug: string
   title: string
-  excerpt: string                // hero lede
+  /** One-paragraph hero lede — also used as the listing card excerpt. */
+  excerpt: string
   metaDescription: string
-
-  category: string               // top-level cluster (Social Media, SEO, ...)
-  cluster: string                // sub-cluster shown in pill (TikTok Ads, etc.)
-
-  date: string                   // human-readable French
-  dateModified: string           // ISO 8601 with timezone
-
-  readTime: string               // '9 min de lecture'
-  author: ArticleAuthor
-
-  featuredImage?: string         // optional now — hero is text-first
+  /** Headline accent — last word(s) of the H1, picks up the bordeaux→orange
+   *  gradient. Optional. Must be a suffix of `title` to render correctly. */
+  titleAccent?: string
+  category: string                  // top-level cluster (Social Media, SEO, ...)
+  cluster: string                   // sub-cluster shown in pill (TikTok Ads, ...)
+  clusterHref?: string
+  date: string                      // human-readable French ("12 mars 2026")
+  dateModified: string              // ISO 8601 with timezone
+  /** Human-readable label shown in the hero ("06 mai 2026") */
+  dateModifiedLabel?: string
+  readTime: string                  // '9 min de lecture'
+  featuredImage?: string
   tags: string[]
+  authorKey: string                 // resolves to an ArticleAuthor in lib
+  /** Slugs of related articles — resolved to full RelatedArticleRef in lib. */
+  relatedSlugs: string[]
+}
 
-  tldr: {
-    forWhom: string[]
-    whatYouLearn: string[]
-  }
+export interface ArticleSectionContent {
+  id: string                        // anchor id, e.g. 'section-1'
+  number: string                    // display number, e.g. '01'
+  title: React.ReactNode            // H2 text — ReactNode allows <em> in titles
+  /** Whole section body assembled with components/blog blocks. */
+  children: React.ReactNode
+}
 
-  quickAnswer: {
-    question: string
-    answerHtml: string
-    wordCount: number
-    targetQuery: string
-  }
+export interface ArticleQuickAnswer {
+  question: string
+  answer: React.ReactNode
+  wordCount: number
+  targetQuery: string
+}
 
-  sections: ArticleSection[]
+export interface ArticleTldr {
+  forWhom: React.ReactNode[]
+  whatYouLearn: React.ReactNode[]
+}
 
+/** Rich content side — loaded at render time, never sent through props. */
+export interface BlogArticleContent {
+  tldr: ArticleTldr
+  quickAnswer: ArticleQuickAnswer
+  sections: ArticleSectionContent[]
   faq: FAQItem[]
-
   sources: SourceRef[]
-
-  relatedSlugs: string[]         // resolved at build time
-
   cta: BlogCTAConfig
 }
 
-// Author shared across all articles for now (single-author blog).
+// ─── Author registry ──────────────────────────────────────────────────────
+
 export const DIGIQO_AUTHOR: ArticleAuthor = {
   name: 'Alexandre Lehoux',
   initials: 'AL',
@@ -128,4 +118,8 @@ export const DIGIQO_AUTHOR: ArticleAuthor = {
   bio: 'Stratège marketing digital à La Réunion depuis 2018, Alexandre dirige la stratégie acquisition de Digiqo qu\'il a co-fondée. Il a piloté plus de 4 M€ d\'investissement publicitaire pour des PME locales et publie régulièrement sur le blog Digiqo.',
   expertise: ['TikTok Ads', 'Meta Ads', 'Stratégie acquisition 974', 'Tracking publicitaire'],
   linkedinUrl: 'https://www.linkedin.com/in/alexandre-le-houx/',
+}
+
+export const AUTHORS: Record<string, ArticleAuthor> = {
+  'alexandre-lehoux': DIGIQO_AUTHOR,
 }

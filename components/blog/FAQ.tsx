@@ -2,13 +2,9 @@ import { ChevronDown } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { cn } from '@/lib/utils'
+import type { FAQItem } from './types'
 
-export interface FAQItem {
-  question: string
-  /** Pass JSX with inline backlinks. The accordion body renders this; the
-   *  schema serializer flattens it to plain text. */
-  answer: React.ReactNode
-}
+export type { FAQItem } from './types'
 
 interface FAQProps {
   title?: string

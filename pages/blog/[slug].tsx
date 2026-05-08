@@ -1,160 +1,87 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowLeft, Clock, Calendar, User } from 'lucide-react'
-import { motion } from 'framer-motion'
-import { getArticleBySlug, getAllArticles, type BlogArticle } from '@/lib/blog-articles'
+import Script from 'next/script'
+import { HeaderLuxury } from '@/components/Header'
+import { Footer } from '@/components/Footer'
 import { SEO } from '@/components/SEO'
+import {
+  ArticleHero,
+  AuthorCardExtended,
+  BlogCTA,
+  buildArticleSchemas,
+  FAQ,
+  QuickAnswer,
+  RelatedArticles,
+  SourcesBlock,
+  TableOfContents,
+  TldrBox,
+} from '@/components/blog'
+import type { BreadcrumbItem, TocItem } from '@/components/blog'
+import {
+  getArticleContent,
+  getArticleData,
+  getAllArticles,
+  resolveAuthor,
+  resolveRelated,
+} from '@/lib/blog-articles'
+import type { BlogArticleData } from '@/components/blog'
 
 const SITE_URL = 'https://digiqo.fr'
 
-const FRENCH_MONTHS: Record<string, string> = {
-  Janvier: '01', Février: '02', Mars: '03', Avril: '04',
-  Mai: '05', Juin: '06', Juillet: '07', Août: '08',
-  Septembre: '09', Octobre: '10', Novembre: '11', Décembre: '12',
-}
-
-// "25 Septembre 2025" -> "2025-09-25T08:00:00+04:00" (Réunion timezone)
-function parseFrenchDateToIso(date: string): string {
-  const match = date.match(/(\d{1,2})\s+(\S+)\s+(\d{4})/)
-  if (!match) return date
-  const [, day, month, year] = match
-  const monthNum = FRENCH_MONTHS[month] ?? '01'
-  return `${year}-${monthNum}-${day.padStart(2, '0')}T08:00:00+04:00`
-}
-
-function countWords(text: string): number {
-  return text.split(/\s+/).filter(Boolean).length
-}
-
-function formatModifiedDate(iso: string): string {
-  const date = new Date(iso)
-  return date.toLocaleDateString('fr-FR', {
-    day: '2-digit', month: '2-digit', year: 'numeric',
-  })
-}
-
-// Authoritative external references per article category. Princeton CITP found
-// inline citations to authoritative sources lift LLM citation rate +30-40%.
-// All anchors render with rel="nofollow" so we don't leak link equity.
-type SourceRef = { label: string; url: string; description: string }
-
-const EXTERNAL_SOURCES_BY_CATEGORY: Record<string, SourceRef[]> = {
-  'SEO': [
-    { label: 'Google Search Central — SEO Starter Guide', url: 'https://developers.google.com/search/docs/fundamentals/seo-starter-guide', description: 'Documentation officielle Google.' },
-    { label: 'Search Engine Land', url: 'https://searchengineland.com/', description: 'Actualité quotidienne SEO et SEM.' },
-    { label: 'Moz — Beginner\'s Guide to SEO', url: 'https://moz.com/beginners-guide-to-seo', description: 'Guide pédagogique référence.' },
-    { label: 'Ahrefs Blog', url: 'https://ahrefs.com/blog/', description: 'Études de cas et data backlinks.' },
-  ],
-  'Social Media': [
-    { label: 'TikTok For Business', url: 'https://www.tiktok.com/business/fr', description: 'Plateforme officielle annonceurs.' },
-    { label: 'Hootsuite — Social Trends', url: 'https://www.hootsuite.com/research/social-trends', description: 'Rapport annuel des tendances social.' },
-    { label: 'Statista — TikTok Statistics', url: 'https://www.statista.com/topics/6077/tiktok/', description: 'Données chiffrées d\'usage et audiences.' },
-    { label: 'Sprout Social Insights', url: 'https://sproutsocial.com/insights/', description: 'Analyses et benchmarks social media.' },
-  ],
-  'Community Management': [
-    { label: 'Hootsuite Blog', url: 'https://blog.hootsuite.com/', description: 'Stratégies social media multi-plateformes.' },
-    { label: 'Buffer Library', url: 'https://buffer.com/library', description: 'Guides et études social media.' },
-    { label: 'Sprout Social Insights', url: 'https://sproutsocial.com/insights/', description: 'Analyses et benchmarks engagement.' },
-    { label: 'Social Media Examiner', url: 'https://www.socialmediaexaminer.com/', description: 'Conseils pratiques community management.' },
-  ],
-  'Google Ads': [
-    { label: 'Google Ads Help', url: 'https://support.google.com/google-ads', description: 'Documentation officielle Google Ads.' },
-    { label: 'Think with Google', url: 'https://www.thinkwithgoogle.com/', description: 'Insights publicitaires Google.' },
-    { label: 'WordStream Blog', url: 'https://www.wordstream.com/blog', description: 'Tutoriels et benchmarks PPC.' },
-    { label: 'Search Engine Land — PPC', url: 'https://searchengineland.com/library/channel/ppc', description: 'Actualité Google Ads et SEA.' },
-  ],
-  'Développement Web': [
-    { label: 'web.dev — Google', url: 'https://web.dev/', description: 'Performance web et Core Web Vitals.' },
-    { label: 'MDN Web Docs', url: 'https://developer.mozilla.org/', description: 'Référence technique HTML/CSS/JS.' },
-    { label: 'Next.js Documentation', url: 'https://nextjs.org/docs', description: 'Framework React de référence.' },
-    { label: 'W3C — Web Accessibility (WAI)', url: 'https://www.w3.org/WAI/', description: 'Standards d\'accessibilité.' },
-  ],
-  'Identité Visuelle': [
-    { label: 'Brand New (UnderConsideration)', url: 'https://www.underconsideration.com/brandnew/', description: 'Critiques de redesigns identité.' },
-    { label: 'AIGA — The professional association for design', url: 'https://www.aiga.org/', description: 'Association professionnelle design.' },
-    { label: 'Adobe — Branding & Identity', url: 'https://www.adobe.com/express/learn/blog/brand-identity', description: 'Guide branding Adobe.' },
-    { label: '99designs — Logo & Branding Blog', url: 'https://99designs.com/blog/logo-branding/', description: 'Articles pratiques branding.' },
-  ],
-  'Production Vidéo': [
-    { label: 'Wistia Learning Center', url: 'https://wistia.com/learn', description: 'Guides production vidéo marketing.' },
-    { label: 'Vimeo Blog', url: 'https://vimeo.com/blog', description: 'Conseils technique et créatif.' },
-    { label: 'Think with Google — Video', url: 'https://www.thinkwithgoogle.com/marketing-strategies/video/', description: 'Insights audience YouTube.' },
-    { label: 'Search Engine Journal — Video Marketing', url: 'https://www.searchenginejournal.com/category/digital-marketing/video-marketing/', description: 'Stratégies vidéo SEO.' },
-  ],
-}
-
-const FALLBACK_SOURCES: SourceRef[] = [
-  { label: 'HubSpot Marketing Blog', url: 'https://blog.hubspot.com/marketing', description: 'Référence marketing inbound.' },
-  { label: 'Search Engine Journal', url: 'https://www.searchenginejournal.com/', description: 'Actualité SEO et marketing digital.' },
-  { label: 'Statista — Digital Markets', url: 'https://www.statista.com/markets/424/topic/538/digital-advertising/', description: 'Données chiffrées marché digital.' },
-  { label: 'Hootsuite Blog', url: 'https://blog.hootsuite.com/', description: 'Stratégies social media.' },
-]
-
-function getSourcesForCategory(category: string): SourceRef[] {
-  return EXTERNAL_SOURCES_BY_CATEGORY[category] ?? FALLBACK_SOURCES
-}
-
-function buildBlogPostingSchema(article: BlogArticle) {
-  const datePublished = parseFrenchDateToIso(article.date)
-  const dateModified = article.dateModified ?? datePublished
-  const articleUrl = `${SITE_URL}/blog/${article.slug}`
-  const articleImage = article.featuredImage.startsWith('http')
-    ? article.featuredImage
-    : `${SITE_URL}${article.featuredImage}`
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: article.title,
-    description: article.metaDescription || article.excerpt,
-    image: articleImage,
-    datePublished,
-    dateModified,
-    author: {
-      '@type': 'Person',
-      name: 'Alexandre Lehoux',
-      jobTitle: 'CMO Dirigeant Associé Digiqo',
-      url: `${SITE_URL}/agence`,
-      sameAs: ['https://www.linkedin.com/in/alexandre-le-houx/'],
-    },
-    publisher: {
-      '@type': 'Organization',
-      '@id': `${SITE_URL}/#organization`,
-      name: 'Digiqo',
-      logo: {
-        '@type': 'ImageObject',
-        url: `${SITE_URL}/assets/logo2-digiqo.png`,
-      },
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': articleUrl,
-    },
-    url: articleUrl,
-    articleSection: article.category,
-    wordCount: countWords(article.content),
-    inLanguage: 'fr-FR',
-    keywords: article.tags?.join(', '),
-  }
-}
-
 interface ArticlePageProps {
-  article: BlogArticle
+  data: BlogArticleData
 }
 
-export default function ArticlePage({ article }: ArticlePageProps) {
-  const pageDescription = article.metaDescription || article.excerpt
-  const articleUrl = `${SITE_URL}/blog/${article.slug}`
-  const articleImage = article.featuredImage.startsWith('http')
-    ? article.featuredImage
-    : `${SITE_URL}${article.featuredImage}`
-  const blogPostingSchema = buildBlogPostingSchema(article)
+// Escape `<` for safe inline JSON-LD per OWASP guidance — JSON.stringify can
+// emit `<` inside URLs and would otherwise risk breaking the </script> tag.
+function safeJsonLd(value: unknown): string {
+  return JSON.stringify(value).replace(/</g, '\\u003c')
+}
+
+export default function ArticlePage({ data }: ArticlePageProps) {
+  // Content holds React.ReactNode (sections, FAQ answers) so it cannot be
+  // serialized through getStaticProps. We resolve it from the static module
+  // registry at render time — the module is included in the build, so this
+  // adds zero runtime cost.
+  const content = getArticleContent(data.slug)
+  if (!content) {
+    // Should never happen: getStaticPaths only emits known slugs.
+    return null
+  }
+
+  const author = resolveAuthor(data.authorKey)
+  const related = resolveRelated(data.relatedSlugs)
+  const articleUrl = `${SITE_URL}/blog/${data.slug}`
+  const articleImage = data.featuredImage
+    ? data.featuredImage.startsWith('http')
+      ? data.featuredImage
+      : `${SITE_URL}${data.featuredImage}`
+    : `${SITE_URL}/assets/logo2-digiqo.png`
+
+  const breadcrumb: BreadcrumbItem[] = [
+    { label: 'Accueil', href: '/' },
+    { label: 'Blog', href: '/blog' },
+    { label: data.category, href: data.clusterHref ?? '/blog' },
+    { label: data.title },
+  ]
+
+  // Multi-schema JSON-LD stack: BlogPosting + BreadcrumbList + FAQPage.
+  const { blogPostingSchema, breadcrumbSchema, faqPageSchema } = buildArticleSchemas({
+    data,
+    content,
+    author,
+    breadcrumb,
+  })
+
+  const toc: TocItem[] = content.sections.map((s) => ({
+    id: s.id,
+    label: s.title,
+  }))
+
   return (
     <>
       <SEO
-        title={article.title}
-        description={pageDescription}
+        title={data.title}
+        description={data.metaDescription || data.excerpt}
         image={articleImage}
         url={articleUrl}
         type="article"
@@ -162,372 +89,119 @@ export default function ArticlePage({ article }: ArticlePageProps) {
         structuredData={blogPostingSchema}
       />
 
-      <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-        {/* Header */}
-        <div className="bg-gradient-digiqo text-white">
-          <div className="container mx-auto px-4 py-12">
-            <Link href="/blog" className="inline-block mb-8">
-              <motion.div
-                whileHover={{ x: -5 }}
-                className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors cursor-pointer"
-              >
-                <ArrowLeft className="w-5 h-5" />
-                Retour au blog
-              </motion.div>
-            </Link>
+      <Script id="schema-breadcrumb" type="application/ld+json">
+        {safeJsonLd(breadcrumbSchema)}
+      </Script>
+      {faqPageSchema && (
+        <Script id="schema-faqpage" type="application/ld+json">
+          {safeJsonLd(faqPageSchema)}
+        </Script>
+      )}
 
-            <div className="max-w-4xl mx-auto">
-              <div className="flex items-center gap-4 text-white/80 mb-4 text-sm">
-                <span className="bg-white/20 px-3 py-1 rounded-full">
-                  {article.category}
-                </span>
-                <div className="flex items-center gap-1">
-                  <Calendar className="w-4 h-4" />
-                  {article.date}
-                </div>
-                <div className="flex items-center gap-1">
-                  <Clock className="w-4 h-4" />
-                  {article.readTime}
-                </div>
-              </div>
+      <HeaderLuxury />
 
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                {article.title}
-              </h1>
+      {/* pt-32 clears the sticky HeaderLuxury (topbar + main nav). */}
+      <main className="pt-32 bg-white">
+        <ArticleHero
+          breadcrumb={breadcrumb}
+          cluster={data.cluster}
+          clusterHref={data.clusterHref}
+          readTime={data.readTime}
+          date={data.date}
+          dateModified={data.dateModifiedLabel}
+          dateModifiedIso={data.dateModified}
+          title={data.title}
+          titleAccent={data.titleAccent}
+          lede={data.excerpt}
+          author={author}
+        />
 
-              <p className="text-xl text-white/90">
-                {article.excerpt}
-              </p>
-
-              <div className="flex items-center gap-2 mt-8">
-                <User className="w-5 h-5" />
-                <span className="font-medium">{article.author}</span>
-              </div>
+        <div className="max-w-[1200px] mx-auto px-6 mt-3 grid lg:grid-cols-[1fr_240px] lg:gap-16 gap-6 pb-16">
+          <article className="max-w-[760px] min-w-0">
+            <div className="mt-9">
+              <TldrBox forWhom={content.tldr.forWhom} whatYouLearn={content.tldr.whatYouLearn} />
             </div>
-          </div>
-        </div>
 
-        {/* Featured Image */}
-        <div className="container mx-auto px-4 -mt-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="relative h-[400px] rounded-xl overflow-hidden shadow-2xl">
-              <Image
-                src={article.featuredImage}
-                alt={article.title}
-                fill
-                className="object-cover"
+            <div className="mt-8">
+              <QuickAnswer
+                question={content.quickAnswer.question}
+                answer={content.quickAnswer.answer}
+                wordCount={content.quickAnswer.wordCount}
+                targetQuery={content.quickAnswer.targetQuery}
               />
             </div>
-          </div>
+
+            {content.sections.map((section) => (
+              <section key={section.id} className="mt-16">
+                <h2
+                  id={section.id}
+                  className="font-display font-bold text-[30px] text-digiqo-black tracking-[-0.025em] leading-[1.18] scroll-mt-[96px]"
+                >
+                  <span className="inline-block text-[13px] font-bold text-digiqo-primary bg-digiqo-primary/[0.08] px-2.5 py-1 rounded-md mr-2.5 align-middle -translate-y-[3px] tracking-[0.04em] font-display">
+                    {section.number}
+                  </span>
+                  {section.title}
+                </h2>
+                <div className="mt-4">{section.children}</div>
+              </section>
+            ))}
+
+            {content.faq.length > 0 && (
+              <FAQ
+                title={`Questions fréquentes sur ${data.cluster.split('·').pop()?.trim() ?? data.category}`}
+                subtitle="Les questions qu'on nous pose le plus en consultation."
+                items={content.faq}
+              />
+            )}
+
+            {content.sources.length > 0 && <SourcesBlock sources={content.sources} />}
+
+            <AuthorCardExtended author={author} />
+          </article>
+
+          <aside>
+            <TableOfContents items={toc} />
+          </aside>
         </div>
 
-        {/* Last-updated banner — signals freshness to LLMs and users */}
-        {article.dateModified && (
-          <div className="container mx-auto px-4 mt-6">
-            <div className="max-w-4xl mx-auto">
-              <p className="text-sm text-slate-500">
-                <Clock className="w-4 h-4 inline-block mr-1.5 -mt-0.5" />
-                Article mis à jour le{' '}
-                <time dateTime={article.dateModified} className="font-medium text-slate-700">
-                  {formatModifiedDate(article.dateModified)}
-                </time>
-              </p>
-            </div>
-          </div>
-        )}
-
-        {/* Article Content */}
-        <article className="container mx-auto px-4 py-12">
-          <div
-            className="max-w-4xl mx-auto article-content"
-            dangerouslySetInnerHTML={{ __html: formatContent(article.content) }}
+        {related.length > 0 && (
+          <RelatedArticles
+            clusterLink={
+              data.clusterHref
+                ? { label: `Voir tout le cluster ${data.category} →`, href: data.clusterHref }
+                : undefined
+            }
+            articles={related}
           />
-          <style jsx global>{`
-            .article-content {
-              font-size: 1.125rem;
-              line-height: 1.8;
-              color: #334155;
-            }
-
-            .article-content h1 {
-              font-size: 2.5rem;
-              font-weight: bold;
-              color: #0f172a;
-              margin-top: 3rem;
-              margin-bottom: 2rem;
-              line-height: 1.2;
-            }
-
-            .article-content h2 {
-              font-size: 2rem;
-              font-weight: bold;
-              color: #1e293b;
-              margin-top: 2.5rem;
-              margin-bottom: 1.5rem;
-              line-height: 1.3;
-              border-bottom: 2px solid #e2e8f0;
-              padding-bottom: 0.5rem;
-            }
-
-            .article-content h3 {
-              font-size: 1.5rem;
-              font-weight: 600;
-              color: #334155;
-              margin-top: 2rem;
-              margin-bottom: 1rem;
-              line-height: 1.4;
-            }
-
-            .article-content p {
-              margin-bottom: 1.5rem;
-              line-height: 1.8;
-              color: #475569;
-              text-align: justify;
-            }
-
-            .article-content strong {
-              font-weight: 600;
-              color: #1e293b;
-            }
-
-            .article-content em {
-              font-style: italic;
-              color: #475569;
-            }
-
-            .article-content ul {
-              list-style-type: disc;
-              padding-left: 2rem;
-              margin-bottom: 1.5rem;
-            }
-
-            .article-content li {
-              margin-bottom: 0.75rem;
-              line-height: 1.7;
-              color: #475569;
-            }
-
-            .article-content li strong {
-              color: #1e293b;
-              font-weight: 600;
-            }
-
-            .article-content img {
-              width: 100%;
-              height: auto;
-              border-radius: 0.75rem;
-              box-shadow: 0 10px 30px -10px rgba(0,0,0,0.2);
-              margin: 2.5rem auto;
-              display: block;
-            }
-
-            .article-content a {
-              color: #8B1431;
-              text-decoration: underline;
-              font-weight: 500;
-              transition: color 0.2s;
-            }
-
-            .article-content a:hover {
-              color: #DA6530;
-            }
-
-            .article-content blockquote {
-              border-left: 4px solid #8B1431;
-              padding-left: 1.5rem;
-              margin: 2rem 0;
-              font-style: italic;
-              color: #64748b;
-            }
-
-            /* Espacement entre les sections */
-            .article-content > * + * {
-              margin-top: 1.5rem;
-            }
-
-            .article-content h1 + p,
-            .article-content h2 + p,
-            .article-content h3 + p {
-              margin-top: 1rem;
-            }
-
-            /* Amélioration de la lisibilité sur mobile */
-            @media (max-width: 768px) {
-              .article-content {
-                font-size: 1rem;
-              }
-
-              .article-content h1 {
-                font-size: 2rem;
-              }
-
-              .article-content h2 {
-                font-size: 1.5rem;
-              }
-
-              .article-content h3 {
-                font-size: 1.25rem;
-              }
-
-              .article-content p {
-                text-align: left;
-              }
-            }
-          `}</style>
-        </article>
-
-        {/* External authoritative sources — rel=nofollow keeps PageRank in */}
-        <section className="container mx-auto px-4 pb-12">
-          <div className="max-w-4xl mx-auto">
-            <div className="border-t pt-8">
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">
-                Sources et références
-              </h2>
-              <ul className="space-y-3">
-                {getSourcesForCategory(article.category).map((source) => (
-                  <li key={source.url} className="text-slate-700">
-                    <a
-                      href={source.url}
-                      target="_blank"
-                      rel="nofollow noopener noreferrer"
-                      className="font-medium text-[#8B1431] hover:text-[#DA6530] underline underline-offset-2"
-                    >
-                      {source.label}
-                    </a>
-                    <span className="text-slate-500"> — {source.description}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* Tags */}
-        {article.tags && article.tags.length > 0 && (
-          <div className="container mx-auto px-4 pb-12">
-            <div className="max-w-4xl mx-auto">
-              <div className="border-t pt-8">
-                <div className="flex flex-wrap gap-2">
-                  {article.tags.map(tag => (
-                    <span
-                      key={tag}
-                      className="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm"
-                    >
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
         )}
 
-        {/* CTA */}
-        <div className="bg-gradient-digiqo text-white py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl font-bold mb-4">
-                {article.category === 'Social Media' || article.slug.includes('tiktok')                  ? 'Prêt à booster votre présence sur les réseaux sociaux ?'
-                  : article.category === 'SEO'
-                  ? 'Prêt à améliorer votre référencement naturel ?'
-                  : article.category === 'Développement Web'
-                  ? 'Prêt à créer votre site web performant ?'
-                  : 'Prêt à optimiser vos campagnes Google Ads ?'}
-              </h2>
-              <p className="text-xl mb-8 text-white/90">
-                {article.category === 'Social Media' || article.slug.includes('tiktok')                  ? 'Contactez nos experts pour une stratégie social media sur mesure'
-                  : article.category === 'SEO'
-                  ? 'Contactez nos experts pour un audit SEO complet'
-                  : article.category === 'Développement Web'
-                  ? 'Contactez nos experts pour votre projet web'
-                  : 'Contactez nos experts pour un audit gratuit de vos campagnes'}
-              </p>
-              <motion.a
-                href="/contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-block bg-white text-[#8B1431] px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 hover:shadow-xl transition-all cursor-pointer"
-              >
-                {article.category === 'Social Media' || article.slug.includes('tiktok')                  ? 'Découvrir nos offres social media'
-                  : article.category === 'SEO'
-                  ? 'Demander un audit SEO'
-                  : article.category === 'Développement Web'
-                  ? 'Démarrer mon projet'
-                  : 'Demander un audit gratuit'}
-              </motion.a>
-            </div>
-          </div>
-        </div>
+        <BlogCTA
+          eyebrow={content.cta.eyebrow}
+          heading={content.cta.heading}
+          body={content.cta.body}
+          primary={content.cta.primary}
+          secondary={content.cta.secondary}
+        />
       </main>
+
+      <Footer />
     </>
   )
 }
 
-function formatContent(content: string): string {
-  // Convert Markdown to HTML (basic conversion)
-  // Process links separately to avoid conflicts with Next.js Link component
-  let formattedContent = content
-    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" />')
-    .replace(/^- (.+)$/gim, '<li>$1</li>')
-    .replace(/(<li>.*<\/li>)/, '<ul>$1</ul>')
-    .replace(/\n\n/g, '</p><p>')
-    .replace(/^([^<].*)$/gim, '<p>$1</p>')
-
-  // External links (http/https) get rel="nofollow noopener noreferrer" + target=_blank
-  // so we don't leak link equity and they open in a new tab. Internal links stay plain.
-  formattedContent = formattedContent.replace(
-    /\[([^\]]+)\]\(([^)]+)\)/g,
-    (_match, text, href) => {
-      const isExternal = /^https?:\/\//i.test(href)
-      if (isExternal) {
-        return `<a href="${href}" rel="nofollow noopener noreferrer" target="_blank">${text}</a>`
-      }
-      return `<a href="${href}">${text}</a>`
-    }
-  )
-
-  // Sanitize: strip script tags, event handlers, and dangerous attributes
-  formattedContent = formattedContent
-    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-    .replace(/\son\w+\s*=\s*["'][^"']*["']/gi, '')
-    .replace(/javascript:/gi, '')
-
-  // The page header already renders the article title as <h1>. Strip any
-  // <h1> the markdown produced so we end up with a single h1 per page.
-  formattedContent = formattedContent.replace(/<h1>[\s\S]*?<\/h1>/gi, '')
-
-  return formattedContent
-}
-
 export const getStaticPaths: GetStaticPaths = async () => {
   const articles = getAllArticles()
-
   return {
-    paths: articles.map(article => ({
-      params: { slug: article.slug }
-    })),
-    fallback: false
+    paths: articles.map((article) => ({ params: { slug: article.slug } })),
+    fallback: false,
   }
 }
 
 export const getStaticProps: GetStaticProps<ArticlePageProps> = async ({ params }) => {
   const slug = params?.slug as string
-  const article = getArticleBySlug(slug)
-
-  if (!article) {
-    return {
-      notFound: true
-    }
-  }
-
-  return {
-    props: {
-      article
-    }
-  }
+  const data = getArticleData(slug)
+  if (!data) return { notFound: true }
+  // Only `data` is serializable. Content (with React nodes) is fetched
+  // synchronously at render time from the static module registry.
+  return { props: { data } }
 }

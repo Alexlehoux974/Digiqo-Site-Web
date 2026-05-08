@@ -24,21 +24,22 @@ export type { NumberedStep } from './NumberedSteps'
 export { ComparisonTable } from './ComparisonTable'
 export type { ComparisonCell } from './ComparisonTable'
 export { FAQ, buildFAQPageSchema } from './FAQ'
-export type { FAQItem as FAQItemUI } from './FAQ'
 export { SourcesBlock } from './SourcesBlock'
 export { RelatedArticles } from './RelatedArticles'
 export { BlogCTA } from './BlogCTA'
+export { buildArticleSchemas } from './buildArticleSchemas'
 
 export type {
-  ArticleBlock,
-  ArticleSection,
-  BlogArticleV2,
+  BlogArticleData,
+  BlogArticleContent,
+  ArticleSectionContent,
+  ArticleQuickAnswer,
+  ArticleTldr,
   BlogCTAConfig,
   CalloutVariant,
-  ComparisonCellData,
   FAQItem,
   RelatedArticleRef,
   SourceRef,
   ArticleAuthor,
 } from './types'
-export { DIGIQO_AUTHOR } from './types'
+export { DIGIQO_AUTHOR, AUTHORS } from './types'

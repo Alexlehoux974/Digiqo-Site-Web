@@ -113,7 +113,7 @@ export default function BlogPage() {
                   {/* Article Image */}
                   <div className="relative h-48 overflow-hidden">
                     <Image
-                      src={article.featuredImage}
+                      src={article.featuredImage ?? '/blog-images/community-hero.jpeg'}
                       alt={article.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
