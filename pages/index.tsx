@@ -334,23 +334,30 @@ export default function Home() {
                 </a>
               </div>
 
-              {/* iPad Mockup — animated screenshot of app-digiqo.fr (real iframe blocked
-                  by X-Frame-Options on app-digiqo.fr, see commit e52f86f8). */}
+              {/* iPad Mockup — hybrid scrollable preview of app-digiqo.fr screenshot.
+                  Real iframe of /demo blocked by X-Frame-Options (commit e52f86f8).
+                  Default state: CSS auto-scroll keyframe (inner div translateY).
+                  On hover: animation pauses, user can scroll manually via overflow-y:auto. */}
               <div className="flex justify-center">
                 <div className="relative w-full max-w-[500px]">
                   {/* iPad frame */}
                   <div className="relative bg-[#1a1a1a] rounded-[1.5rem] md:rounded-[2rem] p-[6px] shadow-2xl shadow-black/60">
                     {/* Camera */}
                     <div className="absolute top-3 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#2a2a2e] rounded-full z-10" />
-                    {/* Screen */}
-                    <div className="relative bg-white rounded-[1.2rem] md:rounded-[1.7rem] overflow-hidden aspect-[4/3]">
-                      <div className="absolute inset-0" style={{ animation: 'ipadScroll 8s ease-in-out infinite' }}>
+                    {/* Screen — overflow-y:auto enables manual scroll while the inner
+                        div runs the auto-scroll CSS animation. Hover pauses the animation
+                        (see styles/globals.css → .dashboard-preview-screen:hover ...). */}
+                    <div
+                      className="dashboard-preview-screen relative bg-white rounded-[1.2rem] md:rounded-[1.7rem] overflow-y-auto overflow-x-hidden aspect-[4/3]"
+                      aria-label="Aperçu Mon Dashboard — auto-scroll, survolez pour faire défiler manuellement"
+                    >
+                      <div className="dashboard-preview-inner absolute inset-0">
                         <Image
                           src="/dashboard-demo.webp"
                           alt="Aperçu Mon Dashboard Digiqo"
                           width={1024}
                           height={1265}
-                          className="w-full h-auto"
+                          className="w-full h-auto block"
                           loading="lazy"
                           sizes="500px"
                         />

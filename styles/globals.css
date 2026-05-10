@@ -133,6 +133,22 @@
   85%, 100% { transform: translateY(0); }
 }
 
+/* iPad dashboard preview — hybrid scroll: CSS auto-animation + user manual scroll.
+   Pause the animation when the user hovers the screen so they can read or scroll
+   through the screenshot at their own pace. */
+.dashboard-preview-inner {
+  animation: ipadScroll 8s ease-in-out infinite;
+}
+.dashboard-preview-screen:hover .dashboard-preview-inner,
+.dashboard-preview-screen:focus-within .dashboard-preview-inner {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-preview-inner {
+    animation: none;
+  }
+}
+
 /* Header — were framer-motion infinite loops, moved to CSS for compositor-thread perf (TBT) */
 @keyframes header-logo-glow-pulse {
   0%, 100% { opacity: 0.3; transform: scale(1); }
