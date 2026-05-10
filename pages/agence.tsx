@@ -800,6 +800,7 @@ export default function Agence() {
                             href={member.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={`Profil LinkedIn de ${member.name}`}
                             className="relative w-10 h-10 rounded-full flex items-center justify-center overflow-hidden group/social"
                             whileHover={{ scale: 1.15, rotate: 5 }}
                             whileTap={{ scale: 0.95 }}
@@ -814,11 +815,12 @@ export default function Agence() {
                               whileHover={{ scale: 2, opacity: 0 }}
                               transition={{ duration: 0.5 }}
                             />
-                            <Linkedin className="relative w-5 h-5 text-digiqo-primary group-hover/social:text-white transition-colors duration-300 z-10" />
+                            <Linkedin aria-hidden="true" className="relative w-5 h-5 text-digiqo-primary group-hover/social:text-white transition-colors duration-300 z-10" />
                           </motion.a>
-                          
+
                           <motion.a
                             href={`mailto:${member.email}`}
+                            aria-label={`Envoyer un email à ${member.name}`}
                             className="relative w-10 h-10 rounded-full flex items-center justify-center overflow-hidden group/social"
                             whileHover={{ scale: 1.15, rotate: -5 }}
                             whileTap={{ scale: 0.95 }}
@@ -833,7 +835,7 @@ export default function Agence() {
                               whileHover={{ scale: 2, opacity: 0 }}
                               transition={{ duration: 0.5 }}
                             />
-                            <Mail className="relative w-5 h-5 text-digiqo-accent group-hover/social:text-white transition-colors duration-300 z-10" />
+                            <Mail aria-hidden="true" className="relative w-5 h-5 text-digiqo-accent group-hover/social:text-white transition-colors duration-300 z-10" />
                           </motion.a>
                         </div>
                       </div>

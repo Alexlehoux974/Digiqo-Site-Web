@@ -268,6 +268,7 @@ export function ContactForm({ formData, setFormData }: ContactFormProps) {
                 </svg>
                 <motion.select
                   required
+                  aria-label="Forme juridique de votre entreprise"
                   value={formData.companyType}
                   onChange={(e) => setFormData(prev => ({ ...prev, companyType: e.target.value }))}
                   whileFocus={{ scale: 1.01 }}

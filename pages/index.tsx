@@ -146,20 +146,24 @@ function VideoCarousel() {
         {/* Left arrow */}
         {canScrollLeft && (
           <button
+            type="button"
             onClick={() => scroll('left')}
+            aria-label="Vidéos précédentes"
             className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft aria-hidden="true" className="w-6 h-6" />
           </button>
         )}
 
         {/* Right arrow */}
         {canScrollRight && (
           <button
+            type="button"
             onClick={() => scroll('right')}
+            aria-label="Vidéos suivantes"
             className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight aria-hidden="true" className="w-6 h-6" />
           </button>
         )}
 
@@ -237,10 +241,12 @@ function VideoCarousel() {
               allowFullScreen
             />
             <button
+              type="button"
               onClick={() => setActiveVideo(null)}
+              aria-label="Fermer la vidéo"
               className="absolute top-3 right-3 z-10 w-10 h-10 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/80 transition-all"
             >
-              <X className="w-5 h-5" />
+              <X aria-hidden="true" className="w-5 h-5" />
             </button>
           </div>
         </div>

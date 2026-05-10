@@ -209,12 +209,14 @@ export const TestimonialsSection = () => {
             {/* Bouton précédent - affiché seulement s'il y a plus d'un témoignage */}
             {testimonialData.length > 1 && (
               <motion.button
+                type="button"
                 onClick={handlePrev}
+                aria-label="Témoignage précédent"
                 className="flex w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg items-center justify-center hover:shadow-xl hover:shadow-digiqo-primary/20 border border-digiqo-primary/10 hover:border-digiqo-primary/20 transition-all duration-300"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg aria-hidden="true" className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </motion.button>
@@ -254,8 +256,8 @@ export const TestimonialsSection = () => {
                             <p className="text-xs text-gray-500">La Réunion</p>
                           </div>
                         </div>
-                        <button className="text-gray-700">
-                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <button type="button" aria-label="Plus d'options" className="text-gray-700">
+                          <svg aria-hidden="true" className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
                           </svg>
                         </button>
@@ -306,23 +308,27 @@ export const TestimonialsSection = () => {
                         <div className="flex items-center justify-between mb-3">
                           <div className="flex items-center gap-4">
                             <motion.button
+                              type="button"
                               onClick={() => handleLike(testimonial.id)}
+                              aria-label={likedPosts.has(testimonial.id) ? "Retirer le j'aime" : "J'aime ce témoignage"}
+                              aria-pressed={likedPosts.has(testimonial.id)}
                               whileTap={{ scale: 0.8 }}
                               className="transition-colors"
                             >
-                              <Heart 
-                                className={`w-6 h-6 ${likedPosts.has(testimonial.id) ? 'fill-red-500 text-red-500' : 'text-gray-700'}`} 
+                              <Heart
+                                aria-hidden="true"
+                                className={`w-6 h-6 ${likedPosts.has(testimonial.id) ? 'fill-red-500 text-red-500' : 'text-gray-700'}`}
                               />
                             </motion.button>
-                            <button>
-                              <MessageCircle className="w-6 h-6 text-gray-700" />
+                            <button type="button" aria-label="Commenter">
+                              <MessageCircle aria-hidden="true" className="w-6 h-6 text-gray-700" />
                             </button>
-                            <button>
-                              <Send className="w-6 h-6 text-gray-700" />
+                            <button type="button" aria-label="Partager">
+                              <Send aria-hidden="true" className="w-6 h-6 text-gray-700" />
                             </button>
                           </div>
-                          <button>
-                            <Bookmark className="w-6 h-6 text-gray-700" />
+                          <button type="button" aria-label="Enregistrer le témoignage">
+                            <Bookmark aria-hidden="true" className="w-6 h-6 text-gray-700" />
                           </button>
                         </div>
 
@@ -353,31 +359,43 @@ export const TestimonialsSection = () => {
             {/* Bouton suivant - affiché seulement s'il y a plus d'un témoignage */}
             {testimonialData.length > 1 && (
               <motion.button
+                type="button"
                 onClick={handleNext}
+                aria-label="Témoignage suivant"
                 className="flex w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg items-center justify-center hover:shadow-xl hover:shadow-digiqo-primary/20 border border-digiqo-primary/10 hover:border-digiqo-primary/20 transition-all duration-300"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg aria-hidden="true" className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </motion.button>
             )}
           </div>
 
-          {/* Indicateurs - affichés seulement s'il y a plus d'un témoignage */}
+          {/* Indicateurs — wrapped in 32x32 px tap target (w-2 h-2 alone failed
+              Lighthouse target-size). The visible dot stays small but the
+              clickable area is WCAG-compliant. */}
           {testimonialData.length > 1 && (
-            <div className="flex justify-center gap-2 mt-8">
+            <div className="flex justify-center gap-1 mt-8">
               {testimonialData.map((_, index) => (
                 <button
                   key={index}
+                  type="button"
                   onClick={() => setActiveIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === activeIndex 
-                      ? 'w-8 bg-gradient-to-r from-digiqo-primary to-digiqo-accent' 
-                      : 'bg-gray-300'
-                  }`}
-                />
+                  aria-label={`Aller au témoignage ${index + 1}`}
+                  aria-current={index === activeIndex ? 'true' : undefined}
+                  className="w-8 h-8 flex items-center justify-center"
+                >
+                  <span
+                    aria-hidden="true"
+                    className={`block h-2 rounded-full transition-all duration-300 ${
+                      index === activeIndex
+                        ? 'w-8 bg-gradient-to-r from-digiqo-primary to-digiqo-accent'
+                        : 'w-2 bg-gray-300'
+                    }`}
+                  />
+                </button>
               ))}
             </div>
           )}

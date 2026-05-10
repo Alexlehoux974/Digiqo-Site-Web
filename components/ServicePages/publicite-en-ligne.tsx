@@ -381,14 +381,14 @@ export default function PubliciteEnLignePage() {
                   <item.icon className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex flex-col flex-grow text-center">
-                  <h3 className="text-lg font-bold text-digiqo-primary mb-3 min-h-[28px]">
+                  <h2 className="text-lg font-bold text-digiqo-primary mb-3 min-h-[28px]">
                     {item.title}
-                  </h3>
+                  </h2>
                   <p className="text-sm text-digiqo-primary/70 mb-4 flex-grow min-h-[60px]">
                     {item.description}
                   </p>
                   <div className="mt-auto">
-                    <span className="inline-block text-xs font-semibold text-digiqo-accent bg-digiqo-accent/10 px-3 py-1 rounded-full">
+                    <span className="inline-block text-xs font-semibold text-digiqo-primary bg-digiqo-accent/10 px-3 py-1 rounded-full">
                       {item.highlight}
                     </span>
                   </div>
@@ -731,6 +731,10 @@ export default function PubliciteEnLignePage() {
                 Sans engagement
               </span>
               <button
+                type="button"
+                role="switch"
+                aria-checked={isAnnual}
+                aria-label={isAnnual ? 'Tarification annuelle activée — basculer sur sans engagement' : 'Tarification sans engagement activée — basculer sur annuel'}
                 onClick={() => setIsAnnual(!isAnnual)}
                 className="relative w-20 h-10 bg-gray-300 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-digiqo-accent focus:ring-offset-2"
                 style={{ backgroundColor: isAnnual ? '#8B1431' : '#D1D5DB' }}
