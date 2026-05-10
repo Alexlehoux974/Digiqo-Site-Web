@@ -107,60 +107,6 @@ const videoThumbs: Record<string, string> = {
   "VANILLE JEU-CONCOURS": "/references/video-thumbs/vanille-jeu-concours.webp",
 }
 
-// Réunion timezone (UTC+4). Past dates short-circuit the countdown section below.
-const DASHBOARD_LAUNCH = new Date('2026-05-01T00:00:00+04:00')
-
-function DashboardCountdown() {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-
-  useEffect(() => {
-    const target = DASHBOARD_LAUNCH.getTime()
-    const tick = () => {
-      const now = Date.now()
-      const diff = Math.max(0, target - now)
-      setTimeLeft({
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((diff / (1000 * 60)) % 60),
-        seconds: Math.floor((diff / 1000) % 60),
-      })
-    }
-    tick()
-    const interval = setInterval(tick, 1000)
-    return () => clearInterval(interval)
-  }, [])
-
-  return (
-    <>
-    <div className="flex gap-3 justify-center md:justify-start">
-      {[
-        { val: timeLeft.days, label: 'jours' },
-        { val: timeLeft.hours, label: 'heures' },
-        { val: timeLeft.minutes, label: 'min' },
-        { val: timeLeft.seconds, label: 'sec' },
-      ].map((item, i) => (
-        <div key={i} className="relative rounded-xl px-3 py-2 md:px-4 md:py-3 text-center min-w-[60px] overflow-hidden shadow-lg shadow-[#8B1431]/30">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#8B1431] via-[#DA6530] to-[#8B1431] animate-gradient-shift" />
-          <div className="absolute inset-[1px] bg-gradient-to-br from-[#1a0a10] to-[#2a0f18] rounded-[10px]" />
-          <p className="relative text-2xl md:text-3xl font-bold bg-gradient-to-r from-yellow-300 via-orange-400 to-yellow-300 bg-clip-text text-transparent tabular-nums">{String(item.val).padStart(2, '0')}</p>
-          <p className="relative text-[10px] md:text-xs text-white/60 uppercase tracking-wider">{item.label}</p>
-        </div>
-      ))}
-    </div>
-    <style jsx>{`
-      @keyframes gradient-shift {
-        0%, 100% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-      }
-      .animate-gradient-shift {
-        background-size: 200% 200%;
-        animation: gradient-shift 3s ease infinite;
-      }
-    `}</style>
-    </>
-  )
-}
-
 function VideoCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [activeVideo, setActiveVideo] = useState<string | null>(null)
@@ -348,8 +294,7 @@ export default function Home() {
         <HeroParallax products={products} />
         <ResultsSection />
 
-        {/* NEWS — Dashboard SMA */}
-        {Date.now() < DASHBOARD_LAUNCH.getTime() && (
+        {/* NEWS — Mon Dashboard (post-launch, always visible) */}
         <section className="py-12 md:py-20 relative overflow-hidden bg-[#E9E9E9]">
 
           <div className="relative z-10 max-w-6xl mx-auto px-4">
@@ -357,12 +302,12 @@ export default function Home() {
             <div className="flex justify-center mb-6">
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#8B1431] text-white text-sm font-bold rounded-full shadow-lg">
                 <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                NOUVEAU — LANCEMENT LE 1ER MAI
+                NOUVEAU — DISPONIBLE MAINTENANT
               </span>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-              {/* Texte + Countdown */}
+              {/* Texte + CTA */}
               <div className="text-center md:text-left">
                 <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
                   Votre <span className="bg-gradient-to-r from-[#8B1431] to-digiqo-accent bg-clip-text text-transparent">Dashboard</span> est arrivé
@@ -378,21 +323,19 @@ export default function Home() {
                   <li className="flex items-center gap-2"><span className="text-[#8B1431]">✦</span> Reporting automatique et personnalisé</li>
                 </ul>
 
-                {/* Countdown */}
-                <DashboardCountdown />
-
                 <a
                   href="https://app-digiqo.fr/demo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-6 px-8 py-4 bg-[#8B1431] text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-[#8B1431] text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
                 >
                   Découvrir Mon Dashboard
                   <ArrowRight className="w-5 h-5" />
                 </a>
               </div>
 
-              {/* iPad Mockup */}
+              {/* iPad Mockup — animated screenshot of app-digiqo.fr (real iframe blocked
+                  by X-Frame-Options on app-digiqo.fr, see commit e52f86f8). */}
               <div className="flex justify-center">
                 <div className="relative w-full max-w-[500px]">
                   {/* iPad frame */}
@@ -421,7 +364,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-        )}
 
         {/* 2. Réalisations vidéo — Carrousel */}
         <section id="realisations" className="py-8 md:py-24 relative overflow-hidden bg-[#8B1431]">

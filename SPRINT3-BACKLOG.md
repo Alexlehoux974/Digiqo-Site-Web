@@ -1,5 +1,15 @@
 # Sprint 3 — Backlog
 
+> **⚠️ Règle permanente du projet (toutes branches, tous sprints)**
+>
+> **Ne JAMAIS retirer du contenu** : sections, liens de menu, formulaires, éléments, blocs visibles. Cela inclut les conditional gates (`{cond && <section>}`) qui font disparaître du contenu sans le supprimer en code.
+>
+> Si un travail technique demande de retirer ou cacher quelque chose (perf, refactor, A/B test, end-of-life feature), **demander validation Alexandre AVANT** action.
+>
+> Cette règle a été ajoutée après l'incident *2bf7739f [P0-SEO][6] home: hide expired Dashboard countdown block* qui a fait disparaître la section "Votre Dashboard est arrivé" de la home post-1er-mai 2026 sans intention de la retirer définitivement.
+
+---
+
 Reporté depuis Sprint 2 (refonte design blog, branche `seo-geo-rattrapage-s2` → mergée dans `main` le YYYY-MM-DD à compléter au merge).
 
 Document conçu pour être ouvert au démarrage d'une nouvelle session VSCode Sprint 3. Au lancement : lire ce fichier, créer la branche, exécuter le périmètre principal en priorité.
