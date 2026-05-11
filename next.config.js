@@ -3,6 +3,13 @@ const nextConfig = {
   reactStrictMode: true,
   trailingSlash: false,
   turbopack: {},
+  experimental: {
+    // Inlines critical above-the-fold CSS in <head> via Beasties, defers the
+    // rest. Eliminates the render-blocking CSS waterfall on first paint —
+    // measurable LCP/FCP win on mobile 3G. Beasties is the maintained fork
+    // of Critters; Next picks it up automatically when this flag is on.
+    optimizeCss: true,
+  },
   images: {
     remotePatterns: [
       {
