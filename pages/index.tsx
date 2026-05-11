@@ -60,8 +60,10 @@ const BlogCarousel = dynamic(
   { loading: () => <div className="min-h-[300px] bg-[#F8F9FA]" /> }
 )
 
-// Générer les products à partir des données centralisées
-const products = partnersData.map((partner, index) => ({
+// Générer les products à partir des données centralisées.
+// Background watermark logos render at opacity 0.05 — no priority hints
+// for any of them: they must not compete with the H2 hero text for LCP.
+const products = partnersData.map((partner) => ({
   title: partner.name,
   link: "#",
   thumbnail: (
@@ -69,7 +71,6 @@ const products = partnersData.map((partner, index) => ({
       src={`/partenaires/${partner.filename}`}
       alt={partner.alt}
       className="w-full h-full object-contain"
-      priority={index < 8}
       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
     />
   ),

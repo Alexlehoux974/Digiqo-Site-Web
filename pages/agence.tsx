@@ -75,6 +75,44 @@ const team = [
   }
 ]
 
+// Schema.org @graph for /agence — AboutPage + BreadcrumbList + Person for
+// each team member. Bot-readable identity that strengthens E-E-A-T and
+// helps GEO/LLM surfacing distinguish the agency page from the homepage.
+const agenceStructuredDataGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://digiqo.fr/agence#aboutpage",
+      "name": "L'Agence Digiqo",
+      "url": "https://digiqo.fr/agence",
+      "description":
+        "Première agence marketing digital de La Réunion certifiée Meta Business Partner. Équipe d'experts en publicité Meta Ads, Google Ads, développement web, SEO et community management depuis 2020.",
+      "inLanguage": "fr-FR",
+      "isPartOf": { "@id": "https://digiqo.fr/#website" },
+      "mainEntity": { "@id": "https://digiqo.fr/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://digiqo.fr/agence#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://digiqo.fr/" },
+        { "@type": "ListItem", "position": 2, "name": "L'Agence", "item": "https://digiqo.fr/agence" }
+      ]
+    },
+    ...team.map((member) => ({
+      "@type": "Person",
+      "@id": `https://digiqo.fr/agence#${member.name.toLowerCase().replace(/\s+/g, '-')}`,
+      "name": member.name,
+      "jobTitle": member.role,
+      "image": `https://digiqo.fr${member.image}`,
+      "email": `mailto:${member.email}`,
+      "sameAs": [member.linkedin],
+      "worksFor": { "@id": "https://digiqo.fr/#organization" }
+    }))
+  ]
+}
+
 const values = [
   {
     icon: Rocket,
@@ -121,6 +159,7 @@ export default function Agence() {
         description="Découvrez Digiqo, votre agence digitale à La Réunion. Une équipe d'experts passionnés pour booster votre présence en ligne depuis 2020."
         keywords="agence digitale la réunion, digiqo team, marketing digital, publicité en ligne"
         url="https://digiqo.fr/agence"
+        structuredData={agenceStructuredDataGraph}
       />
 
       <HeaderLuxury />
@@ -240,25 +279,21 @@ export default function Agence() {
                 Depuis 2020
               </motion.div>
               
+              {/* H1 is the LCP element on /agence — must paint immediately.
+                  initial={false} starts each span at its animate target, so
+                  the text is visible at first paint. Looping gradient/glow
+                  animations on the "préférée" span are preserved. */}
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-digiqo-black mb-8 leading-tight relative">
-                <motion.span
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                >
+                <motion.span initial={false}>
                   L'Agence
                 </motion.span>
                 <motion.span
                   className="text-transparent bg-clip-text bg-gradient-to-r from-digiqo-primary via-digiqo-accent to-digiqo-primary block md:inline relative"
-                  initial={{ opacity: 0, scale: 0.8 }}
+                  initial={false}
                   animate={{
-                    opacity: 1,
-                    scale: 1,
                     backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                   }}
                   transition={{
-                    opacity: { duration: 0.6, delay: 0.4 },
-                    scale: { duration: 0.6, delay: 0.4 },
                     backgroundPosition: {
                       duration: 5,
                       repeat: Infinity,
@@ -271,6 +306,7 @@ export default function Agence() {
                   {/* Glow effect behind the word */}
                   <motion.div
                     className="absolute inset-0 blur-3xl bg-gradient-to-r from-digiqo-primary via-digiqo-accent to-digiqo-primary opacity-50 -z-10"
+                    initial={false}
                     animate={{
                       scale: [1, 1.2, 1],
                       opacity: [0.5, 0.8, 0.5],
@@ -282,11 +318,7 @@ export default function Agence() {
                     }}
                   />
                 </motion.span>
-                <motion.span
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                >
+                <motion.span initial={false}>
                   des Réunionnais
                 </motion.span>
               </h1>
