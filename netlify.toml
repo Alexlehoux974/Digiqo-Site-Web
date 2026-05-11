@@ -66,11 +66,22 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Cache HTML with shorter duration
+# HTML pages — short edge cache + long stale-while-revalidate window.
+# Lets Netlify Edge serve from cache for 5 min, then keeps revalidating in
+# background up to 24 h before forcing a fresh fetch. Pages-Router URLs
+# don't end in `.html`, so we cover both: the explicit `.html` pattern
+# (build-time fallback files) and a catch-all `/*` for live URLs. More
+# specific rules below (`/_next/static/*`, `/api/*`, file extensions)
+# still win over `/*` per Netlify path-specificity ordering.
 [[headers]]
   for = "/*.html"
   [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+    Cache-Control = "public, max-age=300, must-revalidate, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate, stale-while-revalidate=86400"
 
 # Next.js specific paths
 [[headers]]
