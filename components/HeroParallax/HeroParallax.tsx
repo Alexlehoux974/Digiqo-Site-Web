@@ -103,11 +103,13 @@ export const HeroParallax = ({
             ))}
           </div>
 
-          {/* Mascotte — restored priority + fetchPriority="high" because the
-              mascot is the LCP element on mobile portrait (the H2 + subtitle
-              are smaller in pixel² area). Critical CSS is now inlined (S4A-#1)
-              so the preload no longer competes with render-blocking CSS the
-              way it did when S3-#11 removed it. */}
+          {/* Mascotte — no priority. We tried adding it in S4B-#4 thinking
+              the inlined critical CSS (S4A-#1) would absorb the preload
+              cost, but Lighthouse showed it still regressed Perf 60→55 and
+              TBT 650→805ms on /. The preload competed with fonts/JS for
+              early bandwidth on slow 4G (same root cause as S3-#11).
+              Mascot lazy-loads via next/image default; the H2 + subtitle
+              are the visible content above the fold. */}
           <div className="mt-8 flex justify-center">
             <div className="hero-logo-float">
               <Image
@@ -116,8 +118,6 @@ export const HeroParallax = ({
                 width={200}
                 height={200}
                 sizes="(max-width: 768px) 140px, 180px"
-                priority
-                fetchPriority="high"
                 className="w-[140px] h-[140px] md:w-[180px] md:h-[180px] object-contain drop-shadow-2xl"
               />
             </div>
