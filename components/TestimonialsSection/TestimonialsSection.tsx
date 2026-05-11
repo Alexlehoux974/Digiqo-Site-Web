@@ -347,7 +347,7 @@ export const TestimonialsSection = () => {
                             <span className="font-semibold">digiqo</span> {testimonial.content}
                           </p>
                           <p className="text-xs text-gray-500">Voir les {testimonial.comments} commentaires</p>
-                          <p className="text-xs text-gray-400 uppercase">{testimonial.publishedAt}</p>
+                          <p className="text-xs text-gray-600 uppercase">{testimonial.publishedAt}</p>
                         </div>
                       </div>
                     </div>

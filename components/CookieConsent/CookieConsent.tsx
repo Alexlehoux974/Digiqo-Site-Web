@@ -59,7 +59,11 @@ export function CookieConsent() {
 
   return (
     <>
-      <div className="fixed bottom-0 left-0 right-0 z-[9999] animate-slide-up">
+      <div
+        className="fixed bottom-0 left-0 right-0 z-[9999] animate-slide-up"
+        role="region"
+        aria-label="Bandeau de gestion des cookies"
+      >
         <div className="bg-white shadow-2xl border-t border-gray-200">
           <div className="max-w-6xl mx-auto px-4 py-3 md:py-4">
             <div className="flex flex-col md:flex-row md:items-center gap-3">
@@ -87,7 +91,7 @@ export function CookieConsent() {
                 <Button
                   onClick={() => setShowDetails(true)}
                   variant="ghost"
-                  className="text-digiqo-secondary hover:text-digiqo-secondary-dark text-sm px-2"
+                  className="text-digiqo-secondary-dark hover:text-digiqo-secondary text-sm px-2 underline"
                 >
                   Options
                 </Button>

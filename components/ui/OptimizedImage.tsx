@@ -45,6 +45,19 @@ export function OptimizedImage({
   // For partner logos and other static images, we need to handle the path correctly
   const imageSrc = src.startsWith('/') ? src : `/${src}`;
 
+  // Priority images are LCP candidates. The blur-up + scale-110 transition
+  // (700 ms) inflates the element's perceived size and pushes LCP later
+  // because Lighthouse times the final-visible-state, not the first paint.
+  // Skip the loading-state classes when the image is marked priority so it
+  // renders at its final geometry as soon as decoded. Non-priority images
+  // keep the placeholder fade since LCP isn't at stake there.
+  const loadingClasses = priority
+    ? ''
+    : cn(
+        'duration-700 ease-in-out',
+        isLoading ? 'scale-110 blur-2xl grayscale' : 'scale-100 blur-0 grayscale-0',
+      );
+
   if (fill) {
     return (
       <div className={cn('relative overflow-hidden', containerClassName)}>
@@ -54,11 +67,7 @@ export function OptimizedImage({
           fill
           priority={priority}
           quality={quality}
-          className={cn(
-            'duration-700 ease-in-out',
-            isLoading ? 'scale-110 blur-2xl grayscale' : 'scale-100 blur-0 grayscale-0',
-            className
-          )}
+          className={cn(loadingClasses, className)}
           style={{ objectFit }}
           sizes={sizes || '100vw'}
           placeholder={placeholder}
@@ -77,11 +86,7 @@ export function OptimizedImage({
       height={height!}
       priority={priority}
       quality={quality}
-      className={cn(
-        'duration-700 ease-in-out',
-        isLoading ? 'scale-110 blur-2xl grayscale' : 'scale-100 blur-0 grayscale-0',
-        className
-      )}
+      className={cn(loadingClasses, className)}
       style={{ objectFit }}
       sizes={sizes}
       placeholder={placeholder}

@@ -3,6 +3,13 @@ const nextConfig = {
   reactStrictMode: true,
   trailingSlash: false,
   turbopack: {},
+  experimental: {
+    // Inlines critical above-the-fold CSS in <head> via Beasties, defers the
+    // rest. Eliminates the render-blocking CSS waterfall on first paint —
+    // measurable LCP/FCP win on mobile 3G. Beasties is the maintained fork
+    // of Critters; Next picks it up automatically when this flag is on.
+    optimizeCss: true,
+  },
   images: {
     remotePatterns: [
       {
@@ -109,6 +116,23 @@ const nextConfig = {
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
           { key: 'X-XSS-Protection', value: '1; mode=block' },
           { key: 'Content-Security-Policy', value: "frame-ancestors 'none'" },
+        ],
+      },
+      // Cache-Control for HTML pages. The Netlify Next.js plugin sets
+      // `max-age=0, must-revalidate` on Pages-Router responses by default,
+      // so a netlify.toml `[[headers]]` rule for `/*` is ignored (the
+      // plugin runs inside the Next pipeline and wins). Setting it via
+      // `headers()` here makes Next emit our value, which Netlify Edge
+      // then respects → Edge cache hit instead of `fwd=miss`.
+      // Excludes /api/* (handlers control their own Cache-Control) and
+      // /_next/* (already covered by long-lived immutable rules).
+      {
+        source: '/((?!api/|_next/).*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=300, must-revalidate, stale-while-revalidate=86400',
+          },
         ],
       },
     ]

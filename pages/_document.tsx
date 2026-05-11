@@ -1,8 +1,9 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import { inter, montserrat } from '@/lib/fonts'
 
 export default function Document() {
   return (
-    <Html lang="fr">
+    <Html lang="fr" className={`${inter.variable} ${montserrat.variable}`}>
       <Head>
         {/* Google Tag Manager — chargé conditionnellement via _app.tsx après consentement */}
 
@@ -28,13 +29,12 @@ export default function Document() {
         {/* Google Search Console Verification */}
         <meta name="google-site-verification" content="-mBAAsZ3X_8gyG-3MAN7Ww86tsF452BbvWmgz3SLiBY" />
 
-        {/* Fonts */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@600;700;800&display=swap"
-          rel="stylesheet"
-        />
+        {/* Fonts — self-hosted via next/font/google in pages/_app.tsx
+            (Inter 400/600/700 + Montserrat 600/700/800). The previous
+            render-blocking <link> to fonts.googleapis.com is gone; no
+            preconnect needed either since the woff2 files are served
+            from the same origin. */}
+
         {/* Métadonnées géographiques pour le SEO local */}
         <meta name="geo.region" content="RE" />
         <meta name="geo.placename" content="Saint-Denis, La Réunion" />

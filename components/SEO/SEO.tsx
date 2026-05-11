@@ -203,9 +203,8 @@ export function SEO({
         }}
       />
 
-      {/* Preconnect to optimize loading */}
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      {/* DNS prefetch for analytics — Google Fonts preconnect removed
+          (fonts now self-hosted via next/font/google in _app.tsx). */}
       <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       <link rel="dns-prefetch" href="https://www.google-analytics.com" />
     </Head>

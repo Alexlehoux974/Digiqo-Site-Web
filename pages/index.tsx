@@ -32,9 +32,13 @@ const ResultsSection = dynamic(
   { loading: () => <div className="min-h-[400px] bg-white" /> }
 )
 
+// Below-the-fold Instagram testimonials carousel. Pure social proof —
+// no SEO/LLM-critical text the bots need to see in the initial HTML.
+// Deferring it from SSR shrinks the home payload and the hydration
+// graph on first paint. Visual layout reserved by the placeholder.
 const TestimonialsSection = dynamic(
   () => import('../components/TestimonialsSection').then((mod) => mod.TestimonialsSection),
-  { loading: () => <div className="min-h-[500px] bg-[#F8F9FA]" /> }
+  { ssr: false, loading: () => <div className="min-h-[500px] bg-[#F8F9FA]" /> }
 )
 
 const FAQSection = dynamic(
@@ -42,9 +46,13 @@ const FAQSection = dynamic(
   { loading: () => <div className="min-h-[400px] bg-[#8B1431]" /> }
 )
 
+// Multi-step devis form (firstName / lastName / company / phone / email
+// / services / description). The form ships a chunky validation +
+// state-machine bundle that's useless until the user scrolls all the
+// way down. Defer from SSR; placeholder reserves the layout.
 const ContactSection = dynamic(
   () => import('../components/ContactSection').then((mod) => mod.ContactSection),
-  { loading: () => <div className="min-h-[500px] bg-[#6B0F26]" /> }
+  { ssr: false, loading: () => <div className="min-h-[500px] bg-[#6B0F26]" /> }
 )
 
 const BlogCarousel = dynamic(
@@ -321,7 +329,7 @@ export default function Home() {
                 <p className="text-lg text-gray-600 mb-2">
                   La première agence Réunionnaise à offrir un Tableau de Bord Marketing à ses clients.
                 </p>
-                <ul className="text-gray-500 text-sm space-y-2 mb-8 md:text-left text-left max-w-md mx-auto md:mx-0">
+                <ul className="text-gray-700 text-sm space-y-2 mb-8 md:text-left text-left max-w-md mx-auto md:mx-0">
                   <li className="flex items-center gap-2"><span className="text-[#8B1431]">✦</span> Suivez vos campagnes publicitaires en direct</li>
                   <li className="flex items-center gap-2"><span className="text-[#8B1431]">✦</span> Gérez votre budget pub en toute transparence</li>
                   <li className="flex items-center gap-2"><span className="text-[#8B1431]">✦</span> Visualisez vos leads générés</li>
@@ -356,6 +364,8 @@ export default function Home() {
                     <div
                       className="dashboard-preview-screen relative bg-white rounded-[1.2rem] md:rounded-[1.7rem] overflow-y-auto overflow-x-hidden aspect-[4/3]"
                       aria-label="Aperçu Mon Dashboard — auto-scroll, survolez pour faire défiler manuellement"
+                      role="region"
+                      tabIndex={0}
                     >
                       <div className="dashboard-preview-inner absolute inset-0">
                         <Image
@@ -450,7 +460,7 @@ export default function Home() {
                 Vérifier mon éligibilité
                 <ArrowRight className="w-5 h-5" />
               </Link>
-              <p className="text-gray-500 text-sm mt-4">
+              <p className="text-gray-700 text-sm mt-4">
                 Gratuit • Réponse immédiate • Agence agréée
               </p>
             </div>
