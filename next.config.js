@@ -118,6 +118,23 @@ const nextConfig = {
           { key: 'Content-Security-Policy', value: "frame-ancestors 'none'" },
         ],
       },
+      // Cache-Control for HTML pages. The Netlify Next.js plugin sets
+      // `max-age=0, must-revalidate` on Pages-Router responses by default,
+      // so a netlify.toml `[[headers]]` rule for `/*` is ignored (the
+      // plugin runs inside the Next pipeline and wins). Setting it via
+      // `headers()` here makes Next emit our value, which Netlify Edge
+      // then respects → Edge cache hit instead of `fwd=miss`.
+      // Excludes /api/* (handlers control their own Cache-Control) and
+      // /_next/* (already covered by long-lived immutable rules).
+      {
+        source: '/((?!api/|_next/).*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=300, must-revalidate, stale-while-revalidate=86400',
+          },
+        ],
+      },
     ]
   },
   webpack: (config) => {

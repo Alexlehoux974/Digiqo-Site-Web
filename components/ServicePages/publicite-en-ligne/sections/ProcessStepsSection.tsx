@@ -70,7 +70,7 @@ export default function ProcessStepsSection() {
                 className="relative h-full"
               >
                 <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all text-center h-full flex flex-col items-center">
-                  <div className="text-6xl font-bold text-digiqo-primary/10 mb-4">
+                  <div className="text-6xl font-bold text-digiqo-primary/10 mb-4" aria-hidden="true">
                     {step.number}
                   </div>
                   <motion.div

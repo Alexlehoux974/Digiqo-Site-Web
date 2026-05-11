@@ -427,7 +427,7 @@ export default function PublicitePage() {
                   className="relative"
                 >
                   <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all text-center">
-                    <div className="text-6xl font-bold text-digiqo-primary/10 mb-4">
+                    <div className="text-6xl font-bold text-digiqo-primary/10 mb-4" aria-hidden="true">
                       {step.number}
                     </div>
 
