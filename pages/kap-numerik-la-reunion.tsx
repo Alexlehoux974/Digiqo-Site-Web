@@ -208,13 +208,11 @@ export default function KapNumerik() {
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
+            {/* Hero text wrapper — initial={false} so H1 / description aren't
+                hidden behind a parent opacity:0 during the 0.8s mount fade
+                (was blocking LCP paint past 5s). */}
             <motion.div
-              initial={{ opacity: 0, y: 40, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ 
-                duration: 0.8,
-                ease: [0.21, 1.11, 0.81, 0.99]
-              }}
+              initial={false}
               className="text-center max-w-5xl mx-auto"
             >
               {/* Premium badge */}
@@ -242,28 +240,23 @@ export default function KapNumerik() {
               {/* Main title with stagger animation */}
               <div className="mb-8 space-y-4">
                 <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.6 }}
+                  initial={false}
                   className="text-6xl md:text-7xl lg:text-8xl font-bold"
                 >
                   <span className="text-gray-900">Kap Numérik</span>
                 </motion.h1>
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.7, duration: 0.6 }}
+                  initial={false}
                   className="text-5xl md:text-6xl lg:text-7xl font-bold"
                 >
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-digiqo-secondary via-digiqo-primary to-digiqo-accent animate-gradient-x">La Réunion</span>
                 </motion.div>
               </div>
               
-              {/* Description with fade-in words */}
+              {/* Description — initial={false} so the LCP-eligible paragraph
+                  paints with the SSR HTML instead of waiting for hydration. */}
               <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.9, duration: 0.8 }}
+                initial={false}
                 className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-12 max-w-3xl mx-auto"
               >
                 Jusqu'à <span className="font-bold text-gray-900">3 200€</span> pour développer votre présence digitale <span className="whitespace-nowrap">à La Réunion</span><br/>

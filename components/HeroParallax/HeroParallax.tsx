@@ -103,7 +103,11 @@ export const HeroParallax = ({
             ))}
           </div>
 
-          {/* Mascotte */}
+          {/* Mascotte — restored priority + fetchPriority="high" because the
+              mascot is the LCP element on mobile portrait (the H2 + subtitle
+              are smaller in pixel² area). Critical CSS is now inlined (S4A-#1)
+              so the preload no longer competes with render-blocking CSS the
+              way it did when S3-#11 removed it. */}
           <div className="mt-8 flex justify-center">
             <div className="hero-logo-float">
               <Image
@@ -112,6 +116,8 @@ export const HeroParallax = ({
                 width={200}
                 height={200}
                 sizes="(max-width: 768px) 140px, 180px"
+                priority
+                fetchPriority="high"
                 className="w-[140px] h-[140px] md:w-[180px] md:h-[180px] object-contain drop-shadow-2xl"
               />
             </div>

@@ -258,16 +258,15 @@ export default function Agence() {
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
+            {/* Hero text wrapper — initial={false} so the H1/P inside aren't
+                hidden behind a parent opacity:0 during the 0.8s fade-in
+                (was blocking LCP paint past 6s). */}
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              initial={false}
               className="text-center max-w-5xl mx-auto mb-20"
             >
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                initial={false}
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-digiqo-primary/10 to-digiqo-accent/10 backdrop-blur-sm text-digiqo-primary px-6 py-3 rounded-full text-sm font-semibold mb-8"
               >
                 <motion.div
@@ -322,13 +321,11 @@ export default function Agence() {
                   des Réunionnais
                 </motion.span>
               </h1>
-              <motion.p 
+              <motion.p
                 className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
+                initial={false}
               >
-                Fondée en 2020, Digiqo est une agence dynamique spécialisée dans les stratégies digitales innovantes. 
+                Fondée en 2020, Digiqo est une agence dynamique spécialisée dans les stratégies digitales innovantes.
                 Notre équipe d'experts passionnés s'engage à offrir des solutions sur mesure pour renforcer la présence 
                 en ligne de nos clients et accélérer leur croissance.
               </motion.p>
