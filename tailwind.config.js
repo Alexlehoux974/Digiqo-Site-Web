@@ -36,11 +36,16 @@ export default {
         'digiqo-blue-dark': '#127387',        // Alias de secondary-dark
         'digiqo-bordeaux': '#8B1431',         // Alias de primary
       },
+      // Fonts come from next/font/google (self-hosted) via the
+      // --font-montserrat and --font-inter CSS variables defined on
+      // the root wrapper in pages/_app.tsx. Same weights as before
+      // (Inter 400/600/700, Montserrat 600/700/800), zero render-
+      // blocking external request.
       fontFamily: {
-        'sans': ['Montserrat', 'system-ui', 'sans-serif'],
-        'display': ['Montserrat', 'system-ui', 'sans-serif'],
+        'sans': ['var(--font-montserrat)', 'system-ui', 'sans-serif'],
+        'display': ['var(--font-montserrat)', 'system-ui', 'sans-serif'],
         'serif': ['Lora', 'Georgia', 'serif'],
-        'body': ['Inter', 'system-ui', 'sans-serif'],
+        'body': ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'xs': ['0.75rem', { lineHeight: '1rem', letterSpacing: '0.02em' }],

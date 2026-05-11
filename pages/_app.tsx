@@ -5,6 +5,7 @@ import Script from 'next/script'
 import { LazyMotion, domAnimation } from 'framer-motion'
 import { CookieConsent } from '@/components/CookieConsent'
 import { ScrollToTop } from '@/components/ScrollToTop'
+import { inter, montserrat } from '@/lib/fonts'
 import dynamic from 'next/dynamic'
 const ChatWidget = dynamic(() => import('@/components/ChatWidget').then(m => m.ChatWidget), { ssr: false })
 import '../styles/globals.css'
@@ -128,7 +129,7 @@ export default function App({ Component, pageProps }: AppProps) {
   `
 
   return (
-    <>
+    <div className={`${inter.variable} ${montserrat.variable}`}>
       {/* Initialize dataLayer and gtag with consent defaults (always, before any script loads) */}
       <Script
         id="gtag-consent-default"
@@ -181,6 +182,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <ScrollToTop />
         <ChatWidget />
       </LazyMotion>
-    </>
+    </div>
   )
 }

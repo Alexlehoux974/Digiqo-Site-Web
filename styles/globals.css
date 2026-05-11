@@ -16,14 +16,14 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-montserrat), system-ui, sans-serif;
     background-color: #FFFFFF;
   }
 
   body {
     @apply text-gray-900 overflow-x-hidden;
     background-color: #FFFFFF;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-montserrat), system-ui, sans-serif;
     font-weight: 400;
     letter-spacing: -0.01em;
   }
