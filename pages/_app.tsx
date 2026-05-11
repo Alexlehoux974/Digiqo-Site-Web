@@ -139,20 +139,6 @@ export default function App({ Component, pageProps }: AppProps) {
     gtag('config', '${GA_MEASUREMENT_ID}');
   `
 
-  const metricoolScript = `
-    function loadScript(a){
-      var b=document.getElementsByTagName("head")[0],
-      c=document.createElement("script");
-      c.type="text/javascript",
-      c.src="https://tracker.metricool.com/resources/be.js",
-      c.onreadystatechange=a,
-      c.onload=a,
-      b.appendChild(c)
-    }
-    loadScript(function(){
-      beTracker.t({hash:"1a6eeac69b58a63cb160a61c39160d25"})
-    });
-  `
 
   return (
     <div className={`${inter.variable} ${montserrat.variable}`}>
@@ -193,12 +179,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
       )}
 
-      {/* Load Metricool only after marketing consent */}
+      {/* Load Metricool only after marketing consent. Use next/script with
+          src + onLoad instead of injecting a <script> manually via inline JS
+          (cleaner, lets Next.js manage the lifecycle). */}
       {marketingConsent && (
         <Script
-          id="metricool-init"
+          id="metricool-tracker"
+          src="https://tracker.metricool.com/resources/be.js"
           strategy="lazyOnload"
-          dangerouslySetInnerHTML={{ __html: metricoolScript }}
+          onLoad={() => {
+            const w = window as unknown as { beTracker?: { t: (cfg: { hash: string }) => void } }
+            if (typeof w.beTracker?.t === 'function') {
+              w.beTracker.t({ hash: '1a6eeac69b58a63cb160a61c39160d25' })
+            }
+          }}
         />
       )}
 
