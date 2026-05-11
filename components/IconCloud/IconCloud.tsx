@@ -80,10 +80,11 @@ export const IconCloud = ({ className = '' }: IconCloudProps) => {
   }, [])
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className={`relative w-full h-full flex items-center justify-center ${className}`}
       style={{ perspective: '1000px' }}
+      aria-hidden="true"
     >
       <div className="relative w-full h-full" style={{ transformStyle: 'preserve-3d' }}>
         {icons.map((icon, index) => (
@@ -95,7 +96,7 @@ export const IconCloud = ({ className = '' }: IconCloudProps) => {
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ 
+            transition={{
               delay: index * 0.05,
               duration: 0.5,
               type: "spring",
@@ -103,9 +104,9 @@ export const IconCloud = ({ className = '' }: IconCloudProps) => {
             }}
             whileHover={{ scale: 1.2 }}
           >
-            <div 
+            <div
               className="flex items-center justify-center p-3 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-              style={{ 
+              style={{
                 fontSize: `${icon.size}px`,
                 color: icon.color,
               }}

@@ -84,6 +84,7 @@ export const FAQSection: React.FC = () => {
                 const newIndex = activeIndex > 0 ? activeIndex - 1 : faqSections.length - 1;
                 setActiveIndex(newIndex);
               }}
+              aria-label="Catégorie FAQ précédente"
               className="p-3 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-all duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -116,6 +117,7 @@ export const FAQSection: React.FC = () => {
                 const newIndex = activeIndex < faqSections.length - 1 ? activeIndex + 1 : 0;
                 setActiveIndex(newIndex);
               }}
+              aria-label="Catégorie FAQ suivante"
               className="p-3 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-all duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}

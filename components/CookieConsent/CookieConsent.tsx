@@ -87,7 +87,7 @@ export function CookieConsent() {
                 <Button
                   onClick={() => setShowDetails(true)}
                   variant="ghost"
-                  className="text-digiqo-secondary hover:text-digiqo-secondary-dark text-sm px-2"
+                  className="text-digiqo-secondary-dark hover:text-digiqo-secondary text-sm px-2 underline"
                 >
                   Options
                 </Button>

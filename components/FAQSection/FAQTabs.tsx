@@ -46,6 +46,8 @@ export const FAQTabs: React.FC<FAQTabsProps> = ({ sections, activeIndex, onTabCh
               <motion.button
                 key={section.id}
                 onClick={() => onTabChange(index)}
+                aria-label={`Catégorie FAQ : ${section.title}`}
+                aria-pressed={isActive}
                 className={`
                   relative z-20 flex items-center justify-center p-3 rounded-xl
                   transition-all duration-300 group
