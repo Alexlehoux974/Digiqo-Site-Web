@@ -32,9 +32,13 @@ const ResultsSection = dynamic(
   { loading: () => <div className="min-h-[400px] bg-white" /> }
 )
 
+// Below-the-fold Instagram testimonials carousel. Pure social proof —
+// no SEO/LLM-critical text the bots need to see in the initial HTML.
+// Deferring it from SSR shrinks the home payload and the hydration
+// graph on first paint. Visual layout reserved by the placeholder.
 const TestimonialsSection = dynamic(
   () => import('../components/TestimonialsSection').then((mod) => mod.TestimonialsSection),
-  { loading: () => <div className="min-h-[500px] bg-[#F8F9FA]" /> }
+  { ssr: false, loading: () => <div className="min-h-[500px] bg-[#F8F9FA]" /> }
 )
 
 const FAQSection = dynamic(
@@ -42,9 +46,13 @@ const FAQSection = dynamic(
   { loading: () => <div className="min-h-[400px] bg-[#8B1431]" /> }
 )
 
+// Multi-step devis form (firstName / lastName / company / phone / email
+// / services / description). The form ships a chunky validation +
+// state-machine bundle that's useless until the user scrolls all the
+// way down. Defer from SSR; placeholder reserves the layout.
 const ContactSection = dynamic(
   () => import('../components/ContactSection').then((mod) => mod.ContactSection),
-  { loading: () => <div className="min-h-[500px] bg-[#6B0F26]" /> }
+  { ssr: false, loading: () => <div className="min-h-[500px] bg-[#6B0F26]" /> }
 )
 
 const BlogCarousel = dynamic(
