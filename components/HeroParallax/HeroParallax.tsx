@@ -103,13 +103,11 @@ export const HeroParallax = ({
             ))}
           </div>
 
-          {/* Mascotte — no priority. We tried adding it in S4B-#4 thinking
-              the inlined critical CSS (S4A-#1) would absorb the preload
-              cost, but Lighthouse showed it still regressed Perf 60→55 and
-              TBT 650→805ms on /. The preload competed with fonts/JS for
-              early bandwidth on slow 4G (same root cause as S3-#11).
-              Mascot lazy-loads via next/image default; the H2 + subtitle
-              are the visible content above the fold. */}
+          {/* Mascotte — shrunk on mobile (140→100) and desktop (180→140) so
+              the H2 + subtitle reclaim the LCP candidacy on mobile portrait.
+              The Image pixel² area at 100×100 mobile is smaller than the
+              hero H2 + subtitle visible area, which lets Lighthouse pick
+              the SSR'd text as the LCP element (paints at FCP). */}
           <div className="mt-8 flex justify-center">
             <div className="hero-logo-float">
               <Image
@@ -117,8 +115,8 @@ export const HeroParallax = ({
                 alt="Digiqo mascotte"
                 width={200}
                 height={200}
-                sizes="(max-width: 768px) 140px, 180px"
-                className="w-[140px] h-[140px] md:w-[180px] md:h-[180px] object-contain drop-shadow-2xl"
+                sizes="(max-width: 768px) 100px, 140px"
+                className="w-[100px] h-[100px] md:w-[140px] md:h-[140px] object-contain drop-shadow-2xl"
               />
             </div>
           </div>
