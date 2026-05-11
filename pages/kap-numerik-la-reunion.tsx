@@ -6,6 +6,7 @@ import { Shield, Users, Globe, CheckCircle, ArrowRight, Award, Euro, Heart, File
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import EligibilityCalculator from '@/components/EligibilityCalculator'
+import { YouTubeFacade } from '@/components/YouTubeFacade'
 
 const processSteps = [
   {
@@ -361,15 +362,9 @@ export default function KapNumerik() {
                   
                   {/* Video wrapper */}
                   <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-500">
-                    <iframe
-                      width="100%"
-                      height="100%"
-                      src="https://www.youtube.com/embed/v0844OktzIE"
+                    <YouTubeFacade
+                      videoId="v0844OktzIE"
                       title="Kap Numérik - Explication"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                      className="w-full h-full"
                     />
                     
                     {/* Play button overlay effect */}
