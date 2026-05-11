@@ -26,6 +26,32 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
   const [analyticsConsent, setAnalyticsConsent] = useState(false)
   const [marketingConsent, setMarketingConsent] = useState(false)
+  const [chatReady, setChatReady] = useState(false)
+
+  // Defer ChatWidget mount until first user interaction or 3s timeout,
+  // whichever comes first. Keeps the n8n/chat bundle + createChat() out
+  // of the initial TBT window.
+  useEffect(() => {
+    let mounted = true
+    const activate = () => {
+      if (!mounted) return
+      setChatReady(true)
+      cleanup()
+    }
+    const events: (keyof WindowEventMap)[] = ['scroll', 'mousemove', 'touchstart', 'keydown']
+    const cleanup = () => {
+      events.forEach((evt) => window.removeEventListener(evt, activate))
+      clearTimeout(timer)
+    }
+    events.forEach((evt) =>
+      window.addEventListener(evt, activate, { once: true, passive: true })
+    )
+    const timer = setTimeout(activate, 3000)
+    return () => {
+      mounted = false
+      cleanup()
+    }
+  }, [])
 
   // Check consent from localStorage on mount and listen for changes
   useEffect(() => {
@@ -180,7 +206,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <Component {...pageProps} />
         <CookieConsent />
         <ScrollToTop />
-        <ChatWidget />
+        {chatReady && <ChatWidget />}
       </LazyMotion>
     </div>
   )
