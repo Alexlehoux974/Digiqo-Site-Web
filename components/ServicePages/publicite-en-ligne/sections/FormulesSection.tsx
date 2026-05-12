@@ -21,6 +21,7 @@ import {
   Megaphone,
   Crosshair,
   TrendingUp,
+  Key,
 } from 'lucide-react'
 import { ANIMATION } from '@/lib/animation-constants'
 
@@ -108,6 +109,7 @@ export default function FormulesSection() {
         { icon: Settings, text: 'Optimisation des performances' },
         { icon: BarChart3, text: 'Reporting mensuel' },
         { icon: FolderOpen, text: 'Espace collaboratif : Google Chat + Drive' },
+        { icon: Key, text: <span>Installation des pixels &amp; API — incluse (si site web développé par Digiqo<sup>1</sup>)</span> },
       ],
       gradient: 'from-emerald-500 to-teal-600',
       accentColor: '#10B981',
@@ -336,6 +338,10 @@ export default function FormulesSection() {
             </motion.div>
           ))}
         </div>
+
+        <p className="mt-10 max-w-4xl mx-auto text-xs text-gray-500 italic leading-relaxed text-center px-2">
+          <sup>1</sup> L'installation des pixels Meta + API CAPI est incluse dans toutes nos formules SMA si le site web a été développé par Digiqo. Pour les sites web tiers, cette prestation n'est temporairement pas proposée — elle sera disponible en option payante (sur devis) dès finalisation du process scalable courant 2026.
+        </p>
       </div>
     </section>
   )
