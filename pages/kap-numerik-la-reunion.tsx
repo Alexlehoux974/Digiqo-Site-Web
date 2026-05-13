@@ -75,7 +75,7 @@ const benefits = [
     highlight: false
   },
   {
-    title: '167+ clients',
+    title: '214+ clients',
     description: 'TPE, PME, commerçants ou indépendants : on a boosté la visibilité de nombreuses marques locales grâce au digital.',
     icon: Users,
     highlight: false

@@ -340,7 +340,7 @@ export default function Agence() {
             >
               {[
                 { number: '2020', label: 'Année de création', icon: Calendar },
-                { number: '167', label: 'Clients satisfaits', icon: Award },
+                { number: '214', label: 'Clients satisfaits', icon: Award },
                 { number: '100%', label: 'Passion', icon: Heart }
               ].map((stat, index) => {
                 const Icon = stat.icon
@@ -1009,7 +1009,7 @@ export default function Agence() {
                 >
                   <Sparkles className="w-4 h-4" />
                 </motion.div>
-                167 clients satisfaits
+                214 clients satisfaits
               </motion.div>
               
               <motion.h2 
