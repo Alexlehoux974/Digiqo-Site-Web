@@ -88,15 +88,58 @@ function generateSitemapIndex() {
   console.log('✅ Sitemap index generated successfully!');
 }
 
+// Legacy TS-registered articles (Sprint 2). When a new TS article ships in
+// lib/blog-articles.ts, add its slug + lastmod date here. Pipeline-generated
+// articles in content/blog/*.md are auto-discovered below.
+const TS_LEGACY_BLOG_ARTICLES = [
+  { slug: 'tiktok-ads-prix-reunion-2026', lastmod: '2026-05-06', priority: '0.8' },
+];
+
+function readMdBlogArticles() {
+  const contentDir = path.join(__dirname, '../content/blog');
+  if (!fs.existsSync(contentDir)) return [];
+  return fs.readdirSync(contentDir)
+    .filter(f => f.endsWith('.md'))
+    .map(file => {
+      const raw = fs.readFileSync(path.join(contentDir, file), 'utf8');
+      const fmMatch = raw.match(/^---\n([\s\S]+?)\n---/);
+      if (!fmMatch) {
+        console.warn(`[sitemap] skipping ${file}: no frontmatter`);
+        return null;
+      }
+      const fm = fmMatch[1];
+      const slugLine = fm.match(/^slug:\s*"([^"]+)"/m);
+      const dateLine = fm.match(/^dateModified:\s*"([^"]+)"/m);
+      if (!slugLine) {
+        console.warn(`[sitemap] skipping ${file}: no slug in frontmatter`);
+        return null;
+      }
+      const slug = slugLine[1];
+      // ISO timestamp → YYYY-MM-DD
+      const lastmod = dateLine ? dateLine[1].slice(0, 10) : today;
+      return { slug, lastmod, priority: '0.8' };
+    })
+    .filter(Boolean);
+}
+
 function generateBlogSitemap() {
-  // Placeholder for blog articles - will be populated from blog-articles.ts
+  const mdArticles = readMdBlogArticles();
+  const allArticles = [...TS_LEGACY_BLOG_ARTICLES, ...mdArticles];
+
+  const urlEntries = allArticles.map(article => `  <url>
+    <loc>${siteUrl}/blog/${article.slug}</loc>
+    <lastmod>${article.lastmod}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>${article.priority}</priority>
+  </url>`).join('\n');
+
   const blogSitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Blog articles will be dynamically added here -->
+${urlEntries}
 </urlset>`;
 
   fs.writeFileSync(path.join(__dirname, '../public/sitemap-blog.xml'), blogSitemap);
-  console.log('✅ Blog sitemap generated!');
+  console.log(`✅ Blog sitemap generated! (${TS_LEGACY_BLOG_ARTICLES.length} TS legacy + ${mdArticles.length} MD pipeline = ${allArticles.length} articles)`);
 }
 
 function generateServicesSitemap() {

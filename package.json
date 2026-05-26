@@ -4,12 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "node scripts/generate-sitemap.js && next build",
+    "dev": "node scripts/generate-blog-md-articles.js && next dev",
+    "build": "node scripts/generate-blog-md-articles.js && node scripts/generate-sitemap.js && next build",
     "start": "next start",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "type-check": "tsc --noEmit",
-    "generate-sitemap": "node scripts/generate-sitemap.js"
+    "generate-sitemap": "node scripts/generate-sitemap.js",
+    "generate-md-articles": "node scripts/generate-blog-md-articles.js"
   },
   "dependencies": {
     "@n8n/chat": "^0.50.0",
@@ -39,9 +40,11 @@
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
     "autoprefixer": "^10.4.16",
+    "chrome-launcher": "^1.2.1",
     "critters": "npm:beasties@^0.4.2",
     "eslint": "^8.53.0",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "lighthouse": "^12.8.2",
     "postcss": "^8.4.32",
     "puppeteer": "^24.39.1",
     "tailwindcss": "^3.3.6",

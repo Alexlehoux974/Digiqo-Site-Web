@@ -118,6 +118,33 @@ export interface BlogArticleData {
   tags: string[]
   authorKey: string
   relatedSlugs: string[]
+
+  /** Source format. Undefined or 'typescript' = legacy TS registry rendered
+   *  via the structured BlockRenderer pipeline. 'markdown' = article comes
+   *  from a .md file in `content/blog/`, body lives in `bodyMarkdown`, and
+   *  the slug page uses the simplified MarkdownArticlePage renderer. */
+  format?: 'typescript' | 'markdown'
+  /** Raw markdown body — only present when `format === 'markdown'`. */
+  bodyMarkdown?: string
+  /** Relative source path for traceability (e.g. `content/blog/<slug>.md`). */
+  sourcePath?: string
+
+  // ─── Pipeline-only metadata (markdown articles) ──────────────────────
+  // These fields are emitted by the Digiqo Content Engine pipeline
+  // (WF6 SEO-finalizer) into the frontmatter of content/blog/*.md files.
+  // The frontend doesn't currently render them, but they're preserved
+  // for traceability (Airtable cross-ref, Supabase pipeline_runs lookup)
+  // and future use (canonical URL override, audit history view).
+
+  /** Editorial classification: evergreen | topical | newsjacking. */
+  type_sujet?: 'evergreen' | 'topical' | 'newsjacking'
+  /** Canonical URL — usually `https://digiqo.fr/blog/<slug>` but lets the
+   *  pipeline override per article if needed. */
+  canonical?: string
+  /** Verdict from the Fact-checker agent (WF5): PASS | WARNING | FAIL. */
+  fact_checker_verdict?: 'PASS' | 'WARNING' | 'FAIL'
+  /** UUID of the Supabase `pipeline_runs` row that produced this article. */
+  pipeline_run_uuid?: string
 }
 
 export interface ArticleQuickAnswer {
@@ -157,6 +184,16 @@ export const DIGIQO_AUTHOR: ArticleAuthor = {
   linkedinUrl: 'https://www.linkedin.com/in/alexandre-le-houx/',
 }
 
+export const EQUIPE_DIGIQO_AUTHOR: ArticleAuthor = {
+  name: 'Équipe Digiqo',
+  initials: 'ED',
+  role: 'Agence digitale Digiqo (collectif)',
+  bio: "L'équipe Digiqo regroupe les expertises techniques et stratégiques de l'agence : Meta Ads, Google Ads, SEO, sites web, vidéo, identité digitale. Cette signature est utilisée pour les articles techniques et opérationnels où l'expertise collective prime sur l'angle personnel d'un auteur.",
+  expertise: ['SEO', 'SEA', 'Sites Web', 'Vidéo'],
+  linkedinUrl: 'https://www.linkedin.com/company/digiqo/',
+}
+
 export const AUTHORS: Record<string, ArticleAuthor> = {
   'alexandre-lehoux': DIGIQO_AUTHOR,
+  'equipe-digiqo': EQUIPE_DIGIQO_AUTHOR,
 }

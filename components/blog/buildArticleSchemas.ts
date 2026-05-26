@@ -20,7 +20,10 @@ const SITE_URL = 'https://digiqo.fr'
 
 interface BuildSchemasInput {
   data: BlogArticleData
-  content: BlogArticleContent
+  /** Structured content (sections + FAQ). Optional: markdown-format articles
+   *  from `content/blog/*.md` don't have structured FAQ, so the FAQPage
+   *  schema is simply omitted. */
+  content?: BlogArticleContent
   author: ArticleAuthor
   breadcrumb: BreadcrumbItem[]
 }
@@ -82,7 +85,7 @@ export function buildArticleSchemas({ data, content, author, breadcrumb }: Build
     })),
   }
 
-  const faqPageSchema = content.faq.length
+  const faqPageSchema = content && content.faq.length
     ? {
         '@type': 'FAQPage',
         mainEntity: content.faq.map((item) => ({
