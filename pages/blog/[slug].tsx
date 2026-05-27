@@ -8,6 +8,8 @@ import {
   BlockRenderer,
   buildArticleSchemas,
   FAQ,
+  MarkdownBody,
+  parseMarkdownBody,
   QuickAnswer,
   RichText,
   SourcesBlock,
@@ -50,16 +52,6 @@ interface ArticlePageProps {
 }
 
 export default function ArticlePage({ data }: ArticlePageProps) {
-  // Content holds React.ReactNode (sections, FAQ answers) so it cannot be
-  // serialized through getStaticProps. We resolve it from the static module
-  // registry at render time — the module is included in the build, so this
-  // adds zero runtime cost.
-  const content = getArticleContent(data.slug)
-  if (!content) {
-    // Should never happen: getStaticPaths only emits known slugs.
-    return null
-  }
-
   const author = resolveAuthor(data.authorKey)
   const related = resolveRelated(data.relatedSlugs)
   const articleUrl = `${SITE_URL}/blog/${data.slug}`
@@ -75,6 +67,78 @@ export default function ArticlePage({ data }: ArticlePageProps) {
     { label: data.category, href: data.clusterHref ?? '/blog' },
     { label: data.title },
   ]
+
+  // ─── Markdown-format branch ─────────────────────────────────────────────
+  // Articles sourced from content/blog/*.md (pipeline output) render with
+  // a simplified layout: ArticleHero + MarkdownBody + AuthorCard. No
+  // TldrBox / QuickAnswer / FAQ / SourcesBlock / BlogCTA — those are
+  // structural blocks specific to the Sprint 2 TS template. MD articles
+  // get their CTA inline in the body. JSON-LD omits FAQPage (no
+  // structured FAQ data) — BlogPosting + BreadcrumbList + Person stay.
+  if (data.format === 'markdown' && data.bodyMarkdown) {
+    const { combinedSchema } = buildArticleSchemas({ data, author, breadcrumb })
+    const toc: TocItem[] = parseMarkdownBody(data.bodyMarkdown)
+      .filter((b): b is { kind: 'h2'; id: string; text: string } => b.kind === 'h2')
+      .map((b) => ({ id: b.id, label: <RichText source={b.text} /> }))
+
+    return (
+      <>
+        <SEO
+          title={data.title}
+          description={data.metaDescription || data.excerpt}
+          image={articleImage}
+          url={articleUrl}
+          type="article"
+          siteName="Digiqo Blog"
+          structuredData={combinedSchema}
+        />
+
+        <HeaderLuxury />
+
+        <main className="pt-32 bg-white">
+          <ArticleHero
+            breadcrumb={breadcrumb}
+            cluster={data.cluster}
+            clusterHref={data.clusterHref}
+            readTime={data.readTime}
+            date={data.date}
+            dateModified={data.dateModifiedLabel}
+            dateModifiedIso={data.dateModified}
+            title={data.title}
+            titleAccent={data.titleAccent}
+            lede={data.excerpt}
+            author={author}
+          />
+
+          <div className="max-w-[1200px] mx-auto px-6 mt-3 grid lg:grid-cols-[1fr_240px] lg:gap-16 gap-6 pb-16">
+            <article className="max-w-[760px] min-w-0">
+              <MarkdownBody source={data.bodyMarkdown} className="mt-8" />
+              <AuthorCardExtended author={author} />
+            </article>
+
+            <aside>
+              <TableOfContents items={toc} />
+            </aside>
+          </div>
+        </main>
+
+        <Footer />
+      </>
+    )
+  }
+
+  // ─── Legacy structured (Sprint 2 TS) branch ─────────────────────────────
+  // Content holds React.ReactNode (sections, FAQ answers) so it cannot be
+  // serialized through getStaticProps. We resolve it from the static module
+  // registry at render time — the module is included in the build, so this
+  // adds zero runtime cost.
+  const content = getArticleContent(data.slug)
+  if (!content) {
+    // Legacy article missing its content registry entry — should never
+    // happen since getStaticPaths only emits TS slugs that have both data
+    // and content.
+    return null
+  }
 
   // Multi-schema JSON-LD via single @graph payload. The schema.org @graph
   // pattern bundles BlogPosting + BreadcrumbList + FAQPage in one

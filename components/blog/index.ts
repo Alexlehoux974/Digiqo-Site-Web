@@ -47,4 +47,5 @@ export type {
   SourceRef,
   ArticleAuthor,
 } from './types'
-export { DIGIQO_AUTHOR, AUTHORS } from './types'
+export { DIGIQO_AUTHOR, EQUIPE_DIGIQO_AUTHOR, AUTHORS } from './types'
+export { MarkdownBody, parseMarkdownBody } from './MarkdownBody'

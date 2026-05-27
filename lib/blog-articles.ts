@@ -21,6 +21,12 @@ import type {
 } from '@/components/blog'
 import { AUTHORS, DIGIQO_AUTHOR } from '@/components/blog'
 
+// Build-time generated registry of articles sourced from content/blog/*.md.
+// See scripts/generate-blog-md-articles.js — runs as part of `npm run build`
+// (and on demand via `npm run generate-md-articles`). Pure data, no fs at
+// runtime, so safe in both server bundle and client bundle.
+import { MD_ARTICLES_DATA } from './blog-articles-from-md.generated'
+
 // ─── Article: TikTok Ads à La Réunion en 2026 ─────────────────────────────
 
 const TIKTOK_ADS_DATA: BlogArticleData = {
@@ -360,9 +366,14 @@ const TIKTOK_ADS_CONTENT: BlogArticleContent = {
   },
 }
 
-// ─── Article registry ─────────────────────────────────────────────────────
+// ─── Article registry (hybrid: TS legacy + MD pipeline) ──────────────────
+//
+// TS_ARTICLES_DATA   : structured Sprint 2 articles defined in this file
+// MD_ARTICLES_DATA   : pipeline-generated .md articles (build-time scan)
+// MERGED_ARTICLES_DATA combines both. If a slug exists in both, TS wins
+// (legacy article preserved, MD copy ignored with a console warning).
 
-const ARTICLES_DATA: Record<string, BlogArticleData> = {
+const TS_ARTICLES_DATA: Record<string, BlogArticleData> = {
   [TIKTOK_ADS_DATA.slug]: TIKTOK_ADS_DATA,
 }
 
@@ -370,16 +381,36 @@ const ARTICLES_CONTENT: Record<string, BlogArticleContent> = {
   [TIKTOK_ADS_DATA.slug]: TIKTOK_ADS_CONTENT,
 }
 
+const MERGED_ARTICLES_DATA: Record<string, BlogArticleData> = (() => {
+  const merged: Record<string, BlogArticleData> = { ...TS_ARTICLES_DATA }
+  for (const mdArticle of MD_ARTICLES_DATA) {
+    if (merged[mdArticle.slug]) {
+      // Slug collision: keep TS, skip MD. Logged but non-fatal.
+      // eslint-disable-next-line no-console
+      console.warn(
+        `[blog-articles] slug collision: "${mdArticle.slug}" exists in TS legacy registry; MD copy from ${mdArticle.sourcePath} ignored`,
+      )
+      continue
+    }
+    merged[mdArticle.slug] = mdArticle
+  }
+  return merged
+})()
+
 // ─── Public helpers ────────────────────────────────────────────────────────
 
 export function getAllArticles(): BlogArticleData[] {
-  return Object.values(ARTICLES_DATA)
+  return Object.values(MERGED_ARTICLES_DATA)
 }
 
 export function getArticleData(slug: string): BlogArticleData | undefined {
-  return ARTICLES_DATA[slug]
+  return MERGED_ARTICLES_DATA[slug]
 }
 
+/** Returns structured content for TS legacy articles only. For markdown
+ *  articles (data.format === 'markdown'), returns undefined — the slug
+ *  page renders the body via <MarkdownBody source={data.bodyMarkdown} />
+ *  instead of the structured BlockRenderer pipeline. */
 export function getArticleContent(slug: string): BlogArticleContent | undefined {
   return ARTICLES_CONTENT[slug]
 }
