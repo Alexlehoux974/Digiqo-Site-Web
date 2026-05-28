@@ -91,8 +91,8 @@ function validateArticle(article, file) {
       throw new Error(`${file}: missing required frontmatter field "${f}"`);
     }
   }
-  if (!/^[a-z0-9-]{1,60}$/.test(article.slug)) {
-    throw new Error(`${file}: invalid slug "${article.slug}" (must match ^[a-z0-9-]{1,60}$)`);
+  if (!/^[a-z0-9-]{1,100}$/.test(article.slug)) {
+    throw new Error(`${file}: invalid slug "${article.slug}" (must match ^[a-z0-9-]{1,100}$)`);
   }
 }
 
