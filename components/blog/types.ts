@@ -179,7 +179,7 @@ export const DIGIQO_AUTHOR: ArticleAuthor = {
   name: 'Alexandre Lehoux',
   initials: 'AL',
   role: 'CMO Dirigeant Associé · Digiqo',
-  bio: "Stratège marketing digital à La Réunion depuis 2018, Alexandre dirige la stratégie acquisition de Digiqo qu'il a co-fondée. Il a piloté plus de 4 M€ d'investissement publicitaire pour des PME locales et publie régulièrement sur le blog Digiqo.",
+  bio: "Stratège marketing digital à La Réunion depuis 2018, Alexandre dirige la stratégie acquisition de Digiqo qu'il a co-fondée. Avec ses équipes, Digiqo accompagne des TPE/PME locales sur plus de 4 M€ d'investissement publicitaire cumulé. Alexandre publie régulièrement sur le blog Digiqo.",
   expertise: ['TikTok Ads', 'Meta Ads', 'Stratégie acquisition 974', 'Tracking publicitaire'],
   linkedinUrl: 'https://www.linkedin.com/in/alexandre-le-houx/',
 }
