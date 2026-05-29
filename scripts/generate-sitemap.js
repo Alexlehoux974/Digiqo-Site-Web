@@ -91,9 +91,7 @@ function generateSitemapIndex() {
 // Legacy TS-registered articles (Sprint 2). When a new TS article ships in
 // lib/blog-articles.ts, add its slug + lastmod date here. Pipeline-generated
 // articles in content/blog/*.md are auto-discovered below.
-const TS_LEGACY_BLOG_ARTICLES = [
-  { slug: 'tiktok-ads-prix-reunion-2026', lastmod: '2026-05-06', priority: '0.8' },
-];
+const TS_LEGACY_BLOG_ARTICLES = [];
 
 function readMdBlogArticles() {
   const contentDir = path.join(__dirname, '../content/blog');

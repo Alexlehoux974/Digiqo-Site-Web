@@ -102,6 +102,11 @@ const nextConfig = {
         destination: '/blog',
         permanent: true,
       },
+      {
+        source: '/blog/tiktok-ads-prix-reunion-2026',
+        destination: '/blog',
+        permanent: true,
+      },
     ]
   },
   poweredByHeader: false,
