@@ -16,7 +16,7 @@ export const HeroParallax = ({
   return (
     <div className="relative overflow-hidden bg-[#8B1431]">
       {/* Logo rows behind — subtle watermark */}
-      <div className="absolute inset-0 z-0 flex flex-col justify-end pb-4 md:pb-8 gap-4 opacity-[0.05] pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 z-0 flex flex-col justify-end pb-4 md:pb-8 gap-4 opacity-[0.1] pointer-events-none overflow-hidden">
         <div className="logo-scroll-container">
           <div className="logo-scroll-track logo-scroll-right">
             {[...firstRow, ...firstRow].map((product, idx) => (
