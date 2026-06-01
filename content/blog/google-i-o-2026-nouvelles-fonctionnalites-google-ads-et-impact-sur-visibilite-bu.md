@@ -1,26 +1,26 @@
 ---
 id: "google-i-o-2026-nouvelles-fonctionnalites-google-ads-et-impact-sur-visibilite-bu"
 slug: "google-i-o-2026-nouvelles-fonctionnalites-google-ads-et-impact-sur-visibilite-bu"
-title: "Google I/O 2026 : ce que les nouveautés changent pour vos Google"
+title: "Google I/O 2026 : ce qui change pour vos Google Ads"
 metaDescription: "Les AI Overviews de Google sont désormais affichées dans une expérience de recherche IA qui dépasse 1 milliard d'utilisateurs mensuels — et les annonces Go"
 excerpt: "Les AI Overviews de Google sont désormais affichées dans une expérience de recherche IA qui dépasse 1 milliard d'utilisateurs mensuels — et les annonces Go"
 category: "Stratégie 974"
 cluster: "Stratégie 974"
 clusterHref: "/blog?cat=strategie-974"
 date: "1 juin 2026"
-dateModified: "2026-06-01T18:15:55+04:00"
+dateModified: "2026-06-01T18:20:17+04:00"
 dateModifiedLabel: "1 juin 2026"
 readTime: "15 min de lecture"
 authorKey: "alexandre-lehoux"
 type_sujet: "evergreen"
 canonical: "https://digiqo.fr/blog/google-i-o-2026-nouvelles-fonctionnalites-google-ads-et-impact-sur-visibilite-bu"
 fact_checker_verdict: "PASS"
-pipeline_run_uuid: "pending-publisher"
+pipeline_run_uuid: "114707dd-9d1c-4660-9c10-884cc0833427"
 tags: []
 relatedSlugs: []
 ---
 
-# Google I/O 2026 : ce que les nouveautés changent pour vos Google Ads
+# Google I/O 2026 : ce qui change pour vos Google Ads
 
 Les AI Overviews de Google sont désormais affichées dans une expérience de recherche IA qui dépasse [1 milliard d'utilisateurs mensuels](https://blog.google/products-and-platforms/products/search/search-io-2026/) — et les annonces Google Ads y occupent de nouveaux emplacements qui redistribuent mécaniquement le jeu du clic. Pour un dirigeant de TPE ou PME à La Réunion, ce n'est pas une évolution abstraite : c'est le moment où les campagnes pilotées avec les réflexes d'avant 2025 commencent à coûter plus cher pour moins de résultats. Voici ce qui change vraiment, et comment en tirer parti.
 
