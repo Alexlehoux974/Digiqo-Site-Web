@@ -2,20 +2,20 @@
 id: "google-i-o-2026-nouvelles-fonctionnalites-google-ads-et-impact-sur-visibilite-bu"
 slug: "google-i-o-2026-nouvelles-fonctionnalites-google-ads-et-impact-sur-visibilite-bu"
 title: "Google I/O 2026 : ce qui change pour vos Google Ads"
-metaDescription: "Les AI Overviews de Google sont désormais affichées dans une expérience de recherche IA qui dépasse 1 milliard d'utilisateurs mensuels — et les annonces Go"
-excerpt: "Les AI Overviews de Google sont désormais affichées dans une expérience de recherche IA qui dépasse 1 milliard d'utilisateurs mensuels — et les annonces Go"
+metaDescription: "Les AI Overviews de Google sont désormais affichées dans une expérience de recherche IA qui dépasse 1 milliard d'utilisateurs mensuels — et les annonces…"
+excerpt: "Les AI Overviews de Google sont désormais affichées dans une expérience de recherche IA qui dépasse 1 milliard d'utilisateurs mensuels — et les annonces…"
 category: "Stratégie 974"
 cluster: "Stratégie 974"
 clusterHref: "/blog?cat=strategie-974"
 date: "1 juin 2026"
-dateModified: "2026-06-01T18:20:17+04:00"
+dateModified: "2026-06-01T20:00:54+04:00"
 dateModifiedLabel: "1 juin 2026"
 readTime: "15 min de lecture"
 authorKey: "alexandre-lehoux"
 type_sujet: "evergreen"
 canonical: "https://digiqo.fr/blog/google-i-o-2026-nouvelles-fonctionnalites-google-ads-et-impact-sur-visibilite-bu"
 fact_checker_verdict: "PASS"
-pipeline_run_uuid: "114707dd-9d1c-4660-9c10-884cc0833427"
+pipeline_run_uuid: "c29ea5c9-fb26-4f3b-99e8-225826df537f"
 tags: []
 relatedSlugs: []
 ---
@@ -35,13 +35,13 @@ what-you-learn:
 - Comment les AI Overviews redessinent la géographie du Search payant et créent de nouveaux emplacements publicitaires
 - Les formats publicitaires introduits (Conversational Discovery ads, Highlighted Answers, Business Agent for Leads)
 - Pourquoi la qualité des assets visuels et le tracking deviennent les premiers leviers de différenciation
-- L'opportunité concrète de marché sous-saturé sur Google Ads à La Réunion face à la domination de Meta
+- L'opportunité concrète d'un marché Google Ads encore peu exploité localement, là où Meta domine largement le marché publicitaire réunionnais
 :::
 
 :::quick-answer{target-query="Google I/O 2026 Google Ads changements"}
 question: Quels changements Google I/O 2026 impactent directement les performances de mes campagnes Google Ads ?
 
-Google a fusionné les AI Overviews et AI Mode en une expérience de recherche IA unifiée dépassant **1 milliard d'utilisateurs mensuels**, avec un volume de requêtes qui plus que double chaque trimestre. Les nouveaux formats publicitaires (Conversational Discovery ads, Highlighted Answers) s'affichent désormais directement dans les réponses IA, avant les annonces classiques. Pour les TPE/PME à La Réunion, cette évolution crée deux impératifs : optimiser la qualité des assets visuels et renforcer le tracking pour alimenter correctement l'IA. Chez Digiqo, nous constatons que **97,5 % du budget pub de nos clients reste sur Meta**, ce qui signifie aussi que Google Ads offre actuellement un marché moins saturé localement — une fenêtre d'opportunité pour ceux qui s'y positionnent maintenant.
+Google a fusionné les AI Overviews et AI Mode en une expérience de recherche IA unifiée dépassant **1 milliard d'utilisateurs mensuels**, avec un volume de requêtes qui plus que double chaque trimestre. Les nouveaux formats publicitaires (Conversational Discovery ads, Highlighted Answers) s'affichent désormais directement dans les réponses IA, avant les annonces classiques. Pour les TPE/PME à La Réunion, cette évolution crée deux impératifs : optimiser la qualité des assets visuels et renforcer le tracking pour alimenter correctement l'IA. Chez Digiqo, nous constatons que **Meta capte l'essentiel du budget publicitaire de nos clients**, ce qui signifie aussi que Google Ads reste un canal encore peu exploité localement — une fenêtre d'opportunité pour ceux qui s'y positionnent maintenant.
 :::
 
 ## Ce que Google I/O 2026 a changé pour le Search payant
@@ -90,7 +90,7 @@ L'idée centrale de Demand Gen est de créer de la demande là où elle n'existe
 
 L'ajout de l'inventaire Google Maps est particulièrement intéressant pour un marché local comme La Réunion : une entreprise peut désormais toucher des utilisateurs qui cherchent activement dans leur zone géographique, avec un format qui s'adapte au contexte de navigation.
 
-C'est ici qu'une donnée interne mérite d'être posée clairement. Sur notre portefeuille clients, le budget publicité consolidé janvier-mai 2026 se répartit à 97,5 % sur Meta Ads et 2,5 % sur Google Ads. Cette réalité dit quelque chose d'important : Google Ads reste un canal sous-exploité par les TPE/PME réunionnaises, précisément parce que Meta offre des coûts d'entrée très bas sur le marché local. Mais cette sous-exploitation de Google crée une fenêtre d'opportunité : les marchés peu encombrés sur une plateforme ont mécaniquement des coûts d'enchères plus faibles. Les annonceurs qui activent Google Ads à La Réunion maintenant — et qui maîtrisent les nouveaux formats Demand Gen — affrontent moins de concurrence que leurs homologues en métropole.
+C'est ici qu'une observation interne mérite d'être posée clairement. Sur notre portefeuille — 38 clients actifs, 93 036 € de budget publicitaire consolidé de janvier à mai 2026 — Meta concentre la très large majorité des investissements, tandis que Google Ads reste largement minoritaire. Cette réalité dit quelque chose d'important : Google Ads reste un canal sous-exploité par les TPE/PME réunionnaises, précisément parce que Meta offre des coûts d'entrée très bas sur le marché local. Mais cette sous-exploitation de Google crée une fenêtre d'opportunité : les marchés peu encombrés sur une plateforme ont mécaniquement des coûts d'enchères plus faibles. Les annonceurs qui activent Google Ads à La Réunion maintenant — et qui maîtrisent les nouveaux formats Demand Gen — affrontent moins de concurrence que leurs homologues en métropole.
 
 La configuration assistée par IA pour Demand Gen réduit aussi la barrière technique à l'entrée : là où il fallait construire manuellement les audiences, les placements et les rotations créatives, l'IA propose désormais une structure de campagne initiale que l'annonceur affine. Pour une équipe marketing interne réduite — ou une TPE sans équipe dédiée — c'est un gain de temps réel.
 
@@ -124,7 +124,7 @@ Traduite en actions, la somme des annonces Google I/O 2026 converge vers quatre 
 
 **Prendre en compte la réalité mobile de La Réunion.** [En mai 2026, le mobile représente 51,61 % du trafic web à La Réunion contre 46,33 % pour le desktop](https://gs.statcounter.com/platform-market-share/desktop-mobile-tablet/reunion). Tous les formats Google Ads déployés sur IA — AI Overviews, Conversational Discovery, Shopping visuel — s'affichent d'abord sur mobile. Une landing page qui se charge lentement ou un formulaire mal adapté à l'écran tactile annule tout l'effort publicitaire en amont.
 
-**Voir Google Ads comme une opportunité de marché sous-saturé.** Sur notre portefeuille, Google Ads représente 2,5 % du budget pub consolidé. C'est le reflet d'un marché local où Meta domine parce qu'il est accessible et peu cher. Mais cette sous-présence collective sur Google Ads à La Réunion signifie aussi des coûts d'enchères plus faibles pour ceux qui s'y positionnent maintenant. Les premiers à intégrer les nouveaux formats IA de Google Ads sur le marché réunionnais bénéficieront d'un double avantage : moins de concurrence locale sur les enchères, et une avance d'expérience sur des formats que leurs concurrents découvriront dans six à douze mois.
+**Voir Google Ads comme une opportunité de marché encore peu exploité.** Sur notre portefeuille, Google Ads reste un canal très minoritaire face à Meta. C'est le reflet d'un marché local où Meta domine parce qu'il est accessible et peu cher. Mais cette sous-présence collective sur Google Ads à La Réunion signifie aussi des coûts d'enchères plus faibles pour ceux qui s'y positionnent maintenant. Les premiers à intégrer les nouveaux formats IA de Google Ads sur le marché réunionnais bénéficieront d'un double avantage : moins de concurrence locale sur les enchères, et une avance d'expérience sur des formats que leurs concurrents découvriront dans six à douze mois.
 
 ---
 
@@ -151,7 +151,7 @@ Vous voulez savoir si vos campagnes Google Ads sont prêtes pour ces évolutions
   a: Oui. En mai 2026, le mobile représente 51,61 % du trafic web à La Réunion. Tous les nouveaux formats Google Ads IA (AI Overviews, Conversational Discovery, Shopping visuel) s'affichent d'abord sur mobile. Une landing page lente ou un formulaire mal adapté au tactile annule tout l'effort publicitaire en amont.
 
 - q: Google Ads est-il vraiment sous-investi à La Réunion ?
-  a: Oui, nos données internes le confirment : 97,5 % du budget pub de nos clients va sur Meta Ads, 2,5 % sur Google Ads. Cette sous-présence collective signifie que les coûts d'enchères sont mécaniquement plus faibles pour ceux qui s'y positionnent maintenant. Les premiers annonceurs à maîtriser les nouveaux formats IA bénéficieront d'une fenêtre d'opportunité concrète.
+  a: Oui, nos données internes le confirment : Meta concentre la très large majorité du budget publicitaire de nos clients, Google Ads restant minoritaire. Cette sous-présence collective signifie que les coûts d'enchères sont mécaniquement plus faibles pour ceux qui s'y positionnent maintenant. Les premiers annonceurs à maîtriser les nouveaux formats IA bénéficieront d'une fenêtre d'opportunité concrète.
 :::
 
 :::sources
@@ -173,7 +173,7 @@ Vous voulez savoir si vos campagnes Google Ads sont prêtes pour ces évolutions
 
 - label: Données primaires Digiqo
   primary: true
-  description: Analyse du budget pub consolidé clients Digiqo janvier-mai 2026 (93 036 € total, 97,5 % Meta / 2,5 % Google Ads). Portefeuille 38 clients actifs. Confirme la stratégie Meta-first et l'opportunité sous-saturée de Google Ads sur le marché réunionnais.
+  description: Analyse du budget pub consolidé clients Digiqo janvier-mai 2026 (93 036 € total, Meta majoritaire vs Google Ads minoritaire). Portefeuille 38 clients actifs. Confirme la stratégie Meta-first et l'opportunité encore peu exploitée de Google Ads sur le marché réunionnais.
 :::
 
 :::cta{eyebrow="Audit gratuit · 30 minutes"}
