@@ -154,7 +154,7 @@ export default function FormulesSection() {
       gradient: 'from-purple-500 to-pink-600',
       accentColor: '#A855F7',
       icon: Rocket,
-      bonus: { title: 'Offre promotionnelle', items: isAnnual ? ['3 vidéos offertes'] : ['1 vidéo offerte à la souscription'] },
+      bonus: { title: 'Offre promotionnelle', items: isAnnual ? ['3 vidéos offertes'] : ['1 production vidéo offerte à la souscription'] },
       paymentLinkShortTerm: 'https://payments-eu1.hubspot.com/payments/qgwyN9Hj4W7hK?referrer=PAYMENT_LINK',
       paymentLinkAnnual: 'https://payments-eu1.hubspot.com/payments/KwTYqpVjwVK26?referrer=PAYMENT_LINK',
       isMulticanal: true,
