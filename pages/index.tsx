@@ -339,7 +339,7 @@ export default function Home() {
                 </ul>
 
                 <a
-                  href="https://app-digiqo.fr/demo"
+                  href="https://app.digiqo.fr/demo"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-8 py-4 bg-[#8B1431] text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
