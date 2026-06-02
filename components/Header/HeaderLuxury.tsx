@@ -614,7 +614,7 @@ export const HeaderLuxury = () => {
             <div className="hidden lg:flex items-center space-x-4">
               {/* Mon Compte Button */}
               <a
-                href="https://app-digiqo.fr"
+                href="https://app.digiqo.fr/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -865,7 +865,7 @@ export const HeaderLuxury = () => {
                 {/* CTA Buttons */}
                 <div className="pt-6 border-t border-gray-100 space-y-3">
                   <a
-                    href="https://app-digiqo.fr"
+                    href="https://app.digiqo.fr/"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsMenuOpen(false)}
