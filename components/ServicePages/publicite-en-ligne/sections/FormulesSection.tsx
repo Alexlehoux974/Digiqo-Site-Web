@@ -133,7 +133,7 @@ export default function FormulesSection() {
       gradient: 'from-blue-500 to-indigo-600',
       accentColor: '#3B82F6',
       icon: Zap,
-      bonus: isAnnual ? { title: 'Offre promotionnelle', items: ['1 vidéo offerte'] } : null,
+      bonus: { title: 'Offre promotionnelle', items: isAnnual ? ['1 vidéo offerte'] : ['1 production vidéo à tarif réduit à la souscription'] },
       paymentLinkShortTerm: 'https://payments-eu1.hubspot.com/payments/hvKD4PsM?referrer=PAYMENT_LINK',
       paymentLinkAnnual: 'https://payments-eu1.hubspot.com/payments/JCJGmsRC?referrer=PAYMENT_LINK',
       bestValue: true,
