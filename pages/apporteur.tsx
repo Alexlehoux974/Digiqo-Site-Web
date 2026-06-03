@@ -34,9 +34,9 @@ const steps = [
   {
     icon: CalendarCheck,
     step: '2',
-    title: 'Tu nous présentes',
+    title: 'Tu mets en relation',
     description:
-      "Tu poses un rendez-vous avec notre équipe commerciale et tu lui présentes ton prospect. Cette mise en relation enregistre l'apport à ton nom — tu n'as rien à vendre.",
+      "Tu organises un rendez-vous entre ton prospect et notre équipe commerciale, puis tu les mets en relation. C'est ton prospect qui rencontre Digiqo, pas toi : cette mise en relation enregistre l'apport à ton nom — tu n'as rien à vendre.",
   },
   {
     icon: BadgePercent,
@@ -454,13 +454,14 @@ export default function Partenaires() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-lg font-bold text-digiqo-black mb-1">
-                    Un seul RDV pour démarrer
+                    Un seul RDV pour devenir apporteur d'affaires pour Digiqo
                   </h3>
                   <p className="text-gray-600">
                     Au tout début, vous posez <strong>un seul rendez-vous avec Maxime</strong>,
                     notre Head of Sales : il cadre le programme et vous donne quelques
                     arguments de vente. Ensuite, pour chaque prospect, vous calez
-                    simplement un RDV avec notre équipe commerciale pour le présenter.
+                    simplement un RDV <strong>entre votre prospect et notre équipe
+                    commerciale</strong> pour le présenter.
                   </p>
                 </div>
                 <a
