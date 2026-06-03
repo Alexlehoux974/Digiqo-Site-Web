@@ -326,8 +326,8 @@ export default function Partenaires() {
                         <span className="text-sm text-gray-500">
                           {product.detail}
                         </span>
-                        <span className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-digiqo-secondary/10 px-2.5 py-1 text-xs font-semibold text-digiqo-secondary">
-                          <BadgePercent className="w-3.5 h-3.5" />
+                        <span className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-emerald-500 to-green-600 px-3 py-1.5 text-[13px] font-bold text-white shadow-md shadow-emerald-600/30">
+                          <Wallet className="w-3.5 h-3.5" />
                           {product.commission}
                         </span>
                       </div>
@@ -370,12 +370,12 @@ export default function Partenaires() {
                           {product.price}
                         </span>
                       </div>
-                      <div className="ml-8 mt-1.5">
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-digiqo-secondary/10 px-2.5 py-1 text-xs font-semibold text-digiqo-secondary">
-                          <BadgePercent className="w-3.5 h-3.5" />
+                      <div className="ml-8 mt-2">
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-emerald-500 to-green-600 px-3 py-1.5 text-[13px] font-bold text-white shadow-md shadow-emerald-600/30">
+                          <Wallet className="w-3.5 h-3.5" />
                           {product.commission}
                           {product.commissionNote && (
-                            <span className="font-normal text-digiqo-secondary/70">
+                            <span className="font-medium text-white/80">
                               ({product.commissionNote})
                             </span>
                           )}
