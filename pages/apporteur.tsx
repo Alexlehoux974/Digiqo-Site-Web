@@ -17,8 +17,9 @@ import {
   ShieldCheck,
 } from 'lucide-react'
 
-// Lien de prise de RDV obligatoire avec Maxime Sin (Head of Sales) avant
-// toute mise en relation. Conditionne tout le programme apporteur d'affaires.
+// Lien de prise du RDV de démarrage avec Maxime Sin (Head of Sales) : une seule
+// fois au début pour cadrer le programme et donner des arguments de vente.
+// Ensuite, les mises en relation se font directement avec l'équipe commerciale.
 const RDV_MAXIME_URL =
   'https://meetings-eu1.hubspot.com/maxime-sin?uuid=0606bf0f-7df4-4d46-ac3d-bfc173a732ed'
 
@@ -35,7 +36,7 @@ const steps = [
     step: '2',
     title: 'Tu nous présentes',
     description:
-      "Tu poses toi-même un rendez-vous avec notre équipe commerciale avant toute mise en relation. C'est la condition obligatoire pour valider l'apport.",
+      "Tu poses un rendez-vous avec notre équipe commerciale et tu lui présentes ton prospect. Cette mise en relation enregistre l'apport à ton nom — tu n'as rien à vendre.",
   },
   {
     icon: BadgePercent,
@@ -118,9 +119,9 @@ const faqs = [
       "Non. Ton rôle s'arrête à la mise en relation. Tu présentes le prospect, et c'est Digiqo qui prend en charge l'intégralité du commercial : découverte du besoin, devis, négociation et closing. Tu n'as aucune pression de vente.",
   },
   {
-    question: "Pourquoi dois-je poser un RDV avec l'équipe commerciale avant de présenter un prospect ?",
+    question: "Avec qui je prends rendez-vous, et quand ?",
     answer:
-      "C'est la condition obligatoire du programme. Le rendez-vous avec notre équipe commerciale en amont permet de cadrer l'opportunité, d'attribuer l'apport à ton nom et d'éviter tout doublon. **Sans ce RDV préalable, l'apport ne peut pas être validé.**",
+      "Il y a deux moments à ne pas confondre. **Au démarrage, tu poses un seul RDV avec Maxime** (notre Head of Sales) : il cadre le programme avec toi et te donne quelques arguments de vente. **Ensuite, pour chaque prospect, tu poses un rendez-vous avec notre équipe commerciale** et tu lui présentes le contact. C'est cette mise en relation qui attribue l'apport à ton nom et évite tout doublon — tu n'as jamais à vendre ni à négocier toi-même.",
   },
   {
     question: 'Comment la commission de 5% est-elle calculée ?',
@@ -140,7 +141,7 @@ const faqs = [
   {
     question: 'Combien de prospects puis-je apporter ?',
     answer:
-      "Autant que tu veux. Chaque mise en relation valide — précédée d'un RDV avec notre équipe commerciale et aboutissant à une commande éligible — ouvre droit à ta commission de 5% HT.",
+      "Autant que tu veux. Chaque prospect que tu présentes à notre équipe commerciale et qui aboutit à une commande éligible ouvre droit à ta commission de 5% HT.",
   },
 ]
 
@@ -453,12 +454,13 @@ export default function Partenaires() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-lg font-bold text-digiqo-black mb-1">
-                    Condition obligatoire
+                    Un seul RDV pour démarrer
                   </h3>
                   <p className="text-gray-600">
-                    Avant toute mise en relation, vous posez vous-même un rendez-vous
-                    avec <strong>notre équipe commerciale</strong>. C'est ce qui
-                    valide et attribue votre apport.
+                    Au tout début, vous posez <strong>un seul rendez-vous avec Maxime</strong>,
+                    notre Head of Sales : il cadre le programme et vous donne quelques
+                    arguments de vente. Ensuite, pour chaque prospect, vous calez
+                    simplement un RDV avec notre équipe commerciale pour le présenter.
                   </p>
                 </div>
                 <a
@@ -488,8 +490,9 @@ export default function Partenaires() {
                 Prêt à devenir apporteur d'affaires&nbsp;?
               </h2>
               <p className="text-lg sm:text-xl text-white/90 mb-8">
-                La première étape est de poser un RDV avec notre équipe commerciale.
-                Elle vous explique le programme et cadre votre première mise en relation.
+                La première étape est de poser votre RDV de démarrage avec Maxime,
+                notre Head of Sales. Il vous explique le programme et vous donne vos
+                premiers arguments de vente.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <a
