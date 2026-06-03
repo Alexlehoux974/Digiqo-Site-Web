@@ -94,9 +94,9 @@ const faqs = [
       "Non. Ton rôle s'arrête à la mise en relation. Tu présentes le prospect, et c'est Digiqo qui prend en charge l'intégralité du commercial : découverte du besoin, devis, négociation et closing. Tu n'as aucune pression de vente.",
   },
   {
-    question: 'Pourquoi dois-je poser un RDV avec Maxime avant de présenter un prospect ?',
+    question: "Pourquoi dois-je poser un RDV avec l'équipe commerciale avant de présenter un prospect ?",
     answer:
-      "C'est la condition obligatoire du programme. Le rendez-vous avec Maxime Sin (Head of Sales) en amont permet de cadrer l'opportunité, d'attribuer l'apport à ton nom et d'éviter tout doublon. **Sans ce RDV préalable, l'apport ne peut pas être validé.**",
+      "C'est la condition obligatoire du programme. Le rendez-vous avec notre équipe commerciale en amont permet de cadrer l'opportunité, d'attribuer l'apport à ton nom et d'éviter tout doublon. **Sans ce RDV préalable, l'apport ne peut pas être validé.**",
   },
   {
     question: 'Sur quel montant la commission de 5% est-elle calculée ?',
@@ -116,7 +116,7 @@ const faqs = [
   {
     question: 'Combien de prospects puis-je apporter ?',
     answer:
-      "Autant que tu veux. Chaque mise en relation valide — précédée d'un RDV avec Maxime et aboutissant à une commande éligible — ouvre droit à ta commission de 5% HT.",
+      "Autant que tu veux. Chaque mise en relation valide — précédée d'un RDV avec notre équipe commerciale et aboutissant à une commande éligible — ouvre droit à ta commission de 5% HT.",
   },
 ]
 
@@ -416,7 +416,7 @@ export default function Partenaires() {
                   </h3>
                   <p className="text-gray-600">
                     Avant toute mise en relation, vous posez vous-même un rendez-vous
-                    avec <strong>Maxime Sin, Head of Sales</strong>. C'est ce qui
+                    avec <strong>notre équipe commerciale</strong>. C'est ce qui
                     valide et attribue votre apport.
                   </p>
                 </div>
@@ -447,8 +447,8 @@ export default function Partenaires() {
                 Prêt à devenir apporteur d'affaires&nbsp;?
               </h2>
               <p className="text-lg sm:text-xl text-white/90 mb-8">
-                La première étape est de poser un RDV avec Maxime. Il vous explique le
-                programme et cadre votre première mise en relation.
+                La première étape est de poser un RDV avec notre équipe commerciale.
+                Elle vous explique le programme et cadre votre première mise en relation.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <a
