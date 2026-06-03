@@ -3,6 +3,7 @@ import { SEO } from '@/components/SEO'
 import { HeaderLuxury } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { FAQAccordion } from '@/components/FAQSection'
+import { ServiceHero } from '@/components/ServicePages/ServiceHero'
 import {
   Handshake,
   Users,
@@ -15,7 +16,6 @@ import {
   Wallet,
   ShieldCheck,
 } from 'lucide-react'
-import Link from 'next/link'
 
 // Lien de prise de RDV obligatoire avec Maxime Sin (Head of Sales) avant
 // toute mise en relation. Conditionne tout le programme apporteur d'affaires.
@@ -178,57 +178,27 @@ export default function Partenaires() {
       <HeaderLuxury />
 
       <main>
-        {/* Hero */}
-        <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-digiqo-primary/5 via-white to-digiqo-secondary/5">
-          <div className="absolute inset-0">
-            <div className="absolute top-20 right-0 w-96 h-96 bg-digiqo-primary/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-digiqo-secondary/10 rounded-full blur-3xl" />
-          </div>
-
-          <div className="container mx-auto px-4 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center max-w-4xl mx-auto"
-            >
-              <div className="inline-flex items-center gap-2 bg-digiqo-primary/10 text-digiqo-primary px-4 py-2 rounded-full text-sm font-semibold mb-6">
-                <Handshake className="w-4 h-4" />
-                Programme apporteur d'affaires
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-digiqo-black mb-6">
-                Recommandez Digiqo,{' '}
-                <span className="text-digiqo-primary">touchez 5%</span>
-              </h1>
-              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-8">
-                Vous croisez des entreprises qui ont besoin d'un site web ou de
-                publicité en ligne&nbsp;? Présentez-les à Digiqo. Vous ne faites pas
-                le closing&nbsp;: <strong>nous gérons tout le commercial</strong>. En
-                échange, vous touchez <strong>5% HT de la première facture
-                encaissée</strong>, sur toute commande d'au moins 2&nbsp;000€ HT.
-              </p>
-
-              <div className="flex flex-wrap gap-4 justify-center">
-                <a
-                  href={RDV_MAXIME_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-digiqo-primary to-digiqo-primary-dark text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-                >
-                  Poser un RDV avec Maxime
-                  <ArrowRight className="w-5 h-5" />
-                </a>
-                <Link
-                  href="#offres"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white text-digiqo-primary font-semibold rounded-lg border-2 border-digiqo-primary hover:bg-digiqo-primary hover:text-white transition-all duration-300"
-                >
-                  Voir les offres éligibles
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-        </section>
+        {/* Hero — composant partagé ServiceHero, identique aux pages services */}
+        <ServiceHero
+          icon={Handshake}
+          title={{
+            line1: 'Recommandez Digiqo,',
+            line2: 'touchez 5%',
+          }}
+          subtitle="Présentez à Digiqo une entreprise de votre réseau qui a besoin d'un site web ou de publicité en ligne. Vous ne faites pas le closing : touchez 5% HT de la première facture encaissée, dès 2 000€ HT de commande."
+          ctaButtons={{
+            primary: {
+              text: 'Poser un RDV avec Maxime',
+              href: RDV_MAXIME_URL,
+            },
+            secondary: {
+              text: 'Voir les offres éligibles',
+              href: '#offres',
+            },
+          }}
+          gradientFrom="from-digiqo-accent"
+          gradientTo="to-amber-400"
+        />
 
         {/* Comment ça marche */}
         <section className="py-20">
