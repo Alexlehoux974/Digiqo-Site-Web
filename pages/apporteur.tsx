@@ -477,9 +477,6 @@ export default function Partenaires() {
                   📱 Maxime&nbsp;: +262 693 65 95 45
                 </a>
               </div>
-              <p className="text-white/90 text-base sm:text-lg mt-6">
-                Maxime vous brief sur les offres avant votre premier rendez-vous.
-              </p>
             </motion.div>
           </div>
         </section>
