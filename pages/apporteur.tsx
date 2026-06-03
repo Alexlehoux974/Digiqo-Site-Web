@@ -34,9 +34,9 @@ const steps = [
   {
     icon: CalendarCheck,
     step: '2',
-    title: 'Tu mets en relation',
+    title: 'Tu cales le RDV',
     description:
-      "Tu organises un rendez-vous entre ton prospect et notre équipe commerciale, puis tu les mets en relation. C'est ton prospect qui rencontre Digiqo, pas toi : cette mise en relation enregistre l'apport à ton nom — tu n'as rien à vendre.",
+      "Tu réserves un créneau entre ton prospect et notre équipe commerciale. C'est ton prospect qui rencontre Digiqo — tu n'as pas besoin d'être présent, ni de vendre quoi que ce soit. Cette mise en relation enregistre l'apport à ton nom.",
   },
   {
     icon: BadgePercent,
@@ -121,7 +121,7 @@ const faqs = [
   {
     question: "Avec qui je prends rendez-vous, et quand ?",
     answer:
-      "Il y a deux moments à ne pas confondre. **Au démarrage, tu poses un seul RDV avec Maxime** (notre Head of Sales) : il cadre le programme avec toi et te donne quelques arguments de vente. **Ensuite, pour chaque prospect, tu poses un rendez-vous avec notre équipe commerciale** et tu lui présentes le contact. C'est cette mise en relation qui attribue l'apport à ton nom et évite tout doublon — tu n'as jamais à vendre ni à négocier toi-même.",
+      "Il y a deux moments à ne pas confondre. **Au démarrage, tu poses un seul RDV avec Maxime** (notre Head of Sales) : il cadre le programme avec toi et te donne quelques arguments de vente. **Ensuite, pour chaque prospect, tu cales un RDV entre lui et notre équipe commerciale** : c'est ton prospect qui rencontre Digiqo, tu n'as pas besoin d'être présent. C'est cette mise en relation qui attribue l'apport à ton nom et évite tout doublon — tu n'as jamais à vendre ni à négocier toi-même.",
   },
   {
     question: 'Comment la commission de 5% est-elle calculée ?',
@@ -440,41 +440,6 @@ export default function Partenaires() {
                 )
               })}
             </div>
-
-            {/* Rappel condition obligatoire */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="max-w-4xl mx-auto mt-12"
-            >
-              <div className="bg-digiqo-primary/5 border border-digiqo-primary/20 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center gap-6">
-                <div className="w-14 h-14 bg-digiqo-primary rounded-xl flex items-center justify-center flex-shrink-0">
-                  <CalendarCheck className="w-7 h-7 text-white" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-bold text-digiqo-black mb-1">
-                    Un seul RDV pour devenir apporteur d'affaires pour Digiqo
-                  </h3>
-                  <p className="text-gray-600">
-                    Au tout début, vous posez <strong>un seul rendez-vous avec Maxime</strong>,
-                    notre Head of Sales : il cadre le programme et vous donne quelques
-                    arguments de vente. Ensuite, pour chaque prospect, vous calez
-                    simplement un RDV <strong>entre votre prospect et notre équipe
-                    commerciale</strong> pour le présenter.
-                  </p>
-                </div>
-                <a
-                  href={RDV_MAXIME_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-digiqo-primary text-white font-semibold rounded-lg hover:bg-digiqo-primary-dark transition-all duration-300 whitespace-nowrap"
-                >
-                  Poser un RDV
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              </div>
-            </motion.div>
           </div>
         </section>
 
