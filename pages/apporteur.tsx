@@ -42,7 +42,7 @@ const steps = [
     step: '3',
     title: 'On signe, tu touches 5%',
     description:
-      "Digiqo gère tout le commercial et le closing. Dès la première facture encaissée, tu reçois 5% HT du montant, sur toute commande d'au moins 2 000€ HT.",
+      "Digiqo gère tout le commercial et le closing. Une fois le client signé, tu touches 5% HT sur ses 6 premières factures encaissées.",
   },
 ]
 
@@ -71,19 +71,19 @@ const conditions = [
     icon: BadgePercent,
     title: '5% HT de commission',
     description:
-      'Tu touches 5% HT du montant de la première facture encaissée par Digiqo.',
+      'Tu touches 5% HT du montant de chaque facture concernée du client que tu as apporté.',
   },
   {
     icon: Wallet,
-    title: 'À partir de 2 000€ HT',
+    title: 'Sur les 6 premières factures',
     description:
-      "La commande doit représenter au minimum 2 000€ HT pour ouvrir droit à la commission.",
+      "La commission porte sur les 6 premières factures encaissées du client, pas seulement sur la première.",
   },
   {
     icon: ShieldCheck,
-    title: 'Première facture encaissée',
+    title: 'Produits éligibles',
     description:
-      'La commission est calculée et versée sur la première facture réellement encaissée par Digiqo.',
+      "Uniquement la publicité en ligne (hors Initiation Mensuelle) et les sites web sur mesure.",
   },
 ]
 
@@ -99,19 +99,19 @@ const faqs = [
       "C'est la condition obligatoire du programme. Le rendez-vous avec notre équipe commerciale en amont permet de cadrer l'opportunité, d'attribuer l'apport à ton nom et d'éviter tout doublon. **Sans ce RDV préalable, l'apport ne peut pas être validé.**",
   },
   {
-    question: 'Sur quel montant la commission de 5% est-elle calculée ?',
+    question: 'Comment la commission de 5% est-elle calculée ?',
     answer:
-      "Sur la première facture HT réellement encaissée par Digiqo, dès lors que la commande atteint au minimum 2 000€ HT. La commission représente 5% HT de ce montant.",
+      "Tu touches 5% HT sur chacune des 6 premières factures HT réellement encaissées par Digiqo pour le client que tu as apporté. Il n'y a pas de montant minimum de commande.",
   },
   {
     question: 'Quels produits sont éligibles ?',
     answer:
-      "Deux catégories :\n• **Sites web** (sur devis) : site internet vitrine clé en main et boutique en ligne sur mesure.\n• **Publicité en ligne** : Propulsion Trimestrielle, Propulsion Annuelle, Initiation Annuelle, Expansion Trimestrielle et Expansion Annuelle.",
+      "Deux catégories :\n• **Sites web** (sur devis) : site internet vitrine clé en main et boutique en ligne sur mesure.\n• **Publicité en ligne** : toutes les formules à l'exception de l'Initiation Mensuelle — Propulsion Trimestrielle, Propulsion Annuelle, Initiation Annuelle, Expansion Trimestrielle et Expansion Annuelle.",
   },
   {
     question: 'Quand suis-je payé ?',
     answer:
-      "La commission est due dès que la première facture liée à la commande est encaissée par Digiqo. Tant que le paiement n'est pas reçu, la commission n'est pas déclenchée.",
+      "Au fur et à mesure : ta commission est due à chacune des 6 premières factures du client encaissées par Digiqo. Tant qu'une facture n'est pas encaissée, la part correspondante n'est pas déclenchée.",
   },
   {
     question: 'Combien de prospects puis-je apporter ?',
@@ -131,7 +131,7 @@ const apporteurStructuredData = {
       name: "Programme Apporteur d'Affaires Digiqo",
       url: 'https://digiqo.fr/apporteur',
       description:
-        "Devenez apporteur d'affaires Digiqo : présentez des prospects de votre réseau et touchez 5% HT de la première facture encaissée, sur toute commande d'au moins 2 000€ HT. Digiqo gère tout le commercial.",
+        "Devenez apporteur d'affaires Digiqo : présentez des prospects de votre réseau et touchez 5% HT sur les 6 premières factures du client. Digiqo gère tout le commercial.",
       inLanguage: 'fr-FR',
       isPartOf: { '@id': 'https://digiqo.fr/#website' },
       about: { '@id': 'https://digiqo.fr/#organization' },
@@ -169,7 +169,7 @@ export default function Partenaires() {
     <>
       <SEO
         title="Programme Apporteur d'Affaires - Digiqo"
-        description="Devenez apporteur d'affaires Digiqo : présentez des prospects de votre réseau et touchez 5% HT de la première facture encaissée, dès 2 000€ HT de commande. Vous présentez, Digiqo gère tout le commercial."
+        description="Devenez apporteur d'affaires Digiqo : présentez des prospects de votre réseau et touchez 5% HT sur les 6 premières factures du client. Vous présentez, Digiqo gère tout le commercial."
         keywords="apporteur d'affaires digiqo, programme partenaire réunion, commission apporteur, recommandation client agence digitale, partenaire digiqo"
         url="https://digiqo.fr/apporteur"
         structuredData={apporteurStructuredData}
@@ -185,7 +185,7 @@ export default function Partenaires() {
             line1: 'Recommandez Digiqo,',
             line2: 'touchez 5%',
           }}
-          subtitle="Présentez à Digiqo une entreprise de votre réseau qui a besoin d'un site web ou de publicité en ligne. Vous ne faites pas le closing : touchez 5% HT de la première facture encaissée, dès 2 000€ HT de commande."
+          subtitle="Présentez à Digiqo une entreprise de votre réseau qui a besoin d'un site web ou de publicité en ligne. Vous ne faites pas le closing : touchez 5% HT sur les 6 premières factures du client."
           ctaButtons={{
             primary: {
               text: 'Poser un RDV avec Maxime',
@@ -352,8 +352,8 @@ export default function Partenaires() {
               viewport={{ once: true }}
               className="text-center text-sm text-gray-500 mt-8 max-w-2xl mx-auto"
             >
-              Seules les commandes d'au moins 2&nbsp;000€ HT ouvrent droit à la
-              commission apporteur d'affaires.
+              Côté publicité en ligne, toutes les formules sont éligibles à
+              l'exception de l'Initiation Mensuelle.
             </motion.p>
           </div>
         </section>
