@@ -27,8 +27,8 @@ const navigation = {
     { name: 'FAQ', href: '/?instant=true#faq' },
     { name: 'Digiqo Recrute !', href: '/digiqo-recrute' },
     { name: 'Partenariats & Sponsoring', href: '/partenariats' },
-    { name: "Programme Apporteur d'Affaires", href: '/partenaires' },
     { name: 'Glossaire Digiqo', href: '/glossaire' },
+    { name: "Deviens apporteur d'affaires pour Digiqo !", href: '/apporteur' },
     { name: 'Résilier ou mettre en pause votre abonnement SMA', href: '/desabonnement' },
   ],
   legal: [

@@ -122,14 +122,14 @@ const faqs = [
 
 // JSON-LD : WebPage + BreadcrumbList + FAQPage. Même logique GEO/E-E-A-T que
 // /agence — décrit la page apporteur d'affaires pour les moteurs et les LLM.
-const partenairesStructuredData = {
+const apporteurStructuredData = {
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'WebPage',
-      '@id': 'https://digiqo.fr/partenaires#webpage',
+      '@id': 'https://digiqo.fr/apporteur#webpage',
       name: "Programme Apporteur d'Affaires Digiqo",
-      url: 'https://digiqo.fr/partenaires',
+      url: 'https://digiqo.fr/apporteur',
       description:
         "Devenez apporteur d'affaires Digiqo : présentez des prospects de votre réseau et touchez 5% HT de la première facture encaissée, sur toute commande d'au moins 2 000€ HT. Digiqo gère tout le commercial.",
       inLanguage: 'fr-FR',
@@ -138,20 +138,20 @@ const partenairesStructuredData = {
     },
     {
       '@type': 'BreadcrumbList',
-      '@id': 'https://digiqo.fr/partenaires#breadcrumb',
+      '@id': 'https://digiqo.fr/apporteur#breadcrumb',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://digiqo.fr/' },
         {
           '@type': 'ListItem',
           position: 2,
           name: "Programme Apporteur d'Affaires",
-          item: 'https://digiqo.fr/partenaires',
+          item: 'https://digiqo.fr/apporteur',
         },
       ],
     },
     {
       '@type': 'FAQPage',
-      '@id': 'https://digiqo.fr/partenaires#faq',
+      '@id': 'https://digiqo.fr/apporteur#faq',
       mainEntity: faqs.map((faq) => ({
         '@type': 'Question',
         name: faq.question,
@@ -171,8 +171,8 @@ export default function Partenaires() {
         title="Programme Apporteur d'Affaires - Digiqo"
         description="Devenez apporteur d'affaires Digiqo : présentez des prospects de votre réseau et touchez 5% HT de la première facture encaissée, dès 2 000€ HT de commande. Vous présentez, Digiqo gère tout le commercial."
         keywords="apporteur d'affaires digiqo, programme partenaire réunion, commission apporteur, recommandation client agence digitale, partenaire digiqo"
-        url="https://digiqo.fr/partenaires"
-        structuredData={partenairesStructuredData}
+        url="https://digiqo.fr/apporteur"
+        structuredData={apporteurStructuredData}
       />
 
       <HeaderLuxury />
