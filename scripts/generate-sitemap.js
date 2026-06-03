@@ -16,6 +16,7 @@ const staticPages = [
   { path: '/createurs', priority: '0.7', changefreq: 'weekly' },
   { path: '/glossaire', priority: '0.6', changefreq: 'monthly' },
   { path: '/partenariats', priority: '0.6', changefreq: 'monthly' },
+  { path: '/partenaires', priority: '0.7', changefreq: 'monthly' },
   { path: '/audit', priority: '0.8', changefreq: 'weekly' },
   { path: '/devis-web', priority: '0.8', changefreq: 'weekly' },
   { path: '/devis-site-web', priority: '0.8', changefreq: 'weekly' },
