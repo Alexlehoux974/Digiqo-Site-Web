@@ -35,7 +35,7 @@ const steps = [
     step: '2',
     title: 'Tu nous présentes',
     description:
-      "Tu poses toi-même un rendez-vous avec Maxime Sin, notre Head of Sales, avant toute mise en relation. C'est la condition obligatoire pour valider l'apport.",
+      "Tu poses toi-même un rendez-vous avec notre équipe commerciale avant toute mise en relation. C'est la condition obligatoire pour valider l'apport.",
   },
   {
     icon: BadgePercent,
