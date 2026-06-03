@@ -502,12 +502,6 @@ export default function Partenaires() {
                   <ArrowRight className="w-5 h-5" />
                 </a>
                 <a
-                  href="tel:+262262025102"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-digiqo-primary transition-all duration-300"
-                >
-                  📞 02 62 02 51 02
-                </a>
-                <a
                   href="tel:+262693659545"
                   className="inline-flex items-center gap-2 px-8 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-digiqo-primary transition-all duration-300"
                 >
