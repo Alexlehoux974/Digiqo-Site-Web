@@ -42,7 +42,7 @@ const steps = [
     step: '3',
     title: 'On signe, tu touches 5%',
     description:
-      "Digiqo gère tout le commercial et le closing. Une fois le client signé, tu touches 5% HT sur ses 6 premières factures encaissées.",
+      "Digiqo gère tout le commercial et le closing. Une fois le client signé, tu touches 5% HT sur les 12 premiers mois après conversion.",
   },
 ]
 
@@ -51,19 +51,43 @@ const webProducts = [
   {
     name: 'Site internet vitrine clé en main',
     detail: 'Sur devis uniquement',
+    commission: '5% du montant HT signé',
   },
   {
     name: 'Boutique en ligne sur mesure',
     detail: 'Sur devis uniquement',
+    commission: '5% du montant HT signé',
   },
 ]
 
 const adProducts = [
-  { name: 'Propulsion Trimestrielle', price: '2 250€ HT' },
-  { name: 'Propulsion Annuelle', price: '7 650€ HT' },
-  { name: 'Initiation Annuelle', price: '5 610€ HT' },
-  { name: 'Expansion Trimestrielle', price: '3 250€ HT' },
-  { name: 'Expansion Annuelle', price: '11 050€ HT' },
+  {
+    name: 'Propulsion Trimestrielle',
+    price: '2 250€ HT',
+    commission: "Jusqu'à 450€ de commission",
+    commissionNote: '4 × 112,50€',
+  },
+  {
+    name: 'Propulsion Annuelle',
+    price: '7 650€ HT',
+    commission: '382,50€ de commission',
+  },
+  {
+    name: 'Initiation Annuelle',
+    price: '5 610€ HT',
+    commission: '280,50€ de commission',
+  },
+  {
+    name: 'Expansion Trimestrielle',
+    price: '3 250€ HT',
+    commission: "Jusqu'à 650€ de commission",
+    commissionNote: '4 × 162,50€',
+  },
+  {
+    name: 'Expansion Annuelle',
+    price: '11 050€ HT',
+    commission: '552,50€ de commission',
+  },
 ]
 
 const conditions = [
@@ -71,13 +95,13 @@ const conditions = [
     icon: BadgePercent,
     title: '5% HT de commission',
     description:
-      'Tu touches 5% HT du montant de chaque facture concernée du client que tu as apporté.',
+      "Tu touches 5% HT de chaque facture encaissée pendant les 12 mois battants à partir du 1er paiement du client — pas à partir de la mise en relation.",
   },
   {
     icon: Wallet,
-    title: 'Sur les 6 premières factures',
+    title: '12 premiers mois après conversion',
     description:
-      "La commission porte sur les 6 premières factures encaissées du client, pas seulement sur la première.",
+      "La commission court sur les 12 mois suivant le 1er paiement encaissé. Si aucune facture n'est émise dans les 12 mois suivant l'introduction, la commission est nulle.",
   },
   {
     icon: ShieldCheck,
@@ -101,7 +125,7 @@ const faqs = [
   {
     question: 'Comment la commission de 5% est-elle calculée ?',
     answer:
-      "Tu touches 5% HT sur chacune des 6 premières factures HT réellement encaissées par Digiqo pour le client que tu as apporté. Il n'y a pas de montant minimum de commande.",
+      "Tu touches 5% HT sur chaque facture HT réellement encaissée par Digiqo pour le client que tu as apporté, pendant les 12 mois battants à partir de son 1er paiement (et non à partir de la mise en relation). Il n'y a pas de montant minimum de commande.",
   },
   {
     question: 'Quels produits sont éligibles ?',
@@ -111,7 +135,7 @@ const faqs = [
   {
     question: 'Quand suis-je payé ?',
     answer:
-      "Au fur et à mesure : ta commission est due à chacune des 6 premières factures du client encaissées par Digiqo. Tant qu'une facture n'est pas encaissée, la part correspondante n'est pas déclenchée.",
+      "Au fur et à mesure : ta commission est due sur chaque facture du client encaissée par Digiqo pendant les 12 premiers mois après sa conversion. Tant qu'une facture n'est pas encaissée, la part correspondante n'est pas déclenchée. Si aucune facture n'est émise dans les 12 mois suivant l'introduction, la commission est nulle.",
   },
   {
     question: 'Combien de prospects puis-je apporter ?',
@@ -131,7 +155,7 @@ const apporteurStructuredData = {
       name: "Programme Apporteur d'Affaires Digiqo",
       url: 'https://digiqo.fr/apporteur',
       description:
-        "Devenez apporteur d'affaires Digiqo : présentez des prospects de votre réseau et touchez 5% HT sur les 6 premières factures du client. Digiqo gère tout le commercial.",
+        "Devenez apporteur d'affaires Digiqo : présentez des prospects de votre réseau et touchez 5% HT sur les 12 premiers mois après conversion du client. Digiqo gère tout le commercial.",
       inLanguage: 'fr-FR',
       isPartOf: { '@id': 'https://digiqo.fr/#website' },
       about: { '@id': 'https://digiqo.fr/#organization' },
@@ -169,7 +193,7 @@ export default function Partenaires() {
     <>
       <SEO
         title="Programme Apporteur d'Affaires - Digiqo"
-        description="Devenez apporteur d'affaires Digiqo : présentez des prospects de votre réseau et touchez 5% HT sur les 6 premières factures du client. Vous présentez, Digiqo gère tout le commercial."
+        description="Devenez apporteur d'affaires Digiqo : présentez des prospects de votre réseau et touchez 5% HT sur les 12 premiers mois après conversion du client. Vous présentez, Digiqo gère tout le commercial."
         keywords="apporteur d'affaires digiqo, programme partenaire réunion, commission apporteur, recommandation client agence digitale, partenaire digiqo"
         url="https://digiqo.fr/apporteur"
         structuredData={apporteurStructuredData}
@@ -185,7 +209,7 @@ export default function Partenaires() {
             line1: 'Recommandez Digiqo,',
             line2: 'touchez 5%',
           }}
-          subtitle="Présentez à Digiqo une entreprise de votre réseau qui a besoin d'un site web ou de publicité en ligne. Vous ne faites pas le closing : touchez 5% HT sur les 6 premières factures du client."
+          subtitle="Présentez à Digiqo une entreprise de votre réseau qui a besoin d'un site web ou de publicité en ligne. Vous ne faites pas le closing : touchez 5% HT sur les 12 premiers mois après conversion du client."
           ctaButtons={{
             primary: {
               text: 'Poser un RDV avec Maxime',
@@ -302,6 +326,10 @@ export default function Partenaires() {
                         <span className="text-sm text-gray-500">
                           {product.detail}
                         </span>
+                        <span className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-digiqo-secondary/10 px-2.5 py-1 text-xs font-semibold text-digiqo-secondary">
+                          <BadgePercent className="w-3.5 h-3.5" />
+                          {product.commission}
+                        </span>
                       </div>
                     </li>
                   ))}
@@ -331,15 +359,28 @@ export default function Partenaires() {
                   {adProducts.map((product, idx) => (
                     <li
                       key={idx}
-                      className="flex items-center justify-between gap-3 border-b border-gray-100 last:border-0 pb-3 last:pb-0"
+                      className="border-b border-gray-100 last:border-0 pb-3 last:pb-0"
                     >
-                      <span className="flex items-center gap-3 font-semibold text-digiqo-black">
-                        <CheckCircle className="w-5 h-5 text-digiqo-secondary flex-shrink-0" />
-                        {product.name}
-                      </span>
-                      <span className="text-digiqo-secondary font-bold whitespace-nowrap">
-                        {product.price}
-                      </span>
+                      <div className="flex items-center justify-between gap-3">
+                        <span className="flex items-center gap-3 font-semibold text-digiqo-black">
+                          <CheckCircle className="w-5 h-5 text-digiqo-secondary flex-shrink-0" />
+                          {product.name}
+                        </span>
+                        <span className="text-digiqo-secondary font-bold whitespace-nowrap">
+                          {product.price}
+                        </span>
+                      </div>
+                      <div className="ml-8 mt-1.5">
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-digiqo-secondary/10 px-2.5 py-1 text-xs font-semibold text-digiqo-secondary">
+                          <BadgePercent className="w-3.5 h-3.5" />
+                          {product.commission}
+                          {product.commissionNote && (
+                            <span className="font-normal text-digiqo-secondary/70">
+                              ({product.commissionNote})
+                            </span>
+                          )}
+                        </span>
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -466,7 +507,16 @@ export default function Partenaires() {
                 >
                   📞 02 62 02 51 02
                 </a>
+                <a
+                  href="tel:+262693659545"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-digiqo-primary transition-all duration-300"
+                >
+                  📱 Maxime&nbsp;: +262 693 65 95 45
+                </a>
               </div>
+              <p className="text-white/90 text-base sm:text-lg mt-6">
+                Maxime vous brief sur les offres avant votre premier rendez-vous.
+              </p>
             </motion.div>
           </div>
         </section>
