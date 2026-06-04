@@ -43,7 +43,7 @@ const steps = [
     step: '3',
     title: 'On signe, tu touches 5%',
     description:
-      "Digiqo gère tout le commercial et le closing. Une fois le client signé, tu touches 5% HT sur les 12 premiers mois après conversion.",
+      "Digiqo gère tout le commercial et le closing. Une fois le client signé, tu touches 5% HT sur les factures encaissées pendant les 12 premiers mois après conversion.",
   },
 ]
 
@@ -52,12 +52,12 @@ const webProducts = [
   {
     name: 'Site internet vitrine clé en main',
     detail: 'Sur devis uniquement',
-    commission: '5% du montant HT signé',
+    commission: '5% du montant HT payé par le client',
   },
   {
     name: 'Boutique en ligne sur mesure',
     detail: 'Sur devis uniquement',
-    commission: '5% du montant HT signé',
+    commission: '5% du montant HT payé par le client',
   },
 ]
 
@@ -96,13 +96,13 @@ const conditions = [
     icon: BadgePercent,
     title: '5% HT de commission',
     description:
-      "Tu touches 5% HT de chaque facture encaissée pendant les 12 mois battants à partir du 1er paiement du client — pas à partir de la mise en relation.",
+      "Tu touches 5% HT de chaque facture encaissée pendant les 12 mois battants à partir de la date de la première facture du client — pas à partir de la mise en relation.",
   },
   {
     icon: Wallet,
     title: '12 premiers mois après conversion',
     description:
-      "La commission court sur les 12 mois suivant le 1er paiement encaissé. Si aucune facture n'est émise dans les 12 mois suivant l'introduction, la commission est nulle.",
+      "La commission court sur les 12 mois suivant la date de la première facturation. Si aucune facture n'est émise dans les 12 mois suivant l'introduction, la commission est nulle.",
   },
   {
     icon: ShieldCheck,
@@ -126,17 +126,22 @@ const faqs = [
   {
     question: 'Comment la commission de 5% est-elle calculée ?',
     answer:
-      "Tu touches 5% HT sur chaque facture HT réellement encaissée par Digiqo pour le client que tu as apporté, pendant les 12 mois battants à partir de son 1er paiement (et non à partir de la mise en relation). Il n'y a pas de montant minimum de commande.",
+      "Tu touches 5% HT sur chaque facture HT réellement encaissée par Digiqo pour le client que tu as apporté, pendant les 12 mois battants à partir de la date de sa première facture (et non à partir de la mise en relation). Il n'y a pas de montant minimum de commande.",
   },
   {
     question: 'Quels produits sont éligibles ?',
     answer:
-      "Deux catégories :\n• **Sites web** (sur devis) : site internet vitrine clé en main et boutique en ligne sur mesure.\n• **Publicité en ligne** : toutes les formules à l'exception de l'Initiation Mensuelle — Propulsion Trimestrielle, Propulsion Annuelle, Initiation Annuelle, Expansion Trimestrielle et Expansion Annuelle.",
+      "Deux catégories :\n• **Sites web** (sur devis) : site internet vitrine clé en main et boutique en ligne sur mesure.\n• **Publicité en ligne** : toutes les formules à l'exception de l'Initiation Mensuelle.",
   },
   {
     question: 'Quand suis-je payé ?',
     answer:
       "Au fur et à mesure : ta commission est due sur chaque facture du client encaissée par Digiqo pendant les 12 premiers mois après sa conversion. Tant qu'une facture n'est pas encaissée, la part correspondante n'est pas déclenchée. Si aucune facture n'est émise dans les 12 mois suivant l'introduction, la commission est nulle.",
+  },
+  {
+    question: 'Faut-il un SIRET pour percevoir une commission ?',
+    answer:
+      "Oui. Pour percevoir une commission, tu dois disposer d'un SIRET valide. Ce point est vérifié avec Maxime lors du premier rendez-vous.",
   },
   {
     question: 'Combien de prospects puis-je apporter ?',
@@ -156,7 +161,7 @@ const apporteurStructuredData = {
       name: "Programme Apporteur d'Affaires Digiqo",
       url: 'https://digiqo.fr/apporteur',
       description:
-        "Devenez apporteur d'affaires Digiqo : présentez des prospects de votre réseau et touchez 5% HT sur les 12 premiers mois après conversion du client. Digiqo gère tout le commercial.",
+        "Deviens apporteur d'affaires Digiqo : présente des prospects de ton réseau et touche 5% HT sur les 12 premiers mois après conversion du client. Digiqo gère tout le commercial.",
       inLanguage: 'fr-FR',
       isPartOf: { '@id': 'https://digiqo.fr/#website' },
       about: { '@id': 'https://digiqo.fr/#organization' },
@@ -194,7 +199,7 @@ export default function Partenaires() {
     <>
       <SEO
         title="Programme Apporteur d'Affaires - Digiqo"
-        description="Devenez apporteur d'affaires Digiqo : présentez des prospects de votre réseau et touchez 5% HT sur les 12 premiers mois après conversion du client. Vous présentez, Digiqo gère tout le commercial."
+        description="Deviens apporteur d'affaires Digiqo : présente des prospects de ton réseau et touche 5% HT sur les 12 premiers mois après conversion du client. Tu présentes, Digiqo gère tout le commercial."
         keywords="apporteur d'affaires digiqo, programme partenaire réunion, commission apporteur, recommandation client agence digitale, partenaire digiqo"
         url="https://digiqo.fr/apporteur"
         structuredData={apporteurStructuredData}
@@ -207,10 +212,10 @@ export default function Partenaires() {
         <ServiceHero
           icon={Handshake}
           title={{
-            line1: 'Recommandez Digiqo,',
-            line2: 'touchez 5%',
+            line1: 'Recommande Digiqo,',
+            line2: 'touche 5%',
           }}
-          subtitle="Présentez à Digiqo une entreprise de votre réseau qui a besoin d'un site web ou de publicité en ligne. Vous ne faites pas le closing : touchez 5% HT sur les 12 premiers mois après conversion du client."
+          subtitle="Présente à Digiqo une entreprise de ton réseau qui a besoin d'un site web ou de publicité en ligne. Tu ne fais pas le closing : touche 5% HT sur les 12 premiers mois après conversion du client."
           ctaButtons={{
             primary: {
               text: 'Poser un RDV avec Maxime',
@@ -295,7 +300,7 @@ export default function Partenaires() {
                 Sur quelles offres&nbsp;?
               </h2>
               <p className="text-lg sm:text-xl text-gray-600">
-                Deux catégories de produits ouvrent droit à votre commission
+                Deux catégories de produits ouvrent droit à ta commission
               </p>
             </motion.div>
 
@@ -413,7 +418,7 @@ export default function Partenaires() {
                 Les conditions, en clair
               </h2>
               <p className="text-lg sm:text-xl text-gray-600">
-                Aucune zone grise&nbsp;: voici exactement comment vous êtes rémunéré
+                Aucune zone grise&nbsp;: voici exactement comment tu es rémunéré
               </p>
             </motion.div>
 
@@ -456,8 +461,8 @@ export default function Partenaires() {
                 Prêt à devenir apporteur d'affaires&nbsp;?
               </h2>
               <p className="text-lg sm:text-xl text-white/90 mb-8">
-                La première étape est de poser votre RDV de démarrage avec Maxime,
-                notre Head of Sales. Il vous explique le programme et vous donne vos
+                La première étape est de poser ton RDV de démarrage avec Maxime,
+                notre Head of Sales. Il t'explique le programme et te donne tes
                 premiers arguments de vente.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
