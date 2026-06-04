@@ -32,10 +32,10 @@ import { formationClaudeIA } from './claude-ia'
 import { formationKitApporteur } from './kit-apporteur'
 import type { Formation } from './types'
 
-export const formations: Formation[] = [formationFacebook2025, formationGoogleAds]
+export const formations: Formation[] = [formationFacebook2025, formationGoogleAds, formationKitApporteur]
 
 // All formations including unlisted ones (accessible by slug but not shown on Digicademy page)
-export const allFormations: Formation[] = [...formations, formationClaudeIA, formationKitApporteur]
+export const allFormations: Formation[] = [...formations, formationClaudeIA]
 
 // Helper function to get a formation by its slug (includes unlisted formations)
 export function getFormationBySlug(slug: string): Formation | undefined {

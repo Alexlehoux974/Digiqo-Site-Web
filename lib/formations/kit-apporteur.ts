@@ -1,8 +1,10 @@
 import type { Formation } from './types'
 
-// Formation NON LISTÉE et NOINDEX, réservée aux apporteurs d'affaires Digiqo.
-// - N'apparaît pas sur la page /digicademy ni dans le menu (absente du tableau `formations`).
-// - Accessible uniquement via son slug, derrière une Basic Auth (voir middleware.ts).
+// Formation réservée aux apporteurs d'affaires Digiqo.
+// - VISIBLE sur la page /digicademy (présente dans le tableau `formations`).
+// - Mais la page de la formation est protégée par Basic Auth (voir middleware.ts) :
+//   tout le monde voit la carte, seul le mot de passe permet d'entrer dans le contenu.
+// - noindex conservé : la page étant derrière Basic Auth, elle renvoie 401 aux crawlers.
 export const formationKitApporteur: Formation = {
   id: 'kit-apporteur',
   slug: 'kit-apporteur',
