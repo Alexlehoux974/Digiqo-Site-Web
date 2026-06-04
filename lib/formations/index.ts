@@ -22,16 +22,20 @@ export { formationFacebook2025 } from './facebook-2025'
 // Claude IA formation
 export { formationClaudeIA } from './claude-ia'
 
+// Kit Commercial Apporteur d'Affaires - formation NON LISTÉE + noindex (Basic Auth via middleware.ts)
+export { formationKitApporteur } from './kit-apporteur'
+
 // Combined formations array - all active formations
 import { formationGoogleAds } from './google-ads'
 import { formationFacebook2025 } from './facebook-2025'
 import { formationClaudeIA } from './claude-ia'
+import { formationKitApporteur } from './kit-apporteur'
 import type { Formation } from './types'
 
 export const formations: Formation[] = [formationFacebook2025, formationGoogleAds]
 
 // All formations including unlisted ones (accessible by slug but not shown on Digicademy page)
-export const allFormations: Formation[] = [...formations, formationClaudeIA]
+export const allFormations: Formation[] = [...formations, formationClaudeIA, formationKitApporteur]
 
 // Helper function to get a formation by its slug (includes unlisted formations)
 export function getFormationBySlug(slug: string): Formation | undefined {

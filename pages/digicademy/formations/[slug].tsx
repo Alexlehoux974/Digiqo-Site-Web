@@ -51,6 +51,7 @@ export default function FormationPage({ formation }: FormationPageProps) {
         <meta name="description" content={formation.description} />
         <meta property="og:title" content={`${formation.title} - Digicademy | Digiqo`} />
         <meta property="og:description" content={formation.description} />
+        {formation.noindex && <meta name="robots" content="noindex, nofollow" />}
       </Head>
 
       <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">

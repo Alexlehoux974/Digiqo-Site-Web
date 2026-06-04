@@ -38,4 +38,5 @@ export interface Formation {
   }
   certification?: boolean
   nextSteps?: string[]
+  noindex?: boolean // Exclut la formation des moteurs de recherche (meta robots noindex)
 }
