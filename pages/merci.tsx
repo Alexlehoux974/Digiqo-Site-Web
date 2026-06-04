@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Head from 'next/head'
 import { m as motion } from 'framer-motion'
 import { ANIMATION } from '@/lib/animation-constants'
@@ -5,7 +6,15 @@ import { HeroGradientOrbs } from '@/components/ui/animated-gradient-orb'
 import { Heart, ArrowRight } from 'lucide-react'
 
 export default function MerciPage() {
-  return (
+  useEffect(() => {
+    if (typeof window !== 'undefined' && typeof (window as Window & { gtag?: Function }).gtag === 'function') {
+      (window as Window & { gtag?: Function }).gtag!('event', 'conversion', {
+        send_to: 'AW-18002905491',
+      })
+    }
+  }, [])
+
+    return (
     <>
       <Head>
         <title>Merci - Digiqo | Votre confiance nous honore</title>

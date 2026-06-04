@@ -196,6 +196,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
       )}
 
+      {/* Google Ads AW-18002905491 — chargé après consentement marketing */}
+      {marketingConsent && (
+        <>
+          <Script
+            id="google-ads-gtag"
+            src="https://www.googletagmanager.com/gtag/js?id=AW-18002905491"
+            strategy="lazyOnload"
+          />
+          <Script
+            id="google-ads-config"
+            strategy="lazyOnload"
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('config', 'AW-18002905491');
+              `
+            }}
+          />
+        </>
+      )}
+
       <LazyMotion features={domAnimation} strict={false}>
         <Component {...pageProps} />
         <CookieConsent />
