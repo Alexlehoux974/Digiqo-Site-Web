@@ -128,18 +128,18 @@ export const formationKitApporteur: Formation = {
         "",
         "### Leçon 2 : Le processus en 3 étapes",
         "1. Vous identifiez le prospect et obtenez son accord pour un contact.",
-        "2. Vous transmettez ses infos à Maxime (notre Head of Sales).",
-        "3. Maxime prend en charge la présentation et la signature. Vous n'avez rien d'autre à faire.",
+        "2. Vous transmettez ses infos à notre équipe commerciale.",
+        "3. L'équipe commerciale prend en charge la présentation et la signature. Vous n'avez rien d'autre à faire.",
         "",
-        "### Leçon 3 : Ce qu'il faut transmettre à Maxime",
+        "### Leçon 3 : Ce qu'il faut transmettre à l'équipe commerciale",
         "Nom, prénom, société. Secteur d'activité. Besoin identifié (pub, site, les deux). Niveau de maturité (\"il est partant pour un RDV\" ou \"il est déjà chaud\"). Votre lien avec lui (comment vous vous connaissez).",
-        "Contact Maxime : maxime@digiqo.fr / +262 693 65 95 45"
+        "Contact de l'équipe commerciale : maxime@digiqo.fr / +262 693 65 95 45"
       ],
       keyPoints: [
         "Un pitch court, à dire presque mot pour mot",
-        "3 étapes : accord du prospect → transmettre à Maxime → Maxime conclut",
+        "3 étapes : accord du prospect → transmettre à l'équipe commerciale → l'équipe conclut",
         "Transmettre : identité, secteur, besoin, maturité, votre lien",
-        "Maxime : maxime@digiqo.fr / +262 693 65 95 45"
+        "Contact : maxime@digiqo.fr / +262 693 65 95 45"
       ]
     },
     {
@@ -171,12 +171,12 @@ export const formationKitApporteur: Formation = {
     title: 'À vous de jouer',
     content: [
       "Vous avez maintenant tout en main : le discours, les services, les signaux à repérer, le pitch et le processus. Gardez ce kit sous la main et appuyez-vous dessus à chaque opportunité.",
-      "Dès que vous identifiez un prospect, contactez Maxime : maxime@digiqo.fr / +262 693 65 95 45. On s'occupe du reste, et vous touchez votre commission."
+      "Dès que vous identifiez un prospect, contactez notre équipe commerciale : maxime@digiqo.fr / +262 693 65 95 45. On s'occupe du reste, et vous touchez votre commission."
     ]
   },
   nextSteps: [
     "Signer votre contrat apporteur d'affaires avec Digiqo",
     "Repérer un premier prospect dans votre réseau",
-    "Transmettre le contact à Maxime"
+    "Transmettre le contact à l'équipe commerciale"
   ]
 }
