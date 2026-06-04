@@ -96,7 +96,7 @@ const conditions = [
     icon: BadgePercent,
     title: '5% HT de commission',
     description:
-      "Tu touches 5% HT de chaque facture encaissée pendant les 12 premiers mois à partir de la date de la première facture du client — pas à partir de la mise en relation.",
+      "Tu touches 5% HT de chaque facture encaissée pendant les 12 premiers mois à partir de la première facturation client — pas à partir de la mise en relation.",
   },
   {
     icon: Wallet,
@@ -126,7 +126,7 @@ const faqs = [
   {
     question: 'Comment la commission de 5% est-elle calculée ?',
     answer:
-      "Tu touches 5% HT sur chaque facture HT réellement encaissée par Digiqo pour le client que tu as apporté, pendant les 12 premiers mois à partir de la date de sa première facture (et non à partir de la mise en relation). Il n'y a pas de montant minimum de commande.",
+      "Tu touches 5% HT sur chaque facture HT réellement encaissée par Digiqo pour le client que tu as apporté, pendant les 12 premiers mois à partir de la première facturation client (et non à partir de la mise en relation). Il n'y a pas de montant minimum de commande.",
   },
   {
     question: 'Quels produits sont éligibles ?',
