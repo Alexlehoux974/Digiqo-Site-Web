@@ -18,6 +18,7 @@ import {
   Coffee
 } from 'lucide-react'
 import { servicesSEO } from '../../lib/seo-data'
+import webReferences from '../../data/web-references.json'
 import { ServiceLayout } from '../../components/ServiceLayout'
 import { 
   ReactIcon, 
@@ -79,28 +80,11 @@ const AnimatedMetric = ({ value, label, suffix = '', delay = 0 }: AnimatedMetric
 
 const CALENDAR_LINK = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0zEg3G6P0cJY2oe7Tyi3KrmTAXRyYCu5chnHfDzECSr45IxTuiVQX9MYpfMUZT9MbL3VgQl9JW'
 
-const references = [
-  { name: 'Ocean Brands Network', url: 'https://oceanbrandsnetwork.com', screenshot: '/references/fullpage/oceanbrandsnetwork-com.webp' },
-  { name: 'Rodolphe Le Houx', url: 'https://rodolphelehoux.com', screenshot: '/references/fullpage/rodolphelehoux-com.webp' },
-  { name: 'RunCall', url: 'https://runcall.re', screenshot: '/references/fullpage/runcall-re.webp' },
-  { name: 'Sogitec Énergie', url: 'https://sogitec-energie.fr', screenshot: '/references/fullpage/sogitec-energie-fr.webp' },
-  { name: 'La Boussole du Manager', url: 'https://laboussoledumanager.re', screenshot: '/references/fullpage/laboussoledumanager-re.webp' },
-  { name: 'Pascal Destercke', url: 'https://pascal-destercke.com', screenshot: '/references/fullpage/pascal-destercke-com.webp' },
-  { name: 'Velocit AI', url: 'https://velocit-ai.fr', screenshot: '/references/fullpage/velocit-ai-fr.webp' },
-  { name: 'Monsterphone', url: 'https://monster-phone.re', screenshot: '/references/fullpage/monster-phone-re.webp' },
-  { name: 'Parapente Réunion', url: 'https://parapente-reunion.fr', screenshot: '/references/fullpage/parapente-reunion-fr.webp' },
-  { name: "Click'n Van", url: 'https://clicknvan.com', screenshot: '/references/fullpage/clicknvan-com.webp' },
-  { name: 'Zen Eat Yoga', url: 'https://zeneatyoga.com', screenshot: '/references/fullpage/zeneatyoga-com.webp' },
-  { name: 'Investis DOM', url: 'https://investis-dom.com', screenshot: '/references/fullpage/investis-dom-com.webp' },
-  { name: 'CMX Factory', url: 'https://cmxfactory.com', screenshot: '/references/fullpage/cmxfactory-com.webp' },
-  { name: 'Sattwika', url: 'https://sattwika.com', screenshot: '/references/fullpage/sattwika-com.webp' },
-  { name: 'Incana Notaires', url: 'https://incana.notaires.fr', screenshot: '/references/fullpage/incana-notaires-fr.webp' },
-  { name: 'Les Maisons Jupiter', url: 'https://lesmaisonsjupiter.re', screenshot: '/references/fullpage/lesmaisonsjupiter-re.webp' },
-  { name: 'Crackoi', url: 'https://crackoi.com/fr', screenshot: '/references/fullpage/crackoi.webp' },
-  { name: 'Mystik Sauna', url: 'https://mystiksauna.re', screenshot: '/references/fullpage/mystiksauna-re.webp' },
-  { name: 'Sabaguina (refonte en cours)', url: 'https://sabaguina.com', screenshot: '/references/fullpage/sabaguina-com.webp' },
-  { name: 'EMPC', url: 'https://empc.re', screenshot: '/references/fullpage/empc-re.webp' },
-]
+// Références chargées depuis data/web-references.json (source unique de vérité,
+// mise à jour automatiquement par scripts/check-references.js).
+// Les sites archivés (hors ligne) sont conservés dans le JSON mais masqués ici.
+const references = (webReferences as { name: string; url: string; screenshot: string; archived?: boolean }[])
+  .filter((ref) => !ref.archived)
 
 // iMac Mockup component with auto-scrolling screenshot
 const IMacMockup = ({ name, url, screenshot, index }: { name: string; url: string; screenshot: string; index: number }) => {

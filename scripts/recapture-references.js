@@ -12,23 +12,16 @@ const fs = require('fs');
 
 const OUTPUT_DIR = path.join(__dirname, '..', 'public', 'references', 'fullpage');
 
-const sites = [
-  { name: 'oceanbrandsnetwork-com', url: 'https://oceanbrandsnetwork.com' },
-  { name: 'rodolphelehoux-com', url: 'https://rodolphelehoux.com' },
-  { name: 'sogitec-energie-fr', url: 'https://sogitec-energie.fr' },
-  { name: 'laboussoledumanager-re', url: 'https://laboussoledumanager.re' },
-  { name: 'pascal-destercke-com', url: 'https://pascal-destercke.com' },
-  { name: 'velocit-ai-fr', url: 'https://velocit-ai.fr' },
-  { name: 'monster-phone-re', url: 'https://monster-phone.re' },
-  { name: 'parapente-reunion-fr', url: 'https://parapente-reunion.fr' },
-  { name: 'clicknvan-com', url: 'https://clicknvan.com' },
-  { name: 'zeneatyoga-com', url: 'https://zeneatyoga.com' },
-  { name: 'investis-dom-com', url: 'https://investis-dom.com' },
-  { name: 'cmxfactory-com', url: 'https://cmxfactory.com' },
-  { name: 'sattwika-com', url: 'https://sattwika.com' },
-  { name: 'sabaguina-com', url: 'https://sabaguina.com' },
-  { name: 'empc-re', url: 'https://empc.re' },
-];
+// Source unique de vérité : data/web-references.json.
+// On ne recapture que les sites affichés (non archivés). Le nom de fichier
+// est dérivé du chemin du screenshot pour rester cohérent avec le JSON.
+const references = require('../data/web-references.json');
+const sites = references
+  .filter((r) => !r.archived)
+  .map((r) => ({
+    name: path.basename(r.screenshot).replace(/\.\w+$/, ''),
+    url: r.url,
+  }));
 
 async function capture() {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });

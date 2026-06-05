@@ -1,0 +1,22 @@
+[
+  { "name": "Rodolphe Le Houx", "url": "https://rodolphelehoux.com", "screenshot": "/references/fullpage/rodolphelehoux-com.webp", "archived": false },
+  { "name": "Ocean Brands Network", "url": "https://oceanbrandsnetwork.com", "screenshot": "/references/fullpage/oceanbrandsnetwork-com.webp", "archived": false },
+  { "name": "RunCall", "url": "https://runcall.re", "screenshot": "/references/fullpage/runcall-re.webp", "archived": false },
+  { "name": "Crackoi", "url": "https://crackoi.com/fr", "screenshot": "/references/fullpage/crackoi.webp", "archived": false },
+  { "name": "Les Maisons Jupiter", "url": "https://lesmaisonsjupiter.re", "screenshot": "/references/fullpage/lesmaisonsjupiter-re.webp", "archived": false },
+  { "name": "Incana Notaires", "url": "https://incana.notaires.fr", "screenshot": "/references/fullpage/incana-notaires-fr.webp", "archived": false },
+  { "name": "Sabaguina (refonte en cours)", "url": "https://sabaguina.com", "screenshot": "/references/fullpage/sabaguina-com.webp", "archived": false },
+  { "name": "EMPC", "url": "https://empc.re", "screenshot": "/references/fullpage/empc-re.webp", "archived": false },
+  { "name": "Mystik Sauna", "url": "https://mystiksauna.re", "screenshot": "/references/fullpage/mystiksauna-re.webp", "archived": false },
+  { "name": "Sogitec Énergie", "url": "https://sogitec-energie.fr", "screenshot": "/references/fullpage/sogitec-energie-fr.webp", "archived": false },
+  { "name": "Pascal Destercke", "url": "https://pascal-destercke.com", "screenshot": "/references/fullpage/pascal-destercke-com.webp", "archived": false },
+  { "name": "Velocit AI", "url": "https://velocit-ai.fr", "screenshot": "/references/fullpage/velocit-ai-fr.webp", "archived": false },
+  { "name": "Monsterphone", "url": "https://monster-phone.re", "screenshot": "/references/fullpage/monster-phone-re.webp", "archived": false },
+  { "name": "Parapente Réunion", "url": "https://parapente-reunion.fr", "screenshot": "/references/fullpage/parapente-reunion-fr.webp", "archived": false },
+  { "name": "Click'n Van", "url": "https://clicknvan.com", "screenshot": "/references/fullpage/clicknvan-com.webp", "archived": false },
+  { "name": "Investis DOM", "url": "https://investis-dom.com", "screenshot": "/references/fullpage/investis-dom-com.webp", "archived": false },
+  { "name": "CMX Factory", "url": "https://cmxfactory.com", "screenshot": "/references/fullpage/cmxfactory-com.webp", "archived": false },
+  { "name": "Sattwika", "url": "https://sattwika.com", "screenshot": "/references/fullpage/sattwika-com.webp", "archived": false },
+  { "name": "La Boussole du Manager", "url": "https://laboussoledumanager.re", "screenshot": "/references/fullpage/laboussoledumanager-re.webp", "archived": true, "consecutiveFailures": 2, "lastStatus": "ENOTFOUND (domaine ne résout plus)", "lastChecked": "2026-06-05T00:00:00.000Z" },
+  { "name": "Zen Eat Yoga", "url": "https://zeneatyoga.com", "screenshot": "/references/fullpage/zeneatyoga-com.webp", "archived": true, "consecutiveFailures": 2, "lastStatus": "ERR_SSL_TLSV1_ALERT_INTERNAL_ERROR (handshake TLS refusé)", "lastChecked": "2026-06-05T00:00:00.000Z" }
+]
