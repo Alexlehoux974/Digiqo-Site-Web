@@ -81,6 +81,7 @@ const CALENDAR_LINK = 'https://calendar.google.com/calendar/u/0/appointments/sch
 
 const references = [
   { name: 'Ocean Brands Network', url: 'https://oceanbrandsnetwork.com', screenshot: '/references/fullpage/oceanbrandsnetwork-com.webp' },
+  { name: 'Rodolphe Le Houx', url: 'https://rodolphelehoux.com', screenshot: '/references/fullpage/rodolphelehoux-com.webp' },
   { name: 'RunCall', url: 'https://runcall.re', screenshot: '/references/fullpage/runcall-re.webp' },
   { name: 'Sogitec Énergie', url: 'https://sogitec-energie.fr', screenshot: '/references/fullpage/sogitec-energie-fr.webp' },
   { name: 'La Boussole du Manager', url: 'https://laboussoledumanager.re', screenshot: '/references/fullpage/laboussoledumanager-re.webp' },

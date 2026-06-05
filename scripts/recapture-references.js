@@ -14,6 +14,7 @@ const OUTPUT_DIR = path.join(__dirname, '..', 'public', 'references', 'fullpage'
 
 const sites = [
   { name: 'oceanbrandsnetwork-com', url: 'https://oceanbrandsnetwork.com' },
+  { name: 'rodolphelehoux-com', url: 'https://rodolphelehoux.com' },
   { name: 'sogitec-energie-fr', url: 'https://sogitec-energie.fr' },
   { name: 'laboussoledumanager-re', url: 'https://laboussoledumanager.re' },
   { name: 'pascal-destercke-com', url: 'https://pascal-destercke.com' },
