@@ -200,7 +200,7 @@ export default function VideoPage() {
         'Si les vidéos ne permettent pas d\'atteindre un niveau de qualité suffisant, nous vous orienterons vers nos offres de tournage + montage (Vidéo Signature ou Pack Lancement Social).',
         'Tarif de 149,90€ par vidéo montée et validée pour diffusion en campagne.'
       ],
-      paymentLink: '',
+      paymentLink: 'https://payments-eu1.hubspot.com/payments/RnzsJmSSs?referrer=PAYMENT_LINK',
       icon: Film,
       gradient: 'from-emerald-500 to-teal-600',
       type: 'ONE_SHOT'
