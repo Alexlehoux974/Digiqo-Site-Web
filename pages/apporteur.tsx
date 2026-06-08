@@ -21,7 +21,7 @@ import {
 // fois au début pour cadrer le programme et donner des arguments de vente.
 // Ensuite, les mises en relation se font directement avec l'équipe commerciale.
 const RDV_MAXIME_URL =
-  'https://meetings-eu1.hubspot.com/maxime-sin?uuid=0606bf0f-7df4-4d46-ac3d-bfc173a732ed'
+  'https://meetings-eu1.hubspot.com/maxime-sin/lien-de-rdv-apporteur-daffaires'
 
 const steps = [
   {
