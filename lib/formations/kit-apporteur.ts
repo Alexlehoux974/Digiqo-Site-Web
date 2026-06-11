@@ -63,15 +63,15 @@ export const formationKitApporteur: Formation = {
       description: "Ce qu'on vend, pour qui, et comment le repérer dans une conversation.",
       content: [
         "### Leçon 1 : Publicité Facebook / Instagram (Meta Ads)",
-        "Pour qui : toute entreprise qui veut toucher des Réunionnais (BtoC principalement).",
+        "Pour qui : toute entreprise qui veut toucher des Réunionnais (BtoC comme BtoB).",
         "L'argument : 554 000 utilisateurs Facebook à La Réunion. Votre audience locale entière accessible en quelques clics.",
-        "Prix : à partir de 2 250 € HT/mois (budget pub inclus selon le package).",
+        "Prix : à partir de 2 250 € HT/trimestre (budget pub inclus selon le package).",
         "Signal à écouter : \"on fait pas de pub\", \"j'ai essayé mais ça marchait pas\", \"on tourne avec le bouche-à-oreille uniquement\".",
         "",
         "### Leçon 2 : Publicité Google (SEA)",
         "Pour qui : entreprises avec une intention d'achat forte (services, urgences, devis sur mesure).",
         "L'argument : vous apparaissez exactement quand quelqu'un cherche ce que vous vendez. Pas de gaspi.",
-        "Prix : à partir de 2 250 € HT/mois.",
+        "Prix : à partir de 2 250 € HT/trimestre.",
         "Signal : \"on n'est pas bien placé sur Google\", \"la concurrence nous passe devant\", \"on perd des devis qu'on ne voit jamais\".",
         "",
         "### Leçon 3 : Création de site web",
@@ -88,7 +88,7 @@ export const formationKitApporteur: Formation = {
         "Community management (gestion des réseaux sociaux au quotidien), SEO (référencement naturel Google long terme), créatifs publicitaires (visuels et vidéos), identité de marque (logo, charte graphique), maintenance web."
       ],
       keyPoints: [
-        "Meta Ads & Google Ads : à partir de 2 250 € HT/mois",
+        "Meta Ads & Google Ads : à partir de 2 250 € HT/trimestre",
         "Site web : vitrine ou e-commerce, conçu pour convertir",
         "L'audit digital gratuit est la meilleure porte d'entrée",
         "Retenir les \"signaux\" qui trahissent un besoin"
@@ -110,12 +110,12 @@ export const formationKitApporteur: Formation = {
         "Commerçant qui stagne. Artisan dépendant du bouche-à-oreille. Entrepreneur qui ouvre un commerce. Gérant qui voit la concurrence faire de la pub. Professionnel libéral sans visibilité en ligne.",
         "",
         "### Leçon 3 : Ce qui disqualifie un prospect",
-        "Budget pub inférieur à 2 000 €/mois. Secteur incompatible (alcool, politique, etc.). Déjà sous contrat satisfait avec une autre agence."
+        "Budget pub inférieur à 200 €/mois. Secteur incompatible (alcool, politique, etc.). Déjà sous contrat satisfait avec une autre agence."
       ],
       keyPoints: [
         "5 questions simples suffisent à révéler un besoin",
         "Cibler en priorité ceux qui stagnent ou subissent la concurrence",
-        "Disqualifier : budget < 2 000 €/mois, secteur incompatible, déjà engagé et satisfait"
+        "Disqualifier : budget < 200 €/mois, secteur incompatible, déjà engagé et satisfait"
       ]
     },
     {
@@ -124,20 +124,22 @@ export const formationKitApporteur: Formation = {
       description: "Le pitch exact, le processus, et ce qu'on attend de vous.",
       content: [
         "### Leçon 1 : Le pitch à utiliser mot pour mot",
-        "\"Je travaille avec une agence digitale réunionnaise qui s'appelle Digiqo. Ils font de la pub Facebook, Google et des sites web pour des entreprises d'ici. Leurs clients voient du résultat assez vite. Je peux leur demander de vous faire un audit gratuit de votre présence en ligne, sans engagement de votre part.\"",
+        "\"Je travaille avec une agence digitale réunionnaise qui s'appelle Digiqo. Ils font de la pub Meta (Facebook + Instagram), Google et des sites web pour des entreprises d'ici. Leurs clients voient du résultat assez vite. Je peux leur demander de vous faire un audit gratuit de votre présence en ligne, sans engagement de votre part.\"",
         "",
         "### Leçon 2 : Le processus en 3 étapes",
-        "1. Vous identifiez le prospect et obtenez son accord pour un contact.",
-        "2. Vous transmettez ses infos à notre équipe commerciale.",
-        "3. L'équipe commerciale prend en charge la présentation et la signature. Vous n'avez rien d'autre à faire.",
+        "1. Vous identifiez le prospect et obtenez son accord pour un premier rendez-vous (R1) avec Digiqo.",
+        "2. Vous posez ce R1 entre le prospect et notre équipe commerciale, via votre lien de prise de RDV dédié (celui que Maxime vous transmet). C'est cette mise en relation qui attribue l'apport à votre nom.",
+        "3. L'équipe commerciale prend en charge le rendez-vous, la présentation et la signature. Vous n'avez rien d'autre à faire.",
         "",
-        "### Leçon 3 : Ce qu'il faut transmettre à l'équipe commerciale",
-        "Nom, prénom, société. Secteur d'activité. Besoin identifié (pub, site, les deux). Niveau de maturité (\"il est partant pour un RDV\" ou \"il est déjà chaud\"). Votre lien avec lui (comment vous vous connaissez)."
+        "### Leçon 3 : Les infos à récupérer auprès du prospect",
+        "Nom, prénom, société. Secteur d'activité. Besoin identifié (pub, site, les deux). Niveau de maturité (\"il est partant pour un RDV\" ou \"il est déjà chaud\"). Numéro de téléphone et adresse e-mail. Votre lien avec lui (comment vous vous connaissez).",
+        "Avec ces infos, posez directement le R1 via votre lien de prise de RDV dédié plutôt que de simplement transmettre les coordonnées."
       ],
       keyPoints: [
-        "Un pitch court, à dire presque mot pour mot",
-        "3 étapes : accord du prospect → transmettre à l'équipe commerciale → l'équipe conclut",
-        "Transmettre : identité, secteur, besoin, maturité, votre lien"
+        "Un pitch court, à dire presque mot pour mot (pub Meta, Google et sites web)",
+        "3 étapes : accord du prospect, poser le R1 via votre lien dédié, l'équipe conclut",
+        "Récupérer : identité, secteur, besoin, maturité, téléphone, e-mail, votre lien",
+        "L'objectif est de poser un R1 entre le prospect et Digiqo, pas seulement de transmettre des coordonnées"
       ]
     },
     {
@@ -146,19 +148,19 @@ export const formationKitApporteur: Formation = {
       description: "Comment vous êtes rémunéré, avec des exemples chiffrés.",
       content: [
         "### Leçon 1 : Le principe",
-        "5 % HT sur toutes les factures payées par votre prospect pendant les 12 mois suivant la signature du contrat.",
+        "5 % de la facture HT payée par le client, sur les 12 premiers mois battants après le 1er paiement encaissé (hors Initiation Mensuelle).",
         "",
         "### Leçon 2 : Exemples concrets",
-        "Client Meta Ads 2 250 €/mois → 112,50 €/mois → 1 350 € sur 12 mois.",
-        "Client Meta Ads 4 500 €/mois → 225 €/mois → 2 700 € sur 12 mois.",
-        "Client site web 5 000 € → 250 € versés au paiement.",
-        "Client site + pub 3 500 €/mois → 175 €/mois → 2 100 € sur 12 mois.",
+        "Expansion Trimestrielle (3 250 € HT/trimestre) : 5 % = 162,50 €/trimestre, soit 650 € sur 12 mois (4 trimestres).",
+        "Propulsion Annuelle (7 650 € HT, 1 paiement) : 5 % = 382,50 €.",
+        "Expansion Annuelle (11 050 € HT, 1 paiement) : 5 % = 552,50 €.",
+        "Site web (5 000 € HT, one-shot) : 5 % = 250 €.",
         "",
         "### Leçon 3 : Les conditions",
         "Commission versée après chaque facture effectivement payée par le client. Pas de plafond. Un contrat apporteur d'affaires est à signer avec Digiqo avant le premier apport."
       ],
       keyPoints: [
-        "5 % HT sur les factures payées pendant 12 mois après signature",
+        "5 % de la facture HT, sur les 12 premiers mois battants après le 1er paiement encaissé (hors Initiation Mensuelle)",
         "Pas de plafond de commission",
         "Versée après paiement effectif de chaque facture",
         "Contrat apporteur à signer avant le premier apport"
@@ -169,12 +171,13 @@ export const formationKitApporteur: Formation = {
     title: 'À vous de jouer',
     content: [
       "Vous avez maintenant tout en main : le discours, les services, les signaux à repérer, le pitch et le processus. Gardez ce kit sous la main et appuyez-vous dessus à chaque opportunité.",
-      "Dès que vous identifiez un prospect, transmettez-le à notre équipe commerciale. On s'occupe du reste, et vous touchez votre commission."
+      "Dès que vous identifiez un prospect, ne vous arrêtez pas à transmettre ses coordonnées : proposez-lui un premier rendez-vous (R1) avec Digiqo et fixez-le directement via votre lien de prise de RDV dédié (celui que Maxime vous transmet). C'est ce R1 posé à votre nom qui déclenche votre commission. L'équipe commerciale s'occupe ensuite de tout.",
+      "Une question ou besoin de votre lien dédié ? Contactez Maxime Sin : +262 693 65 95 45."
     ]
   },
   nextSteps: [
     "Signer votre contrat apporteur d'affaires avec Digiqo",
     "Repérer un premier prospect dans votre réseau",
-    "Transmettre le contact à l'équipe commerciale"
+    "Poser un R1 entre votre prospect et l'équipe via votre lien de RDV dédié"
   ]
 }
