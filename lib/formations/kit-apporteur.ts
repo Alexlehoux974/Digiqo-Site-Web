@@ -156,7 +156,7 @@ export const formationKitApporteur: Formation = {
         "Propulsion Annuelle (7 650 € HT, 1 paiement) : 5 % = 382,50 €.",
         "Expansion Trimestrielle (3 250 € HT/trimestre) : 5 % = 162,50 €/trimestre, soit 650 € sur 12 mois (4 trimestres).",
         "Expansion Annuelle (11 050 € HT, 1 paiement) : 5 % = 552,50 €.",
-        "Site web (sur devis) : 5 % HT du montant facturé.",
+        "Site web (3 000 € HT, paiement one shot) : 5 % = 150 €.",
         "",
         "### Leçon 3 : Les conditions",
         "La commission est versée au fil des encaissements réels de Digiqo : on vous paie uniquement à réception de l'argent du client, après chaque facture effectivement réglée. Si le client ne paie pas, vous ne touchez rien sur cette facture. L'encaissement conditionne le versement de votre commission, pas le point de départ des 12 mois (qui court, lui, depuis la première facturation). Pas de plafond. Un contrat apporteur d'affaires est à signer avec Digiqo avant le premier apport."
