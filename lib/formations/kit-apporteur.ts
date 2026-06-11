@@ -24,7 +24,7 @@ export const formationKitApporteur: Formation = {
   introduction: {
     title: 'Bienvenue dans votre Kit Apporteur',
     content: [
-      "Vous connaissez des chefs d'entreprise à La Réunion. Certains d'entre eux ont besoin de trouver plus de clients en ligne, sans forcément le savoir. Votre rôle d'apporteur d'affaires est simple : repérer ces opportunités et nous les présenter. C'est notre équipe qui se charge de tout le reste.",
+      "Vous connaissez des chefs d'entreprise à La Réunion. Certains d'entre eux ont besoin de trouver plus de clients en ligne, parfois sans l'avoir encore identifié. Votre rôle d'apporteur d'affaires est simple : repérer ces opportunités et obtenir un premier rendez-vous (R1) entre le prospect et notre équipe commerciale. C'est cette mise en relation — un vrai rendez-vous posé, pas seulement un contact transmis — qui constitue tout votre travail d'apporteur. Notre équipe se charge ensuite de la présentation, de la négociation et de la signature.",
       "Ce kit est volontairement court et direct. Il vous donne l'essentiel : qui est Digiqo, ce qu'on vend, comment reconnaître un bon prospect, le pitch exact à utiliser, à qui transmettre le contact et comment vous êtes rémunéré.",
       "Pas besoin d'être un expert du digital. Vous n'avez ni à vendre, ni à négocier, ni à faire de rendez-vous commercial. Vous ouvrez la porte, on s'occupe de la suite."
     ],
@@ -32,7 +32,7 @@ export const formationKitApporteur: Formation = {
       "Présenter Digiqo en 30 secondes",
       "Connaître les services et savoir à qui ils s'adressent",
       "Repérer une opportunité grâce à quelques questions simples",
-      "Utiliser le pitch et passer le relais à l'équipe commerciale",
+      "Poser le R1 entre votre prospect et l'équipe commerciale — l'étape qui valide votre apport",
       "Comprendre votre système de commissions"
     ]
   },
@@ -64,8 +64,8 @@ export const formationKitApporteur: Formation = {
       content: [
         "### Leçon 1 : Publicité Facebook / Instagram (Meta Ads)",
         "Pour qui : toute entreprise qui veut toucher des Réunionnais (BtoC comme BtoB).",
-        "L'argument : 554 000 utilisateurs Facebook à La Réunion. Votre audience locale entière accessible en quelques clics.",
-        "Prix : à partir de 2 250 € HT/trimestre (budget publicitaire en plus, jamais inclus).",
+        "L'argument : 554 000 utilisateurs Facebook à La Réunion. Votre audience locale entièrement accessible en quelques clics.",
+        "Prix : à partir de 2 250 € HT/trimestre.",
         "Signal à écouter : \"on fait pas de pub\", \"j'ai essayé mais ça marchait pas\", \"on tourne avec le bouche-à-oreille uniquement\".",
         "",
         "### Leçon 2 : Publicité Google (SEA)",
@@ -77,6 +77,7 @@ export const formationKitApporteur: Formation = {
         "### Leçon 3 : Création de site web",
         "Deux types : site vitrine (présenter l'activité) ou e-commerce (vendre en ligne).",
         "L'argument : un site Digiqo est conçu pour convertir, pas juste être beau. Il est couplé à la pub pour que les deux se renforcent.",
+        "Prix : sur devis, sur mesure selon le projet.",
         "Signal : \"notre site date de 10 ans\", \"on n'a pas de site\", \"le site génère aucun contact\".",
         "",
         "### Leçon 4 : L'audit digital gratuit, votre meilleure arme",
@@ -128,18 +129,18 @@ export const formationKitApporteur: Formation = {
         "",
         "### Leçon 2 : Le processus en 3 étapes",
         "1. Vous identifiez le prospect et obtenez son accord pour un premier rendez-vous (R1) avec Digiqo.",
-        "2. Vous posez ce R1 entre le prospect et notre équipe commerciale, via votre lien de prise de RDV dédié (celui que Maxime vous transmet). C'est cette mise en relation qui attribue l'apport à votre nom.",
+        "2. Vous posez ce R1 entre le prospect et notre équipe commerciale, via votre lien de prise de RDV dédié (celui que Maxime vous transmet). C'est cette mise en relation — le R1 effectivement posé — qui attribue l'apport à votre nom et déclenche votre commission. Sans R1 posé via votre lien, il n'y a tout simplement pas d'apport.",
         "3. L'équipe commerciale prend en charge le rendez-vous, la présentation et la signature. Vous n'avez rien d'autre à faire.",
         "",
         "### Leçon 3 : Les infos à récupérer auprès du prospect",
         "Nom, prénom, société. Secteur d'activité. Besoin identifié (pub, site, les deux). Niveau de maturité (\"il est partant pour un RDV\" ou \"il est déjà chaud\"). Numéro de téléphone et adresse e-mail. Votre lien avec lui (comment vous vous connaissez).",
-        "Avec ces infos, posez directement le R1 via votre lien de prise de RDV dédié plutôt que de simplement transmettre les coordonnées."
+        "Avec ces infos, ne vous contentez pas de transmettre les coordonnées : posez directement le R1 via votre lien de prise de RDV dédié. C'est la seule action qui valide votre apport — un contact transmis sans R1 ne compte pas et n'ouvre droit à aucune commission."
       ],
       keyPoints: [
         "Un pitch court, à dire presque mot pour mot (pub Meta, Google et sites web)",
         "3 étapes : accord du prospect, poser le R1 via votre lien dédié, l'équipe conclut",
         "Récupérer : identité, secteur, besoin, maturité, téléphone, e-mail, votre lien",
-        "L'objectif est de poser un R1 entre le prospect et Digiqo, pas seulement de transmettre des coordonnées"
+        "Seul un R1 posé via votre lien dédié valide l'apport et ouvre droit à commission — un contact transmis ne suffit pas"
       ]
     },
     {
@@ -159,7 +160,7 @@ export const formationKitApporteur: Formation = {
         "Site web (3 000 € HT, paiement one shot) : 5 % = 150 €.",
         "",
         "### Leçon 3 : Les conditions",
-        "La commission est versée au fil des encaissements réels de Digiqo : on vous paie uniquement à réception de l'argent du client, après chaque facture effectivement réglée. Si le client ne paie pas, vous ne touchez rien sur cette facture. L'encaissement conditionne le versement de votre commission, pas le point de départ des 12 mois (qui court, lui, depuis la première facturation). Pas de plafond. Un contrat apporteur d'affaires est à signer avec Digiqo avant le premier apport."
+        "La commission est versée au fil des encaissements réels de Digiqo : on vous paie uniquement à réception de l'argent du client, après chaque facture effectivement réglée. Si le client ne paie pas, vous ne touchez rien sur cette facture. L'encaissement conditionne le versement de votre commission, pas le point de départ des 12 mois (qui court, lui, depuis la première facturation). Pas de plafond. Un contrat apporteur d'affaires est à signer avec Digiqo avant le premier apport. Rappel : seul un apport validé par un R1 posé via votre lien dédié ouvre droit à commission ; un contact simplement transmis ne déclenche rien."
       ],
       keyPoints: [
         "5 % de la facture HT, sur les 12 premiers mois à partir de la première facturation (hors Initiation Mensuelle)",
@@ -173,7 +174,7 @@ export const formationKitApporteur: Formation = {
     title: 'À vous de jouer',
     content: [
       "Vous avez maintenant tout en main : le discours, les services, les signaux à repérer, le pitch et le processus. Gardez ce kit sous la main et appuyez-vous dessus à chaque opportunité.",
-      "Dès que vous identifiez un prospect, ne vous arrêtez pas à transmettre ses coordonnées : proposez-lui un premier rendez-vous (R1) avec Digiqo et fixez-le directement via votre lien de prise de RDV dédié (celui que Maxime vous transmet). C'est ce R1 posé à votre nom qui déclenche votre commission. L'équipe commerciale s'occupe ensuite de tout.",
+      "Dès que vous identifiez un prospect, ne vous arrêtez pas à transmettre ses coordonnées : proposez-lui un premier rendez-vous (R1) avec Digiqo et fixez-le directement via votre lien de prise de RDV dédié (celui que Maxime vous transmet). C'est ce R1 posé à votre nom — et lui seul — qui valide l'apport et déclenche votre commission ; un simple contact transmis ne compte pas. L'équipe commerciale s'occupe ensuite de tout.",
       "Une question ou besoin de votre lien dédié ? Contactez Maxime Sin : +262 693 65 95 45."
     ]
   },
