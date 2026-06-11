@@ -65,7 +65,7 @@ export const formationKitApporteur: Formation = {
         "### Leçon 1 : Publicité Facebook / Instagram (Meta Ads)",
         "Pour qui : toute entreprise qui veut toucher des Réunionnais (BtoC comme BtoB).",
         "L'argument : 554 000 utilisateurs Facebook à La Réunion. Votre audience locale entière accessible en quelques clics.",
-        "Prix : à partir de 2 250 € HT/trimestre (budget pub inclus selon le package).",
+        "Prix : à partir de 2 250 € HT/trimestre (budget publicitaire en plus, jamais inclus).",
         "Signal à écouter : \"on fait pas de pub\", \"j'ai essayé mais ça marchait pas\", \"on tourne avec le bouche-à-oreille uniquement\".",
         "",
         "### Leçon 2 : Publicité Google (SEA)",
