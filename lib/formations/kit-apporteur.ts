@@ -11,7 +11,7 @@ export const formationKitApporteur: Formation = {
   title: 'Kit Commercial Apporteur d\'Affaires',
   category: 'publicite',
   description:
-    "Tout ce qu'un apporteur d'affaires Digiqo doit savoir pour repérer une opportunité, en parler simplement et passer le relais à notre équipe commerciale — en moins de 30 minutes.",
+    "Tout ce qu'un apporteur d'affaires Digiqo doit savoir pour repérer une opportunité, en parler simplement et passer le relais à notre équipe commerciale, en moins de 30 minutes.",
   duration: '30 minutes',
   level: 'Débutant',
   instructor: 'Digiqo',
@@ -39,7 +39,7 @@ export const formationKitApporteur: Formation = {
   modules: [
     {
       id: 'module-1',
-      title: 'Module 1 — Digiqo en 30 secondes',
+      title: 'Module 1 : Digiqo en 30 secondes',
       description: "L'essentiel pour parler de Digiqo avec assurance.",
       content: [
         "### Leçon 1 : Qui on est",
@@ -59,7 +59,7 @@ export const formationKitApporteur: Formation = {
     },
     {
       id: 'module-2',
-      title: 'Module 2 — Les services à connaître',
+      title: 'Module 2 : Les services à connaître',
       description: "Ce qu'on vend, pour qui, et comment le repérer dans une conversation.",
       content: [
         "### Leçon 1 : Publicité Facebook / Instagram (Meta Ads)",
@@ -79,7 +79,7 @@ export const formationKitApporteur: Formation = {
         "L'argument : un site Digiqo est conçu pour convertir, pas juste être beau. Il est couplé à la pub pour que les deux se renforcent.",
         "Signal : \"notre site date de 10 ans\", \"on n'a pas de site\", \"le site génère aucun contact\".",
         "",
-        "### Leçon 4 : L'audit digital gratuit — votre meilleure arme",
+        "### Leçon 4 : L'audit digital gratuit, votre meilleure arme",
         "C'est gratuit, sans engagement. Digiqo analyse la présence en ligne du prospect et livre un rapport complet.",
         "Ce que vous dites : \"je peux faire analyser votre présence en ligne gratuitement par mon agence, sans aucune obligation.\"",
         "Aucun risque pour le prospect. C'est la porte d'entrée idéale.",
@@ -96,7 +96,7 @@ export const formationKitApporteur: Formation = {
     },
     {
       id: 'module-3',
-      title: 'Module 3 — Identifier une opportunité',
+      title: 'Module 3 : Identifier une opportunité',
       description: "Reconnaître un bon prospect (et savoir quand passer son chemin).",
       content: [
         "### Leçon 1 : Les 5 questions qui révèlent un prospect",
@@ -120,7 +120,7 @@ export const formationKitApporteur: Formation = {
     },
     {
       id: 'module-4',
-      title: 'Module 4 — Passer le relais parfaitement',
+      title: 'Module 4 : Passer le relais parfaitement',
       description: "Le pitch exact, le processus, et ce qu'on attend de vous.",
       content: [
         "### Leçon 1 : Le pitch à utiliser mot pour mot",
@@ -144,17 +144,19 @@ export const formationKitApporteur: Formation = {
     },
     {
       id: 'module-5',
-      title: 'Module 5 — Vos commissions',
+      title: 'Module 5 : Vos commissions',
       description: "Comment vous êtes rémunéré, avec des exemples chiffrés.",
       content: [
         "### Leçon 1 : Le principe",
         "5 % de la facture HT payée par le client, sur les 12 premiers mois battants après le 1er paiement encaissé (hors Initiation Mensuelle).",
         "",
         "### Leçon 2 : Exemples concrets",
-        "Expansion Trimestrielle (3 250 € HT/trimestre) : 5 % = 162,50 €/trimestre, soit 650 € sur 12 mois (4 trimestres).",
+        "Initiation Annuelle (5 610 € HT, 1 paiement) : 5 % = 280,50 €.",
+        "Propulsion Trimestrielle (2 250 € HT/trimestre) : 5 % = 112,50 €/trimestre, soit 450 € sur 12 mois (4 trimestres).",
         "Propulsion Annuelle (7 650 € HT, 1 paiement) : 5 % = 382,50 €.",
+        "Expansion Trimestrielle (3 250 € HT/trimestre) : 5 % = 162,50 €/trimestre, soit 650 € sur 12 mois (4 trimestres).",
         "Expansion Annuelle (11 050 € HT, 1 paiement) : 5 % = 552,50 €.",
-        "Site web (5 000 € HT, one-shot) : 5 % = 250 €.",
+        "Site web (sur devis) : 5 % HT du montant facturé.",
         "",
         "### Leçon 3 : Les conditions",
         "Commission versée après chaque facture effectivement payée par le client. Pas de plafond. Un contrat apporteur d'affaires est à signer avec Digiqo avant le premier apport."
