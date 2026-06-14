@@ -9,7 +9,7 @@ export default function MerciPage() {
   useEffect(() => {
     if (typeof window !== 'undefined' && typeof (window as Window & { gtag?: Function }).gtag === 'function') {
       (window as Window & { gtag?: Function }).gtag!('event', 'conversion', {
-        send_to: 'AW-18002905491',
+        send_to: 'AW-18002905491/9-KPCNmGnK0cEJOTuohD',
       })
     }
   }, [])
