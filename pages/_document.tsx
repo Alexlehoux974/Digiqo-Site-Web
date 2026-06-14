@@ -5,6 +5,32 @@ export default function Document() {
   return (
     <Html lang="fr" className={`${inter.variable} ${montserrat.variable}`}>
       <Head>
+        {/* Google Ads AW-18002905491 — Consent Mode v2 (advanced).
+            Rendu côté serveur dans le <head> de CHAQUE page, donc visible au
+            curl et présent sur toutes les pages d'atterrissage. Les cookies
+            publicitaires restent 'denied' par défaut tant que le visiteur n'a
+            pas accepté le marketing (CookieConsent met à jour le consentement
+            via gtag('consent','update') dans _app.tsx). Google reçoit des
+            pings anonymes et peut modéliser les conversions sans cookie. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                analytics_storage: 'denied',
+                wait_for_update: 500
+              });
+              gtag('js', new Date());
+              gtag('config', 'AW-18002905491');
+            `,
+          }}
+        />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18002905491" />
+
         {/* Google Tag Manager — chargé conditionnellement via _app.tsx après consentement */}
 
         {/* Viewport avec support des safe areas pour appareils avec encoche */}
