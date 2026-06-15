@@ -23,7 +23,7 @@ const navigation = {
     { name: 'Notre Histoire', href: '/agence#histoire' },
     { name: 'Nos Valeurs', href: '/agence#valeurs' },
     { name: "L'Équipe", href: '/agence#equipe' },
-    { name: 'Digicademy', href: '/digicademy' },
+    { name: 'Digicademy', href: 'https://academy.digiqo.fr' },
     { name: 'FAQ', href: '/?instant=true#faq' },
     { name: 'Digiqo Recrute !', href: '/digiqo-recrute' },
     { name: 'Partenariats & Sponsoring', href: '/partenariats' },

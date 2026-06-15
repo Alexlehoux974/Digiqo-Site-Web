@@ -142,7 +142,7 @@ const navigation = {
     },
     {
       name: 'DIGICADEMY',
-      href: '/digicademy',
+      href: 'https://academy.digiqo.fr',
       luxuryIcon: BookOpen,
       badge: 'Nouveau'
     }
