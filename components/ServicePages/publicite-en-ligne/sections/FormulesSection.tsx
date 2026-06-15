@@ -103,7 +103,7 @@ export default function FormulesSection() {
         { icon: Megaphone, text: 'Campagne de Notoriété et de Considération' },
         { icon: Monitor, text: 'Plateforme de diffusion au choix : META (Facebook & Instagram) ou TikTok ou Google Ads' },
         { icon: Coins, text: "Jusqu'à 2 500€ de budget publicitaire géré/mois" },
-        { icon: Palette, text: '3 visuels publicitaires (statiques et/ou dynamiques) inclus/mois (non cumulables)' },
+        { icon: Palette, text: '3 visuels publicitaires statiques inclus/mois (non cumulables)' },
         { icon: Lightbulb, text: 'Création & ciblage stratégique des campagnes' },
         { icon: Settings, text: 'Optimisation des performances' },
         { icon: BarChart3, text: 'Reporting mensuel' },
