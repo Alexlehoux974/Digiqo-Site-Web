@@ -134,6 +134,9 @@ export const Footer = () => {
                   <li key={item.name}>
                     <Link
                       href={item.href}
+                      {...(item.href.startsWith('http')
+                        ? { target: '_blank', rel: 'noopener noreferrer' }
+                        : {})}
                       className="text-gray-300 text-sm hover:text-cyan-400 transition-colors duration-200 flex items-center gap-2 group"
                     >
                       <span className="w-1 h-1 bg-cyan-500/50 rounded-full group-hover:w-2 group-hover:bg-cyan-400 transition-all duration-200" />
@@ -157,6 +160,9 @@ export const Footer = () => {
                   <li key={item.name}>
                     <Link
                       href={item.href}
+                      {...(item.href.startsWith('http')
+                        ? { target: '_blank', rel: 'noopener noreferrer' }
+                        : {})}
                       className="text-gray-300 text-sm hover:text-cyan-400 transition-colors duration-200 flex items-center gap-2 group"
                     >
                       <span className="w-1 h-1 bg-cyan-500/50 rounded-full group-hover:w-2 group-hover:bg-cyan-400 transition-all duration-200" />

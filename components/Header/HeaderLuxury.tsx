@@ -296,6 +296,9 @@ export const HeaderLuxury = () => {
                         if (target) {
                           target.scrollIntoView({ behavior: 'smooth' })
                         }
+                      } else if (item.href.startsWith('http')) {
+                        e.preventDefault()
+                        window.open(item.href, '_blank', 'noopener,noreferrer')
                       } else if (item.href !== '#') {
                         window.location.href = item.href
                       }
@@ -844,6 +847,9 @@ export const HeaderLuxury = () => {
                       // Regular links
                       <Link
                         href={item.href || '#'}
+                        {...(item.href?.startsWith('http')
+                          ? { target: '_blank', rel: 'noopener noreferrer' }
+                          : {})}
                         onClick={(e) => {
                           if (item.href) {
                             handleHashLink(e, item.href)
