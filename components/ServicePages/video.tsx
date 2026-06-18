@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { m as motion } from 'framer-motion'
-import { Check, Camera, Video, ArrowRight, Package, Image, Film, Sparkles, ChevronRight, Palette, Drone, Rocket, Star } from 'lucide-react'
+import { Check, Camera, Video, ArrowRight, Package, Image, Film, Sparkles, ChevronRight, Palette, Drone, Rocket, Star, Clapperboard } from 'lucide-react'
 import ServiceLayout from '../../components/ServiceLayout/ServiceLayout'
 import { servicesSEO } from '../../lib/seo-data'
 import { generateContactUrl } from '../../lib/contact-utils'
@@ -243,6 +243,28 @@ export default function VideoPage() {
       paymentLink: 'https://app-eu1.hubspot.com/payments/MMSQQJtDzx?referrer=PAYMENT_LINK',
       icon: Film,
       gradient: 'from-purple-500 to-pink-600',
+      type: 'ONE_SHOT'
+    },
+    {
+      id: 'video-studio',
+      name: 'Vidéo Studio',
+      price: '799,80€',
+      description: 'Vidéo pro tournée en studio aménagé',
+      features: [
+        '🎥 Captation vidéo pro (1h)',
+        'Sony A7IV qualité exceptionnelle',
+        '🏛 Tournage en studio aménagé',
+        '💡 Éclairage professionnel intégré',
+        '🎭 Décors professionnels à disposition',
+        '✂️ Montage dynamique (20-25 sec)',
+        '🔤 Textes & sous-titres inclus',
+        '✨ Effets visuels & animations',
+        '🎵 Musique libre de droits',
+        '📱 Formats optimisés réseaux sociaux'
+      ],
+      paymentLink: '',
+      icon: Clapperboard,
+      gradient: 'from-indigo-500 to-purple-600',
       type: 'ONE_SHOT'
     },
     {
