@@ -1,18 +1,27 @@
-import { m as motion, useScroll, useTransform } from 'framer-motion'
+import { m as motion, useInView } from 'framer-motion'
 import { SEO } from '@/components/SEO'
 import { HeaderLuxury } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { TrustpilotWidget } from '@/components/Trustpilot'
-import { Linkedin, Mail, Users, Rocket, Heart, Target, Calendar, Award, Sparkles, Clock } from 'lucide-react'
+import {
+  Linkedin, Mail, Users, Calendar, TrendingDown, Target,
+  Activity, LayoutDashboard, BadgeCheck, ArrowRight, Sparkles, MapPin,
+  Rocket, Heart, ShieldCheck, Eye
+} from 'lucide-react'
 import { OptimizedImage } from '@/components/ui/OptimizedImage'
 import Link from 'next/link'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
+// ---------------------------------------------------------------------------
+// Équipe — les 8 membres sont conservés (validation Alexandre : on ne retire
+// aucun profil). Bios réécrites pour les 3 fondateurs (Rodolphe, Alexandre,
+// Angelo) selon le nouveau positionnement ; les autres profils sont gardés.
+// ---------------------------------------------------------------------------
 const team = [
   {
     name: 'Rodolphe Le Houx',
     role: 'Fondateur & CEO',
-    description: "Rodolphe est le cœur battant de Digiqo. En tant que CEO, il fait preuve d'une vision stratégique claire et d'une passion inébranlable pour le numérique. Il guide l'entreprise avec dynamisme, cherchant constamment à innover et à anticiper les tendances du marché. Son objectif : offrir à nos clients des solutions digitales sur-mesure, en forgeant des partenariats durables.",
+    description: "Rodolphe dirige la stratégie et la croissance de Digiqo. Avant de co-fonder l'agence, il a accompagné des dizaines d'entreprises réunionnaises dans leur transformation digitale. Son obsession : que chaque euro investi en pub soit traçable et rentable.",
     image: '/images/rodolphe-lehoux-photo.webp',
     linkedin: 'https://www.linkedin.com/in/rodolphe-le-houx/',
     email: 'rodolphe@digiqo.fr'
@@ -20,7 +29,7 @@ const team = [
   {
     name: 'Alexandre Le Houx',
     role: 'Fondateur & CMO',
-    description: "Alexandre est la voix de Digiqo. Il donne le ton de notre communication, crée des contenus percutants et tisse chaque jour des liens authentiques avec notre communauté en ligne. Son énergie contagieuse, sa créativité débordante et son sens de l'écoute font de lui un pilier dans la construction de l'image positive de Digiqo.",
+    description: "Alexandre pilote la communication et le contenu de Digiqo. Certifié Meta, il conçoit les stratégies de contenu et de CM qui construisent la présence en ligne de nos clients dans la durée.",
     image: '/partenaires/Alexandre.webp',
     linkedin: 'https://www.linkedin.com/in/alexandre-le-houx/',
     email: 'alexandre@digiqo.fr'
@@ -28,7 +37,7 @@ const team = [
   {
     name: 'Angelo Rapazzini',
     role: 'Fondateur & Associé',
-    description: "Angelo est notre expert incontournable en publicité en ligne. Ancien marketer chez Meta (anciennement Facebook), il maîtrise parfaitement les codes du digital et les dynamiques de vente. Chez Digiqo, il joue un rôle clé en traduisant les besoins de nos clients en stratégies performantes, tout en entretenant des relations solides et durables avec nos partenaires.",
+    description: "Angelo accompagne le développement commercial et les partenariats stratégiques de Digiqo. Sa vision long terme est au cœur de l'ambition de l'agence.",
     image: '/partenaires/Angelo.webp',
     linkedin: 'https://www.linkedin.com/in/angelo-rapazzini/',
     email: 'angelo@digiqo.fr'
@@ -36,7 +45,7 @@ const team = [
   {
     name: 'Maxime Sin',
     role: 'Head of Sales',
-    description: "Après plus de 10 ans d'expérience en tant que Responsable Commercial BtoB dans des startups parisiennes à forte valeur ajoutée, Maxime a rejoint Digiqo avec une conviction forte : la réussite passe avant tout par l'écoute et la compréhension des besoins clients. Passionné par le développement commercial et les relations humaines, il accompagne les entreprises au quotidien en leur apportant des conseils concrets et des solutions adaptées à leurs enjeux. Son moteur ? Construire des relations de confiance durables et aider chaque client à atteindre ses objectifs de croissance, avec engagement, transparence et proximité.",
+    description: "Après plus de 10 ans d'expérience en tant que Responsable Commercial BtoB dans des startups parisiennes à forte valeur ajoutée, Maxime a rejoint Digiqo avec une conviction forte : la réussite passe avant tout par l'écoute et la compréhension des besoins clients. Son moteur ? Construire des relations de confiance durables et aider chaque client à atteindre ses objectifs de croissance, avec engagement, transparence et proximité.",
     image: '/partenaires/MAXIME-SIN.JPG',
     linkedin: 'https://www.linkedin.com/in/maxime-sin/',
     email: 'maxime@digiqo.fr'
@@ -44,7 +53,7 @@ const team = [
   {
     name: 'Jaemeson Dieu',
     role: 'Head of Products',
-    description: "Jaemeson est notre maître d'orchestre de la publicité sur Google. Grâce à sa parfaite maîtrise des outils et langages de l'écosystème Google (Ads, Analytics, Tag Manager, etc.), il conçoit des campagnes précises et redoutablement efficaces. Sa force ? Transformer chaque clic en opportunité, en alliant stratégie, optimisation et analyse poussée des résultats pour générer un maximum de valeur pour nos clients. Toujours en veille sur les dernières tendances et nouveautés de Google, il sait adapter les stratégies pour garder une longueur d'avance sur la concurrence.",
+    description: "Jaemeson est notre maître d'orchestre de la publicité sur Google. Grâce à sa parfaite maîtrise des outils et langages de l'écosystème Google (Ads, Analytics, Tag Manager, etc.), il conçoit des campagnes précises et redoutablement efficaces. Sa force ? Transformer chaque clic en opportunité, en alliant stratégie, optimisation et analyse poussée des résultats pour générer un maximum de valeur pour nos clients.",
     image: '/partenaires/jaemeson.webp',
     linkedin: 'https://www.linkedin.com/in/jaemeson-dieu/',
     email: 'jaemeson@digiqo.fr'
@@ -60,7 +69,7 @@ const team = [
   {
     name: 'Lilian Apithy',
     role: 'Expert Marketing certifié Meta',
-    description: "Lilian est notre véritable couteau suisse : il veille à ce que chaque client Digiqo soit écouté, accompagné et satisfait. Toujours réactif, il s'assure que les demandes trouvent une réponse rapide et efficace, tout en récoltant témoignages et fichiers essentiels pour enrichir nos projets. En parallèle, il met sa créativité au service des visuels et contenus photo, apportant une touche soignée et percutante à nos campagnes. Spécialiste des publicités Meta (Facebook & Instagram Ads), Lilian combine expertise technique et sens du relationnel pour offrir des résultats concrets et une expérience client irréprochable.",
+    description: "Lilian est notre véritable couteau suisse : il veille à ce que chaque client Digiqo soit écouté, accompagné et satisfait. Spécialiste des publicités Meta (Facebook & Instagram Ads), il combine expertise technique et sens du relationnel pour offrir des résultats concrets et une expérience client irréprochable.",
     image: '/partenaires/lilian.webp',
     linkedin: 'https://www.linkedin.com/in/lilian-apithy/',
     email: 'lilian@digiqo.fr'
@@ -87,7 +96,7 @@ const agenceStructuredDataGraph = {
       "name": "L'Agence Digiqo",
       "url": "https://digiqo.fr/agence",
       "description":
-        "Première agence marketing digital de La Réunion certifiée Meta Business Partner. Équipe d'experts en publicité Meta Ads, Google Ads, développement web, SEO et community management depuis 2024.",
+        "Agence digitale de La Réunion certifiée Meta Business Partner. Publicité Meta Ads & Google Ads, tracking complet server-side, dashboard client en temps réel. Des résultats mesurables, depuis 2024.",
       "inLanguage": "fr-FR",
       "isPartOf": { "@id": "https://digiqo.fr/#website" },
       "mainEntity": { "@id": "https://digiqo.fr/#organization" }
@@ -113,51 +122,96 @@ const agenceStructuredDataGraph = {
   ]
 }
 
-const values = [
-  {
-    icon: Rocket,
-    title: 'Innovation',
-    description: 'Toujours à la pointe des dernières tendances digitales'
-  },
-  {
-    icon: Heart,
-    title: 'Passion',
-    description: 'Une équipe passionnée qui vit et respire le digital'
-  },
-  {
-    icon: Target,
-    title: 'Performance',
-    description: 'Des résultats mesurables et un ROI optimisé'
-  },
-  {
-    icon: Users,
-    title: 'Partenariat',
-    description: 'Une relation de confiance avec nos clients'
-  }
+const stats = [
+  { value: 23, decimals: 0, suffix: '', animate: true, label: 'Comptes actifs Meta & Google', icon: Activity },
+  { value: 4, decimals: 0, suffix: '', animate: true, label: 'Experts certifiés Meta & Google', icon: BadgeCheck },
+  { value: 1.52, decimals: 2, suffix: ' €', animate: true, label: 'CPM Meta moyen (vs 5-12 € en métropole)', icon: TrendingDown },
+  { value: 2024, decimals: 0, suffix: '', animate: false, label: 'Année de création', icon: Calendar },
 ]
 
-export default function Agence() {
-  const valuesRef = useRef<HTMLElement>(null)
-  const teamRef = useRef<HTMLElement>(null)
-  const ctaRef = useRef<HTMLElement>(null)
-  
-  const { scrollYProgress } = useScroll()
-  
-  // Parallax effects for smooth transitions
-  const heroParallax = useTransform(scrollYProgress, [0, 0.3], [0, -100])
-  const valuesParallax = useTransform(scrollYProgress, [0.2, 0.5], [50, 0])
-  const teamParallax = useTransform(scrollYProgress, [0.4, 0.7], [50, 0])
-  const ctaParallax = useTransform(scrollYProgress, [0.7, 1], [50, 0])
-  
-  // Fade effects for sections
-  const ctaFade = useTransform(scrollYProgress, [0.65, 0.8], [0, 1])
+const values = [
+  { icon: Rocket, title: 'Innovation', description: 'Toujours à la pointe des dernières tendances digitales.' },
+  { icon: Heart, title: 'Passion', description: 'Une équipe passionnée qui vit et respire le digital.' },
+  { icon: Target, title: 'Performance', description: 'Des résultats mesurables et un ROI optimisé.' },
+  { icon: Users, title: 'Partenariat', description: 'Une relation de confiance avec nos clients.' },
+]
 
+const pillars = [
+  {
+    icon: Activity,
+    title: 'Tracking complet',
+    description: "Chaque conversion est tracée. Vous savez exactement ce que votre budget pub génère.",
+  },
+  {
+    icon: LayoutDashboard,
+    title: 'Dashboard en temps réel',
+    description: "Accès à votre espace sur app.digiqo.fr pour suivre vos campagnes au quotidien.",
+  },
+  {
+    icon: BadgeCheck,
+    title: 'Experts certifiés',
+    description: "Pas de stagiaires. Chaque compte est géré par un expert certifié Meta ou Google.",
+  },
+]
+
+// Reveal animation partagée : slide-in depuis le bas au scroll.
+const reveal = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+}
+
+// Compteur animé pour la bande chiffres. L'état initial = valeur cible pour
+// que le HTML SSR porte le vrai nombre (bots/LLM), puis remise à 0 à l'entrée
+// dans le viewport pour l'animation visible.
+function StatCounter({
+  value, decimals = 0, suffix = '', animate = true,
+}: { value: number; decimals?: number; suffix?: string; animate?: boolean }) {
+  const [count, setCount] = useState(value)
+  const ref = useRef<HTMLSpanElement>(null)
+  const isInView = useInView(ref, { once: true, margin: '-50px' })
+
+  useEffect(() => {
+    if (!animate || !isInView) return
+    setCount(0)
+    let start = 0
+    const duration = 1.6
+    const increment = value / (duration * 60)
+    const timer = setInterval(() => {
+      start += increment
+      if (start >= value) {
+        setCount(value)
+        clearInterval(timer)
+      } else {
+        setCount(start)
+      }
+    }, 1000 / 60)
+    return () => clearInterval(timer)
+  }, [isInView, value, animate])
+
+  const display =
+    decimals > 0 ? count.toFixed(decimals).replace('.', ',') : Math.round(count).toString()
+
+  return (
+    <span ref={ref} className="tabular-nums">
+      {display}{suffix}
+    </span>
+  )
+}
+
+const certifications = [
+  { type: 'logo', src: '/meta-logo.svg', label: 'Meta Business Partner', alt: 'Logo Meta Business Partner' },
+  { type: 'logo', src: '/Google_Ads_logo.svg.png', label: 'Google Partner', alt: 'Logo Google Ads Partner' },
+  { type: 'text', icon: BadgeCheck, label: 'Experts certifiés Meta Ads' },
+  { type: 'text', icon: ShieldCheck, label: 'Google Analytics & Tag Manager' },
+] as const
+
+export default function Agence() {
   return (
     <>
       <SEO
-        title="L'Agence - Digiqo"
-        description="Découvrez Digiqo, votre agence digitale à La Réunion. Une équipe d'experts passionnés pour booster votre présence en ligne depuis 2024."
-        keywords="agence digitale la réunion, digiqo team, marketing digital, publicité en ligne"
+        title="Digiqo — Agence digitale certifiée Meta Business Partner à La Réunion"
+        description="Digiqo est l'agence digitale certifiée Meta Business Partner de La Réunion. Publicité Meta Ads & Google Ads, tracking complet, dashboard client en temps réel. Résultats mesurables."
+        keywords="agence digitale la réunion, meta business partner réunion, publicité meta ads 974, google ads réunion, tracking server-side, agence marketing digital 974"
         url="https://digiqo.fr/agence"
         structuredData={agenceStructuredDataGraph}
       />
@@ -165,968 +219,589 @@ export default function Agence() {
       <HeaderLuxury />
 
       <main className="overflow-hidden">
-        {/* Hero Section */}
-        <motion.section 
-          id="histoire" 
-          className="relative pt-40 pb-32 overflow-hidden bg-gradient-to-br from-digiqo-primary/5 via-white to-digiqo-accent/5"
-          style={{ y: heroParallax }}
+        {/* ============================================================== */}
+        {/* 1. HERO                                                         */}
+        {/* ============================================================== */}
+        <section
+          id="histoire"
+          className="relative pt-36 pb-24 md:pt-44 md:pb-32 overflow-hidden bg-gradient-to-br from-digiqo-primary/5 via-white to-digiqo-accent/5"
         >
-          {/* Animated background elements */}
-          <div className="absolute inset-0">
-            <motion.div 
-              className="absolute top-20 right-0 w-96 h-96 bg-digiqo-accent/10 rounded-full blur-3xl"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.1, 0.2, 0.1],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                repeatType: "reverse"
-              }}
+          {/* Décor animé (purement décoratif, derrière le contenu) */}
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <motion.div
+              className="absolute top-10 right-0 w-96 h-96 bg-digiqo-accent/10 rounded-full blur-3xl"
+              animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
+              transition={{ duration: 8, repeat: Infinity, repeatType: 'reverse' }}
             />
-            <motion.div 
+            <motion.div
               className="absolute bottom-0 left-0 w-96 h-96 bg-digiqo-primary/10 rounded-full blur-3xl"
-              animate={{
-                scale: [1, 1.3, 1],
-                opacity: [0.1, 0.15, 0.1],
-              }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                repeatType: "reverse"
-              }}
-            />
-            {/* Floating particles */}
-            {[...Array(10)].map((_, i) => (
-              <motion.div
-                key={i}
-                className={`absolute rounded-full ${
-                  i % 3 === 0 
-                    ? 'w-6 h-6 bg-gradient-to-br from-digiqo-primary to-digiqo-accent opacity-30' 
-                    : i % 3 === 1
-                    ? 'w-4 h-4 bg-digiqo-accent opacity-20'
-                    : 'w-3 h-3 bg-digiqo-primary opacity-25'
-                }`}
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                }}
-                animate={{
-                  y: [-30, 30],
-                  x: [-30, 30],
-                  scale: [1, 1.5, 1],
-                  opacity: [0.2, 0.5, 0.2],
-                }}
-                transition={{
-                  duration: 20 + i * 2,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  delay: i * 0.5,
-                  ease: "easeInOut",
-                }}
-              />
-            ))}
-            
-            {/* Additional animated elements */}
-            <motion.div
-              className="absolute bottom-20 left-10 w-32 h-32 border-2 border-digiqo-primary/20 rounded-full"
-              animate={{
-                scale: [1, 1.2, 1],
-                rotate: [0, 90, 0],
-                opacity: [0.2, 0.3, 0.2],
-              }}
-              transition={{
-                duration: 12,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-            />
-            <motion.div
-              className="absolute top-40 right-20 w-24 h-24 border-2 border-digiqo-accent/20 rounded-full"
-              animate={{
-                scale: [1, 1.3, 1],
-                rotate: [0, -90, 0],
-                opacity: [0.2, 0.3, 0.2],
-              }}
-              transition={{
-                duration: 15,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
+              animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.15, 0.1] }}
+              transition={{ duration: 10, repeat: Infinity, repeatType: 'reverse' }}
             />
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
-            {/* Hero text wrapper — initial={false} so the H1/P inside aren't
-                hidden behind a parent opacity:0 during the 0.8s fade-in
-                (was blocking LCP paint past 6s). */}
-            <motion.div
-              initial={false}
-              className="text-center max-w-5xl mx-auto mb-20"
-            >
+            <div className="max-w-4xl mx-auto text-center">
               <motion.div
                 initial={false}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-digiqo-primary/10 to-digiqo-accent/10 backdrop-blur-sm text-digiqo-primary px-6 py-3 rounded-full text-sm font-semibold mb-8"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-digiqo-primary/10 to-digiqo-accent/10 backdrop-blur-sm text-digiqo-primary px-5 py-2.5 rounded-full text-sm font-semibold mb-8"
               >
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                >
-                  <Sparkles className="w-4 h-4" />
-                </motion.div>
-                Depuis 2024
+                <Sparkles className="w-4 h-4" aria-hidden="true" />
+                Agence certifiée Meta Business Partner — La Réunion
               </motion.div>
-              
-              {/* H1 is the LCP element on /agence — must paint immediately.
-                  initial={false} starts each span at its animate target, so
-                  the text is visible at first paint. Looping gradient/glow
-                  animations on the "préférée" span are preserved. */}
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-digiqo-black mb-8 leading-tight relative">
-                <motion.span initial={false}>
-                  L'Agence
-                </motion.span>
-                <motion.span
-                  className="text-transparent bg-clip-text bg-gradient-to-r from-digiqo-primary via-digiqo-accent to-digiqo-primary block md:inline relative"
-                  initial={false}
-                  animate={{
-                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                  }}
-                  transition={{
-                    backgroundPosition: {
-                      duration: 5,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }
-                  }}
-                  style={{ backgroundSize: '200% 100%' }}
-                >
-                  {' préférée '}
-                  {/* Glow effect behind the word */}
-                  <motion.div
-                    className="absolute inset-0 blur-3xl bg-gradient-to-r from-digiqo-primary via-digiqo-accent to-digiqo-primary opacity-50 -z-10"
-                    initial={false}
-                    animate={{
-                      scale: [1, 1.2, 1],
-                      opacity: [0.5, 0.8, 0.5],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                    }}
-                  />
-                </motion.span>
-                <motion.span initial={false}>
-                  des Réunionnais
-                </motion.span>
-              </h1>
-              <motion.p
-                className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto"
-                initial={false}
-              >
-                Fondée en 2024, Digiqo est une agence dynamique spécialisée dans les stratégies digitales innovantes.
-                Notre équipe d'experts passionnés s'engage à offrir des solutions sur mesure pour renforcer la présence 
-                en ligne de nos clients et accélérer leur croissance.
-              </motion.p>
-            </motion.div>
 
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
-            >
-              {[
-                { number: '2024', label: 'Année de création', icon: Calendar },
-                { number: '214', label: 'Clients satisfaits', icon: Award },
-                { number: '100%', label: 'Passion', icon: Heart }
-              ].map((stat, index) => {
+              {/* H1 = élément LCP : initial={false} pour peindre au premier rendu. */}
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-digiqo-black mb-6 leading-[1.1]">
+                <motion.span initial={false}>Votre budget pub vaut </motion.span>
+                <motion.span
+                  initial={false}
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-digiqo-primary via-digiqo-accent to-digiqo-primary"
+                >
+                  8 fois plus
+                </motion.span>
+                <motion.span initial={false}> à La Réunion. On vous explique comment.</motion.span>
+              </h1>
+
+              <motion.p
+                initial={false}
+                className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto mb-10"
+              >
+                Digiqo, agence digitale certifiée Meta Business Partner. 23 comptes actifs gérés.
+                Des résultats mesurables, ou on ne travaille pas ensemble.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                <Link
+                  href="/contact"
+                  className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-digiqo-primary to-digiqo-primary-light text-white font-bold rounded-2xl shadow-digiqo hover:shadow-digiqo-lg transition-all duration-300 hover:-translate-y-0.5"
+                >
+                  <span className="text-lg">Parlons de votre projet</span>
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                </Link>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================== */}
+        {/* 2. BANDE CHIFFRES                                               */}
+        {/* ============================================================== */}
+        <section className="relative -mt-10 md:-mt-14 z-20 pb-16">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
+              {stats.map((stat, index) => {
                 const Icon = stat.icon
                 return (
-                <motion.div 
-                  key={index} 
-                  className="text-center group"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                >
                   <motion.div
-                    className="relative inline-block"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  >
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-br from-digiqo-primary/10 to-digiqo-accent/10 rounded-2xl blur-lg"
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.5, 0.8, 0.5],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        delay: index * 0.2,
-                      }}
-                    />
-                    <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-100 group-hover:shadow-xl transition-shadow">
-                      <motion.div
-                        className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-digiqo-primary/10 to-digiqo-accent/10 flex items-center justify-center"
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.6 }}
-                      >
-                        <Icon className="w-8 h-8 text-digiqo-primary" />
-                      </motion.div>
-                      <div className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-digiqo-primary to-digiqo-accent mb-2">
-                        {stat.number}
-                      </div>
-                      <div className="text-gray-600 font-medium">{stat.label}</div>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              )})}
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* Animated section divider */}
-        <motion.div 
-          className="relative h-8 overflow-hidden"
-        >
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-b from-transparent via-digiqo-primary/5 to-transparent"
-            animate={{
-              y: [-50, 50],
-              opacity: [0.3, 0.6, 0.3]
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              repeatType: "reverse"
-            }}
-          />
-        </motion.div>
-
-        {/* Values Section */}
-        <motion.section 
-          ref={valuesRef}
-          id="valeurs" 
-          className="py-16 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden"
-          style={{ 
-            y: valuesParallax
-          }}
-        >
-          {/* Animated background pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute inset-0" style={{
-              backgroundImage: `repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 10px,
-                rgba(139, 20, 49, 0.1) 10px,
-                rgba(139, 20, 49, 0.1) 20px
-              )`
-            }} />
-          </div>
-          
-          <div className="container mx-auto px-4 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <motion.h2 
-                className="text-4xl md:text-5xl font-bold text-digiqo-black mb-4"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                Nos valeurs
-              </motion.h2>
-              <motion.p 
-                className="text-xl text-gray-600"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-              >
-                Ce qui nous anime au quotidien
-              </motion.p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-              {values.map((value, index) => {
-                const Icon = value.icon
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    key={stat.label}
+                    variants={reveal}
+                    initial="hidden"
+                    whileInView="visible"
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.15, duration: 0.6 }}
-                    className="group"
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="bg-white rounded-2xl p-5 md:p-7 shadow-lg border border-gray-100 text-center flex flex-col items-center"
                   >
-                    <motion.div 
-                      className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 h-full"
-                      whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                    >
-                      {/* Glow effect */}
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-br from-digiqo-primary/5 to-digiqo-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                        style={{ filter: 'blur(8px)' }}
+                    <div className="w-12 h-12 mb-4 rounded-xl bg-gradient-to-br from-digiqo-primary/10 to-digiqo-accent/10 flex items-center justify-center">
+                      <Icon className="w-6 h-6 text-digiqo-primary" aria-hidden="true" />
+                    </div>
+                    <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-digiqo-primary to-digiqo-accent mb-2">
+                      <StatCounter
+                        value={stat.value}
+                        decimals={stat.decimals}
+                        suffix={stat.suffix}
+                        animate={stat.animate}
                       />
-                      
-                      <div className="relative">
-                        <motion.div 
-                          className="w-24 h-24 mx-auto mb-6 relative"
-                          whileHover={{ scale: 1.1 }}
-                          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                        >
-                          {/* Animated gradient background */}
-                          <motion.div
-                            className="absolute inset-0 bg-gradient-to-br from-digiqo-primary to-digiqo-accent rounded-2xl shadow-lg"
-                            animate={{
-                              rotate: [0, 360],
-                            }}
-                            transition={{
-                              duration: 20,
-                              repeat: Infinity,
-                              ease: "linear"
-                            }}
-                          />
-                          {/* White inner circle */}
-                          <div className="absolute inset-1 bg-white rounded-xl flex items-center justify-center">
-                            {/* Icon container with animation */}
-                            <motion.div
-                              className="relative"
-                              animate={{
-                                y: [0, -5, 0],
-                                rotate: index % 2 === 0 ? [0, 5, -5, 0] : [0, -5, 5, 0],
-                              }}
-                              transition={{
-                                duration: 4,
-                                repeat: Infinity,
-                                delay: index * 0.5,
-                              }}
-                            >
-                              <Icon className="w-12 h-12 text-digiqo-primary" strokeWidth={1.5} />
-                              {/* Pulsing glow effect */}
-                              <motion.div
-                                className="absolute inset-0 blur-md"
-                                animate={{
-                                  opacity: [0.2, 0.4, 0.2],
-                                  scale: [1, 1.1, 1],
-                                }}
-                                transition={{
-                                  duration: 3,
-                                  repeat: Infinity,
-                                  delay: index * 0.2,
-                                }}
-                              >
-                                <Icon className="w-12 h-12 text-digiqo-accent opacity-30" strokeWidth={1.5} />
-                              </motion.div>
-                            </motion.div>
-                          </div>
-                        </motion.div>
-                        
-                        <h3 className="text-2xl font-bold text-digiqo-black mb-3">{value.title}</h3>
-                        <p className="text-gray-600 leading-relaxed">{value.description}</p>
-                      </div>
-                      
-                      {/* Corner decoration */}
-                      <motion.div
-                        className="absolute top-4 right-4 w-8 h-8 opacity-10"
-                        animate={{
-                          scale: [1, 1.2, 1],
-                          rotate: [0, 180, 360],
-                        }}
-                        transition={{
-                          duration: 10,
-                          repeat: Infinity,
-                          delay: index * 0.2,
-                        }}
-                      >
-                        <Sparkles className="w-full h-full text-digiqo-primary" />
-                      </motion.div>
-                    </motion.div>
+                    </div>
+                    <p className="text-sm text-gray-600 font-medium leading-snug">{stat.label}</p>
                   </motion.div>
                 )
               })}
             </div>
           </div>
-        </motion.section>
+        </section>
 
-        {/* Animated section divider */}
-        <motion.div 
-          className="relative h-8 overflow-hidden"
-        >
-          <motion.div
-            className="absolute inset-0"
-            animate={{
-              background: [
-                'linear-gradient(90deg, transparent 0%, rgba(139, 20, 49, 0.1) 50%, transparent 100%)',
-                'linear-gradient(90deg, transparent 0%, rgba(218, 101, 48, 0.1) 50%, transparent 100%)',
-                'linear-gradient(90deg, transparent 0%, rgba(139, 20, 49, 0.1) 50%, transparent 100%)'
-              ]
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              repeatType: "reverse"
-            }}
-          />
-        </motion.div>
-
-        {/* Team Section */}
-        <motion.section 
-          ref={teamRef}
-          id="equipe" 
-          className="py-16 relative overflow-hidden"
-          style={{ 
-            y: teamParallax
-          }}
-        >
-          {/* Enhanced Background decoration */}
-          <div className="absolute inset-0">
-            <motion.div
-              className="absolute -top-40 -right-40 w-80 h-80 bg-digiqo-primary/5 rounded-full blur-3xl"
-              animate={{
-                scale: [1, 1.2, 1],
-                x: [0, 50, 0],
-                y: [0, -30, 0],
-              }}
-              transition={{
-                duration: 15,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-            />
-            <motion.div
-              className="absolute -bottom-40 -left-40 w-80 h-80 bg-digiqo-accent/5 rounded-full blur-3xl"
-              animate={{
-                scale: [1, 1.3, 1],
-                x: [0, -50, 0],
-                y: [0, 30, 0],
-              }}
-              transition={{
-                duration: 18,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-            />
-            {/* Additional animated background elements */}
-            <motion.div
-              className="absolute top-1/2 left-1/2 w-96 h-96 bg-digiqo-secondary/5 rounded-full blur-3xl"
-              animate={{
-                scale: [0.8, 1.2, 0.8],
-                opacity: [0.1, 0.2, 0.1],
-              }}
-              transition={{
-                duration: 20,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-            />
-            {/* Floating particles across the section */}
-            {[...Array(15)].map((_, i) => (
+        {/* ============================================================== */}
+        {/* 3. LE PROBLÈME QU'ON RÉSOUT                                     */}
+        {/* ============================================================== */}
+        <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-6xl mx-auto">
               <motion.div
-                key={i}
-                className={`absolute rounded-full ${
-                  i % 3 === 0 
-                    ? 'w-2 h-2 bg-digiqo-primary/20' 
-                    : i % 3 === 1
-                    ? 'w-1 h-1 bg-digiqo-accent/20'
-                    : 'w-1.5 h-1.5 bg-digiqo-secondary/20'
-                }`}
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                }}
-                animate={{
-                  y: [-50, 50],
-                  x: [-20, 20],
-                  opacity: [0.2, 0.5, 0.2],
-                }}
-                transition={{
-                  duration: 10 + i * 2,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  delay: i * 0.3,
-                  ease: "easeInOut",
-                }}
-              />
-            ))}
+                variants={reveal}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="text-3xl md:text-4xl font-bold text-digiqo-black leading-tight">
+                  La plupart des agences vous vendent de la visibilité.{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-digiqo-primary to-digiqo-accent">
+                    Nous, on vous vend des résultats.
+                  </span>
+                </h2>
+              </motion.div>
+
+              <motion.div
+                variants={reveal}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.15 }}
+                className="space-y-5 text-gray-600 text-lg leading-relaxed"
+              >
+                <p>
+                  La publicité digitale sans tracking complet, c'est piloter à l'aveugle.
+                  Vous dépensez, vous espérez, mais vous ne savez pas vraiment ce qui génère
+                  vos ventes — ni ce qui les freine.
+                </p>
+                <p>
+                  Chez Digiqo, on implémente le tracking server-side et le Consent Mode v2,
+                  puis on vous donne accès à un dashboard client en temps réel sur{' '}
+                  <span className="font-semibold text-digiqo-primary">app.digiqo.fr</span>.
+                  Chaque euro investi devient lisible. Chaque décision, justifiable.
+                </p>
+                <div className="flex items-center gap-3 pt-2">
+                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-digiqo-primary/10">
+                    <Eye className="w-5 h-5 text-digiqo-primary" aria-hidden="true" />
+                  </span>
+                  <span className="font-semibold text-digiqo-black">Fini le pilotage à l'aveugle.</span>
+                </div>
+              </motion.div>
+            </div>
           </div>
-          
+        </section>
+
+        {/* ============================================================== */}
+        {/* 4. L'AVANTAGE DOM (section signature)                           */}
+        {/* ============================================================== */}
+        <section className="relative py-16 md:py-24 overflow-hidden bg-digiqo-black text-white">
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-digiqo-primary/20 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-digiqo-accent/10 rounded-full blur-3xl" />
+          </div>
+
           <div className="container mx-auto px-4 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <motion.h2 
-                className="text-4xl md:text-5xl font-bold text-digiqo-black mb-4"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+            <div className="max-w-4xl mx-auto">
+              <motion.div
+                variants={reveal}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold mb-6"
               >
-                Notre équipe
+                <MapPin className="w-4 h-4 text-digiqo-accent" aria-hidden="true" />
+                L'avantage La Réunion
+              </motion.div>
+
+              <motion.h2
+                variants={reveal}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-8"
+              >
+                Pourquoi La Réunion est un terrain idéal pour la pub digitale —{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-digiqo-accent to-digiqo-primary-light">
+                  et pourquoi ça ne suffit pas
+                </span>
               </motion.h2>
-              <motion.p 
-                className="text-xl text-gray-600"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+
+              <motion.div
+                variants={reveal}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="space-y-5 text-lg text-gray-300 leading-relaxed"
               >
-                Les talents qui font la différence
-              </motion.p>
+                <p>
+                  Le CPM Meta à La Réunion est structurellement plus bas qu'en métropole :
+                  l'inventaire publicitaire local subit moins de concurrence. Concrètement,
+                  pour <span className="font-semibold text-white">1 000 € investis, vous touchez
+                  bien plus de personnes</span> qu'avec le même budget sur le continent.
+                </p>
+                <p>
+                  Mais ce levier ne fonctionne que si la stratégie, le ciblage et le tracking
+                  sont irréprochables. Un CPM bas sur une campagne mal construite, ça reste de
+                  l'argent gaspillé — juste moins cher.
+                </p>
+                <p className="text-white font-medium">
+                  C'est exactement ce que Digiqo apporte : la connaissance du marché local,
+                  couplée à la maîtrise des outils des plus grandes agences.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================== */}
+        {/* 5. NOTRE HISTOIRE                                               */}
+        {/* ============================================================== */}
+        <section id="notre-histoire" className="py-16 md:py-24 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <motion.h2
+                variants={reveal}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-digiqo-black mb-10"
+              >
+                Trois Réunionnais qui auraient pu partir.
+              </motion.h2>
+
+              <motion.div
+                variants={reveal}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.15 }}
+                className="space-y-5 text-lg text-gray-600 leading-relaxed text-left"
+              >
+                <p>
+                  Rodolphe, Alexandre, Angelo. Trois associés nés ou ancrés à La Réunion.
+                  Ils auraient pu rejoindre des agences parisiennes ou créer à l'étranger.
+                  Ils ont choisi de rester — et de construire à La Réunion une agence au
+                  niveau des meilleures agences de France.
+                </p>
+                <p>
+                  Digiqo naît de ce pari : prouver que l'excellence digitale n'est pas
+                  réservée à la métropole.
+                </p>
+                <p className="text-digiqo-black font-medium">
+                  La certification Meta Business Partner est venue confirmer, de l'extérieur,
+                  ce niveau d'exigence — celui que l'on s'impose à chaque campagne.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================== */}
+        {/* 6. L'ÉQUIPE                                                     */}
+        {/* ============================================================== */}
+        <section id="equipe" className="py-16 md:py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50">
+          <div className="container mx-auto px-4">
+            <motion.div
+              variants={reveal}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-12 md:mb-16"
+            >
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-digiqo-black mb-4">
+                Notre équipe
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Les talents qui font la différence — fondateurs et experts certifiés, mobilisés
+                sur chaque projet.
+              </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
               {team.map((member, index) => (
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 40, scale: 0.9 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  key={member.name}
+                  variants={reveal}
+                  initial="hidden"
+                  whileInView="visible"
                   viewport={{ once: true }}
-                  transition={{ 
-                    delay: index * 0.15,
-                    duration: 0.6,
-                    ease: "easeOut"
-                  }}
-                  className="group relative"
+                  transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
+                  className="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5"
                 >
-                  {/* Animated border gradient */}
-                  <motion.div
-                    className="absolute -inset-0.5 bg-gradient-to-r from-digiqo-primary via-digiqo-accent to-digiqo-primary rounded-2xl opacity-0 group-hover:opacity-100 blur"
-                    animate={{
-                      backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                    }}
-                    transition={{
-                      backgroundPosition: {
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "linear"
-                      },
-                      opacity: { duration: 0.3 }
-                    }}
-                    style={{ backgroundSize: '200% 100%' }}
-                  />
-                  
-                  <motion.div
-                    whileHover={{ 
-                      y: -15,
-                      transition: { duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }
-                    }}
-                    className="relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500"
-                  >
-                    {/* Card glow effect */}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-br from-digiqo-primary/5 via-transparent to-digiqo-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  <div className="aspect-square relative overflow-hidden">
+                    <OptimizedImage
+                      src={member.image}
+                      alt={`${member.name}, ${member.role} chez Digiqo`}
+                      width={400}
+                      height={400}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    
-                    <div className="aspect-square relative overflow-hidden">
-                      {/* Animated gradient overlay */}
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-br from-digiqo-primary/20 via-transparent to-digiqo-accent/20"
-                        initial={{ opacity: 0 }}
-                        whileHover={{ opacity: 1 }}
-                        transition={{ duration: 0.5 }}
-                      />
-                      
-                      {/* Rotating border effect */}
-                      <motion.div
-                        className="absolute inset-0 opacity-0 group-hover:opacity-100"
-                        animate={{
-                          rotate: [0, 360],
-                        }}
-                        transition={{
-                          duration: 8,
-                          repeat: Infinity,
-                          ease: "linear"
-                        }}
-                      >
-                        <div className="absolute inset-4 border-2 border-digiqo-primary/30 rounded-full" />
-                      </motion.div>
-                      
-                      <OptimizedImage
-                        src={member.image}
-                        alt={member.name}
-                        width={400}
-                        height={400}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-115"
-                      />
-                      
-                      {/* Premium gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-digiqo-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      
-                      {/* Sparkle effects on hover */}
-                      <motion.div
-                        className="absolute inset-0 pointer-events-none"
-                        initial={{ opacity: 0 }}
-                        whileHover={{ opacity: 1 }}
-                      >
-                        {[...Array(5)].map((_, i) => (
-                          <motion.div
-                            key={i}
-                            className="absolute w-1 h-1 bg-white rounded-full"
-                            style={{
-                              left: `${20 + i * 15}%`,
-                              top: `${30 + i * 10}%`
-                            }}
-                            animate={{
-                              scale: [0, 1.5, 0],
-                              opacity: [0, 1, 0],
-                            }}
-                            transition={{
-                              duration: 2,
-                              delay: i * 0.2,
-                              repeat: Infinity,
-                              repeatDelay: 3,
-                            }}
-                          />
-                        ))}
-                      </motion.div>
-                    </div>
-                    
-                    <div className="p-6 relative">
-                      {/* Content glow background */}
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-b from-transparent to-digiqo-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      />
-                      
-                      <div className="relative">
-                        <motion.h3 
-                          className="text-xl font-bold text-digiqo-black mb-1"
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                        >
-                          {member.name}
-                        </motion.h3>
-                        <motion.p 
-                          className="text-digiqo-primary font-medium mb-4"
-                          initial={{ opacity: 0.8 }}
-                          whileHover={{ opacity: 1 }}
-                        >
-                          {member.role}
-                        </motion.p>
-                        <motion.p 
-                          className="text-gray-600 text-sm mb-4"
-                          initial={{ opacity: 0.7 }}
-                          whileHover={{ opacity: 1 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          {member.description}
-                        </motion.p>
-                        
-                        {/* Social buttons with enhanced animations */}
-                        <div className="flex gap-3">
-                          <motion.a
-                            href={member.linkedin}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`Profil LinkedIn de ${member.name}`}
-                            className="relative w-10 h-10 rounded-full flex items-center justify-center overflow-hidden group/social"
-                            whileHover={{ scale: 1.15, rotate: 5 }}
-                            whileTap={{ scale: 0.95 }}
-                            transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                          >
-                            {/* Animated background */}
-                            <motion.div
-                              className="absolute inset-0 bg-gradient-to-br from-digiqo-primary to-digiqo-primary-dark opacity-0 group-hover/social:opacity-100 transition-opacity duration-300"
-                            />
-                            <motion.div
-                              className="absolute inset-0 bg-digiqo-primary/10"
-                              whileHover={{ scale: 2, opacity: 0 }}
-                              transition={{ duration: 0.5 }}
-                            />
-                            <Linkedin aria-hidden="true" className="relative w-5 h-5 text-digiqo-primary group-hover/social:text-white transition-colors duration-300 z-10" />
-                          </motion.a>
+                    <div className="absolute inset-0 bg-gradient-to-t from-digiqo-primary/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
 
-                          <motion.a
-                            href={`mailto:${member.email}`}
-                            aria-label={`Envoyer un email à ${member.name}`}
-                            className="relative w-10 h-10 rounded-full flex items-center justify-center overflow-hidden group/social"
-                            whileHover={{ scale: 1.15, rotate: -5 }}
-                            whileTap={{ scale: 0.95 }}
-                            transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                          >
-                            {/* Animated background */}
-                            <motion.div
-                              className="absolute inset-0 bg-gradient-to-br from-digiqo-accent to-digiqo-accent-dark opacity-0 group-hover/social:opacity-100 transition-opacity duration-300"
-                            />
-                            <motion.div
-                              className="absolute inset-0 bg-digiqo-accent/10"
-                              whileHover={{ scale: 2, opacity: 0 }}
-                              transition={{ duration: 0.5 }}
-                            />
-                            <Mail aria-hidden="true" className="relative w-5 h-5 text-digiqo-accent group-hover/social:text-white transition-colors duration-300 z-10" />
-                          </motion.a>
-                        </div>
-                      </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-digiqo-black mb-1">{member.name}</h3>
+                    <p className="text-digiqo-primary font-medium mb-4">{member.role}</p>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-5">{member.description}</p>
+
+                    <div className="flex gap-3">
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Profil LinkedIn de ${member.name}`}
+                        className="w-10 h-10 rounded-full bg-digiqo-primary/10 hover:bg-digiqo-primary text-digiqo-primary hover:text-white flex items-center justify-center transition-colors duration-300"
+                      >
+                        <Linkedin className="w-5 h-5" aria-hidden="true" />
+                      </a>
+                      <a
+                        href={`mailto:${member.email}`}
+                        aria-label={`Envoyer un email à ${member.name}`}
+                        className="w-10 h-10 rounded-full bg-digiqo-accent/10 hover:bg-digiqo-accent text-digiqo-accent hover:text-white flex items-center justify-center transition-colors duration-300"
+                      >
+                        <Mail className="w-5 h-5" aria-hidden="true" />
+                      </a>
                     </div>
-                  </motion.div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.p
+              variants={reveal}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center text-gray-600 max-w-3xl mx-auto mt-12 text-base md:text-lg"
+            >
+              Appuyée par une équipe d'experts certifiés (Meta, Google, création de contenu,
+              développement web), Digiqo mobilise les bonnes compétences sur chaque projet.
+            </motion.p>
+          </div>
+        </section>
+
+        {/* ============================================================== */}
+        {/* 7. CERTIFICATIONS & PARTENARIATS                                */}
+        {/* ============================================================== */}
+        <section className="py-14 md:py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <motion.h2
+              variants={reveal}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-2xl md:text-3xl font-bold text-center text-digiqo-black mb-10"
+            >
+              Nos certifications & partenariats
+            </motion.h2>
+
+            <div className="flex flex-wrap items-stretch justify-center gap-4 md:gap-6 max-w-5xl mx-auto">
+              {certifications.map((cert, index) => (
+                <motion.div
+                  key={cert.label}
+                  variants={reveal}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.08 }}
+                  className="flex items-center gap-3 bg-white border border-gray-200 rounded-xl px-5 py-4 shadow-sm hover:shadow-md hover:border-digiqo-primary/30 transition-all duration-300"
+                >
+                  {cert.type === 'logo' ? (
+                    <img
+                      src={cert.src}
+                      alt={cert.alt}
+                      width={32}
+                      height={32}
+                      loading="lazy"
+                      className="w-8 h-8 object-contain"
+                    />
+                  ) : (
+                    <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-digiqo-primary/10">
+                      <cert.icon className="w-5 h-5 text-digiqo-primary" aria-hidden="true" />
+                    </span>
+                  )}
+                  <span className="font-semibold text-digiqo-black text-sm md:text-base whitespace-nowrap">
+                    {cert.label}
+                  </span>
                 </motion.div>
               ))}
             </div>
           </div>
-        </motion.section>
+        </section>
 
-        {/* Trustpilot reviews */}
-        <section className="bg-white py-12 md:py-16">
-          <div className="max-w-5xl mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-gray-900">
-              Ils nous font confiance
-            </h2>
-            <TrustpilotWidget variant="carousel" theme="light" />
+        {/* ============================================================== */}
+        {/* 8. AVIS CLIENTS                                                 */}
+        {/* ============================================================== */}
+        <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50">
+          <div className="max-w-5xl mx-auto px-4 text-center">
+            <motion.h2
+              variants={reveal}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl md:text-4xl font-bold text-digiqo-black mb-10"
+            >
+              Ce que nos clients disent de nous
+            </motion.h2>
+
+            <motion.div
+              variants={reveal}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 md:p-10"
+            >
+              <TrustpilotWidget variant="carousel" theme="light" />
+            </motion.div>
+
+            <motion.div
+              variants={reveal}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-8"
+            >
+              <a
+                href="https://www.facebook.com/digiqo/reviews/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-digiqo-primary font-semibold hover:text-digiqo-accent transition-colors"
+              >
+                Voir tous les avis
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </a>
+            </motion.div>
           </div>
         </section>
 
-        {/* Animated section divider */}
-        <motion.div
-          className="relative h-16 overflow-hidden"
-          style={{ opacity: ctaFade }}
-        >
-          <motion.div
-            className="absolute inset-0 flex items-center justify-center"
-          >
-            {[...Array(5)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="w-2 h-2 mx-2 rounded-full bg-gradient-to-r from-digiqo-primary to-digiqo-accent"
-                animate={{
-                  scale: [1, 1.5, 1],
-                  opacity: [0.3, 1, 0.3],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  delay: i * 0.2,
-                  repeatType: "reverse"
-                }}
-              />
-            ))}
-          </motion.div>
-        </motion.div>
+        {/* ============================================================== */}
+        {/* 9. NOTRE APPROCHE (3 piliers)                                   */}
+        {/* ============================================================== */}
+        <section className="py-16 md:py-24 bg-white">
+          <div className="container mx-auto px-4">
+            <motion.div
+              variants={reveal}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-12 md:mb-16"
+            >
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-digiqo-black mb-4">
+                Notre approche
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Trois principes non négociables qui font la différence sur chaque compte.
+              </p>
+            </motion.div>
 
-        {/* CTA Section */}
-        <motion.section 
-          ref={ctaRef}
-          className="relative py-24 overflow-hidden"
-          style={{ 
-            y: ctaParallax,
-            opacity: ctaFade
-          }}
-        >
-          {/* Animated gradient background */}
+            <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+              {pillars.map((pillar, index) => {
+                const Icon = pillar.icon
+                return (
+                  <motion.div
+                    key={pillar.title}
+                    variants={reveal}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.12 }}
+                    className="group bg-gradient-to-br from-gray-50 to-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5"
+                  >
+                    <div className="w-14 h-14 mb-6 rounded-2xl bg-gradient-to-br from-digiqo-primary to-digiqo-accent flex items-center justify-center shadow-digiqo">
+                      <Icon className="w-7 h-7 text-white" aria-hidden="true" />
+                    </div>
+                    <h3 className="text-xl font-bold text-digiqo-black mb-3">{pillar.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{pillar.description}</p>
+                  </motion.div>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================== */}
+        {/* NOS VALEURS (conservée — validation Alexandre)                  */}
+        {/* ============================================================== */}
+        <section id="valeurs" className="py-16 md:py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50">
+          <div className="container mx-auto px-4">
+            <motion.div
+              variants={reveal}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-12 md:mb-16"
+            >
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-digiqo-black mb-4">
+                Nos valeurs
+              </h2>
+              <p className="text-lg text-gray-600">Ce qui nous anime au quotidien</p>
+            </motion.div>
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 max-w-6xl mx-auto">
+              {values.map((value, index) => {
+                const Icon = value.icon
+                return (
+                  <motion.div
+                    key={value.title}
+                    variants={reveal}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center hover:-translate-y-1.5"
+                  >
+                    <div className="w-16 h-16 mx-auto mb-5 rounded-2xl bg-gradient-to-br from-digiqo-primary/10 to-digiqo-accent/10 flex items-center justify-center">
+                      <Icon className="w-8 h-8 text-digiqo-primary" strokeWidth={1.5} aria-hidden="true" />
+                    </div>
+                    <h3 className="text-lg md:text-xl font-bold text-digiqo-black mb-2">{value.title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{value.description}</p>
+                  </motion.div>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================== */}
+        {/* 10. CTA FINAL                                                   */}
+        {/* ============================================================== */}
+        <section className="relative py-20 md:py-28 overflow-hidden">
           <motion.div
             className="absolute inset-0 bg-gradient-to-br from-digiqo-primary via-digiqo-accent to-digiqo-primary"
-            animate={{
-              backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear"
-            }}
+            animate={{ backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'] }}
+            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
             style={{ backgroundSize: '200% 200%' }}
           />
-          
-          {/* Animated pattern overlay */}
-          <motion.div 
+          <div
             className="absolute inset-0 opacity-10"
-            animate={{ 
-              rotate: [0, 5, 0],
-              scale: [1, 1.1, 1]
-            }}
-            transition={{ 
-              duration: 15, 
-              repeat: Infinity,
-              repeatType: "reverse"
-            }}
             style={{
-              backgroundImage: `repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 30px,
-                rgba(255,255,255,0.1) 30px,
-                rgba(255,255,255,0.1) 60px
-              )`
+              backgroundImage:
+                'repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255,255,255,0.1) 30px, rgba(255,255,255,0.1) 60px)',
             }}
           />
-          
-          {/* Floating orbs */}
-          <div className="absolute inset-0">
-            {[...Array(5)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute rounded-full"
-                style={{
-                  width: `${100 + i * 50}px`,
-                  height: `${100 + i * 50}px`,
-                  left: `${i * 25}%`,
-                  top: `${i % 2 === 0 ? -50 : 50}%`,
-                  background: 'radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%)',
-                }}
-                animate={{
-                  y: [0, -100, 0],
-                  x: [-50, 50, -50],
-                  scale: [1, 1.2, 1],
-                }}
-                transition={{
-                  duration: 20 + i * 2,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  delay: i * 0.5,
-                }}
-              />
-            ))}
-          </div>
-          
+
           <div className="container mx-auto px-4 text-center relative z-10">
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              variants={reveal}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="max-w-4xl mx-auto"
+              transition={{ duration: 0.7 }}
+              className="max-w-3xl mx-auto"
             >
-              {/* Animated badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md text-white px-6 py-3 rounded-full text-sm font-semibold mb-8"
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                Prêt à faire travailler votre budget plus intelligemment ?
+              </h2>
+              <p className="text-lg md:text-xl text-white/90 mb-10 leading-relaxed">
+                Audit gratuit de vos campagnes en cours. On vous dit ce qui fonctionne, ce qui
+                ne fonctionne pas, et comment on peut améliorer.
+              </p>
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-3 px-10 py-5 bg-white text-digiqo-primary font-bold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-0.5"
               >
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                >
-                  <Sparkles className="w-4 h-4" />
-                </motion.div>
-                214 clients satisfaits
-              </motion.div>
-              
-              <motion.h2 
-                className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-              >
-                Prêt à{' '}
-                <motion.span
-                  className="inline-block"
-                  animate={{
-                    scale: [1, 1.1, 1],
-                    rotate: [-2, 2, -2],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                  }}
-                >
-                  propulser
-                </motion.span>{' '}
-                votre présence digitale ?
-              </motion.h2>
-              
-              <motion.p 
-                className="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-              >
-                Rejoignez les entreprises qui nous font confiance pour leur croissance digitale
-              </motion.p>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center"
-              >
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="relative group"
-                >
-                  {/* Button glow effect */}
-                  <motion.div
-                    className="absolute -inset-1 bg-white/50 rounded-2xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-300"
-                    animate={{
-                      scale: [1, 1.1, 1],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                    }}
-                  />
-                  
-                  <Link
-                    href="/?openServices=true#services"
-                    className="relative inline-flex items-center gap-3 px-10 py-5 bg-white text-digiqo-primary font-bold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300"
-                  >
-                    <span className="text-lg">Découvrir nos services</span>
-                    <motion.div
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                    >
-                      <Rocket className="w-6 h-6" />
-                    </motion.div>
-                  </Link>
-                </motion.div>
-              </motion.div>
-              
-              {/* Animated trust indicators */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-                className="flex flex-wrap items-center justify-center gap-8 mt-12"
-              >
-                {[
-                  { icon: Award, text: 'Excellence garantie' },
-                  { icon: Clock, text: 'Support réactif' },
-                  { icon: Users, text: 'Équipe passionnée' }
-                ].map((item, index) => {
-                  const Icon = item.icon
-                  return (
-                    <motion.div
-                      key={index}
-                      className="flex items-center gap-2 text-white/80"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                    >
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ 
-                          duration: 20, 
-                          repeat: Infinity, 
-                          ease: "linear",
-                          delay: index * 5
-                        }}
-                      >
-                        <Icon className="w-5 h-5" />
-                      </motion.div>
-                      <span className="text-sm font-medium">{item.text}</span>
-                    </motion.div>
-                  )
-                })}
-              </motion.div>
+                <span className="text-lg">Demander mon audit gratuit</span>
+                <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              </Link>
             </motion.div>
           </div>
-        </motion.section>
+        </section>
       </main>
 
       <Footer />
