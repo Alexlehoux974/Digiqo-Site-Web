@@ -276,7 +276,7 @@ export default function Agence() {
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
                 <Link
-                  href="/contact"
+                  href="/?instant=true#contact"
                   className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-digiqo-primary to-digiqo-primary-light text-white font-bold rounded-2xl shadow-digiqo hover:shadow-digiqo-lg transition-all duration-300 hover:-translate-y-0.5"
                 >
                   <span className="text-lg">Parlons de votre projet</span>
@@ -793,7 +793,7 @@ export default function Agence() {
                 ne fonctionne pas, et comment on peut améliorer.
               </p>
               <Link
-                href="/contact"
+                href="/?instant=true#contact"
                 className="group inline-flex items-center gap-3 px-10 py-5 bg-white text-digiqo-primary font-bold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-0.5"
               >
                 <span className="text-lg">Demander mon audit gratuit</span>
