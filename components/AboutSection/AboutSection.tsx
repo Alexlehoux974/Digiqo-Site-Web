@@ -5,7 +5,7 @@ import { OptimizedImage } from '../ui/OptimizedImage';
 
 const timelineData = [
   {
-    title: "2020 - La Genèse",
+    title: "2024 - La Genèse",
     content: (
       <div className="bg-white rounded-3xl p-10 shadow-xl border border-gray-100">
         {/* Header */}

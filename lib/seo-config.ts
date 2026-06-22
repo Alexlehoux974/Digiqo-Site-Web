@@ -96,7 +96,7 @@ export const homeStructuredDataGraph = {
       "image": { "@id": "https://digiqo.fr/#logo" },
       "telephone": "+262 262 02 51 02",
       "email": "contact@digiqo.fr",
-      "foundingDate": "2020",
+      "foundingDate": "2024",
       "founder": {
         "@type": "Person",
         "name": "Rodolphe Le Houx"

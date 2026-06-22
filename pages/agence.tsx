@@ -13,7 +13,7 @@ const team = [
     name: 'Rodolphe Le Houx',
     role: 'Fondateur & CEO',
     description: "Rodolphe est le cœur battant de Digiqo. En tant que CEO, il fait preuve d'une vision stratégique claire et d'une passion inébranlable pour le numérique. Il guide l'entreprise avec dynamisme, cherchant constamment à innover et à anticiper les tendances du marché. Son objectif : offrir à nos clients des solutions digitales sur-mesure, en forgeant des partenariats durables.",
-    image: '/partenaires/Rodolphe.webp',
+    image: '/images/rodolphe-lehoux-photo.webp',
     linkedin: 'https://www.linkedin.com/in/rodolphe-le-houx/',
     email: 'rodolphe@digiqo.fr'
   },
@@ -87,7 +87,7 @@ const agenceStructuredDataGraph = {
       "name": "L'Agence Digiqo",
       "url": "https://digiqo.fr/agence",
       "description":
-        "Première agence marketing digital de La Réunion certifiée Meta Business Partner. Équipe d'experts en publicité Meta Ads, Google Ads, développement web, SEO et community management depuis 2020.",
+        "Première agence marketing digital de La Réunion certifiée Meta Business Partner. Équipe d'experts en publicité Meta Ads, Google Ads, développement web, SEO et community management depuis 2024.",
       "inLanguage": "fr-FR",
       "isPartOf": { "@id": "https://digiqo.fr/#website" },
       "mainEntity": { "@id": "https://digiqo.fr/#organization" }
@@ -156,7 +156,7 @@ export default function Agence() {
     <>
       <SEO
         title="L'Agence - Digiqo"
-        description="Découvrez Digiqo, votre agence digitale à La Réunion. Une équipe d'experts passionnés pour booster votre présence en ligne depuis 2020."
+        description="Découvrez Digiqo, votre agence digitale à La Réunion. Une équipe d'experts passionnés pour booster votre présence en ligne depuis 2024."
         keywords="agence digitale la réunion, digiqo team, marketing digital, publicité en ligne"
         url="https://digiqo.fr/agence"
         structuredData={agenceStructuredDataGraph}
@@ -275,7 +275,7 @@ export default function Agence() {
                 >
                   <Sparkles className="w-4 h-4" />
                 </motion.div>
-                Depuis 2020
+                Depuis 2024
               </motion.div>
               
               {/* H1 is the LCP element on /agence — must paint immediately.
@@ -325,7 +325,7 @@ export default function Agence() {
                 className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto"
                 initial={false}
               >
-                Fondée en 2020, Digiqo est une agence dynamique spécialisée dans les stratégies digitales innovantes.
+                Fondée en 2024, Digiqo est une agence dynamique spécialisée dans les stratégies digitales innovantes.
                 Notre équipe d'experts passionnés s'engage à offrir des solutions sur mesure pour renforcer la présence 
                 en ligne de nos clients et accélérer leur croissance.
               </motion.p>
@@ -339,7 +339,7 @@ export default function Agence() {
               className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
             >
               {[
-                { number: '2020', label: 'Année de création', icon: Calendar },
+                { number: '2024', label: 'Année de création', icon: Calendar },
                 { number: '214', label: 'Clients satisfaits', icon: Award },
                 { number: '100%', label: 'Passion', icon: Heart }
               ].map((stat, index) => {

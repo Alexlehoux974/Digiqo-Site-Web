@@ -222,7 +222,7 @@ export function ResultsSection() {
           </h3>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Nous ne promettons pas la lune, nous la décrochons pour nos clients.<br />
-            <span className="text-gray-900 font-semibold">Voici les chiffres</span> qui font notre fierté depuis 2020.
+            <span className="text-gray-900 font-semibold">Voici les chiffres</span> qui font notre fierté depuis 2024.
           </p>
         </div>
 

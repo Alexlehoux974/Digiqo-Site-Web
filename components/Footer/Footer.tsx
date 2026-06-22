@@ -103,7 +103,7 @@ export const Footer = () => {
                 </Link>
               </div>
               <p className="text-gray-300 mb-6 text-sm leading-relaxed text-center">
-                Votre partenaire digital depuis 2020
+                Votre partenaire digital depuis 2024
               </p>
               <div className="space-y-3">
                 <a href="tel:+262262025102" className="flex items-center gap-3 text-gray-300 hover:text-cyan-400 transition-colors group">

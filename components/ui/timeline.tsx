@@ -40,7 +40,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
         <h2 className="text-3xl md:text-5xl mb-4 font-bold">
           <span className="text-white">Notre Histoire</span>{' '}
           <span className="bg-gradient-to-r from-digiqo-secondary to-digiqo-accent bg-clip-text text-transparent">
-            depuis 2020
+            depuis 2024
           </span>
         </h2>
         <p className="text-white/70 text-lg max-w-2xl">
