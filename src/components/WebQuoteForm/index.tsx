@@ -11,6 +11,7 @@ import TechnicalStep from './steps/TechnicalStep';
 import TimelinePaymentStep from './steps/TimelinePaymentStep';
 import ContactStep from './steps/ContactStep';
 import { WebQuoteFormData } from '../../lib/quote-types';
+import { getMerciHref } from '@/lib/gclid';
 
 const STEPS = [
   { id: 1, name: 'Votre projet', component: ProjectInfoStep },
@@ -91,7 +92,7 @@ export default function WebQuoteForm() {
       if (response.ok) {
         localStorage.removeItem('webQuoteFormData');
         // Redirect to thank you page
-        router.push('/merci');
+        router.push(getMerciHref());
       } else {
         alert('Une erreur est survenue. Veuillez réessayer.');
       }

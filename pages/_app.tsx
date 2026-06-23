@@ -6,6 +6,7 @@ import { LazyMotion, domAnimation } from 'framer-motion'
 import { CookieConsent } from '@/components/CookieConsent'
 import { ScrollToTop } from '@/components/ScrollToTop'
 import { inter, montserrat } from '@/lib/fonts'
+import { captureGclid } from '@/lib/gclid'
 import dynamic from 'next/dynamic'
 const ChatWidget = dynamic(() => import('@/components/ChatWidget').then(m => m.ChatWidget), { ssr: false })
 import '../styles/globals.css'
@@ -52,6 +53,12 @@ export default function App({ Component, pageProps }: AppProps) {
       cleanup()
     }
   }, [])
+
+  // Capture le gclid Google Ads de l'URL d'atterrissage (et à chaque nav)
+  // pour pouvoir le propager vers /merci au moment de la conversion.
+  useEffect(() => {
+    captureGclid()
+  }, [router.asPath])
 
   // Check consent from localStorage on mount and listen for changes
   useEffect(() => {

@@ -5,6 +5,7 @@ import { Instagram, Facebook, Linkedin, Youtube, Mail, Phone, MapPin } from 'luc
 import { SiTiktok, SiX } from 'react-icons/si'
 import Link from 'next/link'
 import { TrustpilotWidget } from '@/components/Trustpilot'
+import { getMerciHref } from '@/lib/gclid'
 
 const navigation = {
   services: [
@@ -64,9 +65,9 @@ export const Footer = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email })
       })
-      router.push('/merci')
+      router.push(getMerciHref())
     } catch {
-      router.push('/merci')
+      router.push(getMerciHref())
     }
   }
 

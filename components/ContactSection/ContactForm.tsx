@@ -3,6 +3,7 @@ import { m as motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { Check, Mail, Phone, User, FileText, MessageSquare, Send, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { getMerciHref } from '@/lib/gclid'
 
 const services = [
   { id: 'website', label: 'Site web' },
@@ -140,14 +141,14 @@ export function ContactForm({ formData, setFormData }: ContactFormProps) {
       await new Promise(resolve => setTimeout(resolve, 600))
 
       // Rediriger vers la page de remerciement
-      router.push('/merci')
+      router.push(getMerciHref())
 
     } catch (error) {
       console.error('Error submitting form:', error)
       // On continue même en cas d'erreur
       // Rediriger même en cas d'erreur après un délai
       setTimeout(() => {
-        router.push('/merci')
+        router.push(getMerciHref())
       }, 500)
     }
 

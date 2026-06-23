@@ -3,6 +3,7 @@ import { m as motion } from 'framer-motion';
 import { Send, AlertCircle, Globe, Briefcase, FileText, Users } from 'lucide-react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { getMerciHref } from '@/lib/gclid';
 
 interface FormData {
   nomPrenom: string;
@@ -248,7 +249,7 @@ export default function FreelanceRecruitmentForm() {
       setSubmitStatus('success');
       // Redirect to thank you page
       setTimeout(() => {
-        router.push('/merci');
+        router.push(getMerciHref());
       }, 100);
       // Reset form
       setFormData({

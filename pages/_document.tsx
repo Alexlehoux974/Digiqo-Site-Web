@@ -25,6 +25,10 @@ export default function Document() {
                 wait_for_update: 500
               });
               gtag('js', new Date());
+              // url_passthrough : sans cookie _gcl_aw (Consent Mode denied),
+              // le tag lit le gclid depuis l'URL. Indispensable pour que le
+              // gclid propagé vers /merci soit attaché à l'event de conversion.
+              gtag('set', 'url_passthrough', true);
               gtag('config', 'AW-18002905491');
             `,
           }}

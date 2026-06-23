@@ -16,6 +16,7 @@ import ObjectivesStep from './steps/ObjectivesStep';
 import ContactStep from './steps/ContactStep';
 import { AuditFormData, AuditStep } from '@/src/lib/audit-types';
 import { calculateAuditScore } from '@/src/lib/audit-utils';
+import { getMerciHref } from '@/lib/gclid';
 
 const steps: AuditStep[] = [
   {
@@ -230,7 +231,7 @@ export default function AuditForm() {
       if (response.ok) {
         localStorage.removeItem('auditFormData');
         // Redirect to thank you page
-        router.push('/merci');
+        router.push(getMerciHref());
       } else {
         // Log l'erreur pour debug
         const errorText = await response.text();

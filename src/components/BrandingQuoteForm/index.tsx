@@ -8,6 +8,7 @@ import StyleStep from './steps/StyleStep'
 import ProjectStep from './steps/ProjectStep'
 import ContactStep from './steps/ContactStep'
 import { BrandingQuoteFormData, BrandingService } from '../../lib/branding-quote-types'
+import { getMerciHref } from '@/lib/gclid'
 
 const STEPS = [
   { id: 1, name: 'Votre besoin', component: ServiceStep },
@@ -95,7 +96,7 @@ export default function BrandingQuoteForm({ preSelectedService, onClose }: Brand
       if (response.ok) {
         localStorage.removeItem('brandingQuoteFormData')
         onClose()
-        router.push('/merci')
+        router.push(getMerciHref())
       } else {
         alert('Une erreur est survenue. Veuillez réessayer.')
       }
