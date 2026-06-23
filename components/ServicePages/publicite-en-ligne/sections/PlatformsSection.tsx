@@ -89,20 +89,23 @@ export default function PlatformsSection() {
               </div>
             </div>
             <p className="text-blue-100 mb-4">
-              Google Ads (Search, Display, YouTube)
+              Google Ads (Search, Display, YouTube) — campagnes Search et liens sponsorisés
+            </p>
+            <p className="text-blue-100 mb-4">
+              Digiqo, votre agence SEA à La Réunion, pilote votre référencement payant pour vous placer en tête de Google sur vos mots-clés stratégiques.
             </p>
             <ul className="space-y-2 text-sm text-blue-100">
               <li className="flex items-start gap-2">
                 <Check aria-hidden="true" className="w-4 h-4 text-green-300 mt-0.5 flex-shrink-0" />
-                <span>Ciblez les personnes qui recherchent activement vos services</span>
+                <span>Campagnes Search : ciblez les personnes qui recherchent activement vos services</span>
               </li>
               <li className="flex items-start gap-2">
                 <Check aria-hidden="true" className="w-4 h-4 text-green-300 mt-0.5 flex-shrink-0" />
-                <span>Intention d'achat immédiate, ROI mesurable</span>
+                <span>Liens sponsorisés à forte intention d'achat, ROI mesurable</span>
               </li>
               <li className="flex items-start gap-2">
                 <Check aria-hidden="true" className="w-4 h-4 text-green-300 mt-0.5 flex-shrink-0" />
-                <span>Top des résultats Google sur vos mots-clés business</span>
+                <span>Référencement payant optimisé : top des résultats Google sur vos mots-clés business</span>
               </li>
             </ul>
           </motion.div>
