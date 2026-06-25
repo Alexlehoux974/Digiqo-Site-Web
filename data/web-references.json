@@ -17,6 +17,10 @@
   { "name": "Investis DOM", "url": "https://investis-dom.com", "screenshot": "/references/fullpage/investis-dom-com.webp", "archived": false },
   { "name": "CMX Factory", "url": "https://cmxfactory.com", "screenshot": "/references/fullpage/cmxfactory-com.webp", "archived": false },
   { "name": "Sattwika", "url": "https://sattwika.com", "screenshot": "/references/fullpage/sattwika-com.webp", "archived": false },
+  { "name": "Ammo", "url": "https://ammo.re", "screenshot": "/references/fullpage/ammo-re.webp", "archived": false },
+  { "name": "Belfrit Business", "url": "https://belfritbusiness.re", "screenshot": "/references/fullpage/belfritbusiness-re.webp", "archived": false },
+  { "name": "Lodges Paradise", "url": "https://lodgesparadise.com", "screenshot": "/references/fullpage/lodgesparadise-com.webp", "archived": false },
+  { "name": "V2A Group", "url": "https://v2agroup.com/fr", "screenshot": "/references/fullpage/v2agroup-com.webp", "archived": false },
   { "name": "La Boussole du Manager", "url": "https://laboussoledumanager.re", "screenshot": "/references/fullpage/laboussoledumanager-re.webp", "archived": true, "consecutiveFailures": 2, "lastStatus": "ENOTFOUND (domaine ne résout plus)", "lastChecked": "2026-06-05T00:00:00.000Z" },
   { "name": "Zen Eat Yoga", "url": "https://zeneatyoga.com", "screenshot": "/references/fullpage/zeneatyoga-com.webp", "archived": true, "consecutiveFailures": 2, "lastStatus": "ERR_SSL_TLSV1_ALERT_INTERNAL_ERROR (handshake TLS refusé)", "lastChecked": "2026-06-05T00:00:00.000Z" }
 ]
