@@ -114,11 +114,11 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
       </div>
 
       {/* Animated Image Marquee */}
-      <div className="absolute -bottom-16 md:-bottom-20 left-0 w-full h-1/3 md:h-2/5">
+      <div className="absolute bottom-0 left-0 w-full pb-6 md:pb-8 pointer-events-none">
         <motion.div
-          className="flex gap-4"
+          className="flex gap-4 items-end w-max"
           animate={{
-            x: ["-100%", "0%"],
+            x: ["0%", "-50%"],
             transition: {
               ease: "linear",
               duration: 40,

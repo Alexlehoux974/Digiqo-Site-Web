@@ -354,7 +354,11 @@ export default function VideoPage() {
           '/visuel-client/piton-fougere-9x16.webp',
           '/visuel-client/sweetjab-crosstraining-9x16.webp',
           '/visuel-client/yoga-lechoka-9x16.webp',
-          '/visuel-client/paragraphe-story-01.webp'
+          '/visuel-client/paragraphe-story-01.webp',
+          '/visuel-client/alliance-nord-optique.webp',
+          '/visuel-client/allovapeur.webp',
+          '/visuel-client/el-latino-strip.webp',
+          '/visuel-client/fayarun.webp'
         ]}
         onCtaClick={() => {
           const element = document.getElementById('abonnements');
