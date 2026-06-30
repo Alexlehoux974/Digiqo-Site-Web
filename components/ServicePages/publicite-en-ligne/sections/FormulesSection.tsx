@@ -41,7 +41,7 @@ interface Formula {
   icon: any
   bonus: {
     title: string
-    items: string[]
+    items: (string | React.ReactNode)[]
   } | null
   paymentLinkShortTerm: string
   paymentLinkAnnual: string
@@ -133,7 +133,7 @@ export default function FormulesSection() {
       gradient: 'from-blue-500 to-indigo-600',
       accentColor: '#3B82F6',
       icon: Zap,
-      bonus: { title: 'Offre promotionnelle', items: isAnnual ? ['1 vidéo offerte'] : ['1 production vidéo à tarif réduit à la souscription'] },
+      bonus: { title: 'Offre promotionnelle', items: isAnnual ? ['1 vidéo offerte'] : [<a href="/services/creatifs" className="underline hover:text-digiqo-secondary-dark transition-colors">20% de réduction sur la production vidéo de votre choix</a>] },
       paymentLinkShortTerm: 'https://payments-eu1.hubspot.com/payments/hvKD4PsM?referrer=PAYMENT_LINK',
       paymentLinkAnnual: 'https://payments-eu1.hubspot.com/payments/JCJGmsRC?referrer=PAYMENT_LINK',
       bestValue: true,
