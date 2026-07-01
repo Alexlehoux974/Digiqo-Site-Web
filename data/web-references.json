@@ -1,26 +1,239 @@
 [
-  { "name": "Rodolphe Le Houx", "url": "https://rodolphelehoux.com", "screenshot": "/references/fullpage/rodolphelehoux-com.webp", "archived": false },
-  { "name": "Ocean Brands Network", "url": "https://oceanbrandsnetwork.com", "screenshot": "/references/fullpage/oceanbrandsnetwork-com.webp", "archived": false },
-  { "name": "RunCall", "url": "https://runcall.re", "screenshot": "/references/fullpage/runcall-re.webp", "archived": false },
-  { "name": "Crackoi", "url": "https://crackoi.com/fr", "screenshot": "/references/fullpage/crackoi.webp", "archived": false },
-  { "name": "Les Maisons Jupiter", "url": "https://lesmaisonsjupiter.re", "screenshot": "/references/fullpage/lesmaisonsjupiter-re.webp", "archived": false },
-  { "name": "Incana Notaires", "url": "https://incana.notaires.fr", "screenshot": "/references/fullpage/incana-notaires-fr.webp", "archived": false },
-  { "name": "Sabaguina (refonte en cours)", "url": "https://sabaguina.com", "screenshot": "/references/fullpage/sabaguina-com.webp", "archived": false },
-  { "name": "EMPC", "url": "https://empc.re", "screenshot": "/references/fullpage/empc-re.webp", "archived": false },
-  { "name": "Mystik Sauna", "url": "https://mystiksauna.re", "screenshot": "/references/fullpage/mystiksauna-re.webp", "archived": false },
-  { "name": "Sogitec Énergie", "url": "https://sogitec-energie.fr", "screenshot": "/references/fullpage/sogitec-energie-fr.webp", "archived": false },
-  { "name": "Pascal Destercke", "url": "https://pascal-destercke.com", "screenshot": "/references/fullpage/pascal-destercke-com.webp", "archived": false },
-  { "name": "Velocit AI", "url": "https://velocit-ai.fr", "screenshot": "/references/fullpage/velocit-ai-fr.webp", "archived": false },
-  { "name": "Monsterphone", "url": "https://monster-phone.re", "screenshot": "/references/fullpage/monster-phone-re.webp", "archived": false },
-  { "name": "Parapente Réunion", "url": "https://parapente-reunion.fr", "screenshot": "/references/fullpage/parapente-reunion-fr.webp", "archived": false },
-  { "name": "Click'n Van", "url": "https://clicknvan.com", "screenshot": "/references/fullpage/clicknvan-com.webp", "archived": false },
-  { "name": "Investis DOM", "url": "https://investis-dom.com", "screenshot": "/references/fullpage/investis-dom-com.webp", "archived": false },
-  { "name": "CMX Factory", "url": "https://cmxfactory.com", "screenshot": "/references/fullpage/cmxfactory-com.webp", "archived": false },
-  { "name": "Sattwika", "url": "https://sattwika.com", "screenshot": "/references/fullpage/sattwika-com.webp", "archived": false },
-  { "name": "Ammo", "url": "https://ammo.re", "screenshot": "/references/fullpage/ammo-re.webp", "archived": false },
-  { "name": "Belfrit Business", "url": "https://belfritbusiness.re", "screenshot": "/references/fullpage/belfritbusiness-re.webp", "archived": false },
-  { "name": "Lodges Paradise", "url": "https://lodgesparadise.com", "screenshot": "/references/fullpage/lodgesparadise-com.webp", "archived": false },
-  { "name": "V2A Group", "url": "https://v2agroup.com/fr", "screenshot": "/references/fullpage/v2agroup-com.webp", "archived": false },
-  { "name": "La Boussole du Manager", "url": "https://laboussoledumanager.re", "screenshot": "/references/fullpage/laboussoledumanager-re.webp", "archived": true, "consecutiveFailures": 2, "lastStatus": "ENOTFOUND (domaine ne résout plus)", "lastChecked": "2026-06-05T00:00:00.000Z" },
-  { "name": "Zen Eat Yoga", "url": "https://zeneatyoga.com", "screenshot": "/references/fullpage/zeneatyoga-com.webp", "archived": true, "consecutiveFailures": 2, "lastStatus": "ERR_SSL_TLSV1_ALERT_INTERNAL_ERROR (handshake TLS refusé)", "lastChecked": "2026-06-05T00:00:00.000Z" }
+  {
+    "name": "Rodolphe Le Houx",
+    "url": "https://rodolphelehoux.com",
+    "screenshot": "/references/fullpage/rodolphelehoux-com.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:01.665Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:01.670Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "Ocean Brands Network",
+    "url": "https://oceanbrandsnetwork.com",
+    "screenshot": "/references/fullpage/oceanbrandsnetwork-com.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:02.727Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:02.727Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "RunCall",
+    "url": "https://runcall.re",
+    "screenshot": "/references/fullpage/runcall-re.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:07.323Z",
+    "lastStatus": "ERR_SSL_TLSV1_ALERT_INTERNAL_ERROR",
+    "consecutiveFailures": 1
+  },
+  {
+    "name": "Crackoi",
+    "url": "https://crackoi.com/fr",
+    "screenshot": "/references/fullpage/crackoi.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:14.476Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:14.476Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "Les Maisons Jupiter",
+    "url": "https://lesmaisonsjupiter.re",
+    "screenshot": "/references/fullpage/lesmaisonsjupiter-re.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:15.353Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:15.353Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "Incana Notaires",
+    "url": "https://incana.notaires.fr",
+    "screenshot": "/references/fullpage/incana-notaires-fr.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:21.066Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:21.066Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "Sabaguina (refonte en cours)",
+    "url": "https://sabaguina.com",
+    "screenshot": "/references/fullpage/sabaguina-com.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:21.180Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:21.180Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "EMPC",
+    "url": "https://empc.re",
+    "screenshot": "/references/fullpage/empc-re.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:21.995Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:21.995Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "Mystik Sauna",
+    "url": "https://mystiksauna.re",
+    "screenshot": "/references/fullpage/mystiksauna-re.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:22.048Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:22.048Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "Sogitec Énergie",
+    "url": "https://sogitec-energie.fr",
+    "screenshot": "/references/fullpage/sogitec-energie-fr.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:22.111Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:22.111Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "Pascal Destercke",
+    "url": "https://pascal-destercke.com",
+    "screenshot": "/references/fullpage/pascal-destercke-com.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:22.213Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:22.213Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "Velocit AI",
+    "url": "https://velocit-ai.fr",
+    "screenshot": "/references/fullpage/velocit-ai-fr.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:24.544Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:24.544Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "Monsterphone",
+    "url": "https://monster-phone.re",
+    "screenshot": "/references/fullpage/monster-phone-re.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:26.773Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:26.773Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "Parapente Réunion",
+    "url": "https://parapente-reunion.fr",
+    "screenshot": "/references/fullpage/parapente-reunion-fr.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:30.002Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:30.002Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "Click'n Van",
+    "url": "https://clicknvan.com",
+    "screenshot": "/references/fullpage/clicknvan-com.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:30.100Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:30.100Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "Investis DOM",
+    "url": "https://investis-dom.com",
+    "screenshot": "/references/fullpage/investis-dom-com.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:30.260Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:30.260Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "CMX Factory",
+    "url": "https://cmxfactory.com",
+    "screenshot": "/references/fullpage/cmxfactory-com.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:30.673Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:30.673Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "Sattwika",
+    "url": "https://sattwika.com",
+    "screenshot": "/references/fullpage/sattwika-com.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:30.891Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:30.891Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "Ammo",
+    "url": "https://ammo.re",
+    "screenshot": "/references/fullpage/ammo-re.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:31.810Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:31.810Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "Belfrit Business",
+    "url": "https://belfritbusiness.re",
+    "screenshot": "/references/fullpage/belfritbusiness-re.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:32.817Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:32.817Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "Lodges Paradise",
+    "url": "https://lodgesparadise.com",
+    "screenshot": "/references/fullpage/lodgesparadise-com.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:32.998Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:32.998Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "V2A Group",
+    "url": "https://v2agroup.com/fr",
+    "screenshot": "/references/fullpage/v2agroup-com.webp",
+    "archived": false,
+    "lastChecked": "2026-07-01T09:00:35.771Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-01T09:00:35.771Z",
+    "consecutiveFailures": 0
+  },
+  {
+    "name": "La Boussole du Manager",
+    "url": "https://laboussoledumanager.re",
+    "screenshot": "/references/fullpage/laboussoledumanager-re.webp",
+    "archived": true,
+    "consecutiveFailures": 3,
+    "lastStatus": "ENOTFOUND",
+    "lastChecked": "2026-07-01T09:00:40.365Z"
+  },
+  {
+    "name": "Zen Eat Yoga",
+    "url": "https://zeneatyoga.com",
+    "screenshot": "/references/fullpage/zeneatyoga-com.webp",
+    "archived": true,
+    "consecutiveFailures": 3,
+    "lastStatus": "ENOTFOUND",
+    "lastChecked": "2026-07-01T09:00:45.083Z"
+  }
 ]
