@@ -6,7 +6,6 @@ import {
   MapPin,
   Users,
   Heart,
-  ExternalLink,
   ArrowRight,
   FileText,
   Search,
@@ -32,18 +31,24 @@ import { generateContactUrl } from '../lib/contact-utils'
 // INFLUENCER DATA — Add new profiles here
 // ──────────────────────────────────────────────
 
+interface PlatformStats {
+  url: string
+  followers: string // ex. "15K" ou "À définir"
+  engagement: string // ex. "7%" ou "À définir"
+}
+
 interface Influencer {
   name: string
   handle: string
   photo: string
   location: string
-  followers: string
   niches: string[]
   bio: string
-  instagram: string
+  instagram: PlatformStats
+  tiktok: PlatformStats
   contentTypes: string[]
-  engagement: string
   featured?: boolean
+  pending?: boolean // en attente de l'accord de la créatrice → non affiché
 }
 
 const influencers: Influencer[] = [
@@ -52,12 +57,19 @@ const influencers: Influencer[] = [
     handle: '@op_lehoux',
     photo: '/assets/createurs/ophelie-lehoux.jpg',
     location: 'La Réunion — Paris',
-    followers: '15K',
     niches: ['Mode', 'Beauté', 'Hygiène', 'Cheveux bouclés', 'Sport'],
     bio: 'Créatrice de contenu passionnée par la mode, la beauté et le sport. Son authenticité et son énergie captivent une communauté engagée entre La Réunion et Paris.',
-    instagram: 'https://www.instagram.com/op_lehoux/',
+    instagram: {
+      url: 'https://www.instagram.com/op_lehoux/',
+      followers: '15K',
+      engagement: 'À définir',
+    },
+    tiktok: {
+      url: 'https://www.tiktok.com/@op_lehoux',
+      followers: 'À définir',
+      engagement: 'À définir',
+    },
     contentTypes: ['Reels', 'Stories', 'Posts', 'UGC'],
-    engagement: 'À définir',
     featured: true,
   },
   {
@@ -65,15 +77,76 @@ const influencers: Influencer[] = [
     handle: '@mae.jr974',
     photo: '/assets/createurs/mae-jeanne-rose.jpg',
     location: 'La Réunion',
-    followers: '40,2K',
     niches: ['Lifestyle', 'Voyage', 'Mode', 'Beauté', 'Sport', 'Activités touristiques', 'Podcast'],
     bio: 'Créatrice de contenu spécialisée dans la valorisation de la culture réunionnaise, qui a su fédérer une communauté de plus de 113 000 abonnés (TikTok + Instagram) depuis janvier 2024 à travers des contenus immersifs autour des traditions, de la gastronomie, des paysages et du mode de vie sur l\u2019île de la Réunion.',
-    instagram: 'https://www.instagram.com/mae.jr974/',
+    instagram: {
+      url: 'https://www.instagram.com/mae.jr974/',
+      followers: '40,2K',
+      engagement: '7%',
+    },
+    tiktok: {
+      url: 'https://www.tiktok.com/@mae.jr974',
+      followers: 'À définir',
+      engagement: 'À définir',
+    },
     contentTypes: ['Reels', 'Posts', 'Stories', 'UGC'],
-    engagement: '7%',
     featured: true,
   },
+  {
+    // ⏳ En attente de l'accord de la créatrice — pending: true → non affiché.
+    // Pour publier : retirer `pending: true` et compléter les chiffres ci-dessous.
+    name: 'Kerry',
+    handle: '@adventuresofkerry',
+    photo: '/assets/createurs/kerry.jpg',
+    location: 'À définir',
+    niches: ['Voyage', 'Lifestyle'],
+    bio: 'À définir',
+    instagram: {
+      url: 'https://www.instagram.com/adventuresofkerry/',
+      followers: 'À définir',
+      engagement: 'À définir',
+    },
+    tiktok: {
+      url: 'https://www.tiktok.com/@kerrymomojou',
+      followers: 'À définir',
+      engagement: 'À définir',
+    },
+    contentTypes: ['Reels', 'Posts'],
+    pending: true,
+  },
 ]
+
+// Créateurs affichés (on masque ceux en attente d'accord)
+const visibleInfluencers = influencers.filter((inf) => !inf.pending)
+
+// ──────────────────────────────────────────────
+// ENGAGEMENT HELPERS
+// ──────────────────────────────────────────────
+
+const parsePct = (value: string): number | null => {
+  const match = value.match(/(\d+(?:[.,]\d+)?)/)
+  return match ? parseFloat(match[1].replace(',', '.')) : null
+}
+
+// Taux d'engagement moyen des plateformes renseignées ("À définir" si aucune)
+const getAvgEngagement = (inf: Influencer): string => {
+  const values = [inf.instagram.engagement, inf.tiktok.engagement]
+    .map(parsePct)
+    .filter((n): n is number => n !== null)
+  if (values.length === 0) return 'À définir'
+  const avg = values.reduce((a, b) => a + b, 0) / values.length
+  return `${(Math.round(avg * 10) / 10).toString().replace('.', ',')}%`
+}
+
+// ──────────────────────────────────────────────
+// TIKTOK ICON (lucide n'a pas d'icône TikTok)
+// ──────────────────────────────────────────────
+
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-3.09v12.4a2.59 2.59 0 1 1-2.59-2.55c.27 0 .53.04.78.12V9.4a6.6 6.6 0 0 0-.78-.05A5.68 5.68 0 1 0 15.54 15V8.16a7.29 7.29 0 0 0 4.26 1.36V6.43a4.27 4.27 0 0 1-3.2-.61z" />
+  </svg>
+)
 
 // ──────────────────────────────────────────────
 // NICHE TAG COLORS
@@ -197,22 +270,48 @@ const InfluencerCard = ({ influencer, index }: { influencer: Influencer; index: 
                 <MapPin className="w-3.5 h-3.5" />
                 <span>{influencer.location}</span>
               </div>
-              {/* Follower badge — inline on mobile */}
-              <div className="inline-flex sm:hidden mt-2">
-                <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white px-4 py-2 rounded-2xl text-center">
-                  <div className="text-lg font-bold leading-tight">{influencer.followers}</div>
-                  <div className="text-[10px] uppercase tracking-wider text-gray-400">followers</div>
-                </div>
-              </div>
             </div>
+          </div>
 
-            {/* Follower badge — desktop only */}
-            <div className="flex-shrink-0 hidden sm:block">
-              <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white px-4 py-2 rounded-2xl text-center">
-                <div className="text-lg font-bold leading-tight">{influencer.followers}</div>
-                <div className="text-[10px] uppercase tracking-wider text-gray-400">followers</div>
+          {/* Social stats — Instagram + TikTok */}
+          <div className="grid grid-cols-2 gap-3 mb-4">
+            {/* Instagram */}
+            <div className="rounded-xl p-3 bg-gradient-to-br from-pink-50 to-fuchsia-50 border border-pink-100">
+              <div className="flex items-center gap-1.5 mb-1.5">
+                <Instagram className="w-4 h-4 text-pink-500" />
+                <span className="text-[11px] font-bold uppercase tracking-wide text-gray-500">Instagram</span>
+              </div>
+              <div className="text-xl font-extrabold text-gray-900 leading-none">{influencer.instagram.followers}</div>
+              <div className="text-[10px] text-gray-400 mt-0.5">followers</div>
+              <div className="mt-2 flex items-center gap-1 text-[11px]">
+                <Heart className="w-3 h-3 text-pink-500 flex-shrink-0" />
+                <span className="text-gray-400">Engagement</span>
+                <span className="ml-auto font-bold text-gray-800">{influencer.instagram.engagement}</span>
               </div>
             </div>
+            {/* TikTok */}
+            <div className="rounded-xl p-3 bg-gray-50 border border-gray-200/70">
+              <div className="flex items-center gap-1.5 mb-1.5">
+                <TikTokIcon className="w-4 h-4 text-gray-900" />
+                <span className="text-[11px] font-bold uppercase tracking-wide text-gray-500">TikTok</span>
+              </div>
+              <div className="text-xl font-extrabold text-gray-900 leading-none">{influencer.tiktok.followers}</div>
+              <div className="text-[10px] text-gray-400 mt-0.5">followers</div>
+              <div className="mt-2 flex items-center gap-1 text-[11px]">
+                <Heart className="w-3 h-3 text-gray-700 flex-shrink-0" />
+                <span className="text-gray-400">Engagement</span>
+                <span className="ml-auto font-bold text-gray-800">{influencer.tiktok.engagement}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Engagement moyen */}
+          <div className="flex items-center justify-between rounded-xl px-4 py-3 mb-5 bg-gradient-to-r from-gray-900 to-gray-800">
+            <span className="flex items-center gap-1.5 text-xs font-medium text-gray-300">
+              <Zap className="w-3.5 h-3.5 text-amber-400" />
+              Engagement moyen
+            </span>
+            <span className="text-lg font-extrabold text-white">{getAvgEngagement(influencer)}</span>
           </div>
 
           {/* Bio */}
@@ -252,40 +351,45 @@ const InfluencerCard = ({ influencer, index }: { influencer: Influencer; index: 
             </div>
           </div>
 
-          {/* Stats Row */}
-          <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-6">
-            <div className="bg-gray-50 rounded-xl p-2 sm:p-3 text-center">
-              <Heart className="w-4 h-4 text-pink-500 mx-auto mb-1" />
-              <div className="text-[10px] sm:text-xs text-gray-500">Engagement</div>
-              <div className="text-xs sm:text-sm font-semibold text-gray-800">{influencer.engagement}</div>
-            </div>
-            <div className="bg-gray-50 rounded-xl p-2 sm:p-3 text-center">
-              <Star className="w-4 h-4 text-amber-500 mx-auto mb-1" />
-              <div className="text-[10px] sm:text-xs text-gray-500">Tarifs</div>
-              <div className="text-xs sm:text-sm font-semibold text-gray-800">Sur demande</div>
-            </div>
+          {/* Tarifs */}
+          <div className="flex items-center justify-center gap-2 mb-6 text-sm">
+            <Star className="w-4 h-4 text-amber-500" />
+            <span className="text-gray-500">Tarifs</span>
+            <span className="font-semibold text-gray-800">Sur demande</span>
           </div>
 
           {/* Actions */}
-          <div className="flex flex-col sm:flex-row gap-3">
-            <a
-              href={influencer.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-3 bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white text-xs sm:text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-pink-500/25 transition-all duration-300"
-            >
-              <Instagram className="w-4 h-4" />
-              Voir le profil
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
+          <div className="flex flex-col gap-3">
+            {/* Profile links — Instagram + TikTok */}
+            <div className="grid grid-cols-2 gap-3">
+              <a
+                href={influencer.instagram.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-3 py-3 bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white text-xs sm:text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-pink-500/25 transition-all duration-300"
+              >
+                <Instagram className="w-4 h-4" />
+                Instagram
+              </a>
+              <a
+                href={influencer.tiktok.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-3 py-3 bg-gray-900 text-white text-xs sm:text-sm font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300"
+              >
+                <TikTokIcon className="w-4 h-4" />
+                TikTok
+              </a>
+            </div>
+            {/* Engager */}
             <a
               href={generateContactUrl({
                 description: `Je souhaite collaborer avec ${influencer.name} (${influencer.handle}) pour une campagne de contenu`,
               })}
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-3 bg-gray-900 text-white text-xs sm:text-sm font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-digiqo-accent to-amber-400 text-white text-xs sm:text-sm font-bold rounded-xl hover:shadow-lg hover:shadow-digiqo-accent/25 transition-all duration-300"
             >
               <MessageCircle className="w-4 h-4" />
-              Engager
+              Engager ce créateur
             </a>
           </div>
         </div>
@@ -347,7 +451,7 @@ const CreatorsShowcase = () => {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
   // Total slides = influencers + the join card
-  const totalSlides = influencers.length + 1
+  const totalSlides = visibleInfluencers.length + 1
 
   const handleScroll = useCallback(() => {
     const el = scrollRef.current
@@ -373,7 +477,7 @@ const CreatorsShowcase = () => {
           onScroll={handleScroll}
           className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth px-3 pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
-          {influencers.map((influencer, index) => (
+          {visibleInfluencers.map((influencer, index) => (
             <div
               key={influencer.handle}
               className="snap-center shrink-0 w-[86%]"
@@ -383,7 +487,7 @@ const CreatorsShowcase = () => {
           ))}
           {/* Join card as last slide */}
           <div className="snap-center shrink-0 w-[86%]">
-            <JoinCard index={influencers.length} />
+            <JoinCard index={visibleInfluencers.length} />
           </div>
         </div>
 
@@ -391,7 +495,7 @@ const CreatorsShowcase = () => {
         <div className="mt-5 flex flex-col items-center gap-3">
           <div className="flex items-center gap-2">
             {Array.from({ length: totalSlides }).map((_, i) => {
-              const isJoin = i === influencers.length
+              const isJoin = i === visibleInfluencers.length
               const isActive = i === activeIndex
               return (
                 <button
@@ -417,10 +521,10 @@ const CreatorsShowcase = () => {
 
       {/* ── DESKTOP: grid ── */}
       <div className="hidden md:grid grid-cols-2 gap-8 max-w-4xl mx-auto">
-        {influencers.map((influencer, index) => (
+        {visibleInfluencers.map((influencer, index) => (
           <InfluencerCard key={influencer.handle} influencer={influencer} index={index} />
         ))}
-        <JoinCard index={influencers.length} />
+        <JoinCard index={visibleInfluencers.length} />
       </div>
     </>
   )
