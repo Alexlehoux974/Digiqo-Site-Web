@@ -1,5 +1,15 @@
 [
   {
+    "name": "Deckstock",
+    "url": "https://deckstock.fr",
+    "screenshot": "/references/fullpage/deckstock-fr.webp",
+    "archived": false,
+    "lastChecked": "2026-07-02T00:00:00.000Z",
+    "lastStatus": "200",
+    "lastOnline": "2026-07-02T00:00:00.000Z",
+    "consecutiveFailures": 0
+  },
+  {
     "name": "Rodolphe Le Houx",
     "url": "https://rodolphelehoux.com",
     "screenshot": "/references/fullpage/rodolphelehoux-com.webp",
