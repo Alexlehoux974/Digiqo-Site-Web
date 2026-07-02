@@ -476,6 +476,36 @@ export default function CreateursPage() {
           iconColor="text-pink-400"
         />
 
+        {/* ── INFLUENCER PROFILES ── */}
+        <section id="createurs" className="py-20 sm:py-28 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+          <div className="absolute inset-0">
+            <div className="absolute top-20 left-10 w-72 h-72 bg-pink-100 rounded-full blur-3xl opacity-30" />
+            <div className="absolute bottom-20 right-10 w-72 h-72 bg-purple-100 rounded-full blur-3xl opacity-30" />
+          </div>
+
+          <div className="relative max-w-6xl mx-auto px-3 sm:px-6">
+            <motion.div
+              {...ANIMATION.entry.fadeInUp}
+              transition={{ duration: ANIMATION.duration.normal }}
+              className="text-center mb-16 px-3 sm:px-0"
+            >
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-purple-50 text-purple-600 rounded-full text-sm font-semibold mb-4">
+                <Users className="w-4 h-4" />
+                Notre Réseau
+              </span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Nos Créateurs
+              </h2>
+              <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+                Des profils vérifiés et sélectionnés pour leur authenticité, leur créativité et leur engagement.
+              </p>
+            </motion.div>
+
+            {/* Influencer Showcase — swipeable on mobile, grid on desktop */}
+            <CreatorsShowcase />
+          </div>
+        </section>
+
         {/* ── HOW IT WORKS ── */}
         <section className="py-20 sm:py-28 bg-white relative overflow-hidden">
           {/* Subtle background decoration */}
@@ -532,36 +562,6 @@ export default function CreateursPage() {
                 </motion.div>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* ── INFLUENCER PROFILES ── */}
-        <section id="createurs" className="py-20 sm:py-28 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-pink-100 rounded-full blur-3xl opacity-30" />
-            <div className="absolute bottom-20 right-10 w-72 h-72 bg-purple-100 rounded-full blur-3xl opacity-30" />
-          </div>
-
-          <div className="relative max-w-6xl mx-auto px-3 sm:px-6">
-            <motion.div
-              {...ANIMATION.entry.fadeInUp}
-              transition={{ duration: ANIMATION.duration.normal }}
-              className="text-center mb-16 px-3 sm:px-0"
-            >
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-purple-50 text-purple-600 rounded-full text-sm font-semibold mb-4">
-                <Users className="w-4 h-4" />
-                Notre Réseau
-              </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                Nos Créateurs
-              </h2>
-              <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-                Des profils vérifiés et sélectionnés pour leur authenticité, leur créativité et leur engagement.
-              </p>
-            </motion.div>
-
-            {/* Influencer Showcase — swipeable on mobile, grid on desktop */}
-            <CreatorsShowcase />
           </div>
         </section>
 
