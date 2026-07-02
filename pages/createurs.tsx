@@ -298,10 +298,9 @@ const InfluencerCard = ({ influencer, index }: { influencer: Influencer; index: 
 // JOIN CARD — "Add your profile" (redirects to contact)
 // ──────────────────────────────────────────────
 
-const joinHref = generateContactUrl({
-  description:
-    "Je suis créateur de contenu / influenceur et je souhaite rejoindre le réseau de créateurs Digiqo",
-})
+const joinHref = `/?instant=true&description=${encodeURIComponent(
+  "Je suis créateur de contenu / influenceur et je souhaite rejoindre le réseau de créateurs Digiqo",
+)}#contact`
 
 const JoinCard = ({ index }: { index: number }) => (
   <motion.a
