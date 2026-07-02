@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useCallback } from 'react'
 import Head from 'next/head'
 import { m as motion } from 'framer-motion'
 import {
@@ -19,6 +19,9 @@ import {
   Star,
   Zap,
   CheckCircle2,
+  Plus,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react'
 import ServiceLayout from '../components/ServiceLayout/ServiceLayout'
 import { ServiceHero } from '../components/ServicePages/ServiceHero'
@@ -292,6 +295,139 @@ const InfluencerCard = ({ influencer, index }: { influencer: Influencer; index: 
 }
 
 // ──────────────────────────────────────────────
+// JOIN CARD — "Add your profile" (redirects to contact)
+// ──────────────────────────────────────────────
+
+const joinHref = generateContactUrl({
+  description:
+    "Je suis créateur de contenu / influenceur et je souhaite rejoindre le réseau de créateurs Digiqo",
+})
+
+const JoinCard = ({ index }: { index: number }) => (
+  <motion.a
+    href={joinHref}
+    {...ANIMATION.entry.fadeInUp}
+    transition={{ duration: ANIMATION.duration.normal, delay: getStaggerDelay(index) }}
+    whileHover={{ y: -4 }}
+    className="group relative block h-full"
+    aria-label="Ajouter votre profil de créateur"
+  >
+    <div className="relative h-full flex flex-col items-center justify-center text-center rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-dashed border-pink-300/70 bg-gradient-to-br from-pink-50/60 via-white to-purple-50/60 p-8 sm:p-10 transition-all duration-500 group-hover:border-pink-400 group-hover:shadow-2xl group-hover:shadow-pink-500/10 min-h-[420px]">
+      {/* Animated glow */}
+      <div className="absolute -top-16 -right-16 w-48 h-48 bg-pink-200/40 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-purple-200/40 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+      {/* Plus button */}
+      <div className="relative mb-6">
+        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-pink-500 via-fuchsia-500 to-purple-600 blur-xl opacity-40 group-hover:opacity-70 transition-opacity duration-500" />
+        <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-pink-500 via-fuchsia-500 to-purple-600 flex items-center justify-center shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:rotate-90">
+          <Plus className="w-10 h-10 sm:w-12 sm:h-12 text-white" strokeWidth={2.5} />
+        </div>
+      </div>
+
+      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+        Vous êtes créateur ?
+      </h3>
+      <p className="text-sm text-gray-500 leading-relaxed mb-6 max-w-[16rem]">
+        Rejoignez notre réseau et collaborez avec les plus belles marques de La Réunion.
+      </p>
+
+      <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gray-900 text-white text-sm font-semibold transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-pink-500 group-hover:to-purple-600 group-hover:shadow-lg group-hover:shadow-pink-500/25">
+        Ajouter mon profil
+        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+      </span>
+    </div>
+  </motion.a>
+)
+
+// ──────────────────────────────────────────────
+// CREATORS SHOWCASE — swipeable carousel (mobile) + grid (desktop)
+// ──────────────────────────────────────────────
+
+const CreatorsShowcase = () => {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [activeIndex, setActiveIndex] = useState(0)
+  // Total slides = influencers + the join card
+  const totalSlides = influencers.length + 1
+
+  const handleScroll = useCallback(() => {
+    const el = scrollRef.current
+    if (!el) return
+    const slideWidth = el.scrollWidth / totalSlides
+    const index = Math.round(el.scrollLeft / slideWidth)
+    setActiveIndex(Math.min(Math.max(index, 0), totalSlides - 1))
+  }, [totalSlides])
+
+  const scrollToIndex = useCallback((index: number) => {
+    const el = scrollRef.current
+    if (!el) return
+    const slideWidth = el.scrollWidth / totalSlides
+    el.scrollTo({ left: slideWidth * index, behavior: 'smooth' })
+  }, [totalSlides])
+
+  return (
+    <>
+      {/* ── MOBILE: swipeable carousel ── */}
+      <div className="md:hidden -mx-3">
+        <div
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth px-3 pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {influencers.map((influencer, index) => (
+            <div
+              key={influencer.handle}
+              className="snap-center shrink-0 w-[86%]"
+            >
+              <InfluencerCard influencer={influencer} index={index} />
+            </div>
+          ))}
+          {/* Join card as last slide */}
+          <div className="snap-center shrink-0 w-[86%]">
+            <JoinCard index={influencers.length} />
+          </div>
+        </div>
+
+        {/* Swipe hint + pagination dots */}
+        <div className="mt-5 flex flex-col items-center gap-3">
+          <div className="flex items-center gap-2">
+            {Array.from({ length: totalSlides }).map((_, i) => {
+              const isJoin = i === influencers.length
+              const isActive = i === activeIndex
+              return (
+                <button
+                  key={i}
+                  onClick={() => scrollToIndex(i)}
+                  aria-label={isJoin ? 'Voir la carte pour rejoindre' : `Voir le créateur ${i + 1}`}
+                  className={`rounded-full transition-all duration-300 ${
+                    isActive
+                      ? 'w-7 h-2 bg-gradient-to-r from-pink-500 to-purple-600'
+                      : 'w-2 h-2 bg-gray-300'
+                  }`}
+                />
+              )
+            })}
+          </div>
+          <div className="flex items-center gap-1.5 text-xs text-gray-400 font-medium">
+            <ChevronLeft className="w-3.5 h-3.5" />
+            <span>Glissez pour découvrir</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+          </div>
+        </div>
+      </div>
+
+      {/* ── DESKTOP: grid ── */}
+      <div className="hidden md:grid grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {influencers.map((influencer, index) => (
+          <InfluencerCard key={influencer.handle} influencer={influencer} index={index} />
+        ))}
+        <JoinCard index={influencers.length} />
+      </div>
+    </>
+  )
+}
+
+// ──────────────────────────────────────────────
 // MAIN PAGE COMPONENT
 // ──────────────────────────────────────────────
 
@@ -425,26 +561,8 @@ export default function CreateursPage() {
               </p>
             </motion.div>
 
-            {/* Influencer Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
-              {influencers.map((influencer, index) => (
-                <InfluencerCard key={influencer.handle} influencer={influencer} index={index} />
-              ))}
-            </div>
-
-            {/* Coming soon hint if only 1-2 influencers */}
-            {influencers.length < 3 && (
-              <motion.div
-                {...ANIMATION.entry.fadeIn}
-                transition={{ duration: ANIMATION.duration.normal, delay: 0.5 }}
-                className="mt-12 text-center"
-              >
-                <div className="inline-flex items-center gap-3 px-6 py-3 bg-white rounded-2xl border border-dashed border-gray-300 text-gray-400">
-                  <Sparkles className="w-5 h-5" />
-                  <span className="text-sm font-medium">D&apos;autres créateurs arrivent bientôt...</span>
-                </div>
-              </motion.div>
-            )}
+            {/* Influencer Showcase — swipeable on mobile, grid on desktop */}
+            <CreatorsShowcase />
           </div>
         </section>
 
