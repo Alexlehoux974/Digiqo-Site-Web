@@ -57,8 +57,8 @@ const influencers: Influencer[] = [
     handle: '@op_lehoux',
     photo: '/assets/createurs/ophelie-lehoux.jpg',
     location: 'La Réunion — Paris',
-    niches: ['Mode', 'Beauté', 'Hygiène', 'Cheveux bouclés', 'Sport'],
-    bio: 'Créatrice de contenu passionnée par la mode, la beauté et le sport. Son authenticité et son énergie captivent une communauté engagée entre La Réunion et Paris.',
+    niches: ['Cheveux bouclés', 'Curly hair', 'Hygiène', 'Sport'],
+    bio: 'Créatrice de contenu spécialisée dans les cheveux bouclés (curly hair). Son authenticité et son énergie captivent une communauté engagée entre La Réunion et Paris.',
     instagram: {
       url: 'https://www.instagram.com/op_lehoux/',
       followers: '16,4K',
@@ -76,7 +76,7 @@ const influencers: Influencer[] = [
     name: 'Maé Jeanne-Rose',
     handle: '@mae.jr974',
     photo: '/assets/createurs/mae-jeanne-rose.jpg',
-    location: 'La Réunion',
+    location: 'La Réunion — Lyon',
     niches: ['Lifestyle', 'Voyage', 'Mode', 'Beauté', 'Sport', 'Activités touristiques', 'Podcast'],
     bio: 'Créatrice de contenu spécialisée dans la valorisation de la culture réunionnaise, qui a su fédérer une communauté de plus de 113 000 abonnés (TikTok + Instagram) depuis janvier 2024 à travers des contenus immersifs autour des traditions, de la gastronomie, des paysages et du mode de vie sur l\u2019île de la Réunion.',
     instagram: {
