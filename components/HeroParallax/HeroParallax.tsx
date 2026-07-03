@@ -10,8 +10,12 @@ export const HeroParallax = ({
     thumbnail: any
   }[]
 }) => {
-  const firstRow = products.slice(0, 20)
-  const secondRow = products.slice(20, 40)
+  // Afficher TOUS les logos clients (plus de plafond à 40) — répartis sur
+  // deux rangées qui défilent en sens inverse. Les nouveaux clients ajoutés
+  // dans partners-data.ts apparaissent donc automatiquement dans le bandeau.
+  const half = Math.ceil(products.length / 2)
+  const firstRow = products.slice(0, half)
+  const secondRow = products.slice(half)
 
   return (
     <div className="relative overflow-hidden bg-[#8B1431]">
