@@ -475,15 +475,387 @@ export const partnersData: Partner[] = [
     name: "Zen Eat Yoga",
     filename: "ZEN-EAT-YOGA-1024x1024.webp",
     alt: "Zen Eat Yoga - Centre de bien-être, marketing digital par Digiqo"
+  },
+  {
+    name: "Air Aventures",
+    filename: "AIR-AVENTURES-1024x1024.webp",
+    alt: "Air Aventures — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Alliance Optique",
+    filename: "ALLIANCE-OPTIQUE-1024x1024.webp",
+    alt: "Alliance Optique — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Allovapeur",
+    filename: "ALLOVAPEUR-1024x1024.webp",
+    alt: "Allovapeur — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Ambiance & Styles Quimper",
+    filename: "AMBIANCE-STYLES-QUIMPER-1024x1024.webp",
+    alt: "Ambiance & Styles Quimper — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Ammo",
+    filename: "AMMO-1024x1024.webp",
+    alt: "Ammo — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Arm",
+    filename: "ARM-1024x1024.webp",
+    alt: "Arm — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Asi Technologie",
+    filename: "ASI-TECHNOLOGIE-1024x1024.webp",
+    alt: "Asi Technologie — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Atelier Reparation Vintage",
+    filename: "ATELIER-REPARATION-VINTAGE-1024x1024.webp",
+    alt: "Atelier Reparation Vintage — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Azor Oi",
+    filename: "AZOR-OI-1024x1024.webp",
+    alt: "Azor Oi — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Beauty Artist Formation",
+    filename: "BEAUTY-ARTIST-FORMATION-1024x1024.webp",
+    alt: "Beauty Artist Formation — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "BHS",
+    filename: "BHS-1024x1024.webp",
+    alt: "BHS — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Casa Bella",
+    filename: "CASA-BELLA-1024x1024.webp",
+    alt: "Casa Bella — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Cess Hair",
+    filename: "CESS-HAIR-1024x1024.webp",
+    alt: "Cess Hair — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "CHR Controle",
+    filename: "CHR-CONTROLE-1024x1024.webp",
+    alt: "CHR Controle — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Clim & Cool 974",
+    filename: "CLIM-COOL-974-1024x1024.webp",
+    alt: "Clim & Cool 974 — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Concept Autos 974",
+    filename: "CONCEPT-AUTOS-974-1024x1024.webp",
+    alt: "Concept Autos 974 — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Culinarion",
+    filename: "CULINARION-1024x1024.webp",
+    alt: "Culinarion — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Digicom International",
+    filename: "DIGICOM-INTERNATIONAL-1024x1024.webp",
+    alt: "Digicom International — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "DR Alexandre Gambiez",
+    filename: "DR-ALEXANDRE-GAMBIEZ-1024x1024.webp",
+    alt: "DR Alexandre Gambiez — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Emulsion Cocktails",
+    filename: "EMULSION-COCKTAILS-1024x1024.webp",
+    alt: "Emulsion Cocktails — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Fayarun",
+    filename: "FAYARUN-1024x1024.webp",
+    alt: "Fayarun — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Fitness Boutique",
+    filename: "FITNESS-BOUTIQUE-1024x1024.webp",
+    alt: "Fitness Boutique — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Fortuny Caillebotis",
+    filename: "FORTUNY-CAILLEBOTIS-1024x1024.webp",
+    alt: "Fortuny Caillebotis — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Fragma",
+    filename: "FRAGMA-1024x1024.webp",
+    alt: "Fragma — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Garage Fsa",
+    filename: "GARAGE-FSA-1024x1024.webp",
+    alt: "Garage Fsa — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Garance Tatoo",
+    filename: "GARANCE-TATOO-1024x1024.webp",
+    alt: "Garance Tatoo — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Gourmandises & Coussinets",
+    filename: "GOURMANDISES-COUSSINETS-1024x1024.webp",
+    alt: "Gourmandises & Coussinets — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Groov",
+    filename: "GROOV-1024x1024.webp",
+    alt: "Groov — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Hypnose Horizon",
+    filename: "HYPNOSE-HORIZON-1024x1024.webp",
+    alt: "Hypnose Horizon — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Ifca",
+    filename: "IFCA-1024x1024.webp",
+    alt: "Ifca — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Intérieurs Privés",
+    filename: "INTERIEURS-PRIVES-1024x1024.webp",
+    alt: "Intérieurs Privés — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Ixina Réunion.svg",
+    filename: "IXINA-REUNION-SVG-1024x1024.webp",
+    alt: "Ixina Réunion.svg — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Karl & Jackson",
+    filename: "KARL-JACKSON-1024x1024.webp",
+    alt: "Karl & Jackson — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "L Arbre A Bijoux",
+    filename: "L-ARBRE-A-BIJOUX-1024x1024.webp",
+    alt: "L Arbre A Bijoux — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "La Clef De Vos Projets",
+    filename: "LA-CLEF-DE-VOS-PROJETS-1024x1024.webp",
+    alt: "La Clef De Vos Projets — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "La Mariée Chic",
+    filename: "LA-MARIEE-CHIC-1024x1024.webp",
+    alt: "La Mariée Chic — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "La Ter Assemble",
+    filename: "LA-TER-ASSEMBLE-1024x1024.webp",
+    alt: "La Ter Assemble — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Le Cap Marine",
+    filename: "LE-CAP-MARINE-1024x1024.webp",
+    alt: "Le Cap Marine — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Le Linge",
+    filename: "LE-LINGE-1024x1024.webp",
+    alt: "Le Linge — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Leon",
+    filename: "LEON-1024x1024.webp",
+    alt: "Leon — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Les Jardins Ravintsara",
+    filename: "LES-JARDINS-RAVINTSARA-1024x1024.webp",
+    alt: "Les Jardins Ravintsara — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Libertease",
+    filename: "LIBERTEASE-1024x1024.webp",
+    alt: "Libertease — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Lodges Paradise",
+    filename: "LODGES-PARADISE-1024x1024.webp",
+    alt: "Lodges Paradise — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Maisons Jupiter",
+    filename: "MAISONS-JUPITER-1024x1024.webp",
+    alt: "Maisons Jupiter — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Mam Location",
+    filename: "MAM-LOCATION-1024x1024.webp",
+    alt: "Mam Location — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Moana",
+    filename: "MOANA-1024x1024.webp",
+    alt: "Moana — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Modulaire Réunion",
+    filename: "MODULAIRE-REUNION-1024x1024.webp",
+    alt: "Modulaire Réunion — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Monsterphone",
+    filename: "MONSTERPHONE-1024x1024.webp",
+    alt: "Monsterphone — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Natucci Estetica",
+    filename: "NATUCCI-ESTETICA-1024x1024.webp",
+    alt: "Natucci Estetica — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "One Market",
+    filename: "ONE-MARKET-1024x1024.webp",
+    alt: "One Market — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Optas",
+    filename: "OPTAS-1024x1024.webp",
+    alt: "Optas — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Out Energie",
+    filename: "OUT-ENERGIE-1024x1024.webp",
+    alt: "Out Energie — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Outfly",
+    filename: "OUTFLY-1024x1024.webp",
+    alt: "Outfly — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Oysters Xo",
+    filename: "OYSTERS-XO-1024x1024.webp",
+    alt: "Oysters Xo — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Papang",
+    filename: "PAPANG-1024x1024.webp",
+    alt: "Papang — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Pass XP",
+    filename: "PASS-XP-1024x1024.webp",
+    alt: "Pass XP — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Piton Fougère",
+    filename: "PITON-FOUGERE-1024x1024.webp",
+    alt: "Piton Fougère — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Pizza Le Cratère",
+    filename: "PIZZA-LE-CRATERE-1024x1024.webp",
+    alt: "Pizza Le Cratère — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Plakaz",
+    filename: "PLAKAZ-1024x1024.webp",
+    alt: "Plakaz — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Pollux",
+    filename: "POLLUX-1024x1024.webp",
+    alt: "Pollux — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Progimmo",
+    filename: "PROGIMMO-1024x1024.webp",
+    alt: "Progimmo — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Run Comedie Club",
+    filename: "RUN-COMEDIE-CLUB-1024x1024.webp",
+    alt: "Run Comedie Club — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Run Loc 2 Roues",
+    filename: "RUN-LOC-2-ROUES-1024x1024.webp",
+    alt: "Run Loc 2 Roues — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "SB Sud VTC",
+    filename: "SB-SUD-VTC-1024x1024.webp",
+    alt: "SB Sud VTC — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Severine M Coiffure",
+    filename: "SEVERINE-M-COIFFURE-1024x1024.webp",
+    alt: "Severine M Coiffure — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Shrivalli",
+    filename: "SHRIVALLI-1024x1024.webp",
+    alt: "Shrivalli — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Stand Up Fitness",
+    filename: "STAND-UP-FITNESS-1024x1024.webp",
+    alt: "Stand Up Fitness — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Stores 974",
+    filename: "STORES-974-1024x1024.webp",
+    alt: "Stores 974 — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Sweet Jab",
+    filename: "SWEET-JAB-1024x1024.webp",
+    alt: "Sweet Jab — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Synergimmo",
+    filename: "SYNERGIMMO-1024x1024.webp",
+    alt: "Synergimmo — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Terrassement Ocean Indien",
+    filename: "TERRASSEMENT-OCEAN-INDIEN-1024x1024.webp",
+    alt: "Terrassement Ocean Indien — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Vélo & Oxygène",
+    filename: "VELO-OXYGENE-1024x1024.webp",
+    alt: "Vélo & Oxygène — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Vélo Péi",
+    filename: "VELO-PEI-1024x1024.webp",
+    alt: "Vélo Péi — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Velocit Ai",
+    filename: "VELOCIT-AI-1024x1024.webp",
+    alt: "Velocit Ai — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "Whales Capital Funding",
+    filename: "WHALES-CAPITAL-FUNDING-1024x1024.webp",
+    alt: "Whales Capital Funding — client de Digiqo, agence de marketing digital"
+  },
+  {
+    name: "WPL Reunion",
+    filename: "WPL-REUNION-1024x1024.webp",
+    alt: "WPL Reunion — client de Digiqo, agence de marketing digital"
   }
 ]
 
-// Fonction pour obtenir les partenaires par batch pour le lazy loading progressif
-export function getPartnersBatch(start: number, count: number): Partner[] {
-  return partnersData.slice(start, start + count)
-}
-
-// Fonction pour obtenir un partenaire par nom
-export function getPartnerByName(name: string): Partner | undefined {
-  return partnersData.find(partner => partner.name === name)
-}
+// Fonction pour obtenir les partenaires par batch
