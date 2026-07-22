@@ -104,7 +104,7 @@ const formulaRows: { label: string; values: [string, string] }[] = [
   },
   { label: 'A/B testing des objets', values: ['non', 'oui'] },
   { label: 'Reporting', values: ['Mensuel', 'Mensuel + point trimestriel'] },
-  { label: 'Tarif', values: ['149 €/mois', '279 €/mois'] },
+  { label: 'Tarif', values: ['150 €/mois', '300 €/mois'] },
 ]
 
 // Paliers selon la taille de la base de contacts.
@@ -164,7 +164,7 @@ export default function NewsletterPage() {
       name: 'La Réunion',
     },
     description:
-      'Service de newsletter géré par Digiqo à La Réunion (974) : stratégie, rédaction, design, conformité RGPD, envoi et reporting. Votre liste d’emails vous appartient. À partir de 149 €/mois, sans frais de mise en place.',
+      'Service de newsletter géré par Digiqo à La Réunion (974) : stratégie, rédaction, design, conformité RGPD, envoi et reporting. Votre liste d’emails vous appartient. À partir de 150 €/mois, sans frais de mise en place.',
     offers: formulaColumns.map((name, i) => ({
       '@type': 'Offer',
       name: `Formule ${name}`,
@@ -192,7 +192,7 @@ export default function NewsletterPage() {
         <title>Newsletter La Réunion | Email Marketing & Newsletter gérée 974 - Digiqo</title>
         <meta
           name="description"
-          content="Service de newsletter géré à La Réunion (974) : stratégie, rédaction, design, RGPD, envoi et reporting. Votre liste d’emails vous appartient. Dès 149 €/mois, sans frais de mise en place."
+          content="Service de newsletter géré à La Réunion (974) : stratégie, rédaction, design, RGPD, envoi et reporting. Votre liste d’emails vous appartient. Dès 150 €/mois, sans frais de mise en place."
         />
 
         {/* Open Graph */}
@@ -202,7 +202,7 @@ export default function NewsletterPage() {
         />
         <meta
           property="og:description"
-          content="Le seul canal que vous possédez vraiment. Newsletter clé en main à La Réunion : stratégie, rédaction, design, RGPD, envoi et reporting. Dès 149 €/mois."
+          content="Le seul canal que vous possédez vraiment. Newsletter clé en main à La Réunion : stratégie, rédaction, design, RGPD, envoi et reporting. Dès 150 €/mois."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://digiqo.fr/services/newsletter" />
@@ -213,7 +213,7 @@ export default function NewsletterPage() {
         <meta name="twitter:title" content="Newsletter La Réunion | Digiqo" />
         <meta
           name="twitter:description"
-          content="Newsletter clé en main à La Réunion (974). Votre audience vous appartient. Dès 149 €/mois, sans frais de mise en place."
+          content="Newsletter clé en main à La Réunion (974). Votre audience vous appartient. Dès 150 €/mois, sans frais de mise en place."
         />
         <meta name="twitter:image" content="https://digiqo.fr/assets/digiqo-og-image.png" />
 
