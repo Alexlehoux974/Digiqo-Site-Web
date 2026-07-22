@@ -62,6 +62,14 @@ const navigation = {
                 color: 'bg-pink-500'
               },
               {
+                name: 'Newsletter',
+                href: '/services/newsletter',
+                description: 'Votre audience vous appartient',
+                icon: Mail,
+                color: 'bg-amber-500',
+                badge: 'Nouveau'
+              },
+              {
                 name: 'Référencement SEO',
                 href: '/services/seo',
                 description: 'Dominez Google',

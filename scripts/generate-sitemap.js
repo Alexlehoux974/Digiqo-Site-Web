@@ -37,6 +37,7 @@ const servicePages = [
   { path: '/services/publicite-en-ligne', priority: '0.9', changefreq: 'weekly' },
   { path: '/services/sites-web', priority: '0.9', changefreq: 'weekly' },
   { path: '/services/community-management', priority: '0.9', changefreq: 'weekly' },
+  { path: '/services/newsletter', priority: '0.8', changefreq: 'weekly' },
   { path: '/services/seo', priority: '0.9', changefreq: 'weekly' },
   { path: '/services/creatifs', priority: '0.8', changefreq: 'weekly' },
   { path: '/services/identite-de-marque', priority: '0.8', changefreq: 'weekly' },
