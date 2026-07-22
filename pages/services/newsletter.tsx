@@ -235,8 +235,8 @@ export default function NewsletterPage() {
       <ServiceHero
         icon={Mail}
         title={{
-          line1: 'Newsletter',
-          line2: 'Votre audience vous appartient',
+          line1: 'Votre audience',
+          line2: 'vous appartient',
         }}
         subtitle="Votre page Facebook, votre compte Instagram, votre classement Google : tout peut changer du jour au lendemain. Votre liste d’emails, non. On la construit, on l’anime et on la fait travailler pour vous."
         ctaButtons={{
