@@ -28,6 +28,10 @@ import { generateContactUrl } from '../../lib/contact-utils'
 
 const CTA_HREF = generateContactUrl({ service: 'newsletter' })
 
+// Liens de paiement HubSpot (abonnement mensuel) par formule.
+const PAYMENT_LINK_ESSENTIEL = 'https://payments-eu1.hubspot.com/payments/CmPpRYqdR?referrer=PAYMENT_LINK'
+const PAYMENT_LINK_PERFORMANCE = 'https://payments-eu1.hubspot.com/payments/mSGKNFwDQkD?referrer=PAYMENT_LINK'
+
 // Ce que comprend la prestation, dans les deux formules.
 const prestations = [
   {
@@ -446,7 +450,9 @@ export default function NewsletterPage() {
                   <td className="p-5 md:p-6" />
                   <td className="p-5 md:p-6 text-center">
                     <a
-                      href={CTA_HREF}
+                      href={PAYMENT_LINK_ESSENTIEL}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex w-full items-center justify-center gap-2 py-3 px-5 rounded-full font-semibold bg-gradient-to-r from-digiqo-secondary to-digiqo-secondary-dark text-white shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"
                     >
                       Choisir Essentiel
@@ -454,7 +460,9 @@ export default function NewsletterPage() {
                   </td>
                   <td className="p-5 md:p-6 text-center bg-digiqo-secondary/5 rounded-b-2xl">
                     <a
-                      href={CTA_HREF}
+                      href={PAYMENT_LINK_PERFORMANCE}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex w-full items-center justify-center gap-2 py-3 px-5 rounded-full font-semibold bg-gradient-to-r from-digiqo-secondary to-digiqo-accent text-white shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"
                     >
                       Choisir Performance
