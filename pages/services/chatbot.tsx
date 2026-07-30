@@ -86,6 +86,7 @@ const formulas = [
     price: '80 €',
     gradient: 'from-digiqo-secondary to-digiqo-secondary-dark',
     popular: false,
+    paymentLink: 'https://payments-eu1.hubspot.com/payments/dNywVNtshrJQHhx?referrer=PAYMENT_LINK',
   },
   {
     name: '1 000 conversations',
@@ -94,6 +95,7 @@ const formulas = [
     price: '130 €',
     gradient: 'from-digiqo-secondary to-digiqo-accent',
     popular: true,
+    paymentLink: 'https://payments-eu1.hubspot.com/payments/ftwDQbRD97PcHQkw?referrer=PAYMENT_LINK',
   },
 ]
 
@@ -386,14 +388,12 @@ export default function ChatbotPage() {
                       ))}
                     </ul>
                     <a
-                      href={generateContactUrl({
-                        service: 'chatbot',
-                        formula: formula.name,
-                        description: `Chatbot IA, formule ${formula.volume}`,
-                      })}
+                      href={formula.paymentLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className={`mt-auto block w-full py-4 px-6 text-center font-semibold rounded-full transition-all bg-gradient-to-r ${formula.gradient} text-white shadow-lg hover:shadow-xl hover:-translate-y-1`}
                     >
-                      Demander un devis
+                      Choisir cette formule
                     </a>
                   </div>
                 </div>
