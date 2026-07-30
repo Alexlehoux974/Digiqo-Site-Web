@@ -20,7 +20,8 @@ import {
   MessageCircle,
   X,
   ChevronRight,
-  BookOpen
+  BookOpen,
+  Bot
 } from 'lucide-react'
 
 
@@ -67,6 +68,14 @@ const navigation = {
                 description: 'Votre audience vous appartient',
                 icon: Mail,
                 color: 'bg-amber-500',
+                badge: 'Nouveau'
+              },
+              {
+                name: 'Chatbot IA',
+                href: '/services/chatbot',
+                description: 'Répond à vos clients 24h/24',
+                icon: Bot,
+                color: 'bg-indigo-500',
                 badge: 'Nouveau'
               },
               {

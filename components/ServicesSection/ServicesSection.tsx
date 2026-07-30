@@ -9,7 +9,8 @@ import {
   Search,
   Palette,
   Shield,
-  FileSearch
+  FileSearch,
+  Bot
 } from 'lucide-react'
 import { IconCloud } from '../IconCloud'
 
@@ -113,6 +114,17 @@ const services: Service[] = [
     size: 'small',
     link: '/services/sitekeeper',
     keywords: ['maintenance site web', 'sécurité web Réunion']
+  },
+  {
+    id: 'chatbot',
+    title: 'Chatbot IA',
+    description: 'Un chatbot IA sur Messenger qui répond à vos clients 24h/24 et 7j/7.',
+    icon: <Bot className="w-5 h-5" />,
+    gradient: 'from-digiqo-secondary to-digiqo-accent',
+    gridClass: 'col-span-2 md:col-span-4 row-span-1 md:col-start-3 md:row-start-5',
+    size: 'small',
+    link: '/services/chatbot',
+    keywords: ['chatbot IA Réunion', 'agent conversationnel Messenger 974']
   }
 ]
 
