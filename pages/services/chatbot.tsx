@@ -361,7 +361,7 @@ export default function ChatbotPage() {
                 className="group relative"
               >
                 {formula.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white text-digiqo-accent px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg border-2 border-digiqo-accent">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap bg-white text-digiqo-accent px-6 py-2 rounded-full text-sm font-bold z-20 shadow-lg border-2 border-digiqo-accent">
                     LE PLUS DEMANDÉ
                   </div>
                 )}
@@ -370,7 +370,7 @@ export default function ChatbotPage() {
                     formula.popular ? 'ring-2 ring-digiqo-accent' : ''
                   }`}
                 >
-                  <div className={`p-8 bg-gradient-to-br ${formula.gradient} text-center`}>
+                  <div className={`px-8 pb-8 text-center bg-gradient-to-br ${formula.gradient} ${formula.popular ? 'pt-12' : 'pt-8'}`}>
                     <h3 className="text-2xl font-bold text-white mb-1">{formula.volume}</h3>
                     <p className="text-white/90 text-sm mb-4">{formula.perDay}</p>
                     <p className="text-4xl font-bold text-white">{formula.price}</p>
