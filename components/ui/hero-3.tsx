@@ -2,13 +2,19 @@ import React from "react";
 import { m as motion } from "framer-motion";
 import { cn } from "@/lib/utils"; // Assuming you have a `cn` utility from shadcn
 
+// Une image du marquee : `alt` est dérivé du nom de fichier côté serveur.
+export interface MarqueeImage {
+  src: string;
+  alt: string;
+}
+
 // Props interface for the component
 interface AnimatedMarqueeHeroProps {
   tagline: string;
   title: React.ReactNode;
   description: string;
   ctaText: string;
-  images: string[];
+  images: MarqueeImage[];
   className?: string;
   onCtaClick?: () => void;
 }
@@ -126,7 +132,7 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
             },
           }}
         >
-          {duplicatedImages.map((src, index) => (
+          {duplicatedImages.map((image, index) => (
             <div
               key={index}
               className="relative aspect-[3/4] h-48 md:h-64 flex-shrink-0"
@@ -135,8 +141,8 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
               }}
             >
               <img
-                src={src}
-                alt={`Showcase image ${index + 1}`}
+                src={image.src}
+                alt={image.alt}
                 className="w-full h-full object-cover rounded-2xl shadow-md"
               />
             </div>

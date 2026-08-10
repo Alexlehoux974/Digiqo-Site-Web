@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { services, getServiceBySlug, ServiceSlug } from '@/lib/services';
+import { getCreatifImages, type CreatifImage } from '@/lib/drive-creatifs';
 import { SEO } from '@/components/SEO';
 import { seoConfig } from '@/lib/seo-config';
 
@@ -15,10 +16,15 @@ import SitekeeperPage from '@/components/ServicePages/sitekeeper';
 
 interface ServicePageProps {
   slug: ServiceSlug;
+  /** Créatifs Drive du carrousel — uniquement pour le slug `creatifs`. */
+  creatifImages?: CreatifImage[];
 }
 
+// Props transmises au composant de service (seul `creatifs` en consomme).
+type ServiceComponentProps = Pick<ServicePageProps, 'creatifImages'>;
+
 // Map slugs to components
-const serviceComponents: Record<ServiceSlug, React.ComponentType> = {
+const serviceComponents: Record<ServiceSlug, React.ComponentType<ServiceComponentProps>> = {
   'publicite-en-ligne': PubliciteEnLignePage,
   'sites-web': DevWebPage,
   'community-management': CommunityPage,
@@ -29,7 +35,7 @@ const serviceComponents: Record<ServiceSlug, React.ComponentType> = {
   'sitekeeper': SitekeeperPage
 };
 
-export default function ServicePage({ slug }: ServicePageProps) {
+export default function ServicePage({ slug, creatifImages }: ServicePageProps) {
   const Component = serviceComponents[slug];
   const serviceSEO = seoConfig.pages.services[slug];
   
@@ -45,7 +51,7 @@ export default function ServicePage({ slug }: ServicePageProps) {
         keywords={serviceSEO.keywords}
         url={`${seoConfig.default.siteUrl}/services/${slug}`}
       />
-      <Component />
+      <Component creatifImages={creatifImages} />
     </>
   );
 }
@@ -68,6 +74,19 @@ export const getStaticProps: GetStaticProps<ServicePageProps> = async ({ params 
   if (!service) {
     return {
       notFound: true
+    };
+  }
+
+  // Le carrousel de /services/creatifs est alimenté par le dossier Drive
+  // « CRÉATIFS CLIENTS DIGIQO » : ISR 24 h pour prendre les nouveaux visuels
+  // sans redéploiement. Les autres services restent purement statiques.
+  if (slug === 'creatifs') {
+    return {
+      props: {
+        slug: slug as ServiceSlug,
+        creatifImages: await getCreatifImages()
+      },
+      revalidate: 86400
     };
   }
 

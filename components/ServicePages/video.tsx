@@ -6,6 +6,8 @@ import { servicesSEO } from '../../lib/seo-data'
 import { generateContactUrl } from '../../lib/contact-utils'
 import { AnimatedMarqueeHero } from '@/components/ui/hero-3'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
+// Données locales pures (pas de code serveur) : fallback du carrousel.
+import { LOCAL_CREATIFS, type CreatifImage } from '@/lib/creatifs-fallback'
 
 interface CreativeProduct {
   id: string
@@ -20,7 +22,12 @@ interface CreativeProduct {
   type?: 'MRR' | 'ONE_SHOT'
 }
 
-export default function VideoPage() {
+interface VideoPageProps {
+  /** Créatifs du carrousel, listés depuis le Drive dans getStaticProps. */
+  creatifImages?: CreatifImage[]
+}
+
+export default function VideoPage({ creatifImages = LOCAL_CREATIFS }: VideoPageProps) {
   const seoData = servicesSEO['creatifs-publicitaires-974']
 
   // Produits MRR depuis Airtable (4 abonnements mensuels)
@@ -341,25 +348,7 @@ export default function VideoPage() {
         }
         description="Production vidéo, création visuelle et design publicitaire pour booster votre communication."
         ctaText="Découvrir nos offres"
-        images={[
-          '/visuel-client/story-01.webp',
-          '/visuel-client/story-02.webp',
-          '/visuel-client/story-03.webp',
-          '/visuel-client/story-04.webp',
-          '/visuel-client/story-05.webp',
-          '/visuel-client/story-06.webp',
-          '/visuel-client/story-07.webp',
-          '/visuel-client/story-08.webp',
-          '/visuel-client/visuel-9x16.webp',
-          '/visuel-client/piton-fougere-9x16.webp',
-          '/visuel-client/sweetjab-crosstraining-9x16.webp',
-          '/visuel-client/yoga-lechoka-9x16.webp',
-          '/visuel-client/paragraphe-story-01.webp',
-          '/visuel-client/alliance-nord-optique.webp',
-          '/visuel-client/allovapeur.webp',
-          '/visuel-client/el-latino-strip.webp',
-          '/visuel-client/fayarun.webp'
-        ]}
+        images={creatifImages}
         onCtaClick={() => {
           const element = document.getElementById('abonnements');
           if (element) {
