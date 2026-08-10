@@ -74,7 +74,9 @@ export async function getCreatifImages(): Promise<CreatifImage[]> {
       .filter((file): file is Required<DriveFile> => !!file.id && !!file.name)
       .map((file) => ({
         // thumbnailLink de l'API expire — cette URL est stable.
-        src: `https://drive.google.com/thumbnail?id=${file.id}&sz=w1000`,
+        // Vignettes affichées en 144-192 px de large : w600 couvre le 2x
+        // sans télécharger les 1-2 Mo des originaux.
+        src: `https://drive.google.com/thumbnail?id=${file.id}&sz=w600`,
         alt: altFromFile(file.name),
       }))
 
