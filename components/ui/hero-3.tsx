@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { m as motion } from "framer-motion";
 import { cn } from "@/lib/utils"; // Assuming you have a `cn` utility from shadcn
 
@@ -140,10 +141,17 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
                 rotate: `${(index % 2 === 0 ? -2 : 5)}deg`,
               }}
             >
-              <img
+              {/* next/image plutôt qu'un <img> natif : les fichiers déposés
+                  dans le Drive sont des PNG bruts (~600 Ko pièce en w600),
+                  l'optimiseur les recompresse en AVIF/WebP et les redimensionne
+                  aux 144-192 px réellement affichés. Le pipeline est alimenté
+                  automatiquement, il ne doit pas dépendre du format déposé. */}
+              <Image
                 src={image.src}
                 alt={image.alt}
-                className="w-full h-full object-cover rounded-2xl shadow-md"
+                fill
+                sizes="(max-width: 768px) 144px, 192px"
+                className="object-cover rounded-2xl shadow-md"
               />
             </div>
           ))}

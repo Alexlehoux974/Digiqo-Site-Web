@@ -107,13 +107,16 @@ export const HeroParallax = ({
             ))}
           </div>
 
-          {/* Mascotte — no priority. We tried adding it in S4B-#4 thinking
-              the inlined critical CSS (S4A-#1) would absorb the preload
-              cost, but Lighthouse showed it still regressed Perf 60→55 and
-              TBT 650→805ms on /. The preload competed with fonts/JS for
-              early bandwidth on slow 4G (same root cause as S3-#11).
-              Mascot lazy-loads via next/image default; the H2 + subtitle
-              are the visible content above the fold. */}
+          {/* Mascotte — eager, toujours PAS priority. S4B-#4 avait tenté
+              `priority` en pensant que le CSS critique inliné (S4A-#1)
+              absorberait le coût du preload : Lighthouse avait montré une
+              régression Perf 60→55 et TBT 650→805ms sur / (le preload
+              concurrence fonts/JS pour la bande passante initiale sur 4G
+              lente, même cause qu'en S3-#11).
+              Ici on ne remet pas le preload : `loading="eager"` retire
+              seulement le lazy. Lighthouse mesure la mascotte comme
+              l'élément LCP de la home — la charger paresseusement retardait
+              donc volontairement ce qui définit le LCP. */}
           <div className="mt-8 flex justify-center">
             <div className="hero-logo-float">
               <Image
@@ -122,6 +125,7 @@ export const HeroParallax = ({
                 width={200}
                 height={200}
                 sizes="(max-width: 768px) 140px, 180px"
+                loading="eager"
                 className="w-[140px] h-[140px] md:w-[180px] md:h-[180px] object-contain drop-shadow-2xl"
               />
             </div>

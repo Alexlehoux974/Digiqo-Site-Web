@@ -74,8 +74,9 @@ export async function getCreatifImages(): Promise<CreatifImage[]> {
       .filter((file): file is Required<DriveFile> => !!file.id && !!file.name)
       .map((file) => ({
         // thumbnailLink de l'API expire — cette URL est stable.
-        // Vignettes affichées en 144-192 px de large : w600 couvre le 2x
-        // sans télécharger les 1-2 Mo des originaux.
+        // Source de l'optimiseur next/image, qui redimensionne ensuite aux
+        // 144-192 px affichés : w600 lui laisse de la marge sans transiter
+        // par les 1-2 Mo des originaux.
         src: `https://drive.google.com/thumbnail?id=${file.id}&sz=w600`,
         alt: altFromFile(file.name),
       }))
