@@ -30,7 +30,6 @@ const navigation = {
     { name: 'Partenariats & Sponsoring', href: '/partenariats' },
     { name: 'Glossaire Digiqo', href: '/glossaire' },
     { name: "Deviens apporteur d'affaires pour Digiqo !", href: '/apporteur' },
-    { name: 'Résilier ou mettre en pause votre abonnement SMA', href: '/desabonnement' },
   ],
   legal: [
     { name: 'Mentions Légales', href: '/mentions-legales' },
