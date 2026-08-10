@@ -363,7 +363,10 @@ export const TestimonialsSection = ({ testimonials = [] }: TestimonialsSectionPr
                             </p>
                           )}
                           <p className="text-xs text-gray-500">Voir les {testimonial.comments} commentaires</p>
-                          <p className="text-xs text-gray-600 uppercase">{testimonial.publishedAt}</p>
+                          {/* Pas de date affichée : les dates YouTube sont des
+                              dates de republication, pas celles des témoignages.
+                              `uploadDate` reste dans le JSON-LD VideoObject, où
+                              il décrit bien la vidéo. */}
                         </div>
                       </div>
                     </div>
