@@ -2,38 +2,23 @@ import { useState, useEffect, useRef } from 'react'
 import { m as motion, AnimatePresence } from 'framer-motion'
 import { Heart, MessageCircle, Bookmark, Send } from 'lucide-react'
 import Image from 'next/image'
-import type { FormattedTestimonial } from '../../pages/api/testimonials'
+import type { VideoTestimonial } from '../../lib/youtube-testimonials'
 
-// Pas de fallback - on affiche uniquement les témoignages d'Airtable
+// Les témoignages arrivent en props depuis getStaticProps (ISR 86400) : noms
+// de clients et citations sont donc dans le HTML servi. Aucun fetch client,
+// aucune clé API côté navigateur.
 
-export const TestimonialsSection = () => {
+interface TestimonialsSectionProps {
+  testimonials?: VideoTestimonial[]
+}
+
+export const TestimonialsSection = ({ testimonials = [] }: TestimonialsSectionProps) => {
   const [activeIndex, setActiveIndex] = useState(0)
   const [likedPosts, setLikedPosts] = useState<Set<string>>(new Set())
   const [animatedLikes, setAnimatedLikes] = useState<{ [key: string]: number }>({})
-  const [testimonialData, setTestimonialData] = useState<FormattedTestimonial[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-
-  // Récupérer les témoignages depuis l'API
-  useEffect(() => {
-    const fetchTestimonials = async () => {
-      try {
-        setIsLoading(true)
-        const response = await fetch('/api/testimonials')
-        if (response.ok) {
-          const data = await response.json()
-          // On utilise les données même si le tableau est vide
-          setTestimonialData(data || [])
-        }
-      } catch (error) {
-        console.error('Error fetching testimonials:', error)
-        // Les données de fallback sont déjà définies par défaut
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    fetchTestimonials()
-  }, [])
+  // Vidéo en cours de lecture. L'iframe YouTube n'est montée qu'après un clic.
+  const [playingVideoId, setPlayingVideoId] = useState<string | null>(null)
+  const testimonialData = testimonials
 
   useEffect(() => {
     // Initialiser les likes animés
@@ -70,15 +55,16 @@ export const TestimonialsSection = () => {
     setActiveIndex((prev) => (prev - 1 + testimonialData.length) % testimonialData.length)
   }
 
-  // Auto-play
+  // Auto-play — suspendu pendant la lecture d'une vidéo, sinon le carrousel
+  // ferait défiler la carte sous les pieds du visiteur.
   useEffect(() => {
-    if (testimonialData.length > 0) {
+    if (testimonialData.length > 0 && !playingVideoId) {
       const timer = setInterval(() => {
         setActiveIndex((prev) => (prev + 1) % testimonialData.length)
       }, 6000)
       return () => clearInterval(timer)
     }
-  }, [testimonialData.length])
+  }, [testimonialData.length, playingVideoId])
 
   // Swipe support for mobile
   const touchStartX = useRef(0)
@@ -93,8 +79,9 @@ export const TestimonialsSection = () => {
     }
   }
 
-  // Ne pas afficher la section s'il n'y a pas de témoignages
-  if (!isLoading && testimonialData.length === 0) {
+  // Fallback silencieux : API en erreur ou quota dépassé → tableau vide →
+  // la section disparaît sans casser la page.
+  if (testimonialData.length === 0) {
     return null
   }
 
@@ -137,8 +124,28 @@ export const TestimonialsSection = () => {
 
   const visibleCards = getVisibleCards()
 
+  // Un VideoObject par témoignage, rendu côté serveur avec les cartes.
+  const videoJsonLd = testimonialData.map((testimonial) => ({
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: `${testimonial.username} — Témoignage client Digiqo`,
+    description: testimonial.content || `Témoignage client de ${testimonial.username} pour Digiqo.`,
+    thumbnailUrl: testimonial.thumbnail ? [testimonial.thumbnail] : undefined,
+    uploadDate: testimonial.uploadDate || undefined,
+    embedUrl: `https://www.youtube-nocookie.com/embed/${testimonial.videoId}`,
+  }))
+
   return (
     <section className="relative py-20 overflow-hidden bg-[#E9E9E9]">
+      {/* Titres YouTube / citations Airtable = contenu tiers : on neutralise
+          « < » pour qu'un chevron dans un titre ne puisse pas fermer la balise. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(videoJsonLd).replace(/</g, '\\u003c'),
+        }}
+      />
+
       {/* Effet de fond animé */}
       <div className="absolute inset-0">
         <motion.div
@@ -193,14 +200,8 @@ export const TestimonialsSection = () => {
             <span className="bg-gradient-to-r from-digiqo-accent to-digiqo-secondary bg-clip-text text-transparent">Réunionnaises</span>
           </h3>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Découvrez leurs témoignages sur 
-            <span className="bg-gradient-to-r from-[#E1306C] via-[#C13584] to-[#F77737] bg-clip-text text-transparent font-semibold ml-1">
-              Instagram
-            </span>
+            Découvrez les témoignages de nos clients
           </p>
-          {isLoading && (
-            <p className="text-sm text-gray-500 mt-2 animate-pulse">Chargement des témoignages...</p>
-          )}
         </motion.div>
 
         {/* Carousel de témoignages */}
@@ -249,7 +250,7 @@ export const TestimonialsSection = () => {
                       <div className="flex items-center justify-between p-4 border-b">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 bg-gradient-to-br from-digiqo-primary to-digiqo-accent rounded-full flex items-center justify-center text-white font-bold">
-                            {testimonial.username[1].toUpperCase()}
+                            {testimonial.username.charAt(0).toUpperCase()}
                           </div>
                           <div>
                             <p className="font-semibold text-sm">{testimonial.username}</p>
@@ -265,41 +266,53 @@ export const TestimonialsSection = () => {
 
                       {/* Contenu vidéo/image */}
                       <div className="relative aspect-square bg-gradient-to-br from-digiqo-gray to-gray-200 overflow-hidden">
-                        {/* Image de fond avec thumbnail */}
-                        {testimonial.thumbnail && (
-                          <div className="absolute inset-0">
-                            <Image
-                              src={testimonial.thumbnail}
-                              alt={testimonial.username}
-                              fill
-                              className="object-cover"
-                              sizes="320px"
-                              loading="lazy"
-                            />
-                          </div>
-                        )}
+                        {playingVideoId === testimonial.videoId ? (
+                          // Iframe injectée uniquement après le clic — jamais au
+                          // chargement de la page.
+                          <iframe
+                            src={`https://www.youtube-nocookie.com/embed/${testimonial.videoId}?autoplay=1&rel=0`}
+                            title={`Témoignage client ${testimonial.username}`}
+                            className="absolute inset-0 w-full h-full"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                          />
+                        ) : (
+                          <>
+                            {/* Image de fond avec thumbnail */}
+                            {testimonial.thumbnail && (
+                              <div className="absolute inset-0">
+                                <Image
+                                  src={testimonial.thumbnail}
+                                  alt={testimonial.username}
+                                  fill
+                                  className="object-cover"
+                                  sizes="320px"
+                                  loading="lazy"
+                                />
+                              </div>
+                            )}
 
-                        {testimonial.isVideo && testimonial.videoUrl && (
-                          <a
-                            href={testimonial.videoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="absolute inset-0 flex items-center justify-center cursor-pointer hover:bg-black/10 transition-colors"
-                          >
-                            <div className="text-center">
-                              <motion.div
-                                className="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center mb-3 mx-auto shadow-lg"
-                                whileHover={{ scale: 1.1 }}
-                                animate={{ scale: [1, 1.05, 1] }}
-                                transition={{ duration: 2, repeat: Infinity }}
-                              >
-                                <svg className="w-7 h-7 text-digiqo-accent ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                  <path d="M8 5v14l11-7z" />
-                                </svg>
-                              </motion.div>
-                              <p className="text-sm text-white font-medium drop-shadow-lg">Voir le témoignage vidéo</p>
-                            </div>
-                          </a>
+                            <button
+                              type="button"
+                              onClick={() => setPlayingVideoId(testimonial.videoId)}
+                              aria-label={`Lire le témoignage vidéo de ${testimonial.username}`}
+                              className="absolute inset-0 flex items-center justify-center cursor-pointer hover:bg-black/10 transition-colors"
+                            >
+                              <div className="text-center">
+                                <motion.div
+                                  className="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center mb-3 mx-auto shadow-lg"
+                                  whileHover={{ scale: 1.1 }}
+                                  animate={{ scale: [1, 1.05, 1] }}
+                                  transition={{ duration: 2, repeat: Infinity }}
+                                >
+                                  <svg className="w-7 h-7 text-digiqo-accent ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z" />
+                                  </svg>
+                                </motion.div>
+                                <p className="text-sm text-white font-medium drop-shadow-lg">Voir le témoignage vidéo</p>
+                              </div>
+                            </button>
+                          </>
                         )}
                       </div>
 
@@ -343,9 +356,12 @@ export const TestimonialsSection = () => {
                           >
                             {animatedLikes[testimonial.id]?.toLocaleString()} J'aime
                           </motion.p>
-                          <p className="text-sm">
-                            <span className="font-semibold">digiqo</span> {testimonial.content}
-                          </p>
+                          {/* Vidéo sans citation Airtable → carte sans texte. */}
+                          {testimonial.content && (
+                            <p className="text-sm">
+                              <span className="font-semibold">digiqo</span> {testimonial.content}
+                            </p>
+                          )}
                           <p className="text-xs text-gray-500">Voir les {testimonial.comments} commentaires</p>
                           <p className="text-xs text-gray-600 uppercase">{testimonial.publishedAt}</p>
                         </div>
@@ -410,15 +426,15 @@ export const TestimonialsSection = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <a
-            href="https://www.instagram.com/digiqo_/"
+            href="https://www.youtube.com/@digiqo_"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-digiqo-primary via-[#C13584] to-digiqo-accent text-white font-semibold rounded-full hover:shadow-xl hover:shadow-digiqo-primary/20 transition-all duration-300 transform hover:scale-105"
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"/>
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
             </svg>
-            Suivre sur Instagram
+            Suivre sur YouTube
           </a>
         </motion.div>
       </div>

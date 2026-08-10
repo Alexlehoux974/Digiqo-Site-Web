@@ -11,6 +11,8 @@ import { useInstantScroll } from '@/hooks/useInstantScroll'
 import { ArrowRight, Play, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import Link from 'next/link'
 import { clientVideos } from '@/lib/client-videos'
+import type { GetStaticProps } from 'next'
+import { getVideoTestimonials, type VideoTestimonial } from '@/lib/youtube-testimonials'
 
 // HeroParallax is now a pure-JSX component (no state/effects since S2-#13/14
 // cleanups). SSR'd so the actual hero is in the HTML — was ssr:false with a
@@ -32,13 +34,12 @@ const ResultsSection = dynamic(
   { loading: () => <div className="min-h-[400px] bg-white" /> }
 )
 
-// Below-the-fold Instagram testimonials carousel. Pure social proof —
-// no SEO/LLM-critical text the bots need to see in the initial HTML.
-// Deferring it from SSR shrinks the home payload and the hydration
-// graph on first paint. Visual layout reserved by the placeholder.
+// Carrousel de témoignages clients. Les données (noms de clients + citations)
+// viennent de getStaticProps et doivent apparaître dans le HTML servi pour le
+// SEO : ce composant est donc rendu côté serveur (plus de `ssr: false`).
 const TestimonialsSection = dynamic(
   () => import('../components/TestimonialsSection').then((mod) => mod.TestimonialsSection),
-  { ssr: false, loading: () => <div className="min-h-[500px] bg-[#F8F9FA]" /> }
+  { loading: () => <div className="min-h-[500px] bg-[#F8F9FA]" /> }
 )
 
 const FAQSection = dynamic(
@@ -264,7 +265,23 @@ function VideoCarousel() {
   )
 }
 
-export default function Home() {
+// Témoignages vidéo : fetch YouTube + Airtable côté serveur uniquement, au
+// build puis revalidé toutes les 24 h. Les clés API restent sur le serveur —
+// Next retire getStaticProps et ses imports exclusifs du bundle client.
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const testimonials = await getVideoTestimonials()
+
+  return {
+    props: { testimonials },
+    revalidate: 86400,
+  }
+}
+
+interface HomeProps {
+  testimonials: VideoTestimonial[]
+}
+
+export default function Home({ testimonials }: HomeProps) {
   useInstantScroll()
 
   useEffect(() => {
@@ -415,7 +432,7 @@ export default function Home() {
         </section>
 
         {/* 4. Témoignages */}
-        <TestimonialsSection />
+        <TestimonialsSection testimonials={testimonials} />
 
         {/* 5. Services */}
         <ServicesSection />
