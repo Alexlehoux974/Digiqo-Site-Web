@@ -20,9 +20,11 @@ export interface VideoTestimonial {
   thumbnail?: string
   likes: number
   comments: number
-  /** Date relative pré-calculée côté serveur (« Il y a 2 mois »). */
-  publishedAt: string
-  /** Date ISO brute, pour le JSON-LD VideoObject. */
+  /**
+   * Date ISO de mise en ligne de la vidéo, pour le JSON-LD VideoObject
+   * uniquement. Jamais affichée : sur YouTube c'est une date de
+   * republication, pas la date réelle du témoignage.
+   */
   uploadDate: string
 }
 
@@ -39,23 +41,6 @@ function normalizeName(name: string): string {
     .replace(/[̀-ͯ]/g, '')
     .toLowerCase()
     .replace(/[^a-z0-9]/g, '')
-}
-
-// Reprise à l'identique de la logique de pages/api/testimonials.ts pour ne pas
-// changer le rendu des dates dans les cartes.
-function getRelativeTime(dateString: string): string {
-  const date = new Date(dateString)
-  const now = new Date()
-  const diffInDays = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24))
-
-  if (diffInDays === 0) return "Aujourd'hui"
-  if (diffInDays === 1) return 'Hier'
-  if (diffInDays < 7) return `Il y a ${diffInDays} jours`
-  if (diffInDays < 14) return 'Il y a 1 semaine'
-  if (diffInDays < 21) return 'Il y a 2 semaines'
-  if (diffInDays < 28) return 'Il y a 3 semaines'
-  if (diffInDays < 60) return 'Il y a 1 mois'
-  return `Il y a ${Math.floor(diffInDays / 30)} mois`
 }
 
 interface PlaylistItem {
@@ -206,7 +191,6 @@ export async function getVideoTestimonials(): Promise<VideoTestimonial[]> {
           // Mêmes formules que l'ancienne source, pour un rendu identique.
           likes: 150 + ((index * 23) % 100),
           comments: 10 + ((index * 7) % 30),
-          publishedAt: snippet.publishedAt ? getRelativeTime(snippet.publishedAt) : 'Récemment',
           uploadDate: snippet.publishedAt || '',
         }
       })
