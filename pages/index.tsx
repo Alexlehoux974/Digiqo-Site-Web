@@ -10,9 +10,9 @@ import { Footer } from '../components/Footer'
 import { useInstantScroll } from '@/hooks/useInstantScroll'
 import { ArrowRight, Play, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import Link from 'next/link'
-import { clientVideos } from '@/lib/client-videos'
 import type { GetStaticProps } from 'next'
 import { getVideoTestimonials, type VideoTestimonial } from '@/lib/youtube-testimonials'
+import { getClientVideos, type ClientVideoItem } from '@/lib/drive-realisations'
 
 // HeroParallax is now a pure-JSX component (no state/effects since S2-#13/14
 // cleanups). SSR'd so the actual hero is in the HTML — was ssr:false with a
@@ -77,47 +77,7 @@ const products = partnersData.map((partner) => ({
   ),
 }))
 
-// Video thumbnails mapping
-const videoThumbs: Record<string, string> = {
-  "CÔTE SEINE": "/references/video-thumbs/cote-seine.webp",
-  "NOMAD": "/references/video-thumbs/nomad.webp",
-  "TWINS DESIGN": "/references/video-thumbs/twins-design.webp",
-  "VEILLE À NÔU": "/references/video-thumbs/veille-a-nou.webp",
-  "C BIEN GLACÉ": "/references/video-thumbs/c-bien-glace.webp",
-  "DERMA JOLIE": "/references/video-thumbs/derma-jolie.webp",
-  "CULINARION": "/references/video-thumbs/culinarion.webp",
-  "AGENCE CENTRALE DE L'OR": "/references/video-thumbs/agence-centrale-or.webp",
-  "ASI TECHNOLOGIE": "/references/video-thumbs/asi-technologie.webp",
-  "BURO": "/references/video-thumbs/buro.webp",
-  "EDEN DU RANDONNEUR": "/references/video-thumbs/eden-randonneur.webp",
-  "GARAGE FCSA": "/references/video-thumbs/garage-fcsa.webp",
-  "GLOBAL SERVICE": "/references/video-thumbs/global-service.webp",
-  "INTÉRIEURS PRIVÉS": "/references/video-thumbs/interieurs-prives.webp",
-  "LA PART DES ANGES": "/references/video-thumbs/la-part-des-anges.webp",
-  "LADRESS": "/references/video-thumbs/ladress.webp",
-  "LE GOÛT DU VIN": "/references/video-thumbs/le-gout-du-vin.webp",
-  "LELINGE.RE": "/references/video-thumbs/lelinge.webp",
-  "LES CAFÉS D'ITALIE": "/references/video-thumbs/les-cafes-ditalie.webp",
-  "LITTLE LIBELULLE": "/references/video-thumbs/little-libellule.webp",
-  "ONE-MARKET": "/references/video-thumbs/one-market.webp",
-  "PASS-XP": "/references/video-thumbs/pass-xp.webp",
-  "PÊCHE PASSION": "/references/video-thumbs/peche-passion.webp",
-  "POKAWA": "/references/video-thumbs/pokawa.webp",
-  "SAM CONCEPT HABITAT": "/references/video-thumbs/sam-concept-habitat.webp",
-  "CAVAVIN": "/references/video-thumbs/cavavin.webp",
-  "COPEAUX D'ABORD": "/references/video-thumbs/copeaux-dabord.webp",
-  "DORCEL": "/references/video-thumbs/dorcel.webp",
-  "ÉMULSION 2": "/references/video-thumbs/emulsion.webp",
-  "EN L'AIR PIED BOIS": "/references/video-thumbs/en-lair-pied-bois.webp",
-  "HÉRACLES COACHING": "/references/video-thumbs/heracles-coaching.webp",
-  "INSTITUT DESBEANCE": "/references/video-thumbs/institut-desbeance.webp",
-  "LILOO BEAUTY": "/references/video-thumbs/liloo-beauty.webp",
-  "PAPANG": "/references/video-thumbs/papang.webp",
-  "ULM": "/references/video-thumbs/ulm.webp",
-  "VANILLE JEU-CONCOURS": "/references/video-thumbs/vanille-jeu-concours.webp",
-}
-
-function VideoCarousel() {
+function VideoCarousel({ videos = [] }: { videos?: ClientVideoItem[] }) {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [activeVideo, setActiveVideo] = useState<string | null>(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
@@ -183,12 +143,10 @@ function VideoCarousel() {
           className="flex gap-6 md:gap-8 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-[calc(50%-75px)] md:px-8 pb-4"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          {clientVideos.map((video, i) => {
-            const thumb = videoThumbs[video.clientName]
-            if (!thumb) return null
+          {videos.map((video) => {
             return (
               <button
-                key={i}
+                key={video.src}
                 onClick={() => setActiveVideo(video.src)}
                 className="flex-shrink-0 snap-center group/card cursor-pointer text-center"
               >
@@ -204,7 +162,7 @@ function VideoCarousel() {
                       {/* Screen content */}
                       <div className="relative aspect-[9/19.5]">
                         <Image
-                          src={thumb}
+                          src={video.thumb}
                           alt={video.alt}
                           fill
                           className="object-cover transition-transform duration-500 group-hover/card:scale-105"
@@ -265,23 +223,28 @@ function VideoCarousel() {
   )
 }
 
-// Témoignages vidéo : fetch YouTube + Airtable côté serveur uniquement, au
-// build puis revalidé toutes les 24 h. Les clés API restent sur le serveur —
-// Next retire getStaticProps et ses imports exclusifs du bundle client.
+// Témoignages vidéo (YouTube + Airtable) et réalisations vidéo (dossier Drive
+// partagé) : fetch côté serveur uniquement, au build puis revalidé toutes les
+// 24 h. Les clés API restent sur le serveur — Next retire getStaticProps et
+// ses imports exclusifs du bundle client.
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const testimonials = await getVideoTestimonials()
+  const [testimonials, videos] = await Promise.all([
+    getVideoTestimonials(),
+    getClientVideos(),
+  ])
 
   return {
-    props: { testimonials },
+    props: { testimonials, videos },
     revalidate: 86400,
   }
 }
 
 interface HomeProps {
   testimonials: VideoTestimonial[]
+  videos: ClientVideoItem[]
 }
 
-export default function Home({ testimonials }: HomeProps) {
+export default function Home({ testimonials, videos }: HomeProps) {
   useInstantScroll()
 
   useEffect(() => {
@@ -428,7 +391,7 @@ export default function Home({ testimonials }: HomeProps) {
             </p>
           </div>
 
-          <VideoCarousel />
+          <VideoCarousel videos={videos} />
         </section>
 
         {/* 4. Témoignages */}
