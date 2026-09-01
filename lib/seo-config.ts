@@ -15,7 +15,7 @@ export const seoConfig = {
     services: {
       'publicite-en-ligne': {
         title: 'Publicité en Ligne La Réunion | Google Ads, Facebook, Instagram, TikTok 974 | Digiqo',
-        description: 'Agence publicité en ligne à La Réunion (974). Campagnes Google Ads, Facebook Ads, Instagram Ads, TikTok Ads. Ciblage local, optimisation continue, reporting mensuel.',
+        description: 'Agence publicité en ligne à La Réunion (974). Campagnes Google Ads, Facebook Ads, Instagram Ads, TikTok Ads. Ciblage local, optimisation continue, reporting détaillé.',
         keywords: 'publicité en ligne réunion, google ads 974, facebook ads réunion, instagram ads 974, tiktok ads réunion, SMA réunion, SEA réunion, agence publicité digitale 974',
       },
       'sites-web': {
@@ -108,7 +108,7 @@ export const homeStructuredDataGraph = {
       "@id": "https://digiqo.fr/#localbusiness",
       "name": "Digiqo",
       "alternateName": "Digiqo - Agence Marketing Digital La Réunion",
-      "description": "Première agence de l'océan Indien certifiée Meta Business Partner. Experts en marketing digital, publicité Meta Ads et Google Ads, développement web, SEO et community management à La Réunion.",
+      "description": "Agence de marketing digital à La Réunion dont les experts sont certifiés Meta. Publicité Meta Ads et Google Ads, développement web, SEO et community management à La Réunion.",
       "url": "https://digiqo.fr",
       "telephone": "+262 262 02 51 02",
       "email": "contact@digiqo.fr",
@@ -218,7 +218,7 @@ export const businessStructuredData = {
   "@id": "https://digiqo.fr/#organization",
   "name": "Digiqo",
   "alternateName": "Digiqo - Agence Marketing Digital La Réunion",
-  "description": "Première agence de l'océan Indien certifiée Meta Business Partner. Experts en marketing digital, publicité Meta Ads et Google Ads, développement web, SEO et community management à La Réunion.",
+  "description": "Agence de marketing digital à La Réunion dont les experts sont certifiés Meta. Publicité Meta Ads et Google Ads, développement web, SEO et community management à La Réunion.",
   "url": "https://digiqo.fr",
   "telephone": "+262 262 02 51 02",
   "email": "contact@digiqo.fr",

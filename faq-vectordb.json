@@ -1943,18 +1943,18 @@
       "category": "Équipe et Valeurs",
       "subcategory": "Certifications",
       "question": "Avez-vous des certifications ?",
-      "answer": "Multiples certifications : Google Partners (Ads, Analytics), Meta Business Partners, certifications individuelles équipe, formations continues annuelles, membre associations professionnelles, agréé formation Qualiopi.",
+      "answer": "Multiples certifications : Google Partners (Ads, Analytics), experts certifiés Meta, certifications individuelles équipe, formations continues annuelles, membre associations professionnelles, agréé formation Qualiopi.",
       "keywords": [
         "certifications",
         "Google Partners",
-        "Meta Business Partners",
+        "experts certifiés Meta",
         "formations",
         "associations professionnelles",
         "Qualiopi"
       ],
       "context": "Certifications agence",
       "intent": "certifications_agence",
-      "embedding_text": "Avez-vous des certifications ? Multiples certifications Google Partners Ads Analytics Meta Business Partners certifications individuelles équipe formations continues annuelles membre associations professionnelles agréé formation Qualiopi"
+      "embedding_text": "Avez-vous des certifications ? Multiples certifications Google Partners Ads Analytics experts certifiés Meta certifications individuelles équipe formations continues annuelles membre associations professionnelles agréé formation Qualiopi"
     },
     {
       "id": "faq_099",
@@ -2195,11 +2195,11 @@
       "category": "Partenariats et Références",
       "subcategory": "Partenaires",
       "question": "Avec qui êtes-vous partenaires ?",
-      "answer": "Partenariats stratégiques : Google Partners certifié, Meta Business Partners, partenaires technologiques (WordPress, Shopify), hébergeurs premium, médias locaux Réunion, chambres commerce et syndicats professionnels.",
+      "answer": "Partenariats stratégiques : Google Partners certifié, experts certifiés Meta, partenaires technologiques (WordPress, Shopify), hébergeurs premium, médias locaux Réunion, chambres commerce et syndicats professionnels.",
       "keywords": [
         "partenaires",
         "Google Partners",
-        "Meta Business",
+        "experts certifiés Meta",
         "WordPress",
         "Shopify",
         "hébergeurs",
@@ -2208,7 +2208,7 @@
       ],
       "context": "Partenariats stratégiques",
       "intent": "partenariats_strategiques",
-      "embedding_text": "Avec qui êtes-vous partenaires ? Partenariats stratégiques Google Partners certifié Meta Business Partners partenaires technologiques WordPress Shopify hébergeurs premium médias locaux Réunion chambres commerce syndicats professionnels"
+      "embedding_text": "Avec qui êtes-vous partenaires ? Partenariats stratégiques Google Partners certifié experts certifiés Meta partenaires technologiques WordPress Shopify hébergeurs premium médias locaux Réunion chambres commerce syndicats professionnels"
     },
     {
       "id": "faq_112",

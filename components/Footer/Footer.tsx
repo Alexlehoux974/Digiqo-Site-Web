@@ -250,9 +250,20 @@ export const Footer = () => {
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               {/* Copyright */}
               <div className="text-gray-400 text-xs text-center md:text-left">
-                © {currentYear} Digiqo. Tous droits réservés. Made with
-                <span className="text-cyan-500 mx-1">♥</span>
-                in La Réunion 🇷🇪
+                <div>
+                  © {currentYear} Digiqo. Tous droits réservés. Made with
+                  <span className="text-cyan-500 mx-1">♥</span>
+                  in La Réunion 🇷🇪
+                </div>
+                <div className="mt-1">
+                  Développé par{' '}
+                  <a
+                    href="https://digiqo.fr"
+                    className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+                  >
+                    Digiqo
+                  </a>
+                </div>
               </div>
 
               {/* Legal links */}

@@ -52,7 +52,7 @@ export const HeroParallax = ({
 
           {/* Subtitle */}
           <p className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
-            Facebook, Instagram, Google & TikTok Ads — gérés par des experts certifiés Meta. Plus de 230 entreprises nous font déjà confiance.
+            Facebook, Instagram, Google & TikTok Ads, gérés par des experts certifiés Meta. Plus de 230 entreprises nous font déjà confiance.
           </p>
 
           {/* Single CTA */}
@@ -85,7 +85,7 @@ export const HeroParallax = ({
               <span className="text-white/80"><span className="text-white font-semibold">230+</span> clients actifs</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-white/80"><span className="text-white font-semibold">Certifiés</span> Meta Business Partner</span>
+              <span className="text-white/80"><span className="text-white font-semibold">Experts certifiés</span> Meta</span>
             </div>
           </div>
 

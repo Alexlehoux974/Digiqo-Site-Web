@@ -149,9 +149,10 @@ export const formationKitApporteur: Formation = {
       description: "Comment vous êtes rémunéré, avec des exemples chiffrés.",
       content: [
         "### Leçon 1 : Le principe",
-        "5 % de la facture HT payée par le client, sur les 12 premiers mois à partir de la première facturation du client (hors Initiation Mensuelle). C'est la première facturation qui lance le compteur des 12 mois.",
+        "5 % de la facture HT payée par le client, sur les 12 premiers mois à partir de la première facturation du client. C'est la première facturation qui lance le compteur des 12 mois.",
         "",
         "### Leçon 2 : Exemples concrets",
+        "Initiation Trimestrielle (1 650 € HT/trimestre) : 5 % = 82,50 €/trimestre, soit 330 € sur 12 mois (4 trimestres).",
         "Initiation Annuelle (5 610 € HT, 1 paiement) : 5 % = 280,50 €.",
         "Propulsion Trimestrielle (2 250 € HT/trimestre) : 5 % = 112,50 €/trimestre, soit 450 € sur 12 mois (4 trimestres).",
         "Propulsion Annuelle (7 650 € HT, 1 paiement) : 5 % = 382,50 €.",
@@ -163,7 +164,7 @@ export const formationKitApporteur: Formation = {
         "La commission est versée au fil des encaissements réels de Digiqo : on vous paie uniquement à réception de l'argent du client, après chaque facture effectivement réglée. Si le client ne paie pas, vous ne touchez rien sur cette facture. L'encaissement conditionne le versement de votre commission, pas le point de départ des 12 mois (qui court, lui, depuis la première facturation). Pas de plafond. Un contrat apporteur d'affaires est à signer avec Digiqo avant le premier apport. Rappel : seul un apport validé par un R1 posé via votre lien dédié ouvre droit à commission ; un contact simplement transmis ne déclenche rien."
       ],
       keyPoints: [
-        "5 % de la facture HT, sur les 12 premiers mois à partir de la première facturation (hors Initiation Mensuelle)",
+        "5 % de la facture HT, sur les 12 premiers mois à partir de la première facturation",
         "Pas de plafond de commission",
         "Versée au fil des encaissements : payée seulement quand le client paie",
         "Contrat apporteur à signer avant le premier apport"

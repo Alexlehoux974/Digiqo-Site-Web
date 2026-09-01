@@ -74,6 +74,12 @@ const adProducts = [
     commission: '382,50€ de commission',
   },
   {
+    name: 'Initiation Trimestrielle',
+    price: '1 650€ HT',
+    commission: "Jusqu'à 330€ de commission",
+    commissionNote: '4 × 82,50€',
+  },
+  {
     name: 'Initiation Annuelle',
     price: '5 610€ HT',
     commission: '280,50€ de commission',
@@ -108,7 +114,7 @@ const conditions = [
     icon: ShieldCheck,
     title: 'Produits éligibles',
     description:
-      "Uniquement la publicité en ligne (hors Initiation Mensuelle) et les sites web sur mesure.",
+      "Uniquement la publicité en ligne et les sites web sur mesure.",
   },
 ]
 
@@ -131,7 +137,7 @@ const faqs = [
   {
     question: 'Quels produits sont éligibles ?',
     answer:
-      "Deux catégories :\n• **Sites web** (sur devis) : site internet vitrine clé en main et boutique en ligne sur mesure.\n• **Publicité en ligne** : toutes les formules à l'exception de l'Initiation Mensuelle.",
+      "Deux catégories :\n• **Sites web** (sur devis) : site internet vitrine clé en main et boutique en ligne sur mesure.\n• **Publicité en ligne** : toutes les formules.",
   },
   {
     question: 'Quand suis-je payé ?',
@@ -399,8 +405,7 @@ export default function Partenaires() {
               viewport={{ once: true }}
               className="text-center text-sm text-gray-500 mt-8 max-w-2xl mx-auto"
             >
-              Côté publicité en ligne, toutes les formules sont éligibles à
-              l'exception de l'Initiation Mensuelle.
+              Côté publicité en ligne, toutes les formules sont éligibles.
             </motion.p>
           </div>
         </section>

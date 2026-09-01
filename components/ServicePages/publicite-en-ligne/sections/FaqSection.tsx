@@ -23,7 +23,7 @@ export const faqs = [
   },
   {
     question: 'Comment suivre les performances de mes campagnes ?',
-    answer: 'Nous fournissons un accès aux plateformes publicitaires pour suivre vos campagnes en temps réel. Vous recevez également des rapports mensuels détaillés avec analyse des performances, nombre de clics, conversions et recommandations d\'amélioration via votre espace collaboratif dédié.',
+    answer: 'Nous fournissons un accès aux plateformes publicitaires pour suivre vos campagnes en temps réel. Vous recevez également des rapports détaillés chaque mois avec analyse des performances, nombre de clics, conversions et recommandations d\'amélioration via votre espace collaboratif dédié.',
   },
   {
     question: 'Combien de temps avant de voir des résultats ?',

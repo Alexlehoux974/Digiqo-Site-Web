@@ -56,7 +56,7 @@ export default function PubliciteEnLignePage() {
     <ServiceLayout>
       <Head>
         <title>{seoData?.title || 'Publicité en Ligne La Réunion | Google Ads, Facebook, Instagram, TikTok 974 | Digiqo'}</title>
-        <meta name="description" content={seoData?.description || 'Agence publicité en ligne à La Réunion (974). Campagnes Google Ads, Facebook Ads, Instagram Ads, TikTok Ads. Ciblage local, optimisation continue, reporting mensuel.'} />
+        <meta name="description" content={seoData?.description || 'Agence publicité en ligne à La Réunion (974). Campagnes Google Ads, Facebook Ads, Instagram Ads, TikTok Ads. Ciblage local, optimisation continue, reporting détaillé.'} />
 
         {/* Open Graph */}
         <meta property="og:title" content="Publicité en Ligne La Réunion | Google Ads, Facebook, Instagram, TikTok 974 | Digiqo" />

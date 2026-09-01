@@ -46,7 +46,7 @@ export function TrustpilotWidget({
         target="_blank"
         rel="noopener noreferrer"
         className={`${wrapperClass} flex flex-col items-center gap-1`}
-        aria-label={`Note Trustpilot ${RATING} sur 5 — ${REVIEW_COUNT} avis`}
+        aria-label={`Note Trustpilot ${RATING} sur 5, ${REVIEW_COUNT} avis`}
       >
         <span className="text-3xl sm:text-4xl md:text-5xl font-bold tabular-nums bg-gradient-to-r from-digiqo-primary to-digiqo-accent bg-clip-text text-transparent">
           {RATING}
@@ -94,11 +94,11 @@ export function TrustpilotWidget({
       target="_blank"
       rel="noopener noreferrer"
       className={`${wrapperClass} inline-flex items-center gap-2 text-sm`}
-      aria-label={`Trustpilot ${RATING}/5 — ${REVIEW_COUNT} avis`}
+      aria-label={`Trustpilot ${RATING}/5, ${REVIEW_COUNT} avis`}
     >
       <span className="text-yellow-500 tracking-wider" aria-hidden="true">{STARS}</span>
       <span>
-        Trustpilot {RATING}/5 — {REVIEW_COUNT} avis
+        Trustpilot {RATING}/5, {REVIEW_COUNT} avis
       </span>
     </a>
   )

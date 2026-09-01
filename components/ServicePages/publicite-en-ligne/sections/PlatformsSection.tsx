@@ -89,7 +89,7 @@ export default function PlatformsSection() {
               </div>
             </div>
             <p className="text-blue-100 mb-4">
-              Google Ads (Search, Display, YouTube) — campagnes Search et liens sponsorisés
+              Google Ads (Search, Display, YouTube) : campagnes Search et liens sponsorisés
             </p>
             <p className="text-blue-100 mb-4">
               Digiqo, votre agence SEA à La Réunion, pilote votre référencement payant pour vous placer en tête de Google sur vos mots-clés stratégiques.

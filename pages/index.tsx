@@ -282,7 +282,7 @@ export default function Home({ testimonials, videos }: HomeProps) {
         {/* The single <h1> of the page — carries SEO/GEO keywords. The visible
             HeroParallax headline is a semantic <h2> for visual hierarchy. */}
         <h1 className="sr-only">
-          Agence Marketing Digital à La Réunion — Publicité Meta Ads, Google Ads, SEO
+          Agence Marketing Digital à La Réunion : Publicité Meta Ads, Google Ads, SEO
         </h1>
 
         {/* 1. Hero + Logos */}
@@ -297,7 +297,7 @@ export default function Home({ testimonials, videos }: HomeProps) {
             <div className="flex justify-center mb-6">
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#8B1431] text-white text-sm font-bold rounded-full shadow-lg">
                 <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                NOUVEAU — DISPONIBLE MAINTENANT
+                NOUVEAU : DISPONIBLE MAINTENANT
               </span>
             </div>
 
@@ -344,7 +344,7 @@ export default function Home({ testimonials, videos }: HomeProps) {
                         (see styles/globals.css → .dashboard-preview-screen:hover ...). */}
                     <div
                       className="dashboard-preview-screen relative bg-white rounded-[1.2rem] md:rounded-[1.7rem] overflow-y-auto overflow-x-hidden aspect-[4/3]"
-                      aria-label="Aperçu Mon Dashboard — auto-scroll, survolez pour faire défiler manuellement"
+                      aria-label="Aperçu Mon Dashboard : auto-scroll, survolez pour faire défiler manuellement"
                       role="region"
                       tabIndex={0}
                     >
@@ -410,7 +410,7 @@ export default function Home({ testimonials, videos }: HomeProps) {
           <div className="relative z-10 max-w-6xl mx-auto px-4">
             <div className="text-center mb-12">
               <span className="inline-block px-4 py-2 bg-gradient-to-r from-digiqo-accent to-orange-400 text-white text-sm font-bold rounded-full mb-6">
-                KAP NUMÉRIK — RÉGION RÉUNION
+                KAP NUMÉRIK, RÉGION RÉUNION
               </span>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 Jusqu'à <span className="bg-gradient-to-r from-digiqo-accent to-yellow-400 bg-clip-text text-transparent">3 200€</span> d'aide pour votre digital

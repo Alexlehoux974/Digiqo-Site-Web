@@ -119,13 +119,13 @@ const glossaryData: Category[] = [
       },
       {
         term: 'CTR',
-        acronym: 'Click-Through Rate – Taux de clic',
+        acronym: 'Click-Through Rate, taux de clic',
         definition: "Le pourcentage de personnes ayant cliqué sur une publicité par rapport au nombre de fois où elle a été affichée.",
         practice: "Un CTR élevé indique un créatif et un message pertinents. Nous comparons les CTR entre les variantes pour identifier les visuels et accroches les plus performants.",
       },
       {
         term: 'ROAS',
-        acronym: 'Return On Ad Spend – Retour sur dépenses publicitaires',
+        acronym: 'Return On Ad Spend, retour sur dépenses publicitaires',
         definition: "Le revenu généré pour chaque euro investi en publicité. ROAS = Revenus / Dépenses publicitaires.",
         practice: "Pour les clients e-commerce, nous visons généralement un ROAS minimum de 3 à 5 selon le secteur. Cet indicateur guide nos décisions d'optimisation et de scaling.",
       },
@@ -190,7 +190,7 @@ const glossaryData: Category[] = [
       {
         term: 'Production vidéo',
         definition: "Une prestation distincte incluant un tournage physique et un montage, réalisés par une société de production qui se déplace sur site. Prestation payante, à distinguer du créatif dynamique.",
-        practice: "Si vous souhaitez un film d'entreprise, un reportage ou des interviews avec caméra sur site, il s'agit d'une production vidéo — à chiffrer séparément de l'abonnement SMA et confiée à un prestataire externe.",
+        practice: "Si vous souhaitez un film d'entreprise, un reportage ou des interviews avec caméra sur site, il s'agit d'une production vidéo, à chiffrer séparément de l'accompagnement SMA et confiée à un prestataire externe.",
       },
       {
         term: 'Visuels inclus',
@@ -220,24 +220,19 @@ const glossaryData: Category[] = [
         practice: "Inclut tous les canaux disponibles, un volume élevé de créatifs, un accompagnement stratégique complet et un interlocuteur dédié.",
       },
       {
-        term: 'Abonnement SMA',
-        definition: "Le modèle contractuel mensuel par lequel Digiqo prend en charge la création, la gestion et l'optimisation de vos campagnes publicitaires.",
-        practice: "L'abonnement se renouvelle automatiquement chaque mois. Il peut être mis en pause ou résilié selon les conditions de nos CGV.",
-      },
-      {
-        term: 'Mise en pause',
-        definition: "La suspension temporaire de votre abonnement SMA, sans résiliation définitive. Vos configurations et historiques de campagnes sont conservés.",
-        practice: "La mise en pause permet de stopper les services pour une période donnée (congés, saisonnalité…) sans perdre votre compte et sans recommencer de zéro à la reprise.",
+        term: 'Accompagnement SMA',
+        definition: "Prestation de gestion de publicité en ligne souscrite pour une durée définie, trois mois ou douze mois, réglée à la commande.",
+        practice: "L'accompagnement démarre dès réception du paiement et couvre l'intégralité de la période souscrite.",
       },
       {
         term: 'Résiliation',
-        definition: "La fin définitive de votre abonnement SMA. Elle met un terme au contrat de gestion des campagnes publicitaires par Digiqo.",
-        practice: "Une demande de résiliation doit être soumise via le formulaire dédié sur digiqo.fr/desabonnement, conformément à nos CGV. La résiliation prend effet à la fin de la période en cours.",
+        definition: "La fin définitive de votre accompagnement SMA. Elle met un terme au contrat de gestion des campagnes publicitaires par Digiqo.",
+        practice: "Une demande de résiliation doit être soumise via le formulaire dédié sur digiqo.fr/desabonnement, conformément à nos CGV. La résiliation prend effet à la fin de la période souscrite.",
       },
       {
         term: 'Cycle de vie SMA',
         definition: "Les différentes phases que traverse un client SMA, depuis la signature jusqu'à la résiliation ou la montée en gamme.",
-        practice: "Chez Digiqo, le cycle comprend : onboarding → phase de test → optimisation continue → reporting mensuel → éventuellement mise en pause ou résiliation, ou montée vers une offre supérieure.",
+        practice: "Chez Digiqo, le cycle comprend : onboarding → phase de test → optimisation continue → reporting chaque mois → renouvellement, résiliation ou montée vers une offre supérieure.",
       },
     ],
   },
@@ -316,7 +311,7 @@ export default function Glossaire() {
   return (
     <>
       <SEO
-        title="Glossaire Digiqo – Lexique du marketing digital"
+        title="Glossaire Digiqo : lexique du marketing digital"
         description="Retrouvez toutes les définitions des termes utilisés par Digiqo : SMA, SEA, ROAS, CPL, Pixel, créatif fixe, créatif dynamique… Pour que clients et équipes parlent le même langage."
         keywords="glossaire marketing digital, lexique SMA, définitions publicité en ligne, ROAS, CPL, CPC, Meta Ads, Google Ads, Digiqo"
         url="https://digiqo.fr/glossaire"
@@ -342,7 +337,7 @@ export default function Glossaire() {
                 Glossaire Digiqo
               </h1>
               <p className="text-white/85 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-                Cette page définit les termes utilisés par Digiqo — sur le site, dans les devis et lors de nos échanges.
+                Cette page définit les termes utilisés par Digiqo : sur le site, dans les devis et lors de nos échanges.
                 Pour que clients et équipes parlent exactement le même langage.
               </p>
             </motion.div>
@@ -451,7 +446,7 @@ export default function Glossaire() {
             <h2 className="text-xl font-bold mb-2">Vous ne trouvez pas un terme ?</h2>
             <p className="text-white/80 mb-6 max-w-xl mx-auto text-sm leading-relaxed">
               Ce glossaire est amené à évoluer. Si un terme utilisé dans vos échanges avec Digiqo n'y figure pas,
-              signalez-le nous — nous l'ajouterons rapidement.
+              signalez-le nous, nous l'ajouterons rapidement.
             </p>
             <Link
               href="/contact"

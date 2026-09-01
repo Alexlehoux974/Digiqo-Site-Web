@@ -110,11 +110,11 @@ const timelineData = [
         <div className="text-center mb-10">
           <h4 className="text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-digiqo-secondary to-digiqo-accent bg-clip-text text-transparent">
-              Certification Meta Business Partner
+              Experts certifiés Meta
             </span>
           </h4>
           <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
-            Digiqo devient la première agence de l'océan Indien certifiée Meta Business Partner.
+            Les experts Digiqo obtiennent leurs certifications Meta.
             Une reconnaissance qui valide notre expertise et ouvre de nouvelles perspectives
             pour nos clients dans l'écosystème Meta.
           </p>

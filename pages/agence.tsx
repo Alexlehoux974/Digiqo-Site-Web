@@ -96,7 +96,7 @@ const agenceStructuredDataGraph = {
       "name": "L'Agence Digiqo",
       "url": "https://digiqo.fr/agence",
       "description":
-        "Agence digitale de La Réunion certifiée Meta Business Partner. Publicité Meta Ads & Google Ads, tracking complet server-side, dashboard client en temps réel. Des résultats mesurables, depuis 2024.",
+        "Agence digitale de La Réunion dont les experts sont certifiés Meta. Publicité Meta Ads & Google Ads, tracking complet server-side, dashboard client en temps réel. Des résultats mesurables, depuis 2024.",
       "inLanguage": "fr-FR",
       "isPartOf": { "@id": "https://digiqo.fr/#website" },
       "mainEntity": { "@id": "https://digiqo.fr/#organization" }
@@ -199,7 +199,7 @@ function StatCounter({
 }
 
 const certifications = [
-  { type: 'logo', src: '/meta-logo.svg', label: 'Meta Business Partner', alt: 'Logo Meta Business Partner' },
+  { type: 'logo', src: '/meta-logo.svg', label: 'Meta Ads', alt: 'Logo Meta' },
   { type: 'logo', src: '/Google_Ads_logo.svg.png', label: 'Google Partner', alt: 'Logo Google Ads Partner' },
   { type: 'text', icon: BadgeCheck, label: 'Experts certifiés Meta Ads' },
   { type: 'text', icon: ShieldCheck, label: 'Google Analytics & Tag Manager' },
@@ -209,9 +209,9 @@ export default function Agence() {
   return (
     <>
       <SEO
-        title="Digiqo — Agence digitale certifiée Meta Business Partner à La Réunion"
-        description="Digiqo est l'agence digitale certifiée Meta Business Partner de La Réunion. Publicité Meta Ads & Google Ads, tracking complet, dashboard client en temps réel. Résultats mesurables."
-        keywords="agence digitale la réunion, meta business partner réunion, publicité meta ads 974, google ads réunion, tracking server-side, agence marketing digital 974"
+        title="Digiqo, agence digitale à La Réunion dont les experts sont certifiés Meta"
+        description="Digiqo est l'agence digitale de La Réunion dont les experts sont certifiés Meta. Publicité Meta Ads & Google Ads, tracking complet, dashboard client en temps réel. Résultats mesurables."
+        keywords="agence digitale la réunion, experts certifiés meta réunion, publicité meta ads 974, google ads réunion, tracking server-side, agence marketing digital 974"
         url="https://digiqo.fr/agence"
         structuredData={agenceStructuredDataGraph}
       />
@@ -247,7 +247,7 @@ export default function Agence() {
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-digiqo-primary/10 to-digiqo-accent/10 backdrop-blur-sm text-digiqo-primary px-5 py-2.5 rounded-full text-sm font-semibold mb-8"
               >
                 <Sparkles className="w-4 h-4" aria-hidden="true" />
-                Agence certifiée Meta Business Partner — La Réunion
+                Nos experts sont certifiés Meta, à La Réunion
               </motion.div>
 
               {/* H1 = élément LCP : initial={false} pour peindre au premier rendu. */}
@@ -266,7 +266,7 @@ export default function Agence() {
                 initial={false}
                 className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto mb-10"
               >
-                Digiqo, agence digitale certifiée Meta Business Partner. 23 comptes actifs gérés.
+                Digiqo, agence digitale dont les experts sont certifiés Meta. 23 comptes actifs gérés.
                 Des résultats mesurables, ou on ne travaille pas ensemble.
               </motion.p>
 
@@ -356,7 +356,7 @@ export default function Agence() {
                 <p>
                   La publicité digitale sans tracking complet, c'est piloter à l'aveugle.
                   Vous dépensez, vous espérez, mais vous ne savez pas vraiment ce qui génère
-                  vos ventes — ni ce qui les freine.
+                  vos ventes, ni ce qui les freine.
                 </p>
                 <p>
                   Chez Digiqo, on implémente le tracking server-side et le Consent Mode v2,
@@ -406,7 +406,7 @@ export default function Agence() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-8"
               >
-                Pourquoi La Réunion est un terrain idéal pour la pub digitale —{' '}
+                Pourquoi La Réunion est un terrain idéal pour la pub digitale,{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-digiqo-accent to-digiqo-primary-light">
                   et pourquoi ça ne suffit pas
                 </span>
@@ -429,7 +429,7 @@ export default function Agence() {
                 <p>
                   Mais ce levier ne fonctionne que si la stratégie, le ciblage et le tracking
                   sont irréprochables. Un CPM bas sur une campagne mal construite, ça reste de
-                  l'argent gaspillé — juste moins cher.
+                  l'argent gaspillé, juste moins cher.
                 </p>
                 <p className="text-white font-medium">
                   C'est exactement ce que Digiqo apporte : la connaissance du marché local,
@@ -468,7 +468,7 @@ export default function Agence() {
                 <p>
                   Rodolphe, Alexandre, Angelo. Trois associés nés ou ancrés à La Réunion.
                   Ils auraient pu rejoindre des agences parisiennes ou créer à l'étranger.
-                  Ils ont choisi de rester — et de construire à La Réunion une agence au
+                  Ils ont choisi de rester, et de construire à La Réunion une agence au
                   niveau des meilleures agences de France.
                 </p>
                 <p>
@@ -476,8 +476,8 @@ export default function Agence() {
                   réservée à la métropole.
                 </p>
                 <p className="text-digiqo-black font-medium">
-                  La certification Meta Business Partner est venue confirmer, de l'extérieur,
-                  ce niveau d'exigence — celui que l'on s'impose à chaque campagne.
+                  Les certifications Meta obtenues par nos experts sont venues confirmer, de
+                  l'extérieur, ce niveau d'exigence, celui que l'on s'impose à chaque campagne.
                 </p>
               </motion.div>
             </div>
@@ -501,7 +501,7 @@ export default function Agence() {
                 Notre équipe
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Les talents qui font la différence — fondateurs et experts certifiés, mobilisés
+                Les talents qui font la différence : fondateurs et experts certifiés, mobilisés
                 sur chaque projet.
               </p>
             </motion.div>

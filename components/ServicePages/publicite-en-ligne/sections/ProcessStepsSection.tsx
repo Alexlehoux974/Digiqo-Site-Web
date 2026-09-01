@@ -27,7 +27,7 @@ const processSteps = [
   {
     number: '04',
     title: 'Optimisation & Croissance',
-    description: 'Ajustements data-driven hebdomadaires et rapports mensuels détaillés',
+    description: 'Ajustements data-driven hebdomadaires et rapports détaillés chaque mois',
     icon: LineChart,
     color: 'from-digiqo-accent to-amber-600',
   },

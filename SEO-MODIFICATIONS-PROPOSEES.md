@@ -277,7 +277,7 @@ Ce document détaille **EXACTEMENT** tous les changements proposés pour optimis
 ```jsx
 <h3 className="text-4xl font-bold mb-4">
   <span className="bg-gradient-to-r from-digiqo-primary to-digiqo-secondary bg-clip-text text-transparent">
-    Agence Certifiée Meta Business Partner à Saint-Denis
+    Agence digitale à Saint-Denis, experts certifiés Meta
   </span>
 </h3>
 ```
