@@ -4,9 +4,9 @@
     "url": "https://deckstock.fr",
     "screenshot": "/references/fullpage/deckstock-fr.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:02.713Z",
+    "lastChecked": "2026-09-01T09:00:02.868Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:02.747Z",
+    "lastOnline": "2026-09-01T09:00:02.882Z",
     "consecutiveFailures": 0
   },
   {
@@ -14,9 +14,9 @@
     "url": "https://rodolphelehoux.com",
     "screenshot": "/references/fullpage/rodolphelehoux-com.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:03.745Z",
+    "lastChecked": "2026-09-01T09:00:03.298Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:03.745Z",
+    "lastOnline": "2026-09-01T09:00:03.299Z",
     "consecutiveFailures": 0
   },
   {
@@ -24,9 +24,9 @@
     "url": "https://oceanbrandsnetwork.com",
     "screenshot": "/references/fullpage/oceanbrandsnetwork-com.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:04.507Z",
+    "lastChecked": "2026-09-01T09:00:04.176Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:04.507Z",
+    "lastOnline": "2026-09-01T09:00:04.176Z",
     "consecutiveFailures": 0
   },
   {
@@ -34,19 +34,19 @@
     "url": "https://runcall.re",
     "screenshot": "/references/fullpage/runcall-re.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:06.212Z",
+    "lastChecked": "2026-09-01T09:00:04.318Z",
     "lastStatus": "200",
     "consecutiveFailures": 0,
-    "lastOnline": "2026-08-01T09:00:06.212Z"
+    "lastOnline": "2026-09-01T09:00:04.318Z"
   },
   {
     "name": "Crackoi",
     "url": "https://crackoi.com/fr",
     "screenshot": "/references/fullpage/crackoi.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:09.046Z",
+    "lastChecked": "2026-09-01T09:00:06.415Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:09.046Z",
+    "lastOnline": "2026-09-01T09:00:06.415Z",
     "consecutiveFailures": 0
   },
   {
@@ -54,9 +54,9 @@
     "url": "https://lesmaisonsjupiter.re",
     "screenshot": "/references/fullpage/lesmaisonsjupiter-re.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:09.851Z",
+    "lastChecked": "2026-09-01T09:00:09.084Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:09.851Z",
+    "lastOnline": "2026-09-01T09:00:09.084Z",
     "consecutiveFailures": 0
   },
   {
@@ -64,9 +64,9 @@
     "url": "https://incana.notaires.fr",
     "screenshot": "/references/fullpage/incana-notaires-fr.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:15.223Z",
+    "lastChecked": "2026-09-01T09:00:15.260Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:15.223Z",
+    "lastOnline": "2026-09-01T09:00:15.260Z",
     "consecutiveFailures": 0
   },
   {
@@ -74,9 +74,9 @@
     "url": "https://sabaguina.com",
     "screenshot": "/references/fullpage/sabaguina-com.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:15.305Z",
+    "lastChecked": "2026-09-01T09:00:15.316Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:15.305Z",
+    "lastOnline": "2026-09-01T09:00:15.316Z",
     "consecutiveFailures": 0
   },
   {
@@ -84,19 +84,19 @@
     "url": "https://empc.re",
     "screenshot": "/references/fullpage/empc-re.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:15.957Z",
-    "lastStatus": "200",
+    "lastChecked": "2026-09-01T09:00:19.885Z",
+    "lastStatus": "CERT_HAS_EXPIRED",
     "lastOnline": "2026-08-01T09:00:15.957Z",
-    "consecutiveFailures": 0
+    "consecutiveFailures": 1
   },
   {
     "name": "Mystik Sauna",
     "url": "https://mystiksauna.re",
     "screenshot": "/references/fullpage/mystiksauna-re.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:16.020Z",
+    "lastChecked": "2026-09-01T09:00:21.430Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:16.020Z",
+    "lastOnline": "2026-09-01T09:00:21.430Z",
     "consecutiveFailures": 0
   },
   {
@@ -104,9 +104,9 @@
     "url": "https://sogitec-energie.fr",
     "screenshot": "/references/fullpage/sogitec-energie-fr.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:16.047Z",
+    "lastChecked": "2026-09-01T09:00:22.955Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:16.047Z",
+    "lastOnline": "2026-09-01T09:00:22.955Z",
     "consecutiveFailures": 0
   },
   {
@@ -114,9 +114,9 @@
     "url": "https://pascal-destercke.com",
     "screenshot": "/references/fullpage/pascal-destercke-com.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:16.148Z",
+    "lastChecked": "2026-09-01T09:00:23.051Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:16.148Z",
+    "lastOnline": "2026-09-01T09:00:23.051Z",
     "consecutiveFailures": 0
   },
   {
@@ -124,9 +124,9 @@
     "url": "https://velocit-ai.fr",
     "screenshot": "/references/fullpage/velocit-ai-fr.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:18.745Z",
+    "lastChecked": "2026-09-01T09:00:24.918Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:18.745Z",
+    "lastOnline": "2026-09-01T09:00:24.918Z",
     "consecutiveFailures": 0
   },
   {
@@ -134,9 +134,9 @@
     "url": "https://monster-phone.re",
     "screenshot": "/references/fullpage/monster-phone-re.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:19.008Z",
+    "lastChecked": "2026-09-01T09:00:25.913Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:19.008Z",
+    "lastOnline": "2026-09-01T09:00:25.913Z",
     "consecutiveFailures": 0
   },
   {
@@ -144,9 +144,9 @@
     "url": "https://parapente-reunion.fr",
     "screenshot": "/references/fullpage/parapente-reunion-fr.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:19.172Z",
+    "lastChecked": "2026-09-01T09:00:26.890Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:19.172Z",
+    "lastOnline": "2026-09-01T09:00:26.890Z",
     "consecutiveFailures": 0
   },
   {
@@ -154,9 +154,9 @@
     "url": "https://clicknvan.com",
     "screenshot": "/references/fullpage/clicknvan-com.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:19.232Z",
+    "lastChecked": "2026-09-01T09:00:26.974Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:19.232Z",
+    "lastOnline": "2026-09-01T09:00:26.974Z",
     "consecutiveFailures": 0
   },
   {
@@ -164,9 +164,9 @@
     "url": "https://investis-dom.com",
     "screenshot": "/references/fullpage/investis-dom-com.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:19.377Z",
+    "lastChecked": "2026-09-01T09:00:27.173Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:19.377Z",
+    "lastOnline": "2026-09-01T09:00:27.173Z",
     "consecutiveFailures": 0
   },
   {
@@ -174,9 +174,9 @@
     "url": "https://cmxfactory.com",
     "screenshot": "/references/fullpage/cmxfactory-com.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:19.694Z",
+    "lastChecked": "2026-09-01T09:00:27.452Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:19.694Z",
+    "lastOnline": "2026-09-01T09:00:27.452Z",
     "consecutiveFailures": 0
   },
   {
@@ -184,9 +184,9 @@
     "url": "https://sattwika.com",
     "screenshot": "/references/fullpage/sattwika-com.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:19.982Z",
+    "lastChecked": "2026-09-01T09:00:27.695Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:19.982Z",
+    "lastOnline": "2026-09-01T09:00:27.696Z",
     "consecutiveFailures": 0
   },
   {
@@ -194,9 +194,9 @@
     "url": "https://ammo.re",
     "screenshot": "/references/fullpage/ammo-re.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:20.111Z",
+    "lastChecked": "2026-09-01T09:00:27.825Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:20.111Z",
+    "lastOnline": "2026-09-01T09:00:27.825Z",
     "consecutiveFailures": 0
   },
   {
@@ -204,19 +204,19 @@
     "url": "https://belfritbusiness.re",
     "screenshot": "/references/fullpage/belfritbusiness-re.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:20.643Z",
-    "lastStatus": "200",
+    "lastChecked": "2026-09-01T09:01:30.699Z",
+    "lastStatus": "HTTP 522",
     "lastOnline": "2026-08-01T09:00:20.643Z",
-    "consecutiveFailures": 0
+    "consecutiveFailures": 1
   },
   {
     "name": "Lodges Paradise",
     "url": "https://lodgesparadise.com",
     "screenshot": "/references/fullpage/lodgesparadise-com.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:21.371Z",
+    "lastChecked": "2026-09-01T09:01:31.273Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:21.371Z",
+    "lastOnline": "2026-09-01T09:01:31.273Z",
     "consecutiveFailures": 0
   },
   {
@@ -224,9 +224,9 @@
     "url": "https://v2agroup.com/fr",
     "screenshot": "/references/fullpage/v2agroup-com.webp",
     "archived": false,
-    "lastChecked": "2026-08-01T09:00:21.468Z",
+    "lastChecked": "2026-09-01T09:01:31.353Z",
     "lastStatus": "200",
-    "lastOnline": "2026-08-01T09:00:21.468Z",
+    "lastOnline": "2026-09-01T09:01:31.353Z",
     "consecutiveFailures": 0
   },
   {
@@ -234,17 +234,17 @@
     "url": "https://laboussoledumanager.re",
     "screenshot": "/references/fullpage/laboussoledumanager-re.webp",
     "archived": true,
-    "consecutiveFailures": 4,
+    "consecutiveFailures": 5,
     "lastStatus": "ENOTFOUND",
-    "lastChecked": "2026-08-01T09:00:25.991Z"
+    "lastChecked": "2026-09-01T09:01:35.867Z"
   },
   {
     "name": "Zen Eat Yoga",
     "url": "https://zeneatyoga.com",
     "screenshot": "/references/fullpage/zeneatyoga-com.webp",
     "archived": true,
-    "consecutiveFailures": 4,
+    "consecutiveFailures": 5,
     "lastStatus": "ENOTFOUND",
-    "lastChecked": "2026-08-01T09:00:30.575Z"
+    "lastChecked": "2026-09-01T09:01:40.436Z"
   }
 ]
