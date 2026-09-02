@@ -133,7 +133,7 @@ export default function FormulesSection() {
       referencePrices: { '12': '6 600,00 €' },
       highlights: [
         { icon: Megaphone, text: 'Campagne de Notoriété et de Considération' },
-        { icon: Monitor, text: 'Plateforme de diffusion au choix : META (Facebook & Instagram) ou TikTok ou Google Ads' },
+        { icon: Monitor, text: 'Plateforme de diffusion au choix : META (Facebook & Instagram) ou TikTok' },
         { icon: Coins, text: "Jusqu'à 2 500€ de budget publicitaire géré par mois" },
         { icon: Palette, text: '3 visuels publicitaires statiques inclus par mois (non cumulables)' },
         { icon: Lightbulb, text: 'Création & ciblage stratégique des campagnes' },
@@ -162,6 +162,8 @@ export default function FormulesSection() {
       includesFormula: 'INITIATION',
       highlights: [
         { icon: Crosshair, text: 'Campagne de Conversion : monocanal' },
+        { icon: Monitor, text: 'Canal au choix : META (Facebook & Instagram), TikTok ou Google Ads (SEA)' },
+        { icon: Key, text: <span>Si Google Ads : création du compte, Google Tag Manager et 3 balises de conversion incluses<sup>2</sup></span> },
         { icon: Palette, text: '6 visuels publicitaires inclus par mois (au lieu de 3)' },
         { icon: Users, text: 'Exploitation des audiences similaires' },
         { icon: BarChart3, text: <span>Dashboard de gestion et de reporting personnalisé : <a href="https://app-digiqo.fr/demo" target="_blank" rel="noopener noreferrer" className="text-digiqo-secondary underline hover:text-digiqo-secondary-dark">app-digiqo.fr</a></span> },
@@ -189,6 +191,7 @@ export default function FormulesSection() {
       highlights: [
         { icon: Crosshair, text: 'Campagne de Conversion : multicanal' },
         { icon: Monitor, text: '2 plateformes de diffusion : SMA (META ou TikTok) + SEA (Google Ads)' },
+        { icon: Key, text: <span>Création du compte Google Ads, Google Tag Manager et 3 balises de conversion incluses<sup>2</sup></span> },
         { icon: Palette, text: '9 visuels publicitaires inclus par mois (au lieu de 6)' },
         { icon: BarChart3, text: <span>Dashboard de gestion et de reporting personnalisé : <a href="https://app-digiqo.fr/demo" target="_blank" rel="noopener noreferrer" className="text-digiqo-secondary underline hover:text-digiqo-secondary-dark">app-digiqo.fr</a></span> },
       ],
@@ -395,6 +398,9 @@ export default function FormulesSection() {
 
         <p className="mt-10 max-w-4xl mx-auto text-xs text-gray-500 italic leading-relaxed text-center px-2">
           <sup>1</sup> L'installation des pixels Meta + API CAPI est incluse dans toutes nos formules SMA si le site web a été développé par Digiqo. Pour les sites web tiers, cette prestation n'est temporairement pas proposée : elle sera disponible en option payante (sur devis) dès finalisation du process scalable courant 2026.
+        </p>
+        <p className="mt-3 max-w-4xl mx-auto text-xs text-gray-500 italic leading-relaxed text-center px-2">
+          <sup>2</sup> Le paramétrage Google Ads (création du compte, conteneur Google Tag Manager, 3 balises de conversion installées, testées et vérifiées dans Google Ads) est inclus dans la formule EXPANSION et dans la formule PROPULSION lorsque Google Ads est le canal retenu, sur un site développé par Digiqo ou sur un site tiers dont le client fournit les accès administrateur (Google Tag Manager et CMS). Une balise correspond à un tag installé, un déclencheur testé et une action de conversion vérifiée. Toute balise supplémentaire, ainsi que toute intervention sur un site tiers sans accès complet, est facturée au tarif « Intervention technique sur site internet » : 100,00 € HT par heure, une heure par balise. Google Ads n'est pas proposé dans la formule INITIATION.
         </p>
       </div>
     </section>

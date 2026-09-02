@@ -105,9 +105,12 @@ export default function ConditionsGeneralesVente() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">Article 11 : Spécificités publicité en ligne (Meta) et reporting</h2>
+          <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">Article 11 : Spécificités publicité en ligne (Meta, TikTok, Google Ads) et reporting</h2>
           <p>
             DIGIQO est tenue à une obligation de moyens. Le client reconnaît que les plateformes publicitaires peuvent modifier leurs règles, algorithmes, coûts, conditions de diffusion, et peuvent refuser, limiter ou suspendre des campagnes ou comptes sans recours contre DIGIQO. Le budget publicitaire étant payé directement par le client, celui-ci demeure seul responsable de son approvisionnement, de ses moyens de paiement, de la conformité de ses offres et contenus, ainsi que de sa capacité à vendre/livrer. Les résultats chiffrés (CA, ROAS, CPA, volume de leads/ventes) ne sont jamais garantis. Le reporting est fourni selon la formule souscrite. Certaines offres incluent un bilan mensuel synthétique, d'autres prévoient un reporting sur demande. Les modalités (format, fréquence, indicateurs) sont précisées dans l'offre, le devis et/ou l'annexe de prestation applicable.
+          </p>
+          <p className="mt-4">
+            Publicité Google Ads (SEA) : Google Ads n'est pas proposé dans la formule INITIATION. Dans la formule EXPANSION, et dans la formule PROPULSION lorsque Google Ads est le canal retenu, le paramétrage initial comprend la création du compte Google Ads, la création du conteneur Google Tag Manager et l'installation de trois balises de conversion. Une balise s'entend d'un tag installé, d'un déclencheur testé et d'une action de conversion vérifiée dans Google Ads. Ce paramétrage est inclus sur un site développé par DIGIQO ou sur un site tiers pour lequel le client fournit les accès administrateur nécessaires (Google Tag Manager, CMS, hébergement). Toute balise supplémentaire, ainsi que toute intervention sur un site tiers sans accès complet, est facturée selon la ligne « Intervention technique sur site internet » au tarif de 100,00 € HT par heure, sur la base d'une heure par balise, après accord du client. Le compte Google Ads est ouvert au nom du client, qui en reste titulaire et responsable du budget publicitaire.
           </p>
         </section>
 
