@@ -26,6 +26,10 @@ export const faqs = [
     answer: 'Nous fournissons un accès aux plateformes publicitaires pour suivre vos campagnes en temps réel. Vous recevez également des rapports détaillés chaque mois avec analyse des performances, nombre de clics, conversions et recommandations d\'amélioration via votre espace collaboratif dédié.',
   },
   {
+    question: "Mon accompagnement est-il reconduit automatiquement ?",
+    answer: "Oui. Votre accompagnement est un abonnement à durée ferme, trimestrielle ou annuelle, réglé à la commande. À l'échéance, il est reconduit tacitement pour une durée identique et aux mêmes conditions. Vous pouvez y mettre fin en le signalant au moins deux semaines avant l'échéance, via le formulaire de désabonnement sur digiqo.fr/desabonnement. Les modalités complètes figurent à l'article 7 de nos conditions générales de vente.",
+  },
+  {
     question: 'Combien de temps avant de voir des résultats ?',
     answer: "Les premiers résultats sont visibles dès les premières semaines : impressions, clics et trafic. Pour les conversions et leads qualifiés, comptez 1 à 3 mois d'optimisation selon votre secteur d'activité à La Réunion. Notre approche data-driven permet d'ajuster les campagnes en continu pour améliorer les performances.",
   },
