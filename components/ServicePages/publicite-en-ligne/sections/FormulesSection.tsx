@@ -21,7 +21,6 @@ import {
   Crosshair,
   TrendingUp,
   Key,
-  RefreshCw,
 } from 'lucide-react'
 import { ANIMATION } from '@/lib/animation-constants'
 
@@ -234,9 +233,12 @@ export default function FormulesSection() {
           </p>
 
           {/* Sélecteur de durée : 3, 6 ou 12 mois. */}
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-digiqo-primary/50">
+            Abonnement
+          </p>
           <div
             role="group"
-            aria-label="Choisir la durée de l'accompagnement"
+            aria-label="Durée de l'abonnement"
             className="mx-auto flex w-full max-w-md items-stretch gap-1 rounded-2xl bg-gray-100 p-1.5"
           >
             {DURATIONS.map(d => (
@@ -261,25 +263,6 @@ export default function FormulesSection() {
           <p className="mt-1 text-sm text-gray-500">
             Tous les prix sont indiqués hors taxes et payables à la commande.
           </p>
-
-          {/* Reconduction tacite : annoncée avant les cartes, pas dans les CGV
-              seulement (voir article 7 des CGV). */}
-          <div className="mx-auto mt-6 flex max-w-2xl items-start gap-3 rounded-2xl border border-digiqo-primary/10 bg-digiqo-primary/5 px-4 py-3 text-left">
-            <RefreshCw aria-hidden="true" className="mt-0.5 h-5 w-5 flex-shrink-0 text-digiqo-primary/70" />
-            <p className="text-sm leading-relaxed text-digiqo-primary/80">
-              <span className="font-semibold">C'est un abonnement à durée ferme.</span>{' '}
-              À l'échéance, il est reconduit tacitement pour une durée identique, aux mêmes
-              conditions. Vous pouvez y mettre fin en le signalant au moins deux semaines avant
-              l'échéance, via le{' '}
-              <a href="/desabonnement" className="text-digiqo-secondary underline hover:text-digiqo-secondary-dark">
-                formulaire de désabonnement
-              </a>
-              . Modalités complètes à l'<a href="/conditions-generales-vente" className="text-digiqo-secondary underline hover:text-digiqo-secondary-dark">
-                article 7 de nos CGV
-              </a>
-              .
-            </p>
-          </div>
         </motion.div>
 
         {/* Formula Cards */}
@@ -402,9 +385,6 @@ export default function FormulesSection() {
                         Choisir cette formule
                         <ArrowUpRight aria-hidden="true" className="w-5 h-5" />
                       </motion.a>
-                      <p className="mt-2 text-center text-xs text-gray-500">
-                        Abonnement reconduit tacitement à l'échéance
-                      </p>
                     </div>
                   </div>
                 </div>
