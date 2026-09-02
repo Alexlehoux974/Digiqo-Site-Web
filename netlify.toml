@@ -7,6 +7,17 @@
 
 # The Next.js plugin handles all routing automatically
 
+# Page publique de réservation d'un rendez-vous d'onboarding (Pilotage Digiqo).
+# digiqo.fr/onboarding/<token> est servie par proxy transparent depuis
+# pilotage.digiqo.fr/rdv/<token> (même page, même données, aucune copie ici).
+# Couvre aussi /onboarding/annulation/<token>. force = true : la règle passe
+# avant le routage Next.js, qui n'a pas de page /onboarding.
+[[redirects]]
+  from = "/onboarding/*"
+  to = "https://pilotage.digiqo.fr/rdv/:splat"
+  status = 200
+  force = true
+
 [build.processing]
   skip_processing = false
 
