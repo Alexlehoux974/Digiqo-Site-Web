@@ -23,7 +23,6 @@ import {
   Key,
 } from 'lucide-react'
 import { ANIMATION } from '@/lib/animation-constants'
-import { generateContactUrl } from '@/lib/contact-utils'
 
 /** Durées d'accompagnement proposées, en mois. */
 type DurationKey = '3' | '12'
@@ -42,17 +41,17 @@ interface Duration {
 const DURATIONS: Duration[] = [
   {
     key: '3',
-    label: '3 mois',
+    label: 'Trimestrielle',
     priceLabel: 'POUR 3 MOIS',
     savingBadge: null,
     pitch: "Durée minimale d'accompagnement, réglée à la commande.",
   },
   {
     key: '12',
-    label: '12 mois',
+    label: 'Annuelle',
     priceLabel: 'POUR 12 MOIS',
     savingBadge: '-15 %',
-    pitch: '15 % de remise par rapport au tarif 3 mois.',
+    pitch: '15 % de remise par rapport au tarif trimestriel.',
   },
 ]
 
@@ -75,8 +74,8 @@ interface Formula {
   accentColor: string
   icon: any
   bonus: Partial<Record<DurationKey, Bonus>>
-  /** Clé de pré-remplissage du formulaire de contact (voir lib/service-mappings). */
-  contactFormula: string
+  /** Lien de paiement HubSpot par durée souscrite. */
+  paymentLinks: Record<DurationKey, string>
   bestValue?: boolean
   isMulticanal?: boolean
 }
@@ -149,7 +148,10 @@ export default function FormulesSection() {
       bonus: {
         '12': { title: 'Offre promotionnelle', items: ['1 vidéo offerte'] },
       },
-      contactFormula: 'initiation',
+      paymentLinks: {
+        '3': 'https://payments-eu1.hubspot.com/payments/9QqvwjS4d?referrer=PAYMENT_LINK',
+        '12': 'https://payments-eu1.hubspot.com/payments/FXp6sywrCqpx?referrer=PAYMENT_LINK',
+      },
     },
     {
       id: 'formula-propulsion',
@@ -171,7 +173,10 @@ export default function FormulesSection() {
         '3': { title: 'Offre promotionnelle', items: [<a key="video-20" href="/services/creatifs#prod" className="underline hover:text-digiqo-secondary-dark transition-colors">20% de réduction sur la production vidéo de votre choix</a>] },
         '12': { title: 'Offre promotionnelle', items: ['1 vidéo offerte'] },
       },
-      contactFormula: 'propulsion',
+      paymentLinks: {
+        '3': 'https://payments-eu1.hubspot.com/payments/hvKD4PsM?referrer=PAYMENT_LINK',
+        '12': 'https://payments-eu1.hubspot.com/payments/JCJGmsRC?referrer=PAYMENT_LINK',
+      },
       bestValue: true,
     },
     {
@@ -194,7 +199,10 @@ export default function FormulesSection() {
         '3': { title: 'Offre promotionnelle', items: ['1 production vidéo offerte à la souscription'] },
         '12': { title: 'Offre promotionnelle', items: ['2 vidéos offertes'] },
       },
-      contactFormula: 'expansion',
+      paymentLinks: {
+        '3': 'https://payments-eu1.hubspot.com/payments/qgwyN9Hj4W7hK?referrer=PAYMENT_LINK',
+        '12': 'https://payments-eu1.hubspot.com/payments/KwTYqpVjwVK26?referrer=PAYMENT_LINK',
+      },
       isMulticanal: true,
     },
   ]
@@ -260,10 +268,7 @@ export default function FormulesSection() {
             const referencePrice = formula.referencePrices[duration]
             const bonus = formula.bonus[duration]
             const price = formula.prices[duration]
-            const contactUrl = generateContactUrl({
-              formula: formula.contactFormula,
-              description: `Je souhaite souscrire la formule ${formula.name} pour un accompagnement de ${activeDuration.label}, soit ${price} HT payables à la commande.`,
-            })
+            const paymentLink = formula.paymentLinks[duration]
 
             return (
               <motion.div
@@ -367,7 +372,9 @@ export default function FormulesSection() {
                       </div>
 
                       <motion.a
-                        href={contactUrl}
+                        href={paymentLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r ${formula.gradient} text-white font-bold rounded-2xl shadow-lg`}
