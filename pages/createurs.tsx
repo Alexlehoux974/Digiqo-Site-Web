@@ -135,10 +135,9 @@ const influencers: Influencer[] = [
     tiktok: {
       url: 'https://www.tiktok.com/@orlanila_off',
       followers: '1,2K',
-      engagement: '7,1%',
+      engagement: '8,7%',
     },
     contentTypes: ['UGC', 'Reels', 'Posts', 'TikTok'],
-    pending: true,
   },
   {
     name: 'Alexandra',
@@ -149,16 +148,15 @@ const influencers: Influencer[] = [
     bio: 'Créatrice de contenu lifestyle, mode, beauté et food à travers son entreprise Alexxandra Corp. Un univers authentique, spontané et créatif, avec l’envie de créer des contenus qui connectent les marques à leur audience.',
     instagram: {
       url: 'https://www.instagram.com/alexxandra.corp/',
-      followers: 'À définir',
+      followers: '1,6K',
       engagement: 'À définir',
     },
     tiktok: {
       url: 'https://www.tiktok.com/@alexxandra.corp',
       followers: '11,8K',
-      engagement: 'À définir',
+      engagement: '10,1%',
     },
     contentTypes: ['UGC', 'TikTok', 'Reels', 'Posts'],
-    pending: true,
   },
   {
     name: 'Maureen Aboukir',
@@ -169,16 +167,15 @@ const influencers: Influencer[] = [
     bio: 'Créatrice UGC de 26 ans basée à La Réunion. Elle crée du contenu authentique, solaire et naturel autour du lifestyle et de la famille : des contenus qui ressemblent à de vraies recommandations et qui donnent envie de découvrir la marque.',
     instagram: {
       url: 'https://www.instagram.com/madeby_maureen/',
-      followers: '362',
-      engagement: 'À définir',
+      followers: '375',
+      engagement: '10,7%',
     },
     tiktok: {
       url: 'https://www.tiktok.com/@madeby_maureen',
-      followers: '446',
-      engagement: 'À définir',
+      followers: '460',
+      engagement: '11,7%',
     },
     contentTypes: ['UGC', 'Reels', 'TikTok', 'Posts'],
-    pending: true,
   },
   {
     name: 'Sherine Adouko',
@@ -194,11 +191,10 @@ const influencers: Influencer[] = [
     },
     tiktok: {
       url: 'https://www.tiktok.com/@ss.rn97',
-      followers: '14,3K',
-      engagement: 'À définir',
+      followers: '14,2K',
+      engagement: '26,3%',
     },
     contentTypes: ['UGC', 'TikTok', 'Reels'],
-    pending: true,
   },
 ]
 
