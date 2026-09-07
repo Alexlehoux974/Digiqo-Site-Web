@@ -1,7 +1,6 @@
 import { useCallback, useMemo, useState } from 'react'
 import Image from 'next/image'
 import { animate, m as motion, useMotionValue, useReducedMotion, useTransform } from 'framer-motion'
-import type { MotionValue } from 'framer-motion'
 import { useDrag } from '@use-gesture/react'
 import { Heart, X, RotateCcw, MapPin, Zap, Sparkles, Instagram } from 'lucide-react'
 import { TikTokIcon } from './TikTokIcon'
@@ -96,25 +95,12 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
   const rotate = useTransform(x, [-220, 0, 220], reduce ? [0, 0, 0] : [-13, 0, 13])
   const likeOpacity = useTransform(x, [24, 110], [0, 1])
   const nopeOpacity = useTransform(x, [-110, -24], [1, 0])
-  // Progression du geste (0 → 1) qui pilote l'échelle des cartes arrière.
-  const progress = useTransform(x, (v: number) => Math.min(Math.abs(v) / 140, 1))
-  const scale1 = useTransform(progress, [0, 1], [0.96, 1])
-  const y1 = useTransform(progress, [0, 1], [10, 0])
-  const scale2 = useTransform(progress, [0, 1], [0.92, 0.96])
-  const y2 = useTransform(progress, [0, 1], [20, 10])
 
   // Fenêtre glissante de 3 cartes, clés stables par handle : une carte qui
   // remonte d'un cran conserve son nœud DOM au lieu d'être démontée/remontée.
   const window3 = useMemo(() => creators.slice(index, index + VISIBLE), [creators, index])
   const current = window3[0]
 
-  const backStyles: Array<{ scale: MotionValue<number>; y: MotionValue<number> }> = useMemo(
-    () => [
-      { scale: scale1, y: y1 },
-      { scale: scale2, y: y2 },
-    ],
-    [scale1, y1, scale2, y2],
-  )
 
   const advance = useCallback(
     (direction: 1 | -1, influencer: Influencer) => {
@@ -198,7 +184,6 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
       <div className="relative h-[480px] w-full max-w-[340px]">
         {window3.map((c, depth) => {
           const isActive = depth === 0
-          const back = backStyles[depth - 1]
           return (
             <motion.div
               key={c.handle}
@@ -206,11 +191,25 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
               style={
                 isActive
                   ? { x, rotate, zIndex: 30, willChange: 'transform' }
-                  : { scale: back.scale, y: back.y, zIndex: 30 - depth, willChange: 'transform' }
+                  : {
+                      // Transform STATIQUE sur les cartes arrière : les animer au
+                      // frame près forçait une re-rastérisation continue de deux
+                      // calques lourds (mesuré : -6 fps, +30 frames tombées).
+                      transform: `translateY(${depth * 10}px) scale(${1 - depth * 0.04})`,
+                      zIndex: 30 - depth,
+                    }
               }
-              className="absolute inset-0 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-md"
+              className={`absolute inset-0 overflow-hidden rounded-3xl border border-gray-200 bg-white ${isActive ? 'shadow-md' : ''}`}
             >
-              <DeckCardBody influencer={c} active={isActive} />
+              {isActive ? (
+                <DeckCardBody influencer={c} active />
+              ) : (
+                // Carte arrière : photo seule. Moins de DOM à rastériser sous
+                // la carte active, sans changer le nœud (clé stable par handle).
+                <div className="relative h-full w-full bg-gray-100">
+                  <Image src={c.photo} alt="" fill sizes="340px" priority className="object-cover" />
+                </div>
+              )}
               {isActive && (
                 <>
                   {/* Overlays pilotés par MotionValue : opacity seule, jamais de state */}

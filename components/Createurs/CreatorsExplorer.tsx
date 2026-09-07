@@ -17,6 +17,7 @@ import { useIsDesktop } from '@/lib/createurs/use-is-desktop'
 type MobileView = 'swipe' | 'liste'
 
 const MemoFilters = memo(CreatorFilters)
+const MemoDeck = memo(SwipeDeck)
 
 export const CreatorsExplorer = ({ creators, joinHref }: { creators: Influencer[]; joinHref: string }) => {
   const router = useRouter()
@@ -59,7 +60,10 @@ export const CreatorsExplorer = ({ creators, joinHref }: { creators: Influencer[
     setSelection((prev) => prev.filter((c) => c.handle !== handle))
   }, [])
 
-  const joinCard = <JoinCard index={filtered.length} href={joinHref} />
+  const joinCard = useMemo(
+    () => <JoinCard index={filtered.length} href={joinHref} />,
+    [filtered.length, joinHref],
+  )
 
   return (
     // domMax (et non le domAnimation global de _app) : nécessaire aux animations
@@ -102,7 +106,7 @@ export const CreatorsExplorer = ({ creators, joinHref }: { creators: Influencer[
               Aucun créateur ne correspond à ces filtres.
             </p>
           ) : mobileView === 'swipe' ? (
-            <SwipeDeck
+            <MemoDeck
               key={filtered.map((c) => c.handle).join('|')}
               creators={filtered}
               onSelect={addToSelection}
