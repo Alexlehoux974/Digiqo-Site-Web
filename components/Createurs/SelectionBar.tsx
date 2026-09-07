@@ -10,77 +10,101 @@ interface Props {
   onClear: () => void
 }
 
-// Barre sticky de sélection (mobile). La sélection vit en useState :
-// rien n'est stocké ni persisté, conformément au brief.
+// Barre de sélection (mobile). En `fixed` et non `sticky` : en sticky elle
+// restait sous la pile, hors du champ de vision au moment du ♥.
+// La sélection vit en useState : rien n'est stocké ni persisté.
 export const SelectionBar = ({ selection, onRemove, onClear }: Props) => {
   const [expanded, setExpanded] = useState(false)
   const reduce = useReducedMotion()
 
-  if (selection.length === 0) return null
-
+  const count = selection.length
   const handles = selection.map((c) => c.handle).join(', ')
   const quoteHref = generateContactUrl({
-    description: `Je souhaite un devis pour une campagne avec ${selection.length} créateur${
-      selection.length > 1 ? 's' : ''
+    description: `Je souhaite un devis pour une campagne avec ${count} créateur${
+      count > 1 ? 's' : ''
     } : ${handles}`,
   })
 
   return (
-    <div className="sticky bottom-0 z-40 -mx-3 mt-6 border-t border-gray-200 bg-white/95 px-3 pb-3 pt-2 backdrop-blur md:hidden">
-      <AnimatePresence initial={false}>
-        {expanded && (
-          <motion.ul
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: reduce ? 0 : 0.2 }}
-            className="mb-2 max-h-44 overflow-y-auto"
+    <>
+      {/* Réserve la place sous la pile pour que la barre ne masque rien */}
+      {count > 0 && <div className="h-28 md:hidden" aria-hidden="true" />}
+
+      <AnimatePresence>
+        {count > 0 && (
+          <motion.div
+            initial={reduce ? { opacity: 0 } : { y: '100%' }}
+            animate={reduce ? { opacity: 1 } : { y: 0 }}
+            exit={reduce ? { opacity: 0 } : { y: '100%' }}
+            transition={{ type: reduce ? 'tween' : 'spring', stiffness: 420, damping: 34, duration: reduce ? 0.15 : undefined }}
+            className="fixed inset-x-0 bottom-0 z-[90] border-t border-gray-200 bg-white px-3 pb-3 pt-2 shadow-[0_-4px_16px_rgba(0,0,0,0.08)] md:hidden"
           >
-            {selection.map((c) => (
-              <li key={c.handle} className="flex items-center justify-between gap-2 py-1.5">
-                <span className="min-w-0 flex-1 truncate text-sm text-gray-700">
-                  {c.name} <span className="text-gray-400">{c.handle}</span>
-                </span>
-                <button
-                  type="button"
-                  onClick={() => onRemove(c.handle)}
-                  aria-label={`Retirer ${c.name} de ma sélection`}
-                  className="rounded-full p-1 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-900"
+            <AnimatePresence initial={false}>
+              {expanded && (
+                <motion.ul
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: reduce ? 0 : 0.2 }}
+                  className="mb-2 max-h-44 overflow-y-auto"
                 >
-                  <X className="h-4 w-4" />
-                </button>
-              </li>
-            ))}
-          </motion.ul>
+                  {selection.map((c) => (
+                    <li key={c.handle} className="flex items-center justify-between gap-2 py-1.5">
+                      <span className="min-w-0 flex-1 truncate text-sm text-gray-700">
+                        {c.name} <span className="text-gray-400">{c.handle}</span>
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => onRemove(c.handle)}
+                        aria-label={`Retirer ${c.name} de ma sélection`}
+                        className="rounded-full p-1 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-900"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    </li>
+                  ))}
+                </motion.ul>
+              )}
+            </AnimatePresence>
+
+            <div className="mb-2 flex items-center justify-between">
+              <button
+                type="button"
+                onClick={() => setExpanded((v) => !v)}
+                aria-expanded={expanded}
+                className="inline-flex items-center gap-1.5 text-sm font-bold text-gray-900"
+              >
+                <motion.span
+                  key={count}
+                  initial={reduce ? false : { scale: 1.4 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: 'spring', stiffness: 500, damping: 18 }}
+                  className="inline-flex h-6 min-w-[24px] items-center justify-center rounded-full bg-[#111111] px-1.5 text-xs font-bold text-white"
+                >
+                  {count}
+                </motion.span>
+                Ma sélection
+                <ChevronUp className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${expanded ? '' : 'rotate-180'}`} aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                onClick={onClear}
+                className="rounded-lg px-2 py-1 text-xs font-semibold text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-900"
+              >
+                Vider
+              </button>
+            </div>
+
+            <a
+              href={quoteHref}
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#111111] px-3 py-3 text-sm font-bold text-white transition-colors hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111111]"
+            >
+              <Send className="h-4 w-4" aria-hidden="true" />
+              Demander un devis pour {count} créateur{count > 1 ? 's' : ''}
+            </a>
+          </motion.div>
         )}
       </AnimatePresence>
-
-      <div className="flex items-center gap-2">
-        <button
-          type="button"
-          onClick={() => setExpanded((v) => !v)}
-          aria-expanded={expanded}
-          className="inline-flex items-center gap-1.5 rounded-xl bg-gray-100 px-3 py-2.5 text-sm font-bold text-gray-900 transition-colors hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111111]"
-        >
-          Ma sélection ({selection.length})
-          <ChevronUp className={`h-4 w-4 transition-transform duration-200 ${expanded ? '' : 'rotate-180'}`} aria-hidden="true" />
-        </button>
-        <a
-          href={quoteHref}
-          className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-[#111111] px-3 py-2.5 text-sm font-bold text-white transition-colors hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111111]"
-        >
-          <Send className="h-4 w-4" aria-hidden="true" />
-          Demander un devis
-        </a>
-        <button
-          type="button"
-          onClick={onClear}
-          aria-label="Vider ma sélection"
-          className="rounded-xl p-2.5 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-900"
-        >
-          <X className="h-5 w-5" />
-        </button>
-      </div>
-    </div>
+    </>
   )
 }
