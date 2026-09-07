@@ -53,6 +53,18 @@ export function ContactSection() {
             : mapping.defaultDescription
         }))
       }
+    } else if (description && typeof description === 'string') {
+      // Lien ne portant qu'une description (CTA de la page créateurs) : même
+      // défilement vers #contact et pré-remplissage du seul champ description.
+      // `services` n'est pas touché : aucun service n'est présélectionné.
+      setTimeout(() => {
+        const contactSection = document.getElementById('contact')
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 300)
+
+      setFormData(prev => ({ ...prev, description }))
     }
   }, [router.query])
 
