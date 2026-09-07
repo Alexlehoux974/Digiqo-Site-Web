@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, m as motion, useReducedMotion } from 'framer-motion'
 import { ChevronUp, X, Send } from 'lucide-react'
 import type { Influencer } from '@/lib/createurs/types'
@@ -16,8 +16,30 @@ interface Props {
 export const SelectionBar = ({ selection, onRemove, onClear }: Props) => {
   const [expanded, setExpanded] = useState(false)
   const reduce = useReducedMotion()
+  const barRef = useRef<HTMLDivElement>(null)
 
   const count = selection.length
+
+  // Publie la hauteur occupée en bas d'écran (safe-area incluse) pour que les
+  // éléments flottants — le bouton du chat — puissent se décaler au-dessus.
+  // Remise à 0 dès que la barre disparaît.
+  useEffect(() => {
+    const root = document.documentElement
+    if (count === 0) {
+      root.style.setProperty('--digiqo-bottom-offset', '0px')
+      return
+    }
+    const el = barRef.current
+    if (!el) return
+    const publish = () => root.style.setProperty('--digiqo-bottom-offset', `${Math.round(el.offsetHeight)}px`)
+    publish()
+    const ro = new ResizeObserver(publish)
+    ro.observe(el)
+    return () => {
+      ro.disconnect()
+      root.style.setProperty('--digiqo-bottom-offset', '0px')
+    }
+  }, [count])
   const handles = selection.map((c) => c.handle).join(', ')
   const quoteHref = generateContactUrl({
     description: `Je souhaite un devis pour une campagne avec ${count} créateur${
@@ -33,11 +55,13 @@ export const SelectionBar = ({ selection, onRemove, onClear }: Props) => {
       <AnimatePresence>
         {count > 0 && (
           <motion.div
+            ref={barRef}
+            style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom, 0px))' }}
             initial={reduce ? { opacity: 0 } : { y: '100%' }}
             animate={reduce ? { opacity: 1 } : { y: 0 }}
             exit={reduce ? { opacity: 0 } : { y: '100%' }}
             transition={{ type: reduce ? 'tween' : 'spring', stiffness: 420, damping: 34, duration: reduce ? 0.15 : undefined }}
-            className="fixed inset-x-0 bottom-0 z-[90] border-t border-gray-200 bg-white px-3 pb-3 pt-2 shadow-[0_-4px_16px_rgba(0,0,0,0.08)] md:hidden"
+            className="fixed inset-x-0 bottom-0 z-[90] border-t border-gray-200 bg-white px-3 pt-2 shadow-[0_-4px_16px_rgba(0,0,0,0.08)] md:hidden"
           >
             <AnimatePresence initial={false}>
               {expanded && (
