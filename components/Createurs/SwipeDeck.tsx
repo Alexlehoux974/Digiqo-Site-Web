@@ -1,4 +1,4 @@
-import { startTransition, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { memo, startTransition, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Image from 'next/image'
 import { animate, m as motion, useMotionValue, useReducedMotion, useTransform } from 'framer-motion'
 import { useDrag } from '@use-gesture/react'
@@ -14,7 +14,8 @@ const EXIT_SPRING = { type: 'spring' as const, stiffness: 500, damping: 40, mass
 const EXIT_X = 520
 const INTENT_THRESHOLD = 6 // px avant de trancher l'intention du geste
 const INTENT_ANGLE = 60 // < 60° par rapport à l'horizontale = swipe
-const VISIBLE = 3
+const VISIBLE = 3 // cartes de l'éventail
+const WINDOW = 5 // cartes montées : les 3 visibles + 2 d'avance, prêtes à promouvoir
 const MIN_HEIGHT = 420
 // Éventail : transforms STATIQUES des cartes d'arrière-plan (aucune motion
 // value pilotée pendant le drag, conformément au profil de perf validé).
@@ -36,6 +37,72 @@ type Direction = 1 | -1
 // flash (l'ancienne version partageait un x remis à 0 pendant que la carte
 // sortante y était encore liée).
 // ──────────────────────────────────────────────
+// Contenu de la carte : ne dépend QUE de la créatrice. Mémoïsé pour que
+// le changement de profondeur à chaque avancée ne re-rende pas les 5
+// cartes montées (photo + texte + lignes plateforme + badge).
+const CardBody = memo(({ influencer }: { influencer: Influencer }) => (
+  <>
+      <div className="relative aspect-[3/2] w-full bg-gray-100">
+        <Image
+          src={influencer.photo}
+          alt={influencer.name}
+          fill
+          sizes="340px"
+          priority
+          className="object-cover"
+        />
+      </div>
+      <div className="flex flex-col gap-2 p-4">
+        <div>
+          <h3 className="truncate text-lg font-bold leading-tight text-gray-900">{influencer.name}</h3>
+          <p className="truncate text-xs text-gray-500">{influencer.handle}</p>
+        </div>
+        <p className="flex items-center gap-1.5 text-xs text-gray-500">
+          <MapPin className="h-3.5 w-3.5 flex-shrink-0" aria-hidden="true" />
+          <span className="truncate">{influencer.location}</span>
+        </p>
+        <div className="flex flex-wrap gap-1.5">
+          {influencer.niches.slice(0, 3).map((n) => (
+            <span
+              key={n}
+              className={`inline-flex items-center rounded-full bg-gradient-to-r px-2 py-0.5 text-[10px] font-semibold text-white ${getNicheColor(n)}`}
+            >
+              {n}
+            </span>
+          ))}
+        </div>
+        <div className="flex flex-col gap-1.5 border-t border-gray-100 pt-2">
+          {hasPlatform(influencer, 'instagram') && (
+            <PlatformRow
+              icon={<Instagram className="h-4 w-4" />}
+              label="Instagram"
+              followers={influencer.instagram.followers}
+              engagement={influencer.instagram.engagement}
+            />
+          )}
+          {hasPlatform(influencer, 'tiktok') && (
+            <PlatformRow
+              icon={<TikTokIcon className="h-4 w-4" />}
+              label="TikTok"
+              followers={influencer.tiktok.followers}
+              engagement={influencer.tiktok.engagement}
+            />
+          )}
+        </div>
+        {getAvgEngagementValue(influencer) !== null && (
+          <div className="flex items-center justify-between rounded-lg bg-gray-100 px-3 py-1.5">
+            <span className="inline-flex items-center gap-1 text-[10px] font-medium uppercase tracking-wide text-gray-500">
+              <Zap className="h-3 w-3 text-amber-400" aria-hidden="true" />
+              Engagement moyen
+            </span>
+            <span className="text-sm font-extrabold text-gray-900">{getAvgEngagement(influencer)}</span>
+          </div>
+        )}
+      </div>
+  </>
+))
+CardBody.displayName = 'CardBody'
+
 const DeckCard = ({
   influencer,
   depth,
@@ -55,6 +122,9 @@ const DeckCard = ({
   onRegister: (commit: ((direction: Direction) => void) | null) => void
   onMeasure: (height: number) => void
 }) => {
+  // Hors éventail : carte déjà sortie (depth < 0) ou en attente (depth >= 3).
+  // Montée et complète, mais invisible et sans coût d'animation.
+  const hidden = depth < 0 || depth >= VISIBLE
   const x = useMotionValue(0)
   // Le doigt peut avoir une composante verticale : on la suit à 30 % pour que
   // le geste reste naturel sans transformer la pile en carrousel vertical.
@@ -94,6 +164,17 @@ const DeckCard = ({
   // Promotion/rétrogradation d'un cran : animée sur les motion values,
   // donc hors du cycle de rendu React.
   useEffect(() => {
+    // Les cartes en attente sont posées d'emblée sur la transform de la
+    // dernière position visible : leur entrée dans l'éventail n'anime rien.
+    if (hidden) {
+      if (depth >= VISIBLE) {
+        const d = depthAt(VISIBLE - 1)
+        depthY.set(d.y)
+        scale.set(d.scale)
+        depthRotate.set(d.rotate)
+      }
+      return
+    }
     const d = depthAt(depth)
     // Tween court plutôt que le spring de sortie : animer rotate + scale sur
     // deux cartes d'arrière-plan force une re-rastérisation à chaque frame, et
@@ -108,7 +189,7 @@ const DeckCard = ({
       a2.stop()
       a3.stop()
     }
-  }, [depth, depthY, scale, depthRotate, reduce])
+  }, [depth, hidden, depthY, scale, depthRotate, reduce])
 
   // « Nudge » d'invite au swipe : une seule fois par session, sur la carte de
   // tête, désactivé si l'utilisateur limite les animations.
@@ -141,7 +222,7 @@ const DeckCard = ({
 
   // Hauteur réelle du contenu → le conteneur s'y adapte, plus de rognage.
   useEffect(() => {
-    if (!isActive || !innerRef.current) return
+    if (!isActive || hidden || !innerRef.current) return
     const el = innerRef.current
     const ro = new ResizeObserver(() => onMeasure(el.offsetHeight))
     ro.observe(el)
@@ -191,70 +272,14 @@ const DeckCard = ({
           // pendant le drag (aucun coût par frame) mais animent leur transform à
           // la promotion — sans calque dédié, elles étaient repeintes à chaque
           // frame (mesuré : 5 long tasks par série de swipes).
-          willChange: 'transform' }}
+          willChange: hidden ? undefined : 'transform' }}
         aria-hidden={!isActive}
         className={`absolute inset-x-0 top-0 overflow-hidden rounded-3xl border border-gray-200 bg-white ${
           isActive ? 'shadow-md' : 'shadow-sm'
         }`}
       >
         <div ref={innerRef}>
-          <div className="relative aspect-[3/2] w-full bg-gray-100">
-            <Image
-              src={influencer.photo}
-              alt={isActive ? influencer.name : ''}
-              fill
-              sizes="340px"
-              priority
-              className="object-cover"
-            />
-          </div>
-          <div className="flex flex-col gap-2 p-4">
-            <div>
-              <h3 className="truncate text-lg font-bold leading-tight text-gray-900">{influencer.name}</h3>
-              <p className="truncate text-xs text-gray-500">{influencer.handle}</p>
-            </div>
-            <p className="flex items-center gap-1.5 text-xs text-gray-500">
-              <MapPin className="h-3.5 w-3.5 flex-shrink-0" aria-hidden="true" />
-              <span className="truncate">{influencer.location}</span>
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              {influencer.niches.slice(0, 3).map((n) => (
-                <span
-                  key={n}
-                  className={`inline-flex items-center rounded-full bg-gradient-to-r px-2 py-0.5 text-[10px] font-semibold text-white ${getNicheColor(n)}`}
-                >
-                  {n}
-                </span>
-              ))}
-            </div>
-            <div className="flex flex-col gap-1.5 border-t border-gray-100 pt-2">
-              {hasPlatform(influencer, 'instagram') && (
-                <PlatformRow
-                  icon={<Instagram className="h-4 w-4" />}
-                  label="Instagram"
-                  followers={influencer.instagram.followers}
-                  engagement={influencer.instagram.engagement}
-                />
-              )}
-              {hasPlatform(influencer, 'tiktok') && (
-                <PlatformRow
-                  icon={<TikTokIcon className="h-4 w-4" />}
-                  label="TikTok"
-                  followers={influencer.tiktok.followers}
-                  engagement={influencer.tiktok.engagement}
-                />
-              )}
-            </div>
-            {getAvgEngagementValue(influencer) !== null && (
-              <div className="flex items-center justify-between rounded-lg bg-gray-100 px-3 py-1.5">
-                <span className="inline-flex items-center gap-1 text-[10px] font-medium uppercase tracking-wide text-gray-500">
-                  <Zap className="h-3 w-3 text-amber-400" aria-hidden="true" />
-                  Engagement moyen
-                </span>
-                <span className="text-sm font-extrabold text-gray-900">{getAvgEngagement(influencer)}</span>
-              </div>
-            )}
-          </div>
+          <CardBody influencer={influencer} />
         </div>
 
         {isActive && (
@@ -314,8 +339,33 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
   const reduce = useReducedMotion()
   const commitRef = useRef<((direction: Direction) => void) | null>(null)
 
-  const window3 = useMemo(() => creators.slice(index, index + VISIBLE), [creators, index])
-  const current = window3[0]
+  // La plage MONTÉE est découplée de l'index : une avancée ne monte ni ne
+  // démonte rien, elle ne fait que décaler les profondeurs. La plage est
+  // resynchronisée après coup, hors du chemin critique.
+  const [mount, setMount] = useState({ start: 0, end: Math.min(WINDOW, creators.length) })
+  const mounted = useMemo(() => creators.slice(mount.start, mount.end), [creators, mount])
+  const current = creators[index]
+
+  useEffect(() => {
+    const want = { start: index, end: Math.min(index + WINDOW, creators.length) }
+    if (want.start === mount.start && want.end === mount.end) return
+    // Filet de sécurité : si l'éventail n'a plus assez de cartes montées
+    // (swipes très rapides), on resynchronise sans attendre.
+    if (mount.start > index || (index + VISIBLE > mount.end && mount.end < creators.length)) {
+      setMount(want)
+      return
+    }
+    const w = window as typeof window & {
+      requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number
+      cancelIdleCallback?: (id: number) => void
+    }
+    if (w.requestIdleCallback) {
+      const id = w.requestIdleCallback(() => setMount(want), { timeout: 400 })
+      return () => w.cancelIdleCallback && w.cancelIdleCallback(id)
+    }
+    const id = window.setTimeout(() => setMount(want), 150)
+    return () => window.clearTimeout(id)
+  }, [index, creators.length, mount])
 
   // Appelé à la FIN de l'animation de sortie : c'est seulement là que l'index
   // avance et que la carte sortante est démontée.
@@ -357,10 +407,22 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
 
   // Précharge la photo de la carte n+3 : elle sera montée au prochain swipe.
   useEffect(() => {
-    const next = creators[index + VISIBLE]
-    if (!next || typeof window === 'undefined') return
-    const img = new window.Image()
-    img.src = next.photo
+    if (typeof window === 'undefined') return
+    // Les cartes en visibility:hidden sont mises en page mais pas peintes :
+    // leur image n'est décodée qu'au moment où elles deviennent visibles, ce
+    // qui tombe en pleine promotion. On décode à l'avance, hors du thread
+    // principal, toutes les photos de la fenêtre montée + la suivante.
+    let annule = false
+    const cibles = creators.slice(index, index + WINDOW + 1)
+    for (const c of cibles) {
+      const img = new window.Image()
+      img.src = c.photo
+      if (img.decode) img.decode().catch(() => {})
+    }
+    return () => {
+      annule = true
+      void annule
+    }
   }, [creators, index])
 
   const onMeasure = useCallback((h: number) => {
@@ -400,12 +462,12 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
         className="relative w-full max-w-[340px] transition-[height] duration-200"
         style={{ height }}
       >
-        {window3.map((c, depth) => (
+        {mounted.map((c, i) => (
           <DeckCard
             key={c.handle}
             influencer={c}
-            depth={depth}
-            isActive={depth === 0}
+            depth={mount.start + i - index}
+            isActive={mount.start + i - index === 0}
             reduce={reduce}
             onExit={handleExit}
             onOpen={onOpen}
