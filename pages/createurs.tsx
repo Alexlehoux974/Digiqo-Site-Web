@@ -210,6 +210,10 @@ const parsePct = (value: string): number | null => {
   return match ? parseFloat(match[1].replace(',', '.')) : null
 }
 
+// Une valeur d'engagement n'est affichée que si elle est chiffrée
+// (« À définir » → la ligne Engagement est masquée plutôt que rendue telle quelle)
+const hasEngagement = (value: string): boolean => parsePct(value) !== null
+
 // Taux d'engagement moyen des plateformes renseignées ("À définir" si aucune)
 const getAvgEngagement = (inf: Influencer): string => {
   const values = [inf.instagram.engagement, inf.tiktok.engagement]
@@ -365,11 +369,13 @@ const InfluencerCard = ({ influencer, index }: { influencer: Influencer; index: 
               </div>
               <div className="text-xl font-extrabold text-gray-900 leading-none">{influencer.instagram.followers}</div>
               <div className="text-[10px] text-gray-400 mt-0.5">followers</div>
-              <div className="mt-2 flex items-center gap-1 text-[11px]">
-                <Heart className="w-3 h-3 text-pink-500 flex-shrink-0" />
-                <span className="text-gray-400">Engagement</span>
-                <span className="ml-auto font-bold text-gray-800">{influencer.instagram.engagement}</span>
-              </div>
+              {hasEngagement(influencer.instagram.engagement) && (
+                <div className="mt-2 flex items-center gap-1 text-[11px]">
+                  <Heart className="w-3 h-3 text-pink-500 flex-shrink-0" />
+                  <span className="text-gray-400">Engagement</span>
+                  <span className="ml-auto font-bold text-gray-800">{influencer.instagram.engagement}</span>
+                </div>
+              )}
             </div>
             {/* TikTok */}
             <div className="rounded-xl p-3 bg-gray-50 border border-gray-200/70">
@@ -379,11 +385,13 @@ const InfluencerCard = ({ influencer, index }: { influencer: Influencer; index: 
               </div>
               <div className="text-xl font-extrabold text-gray-900 leading-none">{influencer.tiktok.followers}</div>
               <div className="text-[10px] text-gray-400 mt-0.5">followers</div>
-              <div className="mt-2 flex items-center gap-1 text-[11px]">
-                <Heart className="w-3 h-3 text-gray-700 flex-shrink-0" />
-                <span className="text-gray-400">Engagement</span>
-                <span className="ml-auto font-bold text-gray-800">{influencer.tiktok.engagement}</span>
-              </div>
+              {hasEngagement(influencer.tiktok.engagement) && (
+                <div className="mt-2 flex items-center gap-1 text-[11px]">
+                  <Heart className="w-3 h-3 text-gray-700 flex-shrink-0" />
+                  <span className="text-gray-400">Engagement</span>
+                  <span className="ml-auto font-bold text-gray-800">{influencer.tiktok.engagement}</span>
+                </div>
+              )}
             </div>
           </div>
 
