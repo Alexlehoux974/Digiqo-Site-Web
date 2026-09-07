@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { startTransition, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Image from 'next/image'
 import { animate, m as motion, useMotionValue, useReducedMotion, useTransform } from 'framer-motion'
 import { useDrag } from '@use-gesture/react'
@@ -163,59 +163,53 @@ const DeckCard = ({
               className="object-cover"
             />
           </div>
-          {isActive ? (
-            <div className="flex flex-col gap-2 p-4">
-              <div>
-                <h3 className="truncate text-lg font-bold leading-tight text-gray-900">{influencer.name}</h3>
-                <p className="truncate text-xs text-gray-500">{influencer.handle}</p>
-              </div>
-              <p className="flex items-center gap-1.5 text-xs text-gray-500">
-                <MapPin className="h-3.5 w-3.5 flex-shrink-0" aria-hidden="true" />
-                <span className="truncate">{influencer.location}</span>
-              </p>
-              <div className="flex flex-wrap gap-1.5">
-                {influencer.niches.slice(0, 3).map((n) => (
-                  <span
-                    key={n}
-                    className={`inline-flex items-center rounded-full bg-gradient-to-r px-2 py-0.5 text-[10px] font-semibold text-white ${getNicheColor(n)}`}
-                  >
-                    {n}
-                  </span>
-                ))}
-              </div>
-              <div className="flex flex-col gap-1.5 border-t border-gray-100 pt-2">
-                {hasPlatform(influencer, 'instagram') && (
-                  <PlatformRow
-                    icon={<Instagram className="h-4 w-4" />}
-                    label="Instagram"
-                    followers={influencer.instagram.followers}
-                    engagement={influencer.instagram.engagement}
-                  />
-                )}
-                {hasPlatform(influencer, 'tiktok') && (
-                  <PlatformRow
-                    icon={<TikTokIcon className="h-4 w-4" />}
-                    label="TikTok"
-                    followers={influencer.tiktok.followers}
-                    engagement={influencer.tiktok.engagement}
-                  />
-                )}
-              </div>
-              {getAvgEngagementValue(influencer) !== null && (
-                <div className="flex items-center justify-between rounded-lg bg-gray-100 px-3 py-1.5">
-                  <span className="inline-flex items-center gap-1 text-[10px] font-medium uppercase tracking-wide text-gray-500">
-                    <Zap className="h-3 w-3 text-amber-400" aria-hidden="true" />
-                    Engagement moyen
-                  </span>
-                  <span className="text-sm font-extrabold text-gray-900">{getAvgEngagement(influencer)}</span>
-                </div>
+          <div className="flex flex-col gap-2 p-4">
+            <div>
+              <h3 className="truncate text-lg font-bold leading-tight text-gray-900">{influencer.name}</h3>
+              <p className="truncate text-xs text-gray-500">{influencer.handle}</p>
+            </div>
+            <p className="flex items-center gap-1.5 text-xs text-gray-500">
+              <MapPin className="h-3.5 w-3.5 flex-shrink-0" aria-hidden="true" />
+              <span className="truncate">{influencer.location}</span>
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              {influencer.niches.slice(0, 3).map((n) => (
+                <span
+                  key={n}
+                  className={`inline-flex items-center rounded-full bg-gradient-to-r px-2 py-0.5 text-[10px] font-semibold text-white ${getNicheColor(n)}`}
+                >
+                  {n}
+                </span>
+              ))}
+            </div>
+            <div className="flex flex-col gap-1.5 border-t border-gray-100 pt-2">
+              {hasPlatform(influencer, 'instagram') && (
+                <PlatformRow
+                  icon={<Instagram className="h-4 w-4" />}
+                  label="Instagram"
+                  followers={influencer.instagram.followers}
+                  engagement={influencer.instagram.engagement}
+                />
+              )}
+              {hasPlatform(influencer, 'tiktok') && (
+                <PlatformRow
+                  icon={<TikTokIcon className="h-4 w-4" />}
+                  label="TikTok"
+                  followers={influencer.tiktok.followers}
+                  engagement={influencer.tiktok.engagement}
+                />
               )}
             </div>
-          ) : (
-            // Carte d'arrière-plan : on réserve la même hauteur sans rendre le
-            // contenu (moins de DOM à rastériser sous la carte active).
-            <div className="h-[196px]" />
-          )}
+            {getAvgEngagementValue(influencer) !== null && (
+              <div className="flex items-center justify-between rounded-lg bg-gray-100 px-3 py-1.5">
+                <span className="inline-flex items-center gap-1 text-[10px] font-medium uppercase tracking-wide text-gray-500">
+                  <Zap className="h-3 w-3 text-amber-400" aria-hidden="true" />
+                  Engagement moyen
+                </span>
+                <span className="text-sm font-extrabold text-gray-900">{getAvgEngagement(influencer)}</span>
+              </div>
+            )}
+          </div>
         </div>
 
         {isActive && (
@@ -292,8 +286,14 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
         setJustAdded(influencer.handle)
         window.setTimeout(() => setJustAdded(null), 1600)
       }
-      setHistory((h) => [...h, indexRef.current])
-      setIndex((i) => i + 1)
+      // L'avancée monte la carte entrante (contenu complet) : en transition,
+      // React peut découper ce travail au lieu de bloquer une frame > 50 ms.
+      // Sans risque visuel : la carte sortante reste montée hors écran (x=520)
+      // jusqu'au commit, donc aucun trou pendant le rendu.
+      startTransition(() => {
+        setHistory((h) => [...h, indexRef.current])
+        setIndex((i) => i + 1)
+      })
     },
     [onSelect],
   )
@@ -309,6 +309,14 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
   const registerCommit = useCallback((fn: ((direction: Direction) => void) | null) => {
     commitRef.current = fn
   }, [])
+
+  // Précharge la photo de la carte n+3 : elle sera montée au prochain swipe.
+  useEffect(() => {
+    const next = creators[index + VISIBLE]
+    if (!next || typeof window === 'undefined') return
+    const img = new window.Image()
+    img.src = next.photo
+  }, [creators, index])
 
   const onMeasure = useCallback((h: number) => {
     const next = Math.max(h, MIN_HEIGHT)
@@ -340,12 +348,12 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
   }
 
   return (
-    <div className="flex flex-col items-center gap-5">
+    <div className="flex flex-col items-center">
       {/* Hauteur pilotée par la carte active mesurée au ResizeObserver :
           plus rien n'est rogné, quelle que soit la largeur. */}
       <div
         className="relative w-full max-w-[340px] transition-[height] duration-200"
-        style={{ height: height + 20 }}
+        style={{ height }}
       >
         {window3.map((c, depth) => (
           <DeckCard
@@ -362,13 +370,14 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
         ))}
       </div>
 
-      {/* Retour visuel immédiat après un ♥ */}
-      <div className="h-5" aria-live="polite">
+      {/* Retour visuel immédiat après un ♥ — en surimpression, il ne pousse
+          pas les boutons vers le bas. */}
+      <div className="pointer-events-none relative z-50 h-0 w-full max-w-[340px]" aria-live="polite">
         {justAdded && (
           <motion.span
             initial={{ opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700"
+            className="absolute -top-9 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-emerald-600 px-3 py-1 text-xs font-semibold text-white shadow"
           >
             <Check className="h-3.5 w-3.5" aria-hidden="true" />
             Ajouté à votre sélection
@@ -376,7 +385,7 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
         )}
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="mt-[14px] flex items-center gap-4">
         <button
           type="button"
           onClick={() => commitRef.current?.(-1)}
@@ -403,7 +412,7 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
           <Heart className="h-6 w-6" />
         </button>
       </div>
-      <p className="text-xs text-gray-400">
+      <p className="mt-3 text-xs text-gray-400">
         {index + 1} / {creators.length} — glissez ou utilisez les boutons
       </p>
     </div>
