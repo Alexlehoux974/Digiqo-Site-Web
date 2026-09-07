@@ -57,10 +57,23 @@ export const CRITERE_ZONES = ['Nord', 'Sud', 'Est', 'Ouest', "Toute l'île"] as 
 
 export const TAILLES_AUDIENCE = ['< 1K', '1K-10K', '10K-50K', '> 50K', 'Peu importe'] as const
 
+// Synonymes de niche : la page en porte plusieurs pour une même réalité.
+// On ne propose et ne stocke qu'une valeur, celle qui existe dans Airtable.
+const NICHE_ALIASES: Record<string, string> = {
+  'Curly hair': 'Cheveux bouclés',
+}
+
+/** « Curly hair » → « Cheveux bouclés ». Toute autre valeur est rendue telle quelle. */
+export const canonicalNiche = (niche: string): string => NICHE_ALIASES[niche] ?? niche
+
+/** Canonicalise puis dédoublonne, en conservant l'ordre alphabétique français. */
+export const canonicalNiches = (niches: string[]): string[] =>
+  Array.from(new Set(niches.map(canonicalNiche))).sort((a, b) => a.localeCompare(b, 'fr'))
+
 // Niches proposées comme critère : celles réellement portées par les créateurs
 // affichés sur la page, pour rester aligné avec les chips de filtre.
 // En PR 4 la source deviendra Airtable : la liste suivra automatiquement.
-export const CRITERE_NICHES = collectNiches(CREATORS.filter((c) => !c.pending))
+export const CRITERE_NICHES = canonicalNiches(collectNiches(CREATORS.filter((c) => !c.pending)))
 
 export const BRIEF_MAX_LENGTH = 800
 export const MAX_PRESELECTED = 20

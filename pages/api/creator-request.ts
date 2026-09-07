@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { checkRateLimit } from '../../lib/rate-limit'
 import {
   EMPTY_REQUEST,
+  canonicalNiches,
   normalizeHandle,
   validateRequest,
   type CreatorRequestPayload,
@@ -95,7 +96,7 @@ const readPayload = (body: unknown): CreatorRequestPayload => {
     volume: asString(b.volume, 40),
     budget: asString(b.budget, 40),
     echeance: asString(b.echeance, 40),
-    criteresNiches: asStringArray(b.criteresNiches, 30),
+    criteresNiches: canonicalNiches(asStringArray(b.criteresNiches, 30)),
     criteresZones: asStringArray(b.criteresZones, 10),
     tailleAudience: asString(b.tailleAudience, 40),
     brief: asString(b.brief, 800),

@@ -83,7 +83,7 @@ export default function CreateursPage() {
           ctaButtons={{
             primary: {
               text: 'Trouver un créateur',
-              href: DEMANDE_PATHNAME,
+              href: '#createurs',
             },
             secondary: {
               text: 'Nous contacter',
