@@ -114,6 +114,92 @@ const influencers: Influencer[] = [
     contentTypes: ['Reels', 'Posts'],
     pending: true,
   },
+
+  // ──────────────────────────────────────────────
+  // Vague 1 — appel à créateurs sept. 2026 (source : Airtable « Créateurs de contenu »)
+  // Consentement de publication reçu par mail pour les 4 profils ci-dessous.
+  // pending: true tant que les chiffres « À définir » ne sont pas complétés.
+  // ──────────────────────────────────────────────
+  {
+    name: 'Orlane',
+    handle: '@orlanila_',
+    photo: '/assets/createurs/orlane-orlanila.jpg',
+    location: 'La Réunion — toute l’île',
+    niches: ['Lifestyle', 'Voyage', 'Food', 'Activités touristiques', 'Musique'],
+    bio: 'Orlanila crée du contenu naturel, esthétique et immersif et transforme chaque produit, lieu ou service en une expérience visuelle qui attire l’attention tout en alliant créativité et stratégie de communication.',
+    instagram: {
+      url: 'https://www.instagram.com/orlanila_/',
+      followers: '1,1K',
+      engagement: '3,3%',
+    },
+    tiktok: {
+      url: 'https://www.tiktok.com/@orlanila_off',
+      followers: '1,2K',
+      engagement: '7,1%',
+    },
+    contentTypes: ['UGC', 'Reels', 'Posts', 'TikTok'],
+    pending: true,
+  },
+  {
+    name: 'Alexandra',
+    handle: '@alexxandra.corp',
+    photo: '/assets/createurs/alexandra-corp.jpg',
+    location: 'La Réunion — Le Tampon (Sud)',
+    niches: ['Lifestyle', 'Mode', 'Beauté', 'Food'],
+    bio: 'Créatrice de contenu lifestyle, mode, beauté et food à travers son entreprise Alexxandra Corp. Un univers authentique, spontané et créatif, avec l’envie de créer des contenus qui connectent les marques à leur audience.',
+    instagram: {
+      url: 'https://www.instagram.com/alexxandra.corp/',
+      followers: 'À définir',
+      engagement: 'À définir',
+    },
+    tiktok: {
+      url: 'https://www.tiktok.com/@alexxandra.corp',
+      followers: '11,8K',
+      engagement: 'À définir',
+    },
+    contentTypes: ['UGC', 'TikTok', 'Reels', 'Posts'],
+    pending: true,
+  },
+  {
+    name: 'Maureen Aboukir',
+    handle: '@madeby_maureen',
+    photo: '/assets/createurs/maureen-aboukir.jpg',
+    location: 'La Réunion — Saint-Louis (Sud)',
+    niches: ['Lifestyle', 'Famille'],
+    bio: 'Créatrice UGC de 26 ans basée à La Réunion. Elle crée du contenu authentique, solaire et naturel autour du lifestyle et de la famille : des contenus qui ressemblent à de vraies recommandations et qui donnent envie de découvrir la marque.',
+    instagram: {
+      url: 'https://www.instagram.com/madeby_maureen/',
+      followers: '362',
+      engagement: 'À définir',
+    },
+    tiktok: {
+      url: 'https://www.tiktok.com/@madeby_maureen',
+      followers: '446',
+      engagement: 'À définir',
+    },
+    contentTypes: ['UGC', 'Reels', 'TikTok', 'Posts'],
+    pending: true,
+  },
+  {
+    name: 'Sherine Adouko',
+    handle: '@ss.rn97',
+    photo: '/assets/createurs/sherine-adouko.jpg',
+    location: 'La Réunion — Saint-Pierre (Sud)',
+    niches: ['Beauté', 'Mode', 'Lifestyle', 'Voyage'],
+    bio: 'Créatrice de contenu basée à La Réunion, passionnée par la beauté, la mode et le lifestyle. Elle crée du contenu naturel, esthétique et authentique : face cam, unboxing, tests produits, Reels et TikTok.',
+    instagram: {
+      url: 'https://www.instagram.com/ss.rn97/',
+      followers: '3,2K',
+      engagement: 'À définir',
+    },
+    tiktok: {
+      url: 'https://www.tiktok.com/@ss.rn97',
+      followers: '14,3K',
+      engagement: 'À définir',
+    },
+    contentTypes: ['UGC', 'TikTok', 'Reels'],
+    pending: true,
+  },
 ]
 
 // Créateurs affichés (on masque ceux en attente d'accord)
