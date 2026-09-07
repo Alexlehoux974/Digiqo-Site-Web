@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, m as motion, useReducedMotion } from 'framer-motion'
 import { ChevronUp, X, Send } from 'lucide-react'
 import type { Influencer } from '@/lib/createurs/types'
-import { generateContactUrl } from '@/lib/contact-utils'
+import { demandeHref } from '@/lib/createurs/demande'
 
 interface Props {
   selection: Influencer[]
@@ -40,12 +40,7 @@ export const SelectionBar = ({ selection, onRemove, onClear }: Props) => {
       root.style.setProperty('--digiqo-bottom-offset', '0px')
     }
   }, [count])
-  const handles = selection.map((c) => c.handle).join(', ')
-  const quoteHref = generateContactUrl({
-    description: `Je souhaite un devis pour une campagne avec ${count} créateur${
-      count > 1 ? 's' : ''
-    } : ${handles}`,
-  })
+  const quoteHref = demandeHref(selection.map((c) => c.handle))
 
   return (
     <>

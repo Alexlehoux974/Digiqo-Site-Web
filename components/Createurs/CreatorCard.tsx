@@ -6,7 +6,7 @@ import { TikTokIcon } from './TikTokIcon'
 import { PlatformRow } from './PlatformRow'
 import type { Influencer } from '@/lib/createurs/types'
 import { getAvgEngagement, getAvgEngagementValue, getNicheColor, hasPlatform } from '@/lib/createurs/helpers'
-import { generateContactUrl } from '@/lib/contact-utils'
+import { demandeHref } from '@/lib/createurs/demande'
 
 const MAX_NICHES = 3
 
@@ -116,9 +116,7 @@ export const CreatorCard = ({ influencer, index, onOpen }: CreatorCardProps) => 
         )}
 
         <a
-          href={generateContactUrl({
-            description: `Je souhaite collaborer avec ${influencer.name} (${influencer.handle}) pour une campagne de contenu`,
-          })}
+          href={demandeHref([influencer.handle])}
           onClick={(e) => e.stopPropagation()}
           className="relative z-20 mt-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#111111] px-4 py-2.5 text-[13px] font-bold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-black hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111111]"
         >

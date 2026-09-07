@@ -8,7 +8,7 @@ import {
 import { TikTokIcon } from './TikTokIcon'
 import type { Influencer } from '@/lib/createurs/types'
 import { getAvgEngagement, getAvgEngagementValue, getNicheColor, hasEngagement, hasPlatform } from '@/lib/createurs/helpers'
-import { generateContactUrl } from '@/lib/contact-utils'
+import { demandeHref } from '@/lib/createurs/demande'
 
 const contentTypeIcons: Record<string, typeof Play> = {
   'Reels': Video,
@@ -247,9 +247,7 @@ export const CreatorDetailPanel = ({ influencer, onClose }: Props) => {
                   )}
                 </div>
                 <a
-                  href={generateContactUrl({
-                    description: `Je souhaite collaborer avec ${influencer.name} (${influencer.handle}) pour une campagne de contenu`,
-                  })}
+                  href={demandeHref([influencer.handle])}
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#111111] px-4 py-3 text-sm font-bold text-white transition-all duration-200 hover:bg-black hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111111]"
                 >
                   <MessageCircle className="h-4 w-4" aria-hidden="true" />
