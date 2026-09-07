@@ -58,6 +58,14 @@ export const ChatWidget = () => {
         z-index: 99999 !important;
       }
       
+      /* Se décale au-dessus d'une barre fixe en bas d'écran (barre « Ma
+         sélection » de /createurs). La variable vaut 0 partout ailleurs :
+         position inchangée sur le reste du site. */
+      .chat-window-wrapper {
+        bottom: calc(1.5rem + var(--digiqo-bottom-offset, 0px)) !important;
+        transition: bottom 0.25s ease !important;
+      }
+
       /* Style du bouton du chat */
       .chat-window-toggle {
         background: linear-gradient(135deg, #8B1431 0%, #DA6530 100%) !important;
