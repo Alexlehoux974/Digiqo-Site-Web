@@ -224,11 +224,14 @@ const DeckCard = ({
   useEffect(() => {
     if (!isActive || hidden || !innerRef.current) return
     const el = innerRef.current
-    const ro = new ResizeObserver(() => onMeasure(el.offsetHeight))
+    // getBoundingClientRect (fractionnaire) et non offsetHeight (entier
+    // tronqué) : le conteneur était 1 px trop court et le badge dépassait.
+    const publish = () => onMeasure(Math.ceil(el.getBoundingClientRect().height))
+    publish()
+    const ro = new ResizeObserver(publish)
     ro.observe(el)
-    onMeasure(el.offsetHeight)
     return () => ro.disconnect()
-  }, [isActive, onMeasure])
+  }, [isActive, hidden, onMeasure])
 
   const bind = useDrag(
     ({ first, down, movement: [mx, my], velocity: [vx], direction: [dx], tap }) => {
@@ -268,11 +271,20 @@ const DeckCard = ({
   return (
     <>
       <motion.div
-        style={{ x, y, rotate, scale, zIndex: 30 - depth, transformOrigin: 'bottom center', // will-change sur les 3 cartes : les cartes d'arrière-plan sont statiques
-          // pendant le drag (aucun coût par frame) mais animent leur transform à
-          // la promotion — sans calque dédié, elles étaient repeintes à chaque
-          // frame (mesuré : 5 long tasks par série de swipes).
-          willChange: hidden ? undefined : 'transform' }}
+        style={{
+          x,
+          y,
+          rotate,
+          scale,
+          zIndex: 30 - depth,
+          transformOrigin: 'bottom center',
+          // Cartes hors éventail : montées et complètes, mais invisibles.
+          // visibility (et non display: none) pour qu'elles restent mises en
+          // page et prêtes à être promues sans aucun montage.
+          visibility: hidden ? 'hidden' : 'visible',
+          pointerEvents: hidden ? 'none' : undefined,
+          willChange: hidden ? undefined : 'transform',
+        }}
         aria-hidden={!isActive}
         className={`absolute inset-x-0 top-0 overflow-hidden rounded-3xl border border-gray-200 bg-white ${
           isActive ? 'shadow-md' : 'shadow-sm'
@@ -313,7 +325,7 @@ const DeckCard = ({
           className="absolute inset-x-0 top-0 cursor-grab active:cursor-grabbing"
           // eslint-disable-next-line react/forbid-dom-props
           ref={(el) => {
-            if (el && innerRef.current) el.style.height = `${innerRef.current.offsetHeight}px`
+            if (el && innerRef.current) el.style.height = `${Math.ceil(innerRef.current.getBoundingClientRect().height)}px`
           }}
         />
       )}
