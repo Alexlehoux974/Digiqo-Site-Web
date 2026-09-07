@@ -16,6 +16,15 @@ const INTENT_THRESHOLD = 6 // px avant de trancher l'intention du geste
 const INTENT_ANGLE = 60 // < 60° par rapport à l'horizontale = swipe
 const VISIBLE = 3
 const MIN_HEIGHT = 420
+// Éventail : transforms STATIQUES des cartes d'arrière-plan (aucune motion
+// value pilotée pendant le drag, conformément au profil de perf validé).
+const DEPTH = [
+  { y: 0, scale: 1, rotate: 0 },
+  { y: 6, scale: 0.97, rotate: -3 },
+  { y: 12, scale: 0.94, rotate: 3 },
+]
+const depthAt = (d: number) => DEPTH[d] || DEPTH[DEPTH.length - 1]
+const NUDGE_KEY = 'digiqo-createurs-nudge'
 
 type Direction = 1 | -1
 
@@ -53,10 +62,13 @@ const DeckCard = ({
   // Profondeur et geste composés dans UNE SEULE transform : imbriquer deux
   // motion.div doublait le nombre de calques animés (mesuré : -2 fps,
   // +15 frames tombées, 3 long tasks au lieu d'1).
-  const depthY = useMotionValue(depth * 10)
-  const scale = useMotionValue(1 - depth * 0.04)
+  const depthY = useMotionValue(depthAt(depth).y)
+  const scale = useMotionValue(depthAt(depth).scale)
   const y = useTransform<number, number>([dragY, depthY], ([d, dy]) => d * 0.3 + dy)
-  const rotate = useTransform(x, [-220, 0, 220], reduce ? [0, 0, 0] : [-13, 0, 13])
+  // Rotation = celle du geste + celle de l'éventail (nulle sur la carte active).
+  const dragRotate = useTransform(x, [-220, 0, 220], reduce ? [0, 0, 0] : [-13, 0, 13])
+  const depthRotate = useMotionValue(depthAt(depth).rotate)
+  const rotate = useTransform<number, number>([dragRotate, depthRotate], ([a, b]) => a + b)
   // Intention du geste, décidée une fois par drag après 6 px de déplacement.
   const intentRef = useRef<'undecided' | 'swipe' | 'ignore'>('undecided')
   const likeOpacity = useTransform(x, [24, 110], [0, 1])
@@ -82,14 +94,43 @@ const DeckCard = ({
   // Promotion/rétrogradation d'un cran : animée sur les motion values,
   // donc hors du cycle de rendu React.
   useEffect(() => {
-    const opts = { duration: reduce ? 0 : 0.24, ease: 'easeOut' as const }
-    const a1 = animate(depthY, depth * 10, opts)
-    const a2 = animate(scale, 1 - depth * 0.04, opts)
+    const d = depthAt(depth)
+    // Tween court plutôt que le spring de sortie : animer rotate + scale sur
+    // deux cartes d'arrière-plan force une re-rastérisation à chaque frame, et
+    // un spring dure bien plus longtemps qu'un tween (mesuré : 5 long tasks
+    // pendant les swipes contre 0).
+    const opts = reduce ? { duration: 0 } : { duration: 0.22, ease: 'easeOut' as const }
+    const a1 = animate(depthY, d.y, opts)
+    const a2 = animate(scale, d.scale, opts)
+    const a3 = animate(depthRotate, d.rotate, opts)
     return () => {
       a1.stop()
       a2.stop()
+      a3.stop()
     }
-  }, [depth, depthY, scale, reduce])
+  }, [depth, depthY, scale, depthRotate, reduce])
+
+  // « Nudge » d'invite au swipe : une seule fois par session, sur la carte de
+  // tête, désactivé si l'utilisateur limite les animations.
+  useEffect(() => {
+    if (!isActive || reduce) return
+    try {
+      if (sessionStorage.getItem(NUDGE_KEY)) return
+      sessionStorage.setItem(NUDGE_KEY, '1')
+    } catch {
+      return
+    }
+    const t = window.setTimeout(() => {
+      animate(x, 14, {
+        duration: 0.125,
+        ease: 'easeOut',
+        onComplete: () => animate(x, 0, { duration: 0.125, ease: 'easeIn' }),
+      })
+    }, 500)
+    return () => window.clearTimeout(t)
+    // Volontairement au montage seulement.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // La carte active expose sa commande aux boutons ✕ / ♥.
   useEffect(() => {
@@ -146,10 +187,14 @@ const DeckCard = ({
   return (
     <>
       <motion.div
-        style={{ x, y, rotate, scale, zIndex: 30 - depth, willChange: isActive ? 'transform' : undefined }}
+        style={{ x, y, rotate, scale, zIndex: 30 - depth, transformOrigin: 'bottom center', // will-change sur les 3 cartes : les cartes d'arrière-plan sont statiques
+          // pendant le drag (aucun coût par frame) mais animent leur transform à
+          // la promotion — sans calque dédié, elles étaient repeintes à chaque
+          // frame (mesuré : 5 long tasks par série de swipes).
+          willChange: 'transform' }}
         aria-hidden={!isActive}
         className={`absolute inset-x-0 top-0 overflow-hidden rounded-3xl border border-gray-200 bg-white ${
-          isActive ? 'shadow-md' : ''
+          isActive ? 'shadow-md' : 'shadow-sm'
         }`}
       >
         <div ref={innerRef}>

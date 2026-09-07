@@ -62,7 +62,7 @@ export const ChatWidget = () => {
          sélection » de /createurs). La variable vaut 0 partout ailleurs :
          position inchangée sur le reste du site. */
       .chat-window-wrapper {
-        bottom: calc(1rem + var(--digiqo-bottom-offset, 0px)) !important;
+        bottom: calc(1.5rem + var(--digiqo-bottom-offset, 0px)) !important;
         transition: bottom 0.25s ease !important;
       }
 
