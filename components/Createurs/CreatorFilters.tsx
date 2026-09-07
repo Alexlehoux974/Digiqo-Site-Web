@@ -1,4 +1,5 @@
-import { RotateCcw, SlidersHorizontal } from 'lucide-react'
+import { useState } from 'react'
+import { ChevronDown, RotateCcw, SlidersHorizontal } from 'lucide-react'
 import type { CreatorFilters as Filters, FollowerBucket, PlatformFilter, SortKey, Zone } from '@/lib/createurs/types'
 import { ENGAGEMENT_LABELS, FOLLOWER_LABELS, SORT_LABELS, countActiveFilters } from '@/lib/createurs/filters'
 
@@ -53,11 +54,20 @@ export const CreatorFilters = ({ filters, onChange, onReset, niches, zones, resu
     list.includes(value) ? list.filter((v) => v !== value) : [...list, value]
 
   const activeCount = countActiveFilters(filters)
+  // Sur mobile le bloc de filtres masquait toute la pile swipe : replié par défaut.
+  // Toujours déployé à partir de md.
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
     <div className="rounded-2xl border border-gray-200 bg-white p-4 sm:p-5">
-      <div className="mb-4 flex items-center justify-between gap-3">
-        <span className="inline-flex items-center gap-2 text-sm font-bold text-gray-900">
+      <div className={`flex items-center justify-between gap-3 ${mobileOpen ? 'mb-4' : ''} md:mb-4`}>
+        <button
+          type="button"
+          onClick={() => setMobileOpen((v) => !v)}
+          aria-expanded={mobileOpen}
+          aria-controls="createurs-filtres"
+          className="inline-flex items-center gap-2 text-sm font-bold text-gray-900 md:pointer-events-none"
+        >
           <SlidersHorizontal className="h-4 w-4 text-gray-400" aria-hidden="true" />
           Filtrer
           {activeCount > 0 && (
@@ -65,7 +75,11 @@ export const CreatorFilters = ({ filters, onChange, onReset, niches, zones, resu
               {activeCount}
             </span>
           )}
-        </span>
+          <ChevronDown
+            className={`h-4 w-4 text-gray-400 transition-transform duration-200 md:hidden ${mobileOpen ? 'rotate-180' : ''}`}
+            aria-hidden="true"
+          />
+        </button>
         <div className="flex items-center gap-3">
           <span aria-live="polite" className="text-sm font-semibold text-gray-600">
             {resultCount} créateur{resultCount > 1 ? 's' : ''}
@@ -81,7 +95,7 @@ export const CreatorFilters = ({ filters, onChange, onReset, niches, zones, resu
         </div>
       </div>
 
-      <div className="flex flex-col gap-3">
+      <div id="createurs-filtres" className={`${mobileOpen ? 'flex' : 'hidden'} flex-col gap-3 md:flex`}>
         <Row label="Plateforme">
           {(['tous', 'instagram', 'tiktok'] as PlatformFilter[]).map((p) => (
             <Pill key={p} active={filters.platform === p} onClick={() => set('platform', p)}>
