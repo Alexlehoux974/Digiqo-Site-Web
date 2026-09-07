@@ -1,13 +1,82 @@
 import { useCallback, useMemo, useState } from 'react'
 import Image from 'next/image'
 import { animate, m as motion, useMotionValue, useReducedMotion, useTransform } from 'framer-motion'
+import type { MotionValue } from 'framer-motion'
 import { useDrag } from '@use-gesture/react'
-import { Heart, X, RotateCcw, MapPin, Zap, Sparkles } from 'lucide-react'
+import { Heart, X, RotateCcw, MapPin, Zap, Sparkles, Instagram } from 'lucide-react'
+import { TikTokIcon } from './TikTokIcon'
+import { PlatformRow } from './PlatformRow'
 import type { Influencer } from '@/lib/createurs/types'
-import { getAvgEngagement, getAvgEngagementValue, getNicheColor } from '@/lib/createurs/helpers'
+import { getAvgEngagement, getAvgEngagementValue, getNicheColor, hasPlatform } from '@/lib/createurs/helpers'
 
-const SWIPE_DISTANCE = 100 // px avant validation du swipe
-const SWIPE_VELOCITY = 0.4 // ou vélocité suffisante pour un geste rapide
+const SWIPE_DISTANCE = 90 // px avant validation
+const SWIPE_VELOCITY = 0.5 // ou vélocité suffisante pour un geste rapide
+const EXIT_SPRING = { type: 'spring' as const, stiffness: 500, damping: 40, mass: 0.8 }
+const VISIBLE = 3 // cartes montées simultanément
+
+// Contenu visuel d'une carte. Aucun état interne : rien ne se re-rend pendant le drag.
+const DeckCardBody = ({ influencer, active }: { influencer: Influencer; active: boolean }) => (
+  <>
+    <div className="relative h-[58%] w-full bg-gray-100">
+      <Image
+        src={influencer.photo}
+        alt={active ? influencer.name : ''}
+        fill
+        sizes="340px"
+        priority
+        className="object-cover"
+      />
+    </div>
+    <div className="flex flex-col gap-2 p-4">
+      <div>
+        <h3 className="truncate text-lg font-bold leading-tight text-gray-900">{influencer.name}</h3>
+        <p className="truncate text-xs text-gray-500">{influencer.handle}</p>
+      </div>
+      <p className="inline-flex items-center gap-1.5 text-xs text-gray-500">
+        <MapPin className="h-3.5 w-3.5 flex-shrink-0" aria-hidden="true" />
+        <span className="truncate">{influencer.location}</span>
+      </p>
+      <div className="flex flex-wrap gap-1.5">
+        {influencer.niches.slice(0, 3).map((n) => (
+          <span
+            key={n}
+            className={`inline-flex items-center rounded-full bg-gradient-to-r px-2 py-0.5 text-[10px] font-semibold text-white ${getNicheColor(n)}`}
+          >
+            {n}
+          </span>
+        ))}
+      </div>
+      {/* Abonnés + engagement par plateforme, identiques à la fiche de grille */}
+      <div className="flex flex-col gap-1.5 border-t border-gray-100 pt-2">
+        {hasPlatform(influencer, 'instagram') && (
+          <PlatformRow
+            icon={<Instagram className="h-4 w-4" />}
+            label="Instagram"
+            followers={influencer.instagram.followers}
+            engagement={influencer.instagram.engagement}
+          />
+        )}
+        {hasPlatform(influencer, 'tiktok') && (
+          <PlatformRow
+            icon={<TikTokIcon className="h-4 w-4" />}
+            label="TikTok"
+            followers={influencer.tiktok.followers}
+            engagement={influencer.tiktok.engagement}
+          />
+        )}
+      </div>
+      {getAvgEngagementValue(influencer) !== null && (
+        <div className="mt-0.5 flex items-center justify-between rounded-lg bg-gray-100 px-3 py-1.5">
+          <span className="inline-flex items-center gap-1 text-[10px] font-medium uppercase tracking-wide text-gray-500">
+            <Zap className="h-3 w-3 text-amber-400" aria-hidden="true" />
+            Engagement moyen
+          </span>
+          <span className="text-sm font-extrabold text-gray-900">{getAvgEngagement(influencer)}</span>
+        </div>
+      )}
+    </div>
+  </>
+)
 
 interface Props {
   creators: Influencer[]
@@ -21,14 +90,31 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
   const [history, setHistory] = useState<number[]>([])
   const reduce = useReducedMotion()
 
+  // Toute la mécanique du geste passe par des MotionValues : aucun setState
+  // pendant le drag, donc aucun re-render de React entre deux frames.
   const x = useMotionValue(0)
-  // Rotation proportionnelle au déplacement — désactivée en reduced-motion.
-  const rotate = useTransform(x, [-200, 0, 200], reduce ? [0, 0, 0] : [-14, 0, 14])
-  const likeOpacity = useTransform(x, [20, 120], [0, 1])
-  const nopeOpacity = useTransform(x, [-120, -20], [1, 0])
+  const rotate = useTransform(x, [-220, 0, 220], reduce ? [0, 0, 0] : [-13, 0, 13])
+  const likeOpacity = useTransform(x, [24, 110], [0, 1])
+  const nopeOpacity = useTransform(x, [-110, -24], [1, 0])
+  // Progression du geste (0 → 1) qui pilote l'échelle des cartes arrière.
+  const progress = useTransform(x, (v: number) => Math.min(Math.abs(v) / 140, 1))
+  const scale1 = useTransform(progress, [0, 1], [0.96, 1])
+  const y1 = useTransform(progress, [0, 1], [10, 0])
+  const scale2 = useTransform(progress, [0, 1], [0.92, 0.96])
+  const y2 = useTransform(progress, [0, 1], [20, 10])
 
-  const current = creators[index]
-  const upcoming = useMemo(() => creators.slice(index + 1, index + 3), [creators, index])
+  // Fenêtre glissante de 3 cartes, clés stables par handle : une carte qui
+  // remonte d'un cran conserve son nœud DOM au lieu d'être démontée/remontée.
+  const window3 = useMemo(() => creators.slice(index, index + VISIBLE), [creators, index])
+  const current = window3[0]
+
+  const backStyles: Array<{ scale: MotionValue<number>; y: MotionValue<number> }> = useMemo(
+    () => [
+      { scale: scale1, y: y1 },
+      { scale: scale2, y: y2 },
+    ],
+    [scale1, y1, scale2, y2],
+  )
 
   const advance = useCallback(
     (direction: 1 | -1, influencer: Influencer) => {
@@ -43,12 +129,12 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
   const commit = useCallback(
     (direction: 1 | -1) => {
       if (!current) return
-      const target = direction * (typeof window !== 'undefined' ? window.innerWidth : 500)
       if (reduce) {
         advance(direction, current)
         return
       }
-      animate(x, target, { duration: 0.25, ease: 'easeOut', onComplete: () => advance(direction, current) })
+      const target = direction * 520
+      animate(x, target, { ...EXIT_SPRING, onComplete: () => advance(direction, current) })
     },
     [current, reduce, x, advance],
   )
@@ -56,8 +142,7 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
   const undo = useCallback(() => {
     setHistory((h) => {
       if (h.length === 0) return h
-      const previous = h[h.length - 1]
-      setIndex(previous)
+      setIndex(h[h.length - 1])
       x.set(0)
       return h.slice(0, -1)
     })
@@ -74,14 +159,13 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
         x.set(mx)
         return
       }
-      const passed = Math.abs(mx) > SWIPE_DISTANCE || vx > SWIPE_VELOCITY
-      if (passed) {
+      if (Math.abs(mx) > SWIPE_DISTANCE || vx > SWIPE_VELOCITY) {
         commit(mx > 0 || dx > 0 ? 1 : -1)
       } else {
-        animate(x, 0, { type: reduce ? 'tween' : 'spring', duration: reduce ? 0.15 : undefined, stiffness: 400, damping: 30 })
+        animate(x, 0, reduce ? { duration: 0.12 } : EXIT_SPRING)
       }
     },
-    { filterTaps: true, axis: 'x', pointer: { touch: true } },
+    { axis: 'x', filterTaps: true, pointer: { touch: true }, eventOptions: { passive: true } },
   )
 
   if (!current) {
@@ -111,87 +195,50 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
 
   return (
     <div className="flex flex-col items-center gap-5">
-      <div className="relative h-[460px] w-full max-w-[340px]">
-        {/* Cartes suivantes, décalées et réduites */}
-        {upcoming
-          .slice()
-          .reverse()
-          .map((c, i) => {
-            const depth = upcoming.length - i
-            return (
-              <div
-                key={c.handle}
-                aria-hidden="true"
-                className="absolute inset-0 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm"
-                style={{ transform: `translateY(${depth * 10}px) scale(${1 - depth * 0.04})`, zIndex: 10 - depth }}
-              >
-                <div className="relative h-[62%] w-full bg-gray-100">
-                  <Image src={c.photo} alt="" fill sizes="340px" className="object-cover" />
-                </div>
-              </div>
-            )
-          })}
+      <div className="relative h-[480px] w-full max-w-[340px]">
+        {window3.map((c, depth) => {
+          const isActive = depth === 0
+          const back = backStyles[depth - 1]
+          return (
+            <motion.div
+              key={c.handle}
+              aria-hidden={!isActive}
+              style={
+                isActive
+                  ? { x, rotate, zIndex: 30, willChange: 'transform' }
+                  : { scale: back.scale, y: back.y, zIndex: 30 - depth, willChange: 'transform' }
+              }
+              className="absolute inset-0 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-md"
+            >
+              <DeckCardBody influencer={c} active={isActive} />
+              {isActive && (
+                <>
+                  {/* Overlays pilotés par MotionValue : opacity seule, jamais de state */}
+                  <motion.span
+                    style={{ opacity: likeOpacity, willChange: 'opacity' }}
+                    className="pointer-events-none absolute left-4 top-4 rounded-lg border-[3px] border-emerald-500 px-3 py-1 text-lg font-extrabold uppercase tracking-wider text-emerald-500"
+                  >
+                    Sélection
+                  </motion.span>
+                  <motion.span
+                    style={{ opacity: nopeOpacity, willChange: 'opacity' }}
+                    className="pointer-events-none absolute right-4 top-4 rounded-lg border-[3px] border-rose-500 px-3 py-1 text-lg font-extrabold uppercase tracking-wider text-rose-500"
+                  >
+                    Passer
+                  </motion.span>
+                </>
+              )}
+            </motion.div>
+          )
+        })}
 
-        {/* Carte active */}
-        {/* La cible du geste est un div simple : les handlers DOM de @use-gesture
-            (dont onAnimationStart) sont incompatibles avec les props de framer-motion.
-            Le transform vit sur le motion.div interne. */}
+        {/* Cible du geste au-dessus de la pile : les handlers DOM de @use-gesture
+            sont incompatibles avec les props de framer-motion, on les isole ici. */}
         <div
           {...bind()}
-          style={{ touchAction: 'pan-y', zIndex: 20 }}
+          style={{ touchAction: 'pan-y', zIndex: 40 }}
           className="absolute inset-0 cursor-grab active:cursor-grabbing"
-        >
-        <motion.div
-          style={{ x, rotate }}
-          className="h-full w-full overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-xl"
-        >
-          <div className="relative h-[62%] w-full bg-gray-100">
-            <Image src={current.photo} alt={current.name} fill sizes="340px" className="object-cover" priority />
-            {/* Overlays façon Tinder */}
-            <motion.span
-              style={{ opacity: likeOpacity }}
-              className="pointer-events-none absolute left-4 top-4 rounded-lg border-[3px] border-emerald-500 px-3 py-1 text-lg font-extrabold uppercase tracking-wider text-emerald-500"
-            >
-              Sélection
-            </motion.span>
-            <motion.span
-              style={{ opacity: nopeOpacity }}
-              className="pointer-events-none absolute right-4 top-4 rounded-lg border-[3px] border-rose-500 px-3 py-1 text-lg font-extrabold uppercase tracking-wider text-rose-500"
-            >
-              Passer
-            </motion.span>
-          </div>
-          <div className="flex flex-col gap-2 p-4">
-            <div>
-              <h3 className="truncate text-lg font-bold leading-tight text-gray-900">{current.name}</h3>
-              <p className="truncate text-xs text-gray-500">{current.handle}</p>
-            </div>
-            <p className="inline-flex items-center gap-1.5 text-xs text-gray-500">
-              <MapPin className="h-3.5 w-3.5 flex-shrink-0" aria-hidden="true" />
-              <span className="truncate">{current.location}</span>
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              {current.niches.slice(0, 3).map((n) => (
-                <span
-                  key={n}
-                  className={`inline-flex items-center rounded-full bg-gradient-to-r px-2 py-0.5 text-[10px] font-semibold text-white ${getNicheColor(n)}`}
-                >
-                  {n}
-                </span>
-              ))}
-            </div>
-            {getAvgEngagementValue(current) !== null && (
-              <div className="mt-1 flex items-center justify-between rounded-lg bg-gray-900 px-3 py-1.5">
-                <span className="inline-flex items-center gap-1 text-[10px] font-medium uppercase tracking-wide text-gray-300">
-                  <Zap className="h-3 w-3 text-amber-400" aria-hidden="true" />
-                  Engagement moyen
-                </span>
-                <span className="text-sm font-extrabold text-white">{getAvgEngagement(current)}</span>
-              </div>
-            )}
-          </div>
-        </motion.div>
-        </div>
+        />
       </div>
 
       {/* Commandes accessibles — équivalent clavier/clic du geste */}

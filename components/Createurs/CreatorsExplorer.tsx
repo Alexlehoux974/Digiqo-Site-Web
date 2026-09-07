@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
 import { AnimatePresence, LazyMotion, domMax } from 'framer-motion'
 import { LayoutGrid, Layers } from 'lucide-react'
@@ -12,8 +12,11 @@ import type { CreatorFilters as Filters, Influencer } from '@/lib/createurs/type
 import { DEFAULT_FILTERS, ZONES } from '@/lib/createurs/types'
 import { collectNiches, collectZones } from '@/lib/createurs/helpers'
 import { applyFilters, filtersFromQuery, filtersToQuery } from '@/lib/createurs/filters'
+import { useIsDesktop } from '@/lib/createurs/use-is-desktop'
 
 type MobileView = 'swipe' | 'liste'
+
+const MemoFilters = memo(CreatorFilters)
 
 export const CreatorsExplorer = ({ creators, joinHref }: { creators: Influencer[]; joinHref: string }) => {
   const router = useRouter()
@@ -21,6 +24,7 @@ export const CreatorsExplorer = ({ creators, joinHref }: { creators: Influencer[
   const [selection, setSelection] = useState<Influencer[]>([])
   const [openInfluencer, setOpenInfluencer] = useState<Influencer | null>(null)
   const [mobileView, setMobileView] = useState<MobileView>('swipe')
+  const isDesktop = useIsDesktop()
 
   const niches = useMemo(() => collectNiches(creators), [creators])
   const zones = useMemo(() => collectZones(creators, ZONES), [creators])
@@ -62,7 +66,7 @@ export const CreatorsExplorer = ({ creators, joinHref }: { creators: Influencer[
     // `layout` de la grille. Chargé uniquement sur cette page.
     <LazyMotion features={domMax} strict={false}>
       <div className="flex flex-col gap-6">
-        <CreatorFilters
+        <MemoFilters
           filters={filters}
           onChange={updateFilters}
           onReset={reset}
@@ -72,6 +76,7 @@ export const CreatorsExplorer = ({ creators, joinHref }: { creators: Influencer[
         />
 
         {/* ── MOBILE : pile swipe ou liste ── */}
+        {isDesktop !== true && (
         <div className="md:hidden">
           <div className="mb-4 flex justify-center">
             <div className="inline-flex rounded-full bg-gray-100 p-1" role="group" aria-label="Mode d'affichage">
@@ -121,8 +126,10 @@ export const CreatorsExplorer = ({ creators, joinHref }: { creators: Influencer[
             onClear={() => setSelection([])}
           />
         </div>
+        )}
 
         {/* ── DESKTOP : grille compacte ── */}
+        {isDesktop !== false && (
         <div className="hidden md:block">
           {filtered.length === 0 ? (
             <p className="rounded-2xl border border-gray-200 bg-white px-6 py-16 text-center text-sm text-gray-500">
@@ -139,6 +146,7 @@ export const CreatorsExplorer = ({ creators, joinHref }: { creators: Influencer[
             </div>
           )}
         </div>
+        )}
 
         <CreatorDetailPanel influencer={openInfluencer} onClose={() => setOpenInfluencer(null)} />
       </div>

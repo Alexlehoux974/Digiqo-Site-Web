@@ -85,7 +85,7 @@ export const CreatorDetailPanel = ({ influencer, onClose }: Props) => {
             exit={{ opacity: 0 }}
             transition={{ duration: reduce ? 0 : 0.2 }}
             onClick={onClose}
-            className="fixed inset-0 z-[60] bg-black/50 backdrop-blur-[2px]"
+            className="fixed inset-0 z-[110] bg-black/50 backdrop-blur-[2px]"
             aria-hidden="true"
           />
           <motion.div
@@ -98,7 +98,7 @@ export const CreatorDetailPanel = ({ influencer, onClose }: Props) => {
             animate={reduce ? { opacity: 1 } : { opacity: 1, x: 0 }}
             exit={reduce ? { opacity: 0 } : { opacity: 0, x: '100%' }}
             transition={{ type: reduce ? 'tween' : 'spring', duration: reduce ? 0 : undefined, damping: 32, stiffness: 300 }}
-            className="fixed inset-x-0 bottom-0 z-[70] max-h-[88vh] overflow-y-auto rounded-t-3xl bg-white shadow-2xl sm:inset-y-0 sm:left-auto sm:right-0 sm:max-h-none sm:w-[420px] sm:rounded-l-3xl sm:rounded-tr-none"
+            className="fixed inset-x-0 bottom-0 z-[120] max-h-[88vh] overflow-y-auto rounded-t-3xl bg-white shadow-2xl sm:inset-y-0 sm:left-auto sm:right-0 sm:max-h-none sm:w-[420px] sm:rounded-l-3xl sm:rounded-tr-none"
           >
             {/* Poignée visuelle du bottom sheet (mobile uniquement) */}
             <div className="sticky top-0 z-10 flex items-center justify-between border-b border-gray-100 bg-white/95 px-5 py-3 backdrop-blur">
@@ -136,12 +136,12 @@ export const CreatorDetailPanel = ({ influencer, onClose }: Props) => {
               </div>
 
               {avg !== null && (
-                <div className="mt-5 flex items-center justify-between rounded-xl bg-gray-900 px-4 py-3">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-300">
+                <div className="mt-5 flex items-center justify-between rounded-xl bg-gray-100 px-4 py-3">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500">
                     <Zap className="h-3.5 w-3.5 text-amber-400" aria-hidden="true" />
                     Engagement moyen
                   </span>
-                  <span className="text-lg font-extrabold text-white">{getAvgEngagement(influencer)}</span>
+                  <span className="text-lg font-extrabold text-gray-900">{getAvgEngagement(influencer)}</span>
                 </div>
               )}
 

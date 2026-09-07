@@ -1,42 +1,14 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { m as motion } from 'framer-motion'
-import { Camera, MapPin, Heart, Instagram, Zap, MessageCircle } from 'lucide-react'
+import { Camera, MapPin, Instagram, Zap, MessageCircle } from 'lucide-react'
 import { TikTokIcon } from './TikTokIcon'
+import { PlatformRow } from './PlatformRow'
 import type { Influencer } from '@/lib/createurs/types'
-import { getAvgEngagement, getAvgEngagementValue, getNicheColor, hasEngagement, hasPlatform } from '@/lib/createurs/helpers'
+import { getAvgEngagement, getAvgEngagementValue, getNicheColor, hasPlatform } from '@/lib/createurs/helpers'
 import { generateContactUrl } from '@/lib/contact-utils'
 
 const MAX_NICHES = 3
-
-// Une ligne par plateforme : icône + abonnés + engagement.
-// La ligne engagement disparaît si la valeur n'est pas chiffrée (« À définir »).
-const PlatformRow = ({
-  icon,
-  label,
-  followers,
-  engagement,
-}: {
-  icon: React.ReactNode
-  label: string
-  followers: string
-  engagement: string
-}) => (
-  <div className="flex items-center gap-2 text-[13px]">
-    <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center text-gray-700" aria-hidden="true">
-      {icon}
-    </span>
-    <span className="sr-only">{label}</span>
-    <span className="font-bold text-gray-900">{followers}</span>
-    <span className="text-[11px] text-gray-400">abonnés</span>
-    {hasEngagement(engagement) && (
-      <span className="ml-auto inline-flex items-center gap-1 text-[11px] font-semibold text-gray-600">
-        <Heart className="h-3 w-3 flex-shrink-0 text-gray-400" aria-hidden="true" />
-        {engagement}
-      </span>
-    )}
-  </div>
-)
 
 interface CreatorCardProps {
   influencer: Influencer
@@ -134,12 +106,12 @@ export const CreatorCard = ({ influencer, index, onOpen }: CreatorCardProps) => 
         </div>
 
         {avg !== null && (
-          <div className="flex items-center justify-between rounded-lg bg-gray-900 px-3 py-1.5">
-            <span className="inline-flex items-center gap-1 text-[10px] font-medium uppercase tracking-wide text-gray-300">
+          <div className="flex items-center justify-between rounded-lg bg-gray-100 px-3 py-1.5">
+            <span className="inline-flex items-center gap-1 text-[10px] font-medium uppercase tracking-wide text-gray-500">
               <Zap className="h-3 w-3 text-amber-400" aria-hidden="true" />
               Engagement moyen
             </span>
-            <span className="text-sm font-extrabold text-white">{getAvgEngagement(influencer)}</span>
+            <span className="text-sm font-extrabold text-gray-900">{getAvgEngagement(influencer)}</span>
           </div>
         )}
 
