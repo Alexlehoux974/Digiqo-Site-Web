@@ -12,6 +12,8 @@ const SWIPE_DISTANCE = 90
 const SWIPE_VELOCITY = 0.5
 const EXIT_SPRING = { type: 'spring' as const, stiffness: 500, damping: 40, mass: 0.8 }
 const EXIT_X = 520
+const INTENT_THRESHOLD = 6 // px avant de trancher l'intention du geste
+const INTENT_ANGLE = 60 // < 60° par rapport à l'horizontale = swipe
 const VISIBLE = 3
 const MIN_HEIGHT = 420
 
@@ -45,7 +47,18 @@ const DeckCard = ({
   onMeasure: (height: number) => void
 }) => {
   const x = useMotionValue(0)
+  // Le doigt peut avoir une composante verticale : on la suit à 30 % pour que
+  // le geste reste naturel sans transformer la pile en carrousel vertical.
+  const dragY = useMotionValue(0)
+  // Profondeur et geste composés dans UNE SEULE transform : imbriquer deux
+  // motion.div doublait le nombre de calques animés (mesuré : -2 fps,
+  // +15 frames tombées, 3 long tasks au lieu d'1).
+  const depthY = useMotionValue(depth * 10)
+  const scale = useMotionValue(1 - depth * 0.04)
+  const y = useTransform<number, number>([dragY, depthY], ([d, dy]) => d * 0.3 + dy)
   const rotate = useTransform(x, [-220, 0, 220], reduce ? [0, 0, 0] : [-13, 0, 13])
+  // Intention du geste, décidée une fois par drag après 6 px de déplacement.
+  const intentRef = useRef<'undecided' | 'swipe' | 'ignore'>('undecided')
   const likeOpacity = useTransform(x, [24, 110], [0, 1])
   const nopeOpacity = useTransform(x, [-110, -24], [1, 0])
   const innerRef = useRef<HTMLDivElement>(null)
@@ -57,13 +70,26 @@ const DeckCard = ({
         onExit(direction, influencer)
         return
       }
+      animate(dragY, 0, EXIT_SPRING)
       animate(x, direction * EXIT_X, {
         ...EXIT_SPRING,
         onComplete: () => onExit(direction, influencer),
       })
     },
-    [reduce, x, onExit, influencer],
+    [reduce, x, dragY, onExit, influencer],
   )
+
+  // Promotion/rétrogradation d'un cran : animée sur les motion values,
+  // donc hors du cycle de rendu React.
+  useEffect(() => {
+    const opts = { duration: reduce ? 0 : 0.24, ease: 'easeOut' as const }
+    const a1 = animate(depthY, depth * 10, opts)
+    const a2 = animate(scale, 1 - depth * 0.04, opts)
+    return () => {
+      a1.stop()
+      a2.stop()
+    }
+  }, [depth, depthY, scale, reduce])
 
   // La carte active expose sa commande aux boutons ✕ / ♥.
   useEffect(() => {
@@ -83,33 +109,44 @@ const DeckCard = ({
   }, [isActive, onMeasure])
 
   const bind = useDrag(
-    ({ down, movement: [mx], velocity: [vx], direction: [dx], tap }) => {
+    ({ first, down, movement: [mx, my], velocity: [vx], direction: [dx], tap }) => {
       if (tap) {
         onOpen(influencer)
         return
       }
+      if (first) intentRef.current = 'undecided'
+
+      // Décision d'intention : sous 6 px on ne tranche pas encore.
+      if (intentRef.current === 'undecided') {
+        if (Math.hypot(mx, my) < INTENT_THRESHOLD) return
+        const angle = Math.abs((Math.atan2(my, mx) * 180) / Math.PI)
+        const fromHorizontal = Math.min(angle, 180 - angle)
+        intentRef.current = fromHorizontal < INTENT_ANGLE ? 'swipe' : 'ignore'
+      }
+      // Geste vertical : la carte ne bouge pas (et touch-action: none empêche
+      // le navigateur de scroller à sa place).
+      if (intentRef.current !== 'swipe') return
+
       if (down) {
         x.set(mx)
+        dragY.set(my)
         return
       }
       if (Math.abs(mx) > SWIPE_DISTANCE || vx > SWIPE_VELOCITY) {
         commit(mx > 0 || dx > 0 ? 1 : -1)
       } else {
-        animate(x, 0, reduce ? { duration: 0.12 } : EXIT_SPRING)
+        const back = reduce ? { duration: 0.12 } : EXIT_SPRING
+        animate(x, 0, back)
+        animate(dragY, 0, back)
       }
     },
-    { axis: 'x', filterTaps: true, pointer: { touch: true }, eventOptions: { passive: true }, enabled: isActive },
+    { filterTaps: true, pointer: { touch: true }, eventOptions: { passive: true }, enabled: isActive },
   )
 
   return (
     <>
       <motion.div
-        style={{ x, rotate, zIndex: 30 - depth, willChange: isActive ? 'transform' : undefined }}
-        // Promotion d'un cran animée par la carte elle-même : pas de saut
-        // quand elle passe de l'arrière-plan au premier plan.
-        initial={false}
-        animate={{ scale: 1 - depth * 0.04, y: depth * 10 }}
-        transition={{ duration: reduce ? 0 : 0.24, ease: 'easeOut' }}
+        style={{ x, y, rotate, scale, zIndex: 30 - depth, willChange: isActive ? 'transform' : undefined }}
         aria-hidden={!isActive}
         className={`absolute inset-x-0 top-0 overflow-hidden rounded-3xl border border-gray-200 bg-white ${
           isActive ? 'shadow-md' : ''
@@ -204,7 +241,11 @@ const DeckCard = ({
       {isActive && (
         <div
           {...bind()}
-          style={{ touchAction: 'pan-y', zIndex: 40 }}
+          // touch-action: none — sans quoi le navigateur préempte tout geste ayant
+          // une composante verticale et scrolle au lieu de laisser swiper.
+          // Uniquement sur la carte active : cartes arrière, boutons et reste
+          // de la page gardent leur comportement de scroll natif.
+          style={{ touchAction: 'none', zIndex: 40 }}
           className="absolute inset-x-0 top-0 cursor-grab active:cursor-grabbing"
           // eslint-disable-next-line react/forbid-dom-props
           ref={(el) => {
