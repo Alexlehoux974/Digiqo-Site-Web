@@ -13,9 +13,11 @@ import {
 import ServiceLayout from '../components/ServiceLayout/ServiceLayout'
 import { ServiceHero } from '../components/ServicePages/ServiceHero'
 import { CreatorsExplorer } from '../components/Createurs/CreatorsExplorer'
+import { CreatorRequestLauncher } from '../components/Createurs/CreatorRequestLauncher'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 import { generateContactUrl } from '../lib/contact-utils'
 import { CREATORS } from '@/lib/createurs/data'
+import { DEMANDE_PATHNAME } from '@/lib/createurs/demande'
 
 // Créateurs affichés (on masque ceux en attente d'accord)
 const visibleCreators = CREATORS.filter((inf) => !inf.pending)
@@ -236,9 +238,7 @@ export default function CreateursPage() {
                   Du brief à la livraison, on gère votre campagne d&apos;influence de A à Z. Contenu UGC, placements produits, stories sponsorisées — on a le créateur qu&apos;il vous faut.
                 </p>
                 <a
-                  href={generateContactUrl({
-                    description: "Je souhaite lancer une campagne de contenu avec des créateurs pour ma marque",
-                  })}
+                  href={DEMANDE_PATHNAME}
                   className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-digiqo-accent to-amber-400 text-white font-bold rounded-2xl hover:shadow-lg hover:shadow-digiqo-accent/25 transition-all duration-300"
                 >
                   Lancer une campagne
@@ -248,6 +248,10 @@ export default function CreateursPage() {
             </div>
           </div>
         </section>
+
+        {/* Panneau « Demande de créateur » : intercepte les liens /createurs/demande
+            (panneau latéral sur desktop, page pleine sur mobile). */}
+        <CreatorRequestLauncher />
       </ServiceLayout>
     </>
   )
