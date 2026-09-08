@@ -18,12 +18,12 @@ import { CreatorsExplorer } from '../components/Createurs/CreatorsExplorer'
 import { CreatorRequestLauncher } from '../components/Createurs/CreatorRequestLauncher'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 import { generateContactUrl } from '../lib/contact-utils'
-import { CREATORS } from '@/lib/createurs/data'
+import type { GetStaticProps } from 'next'
+import type { Influencer } from '@/lib/createurs/types'
+import { getCreatorsForPage } from '@/lib/createurs/airtable'
 import { DEMANDE_PATHNAME } from '@/lib/createurs/demande'
 import { INSCRIPTION_PATHNAME } from '@/lib/createurs/inscription'
 
-// Créateurs affichés (on masque ceux en attente d'accord)
-const visibleCreators = CREATORS.filter((inf) => !inf.pending)
 
 
 // La tuile « Vous êtes créateur ? » de la grille mène désormais au formulaire dédié
@@ -54,7 +54,11 @@ const processSteps = [
   },
 ]
 
-export default function CreateursPage() {
+interface Props {
+  creators: Influencer[]
+}
+
+export default function CreateursPage({ creators }: Props) {
   return (
     <>
       <Head>
@@ -126,7 +130,7 @@ export default function CreateursPage() {
             </motion.div>
 
             {/* Grille compacte + filtres + pile swipe mobile */}
-            <CreatorsExplorer creators={visibleCreators} joinHref={joinHref} />
+            <CreatorsExplorer creators={creators} joinHref={joinHref} />
           </div>
         </section>
 
@@ -268,4 +272,13 @@ export default function CreateursPage() {
       </ServiceLayout>
     </>
   )
+}
+
+// Les fiches viennent d'Airtable (statut « Publié sur le site »), régénérées
+// toutes les 30 min : Alexandre publie une créatrice sans passer par une PR.
+// Le PAT reste côté serveur — `getCreatorsForPage` n'est jamais importé côté client.
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const { creators, source } = await getCreatorsForPage()
+  console.log(`[createurs] ${creators.length} fiche(s) servie(s) depuis « ${source} »`)
+  return { props: { creators }, revalidate: 1800 }
 }

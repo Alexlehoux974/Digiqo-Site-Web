@@ -109,7 +109,7 @@ export const getZone = (location: string | undefined | null): Zone | null => {
   if (/\bouest\b/.test(n)) return 'Ouest'
 
   // 2. Couverture totale de l'île
-  if (/toute\s+l\s*ile|toute\s+lile/.test(n)) return "Toute l'île"
+  if (/toute\s+l\s*ile|toute\s+lile|toute\s+la\s+reunion/.test(n)) return "Toute l'île"
 
   // 3. Commune réunionnaise reconnue
   for (const zone of Object.keys(COMMUNES) as Array<keyof typeof COMMUNES>) {

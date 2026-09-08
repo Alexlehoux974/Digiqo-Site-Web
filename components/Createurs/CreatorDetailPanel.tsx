@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { AnimatePresence, m as motion, useReducedMotion } from 'framer-motion'
 import {
   X, MapPin, Instagram, Heart, Zap, Star, MessageCircle,
-  Camera, Play, Video, Image as ImageIcon,
+  Camera, Play, Video, Image as ImageIcon, Mic, Clapperboard, PenLine,
 } from 'lucide-react'
 import { TikTokIcon } from './TikTokIcon'
 import type { Influencer } from '@/lib/createurs/types'
@@ -17,6 +17,14 @@ const contentTypeIcons: Record<string, typeof Play> = {
   'UGC': Camera,
   'Lives': Zap,
   'TikTok': Video,
+  // Formats issus du vocabulaire Airtable (formulaire d'inscription).
+  'Vidéo longue': Video,
+  'Face cam': Camera,
+  'Micro-trottoir': Mic,
+  'Vlog': Video,
+  'Montage vidéo': Clapperboard,
+  'Rédaction': PenLine,
+  'Visuels / Graphisme': ImageIcon,
 }
 
 const FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])'
