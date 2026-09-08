@@ -22,9 +22,16 @@ const RECORD_TIMEOUT_MS = 8000
 const IMAGE_TIMEOUT_MS = 12000
 const MAX_BYTES = 10 * 1024 * 1024
 
-// Une image de créateur change rarement ; le CDN la garde une heure et peut
-// resservir la version périmée pendant 24 h le temps de la rafraîchir.
-const CACHE_CONTROL = 'public, s-maxage=3600, stale-while-revalidate=86400'
+// Une image de créateur change rarement : une heure de cache, et la version
+// périmée peut être resservie 24 h le temps de la rafraîchir.
+//
+// Deux en-têtes, parce que le runtime Next de Netlify réécrit `Cache-Control`
+// en un simple `public` avant de le renvoyer au navigateur : sans `max-age`,
+// chaque affichage de la page revalide les six photos. `Netlify-CDN-Cache-Control`
+// est lu par le CDN puis retiré de la réponse, `Cache-Control` reste pour le
+// navigateur et pour tout autre intermédiaire.
+const CDN_CACHE_CONTROL = 'public, s-maxage=3600, stale-while-revalidate=86400'
+const CACHE_CONTROL = 'public, max-age=3600, stale-while-revalidate=86400'
 
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/avif']
 
@@ -108,6 +115,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     res.setHeader('Content-Type', contentType)
     res.setHeader('Content-Length', String(buffer.byteLength))
     res.setHeader('Cache-Control', CACHE_CONTROL)
+    res.setHeader('Netlify-CDN-Cache-Control', CDN_CACHE_CONTROL)
     if (req.method === 'HEAD') return res.status(200).end()
     return res.status(200).send(buffer)
   } catch (error) {
