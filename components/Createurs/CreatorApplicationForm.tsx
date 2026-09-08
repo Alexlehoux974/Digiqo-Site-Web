@@ -255,7 +255,7 @@ export const CreatorApplicationForm = () => {
                   value={data.prenom}
                   onChange={(e) => set('prenom', e.target.value)}
                   className={inputClass}
-                  placeholder="Ophélie"
+                  placeholder="Marie"
                 />
               </div>
 
@@ -271,7 +271,7 @@ export const CreatorApplicationForm = () => {
                   value={data.nom}
                   onChange={(e) => set('nom', e.target.value)}
                   className={inputClass}
-                  placeholder="Ophélie Le Houx"
+                  placeholder="Marie Payet"
                 />
               </div>
 
