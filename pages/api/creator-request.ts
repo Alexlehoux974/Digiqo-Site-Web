@@ -214,21 +214,40 @@ const buildFields = (d: CreatorRequestPayload, resolved: ResolvedHandles): Recor
   return fields
 }
 
-const notifyWebhook = async (payload: Record<string, unknown>): Promise<void> => {
-  if (!N8N_WEBHOOK_URL) return
-  try {
-    const response = await fetch(N8N_WEBHOOK_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Webhook-Secret': process.env.N8N_WEBHOOK_SECRET || '',
-      },
-      body: JSON.stringify(payload),
-    })
-    if (!response.ok) console.error('[creator-request] webhook n8n:', response.status)
-  } catch (error) {
-    console.error('[creator-request] webhook n8n injoignable:', (error as Error).message)
+// Notification n8n : accusé de réception au client et alerte Google Chat interne.
+// Fire-and-forget — la réponse au client part sans attendre, un n8n lent ou hors
+// service ne doit ni la retarder ni la faire échouer. Le timeout borne la requête
+// pour ne pas laisser une socket ouverte derrière la réponse.
+const WEBHOOK_TIMEOUT_MS = 5000
+
+const notifyWebhook = (payload: Record<string, unknown>): void => {
+  if (!N8N_WEBHOOK_URL) {
+    console.warn(
+      '[creator-request] N8N_CREATOR_REQUEST_WEBHOOK_URL absente — notification n8n ignorée, ' +
+        'la demande reste enregistrée dans Airtable',
+    )
+    return
   }
+
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), WEBHOOK_TIMEOUT_MS)
+
+  fetch(N8N_WEBHOOK_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Webhook-Secret': process.env.N8N_WEBHOOK_SECRET || '',
+    },
+    body: JSON.stringify(payload),
+    signal: controller.signal,
+  })
+    .then((response) => {
+      if (!response.ok) console.error('[creator-request] webhook n8n:', response.status)
+    })
+    .catch((error) => {
+      console.error('[creator-request] webhook n8n injoignable:', (error as Error).message)
+    })
+    .finally(() => clearTimeout(timeout))
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -259,7 +278,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (dryRun) {
       console.log(
-        `[creator-request] DRY-RUN (hôte hors production) — aucune écriture Airtable. ` +
+        `[creator-request] DRY-RUN (hôte hors production) — ni écriture Airtable ni webhook n8n. ` +
           `Créateurs liés: ${resolved.recordIds.length}, handles bruts: ${resolved.unresolved.length}`,
       )
       return res.status(200).json({ success: true, dryRun: true })
@@ -289,9 +308,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       console.error('[creator-request] Airtable injoignable:', airtableError)
     }
 
-    // Airtable en échec : on garde la demande côté n8n plutôt que de la perdre,
-    // et le client voit un envoi réussi — il n'y peut rien.
-    await notifyWebhook({
+    // Envoyé dans tous les cas, succès Airtable ou non : si la base a refusé la
+    // demande, n8n en garde la trace complète plutôt que de la perdre, et le client
+    // voit un envoi réussi — il n'y peut rien.
+    notifyWebhook({
       source: 'creator-request',
       airtable_record_id: recordId,
       airtable_error: airtableError,
