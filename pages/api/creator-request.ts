@@ -215,12 +215,12 @@ const buildFields = (d: CreatorRequestPayload, resolved: ResolvedHandles): Recor
 }
 
 // Notification n8n : accusé de réception au client et alerte Google Chat interne.
-// Fire-and-forget — la réponse au client part sans attendre, un n8n lent ou hors
-// service ne doit ni la retarder ni la faire échouer. Le timeout borne la requête
-// pour ne pas laisser une socket ouverte derrière la réponse.
+// Attendue, pour que Netlify ne gèle pas la lambda avant que la requête parte —
+// c'est le filet quand Airtable a échoué. Bornée à 5 s, et toute erreur reste
+// interne : la fonction ne rejette jamais, la réponse au client est intouchable.
 const WEBHOOK_TIMEOUT_MS = 5000
 
-const notifyWebhook = (payload: Record<string, unknown>): void => {
+const notifyWebhook = async (payload: Record<string, unknown>): Promise<void> => {
   if (!N8N_WEBHOOK_URL) {
     console.warn(
       '[creator-request] N8N_CREATOR_REQUEST_WEBHOOK_URL absente — notification n8n ignorée, ' +
@@ -229,25 +229,34 @@ const notifyWebhook = (payload: Record<string, unknown>): void => {
     return
   }
 
+  const secret = process.env.N8N_WEBHOOK_SECRET || ''
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+    'X-Webhook-Secret': secret,
+  }
+  // Signature partagée, à vérifier côté n8n. Absente si le secret ne l'est pas :
+  // un en-tête vide se distingue mal d'une signature valide.
+  if (secret) headers['X-Digiqo-Signature'] = secret
+
   const controller = new AbortController()
   const timeout = setTimeout(() => controller.abort(), WEBHOOK_TIMEOUT_MS)
 
-  fetch(N8N_WEBHOOK_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Webhook-Secret': process.env.N8N_WEBHOOK_SECRET || '',
-    },
-    body: JSON.stringify(payload),
-    signal: controller.signal,
-  })
-    .then((response) => {
-      if (!response.ok) console.error('[creator-request] webhook n8n:', response.status)
+  try {
+    const response = await fetch(N8N_WEBHOOK_URL, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(payload),
+      signal: controller.signal,
     })
-    .catch((error) => {
-      console.error('[creator-request] webhook n8n injoignable:', (error as Error).message)
-    })
-    .finally(() => clearTimeout(timeout))
+    if (!response.ok) console.error('[creator-request] webhook n8n:', response.status)
+  } catch (error) {
+    const message = controller.signal.aborted
+      ? `pas de réponse en ${WEBHOOK_TIMEOUT_MS} ms`
+      : (error as Error).message
+    console.error('[creator-request] webhook n8n injoignable:', message)
+  } finally {
+    clearTimeout(timeout)
+  }
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -311,7 +320,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Envoyé dans tous les cas, succès Airtable ou non : si la base a refusé la
     // demande, n8n en garde la trace complète plutôt que de la perdre, et le client
     // voit un envoi réussi — il n'y peut rien.
-    notifyWebhook({
+    await notifyWebhook({
       source: 'creator-request',
       airtable_record_id: recordId,
       airtable_error: airtableError,
