@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import { m as motion } from 'framer-motion'
 import {
   ArrowRight,
@@ -7,6 +8,7 @@ import {
   Instagram,
   Search,
   Sparkles,
+  UserPlus,
   Users,
   Zap,
 } from 'lucide-react'
@@ -18,14 +20,15 @@ import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 import { generateContactUrl } from '../lib/contact-utils'
 import { CREATORS } from '@/lib/createurs/data'
 import { DEMANDE_PATHNAME } from '@/lib/createurs/demande'
+import { INSCRIPTION_PATHNAME } from '@/lib/createurs/inscription'
 
 // Créateurs affichés (on masque ceux en attente d'accord)
 const visibleCreators = CREATORS.filter((inf) => !inf.pending)
 
 
-const joinHref = `/?instant=true&description=${encodeURIComponent(
-  "Je suis créateur de contenu / influenceur et je souhaite rejoindre le réseau de créateurs Digiqo",
-)}#contact`
+// La tuile « Vous êtes créateur ? » de la grille mène désormais au formulaire dédié
+// plutôt qu'au formulaire de contact générique de la home.
+const joinHref = INSCRIPTION_PATHNAME
 
 const processSteps = [
   {
@@ -208,18 +211,28 @@ export default function CreateursPage() {
                   Vous êtes créateur de contenu ?
                 </h2>
                 <p className="text-white/70 text-lg mb-8 leading-relaxed">
-                  On attend votre DM.
+                  Ajoute ton profil au réseau : chaque fiche est vérifiée par l&apos;équipe avant
+                  publication.
                 </p>
-                <a
-                  href="https://www.instagram.com/digiqo_/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold rounded-2xl hover:shadow-lg hover:shadow-pink-500/25 transition-all duration-300"
-                >
-                  <Instagram className="w-5 h-5" />
-                  Nous envoyer un DM
-                  <ArrowRight className="w-5 h-5" />
-                </a>
+                <div className="flex flex-wrap items-center gap-4">
+                  <Link
+                    href={INSCRIPTION_PATHNAME}
+                    className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold rounded-2xl hover:shadow-lg hover:shadow-pink-500/25 transition-all duration-300"
+                  >
+                    <UserPlus className="w-5 h-5" />
+                    Ajouter mon profil
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                  <a
+                    href="https://www.instagram.com/digiqo_/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-white/70 transition-colors hover:text-white"
+                  >
+                    <Instagram className="w-4 h-4" />
+                    Ou nous envoyer un DM
+                  </a>
+                </div>
               </motion.div>
 
               {/* Brand CTA */}
