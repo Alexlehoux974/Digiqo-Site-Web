@@ -107,8 +107,12 @@ export default function App({ Component, pageProps }: AppProps) {
 
   // Track route changes for GA4 (only if consent given)
   useEffect(() => {
-    const handleRouteChange = (url: string) => {
-      window.scrollTo(0, 0)
+    // `shallow` = même page, seule la query change (filtres de /createurs,
+    // ouverture du panneau de demande). Y remonter en haut fait perdre à
+    // l'utilisateur l'endroit où il lisait ; `scroll: false` côté routeur ne
+    // suffit pas, il ne gouverne que le scroll interne de Next.
+    const handleRouteChange = (url: string, { shallow }: { shallow: boolean }) => {
+      if (!shallow) window.scrollTo(0, 0)
 
       if (analyticsConsent && typeof window.gtag === 'function') {
         window.gtag('config', GA_MEASUREMENT_ID, {
