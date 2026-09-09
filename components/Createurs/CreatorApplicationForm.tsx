@@ -497,7 +497,7 @@ export const CreatorApplicationForm = () => {
                     value={data.autresReseaux}
                     onChange={(e) => set('autresReseaux', e.target.value)}
                     className={inputClass}
-                    placeholder="YouTube, Facebook, Snapchat…"
+                    placeholder="Snapchat, Twitch, LinkedIn…"
                   />
                 </div>
               </div>
