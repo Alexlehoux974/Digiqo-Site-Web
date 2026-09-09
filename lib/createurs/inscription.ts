@@ -71,6 +71,8 @@ export interface CreatorApplicationPayload {
   tiktok: string
   abonnesTiktok: string
   tauxTiktok: string
+  youtube: string
+  facebook: string
   autresReseaux: string
   niches: string[]
   typesContenu: string[]
@@ -98,6 +100,8 @@ export const EMPTY_APPLICATION: CreatorApplicationPayload = {
   tiktok: '',
   abonnesTiktok: '',
   tauxTiktok: '',
+  youtube: '',
+  facebook: '',
   autresReseaux: '',
   niches: [],
   typesContenu: [],
@@ -163,6 +167,26 @@ export const isHttpUrl = (raw: string): boolean => {
   }
 }
 
+/**
+ * URL http(s) dont l'hôte est l'un des domaines attendus (ou un sous-domaine).
+ * Sert à refuser une URL Instagram collée dans le champ YouTube.
+ */
+export const isUrlOnDomain = (raw: string, domains: readonly string[]): boolean => {
+  if (!isHttpUrl(raw)) return false
+  try {
+    const host = new URL(raw.trim()).hostname.toLowerCase().replace(/^www\./, '')
+    return domains.some((d) => host === d || host.endsWith(`.${d}`))
+  } catch {
+    return false
+  }
+}
+
+export const YOUTUBE_DOMAINS = ['youtube.com', 'youtu.be'] as const
+export const FACEBOOK_DOMAINS = ['facebook.com', 'fb.com'] as const
+
+/** Longueur maximale des URLs de réseau, alignée sur la troncature côté API. */
+export const SOCIAL_URL_MAX_LENGTH = 300
+
 export const validateStep1 = (d: CreatorApplicationPayload): string[] => {
   const errors: string[] = []
   if (!d.prenom.trim()) errors.push('Ton prénom est requis.')
@@ -197,6 +221,18 @@ export const validateStep2 = (d: CreatorApplicationPayload): string[] => {
     errors.push("Le taux d'engagement Instagram doit être un pourcentage entre 0 et 100.")
   if (d.tauxTiktok.trim() && parseRate(d.tauxTiktok) === null)
     errors.push("Le taux d'engagement TikTok doit être un pourcentage entre 0 et 100.")
+  // YouTube et Facebook sont facultatifs et ne comptent pas comme compte
+  // principal : seule une saisie présente mais invalide est signalée.
+  if (d.youtube.trim()) {
+    if (d.youtube.trim().length > SOCIAL_URL_MAX_LENGTH) errors.push("L'URL YouTube est trop longue.")
+    else if (!isUrlOnDomain(d.youtube, YOUTUBE_DOMAINS))
+      errors.push("L'URL YouTube n'est pas valide (https://www.youtube.com/…).")
+  }
+  if (d.facebook.trim()) {
+    if (d.facebook.trim().length > SOCIAL_URL_MAX_LENGTH) errors.push("L'URL Facebook est trop longue.")
+    else if (!isUrlOnDomain(d.facebook, FACEBOOK_DOMAINS))
+      errors.push("L'URL Facebook n'est pas valide (https://www.facebook.com/…).")
+  }
   if (d.autresReseaux.trim().length > 200) errors.push('« Autres réseaux » est trop long.')
   return errors
 }

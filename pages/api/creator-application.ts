@@ -3,6 +3,7 @@ import { checkRateLimit } from '../../lib/rate-limit'
 import {
   EMPTY_APPLICATION,
   NICHES,
+  SOCIAL_URL_MAX_LENGTH,
   TYPES_CONTENU,
   parseFollowers,
   parseRate,
@@ -34,6 +35,8 @@ const F = {
   tiktok: 'fld3l41eQ1K0YLO40',
   abonnesTiktok: 'fldcLXoGhO7j16yMu',
   tauxTiktok: 'fldbsvFwCtV5PsVUK',
+  youtube: 'fldHLkVUTNyLdsCJQ',
+  facebook: 'fldJiyJLRxB5SMUih',
   autresReseaux: 'fldOYtD0x152ayyPE',
   niches: 'fldD7EcrA8BYMhhD2',
   typesContenu: 'fld2gJKPQ4xxJNymN',
@@ -113,6 +116,10 @@ const readPayload = (body: unknown): CreatorApplicationPayload => {
     tiktok: asString(b.tiktok, 300),
     abonnesTiktok: asString(b.abonnesTiktok, 20),
     tauxTiktok: asString(b.tauxTiktok, 20),
+    // Lues au-delà de la limite pour que `validateStep2` puisse refuser une URL
+    // trop longue, plutôt que d'en stocker une version tronquée donc cassée.
+    youtube: asString(b.youtube, SOCIAL_URL_MAX_LENGTH + 100),
+    facebook: asString(b.facebook, SOCIAL_URL_MAX_LENGTH + 100),
     autresReseaux: asString(b.autresReseaux, 200),
     niches: asStringArray(b.niches, NICHES.length),
     typesContenu: asStringArray(b.typesContenu, TYPES_CONTENU.length),
@@ -175,6 +182,26 @@ const findExistingByEmail = async (email: string): Promise<string | null | undef
   }
 }
 
+/**
+ * Retire les paramètres de suivi collés par les applications mobiles quand on
+ * partage un profil (`?igsh=`, `?_t=`, `?stkn=`, `utm_*`…). Seuls l'origine et
+ * le chemin sont conservés : c'est ce qui identifie le compte.
+ *
+ * Ne s'applique qu'aux URLs entrantes — les valeurs déjà en base ne bougent pas.
+ * Une URL illisible est renvoyée telle quelle : la validation est déjà passée,
+ * ce nettoyage ne doit jamais faire perdre une donnée.
+ */
+const stripTracking = (raw: string): string => {
+  const value = raw.trim()
+  if (!value) return ''
+  try {
+    const url = new URL(value)
+    return `${url.origin}${url.pathname}`.replace(/\/$/, '') || url.origin
+  } catch {
+    return value
+  }
+}
+
 const buildFields = (d: CreatorApplicationPayload): Record<string, unknown> => {
   const fields: Record<string, unknown> = {
     [F.prenom]: d.prenom,
@@ -194,8 +221,10 @@ const buildFields = (d: CreatorApplicationPayload): Record<string, unknown> => {
 
   // Optionnels : on n'écrit pas de chaîne vide pour garder la vue Airtable lisible.
   if (d.telephone) fields[F.telephone] = d.telephone
-  if (d.instagram) fields[F.instagram] = d.instagram
-  if (d.tiktok) fields[F.tiktok] = d.tiktok
+  if (d.instagram) fields[F.instagram] = stripTracking(d.instagram)
+  if (d.tiktok) fields[F.tiktok] = stripTracking(d.tiktok)
+  if (d.youtube) fields[F.youtube] = stripTracking(d.youtube)
+  if (d.facebook) fields[F.facebook] = stripTracking(d.facebook)
   if (d.autresReseaux) fields[F.autresReseaux] = d.autresReseaux
   if (d.portfolio) fields[F.portfolio] = d.portfolio
   if (d.tarifs) fields[F.tarifs] = d.tarifs
@@ -321,6 +350,8 @@ const buildWebhookPayload = (
   abonnesInstagram: parseFollowers(d.abonnesInstagram),
   tiktok: d.tiktok,
   abonnesTiktok: parseFollowers(d.abonnesTiktok),
+  youtube: d.youtube,
+  facebook: d.facebook,
   autresReseaux: d.autresReseaux,
   niches: d.niches,
   typesContenu: d.typesContenu,

@@ -10,6 +10,7 @@ import {
   PHOTO_ACCEPT,
   PHOTO_MAX_BYTES,
   PHOTO_MIME_TYPES,
+  SOCIAL_URL_MAX_LENGTH,
   STEP_TITLES,
   STEP_VALIDATORS,
   TYPES_CONTENU,
@@ -415,6 +416,44 @@ export const CreatorApplicationForm = () => {
                 </div>
 
                 <div>
+                  <label htmlFor="youtube" className={labelClass}>
+                    YouTube (URL)
+                  </label>
+                  <input
+                    id="youtube"
+                    type="url"
+                    inputMode="url"
+                    maxLength={SOCIAL_URL_MAX_LENGTH}
+                    value={data.youtube}
+                    onChange={(e) => set('youtube', e.target.value)}
+                    className={inputClass}
+                    placeholder="https://www.youtube.com/@toncompte"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="facebook" className={labelClass}>
+                    Facebook (URL)
+                  </label>
+                  <input
+                    id="facebook"
+                    type="url"
+                    inputMode="url"
+                    maxLength={SOCIAL_URL_MAX_LENGTH}
+                    value={data.facebook}
+                    onChange={(e) => set('facebook', e.target.value)}
+                    className={inputClass}
+                    placeholder="https://www.facebook.com/tapage"
+                  />
+                </div>
+
+                {/* Une seule mention pour les deux champs : côte à côte sur desktop,
+                    empilés sur mobile, l'aide arrive après les deux dans les deux cas. */}
+                <p className={`${hintClass} sm:col-span-2`}>
+                  Facultatif — on calcule ton engagement automatiquement.
+                </p>
+
+                <div>
                   <label htmlFor="tauxInstagram" className={labelClass}>
                     Taux d&apos;engagement Instagram
                   </label>
@@ -458,7 +497,7 @@ export const CreatorApplicationForm = () => {
                     value={data.autresReseaux}
                     onChange={(e) => set('autresReseaux', e.target.value)}
                     className={inputClass}
-                    placeholder="YouTube, Facebook, Snapchat…"
+                    placeholder="Snapchat, Twitch, LinkedIn…"
                   />
                 </div>
               </div>
