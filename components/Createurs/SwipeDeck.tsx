@@ -26,6 +26,10 @@ const DEPTH = [
   { y: 12, scale: 0.94, rotate: 3 },
 ]
 const depthAt = (d: number) => DEPTH[d] || DEPTH[DEPTH.length - 1]
+// Débord de l'éventail sous la carte active : décalage y de la dernière carte
+// visible + la rotation (origine bas-centre, ±3° sur 340 px ≈ 9 px). Sans cette
+// réserve, les cartes d'arrière-plan recouvrent les boutons.
+const DECK_TAIL = DEPTH[DEPTH.length - 1].y + 12
 const NUDGE_KEY = 'digiqo-createurs-nudge'
 
 type Direction = 1 | -1
@@ -472,7 +476,7 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
           plus rien n'est rogné, quelle que soit la largeur. */}
       <div
         className="relative w-full max-w-[340px] transition-[height] duration-200"
-        style={{ height }}
+        style={{ height: height + DECK_TAIL }}
       >
         {mounted.map((c, i) => (
           <DeckCard
@@ -504,7 +508,7 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
         )}
       </div>
 
-      <div className="mt-[14px] flex items-center gap-4">
+      <div className="relative z-40 mt-[14px] flex items-center gap-4">
         <button
           type="button"
           onClick={() => commitRef.current?.(-1)}
