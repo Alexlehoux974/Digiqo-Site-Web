@@ -1,18 +1,23 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import type { ReactNode } from 'react'
 import type { GetStaticPaths, GetStaticProps } from 'next'
-import { ArrowLeft, Camera, Heart, Instagram, MapPin, MessageCircle, Star, Youtube, Zap } from 'lucide-react'
+import { ArrowLeft, Camera, Heart, MapPin, MessageCircle, Star, Zap } from 'lucide-react'
 import ServiceLayout from '../../components/ServiceLayout/ServiceLayout'
-import { TikTokIcon } from '../../components/Createurs/TikTokIcon'
 import { CategoryPill, LevelBadge } from '../../components/Createurs/CreatorBadges'
 import { CreatorShareButtons } from '../../components/Createurs/CreatorShareButtons'
 import { contentTypeIcons } from '../../components/Createurs/contentTypeIcons'
-import type { Influencer, PlatformStats } from '@/lib/createurs/types'
+import { platformsOf } from '../../components/Createurs/platforms'
+import type { Influencer } from '@/lib/createurs/types'
 import { CATEGORY_LABELS } from '@/lib/createurs/types'
 import { getCreatorBySlug, getCreatorsForPage } from '@/lib/createurs/airtable'
-import { getAvgEngagement, getAvgEngagementValue, getNicheColor, hasEngagement } from '@/lib/createurs/helpers'
+import {
+  SMALL_AUDIENCE_TITLE,
+  displayedEngagement,
+  getAvgEngagement,
+  getAvgEngagementValue,
+  getNicheColor,
+} from '@/lib/createurs/helpers'
 import { demandeHref } from '@/lib/createurs/demande'
 import { SITE_URL, ficheUrl, normalizeSlug, truncateForMeta } from '@/lib/createurs/fiche'
 
@@ -23,37 +28,6 @@ import { SITE_URL, ficheUrl, normalizeSlug, truncateForMeta } from '@/lib/create
 // partage en interne. Même information que le panneau détail de la liste, mais
 // indexable, partageable et dotée de ses propres métadonnées sociales.
 // ──────────────────────────────────────────────
-
-interface PlatformView {
-  key: string
-  label: string
-  icon: ReactNode
-  stats: PlatformStats
-}
-
-const platformsOf = (creator: Influencer): PlatformView[] => {
-  const views: PlatformView[] = []
-  if (creator.instagram.url) {
-    views.push({
-      key: 'instagram',
-      label: 'Instagram',
-      icon: <Instagram className="h-4 w-4" aria-hidden="true" />,
-      stats: creator.instagram,
-    })
-  }
-  if (creator.tiktok.url) {
-    views.push({ key: 'tiktok', label: 'TikTok', icon: <TikTokIcon className="h-4 w-4" />, stats: creator.tiktok })
-  }
-  if (creator.youtube?.url) {
-    views.push({
-      key: 'youtube',
-      label: 'YouTube',
-      icon: <Youtube className="h-4 w-4" aria-hidden="true" />,
-      stats: creator.youtube,
-    })
-  }
-  return views
-}
 
 interface Props {
   creator: Influencer
@@ -180,12 +154,19 @@ export default function CreatorProfilePage({ creator }: Props) {
                             {platform.stats.followers}
                           </div>
                           <div className="mt-1 text-[10px] text-gray-400">abonnés</div>
-                          {hasEngagement(platform.stats.engagement) && (
-                            <div className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-gray-600">
-                              <Heart className="h-3 w-3 text-gray-400" aria-hidden="true" />
-                              {platform.stats.engagement}
-                            </div>
-                          )}
+                          {/* Sous 500 abonnés, « — » plutôt qu'un taux qui ne veut rien dire. */}
+                          <div
+                            title={displayedEngagement(platform.stats) ? undefined : SMALL_AUDIENCE_TITLE}
+                            className={`mt-2 inline-flex items-center gap-1 text-[11px] font-semibold ${
+                              displayedEngagement(platform.stats) ? 'text-gray-600' : 'text-gray-400'
+                            }`}
+                          >
+                            <Heart
+                              className={`h-3 w-3 ${displayedEngagement(platform.stats) ? 'text-gray-400' : 'text-gray-300'}`}
+                              aria-hidden="true"
+                            />
+                            {displayedEngagement(platform.stats) ?? '—'}
+                          </div>
                         </a>
                       ))}
                     </div>

@@ -2,9 +2,10 @@ import { memo, startTransition, useCallback, useEffect, useMemo, useRef, useStat
 import Image from 'next/image'
 import { animate, m as motion, useMotionValue, useReducedMotion, useTransform } from 'framer-motion'
 import { useDrag } from '@use-gesture/react'
-import { Heart, X, RotateCcw, MapPin, Zap, Sparkles, Instagram, Check } from 'lucide-react'
+import { Heart, X, RotateCcw, MapPin, Zap, Sparkles, Instagram, Youtube, Check } from 'lucide-react'
 import { TikTokIcon } from './TikTokIcon'
 import { PlatformRow } from './PlatformRow'
+import { CategoryPill, LevelBadge, levelBorder } from './CreatorBadges'
 import type { Influencer } from '@/lib/createurs/types'
 import { getAvgEngagement, getAvgEngagementValue, getNicheColor, hasPlatform } from '@/lib/createurs/helpers'
 
@@ -51,6 +52,11 @@ const CardBody = memo(({ influencer }: { influencer: Influencer }) => (
           priority
           className="object-cover"
         />
+        {influencer.niveau !== 'nouveau' && (
+          <div className="absolute left-3 top-3">
+            <LevelBadge niveau={influencer.niveau} className="shadow-sm" />
+          </div>
+        )}
       </div>
       <div className="flex flex-col gap-2 p-4">
         <div>
@@ -62,6 +68,7 @@ const CardBody = memo(({ influencer }: { influencer: Influencer }) => (
           <span className="truncate">{influencer.location}</span>
         </p>
         <div className="flex flex-wrap gap-1.5">
+          <CategoryPill categorie={influencer.categorie} compact />
           {influencer.niches.slice(0, 3).map((n) => (
             <span
               key={n}
@@ -73,20 +80,13 @@ const CardBody = memo(({ influencer }: { influencer: Influencer }) => (
         </div>
         <div className="flex flex-col gap-1.5 border-t border-gray-100 pt-2">
           {hasPlatform(influencer, 'instagram') && (
-            <PlatformRow
-              icon={<Instagram className="h-4 w-4" />}
-              label="Instagram"
-              followers={influencer.instagram.followers}
-              engagement={influencer.instagram.engagement}
-            />
+            <PlatformRow icon={<Instagram className="h-4 w-4" />} label="Instagram" stats={influencer.instagram} />
           )}
           {hasPlatform(influencer, 'tiktok') && (
-            <PlatformRow
-              icon={<TikTokIcon className="h-4 w-4" />}
-              label="TikTok"
-              followers={influencer.tiktok.followers}
-              engagement={influencer.tiktok.engagement}
-            />
+            <PlatformRow icon={<TikTokIcon className="h-4 w-4" />} label="TikTok" stats={influencer.tiktok} />
+          )}
+          {influencer.youtube && hasPlatform(influencer, 'youtube') && (
+            <PlatformRow icon={<Youtube className="h-4 w-4" />} label="YouTube" stats={influencer.youtube} />
           )}
         </div>
         {getAvgEngagementValue(influencer) !== null && (
@@ -286,7 +286,7 @@ const DeckCard = ({
           willChange: hidden ? undefined : 'transform',
         }}
         aria-hidden={!isActive}
-        className={`absolute inset-x-0 top-0 overflow-hidden rounded-3xl border border-gray-200 bg-white ${
+        className={`absolute inset-x-0 top-0 overflow-hidden rounded-3xl bg-white ${levelBorder(influencer.niveau)} ${
           isActive ? 'shadow-md' : 'shadow-sm'
         }`}
       >

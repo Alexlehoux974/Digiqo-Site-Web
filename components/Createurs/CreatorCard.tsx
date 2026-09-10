@@ -2,9 +2,10 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { m as motion } from 'framer-motion'
-import { ArrowUpRight, Camera, MapPin, Instagram, Zap, MessageCircle } from 'lucide-react'
+import { ArrowUpRight, Camera, MapPin, Instagram, Youtube, Zap, MessageCircle } from 'lucide-react'
 import { TikTokIcon } from './TikTokIcon'
 import { PlatformRow } from './PlatformRow'
+import { CategoryPill, LevelBadge, levelBorder } from './CreatorBadges'
 import type { Influencer } from '@/lib/createurs/types'
 import { getAvgEngagement, getAvgEngagementValue, getNicheColor, hasPlatform } from '@/lib/createurs/helpers'
 import { demandeHref } from '@/lib/createurs/demande'
@@ -30,7 +31,7 @@ export const CreatorCard = ({ influencer, index, onOpen }: CreatorCardProps) => 
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96 }}
       transition={{ duration: 0.28, delay: Math.min(index, 8) * 0.03 }}
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg"
+      className={`group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg ${levelBorder(influencer.niveau)}`}
     >
       {/* Toute la fiche ouvre le panneau de détail, sauf le CTA (z-20 plus bas). */}
       <button
@@ -40,6 +41,13 @@ export const CreatorCard = ({ influencer, index, onOpen }: CreatorCardProps) => 
       >
         <span className="sr-only">Voir le profil de {influencer.name}</span>
       </button>
+
+      {/* Badge de niveau, au-dessus de l'overlay de clic pour rester lisible. */}
+      {influencer.niveau !== 'nouveau' && (
+        <div className="pointer-events-none absolute left-3 top-3 z-20">
+          <LevelBadge niveau={influencer.niveau} className="shadow-sm" />
+        </div>
+      )}
 
       {/* Photo carrée */}
       <div className="relative aspect-square w-full overflow-hidden bg-gray-100">
@@ -70,40 +78,34 @@ export const CreatorCard = ({ influencer, index, onOpen }: CreatorCardProps) => 
           <span className="truncate">{influencer.location}</span>
         </div>
 
-        {influencer.niches.length > 0 && (
-          <div className="flex flex-wrap gap-1.5">
-            {influencer.niches.slice(0, MAX_NICHES).map((niche) => (
-              <span
-                key={niche}
-                className={`inline-flex items-center rounded-full bg-gradient-to-r px-2 py-0.5 text-[10px] font-semibold text-white ${getNicheColor(niche)}`}
-              >
-                {niche}
-              </span>
-            ))}
-            {extraNiches > 0 && (
-              <span className="inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-semibold text-gray-600">
-                +{extraNiches}
-              </span>
-            )}
-          </div>
-        )}
+        {/* La catégorie ouvre la rangée : c'est la nature du profil, les niches
+            en sont le détail. */}
+        <div className="flex flex-wrap gap-1.5">
+          <CategoryPill categorie={influencer.categorie} compact />
+          {influencer.niches.slice(0, MAX_NICHES).map((niche) => (
+            <span
+              key={niche}
+              className={`inline-flex items-center rounded-full bg-gradient-to-r px-2 py-0.5 text-[10px] font-semibold text-white ${getNicheColor(niche)}`}
+            >
+              {niche}
+            </span>
+          ))}
+          {extraNiches > 0 && (
+            <span className="inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-semibold text-gray-600">
+              +{extraNiches}
+            </span>
+          )}
+        </div>
 
         <div className="flex flex-col gap-1.5 border-t border-gray-100 pt-3">
           {hasPlatform(influencer, 'instagram') && (
-            <PlatformRow
-              icon={<Instagram className="h-4 w-4" />}
-              label="Instagram"
-              followers={influencer.instagram.followers}
-              engagement={influencer.instagram.engagement}
-            />
+            <PlatformRow icon={<Instagram className="h-4 w-4" />} label="Instagram" stats={influencer.instagram} />
           )}
           {hasPlatform(influencer, 'tiktok') && (
-            <PlatformRow
-              icon={<TikTokIcon className="h-4 w-4" />}
-              label="TikTok"
-              followers={influencer.tiktok.followers}
-              engagement={influencer.tiktok.engagement}
-            />
+            <PlatformRow icon={<TikTokIcon className="h-4 w-4" />} label="TikTok" stats={influencer.tiktok} />
+          )}
+          {influencer.youtube && hasPlatform(influencer, 'youtube') && (
+            <PlatformRow icon={<Youtube className="h-4 w-4" />} label="YouTube" stats={influencer.youtube} />
           )}
         </div>
 

@@ -1,4 +1,4 @@
-import type { Influencer, PlatformFilter, Zone } from './types'
+import type { Influencer, PlatformFilter, PlatformStats, Zone } from './types'
 
 // ──────────────────────────────────────────────
 // PARSING — tolérant aux données incomplètes ("À définir", champ vide).
@@ -11,9 +11,25 @@ export const parsePct = (value: string): number | null => {
   return match ? parseFloat(match[1].replace(',', '.')) : null
 }
 
-// Une valeur d'engagement n'est affichée que si elle est chiffrée
-// (« À définir » → la ligne Engagement est masquée plutôt que rendue telle quelle)
-export const hasEngagement = (value: string): boolean => parsePct(value) !== null
+// ──────────────────────────────────────────────
+// SEUIL DE SIGNIFICATIVITÉ
+// Un taux calculé sur 200 abonnés n'a aucune valeur comparative : trois likes de
+// plus le font varier de plusieurs points. En dessous du seuil, le taux n'est ni
+// affiché ni pris en compte par le tri — il est traité comme absent.
+// ──────────────────────────────────────────────
+
+export const MIN_FOLLOWERS_FOR_ENGAGEMENT = 500
+
+export const SMALL_AUDIENCE_TITLE = 'Audience trop petite pour un taux significatif'
+
+/** Le taux à afficher, ou `null` s'il est absent ou adossé à moins de 500 abonnés. */
+export const displayedEngagement = (stats: PlatformStats | undefined): string | null => {
+  if (!stats || !stats.url) return null
+  if (parsePct(stats.engagement) === null) return null
+  const followers = parseCount(stats.followers)
+  if (followers === null || followers < MIN_FOLLOWERS_FOR_ENGAGEMENT) return null
+  return stats.engagement
+}
 
 // "1,1K" → 1100 · "14,2K" → 14200 · "375" → 375 · "À définir" → null
 // Accepte aussi un nombre brut : Airtable renverra des nombres en PR 3.
@@ -45,12 +61,16 @@ export const formatPct = (n: number): string =>
 // AGRÉGATS PAR CRÉATEUR
 // ──────────────────────────────────────────────
 
-// Moyenne des plateformes disposant d'un taux chiffré. null si aucune.
-// Accepte toute forme portant les deux plateformes : `airtable.ts` trie ses fiches
+// Moyenne des plateformes dont le taux est affichable (chiffré et ≥ 500 abonnés).
+// null si aucune — une créatrice en dessous du seuil partout n'a pas de moyenne.
+// Accepte toute forme portant les plateformes : `airtable.ts` trie ses fiches
 // avant même de leur avoir attribué un slug.
-export const getAvgEngagementValue = (inf: Pick<Influencer, 'instagram' | 'tiktok'>): number | null => {
-  const values = [inf.instagram.engagement, inf.tiktok.engagement]
-    .map(parsePct)
+export const getAvgEngagementValue = (
+  inf: Pick<Influencer, 'instagram' | 'tiktok' | 'youtube'>,
+): number | null => {
+  const values = [inf.instagram, inf.tiktok, inf.youtube]
+    .map((stats) => displayedEngagement(stats))
+    .map((value) => (value === null ? null : parsePct(value)))
     .filter((n): n is number => n !== null)
   if (values.length === 0) return null
   return values.reduce((a, b) => a + b, 0) / values.length
@@ -63,14 +83,14 @@ export const getAvgEngagement = (inf: Influencer): string => {
 }
 
 // Une créatrice « a » une plateforme si l'URL est renseignée.
-export const hasPlatform = (inf: Influencer, platform: 'instagram' | 'tiktok'): boolean =>
-  Boolean(inf[platform] && inf[platform].url)
+export const hasPlatform = (inf: Influencer, platform: 'instagram' | 'tiktok' | 'youtube'): boolean =>
+  Boolean(inf[platform]?.url)
 
-// Abonnés sur la plateforme demandée, ou le max des deux si « tous ».
+// Abonnés sur la plateforme demandée, ou le max de toutes si « tous ».
 export const getFollowers = (inf: Influencer, platform: PlatformFilter): number | null => {
-  if (platform === 'instagram') return parseCount(inf.instagram.followers)
-  if (platform === 'tiktok') return parseCount(inf.tiktok.followers)
-  const counts = [parseCount(inf.instagram.followers), parseCount(inf.tiktok.followers)]
+  if (platform !== 'tous') return parseCount(inf[platform]?.followers)
+  const counts = [inf.instagram, inf.tiktok, inf.youtube]
+    .map((stats) => parseCount(stats?.followers))
     .filter((n): n is number => n !== null)
   return counts.length ? Math.max(...counts) : null
 }

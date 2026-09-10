@@ -1,7 +1,14 @@
 import { useState } from 'react'
 import { ChevronDown, RotateCcw, SlidersHorizontal } from 'lucide-react'
-import type { CreatorFilters as Filters, FollowerBucket, PlatformFilter, SortKey, Zone } from '@/lib/createurs/types'
-import { ENGAGEMENT_LABELS, FOLLOWER_LABELS, SORT_LABELS, countActiveFilters } from '@/lib/createurs/filters'
+import type { CreatorFilters as Filters, FollowerBucket, PlatformFilter, ProfileFilter, SortKey, Zone } from '@/lib/createurs/types'
+import {
+  ENGAGEMENT_LABELS,
+  FOLLOWER_LABELS,
+  PLATFORM_LABELS,
+  PROFILE_LABELS,
+  SORT_LABELS,
+  countActiveFilters,
+} from '@/lib/createurs/filters'
 
 // Pastille unique — noir quand active, gris sinon. Pas de dégradé : une seule couleur d'accent.
 const Pill = ({
@@ -97,9 +104,19 @@ export const CreatorFilters = ({ filters, onChange, onReset, niches, zones, resu
 
       <div id="createurs-filtres" className={`${mobileOpen ? 'flex' : 'hidden'} flex-col gap-3 md:flex`}>
         <Row label="Plateforme">
-          {(['tous', 'instagram', 'tiktok'] as PlatformFilter[]).map((p) => (
+          {(['tous', 'instagram', 'tiktok', 'youtube'] as PlatformFilter[]).map((p) => (
             <Pill key={p} active={filters.platform === p} onClick={() => set('platform', p)}>
-              {p === 'tous' ? 'Tous' : p === 'instagram' ? 'Instagram' : 'TikTok'}
+              {PLATFORM_LABELS[p]}
+            </Pill>
+          ))}
+        </Row>
+
+        {/* « UGC + Influence » ressort sous UGC comme sous Influence : deux
+            entrées suffisent, une troisième pastille n'aiderait personne. */}
+        <Row label="Profil">
+          {(['tous', 'ugc', 'influence'] as ProfileFilter[]).map((p) => (
+            <Pill key={p} active={filters.profil === p} onClick={() => set('profil', p)}>
+              {PROFILE_LABELS[p]}
             </Pill>
           ))}
         </Row>
