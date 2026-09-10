@@ -24,7 +24,8 @@ export const config = { api: { bodyParser: { sizeLimit: '8mb' } } }
 // un renommage de colonne côté Airtable ne casse pas le formulaire.
 const F = {
   prenom: 'fldMQzoISbW3cci6H',
-  nom: 'fldc89nmEMDwpd5Ib',
+  // « Nom complet » côté Airtable : il attend prénom + nom, pas le seul patronyme.
+  nomComplet: 'fldc89nmEMDwpd5Ib',
   email: 'fldYubCLeroHYZkTN',
   telephone: 'fldcvRVVFTFPPEImD',
   ville: 'fldlWcx3PTnm38WHn',
@@ -202,10 +203,19 @@ const stripTracking = (raw: string): string => {
   }
 }
 
+/**
+ * Airtable stocke le nom complet dans un seul champ ; le formulaire, lui, demande
+ * le prénom et le nom séparément. On recompose ici plutôt que de laisser la
+ * colonne « Nom complet » ne contenir que le patronyme.
+ * Les parties vides sont écartées : jamais d'espace en trop.
+ */
+const fullName = (d: CreatorApplicationPayload): string =>
+  [d.prenom.trim(), d.nom.trim()].filter(Boolean).join(' ')
+
 const buildFields = (d: CreatorApplicationPayload): Record<string, unknown> => {
   const fields: Record<string, unknown> = {
     [F.prenom]: d.prenom,
-    [F.nom]: d.nom,
+    [F.nomComplet]: fullName(d),
     [F.email]: d.email,
     [F.ville]: d.ville,
     [F.zone]: d.zone,
