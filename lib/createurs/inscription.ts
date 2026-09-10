@@ -191,8 +191,8 @@ export const validateStep1 = (d: CreatorApplicationPayload): string[] => {
   const errors: string[] = []
   if (!d.prenom.trim()) errors.push('Ton prénom est requis.')
   if (d.prenom.trim().length > 80) errors.push('Ton prénom est trop long.')
-  if (!d.nom.trim()) errors.push('Ton nom complet est requis.')
-  if (d.nom.trim().length > 120) errors.push('Ton nom complet est trop long.')
+  if (!d.nom.trim()) errors.push('Ton nom est requis.')
+  if (d.nom.trim().length > 120) errors.push('Ton nom est trop long.')
   if (!EMAIL_REGEX.test(d.email.trim())) errors.push('Un email valide est requis.')
   if (d.email.trim().length > 200) errors.push('Ton email est trop long.')
   // Téléphone facultatif, mais s'il est renseigné il doit ressembler à un numéro.

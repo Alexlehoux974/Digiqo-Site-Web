@@ -262,7 +262,7 @@ export const CreatorApplicationForm = () => {
 
               <div>
                 <label htmlFor="nom" className={labelClass}>
-                  Nom complet <span className="text-gray-400">*</span>
+                  Nom <span className="text-gray-400">*</span>
                 </label>
                 <input
                   id="nom"
@@ -272,7 +272,7 @@ export const CreatorApplicationForm = () => {
                   value={data.nom}
                   onChange={(e) => set('nom', e.target.value)}
                   className={inputClass}
-                  placeholder="Marie Payet"
+                  placeholder="Payet"
                 />
               </div>
 
