@@ -26,6 +26,23 @@ const DEPTH = [
   { y: 12, scale: 0.94, rotate: 3 },
 ]
 const depthAt = (d: number) => DEPTH[d] || DEPTH[DEPTH.length - 1]
+// Débord vertical d'une carte d'arrière-plan sous son propre bas : la rotation
+// (origine bas-centre, ±3° sur 340 px) abaisse un coin d'environ 9 px.
+const ROTATION_TAIL = 10
+// Réserve du conteneur : la carte la plus basse de l'éventail, pas seulement
+// l'active — une carte arrière plus haute que l'active déborderait sinon sur
+// les boutons. Le scale garde le bas en place (origine bas-centre) : le bas
+// d'une carte = sa hauteur + son décalage y.
+const deckReserve = (heights: Record<string, number>, visible: { handle: string; depth: number }[]): number => {
+  let max = MIN_HEIGHT
+  for (const { handle, depth } of visible) {
+    const h = heights[handle]
+    if (!h) continue
+    const bottom = h + depthAt(depth).y + (depth > 0 ? ROTATION_TAIL : 0)
+    if (bottom > max) max = bottom
+  }
+  return max
+}
 const NUDGE_KEY = 'digiqo-createurs-nudge'
 
 type Direction = 1 | -1
@@ -120,7 +137,7 @@ const DeckCard = ({
   onExit: (direction: Direction, influencer: Influencer) => void
   onOpen: (influencer: Influencer) => void
   onRegister: (commit: ((direction: Direction) => void) | null) => void
-  onMeasure: (height: number) => void
+  onMeasure: (handle: string, height: number) => void
 }) => {
   // Hors éventail : carte déjà sortie (depth < 0) ou en attente (depth >= 3).
   // Montée et complète, mais invisible et sans coût d'animation.
@@ -221,17 +238,22 @@ const DeckCard = ({
   }, [isActive, commit, onRegister])
 
   // Hauteur réelle du contenu → le conteneur s'y adapte, plus de rognage.
+  // Toutes les cartes visibles publient (pas seulement l'active) : la réserve
+  // suit la carte la plus basse de l'éventail.
   useEffect(() => {
-    if (!isActive || hidden || !innerRef.current) return
+    if (hidden || !innerRef.current) return
     const el = innerRef.current
+    const handle = influencer.handle
     // getBoundingClientRect (fractionnaire) et non offsetHeight (entier
     // tronqué) : le conteneur était 1 px trop court et le badge dépassait.
-    const publish = () => onMeasure(Math.ceil(el.getBoundingClientRect().height))
+    // Le rect subit le scale de la carte : on le neutralise pour obtenir la
+    // hauteur de mise en page, celle qui compte avec l'origine bas-centre.
+    const publish = () => onMeasure(handle, Math.ceil(el.getBoundingClientRect().height / (scale.get() || 1)))
     publish()
     const ro = new ResizeObserver(publish)
     ro.observe(el)
     return () => ro.disconnect()
-  }, [isActive, hidden, onMeasure])
+  }, [hidden, influencer.handle, onMeasure, scale])
 
   const bind = useDrag(
     ({ first, down, movement: [mx, my], velocity: [vx], direction: [dx], tap }) => {
@@ -346,7 +368,7 @@ interface Props {
 export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) => {
   const [index, setIndex] = useState(0)
   const [history, setHistory] = useState<number[]>([])
-  const [height, setHeight] = useState(MIN_HEIGHT)
+  const [heights, setHeights] = useState<Record<string, number>>({})
   const [justAdded, setJustAdded] = useState<string | null>(null)
   const reduce = useReducedMotion()
   const commitRef = useRef<((direction: Direction) => void) | null>(null)
@@ -437,10 +459,14 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
     }
   }, [creators, index])
 
-  const onMeasure = useCallback((h: number) => {
-    const next = Math.max(h, MIN_HEIGHT)
-    setHeight((prev) => (Math.abs(prev - next) < 2 ? prev : next))
+  const onMeasure = useCallback((handle: string, h: number) => {
+    setHeights((prev) => (prev[handle] !== undefined && Math.abs(prev[handle] - h) < 2 ? prev : { ...prev, [handle]: h }))
   }, [])
+
+  const reserve = deckReserve(
+    heights,
+    mounted.map((c, i) => ({ handle: c.handle, depth: mount.start + i - index })).filter((v) => v.depth >= 0 && v.depth < VISIBLE),
+  )
 
   if (!current) {
     return (
@@ -468,11 +494,11 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
 
   return (
     <div className="flex flex-col items-center">
-      {/* Hauteur pilotée par la carte active mesurée au ResizeObserver :
-          plus rien n'est rogné, quelle que soit la largeur. */}
+      {/* Hauteur pilotée par la carte la plus basse de l'éventail, mesurée au
+          ResizeObserver : rien n'est rogné et rien ne recouvre les boutons. */}
       <div
         className="relative w-full max-w-[340px] transition-[height] duration-200"
-        style={{ height }}
+        style={{ height: reserve }}
       >
         {mounted.map((c, i) => (
           <DeckCard
@@ -504,7 +530,8 @@ export const SwipeDeck = ({ creators, onSelect, onOpen, onExhausted }: Props) =>
         )}
       </div>
 
-      <div className="mt-[14px] flex items-center gap-4">
+      {/* z-40 : au-dessus des cartes (z ≤ 30), au cas où l'éventail déborde encore. */}
+      <div className="relative z-40 mt-[14px] flex items-center gap-4">
         <button
           type="button"
           onClick={() => commitRef.current?.(-1)}
