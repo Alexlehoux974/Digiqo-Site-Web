@@ -1,23 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { m as motion } from 'framer-motion'
-import {
-  ArrowRight,
-  Camera,
-  FileText,
-  Instagram,
-  Search,
-  Sparkles,
-  UserPlus,
-  Users,
-  Zap,
-} from 'lucide-react'
+import { ArrowRight, Camera, Instagram, Sparkles, UserPlus, Users } from 'lucide-react'
 import ServiceLayout from '../components/ServiceLayout/ServiceLayout'
 import { ServiceHero } from '../components/ServicePages/ServiceHero'
 import { CreatorsExplorer } from '../components/Createurs/CreatorsExplorer'
 import { CreatorRequestLauncher } from '../components/Createurs/CreatorRequestLauncher'
 import { HowItWorks } from '../components/Createurs/HowItWorks'
-import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
+import { ANIMATION } from '@/lib/animation-constants'
 import { generateContactUrl } from '../lib/contact-utils'
 import type { GetStaticProps } from 'next'
 import type { Influencer } from '@/lib/createurs/types'
@@ -31,30 +21,6 @@ import { INSCRIPTION_PATHNAME } from '@/lib/createurs/inscription'
 // La tuile « Vous êtes créateur ? » de la grille mène désormais au formulaire dédié
 // plutôt qu'au formulaire de contact générique de la home.
 const joinHref = INSCRIPTION_PATHNAME
-
-const processSteps = [
-  {
-    number: '01',
-    title: 'Brief',
-    description: 'Partagez-nous votre besoin : objectifs, cible, message, budget. On s\'occupe du reste.',
-    icon: FileText,
-    accent: 'from-digiqo-accent to-amber-400',
-  },
-  {
-    number: '02',
-    title: 'Matching',
-    description: 'Digiqo sélectionne le créateur idéal selon votre marque, votre audience et vos objectifs.',
-    icon: Search,
-    accent: 'from-fuchsia-500 to-pink-500',
-  },
-  {
-    number: '03',
-    title: 'Création & Livraison',
-    description: 'Le contenu est produit, validé avec vous, puis livré prêt à publier ou à sponsoriser.',
-    icon: Sparkles,
-    accent: 'from-emerald-400 to-teal-500',
-  },
-]
 
 interface Props {
   creators: Influencer[]
@@ -148,65 +114,6 @@ export default function CreateursPage({ creators }: Props) {
 
             {/* Grille compacte + filtres + pile swipe mobile */}
             <CreatorsExplorer creators={creators} joinHref={joinHref} />
-          </div>
-        </section>
-
-        {/* ── HOW IT WORKS ── */}
-        <section className="py-20 sm:py-28 bg-white relative overflow-hidden">
-          {/* Subtle background decoration */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-pink-50 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-50 rounded-full blur-3xl opacity-50 translate-y-1/2 -translate-x-1/2" />
-
-          <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
-            <motion.div
-              {...ANIMATION.entry.fadeInUp}
-              transition={{ duration: ANIMATION.duration.normal }}
-              className="text-center mb-16"
-            >
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-pink-50 text-pink-600 rounded-full text-sm font-semibold mb-4">
-                <Zap className="w-4 h-4" />
-                Simple & Efficace
-              </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                Comment ça marche
-              </h2>
-              <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-                De votre brief à la livraison du contenu, Digiqo gère tout pour vous.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {processSteps.map((step, index) => (
-                <motion.div
-                  key={step.number}
-                  {...ANIMATION.entry.fadeInUp}
-                  transition={{ duration: ANIMATION.duration.normal, delay: getStaggerDelay(index) }}
-                  className="relative"
-                >
-                  {/* Connector line */}
-                  {index < processSteps.length - 1 && (
-                    <div className="hidden md:block absolute top-12 left-[calc(50%+60px)] w-[calc(100%-120px)] h-px bg-gradient-to-r from-gray-200 to-gray-100" />
-                  )}
-
-                  <div className="text-center">
-                    {/* Step number & icon */}
-                    <div className="relative inline-flex mb-6">
-                      <div className={`w-24 h-24 rounded-2xl bg-gradient-to-br ${step.accent} p-[1px]`}>
-                        <div className="w-full h-full rounded-2xl bg-white flex items-center justify-center">
-                          <step.icon className="w-10 h-10 text-gray-800" />
-                        </div>
-                      </div>
-                      <div className={`absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gradient-to-br ${step.accent} flex items-center justify-center text-white text-xs font-bold shadow-lg`}>
-                        {step.number}
-                      </div>
-                    </div>
-
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
-                    <p className="text-gray-500 leading-relaxed">{step.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
           </div>
         </section>
 

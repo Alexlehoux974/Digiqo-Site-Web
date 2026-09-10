@@ -10,7 +10,7 @@ import { CategoryPill, LevelBadge } from '../../components/Createurs/CreatorBadg
 import { CreatorShareButtons } from '../../components/Createurs/CreatorShareButtons'
 import { contentTypeIcons } from '../../components/Createurs/contentTypeIcons'
 import type { Influencer, PlatformStats } from '@/lib/createurs/types'
-import { CATEGORY_LABELS } from '@/lib/createurs/types'
+import { CATEGORY_LABELS, CREATOR_NOUNS } from '@/lib/createurs/types'
 import { getCreatorBySlug, getCreatorsForPage } from '@/lib/createurs/airtable'
 import { getAvgEngagement, getAvgEngagementValue, getNicheColor, hasEngagement } from '@/lib/createurs/helpers'
 import { demandeHref } from '@/lib/createurs/demande'
@@ -64,9 +64,12 @@ export default function CreatorProfilePage({ creator }: Props) {
   const canonical = ficheUrl(creator.slug)
   const photoUrl = `${SITE_URL}${creator.photo}`
   const category = CATEGORY_LABELS[creator.categorie]
+  // Le nom suit le champ « Genre » d'Airtable, jamais le prénom : sans genre
+  // renseigné, la forme inclusive plutôt qu'un pari.
+  const noun = CREATOR_NOUNS[creator.genre]
   const title = creator.city
-    ? `${creator.firstName} — créatrice ${category} à ${creator.city} | Réseau Créateurs Digiqo`
-    : `${creator.firstName} — créatrice ${category} | Réseau Créateurs Digiqo`
+    ? `${creator.firstName} — ${noun} ${category} à ${creator.city} | Réseau Créateurs Digiqo`
+    : `${creator.firstName} — ${noun} ${category} | Réseau Créateurs Digiqo`
   const description = truncateForMeta(creator.bio)
   const avg = getAvgEngagementValue(creator)
 

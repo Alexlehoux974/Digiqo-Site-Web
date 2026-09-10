@@ -1,6 +1,6 @@
 import { CREATORS } from './data'
 import { formatCount, formatPct, getAvgEngagementValue } from './helpers'
-import type { CreatorCategory, CreatorLevel, Influencer, PlatformStats } from './types'
+import type { CreatorCategory, CreatorGender, CreatorLevel, Influencer, PlatformStats } from './types'
 
 // ──────────────────────────────────────────────
 // SOURCE AIRTABLE — lecture serveur uniquement (getStaticProps + ISR).
@@ -42,6 +42,7 @@ const F = {
   tauxYoutube: 'fld8PwfqwGDYzbV5y',
   niveau: 'fldhXbffl8xja8SdL',
   categorie: 'fldjMCdeKTVFKwSIL',
+  genre: 'fldZMKRZisVvHvkjM',
 } as const
 
 const UNDEFINED_LABEL = 'À définir'
@@ -148,6 +149,14 @@ const toLevel = (v: unknown): CreatorLevel => LEVEL_BY_LABEL[asText(v)] ?? 'nouv
 
 const toCategory = (v: unknown): CreatorCategory => CATEGORY_BY_LABEL[asText(v)] ?? 'ugc'
 
+const GENDER_BY_LABEL: Record<string, CreatorGender> = {
+  Femme: 'femme',
+  Homme: 'homme',
+}
+
+/** Case vide ou option inconnue → `inconnu` : on ne devine jamais le genre. */
+const toGender = (v: unknown): CreatorGender => GENDER_BY_LABEL[asText(v)] ?? 'inconnu'
+
 const PLACEHOLDER_PHOTO = '/assets/createurs/placeholder.png'
 
 /**
@@ -185,6 +194,7 @@ const mapRecord = (record: AirtableRecord): MappedCreator | null => {
     location: buildLocation(ville, asText(f[F.zone])),
     niveau: toLevel(f[F.niveau]),
     categorie: toCategory(f[F.categorie]),
+    genre: toGender(f[F.genre]),
     niches: asList(f[F.niches]),
     bio: asText(f[F.bio]),
     instagram: toPlatform(instagramUrl, asNumber(f[F.abonnesInstagram]), asNumber(f[F.tauxInstagram])),

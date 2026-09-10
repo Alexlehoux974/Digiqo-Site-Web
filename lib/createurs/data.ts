@@ -6,7 +6,7 @@ import type { Influencer } from './types'
 // Les fiches `pending` ne sont pas affichées (accord créatrice en attente).
 // ──────────────────────────────────────────────
 
-type CreatorSeed = Omit<Influencer, 'slug' | 'firstName' | 'city' | 'niveau' | 'categorie'>
+type CreatorSeed = Omit<Influencer, 'slug' | 'firstName' | 'city' | 'niveau' | 'categorie' | 'genre'>
 
 const SEEDS: CreatorSeed[] = [
   {
@@ -165,4 +165,5 @@ export const CREATORS: Influencer[] = SEEDS.map((seed) => ({
   city: seed.location.split('—')[0].trim(),
   niveau: 'nouveau',
   categorie: 'ugc',
+  genre: 'inconnu',
 }))
