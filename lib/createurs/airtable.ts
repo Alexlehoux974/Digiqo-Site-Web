@@ -75,8 +75,8 @@ export const handleFromUrl = (url: string): string | null => {
 
 /**
  * Airtable stocke les pourcents en fraction : 0.087 → « 8,7% ».
- * Un taux absent devient « À définir », que `hasEngagement` masque à l'affichage
- * plutôt que d'afficher un zéro trompeur.
+ * Un taux absent devient « À définir », que `displayedEngagement` masque à
+ * l'affichage plutôt que d'afficher un zéro trompeur.
  */
 const toPlatform = (url: string, followers: number | null, rate: number | null): PlatformStats => ({
   url,

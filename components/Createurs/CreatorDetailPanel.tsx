@@ -3,13 +3,19 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { AnimatePresence, m as motion, useReducedMotion } from 'framer-motion'
 import {
-  X, MapPin, Instagram, Heart, Zap, Star, MessageCircle, ArrowUpRight, Camera,
+  X, MapPin, Heart, Zap, Star, MessageCircle, ArrowUpRight, Camera,
 } from 'lucide-react'
-import { TikTokIcon } from './TikTokIcon'
 import { contentTypeIcons } from './contentTypeIcons'
 import { CategoryPill, LevelBadge } from './CreatorBadges'
+import { platformsOf } from './platforms'
 import type { Influencer } from '@/lib/createurs/types'
-import { getAvgEngagement, getAvgEngagementValue, getNicheColor, hasEngagement, hasPlatform } from '@/lib/createurs/helpers'
+import {
+  SMALL_AUDIENCE_TITLE,
+  displayedEngagement,
+  getAvgEngagement,
+  getAvgEngagementValue,
+  getNicheColor,
+} from '@/lib/createurs/helpers'
 import { demandeHref } from '@/lib/createurs/demande'
 import { fichePath } from '@/lib/createurs/fiche'
 
@@ -67,6 +73,7 @@ export const CreatorDetailPanel = ({ influencer, onClose }: Props) => {
   }, [open, onKeyDown])
 
   const avg = influencer ? getAvgEngagementValue(influencer) : null
+  const platforms = influencer ? platformsOf(influencer) : []
 
   return (
     <AnimatePresence>
@@ -144,38 +151,34 @@ export const CreatorDetailPanel = ({ influencer, onClose }: Props) => {
               )}
 
               <div className="mt-4 grid grid-cols-2 gap-3">
-                {hasPlatform(influencer, 'instagram') && (
-                  <div className="rounded-xl border border-gray-200 p-3">
-                    <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-gray-500">
-                      <Instagram className="h-4 w-4" aria-hidden="true" />
-                      Instagram
-                    </span>
-                    <div className="mt-1 text-xl font-extrabold leading-none text-gray-900">{influencer.instagram.followers}</div>
-                    <div className="mt-0.5 text-[10px] text-gray-400">abonnés</div>
-                    {hasEngagement(influencer.instagram.engagement) && (
-                      <div className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-gray-600">
-                        <Heart className="h-3 w-3 text-gray-400" aria-hidden="true" />
-                        {influencer.instagram.engagement}
+                {platforms.map((platform) => {
+                  const engagement = displayedEngagement(platform.stats)
+                  return (
+                    <div key={platform.key} className="rounded-xl border border-gray-200 p-3">
+                      <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-gray-500">
+                        {platform.icon}
+                        {platform.label}
+                      </span>
+                      <div className="mt-1 text-xl font-extrabold leading-none text-gray-900">
+                        {platform.stats.followers}
                       </div>
-                    )}
-                  </div>
-                )}
-                {hasPlatform(influencer, 'tiktok') && (
-                  <div className="rounded-xl border border-gray-200 p-3">
-                    <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-gray-500">
-                      <TikTokIcon className="h-4 w-4" />
-                      TikTok
-                    </span>
-                    <div className="mt-1 text-xl font-extrabold leading-none text-gray-900">{influencer.tiktok.followers}</div>
-                    <div className="mt-0.5 text-[10px] text-gray-400">abonnés</div>
-                    {hasEngagement(influencer.tiktok.engagement) && (
-                      <div className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-gray-600">
-                        <Heart className="h-3 w-3 text-gray-400" aria-hidden="true" />
-                        {influencer.tiktok.engagement}
+                      <div className="mt-0.5 text-[10px] text-gray-400">abonnés</div>
+                      {/* Sous 500 abonnés, « — » plutôt qu'un taux qui ne veut rien dire. */}
+                      <div
+                        title={engagement ? undefined : SMALL_AUDIENCE_TITLE}
+                        className={`mt-2 inline-flex items-center gap-1 text-[11px] font-semibold ${
+                          engagement ? 'text-gray-600' : 'text-gray-400'
+                        }`}
+                      >
+                        <Heart
+                          className={`h-3 w-3 ${engagement ? 'text-gray-400' : 'text-gray-300'}`}
+                          aria-hidden="true"
+                        />
+                        {engagement ?? '—'}
                       </div>
-                    )}
-                  </div>
-                )}
+                    </div>
+                  )
+                })}
               </div>
 
               <p className="mt-5 text-sm leading-relaxed text-gray-600">{influencer.bio}</p>
@@ -221,28 +224,18 @@ export const CreatorDetailPanel = ({ influencer, onClose }: Props) => {
 
               <div className="mt-6 flex flex-col gap-3">
                 <div className="grid grid-cols-2 gap-3">
-                  {hasPlatform(influencer, 'instagram') && (
+                  {platforms.map((platform) => (
                     <a
-                      href={influencer.instagram.url}
+                      key={platform.key}
+                      href={platform.stats.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-300 px-3 py-2.5 text-sm font-semibold text-gray-800 transition-colors hover:border-[#111111] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111111]"
                     >
-                      <Instagram className="h-4 w-4" aria-hidden="true" />
-                      Instagram
+                      {platform.icon}
+                      {platform.label}
                     </a>
-                  )}
-                  {hasPlatform(influencer, 'tiktok') && (
-                    <a
-                      href={influencer.tiktok.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-300 px-3 py-2.5 text-sm font-semibold text-gray-800 transition-colors hover:border-[#111111] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111111]"
-                    >
-                      <TikTokIcon className="h-4 w-4" />
-                      TikTok
-                    </a>
-                  )}
+                  ))}
                 </div>
                 <a
                   href={demandeHref([influencer.handle])}

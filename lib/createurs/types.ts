@@ -65,7 +65,10 @@ export interface Influencer {
   pending?: boolean // en attente de l'accord de la créatrice → non affiché
 }
 
-export type PlatformFilter = 'tous' | 'instagram' | 'tiktok'
+export type PlatformFilter = 'tous' | 'instagram' | 'tiktok' | 'youtube'
+
+/** Filtre « Profil » : « UGC + Influence » ressort dans les deux entrées. */
+export type ProfileFilter = 'tous' | 'ugc' | 'influence'
 export type FollowerBucket = 'tous' | 'lt1k' | '1k10k' | '10k50k' | 'gt50k'
 export type EngagementFloor = 'tous' | '3' | '5' | '10'
 export type SortKey = 'engagement' | 'abonnes' | 'az'
@@ -75,6 +78,7 @@ export type Zone = (typeof ZONES)[number]
 
 export interface CreatorFilters {
   platform: PlatformFilter
+  profil: ProfileFilter
   followers: FollowerBucket
   engagement: EngagementFloor
   niches: string[]
@@ -84,6 +88,7 @@ export interface CreatorFilters {
 
 export const DEFAULT_FILTERS: CreatorFilters = {
   platform: 'tous',
+  profil: 'tous',
   followers: 'tous',
   engagement: 'tous',
   niches: [],
