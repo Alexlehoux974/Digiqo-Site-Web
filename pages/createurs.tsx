@@ -7,6 +7,7 @@ import { ServiceHero } from '../components/ServicePages/ServiceHero'
 import { CreatorsExplorer } from '../components/Createurs/CreatorsExplorer'
 import { CreatorRequestLauncher } from '../components/Createurs/CreatorRequestLauncher'
 import { HowItWorks } from '../components/Createurs/HowItWorks'
+import { CreatorsFaq, CREATORS_FAQ } from '../components/Createurs/CreatorsFaq'
 import { ANIMATION } from '@/lib/animation-constants'
 import { generateContactUrl } from '../lib/contact-utils'
 import type { GetStaticProps } from 'next'
@@ -21,6 +22,24 @@ import { INSCRIPTION_PATHNAME } from '@/lib/createurs/inscription'
 // La tuile « Vous êtes créateur ? » de la grille mène désormais au formulaire dédié
 // plutôt qu'au formulaire de contact générique de la home.
 const joinHref = INSCRIPTION_PATHNAME
+
+// JSON-LD FAQPage — construit depuis `CREATORS_FAQ`, la source des textes
+// affichés par <CreatorsFaq />, pour que balisage et page ne divergent jamais.
+const faqStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': 'https://digiqo.fr/createurs#faq',
+  mainEntity: CREATORS_FAQ.flatMap((panel) =>
+    panel.items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  ),
+}
 
 interface Props {
   creators: Influencer[]
@@ -47,6 +66,10 @@ export default function CreateursPage({ creators }: Props) {
         <meta property="og:description" content="Accédez à notre réseau de créateurs de contenu et influenceurs à La Réunion et en France." />
         <meta property="og:url" content="https://digiqo.fr/createurs" />
         <meta property="og:type" content="website" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+        />
       </Head>
 
       <ServiceLayout>
@@ -116,6 +139,9 @@ export default function CreateursPage({ creators }: Props) {
             <CreatorsExplorer creators={creators} joinHref={joinHref} />
           </div>
         </section>
+
+        {/* ── FAQ (entreprises / créateurs) ── */}
+        <CreatorsFaq />
 
         {/* ── CTA: BECOME A CREATOR ── */}
         <section className="py-20 sm:py-28 bg-gradient-to-br from-digiqo-primary via-digiqo-primary/95 to-digiqo-primary-dark relative overflow-hidden">
