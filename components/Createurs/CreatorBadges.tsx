@@ -35,10 +35,36 @@ export const LevelBadge = ({ niveau, className = '' }: { niveau: CreatorLevel; c
   )
 }
 
-export const CategoryPill = ({ categorie, className = '' }: { categorie: CreatorCategory; className?: string }) => (
+/** `compact` aligne la pastille sur la taille des chips de niche de la carte de grille. */
+export const CategoryPill = ({
+  categorie,
+  compact = false,
+  className = '',
+}: {
+  categorie: CreatorCategory
+  compact?: boolean
+  className?: string
+}) => (
   <span
-    className={`inline-flex items-center rounded-full border border-gray-200 bg-white px-2.5 py-0.5 text-[11px] font-semibold text-gray-700 ${className}`}
+    className={`inline-flex items-center rounded-full border border-gray-200 bg-white font-semibold text-gray-700 ${
+      compact ? 'px-2 py-0.5 text-[10px]' : 'px-2.5 py-0.5 text-[11px]'
+    } ${className}`}
   >
     {CATEGORY_LABELS[categorie]}
   </span>
 )
+
+// ──────────────────────────────────────────────
+// BORDURE DE CARTE
+// La hiérarchie se lit d'abord au bord de la carte : doré pour les profils Top,
+// noir pour les Confirmés, gris clair — l'état actuel — pour les Nouveaux.
+// Rien d'autre ne change : ni animation, ni géométrie, ni swipe.
+// ──────────────────────────────────────────────
+
+const LEVEL_BORDERS: Record<CreatorLevel, string> = {
+  top: 'border-2 border-[#C9A227]',
+  confirme: 'border-2 border-[#111111]',
+  nouveau: 'border border-gray-200',
+}
+
+export const levelBorder = (niveau: CreatorLevel): string => LEVEL_BORDERS[niveau]

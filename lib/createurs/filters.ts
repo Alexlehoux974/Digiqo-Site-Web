@@ -1,4 +1,4 @@
-import type { Influencer, CreatorFilters, FollowerBucket, Zone } from './types'
+import type { Influencer, CreatorFilters, FollowerBucket, ProfileFilter, Zone } from './types'
 import { ZONES, DEFAULT_FILTERS } from './types'
 import { getAvgEngagementValue, getFollowers, getZone, hasPlatform, parseCount } from './helpers'
 
@@ -15,11 +15,21 @@ const BUCKETS: Record<Exclude<FollowerBucket, 'tous'>, [number, number]> = {
   gt50k: [50000, Number.POSITIVE_INFINITY],
 }
 
+/** « UGC + Influence » répond aux deux filtres : c'est un profil complet, pas un troisième cas. */
+const matchesProfile = (inf: Influencer, profil: ProfileFilter): boolean => {
+  if (profil === 'tous') return true
+  if (profil === 'ugc') return inf.categorie === 'ugc' || inf.categorie === 'ugc-influence'
+  return inf.categorie === 'influence' || inf.categorie === 'ugc-influence'
+}
+
 export const matchesFilters = (inf: Influencer, f: CreatorFilters): boolean => {
   // Plateforme : la créatrice doit avoir un compte sur la plateforme demandée.
   if (f.platform !== 'tous' && !hasPlatform(inf, f.platform)) return false
 
-  // Abonnés, sur la plateforme sélectionnée (ou le max des deux si « tous »).
+  // Profil : UGC, Influence, ou les deux.
+  if (!matchesProfile(inf, f.profil)) return false
+
+  // Abonnés, sur la plateforme sélectionnée (ou le max de toutes si « tous »).
   if (f.followers !== 'tous') {
     const count = getFollowers(inf, f.platform)
     if (count === null) return false
@@ -74,6 +84,7 @@ export const applyFilters = (creators: Influencer[], f: CreatorFilters): Influen
 
 export const countActiveFilters = (f: CreatorFilters): number =>
   (f.platform !== 'tous' ? 1 : 0) +
+  (f.profil !== 'tous' ? 1 : 0) +
   (f.followers !== 'tous' ? 1 : 0) +
   (f.engagement !== 'tous' ? 1 : 0) +
   f.niches.length +
@@ -101,6 +112,7 @@ const list = (value: string): string[] =>
 export const filtersToQuery = (f: CreatorFilters): Record<string, string> => {
   const q: Record<string, string> = {}
   if (f.platform !== 'tous') q.plateforme = f.platform
+  if (f.profil !== 'tous') q.profil = f.profil
   if (f.followers !== 'tous') q.abonnes = f.followers
   if (f.engagement !== 'tous') q.min_eng = f.engagement
   if (f.niches.length) q.niches = f.niches.join(',')
@@ -111,7 +123,8 @@ export const filtersToQuery = (f: CreatorFilters): Record<string, string> => {
 
 // Tolérant : toute valeur inconnue retombe sur le défaut plutôt que de casser la page.
 export const filtersFromQuery = (query: Query, knownNiches: string[]): CreatorFilters => ({
-  platform: oneOf(first(query.plateforme), ['tous', 'instagram', 'tiktok'] as const, 'tous'),
+  platform: oneOf(first(query.plateforme), ['tous', 'instagram', 'tiktok', 'youtube'] as const, 'tous'),
+  profil: oneOf(first(query.profil), ['tous', 'ugc', 'influence'] as const, 'tous'),
   followers: oneOf(first(query.abonnes), ['tous', 'lt1k', '1k10k', '10k50k', 'gt50k'] as const, 'tous'),
   engagement: oneOf(first(query.min_eng), ['tous', '3', '5', '10'] as const, 'tous'),
   niches: list(first(query.niches)).filter((n) => knownNiches.includes(n)),
@@ -141,6 +154,21 @@ export const SORT_LABELS: Record<CreatorFilters['sort'], string> = {
   az: 'A → Z',
 }
 
+export const PLATFORM_LABELS: Record<CreatorFilters['platform'], string> = {
+  tous: 'Tous',
+  instagram: 'Instagram',
+  tiktok: 'TikTok',
+  youtube: 'YouTube',
+}
+
+export const PROFILE_LABELS: Record<ProfileFilter, string> = {
+  tous: 'Tous',
+  ugc: 'UGC',
+  influence: 'Influence',
+}
+
 // Réexport utilisé par la pile mobile pour afficher un compteur cohérent.
 export const totalFollowers = (inf: Influencer): number =>
-  (parseCount(inf.instagram.followers) ?? 0) + (parseCount(inf.tiktok.followers) ?? 0)
+  (parseCount(inf.instagram.followers) ?? 0) +
+  (parseCount(inf.tiktok.followers) ?? 0) +
+  (parseCount(inf.youtube?.followers) ?? 0)
