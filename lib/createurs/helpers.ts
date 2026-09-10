@@ -46,7 +46,9 @@ export const formatPct = (n: number): string =>
 // ──────────────────────────────────────────────
 
 // Moyenne des plateformes disposant d'un taux chiffré. null si aucune.
-export const getAvgEngagementValue = (inf: Influencer): number | null => {
+// Accepte toute forme portant les deux plateformes : `airtable.ts` trie ses fiches
+// avant même de leur avoir attribué un slug.
+export const getAvgEngagementValue = (inf: Pick<Influencer, 'instagram' | 'tiktok'>): number | null => {
   const values = [inf.instagram.engagement, inf.tiktok.engagement]
     .map(parsePct)
     .filter((n): n is number => n !== null)
@@ -156,4 +158,94 @@ export const collectNiches = (creators: Influencer[]): string[] =>
 export const collectZones = (creators: Influencer[], order: readonly Zone[]): Zone[] => {
   const present = new Set(creators.map((c) => getZone(c.location)).filter((z): z is Zone => z !== null))
   return order.filter((z) => present.has(z))
+}
+
+// ──────────────────────────────────────────────
+// VILLES — compteur du hero « N créateurs · M villes ».
+//
+// Seules les communes de La Réunion comptent : le compteur annonce la
+// couverture de l'île. « La Réunion » n'est pas une commune, et une créatrice
+// basée « La Réunion — Paris » n'ajoute pas Paris au décompte.
+// ──────────────────────────────────────────────
+
+// Les 24 communes, plus quelques localités que les créatrices écrivent à la
+// place de leur commune. La valeur est la commune : Saint-Gilles et Saint-Paul
+// ne comptent qu'une fois.
+const COMMUNES_974: Record<string, string> = {
+  'les avirons': 'Les Avirons',
+  'bras panon': 'Bras-Panon',
+  cilaos: 'Cilaos',
+  'entre deux': 'Entre-Deux',
+  'l etang sale': "L'Étang-Salé",
+  'etang sale': "L'Étang-Salé",
+  'petite ile': 'Petite-Île',
+  'la plaine des palmistes': 'La Plaine-des-Palmistes',
+  'plaine des palmistes': 'La Plaine-des-Palmistes',
+  'le port': 'Le Port',
+  'la possession': 'La Possession',
+  'saint andre': 'Saint-André',
+  'saint benoit': 'Saint-Benoît',
+  'saint denis': 'Saint-Denis',
+  'sainte clotilde': 'Saint-Denis',
+  'le chaudron': 'Saint-Denis',
+  'saint joseph': 'Saint-Joseph',
+  'saint leu': 'Saint-Leu',
+  'saint louis': 'Saint-Louis',
+  'la riviere': 'Saint-Louis',
+  'saint paul': 'Saint-Paul',
+  'saint gilles': 'Saint-Paul',
+  'la saline': 'Saint-Paul',
+  'l hermitage': 'Saint-Paul',
+  hermitage: 'Saint-Paul',
+  'saint philippe': 'Saint-Philippe',
+  'saint pierre': 'Saint-Pierre',
+  'terre sainte': 'Saint-Pierre',
+  'grand bois': 'Saint-Pierre',
+  'sainte marie': 'Sainte-Marie',
+  'sainte rose': 'Sainte-Rose',
+  'sainte suzanne': 'Sainte-Suzanne',
+  salazie: 'Salazie',
+  'le tampon': 'Le Tampon',
+  'les trois bassins': 'Les Trois-Bassins',
+  'trois bassins': 'Les Trois-Bassins',
+}
+
+// « Saint-Pierre (974) » → « saint pierre 974 » · « St-Denis » → « saint denis ».
+const cityKey = (raw: string): string =>
+  raw
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[’']/g, ' ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+    .replace(/\bst\b/g, 'saint')
+    .replace(/\bste\b/g, 'sainte')
+    .replace(/\s+/g, ' ')
+
+/** La commune reconnue dans un libellé, ou `null`. Comparaison sur mots entiers. */
+const communeIn = (label: string): string | null => {
+  const key = cityKey(label)
+  if (!key) return null
+  if (COMMUNES_974[key]) return COMMUNES_974[key]
+  const padded = ` ${key} `
+  for (const [name, commune] of Object.entries(COMMUNES_974)) {
+    if (padded.includes(` ${name} `)) return commune
+  }
+  return null
+}
+
+/**
+ * Communes réunionnaises distinctes représentées par les fiches. Le tiret
+ * cadratin sépare deux lieux : « La Réunion — Paris » ne donne aucune commune.
+ */
+export const collectCities = (creators: Influencer[]): string[] => {
+  const seen = new Set<string>()
+  for (const creator of creators) {
+    for (const part of (creator.city || creator.location || '').split(/[—–/,]/)) {
+      const commune = communeIn(part)
+      if (commune) seen.add(commune)
+    }
+  }
+  return Array.from(seen)
 }

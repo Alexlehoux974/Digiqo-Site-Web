@@ -65,6 +65,7 @@ Sitemap: https://digiqo.fr/sitemap_index.xml
 Sitemap: https://digiqo.fr/sitemap.xml
 Sitemap: https://digiqo.fr/sitemap-blog.xml
 Sitemap: https://digiqo.fr/sitemap-services.xml
+Sitemap: https://digiqo.fr/sitemap-createurs.xml
 
 # Host directive (pour Yandex)
 Host: https://digiqo.fr

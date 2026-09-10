@@ -6,7 +6,9 @@ import type { Influencer } from './types'
 // Les fiches `pending` ne sont pas affichées (accord créatrice en attente).
 // ──────────────────────────────────────────────
 
-export const CREATORS: Influencer[] = [
+type CreatorSeed = Omit<Influencer, 'slug' | 'firstName' | 'city' | 'niveau' | 'categorie' | 'genre'>
+
+const SEEDS: CreatorSeed[] = [
   {
     name: 'Ophélie Le Houx',
     handle: '@op_lehoux',
@@ -152,3 +154,16 @@ export const CREATORS: Influencer[] = [
     contentTypes: ['UGC', 'TikTok', 'Reels'],
   },
 ]
+
+// Le filet de sécurité ignore niveau et catégorie — ils sont calculés par n8n
+// dans Airtable, pas dans le repo : il retombe sur les valeurs les plus neutres
+// et dérive slug, prénom et ville de ce qu'il a déjà sous la main.
+export const CREATORS: Influencer[] = SEEDS.map((seed) => ({
+  ...seed,
+  slug: seed.handle.replace(/^@+/, '').toLowerCase(),
+  firstName: seed.name.split(' ')[0],
+  city: seed.location.split('—')[0].trim(),
+  niveau: 'nouveau',
+  categorie: 'ugc',
+  genre: 'inconnu',
+}))

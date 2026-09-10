@@ -1,31 +1,17 @@
 import { useCallback, useEffect, useRef } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { AnimatePresence, m as motion, useReducedMotion } from 'framer-motion'
 import {
-  X, MapPin, Instagram, Heart, Zap, Star, MessageCircle,
-  Camera, Play, Video, Image as ImageIcon, Mic, Clapperboard, PenLine,
+  X, MapPin, Instagram, Heart, Zap, Star, MessageCircle, ArrowUpRight, Camera,
 } from 'lucide-react'
 import { TikTokIcon } from './TikTokIcon'
+import { contentTypeIcons } from './contentTypeIcons'
+import { CategoryPill, LevelBadge } from './CreatorBadges'
 import type { Influencer } from '@/lib/createurs/types'
 import { getAvgEngagement, getAvgEngagementValue, getNicheColor, hasEngagement, hasPlatform } from '@/lib/createurs/helpers'
 import { demandeHref } from '@/lib/createurs/demande'
-
-const contentTypeIcons: Record<string, typeof Play> = {
-  'Reels': Video,
-  'Stories': Play,
-  'Posts': ImageIcon,
-  'UGC': Camera,
-  'Lives': Zap,
-  'TikTok': Video,
-  // Formats issus du vocabulaire Airtable (formulaire d'inscription).
-  'Vidéo longue': Video,
-  'Face cam': Camera,
-  'Micro-trottoir': Mic,
-  'Vlog': Video,
-  'Montage vidéo': Clapperboard,
-  'Rédaction': PenLine,
-  'Visuels / Graphisme': ImageIcon,
-}
+import { fichePath } from '@/lib/createurs/fiche'
 
 const FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])'
 
@@ -140,6 +126,10 @@ export const CreatorDetailPanel = ({ influencer, onClose }: Props) => {
                     <MapPin className="h-3.5 w-3.5 flex-shrink-0" aria-hidden="true" />
                     {influencer.location}
                   </p>
+                  <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                    <LevelBadge niveau={influencer.niveau} />
+                    <CategoryPill categorie={influencer.categorie} />
+                  </div>
                 </div>
               </div>
 
@@ -261,6 +251,15 @@ export const CreatorDetailPanel = ({ influencer, onClose }: Props) => {
                   <MessageCircle className="h-4 w-4" aria-hidden="true" />
                   Engager ce créateur
                 </a>
+                {/* Le panneau reste le parcours principal ; la fiche est l'URL
+                    partageable, utile à la créatrice comme au client. */}
+                <Link
+                  href={fichePath(influencer.slug)}
+                  className="inline-flex items-center justify-center gap-1.5 text-sm font-semibold text-gray-500 transition-colors hover:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111111]"
+                >
+                  Voir la fiche
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
               </div>
             </div>
           </motion.div>

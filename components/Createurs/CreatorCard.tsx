@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { m as motion } from 'framer-motion'
-import { Camera, MapPin, Instagram, Zap, MessageCircle } from 'lucide-react'
+import { ArrowUpRight, Camera, MapPin, Instagram, Zap, MessageCircle } from 'lucide-react'
 import { TikTokIcon } from './TikTokIcon'
 import { PlatformRow } from './PlatformRow'
 import type { Influencer } from '@/lib/createurs/types'
 import { getAvgEngagement, getAvgEngagementValue, getNicheColor, hasPlatform } from '@/lib/createurs/helpers'
 import { demandeHref } from '@/lib/createurs/demande'
+import { fichePath } from '@/lib/createurs/fiche'
 
 const MAX_NICHES = 3
 
@@ -115,14 +117,26 @@ export const CreatorCard = ({ influencer, index, onOpen }: CreatorCardProps) => 
           </div>
         )}
 
-        <a
-          href={demandeHref([influencer.handle])}
-          onClick={(e) => e.stopPropagation()}
-          className="relative z-20 mt-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#111111] px-4 py-2.5 text-[13px] font-bold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-black hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111111]"
-        >
-          <MessageCircle className="h-4 w-4" aria-hidden="true" />
-          Engager ce créateur
-        </a>
+        <div className="mt-auto flex flex-col gap-1.5">
+          <a
+            href={demandeHref([influencer.handle])}
+            onClick={(e) => e.stopPropagation()}
+            className="relative z-20 inline-flex items-center justify-center gap-2 rounded-xl bg-[#111111] px-4 py-2.5 text-[13px] font-bold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-black hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111111]"
+          >
+            <MessageCircle className="h-4 w-4" aria-hidden="true" />
+            Engager ce créateur
+          </a>
+          {/* Le clic sur la carte ouvre le panneau — c'est le parcours principal.
+              Ce lien existe pour l'URL partageable, et pour les moteurs. */}
+          <Link
+            href={fichePath(influencer.slug)}
+            onClick={(e) => e.stopPropagation()}
+            className="relative z-20 inline-flex items-center justify-center gap-1 text-[11px] font-semibold text-gray-500 transition-colors hover:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111111]"
+          >
+            Voir la fiche
+            <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+          </Link>
+        </div>
       </div>
     </motion.article>
   )

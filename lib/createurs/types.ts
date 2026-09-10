@@ -10,15 +10,56 @@ export interface PlatformStats {
   engagement: string // ex. "7%" ou "À définir"
 }
 
+/** Calculé par n8n dans Airtable (« Niveau ») — pilote la hiérarchie visuelle des cartes. */
+export type CreatorLevel = 'top' | 'confirme' | 'nouveau'
+
+/** Calculé par n8n dans Airtable (« Catégorie »). */
+export type CreatorCategory = 'ugc' | 'influence' | 'ugc-influence'
+
+export const LEVEL_LABELS: Record<CreatorLevel, string> = {
+  top: 'Top',
+  confirme: 'Confirmé',
+  nouveau: 'Nouveau',
+}
+
+export const CATEGORY_LABELS: Record<CreatorCategory, string> = {
+  ugc: 'UGC',
+  influence: 'Influence',
+  'ugc-influence': 'UGC + Influence',
+}
+
+/** Champ « Genre » Airtable. `inconnu` = case vide, pas une troisième valeur du select. */
+export type CreatorGender = 'femme' | 'homme' | 'inconnu'
+
+/**
+ * Le nom que porte le titre SEO de la fiche. Sans genre renseigné on écrit
+ * « créateur·rice » : mieux vaut une forme inclusive qu'un genre supposé.
+ */
+export const CREATOR_NOUNS: Record<CreatorGender, string> = {
+  femme: 'créatrice',
+  homme: 'créateur',
+  inconnu: 'créateur·rice',
+}
+
 export interface Influencer {
+  /** Identifiant d'URL de la fiche, ex. « op_lehoux » → /createurs/op_lehoux. Unique. */
+  slug: string
   name: string
+  /** « Prénom » Airtable, replié sur le premier mot du nom. Utilisé par le titre SEO de la fiche. */
+  firstName: string
   handle: string
   photo: string
+  /** « Ville » brute, sans la zone : le titre SEO de la fiche dit « à {Ville} ». */
+  city: string
   location: string
+  niveau: CreatorLevel
+  categorie: CreatorCategory
+  genre: CreatorGender
   niches: string[]
   bio: string
   instagram: PlatformStats
   tiktok: PlatformStats
+  youtube?: PlatformStats
   contentTypes: string[]
   featured?: boolean
   pending?: boolean // en attente de l'accord de la créatrice → non affiché
