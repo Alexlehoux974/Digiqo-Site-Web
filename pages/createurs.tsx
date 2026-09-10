@@ -16,11 +16,13 @@ import ServiceLayout from '../components/ServiceLayout/ServiceLayout'
 import { ServiceHero } from '../components/ServicePages/ServiceHero'
 import { CreatorsExplorer } from '../components/Createurs/CreatorsExplorer'
 import { CreatorRequestLauncher } from '../components/Createurs/CreatorRequestLauncher'
+import { HowItWorks } from '../components/Createurs/HowItWorks'
 import { ANIMATION, getStaggerDelay } from '@/lib/animation-constants'
 import { generateContactUrl } from '../lib/contact-utils'
 import type { GetStaticProps } from 'next'
 import type { Influencer } from '@/lib/createurs/types'
 import { getCreatorsForPage } from '@/lib/createurs/airtable'
+import { collectCities } from '@/lib/createurs/helpers'
 import { DEMANDE_PATHNAME } from '@/lib/createurs/demande'
 import { INSCRIPTION_PATHNAME } from '@/lib/createurs/inscription'
 
@@ -59,6 +61,9 @@ interface Props {
 }
 
 export default function CreateursPage({ creators }: Props) {
+  // Compteur du hero : compté sur les fiches réellement publiées, jamais codé en dur.
+  const cityCount = collectCities(creators).length
+
   return (
     <>
       <Head>
@@ -103,6 +108,18 @@ export default function CreateursPage({ creators }: Props) {
           gradientTo="to-purple-600"
           iconColor="text-pink-400"
         />
+
+        {/* ── COMPTEUR ── prolonge le hero : même fond, pas d'animation de chiffre. */}
+        <div className="bg-digiqo-primary pb-10 text-center">
+          <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white/90 backdrop-blur-sm">
+            <Users className="h-4 w-4 text-pink-300" aria-hidden="true" />
+            {creators.length} créateur{creators.length > 1 ? 's' : ''} · {cityCount} ville
+            {cityCount > 1 ? 's' : ''}
+          </p>
+        </div>
+
+        {/* ── COMMENT ÇA MARCHE (client) ── */}
+        <HowItWorks />
 
         {/* ── INFLUENCER PROFILES ── */}
         <section id="createurs" className="py-20 sm:py-28 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">

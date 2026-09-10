@@ -85,6 +85,12 @@ function generateSitemapIndex() {
     <loc>${siteUrl}/sitemap-services.xml</loc>
     <lastmod>${today}</lastmod>
   </sitemap>
+  <sitemap>
+    <!-- Servi par Next (pages/sitemap-createurs.xml.ts) : les fiches sont
+         publiées depuis Airtable, sans passer par un build. -->
+    <loc>${siteUrl}/sitemap-createurs.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
 </sitemapindex>`;
 
   fs.writeFileSync(path.join(__dirname, '../public/sitemap_index.xml'), sitemapIndex);

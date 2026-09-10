@@ -46,7 +46,9 @@ export const formatPct = (n: number): string =>
 // ──────────────────────────────────────────────
 
 // Moyenne des plateformes disposant d'un taux chiffré. null si aucune.
-export const getAvgEngagementValue = (inf: Influencer): number | null => {
+// Accepte toute forme portant les deux plateformes : `airtable.ts` trie ses fiches
+// avant même de leur avoir attribué un slug.
+export const getAvgEngagementValue = (inf: Pick<Influencer, 'instagram' | 'tiktok'>): number | null => {
   const values = [inf.instagram.engagement, inf.tiktok.engagement]
     .map(parsePct)
     .filter((n): n is number => n !== null)
@@ -156,4 +158,48 @@ export const collectNiches = (creators: Influencer[]): string[] =>
 export const collectZones = (creators: Influencer[], order: readonly Zone[]): Zone[] => {
   const present = new Set(creators.map((c) => getZone(c.location)).filter((z): z is Zone => z !== null))
   return order.filter((z) => present.has(z))
+}
+
+// ──────────────────────────────────────────────
+// VILLES — compteur du hero « N créateurs · M villes ».
+// ──────────────────────────────────────────────
+
+// Ces libellés désignent l'île entière, pas une ville : les compter gonflerait
+// le compteur d'une « ville » qui n'en est pas une.
+const REGION_KEYS = new Set([
+  'la reunion',
+  'reunion',
+  'ile de la reunion',
+  '974',
+  'toute l ile',
+  'toute la reunion',
+])
+
+// « Saint-Pierre » et « saint pierre » sont la même ville ; le tiret des noms
+// composés est conservé comme séparateur de mots, pas comme séparateur de villes.
+const cityKey = (raw: string): string =>
+  raw
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[’']/g, ' ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+
+/**
+ * Villes distinctes représentées par les fiches. « La Réunion — Paris » compte
+ * pour Paris : le tiret cadratin sépare deux lieux, pas un nom composé.
+ */
+export const collectCities = (creators: Influencer[]): string[] => {
+  const seen = new Map<string, string>()
+  for (const creator of creators) {
+    for (const part of (creator.city || creator.location || '').split(/[—–/,]/)) {
+      const label = part.trim()
+      if (!label) continue
+      const key = cityKey(label)
+      if (!key || REGION_KEYS.has(key) || seen.has(key)) continue
+      seen.set(key, label)
+    }
+  }
+  return Array.from(seen.values())
 }

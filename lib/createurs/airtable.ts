@@ -1,6 +1,6 @@
 import { CREATORS } from './data'
 import { formatCount, formatPct, getAvgEngagementValue } from './helpers'
-import type { Influencer, PlatformStats } from './types'
+import type { CreatorCategory, CreatorLevel, Influencer, PlatformStats } from './types'
 
 // ──────────────────────────────────────────────
 // SOURCE AIRTABLE — lecture serveur uniquement (getStaticProps + ISR).
@@ -36,6 +36,12 @@ const F = {
   photo: 'fldMbGhLLpnJyFSN8',
   ordre: 'fldMBNpkIrXg7fWwY',
   featured: 'fldvxuhh6Mb87Tt0K',
+  prenom: 'fldMQzoISbW3cci6H',
+  youtube: 'fldHLkVUTNyLdsCJQ',
+  abonnesYoutube: 'fldWclOYPe66aNwut',
+  tauxYoutube: 'fld8PwfqwGDYzbV5y',
+  niveau: 'fldhXbffl8xja8SdL',
+  categorie: 'fldjMCdeKTVFKwSIL',
 } as const
 
 const UNDEFINED_LABEL = 'À définir'
@@ -123,6 +129,25 @@ const REPO_PHOTOS: Record<string, string> = Object.fromEntries(
   FALLBACK_INFLUENCERS.map((c) => [c.handle.toLowerCase(), c.photo]),
 )
 
+// Niveau et catégorie sont calculés par n8n dans Airtable. Une valeur inconnue
+// (option renommée, champ vide sur une fiche publiée avant le calcul) retombe sur
+// le choix le plus neutre plutôt que de faire disparaître la fiche.
+const LEVEL_BY_LABEL: Record<string, CreatorLevel> = {
+  Top: 'top',
+  'Confirmé': 'confirme',
+  Nouveau: 'nouveau',
+}
+
+const CATEGORY_BY_LABEL: Record<string, CreatorCategory> = {
+  UGC: 'ugc',
+  Influence: 'influence',
+  'UGC + Influence': 'ugc-influence',
+}
+
+const toLevel = (v: unknown): CreatorLevel => LEVEL_BY_LABEL[asText(v)] ?? 'nouveau'
+
+const toCategory = (v: unknown): CreatorCategory => CATEGORY_BY_LABEL[asText(v)] ?? 'ugc'
+
 const PLACEHOLDER_PHOTO = '/assets/createurs/placeholder.png'
 
 /**
@@ -136,34 +161,68 @@ const photoFor = (recordId: string, withAttachment: boolean, handle: string | nu
   return repo || PLACEHOLDER_PHOTO
 }
 
-const mapRecord = (record: AirtableRecord): Influencer | null => {
+/** Une fiche telle que la lit Airtable : le slug n'est attribué qu'une fois la liste complète connue. */
+type MappedCreator = Omit<Influencer, 'slug'>
+
+const mapRecord = (record: AirtableRecord): MappedCreator | null => {
   const f = record.fields || {}
   const name = asText(f[F.nom])
   if (!name) return null
 
   const instagramUrl = asText(f[F.instagram])
   const tiktokUrl = asText(f[F.tiktok])
+  const youtubeUrl = asText(f[F.youtube])
   const handle = (instagramUrl && handleFromUrl(instagramUrl)) || (tiktokUrl && handleFromUrl(tiktokUrl)) || null
+  const ville = asText(f[F.ville])
 
   return {
     name,
+    // Le prénom porte le titre SEO de la fiche : à défaut, le premier mot du nom.
+    firstName: asText(f[F.prenom]) || name.split(' ')[0],
     handle: handle || '',
     photo: photoFor(record.id, hasAttachment(f[F.photo]), handle),
-    location: buildLocation(asText(f[F.ville]), asText(f[F.zone])),
+    city: ville,
+    location: buildLocation(ville, asText(f[F.zone])),
+    niveau: toLevel(f[F.niveau]),
+    categorie: toCategory(f[F.categorie]),
     niches: asList(f[F.niches]),
     bio: asText(f[F.bio]),
     instagram: toPlatform(instagramUrl, asNumber(f[F.abonnesInstagram]), asNumber(f[F.tauxInstagram])),
     tiktok: toPlatform(tiktokUrl, asNumber(f[F.abonnesTiktok]), asNumber(f[F.tauxTiktok])),
+    // Clé absente et non `undefined` : `getStaticProps` refuse de sérialiser `undefined`.
+    ...(youtubeUrl
+      ? { youtube: toPlatform(youtubeUrl, asNumber(f[F.abonnesYoutube]), asNumber(f[F.tauxYoutube])) }
+      : {}),
     contentTypes: mapContentTypes(asList(f[F.typesContenu])),
     featured: f[F.featured] === true,
   }
 }
 
 /**
+ * Un slug par fiche, garanti unique : deux comptes Instagram ne peuvent pas
+ * porter le même identifiant, mais un repli TikTok le peut. La première fiche
+ * dans l'ordre d'affichage garde le slug propre, la suivante prend un suffixe —
+ * son URL change, mais aucune des deux ne disparaît de la liste.
+ */
+const assignSlugs = (rows: MappedCreator[]): Influencer[] => {
+  const used = new Set<string>()
+  return rows.map((inf, index) => {
+    const base = inf.handle.replace(/^@+/, '').toLowerCase() || `createur-${index + 1}`
+    let slug = base
+    for (let n = 2; used.has(slug); n++) slug = `${base}-${n}`
+    if (slug !== base) {
+      console.warn(`[createurs] slug « ${base} » déjà pris (${inf.name}) — fiche servie sur « ${slug} »`)
+    }
+    used.add(slug)
+    return { ...inf, slug }
+  })
+}
+
+/**
  * « Ordre site » croissant, les fiches sans ordre à la fin, puis engagement moyen
  * décroissant. Les fiches sans engagement chiffré ferment la marche.
  */
-const compare = (a: { inf: Influencer; ordre: number | null }, b: { inf: Influencer; ordre: number | null }): number => {
+const compare = (a: { inf: MappedCreator; ordre: number | null }, b: { inf: MappedCreator; ordre: number | null }): number => {
   if (a.ordre !== b.ordre) {
     if (a.ordre === null) return 1
     if (b.ordre === null) return -1
@@ -206,10 +265,10 @@ export const fetchPublishedCreators = async (): Promise<Influencer[]> => {
     const data = (await response.json()) as { records?: AirtableRecord[] }
     const rows = (data.records || [])
       .map((record) => ({ inf: mapRecord(record), ordre: asNumber(record.fields?.[F.ordre]) }))
-      .filter((row): row is { inf: Influencer; ordre: number | null } => row.inf !== null)
+      .filter((row): row is { inf: MappedCreator; ordre: number | null } => row.inf !== null)
 
     rows.sort(compare)
-    return rows.map((row) => row.inf)
+    return assignSlugs(rows.map((row) => row.inf))
   } catch (error) {
     console.error('[createurs] Airtable injoignable:', (error as Error).message)
     return []
@@ -226,4 +285,14 @@ export const getCreatorsForPage = async (): Promise<{ creators: Influencer[]; so
     return { creators: FALLBACK_INFLUENCERS, source: 'fallback' }
   }
   return { creators, source: 'airtable' }
+}
+
+/**
+ * Fiche unique, lue dans la même liste que /createurs : slugs, ordre et repli
+ * restent cohérents entre la liste et la fiche, au prix d'une seule requête.
+ * `null` = fiche inconnue ou non publiée → 404 côté page.
+ */
+export const getCreatorBySlug = async (slug: string): Promise<Influencer | null> => {
+  const { creators } = await getCreatorsForPage()
+  return creators.find((creator) => creator.slug === slug) ?? null
 }

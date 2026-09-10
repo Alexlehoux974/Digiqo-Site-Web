@@ -2,14 +2,20 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://digiqo.fr/sitemap.xml</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-09-10</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://digiqo.fr/sitemap-blog.xml</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-09-10</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://digiqo.fr/sitemap-services.xml</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-09-10</lastmod>
+  </sitemap>
+  <sitemap>
+    <!-- Servi par Next (pages/sitemap-createurs.xml.ts) : les fiches sont
+         publiées depuis Airtable, sans passer par un build. -->
+    <loc>https://digiqo.fr/sitemap-createurs.xml</loc>
+    <lastmod>2026-09-10</lastmod>
   </sitemap>
 </sitemapindex>
