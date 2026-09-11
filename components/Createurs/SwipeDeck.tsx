@@ -345,7 +345,6 @@ const DeckCard = ({
           // de la page gardent leur comportement de scroll natif.
           style={{ touchAction: 'none', zIndex: 40 }}
           className="absolute inset-x-0 top-0 cursor-grab active:cursor-grabbing"
-          // eslint-disable-next-line react/forbid-dom-props
           ref={(el) => {
             if (el && innerRef.current) el.style.height = `${Math.ceil(innerRef.current.getBoundingClientRect().height)}px`
           }}

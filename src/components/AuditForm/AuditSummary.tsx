@@ -1,4 +1,5 @@
 
+import Link from 'next/link'
 import { m as motion } from 'framer-motion';
 import { AuditFormData, AuditScore } from '@/src/lib/audit-types';
 import { 
@@ -121,13 +122,13 @@ export default function AuditSummary({ data, score }: AuditSummaryProps) {
                 <span>Télécharger le résumé</span>
               </button>
 
-              <a
+              <Link
                 href="/"
                 className="flex items-center justify-center space-x-2 px-6 py-3 bg-white text-primary rounded-lg hover:bg-gray-50 transition-all duration-300 font-semibold shadow-lg"
               >
                 <span>Retour au site</span>
                 <ArrowRight className="w-5 h-5" />
-              </a>
+              </Link>
             </div>
           </div>
         </motion.div>

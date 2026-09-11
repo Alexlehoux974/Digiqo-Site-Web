@@ -88,6 +88,8 @@ export default function FreelanceRecruitmentForm() {
         }));
       }
     }
+  // postesDisponibles est une liste littérale stable, recréée à chaque rendu.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query]);
 
   // Gérer le scroll vers le formulaire si l'ancre est présente

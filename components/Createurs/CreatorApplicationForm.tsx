@@ -638,7 +638,6 @@ export const CreatorApplicationForm = () => {
                 {photoPreview ? (
                   <div className="flex items-center gap-4 rounded-xl border border-gray-200 bg-gray-50 p-4">
                     {/* Aperçu local en base64 : next/image n'apporterait rien ici. */}
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={photoPreview}
                       alt="Aperçu de ta photo de profil"

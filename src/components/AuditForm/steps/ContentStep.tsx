@@ -2,7 +2,7 @@
 import { m as motion } from 'framer-motion';
 import FormField from '../FormField';
 import { AuditFormData } from '@/src/lib/audit-types';
-import { Camera, Palette, Image, Users } from 'lucide-react';
+import { Camera, Palette, Image as ImageIcon, Users } from 'lucide-react';
 
 interface ContentStepProps {
   data: Partial<AuditFormData>;
@@ -115,7 +115,7 @@ export default function ContentStep({ data, updateData }: ContentStepProps) {
       {/* Formats d'acquisition */}
       <div className="space-y-4">
         <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
-          <Image className="w-5 h-5 text-accent" />
+          <ImageIcon className="w-5 h-5 text-accent" />
           <h3 className="text-lg font-semibold">Formats d'acquisition de contenu</h3>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">

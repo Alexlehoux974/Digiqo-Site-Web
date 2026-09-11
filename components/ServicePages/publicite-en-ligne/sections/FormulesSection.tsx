@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Link from 'next/link'
 import { m as motion } from 'framer-motion'
 import {
   Target,
@@ -172,7 +173,7 @@ export default function FormulesSection() {
       accentColor: '#3B82F6',
       icon: Zap,
       bonus: {
-        '3': { title: 'Offre promotionnelle', items: [<a key="video-20" href="/services/creatifs#prod" className="underline hover:text-digiqo-secondary-dark transition-colors">20% de réduction sur la production vidéo de votre choix</a>] },
+        '3': { title: 'Offre promotionnelle', items: [<Link key="video-20" href="/services/creatifs#prod" className="underline hover:text-digiqo-secondary-dark transition-colors">20% de réduction sur la production vidéo de votre choix</Link>] },
         '12': { title: 'Offre promotionnelle', items: ['1 vidéo offerte'] },
       },
       paymentLinks: {

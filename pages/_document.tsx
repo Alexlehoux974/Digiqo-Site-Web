@@ -33,6 +33,9 @@ export default function Document() {
             `,
           }}
         />
+        {/* Script brut volontaire : le tag doit être rendu en SSR, avant tout autre
+            script, pour que le Consent Mode v2 soit en place au premier octet. */}
+        {/* eslint-disable-next-line @next/next/next-script-for-ga */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18002905491" />
 
         {/* Google Tag Manager — chargé conditionnellement via _app.tsx après consentement */}

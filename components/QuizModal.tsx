@@ -52,6 +52,8 @@ export function QuizModal({ isOpen, onClose, questions, formationTitle }: QuizMo
     }, 1000)
 
     return () => clearInterval(timer)
+  // handleNextQuestion est recréé à chaque rendu : le compte à rebours ne doit pas repartir de zéro.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [quizState, currentQuestionIndex])
 
   const handleStartQuiz = () => {

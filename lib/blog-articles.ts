@@ -43,7 +43,6 @@ const MERGED_ARTICLES_DATA: Record<string, BlogArticleData> = (() => {
   for (const mdArticle of MD_ARTICLES_DATA) {
     if (merged[mdArticle.slug]) {
       // Slug collision: keep TS, skip MD. Logged but non-fatal.
-      // eslint-disable-next-line no-console
       console.warn(
         `[blog-articles] slug collision: "${mdArticle.slug}" exists in TS legacy registry; MD copy from ${mdArticle.sourcePath} ignored`,
       )
