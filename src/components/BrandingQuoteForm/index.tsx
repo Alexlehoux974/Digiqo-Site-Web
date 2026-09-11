@@ -36,6 +36,8 @@ export default function BrandingQuoteForm({ preSelectedService, onClose }: Brand
     } else if (preSelectedService) {
       setFormData({ service: { type: preSelectedService, additionalServices: [] } })
     }
+  // Restauration du brouillon au montage uniquement.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -45,6 +47,8 @@ export default function BrandingQuoteForm({ preSelectedService, onClose }: Brand
         service: { type: preSelectedService, additionalServices: prev?.service?.additionalServices || [] }
       }))
     }
+  // formData est lu mais volontairement hors deps : l'y mettre relancerait l'effet sur son propre setState.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preSelectedService])
 
   useEffect(() => {

@@ -154,6 +154,8 @@ export function ContactTerminal({ formData, isFormSubmitted = false, className }
     const newHistory = new Set(messageHistory)
     messagesToShow.forEach(id => newHistory.add(id))
     setMessageHistory(newHistory)
+  // messageHistory et messages sont lus, pas suivis : les ajouter boucle sur setMessageHistory.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formData, isFormSubmitted])
 
   // Calculate cumulative delays for proper animation timing

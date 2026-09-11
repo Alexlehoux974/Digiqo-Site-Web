@@ -1,4 +1,5 @@
 import { SEO } from '@/components/SEO'
+import Link from 'next/link'
 import { LegalLayout } from '@/components/LegalLayout'
 
 export default function ConditionsGeneralesUtilisation() {
@@ -74,9 +75,9 @@ export default function ConditionsGeneralesUtilisation() {
           <h2 className="text-2xl font-semibold text-digiqo-primary mb-4">8. Données personnelles</h2>
           <p>
             📌 Consultez notre{' '}
-            <a href="/politique-confidentialite" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">
+            <Link href="/politique-confidentialite" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">
               politique de confidentialité
-            </a>{' '}
+            </Link>{' '}
             pour plus de détails.
           </p>
         </section>

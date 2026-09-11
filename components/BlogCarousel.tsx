@@ -150,6 +150,8 @@ export const BlogCarousel: React.FC = () => {
     }, 5000); // Change every 5 seconds
 
     return () => clearInterval(interval);
+  // handleMove est recréé à chaque rendu : le ré-armer viderait l'intervalle de rotation.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [articlesList]);
 
   return (

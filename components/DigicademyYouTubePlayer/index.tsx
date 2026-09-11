@@ -78,6 +78,8 @@ export default function DigicademyYouTubePlayer({
         playerRef.current.destroy()
       }
     }
+  // googleDriveId ne doit pas provoquer la reconstruction du player.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPlaying, videoId])
 
   // Mettre à jour le temps de lecture

@@ -5,10 +5,12 @@ import { ANIMATION } from '@/lib/animation-constants'
 import { HeroGradientOrbs } from '@/components/ui/animated-gradient-orb'
 import { Heart, ArrowRight } from 'lucide-react'
 
+type Gtag = (command: string, ...args: unknown[]) => void
+
 export default function MerciPage() {
   useEffect(() => {
-    if (typeof window !== 'undefined' && typeof (window as Window & { gtag?: Function }).gtag === 'function') {
-      (window as Window & { gtag?: Function }).gtag!('event', 'conversion', {
+    if (typeof window !== 'undefined' && typeof (window as Window & { gtag?: Gtag }).gtag === 'function') {
+      (window as Window & { gtag?: Gtag }).gtag!('event', 'conversion', {
         send_to: 'AW-18002905491/9-KPCNmGnK0cEJOTuohD',
       })
     }

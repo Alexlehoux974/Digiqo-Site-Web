@@ -177,7 +177,6 @@ const IMacMockup = ({ name, url, screenshot, index }: { name: string; url: strin
             className="relative overflow-hidden bg-white aspect-[16/10] rounded-b-lg transition-all duration-300"
             style={{ scrollBehavior: 'auto' }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               ref={imgRef}
               src={screenshot}

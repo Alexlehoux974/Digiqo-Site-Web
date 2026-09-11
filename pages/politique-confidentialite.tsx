@@ -1,4 +1,5 @@
 import { SEO } from '@/components/SEO'
+import Link from 'next/link'
 import { LegalLayout } from '@/components/LegalLayout'
 
 export default function PolitiqueConfidentialite() {
@@ -195,7 +196,7 @@ export default function PolitiqueConfidentialite() {
             <li>✔ Suivre les conversions publicitaires via Meta Pixel / Conversions API.</li>
           </ul>
           <p className="mt-4">
-            📌 <strong>Gérer les cookies :</strong> Vous pouvez modifier vos préférences via le bandeau de consentement affiché sur le site ou en consultant notre <a href="/politique-cookies" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">politique de cookies</a>.
+            📌 <strong>Gérer les cookies :</strong> Vous pouvez modifier vos préférences via le bandeau de consentement affiché sur le site ou en consultant notre <Link href="/politique-cookies" className="text-digiqo-secondary hover:text-digiqo-secondary-dark">politique de cookies</Link>.
           </p>
         </section>
 
