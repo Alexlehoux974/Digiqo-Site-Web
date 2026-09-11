@@ -12,11 +12,6 @@ module.exports = {
     'out/',
     'public/',
     '.netlify/',
-    // Sauvegardes de l'ancienne page publicité, importées nulle part : elles
-    // portent 6 violations `rules-of-hooks` qu'il serait vain de corriger dans
-    // du code mort. À supprimer un jour plutôt qu'à maintenir.
-    'components/ServicePages/publicite-backup.tsx',
-    'components/ServicePages/publicite-full-backup.tsx',
   ],
 
   rules: {
