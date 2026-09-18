@@ -35,6 +35,13 @@ export interface VideoTestimonial {
 // une vidéo de la section.
 const TESTIMONIAL_SUFFIX = /\s*[—–-]\s*Témoignage client Digiqo\s*$/i
 
+// Vidéos à ne pas afficher sur le site bien qu'elles portent le suffixe.
+// Clé = videoId (stable, insensible aux renommages). Seule exception validée
+// par Alexandre le 2026-09-18 : « Fitness Boutique ».
+const EXCLUDED_VIDEO_IDS = new Set<string>([
+  'AP8LKd7S7i8', // Fitness Boutique — Témoignage client Digiqo
+])
+
 // Clé de rapprochement YouTube ↔ Airtable : minuscules, sans accents, sans
 // ponctuation ni espaces. « Côte Seine » et « COTE-SEINE » collent.
 function normalizeName(name: string): string {
@@ -170,7 +177,13 @@ export async function getVideoTestimonials(): Promise<VideoTestimonial[]> {
     return items
       .filter((item) => {
         const title = item.snippet?.title
-        return !!title && !!item.snippet?.resourceId?.videoId && TESTIMONIAL_SUFFIX.test(title)
+        const videoId = item.snippet?.resourceId?.videoId
+        return (
+          !!title &&
+          !!videoId &&
+          TESTIMONIAL_SUFFIX.test(title) &&
+          !EXCLUDED_VIDEO_IDS.has(videoId)
+        )
       })
       // Plus récent en tête. Les dates sont en ISO 8601 UTC : la comparaison
       // lexicographique suffit et garde l'ordre stable à date égale.
