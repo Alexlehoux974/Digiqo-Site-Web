@@ -6,7 +6,9 @@
 // n'en importe que des *types* (`import type`), effacés à la compilation.
 //
 // Vidéos : playlist « uploads » de la chaîne YouTube, filtrée sur les titres
-// se terminant par « — Témoignage client Digiqo ».
+// se terminant par « — Témoignage client Digiqo », triées de la plus récente
+// à la plus ancienne (date de mise en ligne). Le tri est explicite : l'ordre
+// renvoyé par la playlist n'est pas garanti et ne doit pas être présumé.
 // Citations écrites : table Airtable « Témoignage Clients » existante,
 // associées par correspondance sur le nom du client (casse/accents ignorés).
 
@@ -170,6 +172,9 @@ export async function getVideoTestimonials(): Promise<VideoTestimonial[]> {
         const title = item.snippet?.title
         return !!title && !!item.snippet?.resourceId?.videoId && TESTIMONIAL_SUFFIX.test(title)
       })
+      // Plus récent en tête. Les dates sont en ISO 8601 UTC : la comparaison
+      // lexicographique suffit et garde l'ordre stable à date égale.
+      .sort((a, b) => (b.snippet?.publishedAt || '').localeCompare(a.snippet?.publishedAt || ''))
       .map((item, index) => {
         const snippet = item.snippet!
         const videoId = snippet.resourceId!.videoId!
