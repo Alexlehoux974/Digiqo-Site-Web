@@ -118,8 +118,12 @@ async function main() {
 
   fs.writeFileSync(DATA_FILE, json);
 
-  // Commit + push uniquement si le fichier a réellement changé.
+  // Commit + push uniquement si le fichier a réellement changé. On se
+  // resynchronise d'abord : après chaque PR mergée sur GitHub, main local est
+  // en retard et le push serait rejeté (le JSON modifié est mis de côté puis
+  // réappliqué par --autostash).
   try {
+    git(['pull', '--rebase', '--autostash']);
     git(['add', 'data/web-references.json']);
     const staged = git(['diff', '--cached', '--stat']).trim();
     if (!staged) {

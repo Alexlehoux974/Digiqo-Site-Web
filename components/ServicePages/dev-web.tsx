@@ -86,7 +86,11 @@ const CALENDAR_LINK = 'https://calendar.google.com/calendar/u/0/appointments/sch
 const references = (webReferences as { name: string; url: string; screenshot: string; archived?: boolean }[])
   .filter((ref) => !ref.archived)
 
-// iMac Mockup component with auto-scrolling screenshot
+// Mockup iMac : capture pleine page dans un écran 16/10. Au repos on voit le
+// haut de la capture (le hero du site) ; au survol, après une courte pause
+// sur ce hero, l'écran défile jusqu'en bas ; à la sortie il revient en haut.
+const HERO_HOLD_MS = 1200
+
 const IMacMockup = ({ name, url, screenshot, index }: { name: string; url: string; screenshot: string; index: number }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [isHovered, setIsHovered] = useState(false)
@@ -96,16 +100,19 @@ const IMacMockup = ({ name, url, screenshot, index }: { name: string; url: strin
     if (!isHovered || !containerRef.current || !imgRef.current) return
     const img = imgRef.current
     const container = containerRef.current
+    let animationId = 0
+    let holdTimer = 0
+    let cancelled = false
 
     const startScroll = () => {
       const scrollHeight = container.scrollHeight - container.clientHeight
       if (scrollHeight <= 0) return
 
-      let animationId: number
       let start: number | null = null
       const duration = Math.max(scrollHeight * 8, 4000)
 
       const animate = (timestamp: number) => {
+        if (cancelled) return
         if (!start) start = timestamp
         const elapsed = timestamp - start
         const progress = Math.min(elapsed / duration, 1)
@@ -119,17 +126,26 @@ const IMacMockup = ({ name, url, screenshot, index }: { name: string; url: strin
       }
 
       animationId = requestAnimationFrame(animate)
-      return () => cancelAnimationFrame(animationId)
     }
 
-    // Wait for image to be fully loaded before scrolling
+    // Le défilement ne part qu'une fois l'image chargée ET après la pause
+    // sur le hero, pour que le visiteur voie d'abord le haut du site.
+    const scheduleScroll = () => {
+      container.scrollTop = 0
+      holdTimer = window.setTimeout(startScroll, HERO_HOLD_MS)
+    }
+
     if (img.complete && img.naturalHeight > 0) {
-      const cleanup = startScroll()
-      return cleanup
+      scheduleScroll()
     } else {
-      const onLoad = () => { startScroll() }
-      img.addEventListener('load', onLoad)
-      return () => img.removeEventListener('load', onLoad)
+      img.addEventListener('load', scheduleScroll)
+    }
+
+    return () => {
+      cancelled = true
+      window.clearTimeout(holdTimer)
+      cancelAnimationFrame(animationId)
+      img.removeEventListener('load', scheduleScroll)
     }
   }, [isHovered])
 
