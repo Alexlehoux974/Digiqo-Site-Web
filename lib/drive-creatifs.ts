@@ -9,6 +9,11 @@
 // désormais source unique : ajouter un créatif = déposer le fichier dans le
 // Drive, plus de PR. Aucun libellé n'est affiché sous les images, seul l'alt
 // est dérivé du nom de fichier.
+//
+// Ordre : du plus récent au plus ancien, selon la date de dépôt du fichier
+// dans le Drive (createdTime). Un renommage ou une retouche ne change pas
+// cette date, donc pas l'ordre — seul un nouveau dépôt place un visuel en
+// tête du marquee.
 
 import { LOCAL_CREATIFS, altFromFile } from './creatifs-fallback'
 import type { CreatifImage } from './creatifs-fallback'
@@ -31,7 +36,7 @@ async function fetchDriveFiles(folderId: string, apiKey: string): Promise<DriveF
     const url = new URL('https://www.googleapis.com/drive/v3/files')
     url.searchParams.set('q', `'${folderId}' in parents and trashed=false and mimeType contains 'image/'`)
     url.searchParams.set('fields', 'nextPageToken,files(id,name)')
-    url.searchParams.set('orderBy', 'name')
+    url.searchParams.set('orderBy', 'createdTime desc')
     url.searchParams.set('pageSize', '200')
     // Le dossier vit dans un Drive partagé.
     url.searchParams.set('supportsAllDrives', 'true')

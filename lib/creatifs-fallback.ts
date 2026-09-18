@@ -1,8 +1,9 @@
 // Visuels locaux du carrousel de /services/creatifs (/public/visuel-client).
 //
 // Servis tant que l'API Drive n'est pas joignable (clé/dossier absents, quota,
-// panne) : strictement le rendu d'avant la bascule dynamique, dans son ordre
-// d'origine. Module de données pur — importable côté client comme serveur.
+// panne) : les mêmes visuels que le Drive, du plus récent au plus ancien comme
+// la source dynamique (les 4 dépôts d'août 2026 en tête, puis ceux de
+// décembre 2025). Module de données pur — importable côté client comme serveur.
 
 export interface CreatifImage {
   src: string
@@ -23,6 +24,10 @@ export function altFromFile(fileName: string): string {
 }
 
 const LOCAL_FILES = [
+  'fayarun.webp',
+  'el-latino-strip.webp',
+  'allovapeur.webp',
+  'alliance-nord-optique.webp',
   'story-01.webp',
   'story-02.webp',
   'story-03.webp',
@@ -36,10 +41,6 @@ const LOCAL_FILES = [
   'sweetjab-crosstraining-9x16.webp',
   'yoga-lechoka-9x16.webp',
   'paragraphe-story-01.webp',
-  'alliance-nord-optique.webp',
-  'allovapeur.webp',
-  'el-latino-strip.webp',
-  'fayarun.webp',
 ]
 
 export const LOCAL_CREATIFS: CreatifImage[] = LOCAL_FILES.map((file) => ({

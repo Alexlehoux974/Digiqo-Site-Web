@@ -6,7 +6,9 @@
 // n'en importe que des *types* (`import type`), effacés à la compilation.
 //
 // Vidéos : playlist « uploads » de la chaîne YouTube, filtrée sur les titres
-// se terminant par « — Témoignage client Digiqo ».
+// se terminant par « — Témoignage client Digiqo », triées de la plus récente
+// à la plus ancienne (date de mise en ligne). Le tri est explicite : l'ordre
+// renvoyé par la playlist n'est pas garanti et ne doit pas être présumé.
 // Citations écrites : table Airtable « Témoignage Clients » existante,
 // associées par correspondance sur le nom du client (casse/accents ignorés).
 
@@ -32,6 +34,13 @@ export interface VideoTestimonial {
 // tolérées : une faute de frappe dans un titre ne doit pas faire disparaître
 // une vidéo de la section.
 const TESTIMONIAL_SUFFIX = /\s*[—–-]\s*Témoignage client Digiqo\s*$/i
+
+// Vidéos à ne pas afficher sur le site bien qu'elles portent le suffixe.
+// Clé = videoId (stable, insensible aux renommages). Seule exception validée
+// par Alexandre le 2026-09-18 : « Fitness Boutique ».
+const EXCLUDED_VIDEO_IDS = new Set<string>([
+  'AP8LKd7S7i8', // Fitness Boutique — Témoignage client Digiqo
+])
 
 // Clé de rapprochement YouTube ↔ Airtable : minuscules, sans accents, sans
 // ponctuation ni espaces. « Côte Seine » et « COTE-SEINE » collent.
@@ -168,8 +177,17 @@ export async function getVideoTestimonials(): Promise<VideoTestimonial[]> {
     return items
       .filter((item) => {
         const title = item.snippet?.title
-        return !!title && !!item.snippet?.resourceId?.videoId && TESTIMONIAL_SUFFIX.test(title)
+        const videoId = item.snippet?.resourceId?.videoId
+        return (
+          !!title &&
+          !!videoId &&
+          TESTIMONIAL_SUFFIX.test(title) &&
+          !EXCLUDED_VIDEO_IDS.has(videoId)
+        )
       })
+      // Plus récent en tête. Les dates sont en ISO 8601 UTC : la comparaison
+      // lexicographique suffit et garde l'ordre stable à date égale.
+      .sort((a, b) => (b.snippet?.publishedAt || '').localeCompare(a.snippet?.publishedAt || ''))
       .map((item, index) => {
         const snippet = item.snippet!
         const videoId = snippet.resourceId!.videoId!
